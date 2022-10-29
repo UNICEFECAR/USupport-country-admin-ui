@@ -5,15 +5,22 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "staging": "vite build --mode staging",
     "build": "vite build",
     "preview": "vite preview",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "aos": "^2.3.4",
+    "axios": "^1.1.2",
+    "classnames": "^2.3.2",
+    "i18next": "^21.10.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "usupport-components-library": "^0.1.6"
+    "react-i18next": "^11.18.6",
+    "react-router-dom": "^6.4.1",
+    "usupport-components-library": "file:USupport-components-library"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",
@@ -21,6 +28,7 @@
     "@storybook/addon-essentials": "^6.5.12",
     "@storybook/addon-interactions": "^6.5.12",
     "@storybook/addon-links": "^6.5.12",
+    "@storybook/addon-viewport": "^6.5.12",
     "@storybook/builder-vite": "^0.2.3",
     "@storybook/react": "^6.5.12",
     "@storybook/testing-library": "0.0.13",
@@ -29,7 +37,15 @@
     "@vitejs/plugin-react": "^2.1.0",
     "babel-loader": "^8.2.5",
     "sass": "^1.55.0",
+    "storybook-addon-breakpoints": "^1.0.0",
     "typescript": "^4.8.4",
     "vite": "^3.1.0"
+  },
+  "overrides": {
+    "remark-parse": "9.0.0",
+    "glob-parent": "5.1.2",
+    "trim-newlines": "3.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
