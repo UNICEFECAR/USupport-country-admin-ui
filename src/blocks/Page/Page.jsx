@@ -22,7 +22,7 @@ export const Page = ({
   classes,
   children,
 }) => {
-  const { t } = useTranslation("page");
+  const { t, i18n } = useTranslation("page");
   const pages = [
     { name: t("page_1"), url: "/", exact: true },
     { name: t("page_2"), url: "/providers" },
@@ -38,6 +38,7 @@ export const Page = ({
           pages={pages}
           showProfile
           yourProfileText={t("your_profile_text")}
+          i18n={i18n}
         />
       )}
       <div
