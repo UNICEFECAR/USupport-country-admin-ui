@@ -1,0 +1,11 @@
+@import "@USupport-components-library/styles";
+
+.statistics {
+  &__statistics-grid {
+    margin-top: $spacing_1_6;
+
+    @media screen and (max-width: $screen-md) {
+      place-items: center;
+    }
+  }
+}

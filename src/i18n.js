@@ -1,7 +1,7 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
-import { Page } from "#blocks/locales.js";
+import { Page, Statistics } from "#blocks/locales.js";
 
 import { NotFound as NotFoundPage } from "#pages/locales.js";
 
@@ -9,6 +9,7 @@ const resources = {
   en: {
     // Blocks
     page: Page.en,
+    statistics: Statistics.en,
 
     // Pages
     "not-found-page": NotFoundPage.en,
