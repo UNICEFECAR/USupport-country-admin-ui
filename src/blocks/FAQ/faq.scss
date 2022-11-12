@@ -1,0 +1,16 @@
+@import "@USupport-components-library/styles";
+.faq {
+  &__tabs {
+    padding-top: $spacing_1_6;
+    @media screen and (min-width: $screen-md) {
+      padding-top: $spacing_3_0;
+    }
+  }
+
+  &__rows {
+    padding-top: $spacing_3_0;
+    @media screen and (min-width: $screen-md) {
+      padding-top: $spacing_4_0;
+    }
+  }
+}
