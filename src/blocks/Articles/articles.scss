@@ -1,0 +1,10 @@
+@import "@USupport-components-library/styles";
+
+.articles {
+  &__rows {
+    padding-top: $spacing_3_0;
+    @media screen and (min-width: $screen-md) {
+      padding-top: $spacing_4_0;
+    }
+  }
+}
