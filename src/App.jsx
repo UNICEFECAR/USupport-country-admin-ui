@@ -1,7 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { NotFound, Articles } from "#pages";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { NotFound, Articles, FAQ, SOSCenter } from "#pages";
 
 import "./App.scss";
 
@@ -29,9 +30,12 @@ function App() {
       <Router>
         <Routes>
           <Route path="/articles" element={<Articles />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/sos-center" element={<SOSCenter />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
+      <ReactQueryDevtools initialOpen />
     </QueryClientProvider>
   );
 }
