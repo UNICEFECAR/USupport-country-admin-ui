@@ -1,17 +1,22 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
-import { Page } from "#blocks/locales.js";
+import { Page, ProviderOverview } from "#blocks/locales.js";
 
-import { NotFound as NotFoundPage } from "#pages/locales.js";
+import {
+  NotFound as NotFoundPage,
+  ProviderOverview as ProviderOverviewPage,
+} from "#pages/locales.js";
 
 const resources = {
   en: {
     // Blocks
     page: Page.en,
+    "provider-overview": ProviderOverview.en,
 
     // Pages
     "not-found-page": NotFoundPage.en,
+    "provider-overview-page": ProviderOverviewPage.en,
   },
 };
 
