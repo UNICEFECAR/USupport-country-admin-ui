@@ -24,7 +24,7 @@ export const Page = ({
 }) => {
   const { t, i18n } = useTranslation("page");
   const pages = [
-    { name: t("page_1"), url: "/", exact: true },
+    { name: t("page_1"), url: "/dashboard" },
     { name: t("page_2"), url: "/providers" },
     { name: t("page_3"), url: "/articles" },
     { name: t("page_4"), url: "/sos-center" },
