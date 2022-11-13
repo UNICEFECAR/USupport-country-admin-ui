@@ -36,7 +36,12 @@ export const Statistics = () => {
   const renderAllStatistics = () => {
     return statistics.map((statistic, index) => {
       return (
-        <GridItem md={4} lg={3} key={index}>
+        <GridItem
+          md={4}
+          lg={3}
+          key={index}
+          classes="statistics__statistics-item"
+        >
           <Statistic
             textBold={statistic.textBold}
             text={statistic.text}
