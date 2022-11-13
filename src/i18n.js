@@ -8,6 +8,7 @@ import {
   Articles as ArticlesPage,
   FAQ as FAQPage,
   SOSCenter as SOSCenterPage,
+  Dashboard as DashboardPage,
 } from "#pages/locales.js";
 
 const resources = {
@@ -24,6 +25,7 @@ const resources = {
     "articles-page": ArticlesPage.en,
     "faq-page": FAQPage.en,
     "sos-center-page": SOSCenterPage.en,
+    dashboard: DashboardPage.en,
   },
 };
 
