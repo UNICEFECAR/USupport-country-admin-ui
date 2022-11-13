@@ -16,7 +16,7 @@ export const Dashboard = () => {
   const { width } = useWindowDimensions();
 
   return (
-    <Page classes="page__dashboard">
+    <Page classes="page__dashboard" showGoBackArrow={false}>
       <Statistics />
       {width > 768 ? <RadialCircle /> : null}
     </Page>
