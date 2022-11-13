@@ -9,7 +9,7 @@ USupport Country Admin Interface
 To clone the source code use:
 
 ```
-git clone git@github.com:UNICEFECAR/USupport-global-admin-ui.git
+git clone git@github.com:UNICEFECAR/USupport-country-admin-ui.git
 ```
 
 To install all the dependencies use:
