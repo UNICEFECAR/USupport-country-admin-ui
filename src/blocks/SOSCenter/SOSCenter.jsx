@@ -11,7 +11,7 @@ import {
 import { useTranslation } from "react-i18next";
 
 import { cmsSvc, adminSvc } from "@USupport-components-library/services";
-import { getFilteredDataAdmin } from "@USupport-components-library/utils";
+import { filterAdminData } from "@USupport-components-library/utils";
 import { useError } from "@USupport-components-library/hooks";
 
 import "./sos-center.scss";
@@ -34,14 +34,15 @@ export const SOSCenter = () => {
     // Request SOS centers ids from the master DB
     const sosCentersIds = await adminSvc.getSOSCenters();
 
-    const populate = true;
-    let { data } = await cmsSvc.getSOSCenters("all", populate);
+    let { data } = await cmsSvc.getSOSCenters({
+      locale: i18n.language,
+      ids: sosCentersIds,
+      isForAdmin: true,
+    });
 
-    data = getFilteredDataAdmin(data, i18n.language, sosCentersIds);
+    const filteredData = filterAdminData(data.data, data.meta.localizedIds);
 
-    console.log(data);
-
-    return data;
+    return filteredData;
   };
 
   const {
@@ -62,11 +63,19 @@ export const SOSCenter = () => {
   };
 
   const updateSOSCenters = async (data) => {
+    const sosCenterAvailableLocales = await cmsSvc.getSOSCenterAvailableLocales(
+      data.id
+    );
+    console.log("sosCenterAvailableLocales", sosCenterAvailableLocales);
     let res;
     if (data.newValue === true) {
-      res = await adminSvc.putSOSCenters(data.id);
+      res = await adminSvc.putSOSCenters(
+        sosCenterAvailableLocales.en.toString()
+      );
     } else {
-      res = await adminSvc.deleteSOSCenters(data.id);
+      res = await adminSvc.deleteSOSCenters(
+        sosCenterAvailableLocales.en.toString()
+      );
     }
     return res.data;
   };
@@ -97,7 +106,8 @@ export const SOSCenter = () => {
     <Block classes="sos-center">
       <Grid>
         <GridItem md={8} lg={12} classes="sos-center__rows">
-          {SOSCentersData &&
+          {isSOSCentersFetched &&
+            SOSCentersData &&
             SOSCentersData.map((sosCenter, index) => {
               return (
                 <SOSCenterRow
