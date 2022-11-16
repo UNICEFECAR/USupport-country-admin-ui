@@ -11,7 +11,7 @@ import {
 import { useTranslation } from "react-i18next";
 
 import { cmsSvc, adminSvc } from "@USupport-components-library/services";
-import { getFilteredDataAdmin } from "@USupport-components-library/utils";
+import { filterAdminData } from "@USupport-components-library/utils";
 import { useError } from "@USupport-components-library/hooks";
 
 import "./articles.scss";
@@ -35,13 +35,16 @@ export const Articles = () => {
     const articleIds = await adminSvc.getArticles();
 
     let { data } = await cmsSvc.getArticles({
-      locale: "all",
-      populate: true,
+      locale: i18n.language,
+      ids: articleIds,
+      isForAdmin: true,
     });
 
-    data = getFilteredDataAdmin(data, i18n.language, articleIds);
+    console.log(data);
 
-    return data;
+    const filteredData = filterAdminData(data.data, data.meta.localizedIds);
+
+    return filteredData;
   };
 
   const {
@@ -62,12 +65,14 @@ export const Articles = () => {
   };
 
   const updateArticles = async (data) => {
+    const articleLocales = await cmsSvc.getArticleLocales(data.id);
     let res;
     if (data.newValue === true) {
-      res = await adminSvc.putArticle(data.id);
+      res = await adminSvc.putArticle(articleLocales.en.toString());
     } else {
-      res = await adminSvc.deleteArticle(data.id);
+      res = await adminSvc.deleteArticle(articleLocales.en.toString());
     }
+
     return res.data;
   };
 
@@ -94,7 +99,8 @@ export const Articles = () => {
     <Block classes="articles">
       <Grid>
         <GridItem md={8} lg={12} classes="articles__rows">
-          {articlesData &&
+          {isArticlesFetched &&
+            articlesData &&
             articlesData.map((article, index) => {
               return (
                 <ArticleRow
