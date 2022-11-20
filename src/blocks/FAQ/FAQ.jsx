@@ -12,7 +12,7 @@ import {
 import { useTranslation } from "react-i18next";
 
 import { cmsSvc, adminSvc } from "@USupport-components-library/services";
-import { getFilteredDataAdmin } from "@USupport-components-library/utils";
+import { filterAdminData } from "@USupport-components-library/utils";
 import { useError } from "@USupport-components-library/hooks";
 
 import "./faq.scss";
@@ -61,12 +61,15 @@ export const FAQ = () => {
     // Request faq ids from the master DB based on selected interface
     const faqIds = await adminSvc.getFAQs(chosenInterface);
 
-    const populate = true;
-    let { data } = await cmsSvc.getFAQs("all", populate);
+    let { data } = await cmsSvc.getFAQs({
+      locale: i18n.language,
+      ids: faqIds,
+      isForAdmin: true,
+    });
 
-    data = getFilteredDataAdmin(data, i18n.language, faqIds);
+    const filteredData = filterAdminData(data.data, data.meta.localizedIds);
 
-    return data;
+    return filteredData;
   };
 
   const {
@@ -89,11 +92,19 @@ export const FAQ = () => {
   };
 
   const updateFAQs = async (data) => {
+    const faqAvailableLocales = await cmsSvc.getFAQAvailableLocales(data.id);
+
     let res;
     if (data.newValue === true) {
-      res = await adminSvc.putFAQ(data.platform, data.id);
+      res = await adminSvc.putFAQ(
+        data.platform,
+        faqAvailableLocales.en.toString()
+      );
     } else {
-      res = await adminSvc.deleteFAQ(data.platform, data.id);
+      res = await adminSvc.deleteFAQ(
+        data.platform,
+        faqAvailableLocales.en.toString()
+      );
     }
     return res.data;
   };
@@ -132,7 +143,8 @@ export const FAQ = () => {
         </GridItem>
 
         <GridItem md={8} lg={12} classes="faq__rows">
-          {FAQsData &&
+          {isFAQsFetched &&
+            FAQsData &&
             FAQsData?.map((faq, index) => {
               return (
                 <FAQRow
