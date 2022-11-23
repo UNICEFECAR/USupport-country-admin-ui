@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next";
 
 import { cmsSvc, adminSvc } from "@USupport-components-library/services";
 import { filterAdminData } from "@USupport-components-library/utils";
-import { useError } from "@USupport-components-library/hooks";
+import { useError } from "#hooks";
 
 import "./sos-center.scss";
 
