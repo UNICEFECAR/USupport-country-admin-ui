@@ -1,8 +1,9 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { Navbar, Icon } from "@USupport-components-library/src";
-import classNames from "classnames";
+import { useNavigate, NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import PropTypes from "prop-types";
+import classNames from "classnames";
+import { Navbar, Icon } from "@USupport-components-library/src";
 
 import "./page.scss";
 
@@ -22,6 +23,7 @@ export const Page = ({
   classes,
   children,
 }) => {
+  const navigateTo = useNavigate();
   const { t, i18n } = useTranslation("page");
   const pages = [
     { name: t("page_1"), url: "/dashboard" },
@@ -40,6 +42,7 @@ export const Page = ({
           yourProfileText={t("your_profile_text")}
           i18n={i18n}
           navigate={navigateTo}
+          NavLink={NavLink}
         />
       )}
       <div
