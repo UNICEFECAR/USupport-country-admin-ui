@@ -39,6 +39,7 @@ export const Page = ({
           showProfile
           yourProfileText={t("your_profile_text")}
           i18n={i18n}
+          navigate={navigateTo}
         />
       )}
       <div
