@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { Navbar, Icon } from "@USupport-components-library/src";
+import { countrySvc, languageSvc } from "@USupport-components-library/services";
+import { getCountryFromTimezone } from "@USupport-components-library/utils";
 
 import "./page.scss";
 
@@ -33,6 +36,71 @@ export const Page = ({
     { name: t("page_5"), url: "/faq" },
   ];
 
+  const localStorageCountry = localStorage.getItem("country");
+  const localStorageLanguage = localStorage.getItem("language");
+  const [selectedLanguage, setSelectedLanguage] = useState();
+  const [selectedCountry, setSelectedCountry] = useState();
+
+  const fetchCountries = async () => {
+    const res = await countrySvc.getActiveCountries();
+    const usersCountry = getCountryFromTimezone();
+    const validCountry = res.data.find((x) => x.alpha2 === usersCountry);
+    let hasSetDefaultCountry = false;
+    const countries = res.data.map((x) => {
+      const countryObject = {
+        value: x.alpha2,
+        label: x.name,
+        countryID: x["country_id"],
+        iconName: x.alpha2,
+      };
+
+      if (localStorageCountry === x.alpha2) {
+        setSelectedCountry(countryObject);
+      } else if (!localStorageCountry) {
+        if (validCountry?.alpha2 === x.alpha2) {
+          hasSetDefaultCountry = true;
+          localStorage.setItem("country", x.alpha2);
+          setSelectedCountry(countryObject);
+        }
+      }
+
+      return countryObject;
+    });
+
+    if (!hasSetDefaultCountry && !localStorageCountry) {
+      localStorage.setItem("country", kazakhstanCountry.value);
+      localStorage.setItem(
+        "country_id",
+        countries.find((x) => x.value === kazakhstanCountry.value).countryID
+      );
+    }
+
+    return countries;
+  };
+
+  const fetchLanguages = async () => {
+    const res = await languageSvc.getActiveLanguages();
+    const languages = res.data.map((x) => {
+      const languageObject = {
+        value: x.alpha2,
+        label: x.name,
+        id: x["language_id"],
+      };
+      if (localStorageLanguage === x.alpha2) {
+        setSelectedLanguage(languageObject);
+        i18n.changeLanguage(localStorageLanguage);
+      } else if (!localStorageLanguage) {
+        localStorage.setItem("language", "en");
+        i18n.changeLanguage("en");
+      }
+      return languageObject;
+    });
+    return languages;
+  };
+
+  const { data: countries } = useQuery(["countries"], fetchCountries);
+  const { data: languages } = useQuery(["languages"], fetchLanguages);
+
   return (
     <>
       {showNavbar && (
@@ -43,6 +111,10 @@ export const Page = ({
           i18n={i18n}
           navigate={navigateTo}
           NavLink={NavLink}
+          languages={languages}
+          countries={countries}
+          initialLanguage={selectedLanguage}
+          initialCountry={selectedCountry}
         />
       )}
       <div
