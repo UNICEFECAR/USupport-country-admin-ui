@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { Page, Login as LoginBlock } from "#blocks";
 import { useWindowDimensions } from "@USupport-components-library/utils";
 import { RadialCircle, Loading } from "@USupport-components-library/src";
@@ -16,6 +16,7 @@ import "./login.scss";
  * @returns {JSX.Element}
  */
 export const Login = () => {
+  const navigate = useNavigate();
   const { t } = useTranslation("login-page");
   const { width } = useWindowDimensions();
 
@@ -24,11 +25,14 @@ export const Login = () => {
   if (isLoggedIn === "loading") return <Loading />;
   if (isLoggedIn === true) return <Navigate to="/dashboard" />;
 
+  const handleGoBack = () => navigate("/");
+
   return (
     <Page
       classes="page__login"
       additionalPadding={false}
       heading={width >= 768 ? t("heading_1") : t("heading_2")}
+      handleGoBack={handleGoBack}
     >
       <LoginBlock />
       {width < 768 && <RadialCircle color="purple" />}
