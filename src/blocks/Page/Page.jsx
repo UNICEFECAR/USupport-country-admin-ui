@@ -7,6 +7,7 @@ import classNames from "classnames";
 import { Navbar, Icon } from "@USupport-components-library/src";
 import { countrySvc, languageSvc } from "@USupport-components-library/services";
 import { getCountryFromTimezone } from "@USupport-components-library/utils";
+import { useIsLoggedIn } from "#hooks";
 
 import "./page.scss";
 
@@ -25,15 +26,20 @@ const kazakhstanCountry = {
  */
 export const Page = ({
   additionalPadding,
-  showNavbar,
   showGoBackArrow,
   heading,
   headingButton,
+  showNavbar = null,
   classes,
   children,
+  handleGoBack,
 }) => {
   const navigateTo = useNavigate();
   const { t, i18n } = useTranslation("page");
+
+  const isLoggedIn = useIsLoggedIn();
+  const isNavbarShown = showNavbar !== null ? showNavbar : isLoggedIn;
+
   const pages = [
     { name: t("page_1"), url: "/dashboard" },
     { name: t("page_2"), url: "/providers" },
@@ -109,11 +115,12 @@ export const Page = ({
 
   return (
     <>
-      {showNavbar && (
+      {isNavbarShown === true && (
         <Navbar
           pages={pages}
           showProfile
           yourProfileText={t("your_profile_text")}
+          showProfilePicture={false}
           i18n={i18n}
           navigate={navigateTo}
           NavLink={NavLink}
@@ -138,6 +145,7 @@ export const Page = ({
                 name="arrow-chevron-back"
                 size="md"
                 color="#20809E"
+                onClick={handleGoBack}
               />
             )}
             {heading && <h3 className="page__header-heading">{heading}</h3>}
@@ -187,6 +195,5 @@ Page.propTypes = {
 
 Page.defaultProps = {
   additionalPadding: true,
-  showNavbar: true,
   showGoBackArrow: true,
 };
