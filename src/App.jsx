@@ -14,6 +14,7 @@ import {
   ResetPassword,
   AdminProfile,
   EditProfileDetails,
+  ArticleInformation,
 } from "#pages";
 
 import { CountryValidationRoute, ProtectedRoute } from "#routes";
@@ -99,6 +100,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <Articles />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/article/:id"
+            element={
+              <ProtectedRoute>
+                <ArticleInformation />
               </ProtectedRoute>
             }
           />
