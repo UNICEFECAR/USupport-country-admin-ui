@@ -18,8 +18,6 @@ import "./article-information.scss";
  * @returns {JSX.Element}
  */
 export const ArticleInformation = () => {
-  const CMS_HOST = `${import.meta.env.VITE_CMS_HOST}`;
-
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -33,7 +31,7 @@ export const ArticleInformation = () => {
       i18n.language
     );
 
-    const finalData = destructureArticleData(CMS_HOST, data);
+    const finalData = destructureArticleData(data);
     return finalData;
   };
 
