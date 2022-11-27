@@ -121,7 +121,7 @@ export const SOSCenter = () => {
                   }
                   heading={sosCenter.attributes.title}
                   text={sosCenter.attributes.text}
-                  link={sosCenter.attributes.link}
+                  link={sosCenter.attributes.url}
                   phone={sosCenter.attributes.phone}
                   key={index}
                 />
