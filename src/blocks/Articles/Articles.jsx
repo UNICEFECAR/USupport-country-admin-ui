@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import {
   Block,
@@ -26,7 +27,7 @@ import "./articles.scss";
 export const Articles = () => {
   const queryClient = useQueryClient();
   const { i18n, t } = useTranslation("articles");
-
+  const navigate = useNavigate();
   const [error, setError] = useState();
 
   //--------------------- Articles ----------------------//
@@ -38,9 +39,8 @@ export const Articles = () => {
       locale: i18n.language,
       ids: articleIds,
       isForAdmin: true,
+      populate: true,
     });
-
-    console.log(data);
 
     const filteredData = filterAdminData(data.data, data.meta.localizedIds);
 
@@ -111,6 +111,14 @@ export const Articles = () => {
                   heading={article.attributes.title}
                   description={article.attributes.description}
                   key={index}
+                  buttonLabel={t("view_button")}
+                  onClick={() => {
+                    navigate(`/article/${article.id}`);
+                  }}
+                  image={
+                    article.attributes.image?.data?.attributes?.formats?.medium
+                      ?.url
+                  }
                 />
               );
             })}
