@@ -26,6 +26,7 @@ import {
   ResetPassword as ResetPasswordPage,
   AdminProfile as AdminProfilePage,
   EditProfileDetails as EditProfileDetailsPage,
+  ArticleInformation as ArticleInformationPage,
 } from "#pages/locales.js";
 
 const resources = {
@@ -54,6 +55,7 @@ const resources = {
     "reset-password-page": ResetPasswordPage.en,
     "admin-profile-page": AdminProfilePage.en,
     "edit-profile-details-page": EditProfileDetailsPage.en,
+    "article-information-page": ArticleInformationPage.en,
   },
 };
 
