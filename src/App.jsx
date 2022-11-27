@@ -45,7 +45,7 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Router>
+      <Router basename="country-admin">
         <Routes>
           <Route
             path="/login"
