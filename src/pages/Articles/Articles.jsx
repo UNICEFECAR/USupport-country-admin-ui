@@ -13,7 +13,11 @@ export const Articles = () => {
   const { t } = useTranslation("articles-page");
 
   return (
-    <Page classes="page__articles" heading={t("heading")}>
+    <Page
+      classes="page__articles"
+      heading={t("heading")}
+      showGoBackArrow={false}
+    >
       <ArticlesBlock />
     </Page>
   );
