@@ -38,16 +38,14 @@ export const EditProfileDetails = () => {
   const [phonePrefixes, setPhonePrefixes] = useState();
 
   useEffect(() => {
+    const codes = generateCountryCodes();
     if (adminData && !adminData?.phonePrefix) {
-      const codes = generateCountryCodes();
       const usersCountry = localStorage.getItem("country");
 
-      setPhonePrefixes(codes);
       const userCountryCode = codes.find(
         (x) => x.country === usersCountry
       )?.value;
       if (userCountryCode) {
-        console.log(userCountryCode, "code");
         handleChange("phonePrefix", userCountryCode);
       } else {
         handleChange(
@@ -56,6 +54,7 @@ export const EditProfileDetails = () => {
         );
       }
     }
+    setPhonePrefixes(codes);
   }, [adminData]);
 
   useEffect(() => {
@@ -110,7 +109,7 @@ export const EditProfileDetails = () => {
       setIsProcessing(false);
     }
   };
-  console.log(errors);
+
   const isLoading = adminQuery.isLoading || !adminData;
 
   const handleDiscard = () => {
@@ -146,17 +145,22 @@ export const EditProfileDetails = () => {
                   selected={adminData.phonePrefix}
                   setSelected={(value) => handleChange("phonePrefix", value)}
                   placeholder={t("phone_prefix_placeholder")}
-                  errorMessage={errors.phonePrefix}
                 />
               )}
               <Input
                 value={adminData.phone}
                 onChange={(e) => handleChange("phone", e.currentTarget.value)}
                 placeholder={t("phone_placeholder")}
-                errorMessage={errors.phone}
                 onBlur={() => handleBlur("phone")}
+                classes="edit-profile-details__grid__phone-container__phone-input"
               />
             </div>
+            {errors.phone || errors.phonePrefix ? (
+              <Error
+                classes="edit-profile-details__grid__phone-error"
+                message={errors.phone || errors.phonePrefix}
+              />
+            ) : null}
             <Input
               value={adminData.email}
               onChange={(e) => handleChange("email", e.currentTarget.value)}
@@ -202,6 +206,8 @@ function generateCountryCodes() {
       country: key,
     });
   });
-
+  codes.sort((a, b) => {
+    return a.country > b.country ? 1 : -1;
+  });
   return codes;
 }

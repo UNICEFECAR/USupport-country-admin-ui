@@ -19,6 +19,14 @@
       align-items: center;
       margin-top: $spacing_2_4;
 
+      &__phone-input {
+        width: 19.5rem;
+
+        @media screen and (min-width: $screen-lg) {
+          width: 22rem;
+        }
+      }
+
       & .dropdown-with-label,
       & .dropdown {
         text-align: left;
@@ -28,6 +36,13 @@
       & .dropdown-content {
         width: 12.5rem;
       }
+    }
+
+    &__phone-error {
+      margin: 0;
+      padding-top: $spacing_0_8;
+      width: 34.3rem;
+      text-align: center;
     }
 
     & .input-container,
