@@ -4,6 +4,7 @@ import {
   Button,
   Grid,
   GridItem,
+  Loading,
   ProviderOverview,
 } from "@USupport-components-library/src";
 import { useGetProvidersData } from "#hooks";
@@ -44,26 +45,32 @@ export const Providers = () => {
             color="purple"
           />
         </GridItem>
-        {providersQuery.data?.map((provider, index) => {
-          return (
-            <GridItem key={index} md={4} lg={4}>
-              <ProviderOverview
-                image={provider.image}
-                name={provider.name}
-                patronym={provider.patronym}
-                surname={provider.surname}
-                specializations={provider.specializations.map((x) => t(x))}
-                hasMenu
-                handleEdit={() =>
-                  redirectToEditProvider(provider.providerDetailId)
-                }
-                handleViewProfile={() =>
-                  redirectToProviderDetails(provider.providerDetailId)
-                }
-              />
-            </GridItem>
-          );
-        })}
+        {providersQuery.isLoading ? (
+          <GridItem md={8} lg={12}>
+            <Loading size="lg" />
+          </GridItem>
+        ) : (
+          providersQuery.data?.map((provider, index) => {
+            return (
+              <GridItem key={index} md={4} lg={4}>
+                <ProviderOverview
+                  image={provider.image}
+                  name={provider.name}
+                  patronym={provider.patronym}
+                  surname={provider.surname}
+                  specializations={provider.specializations.map((x) => t(x))}
+                  hasMenu
+                  handleEdit={() =>
+                    redirectToEditProvider(provider.providerDetailId)
+                  }
+                  handleViewProfile={() =>
+                    redirectToProviderDetails(provider.providerDetailId)
+                  }
+                />
+              </GridItem>
+            );
+          })
+        )}
       </Grid>
     </Block>
   );
