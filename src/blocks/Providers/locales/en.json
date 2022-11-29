@@ -1,0 +1,8 @@
+{
+  "providers": "Providers",
+  "create_provider": "Add provider",
+  "psychologist": "Psychologist",
+  "psychiatrist": "Psychiatrist",
+  "psychotherapist": "Psychotherapist",
+  "coach": "Coach"
+}
