@@ -13,6 +13,10 @@ import {
   ResetPassword,
   AdminProfile,
   EditProfileDetails,
+  Providers,
+  EditProvider,
+  CreateProvider,
+  ProviderOverview,
 } from "#blocks/locales.js";
 
 import {
@@ -27,7 +31,11 @@ import {
   AdminProfile as AdminProfilePage,
   EditProfileDetails as EditProfileDetailsPage,
   ArticleInformation as ArticleInformationPage,
+  CreateProvider as CreateProviderPage,
+  ProviderOverview as ProviderOverviewPage,
 } from "#pages/locales.js";
+
+import { UploadPicture, DeleteProfilePicture } from "#backdrops/locales.js";
 
 const resources = {
   en: {
@@ -43,6 +51,10 @@ const resources = {
     "reset-password": ResetPassword.en,
     "admin-profile": AdminProfile.en,
     "edit-profile-details": EditProfileDetails.en,
+    providers: Providers.en,
+    "edit-provider": EditProvider.en,
+    "create-provider": CreateProvider.en,
+    "provider-overview": ProviderOverview.en,
 
     // Pages
     "not-found-page": NotFoundPage.en,
@@ -56,6 +68,12 @@ const resources = {
     "admin-profile-page": AdminProfilePage.en,
     "edit-profile-details-page": EditProfileDetailsPage.en,
     "article-information-page": ArticleInformationPage.en,
+    "create-provider-page": CreateProviderPage.en,
+    "provider-overview-page": ProviderOverviewPage.en,
+
+    // Backdrops
+    "upload-picture": UploadPicture.en,
+    "delete-profile-picture": DeleteProfilePicture.en,
   },
 };
 
