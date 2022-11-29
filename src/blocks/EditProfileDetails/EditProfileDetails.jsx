@@ -89,7 +89,7 @@ export const EditProfileDetails = () => {
 
   const onUpdateSuccess = () => {
     setIsProcessing(false);
-    toast(t("edit_succes"));
+    toast(t("edit_success"));
   };
 
   const onUpdateError = (err) => {

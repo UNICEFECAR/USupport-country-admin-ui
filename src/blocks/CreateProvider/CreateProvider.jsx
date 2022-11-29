@@ -242,10 +242,11 @@ export const CreateProvider = ({
     ];
     return res;
   };
+
   const uploadImageMutation = useMutation(uploadImage, {
     onSettled: () => {
       setIsProcessing(false);
-      toast(t("create_succes"));
+      toast(t("create_success"));
       setProviderData(initialData);
       setProviderImageUrl(null);
       setProviderImage(null);

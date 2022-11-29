@@ -51,6 +51,7 @@
   "street_error": "Street is required",
   "city_error": "City is required",
   "postcode_error": "Postcode is required",
+  "consultation_price_error": "Consultation price is required",
 
   "specializations_error": "Select at least one specialization",
   "work_with_error": "Select at least one category",
@@ -77,5 +78,6 @@
   "panic_attack": "Panic attack",
   "relationship": "Relationship",
   "personal_development": "Personal development",
-  "edit_succes": "Profile updated successfully"
+  "edit_success": "Profile updated successfully",
+  "create_success": "Provider created successfully"
 }
