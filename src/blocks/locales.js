@@ -9,3 +9,7 @@ export * as ForgotPassword from "./ForgotPassword/locales.js";
 export * as ResetPassword from "./ResetPassword/locales.js";
 export * as AdminProfile from "./AdminProfile/locales.js";
 export * as EditProfileDetails from "./EditProfileDetails/locales.js";
+export * as Providers from "./Providers/locales.js";
+export * as EditProvider from "./EditProvider/locales.js";
+export * as CreateProvider from "./CreateProvider/locales.js";
+export * as ProviderOverview from "./ProviderOverview/locales.js";
