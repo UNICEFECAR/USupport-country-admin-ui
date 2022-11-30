@@ -38,7 +38,7 @@ export default function useGetProvidersData() {
     return formattedData;
   };
 
-  const providersDataQuery = useQuery(["client-data"], fetchProvidersData, {
+  const providersDataQuery = useQuery(["all-providers"], fetchProvidersData, {
     onSuccess: (data) => {
       const dataCopy = JSON.parse(JSON.stringify(data));
       setProvidersData([...dataCopy]);
