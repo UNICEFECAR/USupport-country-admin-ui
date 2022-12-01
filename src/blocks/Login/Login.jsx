@@ -38,7 +38,7 @@ export const Login = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const login = async () => {
-    return await adminSvc.login(data.email, data.password);
+    return await adminSvc.login(data.email, data.password, "country");
   };
 
   const loginMutation = useMutation(login, {
