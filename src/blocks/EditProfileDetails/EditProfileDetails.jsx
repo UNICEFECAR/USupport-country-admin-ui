@@ -91,7 +91,6 @@ export const EditProfileDetails = () => {
     setIsProcessing(false);
     toast(t("edit_success"));
   };
-
   const onUpdateError = (err) => {
     setErrors({ submit: err });
     setIsProcessing(false);
