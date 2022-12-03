@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import { useMutation } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
@@ -32,6 +32,10 @@ export const UploadPicture = ({
   );
   const [error, setError] = useState();
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setImage(AMAZON_S3_BUCKET + "/" + (providerImage || "default"));
+  }, [providerImage]);
 
   const uploadFile = async (data) => {
     if (handleUploadFile) {

@@ -141,7 +141,7 @@ export const CreateProvider = ({
     { label: t("sex_male"), value: "male" },
     { label: t("sex_female"), value: "female" },
     { label: t("sex_unspecified"), value: "unspecified" },
-    { label: t("sex_none"), value: "none" },
+    { label: t("sex_none"), value: "notMentioned" },
   ];
 
   const getSpecializationsOptions = useCallback(() => {
@@ -232,6 +232,14 @@ export const CreateProvider = ({
     validateProperty(field, providerData[field], schema, setErrors);
   };
 
+  const handleCreateProviderSuccess = () => {
+    setIsProcessing(false);
+    toast(t("create_success"));
+    setProviderData(initialData);
+    setProviderImageUrl(null);
+    setProviderImage(null);
+    setProviderImageFile(null);
+  };
   const uploadImage = async (providerId) => {
     const content = new FormData();
     content.append("fileName", providerId);
@@ -245,18 +253,17 @@ export const CreateProvider = ({
 
   const uploadImageMutation = useMutation(uploadImage, {
     onSettled: () => {
-      setIsProcessing(false);
-      toast(t("create_success"));
-      setProviderData(initialData);
-      setProviderImageUrl(null);
-      setProviderImage(null);
-      setProviderImageFile(null);
+      handleCreateProviderSuccess();
     },
   });
 
   const onCreateSuccess = (data) => {
     const providerId = data.user.provider_detail_id;
-    uploadImageMutation.mutate(providerId);
+    if (providerImageFile) {
+      uploadImageMutation.mutate(providerId);
+    } else {
+      handleCreateProviderSuccess();
+    }
   };
 
   const onCreateError = (err) => {
