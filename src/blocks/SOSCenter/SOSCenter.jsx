@@ -66,7 +66,6 @@ export const SOSCenter = () => {
     const sosCenterAvailableLocales = await cmsSvc.getSOSCenterAvailableLocales(
       data.id
     );
-    console.log("sosCenterAvailableLocales", sosCenterAvailableLocales);
     let res;
     if (data.newValue === true) {
       res = await adminSvc.putSOSCenters(
