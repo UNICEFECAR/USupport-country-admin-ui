@@ -25,12 +25,10 @@ export const DeleteProfilePicture = ({
   const queryClient = useQueryClient();
 
   const deletePicture = async () => {
-    console.log("del", handleDeleteFile);
     if (handleDeleteFile) {
       handleDeleteFile();
     } else {
       const res = await providerSvc.deleteImageAsAdmin(providerId, providerId);
-      console.log(res);
       if (res.status === 200) {
         return true;
       }
