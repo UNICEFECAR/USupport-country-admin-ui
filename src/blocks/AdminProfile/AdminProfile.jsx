@@ -52,7 +52,7 @@ export const AdminProfile = () => {
             onClick={() => handleRedirect("profile/details/edit")}
           />
         </GridItem>
-        <GridItem md={8} lg={12} classes="admin-profile__grid__item">
+        {/* <GridItem md={8} lg={12} classes="admin-profile__grid__item">
           <p className="text admin-profile__grid__item__label">{t("other")}</p>
           <ButtonSelector
             label={t("privacy_policy_button_label")}
@@ -60,7 +60,7 @@ export const AdminProfile = () => {
             classes="admin-profile__grid__item__button"
             onClick={() => handleRedirect("privacy-policy")}
           />
-        </GridItem>
+        </GridItem> */}
       </Grid>
     </Block>
   );

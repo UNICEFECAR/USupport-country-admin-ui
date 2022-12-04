@@ -41,7 +41,6 @@ export default function useGetProviderData(id = null) {
       const dataCopy = JSON.parse(JSON.stringify(data));
       setProvidersData({ ...dataCopy });
     },
-    onError: (err) => console.log(err, "err"),
     notifyOnChangeProps: ["data"],
   });
 

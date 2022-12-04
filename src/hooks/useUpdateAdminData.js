@@ -10,7 +10,6 @@ export default function useUpdateAdminData(onSuccess, onError) {
 
   const updateAdminData = async (payload) => {
     delete payload.adminId;
-    delete payload.role;
     const { data } = await adminSvc.updateData(payload);
     return data;
   };

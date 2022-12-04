@@ -10,13 +10,14 @@
     text-align: center;
 
     &__image-preview {
-      width: 14.8rem;
-      height: 14.8rem;
-      border-radius: 50%;
       align-self: center;
-      margin: 0 auto;
+      border-radius: 50%;
+      cursor: pointer;
+      height: 14.8rem;
       margin-top: $spacing_2_4;
+      margin: 0 auto;
       object-fit: cover;
+      width: 14.8rem;
     }
 
     &__drag-text {

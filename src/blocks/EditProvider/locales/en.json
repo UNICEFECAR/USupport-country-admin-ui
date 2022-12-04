@@ -41,7 +41,7 @@
   "psychotherapist": "Psychotherapist",
   "coach": "Coach",
 
-  "password_error": "Password is required",
+  "password_error": "Password should contain at least 8 characters, 1 uppercase letter, 1 lowercase letter and 1 number",
   "name_error": "Name is required",
   "surname_error": "Surname is required",
   "nickname_error": "Nickname is required",
@@ -51,7 +51,7 @@
   "street_error": "Street is required",
   "city_error": "City is required",
   "postcode_error": "Postcode is required",
-  "consultation_price_error": "Consultation price is required",
+  "consultation_price_error": "Consultation price must be a non-negative number",
 
   "specializations_error": "Select at least one specialization",
   "work_with_error": "Select at least one category",

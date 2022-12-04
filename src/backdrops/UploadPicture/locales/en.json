@@ -2,5 +2,7 @@
   "heading": "Change profile picture",
   "drag_and_drop": "Drag and drop photo here",
   "or": "or",
-  "upload": "Upload from computer"
+  "upload": "Upload from computer",
+  "upload_error": "Error uploading the photo, please try again",
+  "file_size_error": "Maximum file size is 1MB"
 }

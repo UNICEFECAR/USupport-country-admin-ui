@@ -123,6 +123,7 @@ export const Page = ({
           showProfile
           yourProfileText={t("your_profile_text")}
           showProfilePicture={false}
+          showNotifications={false}
           i18n={i18n}
           navigate={navigateTo}
           NavLink={NavLink}

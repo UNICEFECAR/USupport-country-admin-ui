@@ -56,6 +56,7 @@ export const UploadPicture = ({
   const uploadFileMutation = useMutation(uploadFile, {
     onSuccess: () => {
       setIsLoading(false);
+      onClose();
     },
     onError: (error) => {
       setIsLoading(false);
@@ -68,9 +69,16 @@ export const UploadPicture = ({
     setIsLoading(true);
 
     const reader = new FileReader();
-    reader.onabort = () => console.log("file reading was aborted");
-    reader.onerror = () => console.log("file reading has failed");
+    reader.onabort = () => setError(t("upload_error"));
+    reader.onerror = () => setError(t("upload_error"));
     reader.readAsDataURL(files[0]);
+
+    const sizeInKB = files[0].size / 1000;
+    if (sizeInKB > 1000) {
+      setError(t("file_size_error"));
+      setIsLoading(false);
+      return;
+    }
 
     reader.onload = (e) => {
       setImage(e.target.result);

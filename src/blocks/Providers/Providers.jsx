@@ -56,6 +56,7 @@ export const Providers = () => {
         queryClient.setQueryData({ queryKey: ["all-providers"] }, oldData);
       };
     },
+    onSuccess: () => toast(t("provider_deleted")),
     onError: (error, variables, rollback) => {
       const { message: errorMessage } = useError(error);
       toast(errorMessage, { type: "error" });

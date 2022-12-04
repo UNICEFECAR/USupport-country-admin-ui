@@ -86,7 +86,6 @@ export const EditProvider = ({
     { value: "psychologist", label: t("psychologist"), selected: false },
     { value: "psychiatrist", label: t("psychiatrist"), selected: false },
     { value: "psychotherapist", label: t("psychotherapist"), selected: false },
-    { value: "coach", label: t("coach"), selected: false },
   ];
 
   useEffect(() => {
@@ -115,7 +114,7 @@ export const EditProvider = ({
     postcode: Joi.string().label(t("postcode_error")),
 
     specializations: Joi.array().min(1).label(t("specializations_error")),
-    consultationPrice: Joi.number().label(t("consultation_price_error")),
+    consultationPrice: Joi.number().min(0).label(t("consultation_price_error")),
     languages: Joi.array().min(1).label(t("languages_error")),
     education: Joi.array().min(1).label(t("education_error")),
     workWith: Joi.array().min(1).label(t("work_with_error")),
@@ -128,7 +127,7 @@ export const EditProvider = ({
     { label: t("sex_male"), value: "male" },
     { label: t("sex_female"), value: "female" },
     { label: t("sex_unspecified"), value: "unspecified" },
-    { label: t("sex_none"), value: "none" },
+    { label: t("sex_none"), value: "notMentioned" },
   ];
 
   const getSpecializationsOptions = useCallback(() => {
@@ -369,7 +368,6 @@ export const EditProvider = ({
               label={t("consultation_price_label")}
               placeholder={t("consultation_price_placeholder")}
               onBlur={() => handleBlur("consultationPrice")}
-              type="number"
             />
             <DropdownGroup
               options={getLanguageOptions()}

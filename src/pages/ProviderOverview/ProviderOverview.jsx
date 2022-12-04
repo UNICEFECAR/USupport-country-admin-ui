@@ -34,16 +34,9 @@ export const ProviderOverview = () => {
       <ProviderOverviewBlock
         {...{
           providerId,
+          handleEditRedirect,
         }}
       />
-      <div className="page__provider-overview__button-container">
-        <Button
-          label={t("button_label")}
-          color="purple"
-          size="md"
-          onClick={handleEditRedirect}
-        />
-      </div>
       {width < 768 && <RadialCircle />}
     </Page>
   );

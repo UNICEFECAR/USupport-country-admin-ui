@@ -29,6 +29,7 @@ import countryCodes from "country-codes-list";
 import Joi from "joi";
 
 import "./create-provider.scss";
+import { useNavigate } from "react-router-dom";
 
 const initialData = {
   password: "",
@@ -69,6 +70,7 @@ export const CreateProvider = ({
   setProviderImageFile,
   setProviderImageUrl,
 }) => {
+  const navigate = useNavigate();
   const { t } = useTranslation("edit-provider");
 
   const [providerData, setProviderData] = useState(initialData);
@@ -105,7 +107,6 @@ export const CreateProvider = ({
     { value: "psychologist", label: t("psychologist"), selected: false },
     { value: "psychiatrist", label: t("psychiatrist"), selected: false },
     { value: "psychotherapist", label: t("psychotherapist"), selected: false },
-    { value: "coach", label: t("coach"), selected: false },
   ];
 
   const schema = Joi.object({
@@ -128,7 +129,7 @@ export const CreateProvider = ({
     postcode: Joi.string().label(t("postcode_error")),
 
     specializations: Joi.array().min(1).label(t("specializations_error")),
-    consultationPrice: Joi.number().label(t("consultation_price_error")),
+    consultationPrice: Joi.number().min(0).label(t("consultation_price_error")),
     languages: Joi.array().min(1).label(t("languages_error")),
     education: Joi.array().min(1).label(t("education_error")),
     workWith: Joi.array().min(1).label(t("work_with_error")),
@@ -239,6 +240,7 @@ export const CreateProvider = ({
     setProviderImageUrl(null);
     setProviderImage(null);
     setProviderImageFile(null);
+    navigate("/providers");
   };
   const uploadImage = async (providerId) => {
     const content = new FormData();
@@ -408,7 +410,6 @@ export const CreateProvider = ({
             label={t("consultation_price_label")}
             placeholder={t("consultation_price_placeholder")}
             onBlur={() => handleBlur("consultationPrice")}
-            type="number"
           />
           <DropdownGroup
             options={getLanguageOptions()}

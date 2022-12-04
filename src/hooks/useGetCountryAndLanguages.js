@@ -10,7 +10,13 @@ export default function useGetCountryAndLanguages() {
       languages(),
       countries(),
     ]);
-    return { languages: languagesData.data, countries: countriesData.data };
+
+    return {
+      languages: languagesData.data.sort((a, b) =>
+        a.name.localeCompare(b.name)
+      ),
+      countries: countriesData.data,
+    };
   };
   const query = useQuery(
     ["all-languages-and-countries"],

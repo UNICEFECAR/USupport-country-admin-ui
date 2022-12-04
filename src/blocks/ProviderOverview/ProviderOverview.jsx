@@ -1,12 +1,10 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import {
   Avatar,
   Block,
-  Box,
   Button,
-  ButtonWithIcon,
   Grid,
   GridItem,
   Icon,
@@ -29,11 +27,7 @@ import "./provider-overview.scss";
  *
  * @return {jsx}
  */
-export const ProviderOverview = ({
-  openChangePasswordBackdrop,
-  openDeleteAccountBackdrop,
-  providerId,
-}) => {
+export const ProviderOverview = ({ handleEditRedirect, providerId }) => {
   const { t } = useTranslation("provider-overview");
   const navigate = useNavigate();
 
@@ -65,10 +59,6 @@ export const ProviderOverview = ({
       return provider.languages.map((x) => x.name).join(", ");
     }
   }, [provider]);
-
-  const handleEditRedirect = () => {
-    navigate("edit");
-  };
 
   let earliestAvailableSlot;
   if (provider) {
@@ -119,17 +109,19 @@ export const ProviderOverview = ({
               />
               <p className="small-text">{provider.email}</p>
             </div>
-            <div className="provider-profile__information-container-with-icon">
-              <Icon
-                name="dollar"
-                size="md"
-                color="#66768D"
-                classes="provider-profile__information-container-with-icon__icon"
-              />
-              <p className="small-text">
-                {provider.consultationPrice}$ for 1 hour consultation
-              </p>
-            </div>
+            {provider.consultationPrice !== 0 ? (
+              <div className="provider-profile__information-container-with-icon">
+                <Icon
+                  name="dollar"
+                  size="md"
+                  color="#66768D"
+                  classes="provider-profile__information-container-with-icon__icon"
+                />
+                <p className="small-text">
+                  {provider.consultationPrice}$ for 1 hour consultation
+                </p>
+              </div>
+            ) : null}
             <div className="provider-profile__information-container">
               <p className="small-text provider-profile__information-container__heading">
                 {t("earliest_slot_label")}
@@ -180,6 +172,13 @@ export const ProviderOverview = ({
                 {provider.description}
               </p>
             </div>
+            <Button
+              label={t("edit_details")}
+              color="purple"
+              size="md"
+              onClick={handleEditRedirect}
+              classes="provider-profile__edit-button"
+            />
           </GridItem>
         </Grid>
       )}
