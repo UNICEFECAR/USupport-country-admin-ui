@@ -3,18 +3,22 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import {
-  NotFound,
-  Dashboard,
-  Articles,
-  FAQ,
-  SOSCenter,
-  Login,
-  Welcome,
-  ForgotPassword,
-  ResetPassword,
   AdminProfile,
-  EditProfileDetails,
   ArticleInformation,
+  Articles,
+  CreateProvider,
+  Dashboard,
+  EditProfileDetails,
+  EditProvider,
+  FAQ,
+  ForgotPassword,
+  Login,
+  NotFound,
+  ProviderOverview,
+  Providers,
+  ResetPassword,
+  SOSCenter,
+  Welcome,
 } from "#pages";
 
 import { CountryValidationRoute, ProtectedRoute } from "#routes";
@@ -45,7 +49,7 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Router basename="country-admin">
+      <Router basename="/country-admin">
         <Routes>
           <Route
             path="/login"
@@ -69,6 +73,38 @@ function App() {
               <CountryValidationRoute>
                 <ResetPassword />
               </CountryValidationRoute>
+            }
+          />
+          <Route
+            path="/providers"
+            element={
+              <ProtectedRoute>
+                <Providers />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/provider/details"
+            element={
+              <ProtectedRoute>
+                <ProviderOverview />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/create-provider"
+            element={
+              <ProtectedRoute>
+                <CreateProvider />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/edit-provider"
+            element={
+              <ProtectedRoute>
+                <EditProvider />
+              </ProtectedRoute>
             }
           />
           <Route

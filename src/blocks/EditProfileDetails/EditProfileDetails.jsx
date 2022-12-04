@@ -72,8 +72,11 @@ export const EditProfileDetails = () => {
     email: Joi.string()
       .email({ tlds: { allow: false } })
       .label(t("email_error")),
-    phonePrefix: Joi.string().label(t("phone_prefix_error")),
-    phone: Joi.string().label(t("phone_error")),
+    phonePrefix: Joi.string()
+      .optional()
+      .allow(null, "", " ")
+      .label(t("phone_prefix_error")),
+    phone: Joi.string().optional().allow(null, "", " ").label(t("phone_error")),
     role: Joi.any(),
   });
 
@@ -89,9 +92,8 @@ export const EditProfileDetails = () => {
 
   const onUpdateSuccess = () => {
     setIsProcessing(false);
-    toast(t("edit_succes"));
+    toast(t("edit_success"));
   };
-
   const onUpdateError = (err) => {
     setErrors({ submit: err });
     setIsProcessing(false);

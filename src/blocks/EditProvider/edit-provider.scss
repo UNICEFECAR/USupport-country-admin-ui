@@ -1,0 +1,72 @@
+@import "@USupport-components-library/styles";
+
+.edit-provider {
+  &__grid {
+    place-items: center;
+    padding-bottom: $spacing_3_6;
+    padding-top: $spacing_3_0;
+
+    @media screen and (min-width: $screen_md) {
+      padding-top: $spacing_4_0;
+    }
+
+    & .grid-item {
+      justify-items: center;
+    }
+
+    &__phone-container {
+      display: flex;
+      align-items: center;
+      margin-top: $spacing_2_4;
+
+      &__phone-input {
+        width: 19.5rem;
+
+        @media screen and (min-width: $screen-lg) {
+          width: 22rem;
+        }
+      }
+
+      & .dropdown-with-label,
+      & .dropdown {
+        text-align: left;
+        width: 14rem;
+        margin-right: $spacing_0_8;
+      }
+      & .dropdown-content {
+        width: 12.5rem;
+      }
+    }
+
+    &__phone-error {
+      margin: 0;
+      padding-top: $spacing_0_8;
+      width: 34.3rem;
+      text-align: center;
+    }
+
+    & .input-container,
+    & .textarea--container,
+    &__sex-dropdown {
+      margin-top: $spacing_2_4;
+      text-align: left;
+    }
+
+    & .dropdown-group {
+      margin-top: $spacing_2_4;
+      width: 34.3rem;
+
+      @media screen and (min-width: $screen_md) {
+        width: 36.8rem;
+      }
+    }
+
+    &__save-button {
+      margin-top: $spacing_3_2;
+    }
+
+    &__discard-button {
+      margin-top: $spacing_1_6;
+    }
+  }
+}

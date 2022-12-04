@@ -1,0 +1,18 @@
+@import "@USupport-components-library/styles";
+
+.providers {
+  @include full-height-page-navbar;
+  padding-top: $spacing_4_8;
+
+  &__grid {
+    place-items: center;
+    padding-bottom: $spacing_6_0;
+
+    &__heading {
+      display: flex;
+      justify-content: space-between;
+      width: 90%;
+      padding-bottom: $spacing_2_4;
+    }
+  }
+}

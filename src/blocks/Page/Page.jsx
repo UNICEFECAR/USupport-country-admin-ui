@@ -50,7 +50,9 @@ export const Page = ({
 
   const localStorageCountry = localStorage.getItem("country");
   const localStorageLanguage = localStorage.getItem("language");
-  const [selectedLanguage, setSelectedLanguage] = useState();
+  const [selectedLanguage, setSelectedLanguage] = useState(
+    localStorageLanguage ? { value: localStorageLanguage.toUpperCase() } : null
+  );
   const [selectedCountry, setSelectedCountry] = useState();
 
   const fetchCountries = async () => {
@@ -121,6 +123,7 @@ export const Page = ({
           showProfile
           yourProfileText={t("your_profile_text")}
           showProfilePicture={false}
+          showNotifications={false}
           i18n={i18n}
           navigate={navigateTo}
           NavLink={NavLink}

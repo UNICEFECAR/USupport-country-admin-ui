@@ -1,0 +1,13 @@
+{
+  "providers": "Providers",
+  "create_provider": "Add provider",
+  "psychologist": "Psychologist",
+  "psychiatrist": "Psychiatrist",
+  "psychotherapist": "Psychotherapist",
+  "coach": "Coach",
+  "modal_heading": "Are you sure you want to delete this provider?",
+  "yes": "Yes",
+  "no": "No",
+  "no_providers": "There are no providers",
+  "provider_deleted": "Provider successfully deleted"
+}

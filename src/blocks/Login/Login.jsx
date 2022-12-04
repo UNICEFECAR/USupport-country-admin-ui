@@ -38,7 +38,7 @@ export const Login = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const login = async () => {
-    return await adminSvc.login(data.email, data.password);
+    return await adminSvc.login(data.email, data.password, "country");
   };
 
   const loginMutation = useMutation(login, {
@@ -50,7 +50,6 @@ export const Login = () => {
       localStorage.setItem("token-expires-in", expiresIn);
       localStorage.setItem("refresh-token", refreshToken);
 
-      // TODO: Maybe instead of using setQueryData, we should use prefetch the query
       queryClient.setQueryData(["client-data"], userData);
 
       setErrors({});
@@ -73,7 +72,8 @@ export const Login = () => {
     setData(newData);
   };
 
-  const handleLogin = () => {
+  const handleLogin = (e) => {
+    e.preventDefault();
     setIsSubmitting(true);
     loginMutation.mutate();
   };
@@ -90,38 +90,40 @@ export const Login = () => {
     <Block classes="login">
       <Grid md={8} lg={12} classes="login__grid">
         <GridItem md={8} lg={12} classes="login__grid__inputs-item">
-          <Input
-            label={t("email_label")}
-            onChange={(value) =>
-              handleChange("email", value.currentTarget.value)
-            }
-            placeholder={t("email_placeholder")}
-            value={data.email}
-          />
-          <InputPassword
-            classes="login__grid__inputs-item__input--password"
-            label={t("password_label")}
-            onChange={(value) =>
-              handleChange("password", value.currentTarget.value)
-            }
-            placeholder={t("password_placeholder")}
-            value={data.password}
-          />
-          <Button
-            type="ghost"
-            color="purple"
-            classes="login__grid__forgot-password"
-            label={t("forgot_password_label")}
-            onClick={() => handleForgotPassowrd()}
-          />
-          {errors.submit ? <Error message={errors.submit} /> : null}
-          <Button
-            label={t("login_label")}
-            size="lg"
-            classes="login-button"
-            onClick={handleLogin}
-            disabled={!data.email || !data.password || isSubmitting}
-          />
+          <form onSubmit={handleLogin}>
+            <Input
+              label={t("email_label")}
+              onChange={(value) =>
+                handleChange("email", value.currentTarget.value)
+              }
+              placeholder={t("email_placeholder")}
+              value={data.email}
+            />
+            <InputPassword
+              classes="login__grid__inputs-item__input--password"
+              label={t("password_label")}
+              onChange={(value) =>
+                handleChange("password", value.currentTarget.value)
+              }
+              placeholder={t("password_placeholder")}
+              value={data.password}
+            />
+            <Button
+              type="ghost"
+              color="purple"
+              classes="login__grid__forgot-password"
+              label={t("forgot_password_label")}
+              onClick={() => handleForgotPassowrd()}
+            />
+            {errors.submit ? <Error message={errors.submit} /> : null}
+            <Button
+              label={t("login_label")}
+              size="lg"
+              classes="login-button"
+              disabled={!data.email || !data.password || isSubmitting}
+              isSubmit
+            />
+          </form>
         </GridItem>
         {/* <GridItem md={8} lg={12} classes="login__grid__content-item">
           <div>
