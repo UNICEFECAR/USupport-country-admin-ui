@@ -39,7 +39,6 @@
   "psychologist": "Psychologist",
   "psychiatrist": "Psychiatrist",
   "psychotherapist": "Psychotherapist",
-  "coach": "Coach",
 
   "password_error": "Password should contain at least 8 characters, 1 uppercase letter, 1 lowercase letter and 1 number",
   "name_error": "Name is required",
