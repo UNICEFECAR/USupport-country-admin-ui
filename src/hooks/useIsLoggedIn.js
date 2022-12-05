@@ -56,6 +56,9 @@ export const useIsLoggedIn = () => {
       if (!country) {
         throw new Error("No country selected");
       }
+      if (decoded.adminRole !== "country") {
+        throw new Error("Admin type does not match platform");
+      }
 
       let isQueryRunning = false;
       if (Date.now() >= decoded.exp * 1000) {
