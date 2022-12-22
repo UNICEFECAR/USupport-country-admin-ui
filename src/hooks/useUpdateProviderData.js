@@ -28,6 +28,8 @@ export default function useUpdateProviderData(onSuccess, onError) {
 
     newPayload.consultationPrice = Number(newPayload.consultationPrice);
     newPayload.providerId = newPayload.providerDetailId;
+    newPayload.email = newPayload.email.toLowerCase();
+
     delete newPayload.workWith;
     delete newPayload.languages;
     delete newPayload.providerDetailId;
