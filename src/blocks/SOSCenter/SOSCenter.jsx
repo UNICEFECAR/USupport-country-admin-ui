@@ -38,6 +38,7 @@ export const SOSCenter = () => {
       locale: i18n.language,
       ids: sosCentersIds,
       isForAdmin: true,
+      populate: true,
     });
 
     const filteredData = filterAdminData(data.data, data.meta.localizedIds);
@@ -122,6 +123,10 @@ export const SOSCenter = () => {
                   text={sosCenter.attributes.text}
                   link={sosCenter.attributes.url}
                   phone={sosCenter.attributes.phone}
+                  image={
+                    sosCenter.attributes.image?.data?.attributes?.formats
+                      ?.medium?.url
+                  }
                   key={index}
                 />
               );
