@@ -10,6 +10,10 @@
       padding-top: $spacing_4_0;
     }
 
+    @media screen and (min-width: $screen-lg) {
+      place-items: unset;
+    }
+
     & .grid-item {
       justify-items: center;
     }
@@ -59,6 +63,10 @@
       @media screen and (min-width: $screen_md) {
         width: 36.8rem;
       }
+    }
+
+    &__button-item {
+      justify-self: center;
     }
 
     &__save-button {
