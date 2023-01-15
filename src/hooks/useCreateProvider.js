@@ -25,6 +25,8 @@ export default function useCreateProvider(onSuccess, onError) {
     });
 
     newPayload.consultationPrice = Number(newPayload.consultationPrice);
+    newPayload.email = newPayload.email.toLowerCase();
+
     delete newPayload.workWith;
     delete newPayload.languages;
     delete newPayload.providerDetailId;

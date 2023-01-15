@@ -9,6 +9,7 @@ export default function useUpdateAdminData(onSuccess, onError) {
   const queryClient = useQueryClient();
 
   const updateAdminData = async (payload) => {
+    payload.email = payload.email.toLowerCase();
     delete payload.adminId;
     const { data } = await adminSvc.updateData(payload);
     return data;
