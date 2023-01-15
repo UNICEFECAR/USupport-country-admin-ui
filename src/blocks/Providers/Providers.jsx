@@ -88,6 +88,8 @@ export const Providers = () => {
             patronym={provider.patronym}
             surname={provider.surname}
             specializations={provider.specializations.map((x) => t(x))}
+            price={provider.consultationPrice}
+            freeLabel={t("free")}
             hasMenu
             handleEdit={() => redirectToEditProvider(provider.providerDetailId)}
             handleViewProfile={() =>

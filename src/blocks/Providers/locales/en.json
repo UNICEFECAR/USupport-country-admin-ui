@@ -8,5 +8,6 @@
   "yes": "Yes",
   "no": "No",
   "no_providers": "There are no providers",
-  "provider_deleted": "Provider successfully deleted"
+  "provider_deleted": "Provider successfully deleted",
+  "free": "Free"
 }
