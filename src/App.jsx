@@ -19,6 +19,7 @@ import {
   ResetPassword,
   SOSCenter,
   Welcome,
+  Reports,
 } from "#pages";
 
 import { CountryValidationRoute, ProtectedRoute } from "#routes";
@@ -160,6 +161,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <SOSCenter />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/reports"
+            element={
+              <ProtectedRoute>
+                <Reports />
               </ProtectedRoute>
             }
           />
