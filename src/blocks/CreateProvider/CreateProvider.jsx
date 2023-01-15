@@ -32,7 +32,6 @@ import "./create-provider.scss";
 import { useNavigate } from "react-router-dom";
 
 const initialData = {
-  password: "",
   name: "",
   patronym: "",
   surname: "",
@@ -51,6 +50,7 @@ const initialData = {
   description: "",
   languages: [],
   workWith: [],
+  videoLink: "",
 };
 
 /**s
@@ -110,9 +110,6 @@ export const CreateProvider = ({
   ];
 
   const schema = Joi.object({
-    password: Joi.string()
-      .pattern(new RegExp("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}"))
-      .label(t("password_error")),
     name: Joi.string().label(t("name_error")),
     patronym: Joi.string().allow("", null).label(t("patronym_error")),
     surname: Joi.string().label(t("surname_error")),
@@ -136,6 +133,7 @@ export const CreateProvider = ({
     description: Joi.string().label(t("description_error")),
     totalConsultations: Joi.any(),
     earliestAvailableSlot: Joi.any(),
+    videoLink: Joi.string().uri().allow("", null),
   });
 
   const sexOptions = [
@@ -269,8 +267,8 @@ export const CreateProvider = ({
   };
 
   const onCreateError = (err) => {
-    setErrors({ submit: err });
     setIsProcessing(false);
+    setErrors({ submit: err });
   };
   const createProviderMutation = useCreateProvider(
     onCreateSuccess,
@@ -325,20 +323,28 @@ export const CreateProvider = ({
             placeholder={t("description_placeholder")}
             onBlur={() => handleBlur("description")}
           />
+          <Input
+            value={providerData.videoLink}
+            onChange={(e) => handleChange("videoLink", e.currentTarget.value)}
+            label={t("video_link_label")}
+            placeholder={t("video_link_placeholder")}
+          />
         </GridItem>
 
         <GridItem md={8} lg={4}>
           <div className="create-provider__grid__phone-container">
-            <DropdownWithLabel
-              options={phonePrefixes}
-              label={t("phone_label")}
-              selected={
-                providerData.phonePrefix ||
-                phonePrefixes.find((x) => x.country === usersCountry)?.value
-              }
-              setSelected={(value) => handleChange("phonePrefix", value)}
-              placeholder={t("phone_prefix_placeholder")}
-            />
+            {phonePrefixes && (
+              <DropdownWithLabel
+                options={phonePrefixes}
+                label={t("phone_label")}
+                selected={
+                  providerData.phonePrefix ||
+                  phonePrefixes.find((x) => x.country === usersCountry)?.value
+                }
+                setSelected={(value) => handleChange("phonePrefix", value)}
+                placeholder={t("phone_prefix_placeholder")}
+              />
+            )}
             <Input
               value={providerData.phone}
               onChange={(e) => handleChange("phone", e.currentTarget.value)}

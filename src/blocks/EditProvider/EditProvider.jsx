@@ -121,6 +121,7 @@ export const EditProvider = ({
     description: Joi.string().label(t("description_error")),
     totalConsultations: Joi.any(),
     earliestAvailableSlot: Joi.any(),
+    videoLink: Joi.string().uri().allow("", null),
   });
 
   const sexOptions = [
@@ -292,6 +293,12 @@ export const EditProvider = ({
               label={t("description_label")}
               placeholder={t("description_placeholder")}
               onBlur={() => handleBlur("description")}
+            />
+            <Input
+              value={providerData.videoLink}
+              onChange={(e) => handleChange("videoLink", e.currentTarget.value)}
+              label={t("video_link_label")}
+              placeholder={t("video_link_placeholder")}
             />
           </GridItem>
 
