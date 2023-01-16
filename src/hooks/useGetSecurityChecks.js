@@ -24,7 +24,6 @@ export const useGetSecurityChecks = () => {
         consultationTime: new Date(item.time),
         numberOfIssues: Object.values(item).filter((x) => x === true).length,
       };
-      console.log(Object.values(item).filter((x) => x === true));
       finalData.push(finalItem);
     });
     return finalData;
