@@ -9,3 +9,4 @@ export * from "./useGetWorkWithCategories.js";
 export * from "./useUpdateProviderData.js";
 export * from "./useCreateProvider.js";
 export * from "./useGetStatistics.js";
+export * from "./useGetSecurityChecks.js";

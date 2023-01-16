@@ -46,6 +46,7 @@ export const Page = ({
     { name: t("page_3"), url: "/articles" },
     { name: t("page_4"), url: "/sos-center" },
     { name: t("page_5"), url: "/faq" },
+    { name: t("page_6"), url: "/reports" },
   ];
 
   const localStorageCountry = localStorage.getItem("country");

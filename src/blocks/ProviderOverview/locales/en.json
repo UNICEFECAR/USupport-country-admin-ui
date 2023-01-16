@@ -10,6 +10,10 @@
   "change_password": "Change password",
   "delete_account": "Delete account",
   "no_available_slot": "There is no available slot",
+  "video_label": "Video representation",
+  "city_label": "City",
+  "street_label": "Street",
+  "postcode_label": "Postcode",
 
   "psychologist": "Psychologist",
   "psychiatrist": "Psychiatrist",

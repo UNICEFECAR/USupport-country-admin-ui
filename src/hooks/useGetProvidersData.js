@@ -32,6 +32,7 @@ export default function useGetProvidersData() {
         workWith: providerData.work_with || [],
         totalConsultations: providerData.total_consultations || 0,
         earliestAvailableSlot: providerData.earliest_available_slot || "",
+        videoLink: providerData.video_link,
       };
       formattedData.push(formattedProvider);
     }

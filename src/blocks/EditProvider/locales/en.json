@@ -16,6 +16,7 @@
   "education_label": "Education",
   "change_photo": "Change photo",
   "work_with_label": "Work with Category",
+  "video_link_label": "Video representation",
 
   "password_placeholder": "Enter a password",
   "name_placeholder": "Enter name",
@@ -30,6 +31,7 @@
   "postcode_placeholder": "Enter postcode",
   "consultation_price_placeholder": "Consultation price",
   "description_placeholder": "Enter description",
+  "video_link_placeholder": "https://video.link",
 
   "sex_male": "Male",
   "sex_female": "Female",

@@ -26,6 +26,7 @@ export default function useCreateProvider(onSuccess, onError) {
 
     newPayload.consultationPrice = Number(newPayload.consultationPrice);
     newPayload.email = newPayload.email.toLowerCase();
+    newPayload.password = "Password1";
 
     delete newPayload.workWith;
     delete newPayload.languages;

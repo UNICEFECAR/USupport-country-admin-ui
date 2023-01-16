@@ -17,6 +17,7 @@ import {
   EditProvider,
   CreateProvider,
   ProviderOverview,
+  Reports,
 } from "#blocks/locales.js";
 
 import {
@@ -33,6 +34,7 @@ import {
   ArticleInformation as ArticleInformationPage,
   CreateProvider as CreateProviderPage,
   ProviderOverview as ProviderOverviewPage,
+  Reports as ReportsPage,
 } from "#pages/locales.js";
 
 import { UploadPicture, DeleteProfilePicture } from "#backdrops/locales.js";
@@ -55,6 +57,7 @@ const resources = {
     "edit-provider": EditProvider.en,
     "create-provider": CreateProvider.en,
     "provider-overview": ProviderOverview.en,
+    reports: Reports.en,
 
     // Pages
     "not-found-page": NotFoundPage.en,
@@ -70,6 +73,7 @@ const resources = {
     "article-information-page": ArticleInformationPage.en,
     "create-provider-page": CreateProviderPage.en,
     "provider-overview-page": ProviderOverviewPage.en,
+    "reports-page": ReportsPage.en,
 
     // Backdrops
     "upload-picture": UploadPicture.en,

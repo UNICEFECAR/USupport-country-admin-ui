@@ -1,0 +1,15 @@
+{
+  "client": "Client",
+  "provider": "Provider",
+  "consultation_date": "Consultation date",
+  "issue": "issue",
+  "issues": "issues",
+  "heading": "Questions and answers",
+  "question_1": "Did the provider ask you to disclose your address and contact details? ",
+  "question_2": "Did the provider ask you to meet them outside of the system ",
+  "question_3": "Did the provider ask you to send them any photos of yourself or turn on your video even if you did not want to? ",
+  "question_4": "Did you felt unsafe in any way during the session? ",
+  "question_5": "Explanation about feeling unsafe during the consultation.",
+  "yes": "Yes",
+  "no": "No"
+}
