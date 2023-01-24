@@ -10,3 +10,6 @@ export * from "./useUpdateProviderData.js";
 export * from "./useCreateProvider.js";
 export * from "./useGetStatistics.js";
 export * from "./useGetSecurityChecks.js";
+export * from "./useGetInformationPortalSuggestions.js";
+export * from "./useGetClientRatings.js";
+export * from "./useGetContactForms.js";

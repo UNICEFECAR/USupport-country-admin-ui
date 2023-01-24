@@ -13,4 +13,7 @@ export * as Providers from "./Providers/locales.js";
 export * as EditProvider from "./EditProvider/locales.js";
 export * as CreateProvider from "./CreateProvider/locales.js";
 export * as ProviderOverview from "./ProviderOverview/locales.js";
-export * as Reports from './Reports/locales.js';
+export * as SecurityCheck from "./SecurityCheck/locales.js";
+export * as InformationPortalSuggestions from "./InformationPortalSuggestions/locales.js";
+export * as ClientRatings from "./ClientRatings/locales.js";
+export * as ContactForms from "./ContactForms/locales.js";

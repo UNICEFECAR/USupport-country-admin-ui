@@ -14,4 +14,7 @@ export * from "./Providers";
 export * from "./EditProvider";
 export * from "./CreateProvider";
 export * from "./ProviderOverview";
-export * from './Reports';
+export * from "./SecurityCheck";
+export * from "./InformationPortalSuggestions";
+export * from "./ClientRatings";
+export * from "./ContactForms";

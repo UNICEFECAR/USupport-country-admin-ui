@@ -18,6 +18,10 @@ import {
   CreateProvider,
   ProviderOverview,
   Reports,
+  SecurityCheck,
+  InformationPortalSuggestions,
+  ClientRatings,
+  ContactForms,
 } from "#blocks/locales.js";
 
 import {
@@ -37,7 +41,11 @@ import {
   Reports as ReportsPage,
 } from "#pages/locales.js";
 
-import { UploadPicture, DeleteProfilePicture } from "#backdrops/locales.js";
+import {
+  UploadPicture,
+  DeleteProfilePicture,
+  FilterSecurityCheckReports,
+} from "#backdrops/locales.js";
 
 const resources = {
   en: {
@@ -58,6 +66,10 @@ const resources = {
     "create-provider": CreateProvider.en,
     "provider-overview": ProviderOverview.en,
     reports: Reports.en,
+    "security-check": SecurityCheck.en,
+    "information-portal-suggestions": InformationPortalSuggestions.en,
+    "client-ratings": ClientRatings.en,
+    "contact-forms": ContactForms.en,
 
     // Pages
     "not-found-page": NotFoundPage.en,
@@ -78,6 +90,7 @@ const resources = {
     // Backdrops
     "upload-picture": UploadPicture.en,
     "delete-profile-picture": DeleteProfilePicture.en,
+    "filter-security-check-reports": FilterSecurityCheckReports.en,
   },
 };
 
