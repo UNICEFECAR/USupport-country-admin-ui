@@ -1,0 +1,26 @@
+@import "@USupport-components-library/styles";
+
+.filter-security-check-reports {
+  & .backdrop__children--full-height {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 40rem;
+    text-align: left;
+
+    & .dropdown-with-label {
+      margin-bottom: $spacing_1_8;
+    }
+  }
+
+  & ::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+  }
+
+  &__date-picker {
+    & input {
+      text-transform: uppercase;
+    }
+  }
+}

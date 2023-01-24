@@ -1,0 +1,8 @@
+{
+  "heading": "Filter",
+  "provider": "Provider",
+  "all": "Show all providers",
+  "starting_date": "Starting date",
+  "number_of_issues": "Minimum number of issues",
+  "button_label": "Apply filters"
+}
