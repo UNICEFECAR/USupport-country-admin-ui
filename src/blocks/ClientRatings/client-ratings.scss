@@ -1,0 +1,44 @@
+@import "@USupport-components-library/styles";
+
+.client-ratings {
+  &__heading {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: $spacing_2_4;
+  }
+
+  &__rating-container {
+    display: flex;
+    align-items: center;
+
+    &__label {
+      padding-right: $spacing_0_8;
+    }
+
+    & .icon {
+      width: 1.8rem;
+      height: 1.8rem;
+    }
+  }
+
+  &__backdrop {
+    & .backdrop__children--full-height {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 40rem;
+      text-align: left;
+
+      & .dropdown-with-label {
+        margin-bottom: $spacing_1_8;
+      }
+    }
+
+    &__date-picker {
+      & input {
+        text-transform: uppercase;
+      }
+    }
+  }
+}
