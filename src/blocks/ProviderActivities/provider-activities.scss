@@ -1,0 +1,107 @@
+@import "@USupport-components-library/styles";
+
+.provider-activities {
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & button:first-of-type {
+      margin-right: $spacing_1_6;
+    }
+  }
+
+  &__container {
+    overflow-x: auto;
+    padding-top: $spacing_3_6;
+    padding-bottom: $spacing_1_6;
+  }
+
+  &__table {
+    min-width: 100rem;
+    width: 100%;
+    padding-right: $spacing_3_0;
+
+    &__td {
+      border-bottom: 1px solid $color_gray_a6b4b8;
+      padding-left: $spacing_1_4;
+      padding-right: $spacing_1_4;
+      padding-bottom: $spacing_1_8;
+      padding-top: $spacing_1_4;
+
+      &__no-results {
+        padding-top: $spacing_3_6;
+      }
+    }
+
+    &__name {
+      color: $color_blue_3d527b;
+      font-weight: $font_bold;
+    }
+
+    &__status {
+      padding: $spacing_0_8;
+      border-radius: $border_radius_3_2;
+      text-align: center;
+
+      &--active {
+        background-color: $color_green_c1eaea;
+        color: $color_primary_20809e;
+      }
+
+      &--disabled {
+        background-color: $color_red_eb5757;
+        color: $color_white_ff;
+      }
+    }
+
+    &-icon {
+      background-color: $color_white_ff;
+      border-bottom: unset;
+      cursor: pointer;
+      margin-top: $spacing_1_0;
+      padding: $spacing_1_2;
+      position: fixed;
+      right: -$spacing_1_6;
+
+      &__content {
+        position: relative;
+      }
+    }
+  }
+
+  &__filter-modal {
+    & .backdrop__children--full-height {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 35rem;
+      text-align: left;
+
+      & .dropdown-with-label {
+        margin-top: $spacing_1_6;
+        margin-bottom: $spacing_1_8;
+      }
+    }
+
+    &__date-container {
+      display: flex;
+      justify-content: space-between;
+
+      & .input-container {
+        width: 17.5rem;
+
+        &:first-of-type {
+          margin-right: $spacing_1_4;
+        }
+      }
+    }
+
+    &__date-picker {
+      & input {
+        text-transform: uppercase;
+      }
+    }
+  }
+}

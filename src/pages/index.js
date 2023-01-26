@@ -15,3 +15,4 @@ export * from "./EditProvider";
 export * from "./CreateProvider";
 export * from "./ProviderOverview";
 export * from './Reports';
+export * from './ProviderActivities';

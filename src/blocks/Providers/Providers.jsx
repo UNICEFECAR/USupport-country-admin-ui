@@ -90,12 +90,24 @@ export const Providers = () => {
             specializations={provider.specializations.map((x) => t(x))}
             price={provider.consultationPrice}
             freeLabel={t("free")}
+            activitiesLabel={t("activities")}
             hasMenu
+            showActivities
             handleEdit={() => redirectToEditProvider(provider.providerDetailId)}
             handleViewProfile={() =>
               redirectToProviderDetails(provider.providerDetailId)
             }
             handleDelete={() => openDeleteModal(provider.providerDetailId)}
+            handleActivities={() =>
+              navigate(
+                `/provider-activities?providerId=${provider.providerDetailId}`,
+                {
+                  state: {
+                    providerName: `${provider.name} ${provider.patronym} ${provider.surname}`,
+                  },
+                }
+              )
+            }
           />
         </GridItem>
       );

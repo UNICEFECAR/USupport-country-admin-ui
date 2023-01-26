@@ -17,3 +17,4 @@ export * as SecurityCheck from "./SecurityCheck/locales.js";
 export * as InformationPortalSuggestions from "./InformationPortalSuggestions/locales.js";
 export * as ClientRatings from "./ClientRatings/locales.js";
 export * as ContactForms from "./ContactForms/locales.js";
+export * as ProviderActivities from './ProviderActivities/locales.js';

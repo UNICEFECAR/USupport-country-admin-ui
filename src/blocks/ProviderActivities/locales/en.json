@@ -1,0 +1,14 @@
+{
+  "client": "Client",
+  "time": "Time",
+  "price": "Price",
+  "campaign": "Campaign",
+  "free": "Free",
+  "export_label": "Export",
+  "filter": "Filter",
+  "filters": "Filters",
+  "no_results": "No activities found",
+  "start_date": "Start date",
+  "end_date": "End date",
+  "submit": "Apply filters"
+}

@@ -21,6 +21,7 @@ import {
   InformationPortalSuggestions,
   ClientRatings,
   ContactForms,
+  ProviderActivities,
 } from "#blocks/locales.js";
 
 import {
@@ -68,6 +69,7 @@ const resources = {
     "information-portal-suggestions": InformationPortalSuggestions.en,
     "client-ratings": ClientRatings.en,
     "contact-forms": ContactForms.en,
+    "provider-activities": ProviderActivities.en,
 
     // Pages
     "not-found-page": NotFoundPage.en,

@@ -20,6 +20,7 @@ import {
   SOSCenter,
   Welcome,
   Reports,
+  ProviderActivities,
 } from "#pages";
 
 import { CountryValidationRoute, ProtectedRoute } from "#routes";
@@ -169,6 +170,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <Reports />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/provider-activities"
+            element={
+              <ProtectedRoute>
+                <ProviderActivities />
               </ProtectedRoute>
             }
           />

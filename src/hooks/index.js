@@ -13,3 +13,4 @@ export * from "./useGetSecurityChecks.js";
 export * from "./useGetInformationPortalSuggestions.js";
 export * from "./useGetClientRatings.js";
 export * from "./useGetContactForms.js";
+export * from "./useGetProviderActivitiesById.js";

@@ -18,3 +18,4 @@ export * from "./SecurityCheck";
 export * from "./InformationPortalSuggestions";
 export * from "./ClientRatings";
 export * from "./ContactForms";
+export * from './ProviderActivities';
