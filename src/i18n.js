@@ -45,6 +45,7 @@ import {
   UploadPicture,
   DeleteProfilePicture,
   FilterSecurityCheckReports,
+  CodeVerification,
 } from "#backdrops/locales.js";
 
 const resources = {
@@ -91,6 +92,7 @@ const resources = {
     "upload-picture": UploadPicture.en,
     "delete-profile-picture": DeleteProfilePicture.en,
     "filter-security-check-reports": FilterSecurityCheckReports.en,
+    "code-verification": CodeVerification.en,
   },
 };
 
