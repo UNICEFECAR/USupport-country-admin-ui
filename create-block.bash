@@ -19,7 +19,10 @@ block_name=$(echo $block_name | tr '[:lower:]' '[:upper:]' | cut -c1)$(echo $blo
 block_name_lower=$(echo $block_name | tr '[:upper:]' '[:lower:]')
 
 # Transform the name to caterpillar-case
-block_name_kebab=$(echo $block_name | sed -r 's/([a-z0-9])([A-Z])/\1-\2/g' | tr '[:upper:]' '[:lower:]')
+block_name_caterpillar=$(echo $block_name | sed -r 's/([a-z0-9])([A-Z])/\1-\2/g' | tr '[:upper:]' '[:lower:]')
+
+# Transofmr the name to snake_case
+block_name_snake=$(echo $block_name | sed -r 's/([a-z0-9])([A-Z])/\1-\2/g' | tr '[:upper:]' '[:lower:]' | tr '_' '-')
 
 # Read the description of the block from the user input
 echo -n "Enter block description: "
@@ -57,7 +60,7 @@ mkdir "src/blocks/$block_name"
 # Create the block files
 touch "src/blocks/$block_name/index.js"
 touch "src/blocks/$block_name/$block_name.jsx"
-touch "src/blocks/$block_name/$block_name_kebab.scss"
+touch "src/blocks/$block_name/$block_name_caterpillar.scss"
 touch "src/blocks/$block_name/$block_name.stories.jsx"
 
 # Add the block to the block index file
@@ -81,9 +84,15 @@ fi
 
 # Add the block to the main block file
 echo "import React from 'react';
+`
+if [ "$block_locale" = "y" ]; then
+    echo "import { useTranslation } from 'react-i18next'; "
+fi
+`
+
 import { Block } from '@USupport-components-library/src';
 
-import './$block_name_kebab.scss';
+import './$block_name_caterpillar.scss';
 
 /**
  * $block_name
@@ -93,8 +102,13 @@ import './$block_name_kebab.scss';
  * @return {jsx}
  */
 export const $block_name = () => {
+`
+if [ "$block_locale" = "y" ]; then
+    echo "const { t } =  useTranslation('$block_name_snake'); "
+fi
+`
   return (
-    <Block classes='$block_name_kebab'>
+    <Block classes='$block_name_caterpillar'>
       $block_name Block
     </Block>
   );
@@ -119,8 +133,8 @@ Default.args = {};" >> "src/blocks/$block_name/$block_name.stories.jsx"
 # Add the theme to the block styles file
 echo "@import '@USupport-components-library/styles';
 
-.$block_name_kebab{
-}" >> "src/blocks/$block_name/$block_name_kebab.scss"
+.$block_name_caterpillar{
+}" >> "src/blocks/$block_name/$block_name_caterpillar.scss"
 
 # Output to the user's console
 echo "Successfully created $block_name into src/blocks/$block_name"

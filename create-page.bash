@@ -19,7 +19,11 @@ page_name=$(echo $page_name | tr '[:lower:]' '[:upper:]' | cut -c1)$(echo $page_
 page_name_lower=$(echo $page_name | tr '[:upper:]' '[:lower:]')
 
 # Transform the name to caterpillar-case
-page_name_kebab=$(echo $page_name | sed -r 's/([a-z0-9])([A-Z])/\1-\2/g' | tr '[:upper:]' '[:lower:]')
+page_name_caterpillar=$(echo $page_name | sed -r 's/([a-z0-9])([A-Z])/\1-\2/g' | tr '[:upper:]' '[:lower:]')
+
+# Transform the name to snake_case
+page_name_snake=$(echo $page_name | sed -r 's/([a-z0-9])([A-Z])/\1-\2/g' | tr '[:upper:]' '[:lower:]' | tr '_' '-')
+
 
 # Read the description of the page from the user input
 echo -n "Enter page description: "
@@ -57,7 +61,7 @@ mkdir "src/pages/$page_name"
 # Create the page files
 touch "src/pages/$page_name/index.js"
 touch "src/pages/$page_name/$page_name.jsx"
-touch "src/pages/$page_name/$page_name_kebab.scss"
+touch "src/pages/$page_name/$page_name_caterpillar.scss"
 touch "src/pages/$page_name/$page_name.stories.jsx"
 
 # Add the page to the page index file
@@ -81,9 +85,15 @@ fi
 
 # Add the page to the main page file
 echo "import React from 'react';
+`
+if [ "$page_locale" == "y" ]; then
+    echo "import { useTranslation } from 'react-i18next';" >> "src/pages/$page_name/$page_name.jsx"
+fi
+`
+
 import { Page } from '#blocks';
 
-import './$page_name_kebab.scss';
+import './$page_name_caterpillar.scss';
 
 /**
  * $page_name
@@ -93,8 +103,13 @@ import './$page_name_kebab.scss';
  * @returns {JSX.Element}
  */
 export const $page_name = () => {
+    `
+    if [ "$page_locale" = "y" ]; then 
+        echo "const { t } = useTranslation('$page_name_lower-page')"
+    fi
+    `
     return (
-        <Page classes='page__$page_name_kebab'>
+        <Page classes='page__$page_name_snake'>
             $page_name Page
         </Page>
     );
@@ -120,9 +135,9 @@ Default.args = {}; " >> "src/pages/$page_name/$page_name.stories.jsx"
 echo "/* $page_name styles */
 @import '@USupport-components-library/styles';
 
-.page__$page_name_kebab{
+.page__$page_name_caterpillar{
 }
-" >> "src/pages/$page_name/$page_name_kebab.scss"
+" >> "src/pages/$page_name/$page_name_caterpillar.scss"
 
 # Outout to the user's console 
-echo "Successfully created $page_name into src/blocks/$page_name"
+echo "Successfully created $page_name into src/pages/$page_name"
