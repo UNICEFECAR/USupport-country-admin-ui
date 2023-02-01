@@ -80,7 +80,7 @@ export const Campaigns = () => {
     {
       icon: "edit",
       text: t("edit"),
-      handleClick: (id) => navigate(`/sponsor?sponsordId=${id}`),
+      handleClick: (id) => navigate(`/sponsor-details?sponsorId=${id}`),
     },
   ];
 
@@ -88,7 +88,11 @@ export const Campaigns = () => {
     <Block classes="campaigns">
       <div className="campaigns__buttons">
         <Button label={t("filter_button")} color="purple" type="secondary" />
-        <Button label={t("add_button")} color="purple" />
+        <Button
+          label={t("add_button")}
+          color="purple"
+          onClick={() => navigate("/add-sponsor")}
+        />
       </div>
 
       <Grid classes="campaigns__information">
