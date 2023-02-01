@@ -1,0 +1,20 @@
+{
+  "select_photo": "Select photo",
+  "sponsor_label": "Sponsor",
+  "email_label": "Email",
+  "phone_label": "Phone",
+  "sponsor_placeholder": "Enter name of sponsor",
+  "email_placeholder": "Enter email address",
+  "phone_placeholder": "Enter phone number",
+  "phone_prefix_placeholder": "Prefix",
+  "create_sponsor": "Create sponsor",
+
+  "sponsor_error": "Sponsor name is required",
+  "email_error": "Email is required",
+  "phone_prefix_error": "Phone prefix is required",
+  "phone_error": "Phone number is required",
+
+  "save_changes": "Save changes",
+  "discard_changes": "Discard changes",
+  "delete_sponsor": "Delete sponsor"
+}

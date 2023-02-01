@@ -14,3 +14,4 @@ export * from "./useGetInformationPortalSuggestions.js";
 export * from "./useGetClientRatings.js";
 export * from "./useGetContactForms.js";
 export * from "./useGetProviderActivitiesById.js";
+export * from "./useGetSponsorData.js";
