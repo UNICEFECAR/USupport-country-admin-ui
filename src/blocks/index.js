@@ -20,3 +20,5 @@ export * from "./ClientRatings";
 export * from "./ContactForms";
 export * from './ProviderActivities';
 export * from './Campaigns';
+export * from './AddSponsor';
+export * from './SponsorDetails';

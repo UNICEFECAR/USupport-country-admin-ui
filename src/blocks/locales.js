@@ -19,3 +19,5 @@ export * as ClientRatings from "./ClientRatings/locales.js";
 export * as ContactForms from "./ContactForms/locales.js";
 export * as ProviderActivities from './ProviderActivities/locales.js';
 export * as Campaigns from './Campaigns/locales.js';
+export * as AddSponsor from './AddSponsor/locales.js';
+export * as SponsorDetails from './SponsorDetails/locales.js';

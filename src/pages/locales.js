@@ -17,3 +17,6 @@ export * as ProviderOverview from "./ProviderOverview/locales.js";
 export * as Reports from './Reports/locales.js';
 export * as ProviderActivities from './ProviderActivities/locales.js';
 export * as Campaigns from './Campaigns/locales.js';
+export * as AddSponsor from './AddSponsor/locales.js';
+export * as EditSponsor from './EditSponsor/locales.js';
+export * as SponsorDetails from './SponsorDetails/locales.js';

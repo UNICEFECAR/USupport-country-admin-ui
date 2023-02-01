@@ -1,0 +1,19 @@
+{
+  "filter": "Filter",
+  "add_campaign": "Add campaign",
+  "campaigns": "Campaigns",
+  "active_campaigns": "Active campaigns",
+  "email": "Email",
+  "phone_number": "Phone number",
+  "search ": "Search",
+  "used_total_coupons": "Used/Total coupons",
+  "campaign": "Campaign",
+  "coupon_price": "Single coupon price",
+  "used_total_price": "Used/Total price",
+  "max_coupons": "Max coupons per user",
+  "period": "Period",
+  "status": "Status",
+  "edit": "Edit",
+  "active": "Active",
+  "inactive": "Inactive"
+}

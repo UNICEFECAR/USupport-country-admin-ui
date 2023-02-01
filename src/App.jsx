@@ -22,6 +22,9 @@ import {
   Reports,
   ProviderActivities,
   Campaigns,
+  AddSponsor,
+  EditSponsor,
+  SponsorDetails,
 } from "#pages";
 
 import { CountryValidationRoute, ProtectedRoute } from "#routes";
@@ -187,6 +190,30 @@ function App() {
             element={
               <ProtectedRoute>
                 <Campaigns />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/add-sponsor"
+            element={
+              <ProtectedRoute>
+                <AddSponsor />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/edit-sponsor"
+            element={
+              <ProtectedRoute>
+                <EditSponsor />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/sponsor-details"
+            element={
+              <ProtectedRoute>
+                <SponsorDetails />
               </ProtectedRoute>
             }
           />

@@ -23,6 +23,8 @@ import {
   ContactForms,
   ProviderActivities,
   Campaigns,
+  AddSponsor,
+  SponsorDetails,
 } from "#blocks/locales.js";
 
 import {
@@ -41,6 +43,7 @@ import {
   ProviderOverview as ProviderOverviewPage,
   Reports as ReportsPage,
   Campaigns as CampaignsPage,
+  AddSponsor as AddSponsorPage,
 } from "#pages/locales.js";
 
 import {
@@ -74,6 +77,8 @@ const resources = {
     "contact-forms": ContactForms.en,
     "provider-activities": ProviderActivities.en,
     campaigns: Campaigns.en,
+    "add-sponsor": AddSponsor.en,
+    "sponsor-details": SponsorDetails.en,
 
     // Pages
     "not-found-page": NotFoundPage.en,
@@ -91,6 +96,7 @@ const resources = {
     "provider-overview-page": ProviderOverviewPage.en,
     "reports-page": ReportsPage.en,
     "campaigns-page": CampaignsPage.en,
+    "add-sponsor-page": AddSponsorPage.en,
 
     // Backdrops
     "upload-picture": UploadPicture.en,
