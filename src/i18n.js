@@ -22,6 +22,7 @@ import {
   ClientRatings,
   ContactForms,
   ProviderActivities,
+  Campaigns,
 } from "#blocks/locales.js";
 
 import {
@@ -39,6 +40,7 @@ import {
   CreateProvider as CreateProviderPage,
   ProviderOverview as ProviderOverviewPage,
   Reports as ReportsPage,
+  Campaigns as CampaignsPage,
 } from "#pages/locales.js";
 
 import {
@@ -71,6 +73,7 @@ const resources = {
     "client-ratings": ClientRatings.en,
     "contact-forms": ContactForms.en,
     "provider-activities": ProviderActivities.en,
+    campaigns: Campaigns.en,
 
     // Pages
     "not-found-page": NotFoundPage.en,
@@ -87,6 +90,7 @@ const resources = {
     "create-provider-page": CreateProviderPage.en,
     "provider-overview-page": ProviderOverviewPage.en,
     "reports-page": ReportsPage.en,
+    "campaigns-page": CampaignsPage.en,
 
     // Backdrops
     "upload-picture": UploadPicture.en,

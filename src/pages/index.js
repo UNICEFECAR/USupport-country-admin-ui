@@ -16,3 +16,4 @@ export * from "./CreateProvider";
 export * from "./ProviderOverview";
 export * from './Reports';
 export * from './ProviderActivities';
+export * from './Campaigns';

@@ -16,3 +16,4 @@ export * as CreateProvider from "./CreateProvider/locales.js";
 export * as ProviderOverview from "./ProviderOverview/locales.js";
 export * as Reports from './Reports/locales.js';
 export * as ProviderActivities from './ProviderActivities/locales.js';
+export * as Campaigns from './Campaigns/locales.js';

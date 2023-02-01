@@ -21,6 +21,7 @@ import {
   Welcome,
   Reports,
   ProviderActivities,
+  Campaigns,
 } from "#pages";
 
 import { CountryValidationRoute, ProtectedRoute } from "#routes";
@@ -178,6 +179,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <ProviderActivities />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/campaigns"
+            element={
+              <ProtectedRoute>
+                <Campaigns />
               </ProtectedRoute>
             }
           />

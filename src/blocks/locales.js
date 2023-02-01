@@ -18,3 +18,4 @@ export * as InformationPortalSuggestions from "./InformationPortalSuggestions/lo
 export * as ClientRatings from "./ClientRatings/locales.js";
 export * as ContactForms from "./ContactForms/locales.js";
 export * as ProviderActivities from './ProviderActivities/locales.js';
+export * as Campaigns from './Campaigns/locales.js';
