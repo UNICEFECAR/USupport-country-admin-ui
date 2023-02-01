@@ -112,7 +112,7 @@ export const Campaigns = () => {
           </p>
         </GridItem>
         <GridItem xs={4} md={8} lg={3}>
-          <InputSearch />
+          <InputSearch placeholder={t("search")} />
         </GridItem>
       </Grid>
 

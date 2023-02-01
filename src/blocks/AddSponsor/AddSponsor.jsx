@@ -189,7 +189,6 @@ export const AddSponsor = ({ sponsorId }) => {
                 color={"red"}
                 label={t("delete_sponsor")}
                 type={"ghost"}
-                classes="provider-profile__delete-account-button"
                 onClick={openDeleteAccountBackdrop}
               />
             </>
