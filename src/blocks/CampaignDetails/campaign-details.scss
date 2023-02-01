@@ -1,0 +1,26 @@
+@import "@USupport-components-library/styles";
+
+.campaign-details {
+  &__buttons-container {
+    display: flex;
+    justify-content: flex-end;
+
+    & button:first-of-type {
+      margin-right: $spacing_2_4;
+    }
+  }
+
+  &__grid {
+    text-align: left;
+
+    &__activate-campaign {
+      align-items: center;
+      display: flex;
+      margin-top: $spacing_2_4;
+
+      & .toggle {
+        margin-right: $spacing_2_4;
+      }
+    }
+  }
+}

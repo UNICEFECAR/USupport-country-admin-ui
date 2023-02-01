@@ -25,6 +25,8 @@ import {
   Campaigns,
   AddSponsor,
   SponsorDetails,
+  AddCampaign,
+  CampaignDetails,
 } from "#blocks/locales.js";
 
 import {
@@ -44,6 +46,8 @@ import {
   Reports as ReportsPage,
   Campaigns as CampaignsPage,
   AddSponsor as AddSponsorPage,
+  AddCampaign as AddCampaignPage,
+  EditCampaign as EditCampaignPage,
 } from "#pages/locales.js";
 
 import {
@@ -79,6 +83,8 @@ const resources = {
     campaigns: Campaigns.en,
     "add-sponsor": AddSponsor.en,
     "sponsor-details": SponsorDetails.en,
+    "add-campaign": AddCampaign.en,
+    "campaign-details": CampaignDetails.en,
 
     // Pages
     "not-found-page": NotFoundPage.en,
@@ -97,6 +103,8 @@ const resources = {
     "reports-page": ReportsPage.en,
     "campaigns-page": CampaignsPage.en,
     "add-sponsor-page": AddSponsorPage.en,
+    "add-campaign-page": AddCampaignPage.en,
+    "edit-campaign-page": EditCampaignPage.en,
 
     // Backdrops
     "upload-picture": UploadPicture.en,
