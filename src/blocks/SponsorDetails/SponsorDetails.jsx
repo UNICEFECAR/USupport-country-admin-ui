@@ -54,18 +54,30 @@ export const SponsorDetails = ({ data }) => {
       <p>
         {item.startDate} - {item.endDate}
       </p>,
-      <p>{item.status}</p>,
+      <p>{t(item.status)}</p>,
     ];
   });
 
+  const handleNavigate = (id, route) => {
+    navigate(`/${route}?campaignId=${id}`, {
+      state: {
+        sponsorName: data.sponsorName,
+        campaignName: data.campaignsData.find((x) => x.campaignId === id)
+          .campaignName,
+      },
+    });
+  };
+
   const menuOptions = [
+    {
+      icon: "view",
+      text: t("view"),
+      handleClick: (id) => handleNavigate(id, "campaign-details"),
+    },
     {
       icon: "edit",
       text: t("edit"),
-      handleClick: (id) =>
-        navigate(`/edit-campaign?campaignId=${id}`, {
-          state: { sponsorName: data.sponsorName },
-        }),
+      handleClick: (id) => handleNavigate(id, "edit-campaign"),
     },
   ];
 
