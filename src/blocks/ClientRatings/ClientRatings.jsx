@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
 import {
@@ -20,7 +20,6 @@ import {
 } from "@USupport-components-library/utils";
 
 import "./client-ratings.scss";
-import { useMemo } from "react";
 
 /**
  * ClientRatings
