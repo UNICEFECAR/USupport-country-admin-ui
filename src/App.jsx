@@ -20,6 +20,14 @@ import {
   SOSCenter,
   Welcome,
   Reports,
+  ProviderActivities,
+  Campaigns,
+  AddSponsor,
+  EditSponsor,
+  SponsorDetails,
+  AddCampaign,
+  EditCampaign,
+  CampaignDetails,
 } from "#pages";
 
 import { CountryValidationRoute, ProtectedRoute } from "#routes";
@@ -169,6 +177,70 @@ function App() {
             element={
               <ProtectedRoute>
                 <Reports />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/provider-activities"
+            element={
+              <ProtectedRoute>
+                <ProviderActivities />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/campaigns"
+            element={
+              <ProtectedRoute>
+                <Campaigns />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/add-sponsor"
+            element={
+              <ProtectedRoute>
+                <AddSponsor />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/edit-sponsor"
+            element={
+              <ProtectedRoute>
+                <EditSponsor />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/sponsor-details"
+            element={
+              <ProtectedRoute>
+                <SponsorDetails />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/add-campaign"
+            element={
+              <ProtectedRoute>
+                <AddCampaign />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/edit-campaign"
+            element={
+              <ProtectedRoute>
+                <EditCampaign />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/campaign-details"
+            element={
+              <ProtectedRoute>
+                <CampaignDetails />
               </ProtectedRoute>
             }
           />

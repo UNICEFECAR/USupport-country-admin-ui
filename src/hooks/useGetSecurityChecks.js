@@ -17,6 +17,7 @@ export const useGetSecurityChecks = () => {
           moreDetails: item.more_details,
         },
         providerName: `${providerData.name} ${providerData.patronym} ${providerData.surname}`,
+        providerDetailId: item.provider_detail_id,
         clientName:
           clientData.name && clientData.surname
             ? `${clientData.name} ${clientData.surname}`

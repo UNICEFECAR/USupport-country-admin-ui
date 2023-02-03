@@ -1,0 +1,19 @@
+{
+  "email": "Email",
+  "time": "Time of contact",
+  "subject": "Subject",
+  "content_heading": "Feedback",
+  "heading": "Contact Forms",
+  "all": "All",
+  "filters": "Filters",
+  "sender": "Sender",
+  "starting_date": "Starting date",
+  "contact_reason_placeholder": "Select a reason",
+  "contact_reason_1": "Information about USupport",
+  "contact_reason_2": "Technical problem",
+  "contact_reason_3": "Join the network of providers",
+  "contact_reason_4": "Partnerships",
+  "contact_reason_5": "Other",
+  "no_results": "There are no contact forms found",
+  "submit": "Apply filters"
+}

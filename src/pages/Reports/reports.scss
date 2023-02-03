@@ -1,6 +1,27 @@
 /* Reports styles */
-@import '@USupport-components-library/styles';
+@import "@USupport-components-library/styles";
 
-.page__reports{
+.page__reports {
+  & .tabs-underlined-container {
+    margin: $spacing_3_2 0;
+    align-self: center;
+
+    & .tab {
+      & .label {
+        font-size: $font_size_1_2;
+        line-height: $line_height_1_8;
+
+        @media screen and (min-width: $screen-md) {
+          font-size: $font_size_2_0;
+          line-height: $line_height_2_4;
+        }
+      }
+    }
+  }
+
+  &__report-block-heading {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: $spacing_2_4;
+  }
 }
-

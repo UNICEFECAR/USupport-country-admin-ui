@@ -4,5 +4,7 @@
   "password_label": "Password",
   "password_placeholder": "Enter your password",
   "forgot_password_label": "I forgot my password",
-  "login_label": "Login"
+  "login_label": "Login",
+  "try_again": "Try again in",
+  "seconds": "seconds"
 }

@@ -17,7 +17,16 @@ import {
   EditProvider,
   CreateProvider,
   ProviderOverview,
-  Reports,
+  SecurityCheck,
+  InformationPortalSuggestions,
+  ClientRatings,
+  ContactForms,
+  ProviderActivities,
+  Campaigns,
+  AddSponsor,
+  SponsorDetails,
+  AddCampaign,
+  CampaignDetails,
 } from "#blocks/locales.js";
 
 import {
@@ -35,9 +44,18 @@ import {
   CreateProvider as CreateProviderPage,
   ProviderOverview as ProviderOverviewPage,
   Reports as ReportsPage,
+  Campaigns as CampaignsPage,
+  AddSponsor as AddSponsorPage,
+  AddCampaign as AddCampaignPage,
+  EditCampaign as EditCampaignPage,
 } from "#pages/locales.js";
 
-import { UploadPicture, DeleteProfilePicture } from "#backdrops/locales.js";
+import {
+  UploadPicture,
+  DeleteProfilePicture,
+  FilterSecurityCheckReports,
+  CodeVerification,
+} from "#backdrops/locales.js";
 
 const resources = {
   en: {
@@ -57,7 +75,16 @@ const resources = {
     "edit-provider": EditProvider.en,
     "create-provider": CreateProvider.en,
     "provider-overview": ProviderOverview.en,
-    reports: Reports.en,
+    "security-check": SecurityCheck.en,
+    "information-portal-suggestions": InformationPortalSuggestions.en,
+    "client-ratings": ClientRatings.en,
+    "contact-forms": ContactForms.en,
+    "provider-activities": ProviderActivities.en,
+    campaigns: Campaigns.en,
+    "add-sponsor": AddSponsor.en,
+    "sponsor-details": SponsorDetails.en,
+    "add-campaign": AddCampaign.en,
+    "campaign-details": CampaignDetails.en,
 
     // Pages
     "not-found-page": NotFoundPage.en,
@@ -74,10 +101,16 @@ const resources = {
     "create-provider-page": CreateProviderPage.en,
     "provider-overview-page": ProviderOverviewPage.en,
     "reports-page": ReportsPage.en,
+    "campaigns-page": CampaignsPage.en,
+    "add-sponsor-page": AddSponsorPage.en,
+    "add-campaign-page": AddCampaignPage.en,
+    "edit-campaign-page": EditCampaignPage.en,
 
     // Backdrops
     "upload-picture": UploadPicture.en,
     "delete-profile-picture": DeleteProfilePicture.en,
+    "filter-security-check-reports": FilterSecurityCheckReports.en,
+    "code-verification": CodeVerification.en,
   },
 };
 

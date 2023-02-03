@@ -1,0 +1,28 @@
+{
+  "activate": "Activate",
+  "campaign_name_label": "Campaign",
+  "code_label": "Coupon code",
+  "budget_label": "Budget - in {{currencySymbol}}",
+  "total_coupons_label": "Total coupons",
+  "start_date_label": "Start date",
+  "end_date_label": "End date",
+  "max_coupons_per_user_label": "Max coupons per user",
+  "terms_label": "Terms and conditions",
+
+  "campaign_name_placeholder": "Name of the campaign",
+  "budget_placeholder": "Enter the total budget",
+  "code_placeholder": "Enter the code for the coupon",
+  "total_coupons_placeholder": "Enter total number of coupons",
+  "start_date_placeholder": "DD.MM.YYYY",
+  "end_date_placeholder": "DD.MM.YYYY",
+  "max_coupons_per_user_placeholder": "Max coupons per user",
+  "terms_placeholder": "Write the terms and conditions",
+
+  "required_field": "The field is required",
+  "budget_error": "The budget should be a positive number",
+
+  "create_campaign": "Create campaign",
+  "save_changes": "Save changes",
+  "discard_changes": "Discard changes",
+  "delete_campaign": "Delete campaign"
+}

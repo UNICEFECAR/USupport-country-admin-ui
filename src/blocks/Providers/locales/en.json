@@ -9,5 +9,6 @@
   "no": "No",
   "no_providers": "There are no providers",
   "provider_deleted": "Provider successfully deleted",
-  "free": "Free"
+  "free": "Free",
+  "activities": "Activities"
 }

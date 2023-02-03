@@ -1,0 +1,15 @@
+@import "@USupport-components-library/styles";
+
+.security-check {
+  padding-top: $spacing_1_2;
+
+  &__heading {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: $spacing_2_4;
+  }
+
+  &__no-results {
+    padding-top: $spacing_2_4;
+  }
+}

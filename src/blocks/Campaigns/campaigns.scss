@@ -1,0 +1,50 @@
+@import "@USupport-components-library/styles";
+
+.campaigns {
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    padding: $spacing_2_4 0;
+
+    & button:first-of-type {
+      margin-right: $spacing_1_0;
+    }
+  }
+
+  &__information {
+    place-items: start;
+
+    & p {
+      text-align: left;
+    }
+
+    @media screen and (min-width: $screen-md) {
+      padding-top: $spacing_2_4;
+      place-items: center;
+    }
+
+    @media screen and (min-width: $screen-lg) {
+      justify-items: start;
+    }
+
+    & .grid-item:last-of-type {
+      margin: 1rem;
+    }
+  }
+
+  &__sponsor {
+    display: flex;
+    align-items: center;
+
+    &__image {
+      border-radius: 50%;
+      width: 3.2rem;
+      height: 3.2rem;
+      margin-right: $spacing_1_6;
+    }
+
+    &__name.text {
+      font-weight: $font_bold;
+    }
+  }
+}
