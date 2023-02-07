@@ -18,6 +18,7 @@ export default defineConfig(() => {
         "#hooks": path.resolve(__dirname, "./src/hooks"),
         "#routes": path.resolve(__dirname, "./src/routes"),
         "#backdrops": path.resolve(__dirname, "./src/backdrops"),
+        "#utils": path.resolve(__dirname, "./src/utils"),
       },
     },
   };
