@@ -33,6 +33,7 @@ export const Page = ({
   classes,
   children,
   handleGoBack,
+  image,
 }) => {
   const navigateTo = useNavigate();
   const { t, i18n } = useTranslation("page");
@@ -163,6 +164,7 @@ export const Page = ({
                 onClick={handleGoBack}
               />
             )}
+            {image && <img className="page__header__image" src={image} />}
             {heading && <h3 className="page__header-heading">{heading}</h3>}
             {headingButton && headingButton}
           </div>

@@ -22,7 +22,7 @@
   }
 
   &__header {
-    align-items: flex-start;
+    align-items: center;
     display: flex;
     flex: 1;
     padding: $spacing_3_2 $spacing_1_6 $spacing_1_6 $spacing_2_4;
@@ -66,6 +66,19 @@
 
       @media screen and (min-width: $screen-lg) {
         padding-right: $spacing_5_0;
+      }
+    }
+
+    &__image {
+      width: 3.2rem;
+      height: 3.2rem;
+      border-radius: 50%;
+      margin-right: $spacing_1_6;
+      object-fit: cover;
+
+      @media screen and (min-width: $screen-lg) {
+        width: 5rem;
+        height: 5rem;
       }
     }
   }
