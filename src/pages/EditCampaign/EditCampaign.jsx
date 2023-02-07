@@ -26,6 +26,7 @@ export const EditCampaign = () => {
   );
 
   const sponsorName = location.state?.sponsorName;
+  const campaignData = location.state?.campaignData;
 
   if (!campaignId) return <Navigate to="/campaigns" />;
 
@@ -35,7 +36,11 @@ export const EditCampaign = () => {
       handleGoBack={() => navigate(-1)}
       classes="page__edit-campaign"
     >
-      <AddCampaignBlock campaignId={campaignId} />
+      <AddCampaignBlock
+        sponsorName={sponsorName}
+        campaignData={campaignData}
+        campaignId={campaignId}
+      />
     </Page>
   );
 };
