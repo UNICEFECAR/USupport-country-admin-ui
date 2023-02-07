@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { useMutation } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import countryCodes from "country-codes-list";
 import Joi from "joi";
 
@@ -17,9 +19,12 @@ import {
 
 import { validate } from "@USupport-components-library/utils";
 
-import { useGetSponsorData } from "#hooks";
+import { userSvc } from "@USupport-components-library/services";
+
+import { useGetSponsorData, useAddSponsor, useUpdateSponsor } from "#hooks";
 
 import "./add-sponsor.scss";
+import { toast } from "react-toastify";
 
 /**
  * AddSponsor
@@ -28,46 +33,66 @@ import "./add-sponsor.scss";
  *
  * @return {jsx}
  */
-export const AddSponsor = ({ sponsorId }) => {
+export const AddSponsor = ({
+  sponsorId,
+  openUploadPicture,
+  sponsorImage,
+  sponsorImageFile,
+  setSponsorImage,
+  isEditing = false,
+}) => {
+  const navigate = useNavigate();
   const { t } = useTranslation("add-sponsor");
 
   const sponsorDataQuery = useGetSponsorData(sponsorId);
-  const sponsorData = sponsorDataQuery.data || {
-    sponsor: "Sponsor",
-    email: "georgi@7digit.io",
-    phonePrefix: "+7",
-    phone: "89342792",
-  };
+  const sponsorData = sponsorDataQuery.data;
 
   const schema = Joi.object({
-    sponsor: Joi.string().required().label(t("sponsor_error")),
+    name: Joi.string().required().label(t("sponsor_error")),
     email: Joi.string()
       .email({ tlds: { allow: false } })
       .label(t("email_error")),
     phonePrefix: Joi.string().label(t("phone_prefix_error")),
     phone: Joi.string().label(t("phone_error")),
+    image: Joi.string().allow("", null),
   });
 
   const [data, setData] = useState({
-    sponsor: sponsorData ? sponsorData.sponsor : "",
+    name: sponsorData ? sponsorData.name : "",
     email: sponsorData ? sponsorData.email : "",
     phonePrefix: sponsorData ? sponsorData.phonePrefix : "",
     phone: sponsorData ? sponsorData.phone : "",
     image: sponsorData ? sponsorData.image : "default",
   });
 
+  const setDataToDataInQuery = () => {
+    setData({
+      name: sponsorData.sponsorName,
+      email: sponsorData.email,
+      phonePrefix: sponsorData.phonePrefix,
+      phone: sponsorData.phone,
+      image: sponsorData.image,
+    });
+  };
+  useEffect(() => {
+    if (sponsorId && sponsorData) {
+      setDataToDataInQuery();
+      setSponsorImage(sponsorData.image);
+    }
+  }, [sponsorId, sponsorData]);
+
+  const [hasUploadedImage, setHasUploadedImage] = useState(false);
   const [errors, setErrors] = useState("");
 
   const [phonePrefixes, setPhonePrefixes] = useState();
 
   const [canSaveChanges, setCanSaveChanges] = useState(false);
+  const usersCountry = localStorage.getItem("country");
 
   useEffect(() => {
     // Country codes logic
     const codes = generateCountryCodes();
     if (data && !data?.phonePrefix) {
-      const usersCountry = localStorage.getItem("country");
-
       const userCountryCode = codes.find(
         (x) => x.country === usersCountry
       )?.value;
@@ -98,13 +123,72 @@ export const AddSponsor = ({ sponsorId }) => {
     setData({ ...data, [name]: value });
   };
 
+  const uploadImage = async (sponsorId) => {
+    const imageName = `sponsor-${sponsorId}`;
+    const content = new FormData();
+    content.append("fileName", imageName);
+    content.append("fileContent", sponsorImageFile);
+    const res = await userSvc.uploadFileAsAdmin(content);
+
+    updateSponsorMutation.mutate({
+      ...data,
+      image: imageName,
+      sponsorId: sponsorId,
+    });
+    return res;
+  };
+
+  const uploadImageMutation = useMutation(uploadImage, {
+    onSuccess: () => setHasUploadedImage(true),
+    onSettled: () => navigate("/campaigns"),
+  });
+  const onCreateSuccess = (data) => {
+    const sponsorId = data.sponsor_id;
+    if (sponsorImage && !hasUploadedImage) {
+      uploadImageMutation.mutate(sponsorId);
+    } else {
+      toast("success");
+    }
+  };
+  const onCreateError = (error) => setErrors({ submit: error });
+  const addSponsorMutation = useAddSponsor(onCreateSuccess, onCreateError);
+
   const handleCreate = async () => {
     if ((await validate(data, schema, setErrors)) === null) {
-      console.log("create");
+      addSponsorMutation.mutate(data);
     }
   };
 
-  const handleSaveChanges = async () => {};
+  const onUpdateSuccess = () => {
+    if (!sponsorImage || hasUploadedImage || isEditing) {
+      toast(t("edit_success"));
+    } else {
+      if (sponsorId) {
+        uploadImageMutation.mutate(sponsorId);
+      }
+    }
+  };
+  const onUpdateError = (error) => setErrors({ submit: error });
+  const updateSponsorMutation = useUpdateSponsor(
+    onUpdateSuccess,
+    onUpdateError
+  );
+  const handleSaveChanges = async () => {
+    if ((await validate(data, schema, setErrors)) === null) {
+      const updatedData = {
+        ...data,
+        sponsorId,
+      };
+      if (sponsorImage) {
+        updatedData.image = `sponsor-${sponsorId}`;
+      }
+      updateSponsorMutation.mutate(updatedData);
+    }
+  };
+
+  const handleDiscardChanges = () => {
+    setDataToDataInQuery();
+  };
 
   const openDeleteAccountBackdrop = () => {};
 
@@ -113,13 +197,15 @@ export const AddSponsor = ({ sponsorId }) => {
       <Grid classes="add-sponsor__grid">
         <GridItem md={8} lg={12}>
           <ProfilePicturePreview
-            image="default"
+            image={data.image || "default"}
             changePhotoText={t("select_photo")}
+            handleChangeClick={openUploadPicture}
+            imageFile={sponsorImage}
           />
           <Input
-            value={data.sponsor}
-            onChange={(e) => handleChange("sponsor", e.currentTarget.value)}
-            errorMessage={errors.sponsor}
+            value={data.name}
+            onChange={(e) => handleChange("name", e.currentTarget.value)}
+            errorMessage={errors.name}
             label={t("sponsor_label")}
             placeholder={t("sponsor_placeholder")}
           />
@@ -150,10 +236,10 @@ export const AddSponsor = ({ sponsorId }) => {
               classes="add-sponsor__grid__phone-container__phone-input"
             />
           </div>
-          {errors.phone || errors.phonePrefix ? (
+          {errors.phone || errors.phonePrefix || errors.submit ? (
             <Error
               classes="add-sponsor__grid__phone-error"
-              message={errors.phone || errors.phonePrefix}
+              message={errors.phone || errors.phonePrefix || errors.submit}
             />
           ) : null}
           {!sponsorData ? (
@@ -162,12 +248,19 @@ export const AddSponsor = ({ sponsorId }) => {
               onClick={handleCreate}
               size="lg"
               classes="add-sponsor__grid__create-button"
+              disabled={
+                addSponsorMutation.isLoading || uploadImageMutation.isLoading
+              }
             />
           ) : (
             <>
               <Button
                 label={t("save_changes")}
-                disabled={!canSaveChanges}
+                disabled={
+                  !canSaveChanges ||
+                  updateSponsorMutation.isLoading ||
+                  uploadImageMutation.isLoading
+                }
                 onClick={handleSaveChanges}
                 size="lg"
                 classes="add-sponsor__grid__create-button"
@@ -175,7 +268,7 @@ export const AddSponsor = ({ sponsorId }) => {
 
               <Button
                 label={t("discard_changes")}
-                onClick={handleCreate}
+                onClick={handleDiscardChanges}
                 size="lg"
                 classes="add-sponsor__grid__create-button"
                 type="secondary"

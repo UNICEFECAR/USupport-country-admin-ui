@@ -16,5 +16,7 @@
 
   "save_changes": "Save changes",
   "discard_changes": "Discard changes",
-  "delete_sponsor": "Delete sponsor"
+  "delete_sponsor": "Delete sponsor",
+  "edit_success": "Changes saved successfully",
+  "success": "Sponsor created successfully"
 }
