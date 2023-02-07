@@ -51,10 +51,10 @@ export const EditProvider = () => {
       <UploadPicture
         isOpen={isUploadPictureBackdropOpen}
         onClose={closeUploadPictureBackdrop}
-        providerImage={providerImage}
+        targetImage={providerImage}
         setProviderImage={setProviderImage}
-        setProviderImageUrl={setProviderImageUrl}
-        providerId={providerId}
+        setTargetImageUrl={setProviderImageUrl}
+        fileName={providerId}
       />
       <DeleteProfilePicture
         isOpen={isDeletePictureBackdropShown}
