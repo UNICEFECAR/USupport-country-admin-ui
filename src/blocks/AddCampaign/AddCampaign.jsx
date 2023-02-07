@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 import Joi from "joi";
 
@@ -7,6 +8,8 @@ import {
   Block,
   Button,
   ButtonWithIcon,
+  DateInput,
+  Error,
   Grid,
   GridItem,
   Input,
@@ -17,12 +20,14 @@ import {
 import {
   pascalToSnakeCase,
   validate,
+  getDateDashes,
 } from "@USupport-components-library/utils";
 
-import { useGetCampaignDetails } from "#hooks";
+import { useCreateCampaignForSponsor, useUpdateCampaignData } from "#hooks";
+
+import { transformCampaignData } from "#utils";
 
 import "./add-campaign.scss";
-import { useEffect } from "react";
 
 /**
  * AddCampaign
@@ -31,58 +36,110 @@ import { useEffect } from "react";
  *
  * @return {jsx}
  */
-export const AddCampaign = ({ campaignId }) => {
+export const AddCampaign = ({
+  sponsorName,
+  sponsorId,
+  sponsorImage,
+  campaignData,
+  campaignId,
+}) => {
+  const navigate = useNavigate();
   const currencySymbol = localStorage.getItem("currency_symbol");
   const { t } = useTranslation("add-campaign");
 
   const schema = Joi.object({
-    campaignName: Joi.string().required().label(t("required_field")),
-    code: Joi.string().required().label(t("required_field")),
+    name: Joi.string().required().label(t("required_field")),
+    couponCode: Joi.string().required().label(t("required_field")),
     budget: Joi.number().required().label(t("budget_error")),
-    totalCoupons: Joi.number().required().label(t("required_field")),
+    numberOfCoupons: Joi.number().required().label(t("required_field")),
     startDate: Joi.string().required().label(t("required_field")),
     endDate: Joi.string().required().label(t("required_field")),
-    maxCouponsPerUser: Joi.number().required().label(t("required_field")),
+    maxCouponsPerClient: Joi.number().required().label(t("required_field")),
     termsAndConditions: Joi.string().required().label(t("required_field")),
-    isActive: Joi.boolean().required().label(t("required_field")),
+    active: Joi.boolean().required().label(t("required_field")),
   });
-
-  const campaignDataQuery = useGetCampaignDetails(campaignId);
-  const campaignData = campaignDataQuery.data;
 
   const [data, setData] = useState({
-    campaignName: campaignData ? campaignData.campaignName : "",
-    code: campaignData ? campaignData.code : "",
+    name: campaignData ? campaignData.name : "",
+    couponCode: campaignData ? campaignData.couponCode : "",
     budget: campaignData ? campaignData.budget : "",
-    totalCoupons: campaignData ? campaignData.totalCoupons : "",
-    startDate: campaignData ? campaignData.startDate : "",
-    endDate: campaignData ? campaignData.endDate : "",
-    maxCouponsPerUser: campaignData ? campaignData.maxCouponsPerUser : "",
+    numberOfCoupons: campaignData ? campaignData.numberOfCoupons : "",
+    maxCouponsPerClient: campaignData ? campaignData.maxCouponsPerClient : "",
+    startDate: campaignData ? getDateDashes(campaignData.startDate) : "",
+    endDate: campaignData ? getDateDashes(campaignData.endDate) : "",
     termsAndConditions: campaignData ? campaignData.termsAndConditions : "",
-    isActive: campaignData ? campaignData.isActive : false,
+    active: campaignData ? campaignData.active : false,
   });
+
+  const oldData = {
+    name: campaignData?.name,
+    couponCode: campaignData?.couponCode,
+    budget: campaignData?.budget,
+    numberOfCoupons: campaignData?.numberOfCoupons,
+    maxCouponsPerClient: campaignData?.maxCouponsPerClient,
+    startDate: getDateDashes(campaignData?.startDate),
+    endDate: getDateDashes(campaignData?.endDate),
+    termsAndConditions: campaignData?.termsAndConditions,
+    active: campaignData?.active,
+  };
 
   const [canSaveChanges, setCanSaveChanges] = useState(false);
 
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
-    if (campaignData) {
-      const oldData = JSON.stringify(campaignData);
-      const data = JSON.stringify(data);
+    if (campaignData && oldData) {
+      const dataStr = JSON.stringify(data);
 
-      setCanSaveChanges(oldData !== data);
+      setCanSaveChanges(JSON.stringify(oldData) !== dataStr);
     }
-  }, [data]);
+  }, [data, oldData]);
 
+  const onCreateSuccess = (campaign) => {
+    const campaignData = transformCampaignData(campaign);
+    navigate(
+      `/campaign-details?sponsorId=${sponsorId}&campaignId=${campaign.campaign_id}`,
+      {
+        state: {
+          sponsorName,
+          campaignData,
+          sponsorImage,
+        },
+      }
+    );
+  };
+  const onCreateError = (err) => {
+    setErrors({ submit: err });
+  };
+  const createCampaignMutation = useCreateCampaignForSponsor(
+    onCreateSuccess,
+    onCreateError
+  );
   const handleSubmit = async () => {
     if ((await validate(data, schema, setErrors)) === null) {
-      console.log(data, "success");
+      createCampaignMutation.mutate({
+        sponsorId,
+        ...data,
+      });
     }
   };
-
-  const handleSaveChanges = () => {};
-  const handleCreate = () => {};
+  const updateCampaignMutation = useUpdateCampaignData(
+    onCreateSuccess,
+    onCreateError
+  );
+  const handleSaveChanges = async () => {
+    if ((await validate(data, schema, setErrors)) === null) {
+      updateCampaignMutation.mutate({
+        campaignId,
+        ...data,
+      });
+    } else {
+      console.log(errors);
+    }
+  };
+  const handleDiscardChanges = () => {
+    setData(oldData);
+  };
   const deleteCampaign = () => {};
 
   return (
@@ -104,21 +161,35 @@ export const AddCampaign = ({ campaignId }) => {
                   }}
                 />
               );
-            if (key === "isActive")
+            if (key === "active")
               return (
                 <div
                   key={index}
                   className="add-campaign__grid__toggle-container"
                 >
                   <Toggle
-                    isToggled={data.isActive}
+                    isToggled={data.active}
                     shouldChangeState
                     setParentState={(toggled) =>
-                      setData({ ...data, isActive: toggled })
+                      setData({ ...data, active: toggled })
                     }
                   />
                   <h4>{t("activate")}</h4>
                 </div>
+              );
+            if (key.includes("Date"))
+              return (
+                <DateInput
+                  key={index}
+                  label={t(`${keyName}_label`)}
+                  placeholder={t("dates_placeholder")}
+                  value={data[key]}
+                  errorMessage={errors[key]}
+                  onChange={(e) => {
+                    let value = e.currentTarget.value;
+                    setData({ ...data, [key]: value });
+                  }}
+                />
               );
             return (
               <Input
@@ -137,6 +208,7 @@ export const AddCampaign = ({ campaignId }) => {
               />
             );
           })}
+          {errors.submit && <Error message={errors.submit} />}
           {!campaignData ? (
             <Button
               onClick={handleSubmit}
@@ -147,7 +219,7 @@ export const AddCampaign = ({ campaignId }) => {
             <>
               <Button
                 label={t("save_changes")}
-                disabled={!canSaveChanges}
+                disabled={!canSaveChanges || updateCampaignMutation.isLoading}
                 onClick={handleSaveChanges}
                 size="lg"
                 classes="add-campaign__grid__create-button"
@@ -155,7 +227,8 @@ export const AddCampaign = ({ campaignId }) => {
 
               <Button
                 label={t("discard_changes")}
-                onClick={handleCreate}
+                onClick={handleDiscardChanges}
+                disabled={!canSaveChanges}
                 size="lg"
                 classes="add-campaign__grid__create-button"
                 type="secondary"
