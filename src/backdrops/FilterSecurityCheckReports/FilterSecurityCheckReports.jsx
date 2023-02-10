@@ -51,7 +51,6 @@ export const FilterSecurityCheckReports = ({
   }, [data]);
 
   const handleChange = (field, value) => {
-    console.log(value);
     const dataCopy = { ...filtersData };
     dataCopy[field] = value;
     setFiltersData(dataCopy);

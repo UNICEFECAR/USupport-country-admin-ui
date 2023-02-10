@@ -21,34 +21,33 @@ export const UploadPicture = ({
   isOpen,
   onClose,
   handleUploadFile,
-  providerImage,
-  providerId,
-  setProviderImageUrl,
+  targetImage,
+  fileName,
+  sponsorId,
+  setTargetImageUrl,
 }) => {
   const { t } = useTranslation("upload-picture");
 
   const [image, setImage] = useState(
-    AMAZON_S3_BUCKET + "/" + (providerImage || "default")
+    AMAZON_S3_BUCKET + "/" + (targetImage || "default")
   );
   const [error, setError] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    setImage(AMAZON_S3_BUCKET + "/" + (providerImage || "default"));
-  }, [providerImage]);
+    setImage(AMAZON_S3_BUCKET + "/" + (targetImage || "default"));
+  }, [targetImage]);
 
   const uploadFile = async (data) => {
     if (handleUploadFile) {
       handleUploadFile(data);
     } else {
       const content = new FormData();
-      content.append("fileName", providerId);
+      content.append("fileName", fileName);
       content.append("fileContent", data.imageFile);
-      await Promise.all[
-        (userSvc.uploadFileAsAdmin(content),
-        providerSvc.changeImageAsAdmin(providerId, providerId))
-      ];
-      setProviderImageUrl(data.imageAsUrl);
+
+      await userSvc.uploadFileAsAdmin(content);
+      setTargetImageUrl(data.imageAsUrl);
     }
     return true;
   };

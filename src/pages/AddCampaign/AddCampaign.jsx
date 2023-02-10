@@ -22,6 +22,7 @@ export const AddCampaign = () => {
 
   const location = useLocation();
   const sponsorName = location.state?.sponsorName;
+  const sponsorImage = location.state?.sponsorImage;
 
   if (!sponsorId) return <Navigate to="/campaigns" />;
 
@@ -31,7 +32,11 @@ export const AddCampaign = () => {
       handleGoBack={() => navigate(-1)}
       classes="page__add-campaign"
     >
-      <AddCampaignBlock />
+      <AddCampaignBlock
+        sponsorId={sponsorId}
+        sponsorName={sponsorName}
+        sponsorImage={sponsorImage}
+      />
     </Page>
   );
 };

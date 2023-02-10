@@ -67,8 +67,7 @@ export const CreateProvider = () => {
         isOpen={isUploadPictureBackdropOpen}
         onClose={closeUploadPictureBackdrop}
         handleUploadFile={handleUploadFile}
-        providerImage={providerImage}
-        setProviderImage={setProviderImage}
+        targetImage={providerImage}
       />
       <DeleteProfilePicture
         isOpen={isDeletePictureBackdropShown}

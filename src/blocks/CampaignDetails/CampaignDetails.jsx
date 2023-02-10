@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 import {
@@ -11,11 +11,15 @@ import {
   Loading,
 } from "@USupport-components-library/src";
 
-import { pascalToSnakeCase } from "@USupport-components-library/utils";
+import {
+  pascalToSnakeCase,
+  getDateView,
+} from "@USupport-components-library/utils";
 
-import { useGetCampaignDetails } from "#hooks";
+import { useGetCouponsData, useUpdateCampaignData } from "#hooks";
 
 import "./campaign-details.scss";
+import { toast } from "react-toastify";
 
 /**
  * CampaignDetails
@@ -24,42 +28,63 @@ import "./campaign-details.scss";
  *
  * @return {jsx}
  */
-export const CampaignDetails = ({ campaignId }) => {
+export const CampaignDetails = ({ data, campaignId }) => {
   const { t } = useTranslation("campaign-details");
 
   const currencySymbol = localStorage.getItem("currency_symbol");
 
-  const campaignDetailsQuery = useGetCampaignDetails(campaignId);
-  const data = campaignDetailsQuery.data;
-
   const fieldsToDisplay = [
-    "code",
+    "couponCode",
     "usedCoupons",
-    "totalCoupons",
-    "pricePerCoupon",
+    "numberOfCoupons",
+    "couponPrice",
     "usedBudget",
     "budget",
-    "maxCouponsPerUser",
+    "maxCouponsPerClient",
     "startDate",
     "endDate",
   ];
 
+  const { data: couponsData, isLoading } = useGetCouponsData(campaignId);
+  console.log(data, "data");
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    if (data) {
+      setIsActive(data.active);
+    }
+  }, [data]);
+
   const tableRows = ["№", t("provider"), t("used_on")];
 
-  const tableRowsData = data?.usedCouponsData.map((coupon, index) => {
-    return [
-      <p>{coupon.id}</p>,
-      <p>{coupon.providerData.providerName}</p>,
-      <p>{coupon.usedOn}</p>,
-    ];
-  });
+  const getTableRowsData = useCallback(() => {
+    return couponsData?.map((coupon, index) => {
+      return [
+        <p>{index + 1}</p>,
+        <p>{coupon.providerName}</p>,
+        <p>{getDateView(coupon.createdAt)}</p>,
+      ];
+    });
+  }, [couponsData]);
 
-  const handleChangeCampaignStatus = (status) => {
-    console.log(status === true ? "active" : "inactive");
+  const onSuccess = (data) => {
+    toast(t(data.active ? "campaign_activated" : "campaign_deactivated"));
+  };
+  const onError = () => {
+    toast(t("update_error"), { type: "error" });
+    setIsActive(data.active);
+  };
+  const updateCampaignMutation = useUpdateCampaignData(onSuccess, onError);
+
+  const handleChangeCampaignStatus = () => {
+    setIsActive(!isActive);
+    updateCampaignMutation.mutate({
+      ...data,
+      active: !isActive,
+    });
   };
 
   const handleExportReport = () => {};
-
   return (
     <Block classes="campaign-details">
       <Grid classes="campaign-details__grid">
@@ -79,50 +104,47 @@ export const CampaignDetails = ({ campaignId }) => {
             />
           </div>
         </GridItem>
-        {campaignDetailsQuery.isLoading ? (
+
+        <>
           <GridItem md={8} lg={12}>
-            <Loading />
+            <div className="campaign-details__grid__activate-campaign">
+              <Toggle
+                isToggled={isActive}
+                setParentState={(toggled) =>
+                  handleChangeCampaignStatus(toggled)
+                }
+              />
+              <p>{t(isActive ? "deactivate_campaign" : "activate_campaign")}</p>
+            </div>
           </GridItem>
-        ) : (
-          <>
-            <GridItem md={8} lg={12}>
-              <div className="campaign-details__grid__activate-campaign">
-                <Toggle
-                  isToggled={data.status === "active"}
-                  setParentState={(toggled) =>
-                    handleChangeCampaignStatus(toggled)
-                  }
-                />
+          {fieldsToDisplay.map((field, index) => {
+            const fieldLabel = t(pascalToSnakeCase(field));
+            const showCurrencySymbol = [
+              "usedBudget",
+              "budget",
+              "couponPrice",
+            ].includes(field);
+            return (
+              <GridItem md={2} lg={3} key={index}>
                 <p>
-                  {t(
-                    data.isActive ? "deactivate_campaign" : "activate_campaign"
-                  )}
+                  {fieldLabel}:{" "}
+                  <strong>
+                    {field.includes("Date")
+                      ? getDateView(data[field])
+                      : data[field]}
+                    {showCurrencySymbol ? currencySymbol : ""}
+                  </strong>
                 </p>
-              </div>
-            </GridItem>
-            {fieldsToDisplay.map((field, index) => {
-              const fieldLabel = t(pascalToSnakeCase(field));
-              const showCurrencySymbol = [
-                "usedBudget",
-                "budget",
-                "pricePerCoupon",
-              ].includes(field);
-              return (
-                <GridItem md={2} key={index}>
-                  <p>
-                    {fieldLabel}:{" "}
-                    <strong>
-                      {data[field]}
-                      {showCurrencySymbol ? currencySymbol : ""}
-                    </strong>
-                  </p>
-                </GridItem>
-              );
-            })}
-          </>
-        )}
+              </GridItem>
+            );
+          })}
+        </>
       </Grid>
-      <BaseTable rows={tableRows} rowsData={tableRowsData} />
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <BaseTable rows={tableRows} rowsData={getTableRowsData()} />
+      )}
     </Block>
   );
 };

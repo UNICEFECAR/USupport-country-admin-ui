@@ -3,15 +3,18 @@
   "export_report": "Export report",
   "activate_campaign": "Activate Campaign",
   "deactivate_campaign": "Deactivate Campaign",
-  "code": "Coupon code",
+  "coupon_code": "Coupon code",
   "used_coupons": "Used coupons",
-  "total_coupons": "Total coupons",
-  "price_per_coupon": "Price per coupon",
+  "number_of_coupons": "Total coupons",
+  "coupon_price": "Price per coupon",
   "used_budget": "Used budget",
   "budget": "Budget",
-  "max_coupons_per_user": "Max coupons per user",
+  "max_coupons_per_client": "Max coupons per client",
   "start_date": "Start date",
   "end_date": "End date",
   "provider": "Provider",
-  "used_on": "Used on"
+  "used_on": "Used on",
+  "campaign_activated": "Campaign activated successfully",
+  "campaign_deactivated": "Campaign deactivated successfully",
+  "update_error": "An error occured. Please try again."
 }

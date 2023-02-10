@@ -15,7 +15,11 @@ import "./campaigns.scss";
 export const Campaigns = () => {
   const { t } = useTranslation("campaigns-page");
   return (
-    <Page classes="page__campaigns" heading={t("heading")}>
+    <Page
+      showGoBackArrow={false}
+      classes="page__campaigns"
+      heading={t("heading")}
+    >
       <CampaignsBlock />
     </Page>
   );

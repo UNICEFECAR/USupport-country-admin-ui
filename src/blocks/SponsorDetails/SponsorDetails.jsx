@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -10,6 +10,8 @@ import {
   GridItem,
   InputSearch,
 } from "@USupport-components-library/src";
+
+import { getDateView } from "@USupport-components-library/utils";
 
 import "./sponsor-details.scss";
 
@@ -25,49 +27,54 @@ export const SponsorDetails = ({ data }) => {
   const { t } = useTranslation("sponsor-details");
   const currencySymbol = localStorage.getItem("currency_symbol");
 
+  const [searchValue, setSearchValue] = useState("");
+
   const rows = [
     t("campaign"),
     t("used_total_coupons"),
     t("coupon_price"),
-    t("used_total_price"),
+    t("used_total_budget"),
     t("max_coupons"),
     t("period"),
     t("status"),
   ];
 
-  const rowsData = data.campaignsData.map((item) => {
-    return [
-      <p>{item.campaignName}</p>,
-      <p>
-        {item.usedCoupons}/{item.totalCoupons}
-      </p>,
-      <p>
-        {item.price}
-        {currencySymbol}
-      </p>,
-      <p>
-        {item.price * item.usedCoupons}
-        {currencySymbol}/{item.totalPrice}
-        {currencySymbol}
-      </p>,
-      <p>{item.maxCouponsPerUser}</p>,
-      <p>
-        {item.startDate} - {item.endDate}
-      </p>,
-      <p>{t(item.status)}</p>,
-    ];
-  });
+  const rowsData = data.campaignsData
+    ?.filter((x) => x.name.toLowerCase().includes(searchValue.toLowerCase()))
+    .map((item) => {
+      return [
+        <p>{item.name}</p>,
+        <p>
+          {item.couponData.length}/{item.numberOfCoupons}
+        </p>,
+        <p>
+          {item.couponPrice}
+          {currencySymbol}
+        </p>,
+        <p>
+          {item.couponPrice * item.couponData.length}
+          {currencySymbol}/{item.budget}
+          {currencySymbol}
+        </p>,
+        <p>{item.maxCouponsPerClient}</p>,
+        <p>
+          {getDateView(item.startDate)} - {getDateView(item.endDate)}
+        </p>,
+        <p>{t(item.active ? "active" : "inactive")}</p>,
+      ];
+    });
 
   const handleNavigate = (id, route) => {
+    const campaignData = data.campaignsData?.find((x) => x.campaignId === id);
+    console.log(campaignData);
     navigate(`/${route}?campaignId=${id}`, {
       state: {
         sponsorName: data.sponsorName,
-        campaignName: data.campaignsData.find((x) => x.campaignId === id)
-          .campaignName,
+        sponsorImage: data.image,
+        campaignData,
       },
     });
   };
-
   const menuOptions = [
     {
       icon: "view",
@@ -83,7 +90,7 @@ export const SponsorDetails = ({ data }) => {
 
   const handleAddCampaign = () =>
     navigate(`/add-campaign?sponsorId=${data.sponsorId}`, {
-      state: { sponsorName: data.sponsorName },
+      state: { sponsorName: data.sponsorName, sponsorImage: data.image },
     });
 
   return (
@@ -118,12 +125,19 @@ export const SponsorDetails = ({ data }) => {
 
         <GridItem md={2} classes="sponsor-details__grid-item">
           <p>
-            {t("phone_number")}: <strong>{data.phoneNumber}</strong>
+            {t("phone_number")}:{" "}
+            <strong>
+              {data.phonePrefix} {data.phone}
+            </strong>
           </p>
         </GridItem>
 
         <GridItem md={8} classes="sponsor-details__grid-item">
-          <InputSearch placeholder={t("search")} />
+          <InputSearch
+            placeholder={t("search")}
+            value={searchValue}
+            onChange={setSearchValue}
+          />
         </GridItem>
       </Grid>
       <BaseTable

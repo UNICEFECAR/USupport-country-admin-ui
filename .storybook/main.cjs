@@ -39,6 +39,7 @@ module.exports = {
           "#services": path.resolve(__dirname, "../src/services"),
           "#routes": path.resolve(__dirname, "../src/routes"),
           "#backdrops": path.resolve(__dirname, "../src/backdrops"),
+          "#utils": path.resolve(__dirname, "../src/utils"),
         },
       },
     });

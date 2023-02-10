@@ -48,6 +48,7 @@ import {
   AddSponsor as AddSponsorPage,
   AddCampaign as AddCampaignPage,
   EditCampaign as EditCampaignPage,
+  EditSponsor as EditSponsorPage,
 } from "#pages/locales.js";
 
 import {
@@ -105,6 +106,7 @@ const resources = {
     "add-sponsor-page": AddSponsorPage.en,
     "add-campaign-page": AddCampaignPage.en,
     "edit-campaign-page": EditCampaignPage.en,
+    "edit-sponsor-page": EditSponsorPage.en,
 
     // Backdrops
     "upload-picture": UploadPicture.en,

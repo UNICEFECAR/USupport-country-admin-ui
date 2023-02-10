@@ -29,7 +29,8 @@ export const useIsLoggedIn = () => {
         throw new Error("Token expired");
       }
     },
-    onError: () => {
+    onError: (err) => {
+      console.log(err);
       throw new Error("Token expired");
     },
     retry: false,

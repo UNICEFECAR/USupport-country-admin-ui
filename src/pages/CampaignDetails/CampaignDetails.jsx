@@ -1,7 +1,10 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Navigate } from "react-router-dom";
+
 import { Page, CampaignDetails as CampaignDetailsBlock } from "#blocks";
+
+const AMAZON_S3_BUCKET = `${import.meta.env.VITE_AMAZON_S3_BUCKET}`;
 
 import "./campaign-details.scss";
 
@@ -24,16 +27,21 @@ export const CampaignDetails = () => {
   const campaignId = new URLSearchParams(window.location.search).get(
     "campaignId"
   );
+
   const sponsorName = location.state?.sponsorName;
-  const campaignName = location.state?.campaignName;
+  const sponsorImage = location.state?.sponsorImage;
+  const campaignData = location.state?.campaignData;
+
+  if (!campaignId || !campaignData) return <Navigate to="/sponsors" />;
 
   return (
     <Page
-      heading={`${sponsorName} / ${campaignName}`}
+      heading={`${sponsorName} / ${campaignData.name}`}
+      image={sponsorImage ? `${AMAZON_S3_BUCKET}/${sponsorImage}` : null}
       classes="page__campaign-details"
       handleGoBack={() => navigate(-1)}
     >
-      <CampaignDetailsBlock campaignId={campaignId} />
+      <CampaignDetailsBlock campaignId={campaignId} data={campaignData} />
     </Page>
   );
 };
