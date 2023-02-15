@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import countryCodes from "country-codes-list";
 import Joi from "joi";
+import { toast } from "react-toastify";
 
 import {
   Block,
@@ -24,7 +25,6 @@ import { userSvc } from "@USupport-components-library/services";
 import { useGetSponsorData, useAddSponsor, useUpdateSponsor } from "#hooks";
 
 import "./add-sponsor.scss";
-import { toast } from "react-toastify";
 
 /**
  * AddSponsor
@@ -147,7 +147,7 @@ export const AddSponsor = ({
     if (sponsorImage && !hasUploadedImage) {
       uploadImageMutation.mutate(sponsorId);
     } else {
-      toast("success");
+      toast(t("success"));
     }
   };
   const onCreateError = (error) => setErrors({ submit: error });
