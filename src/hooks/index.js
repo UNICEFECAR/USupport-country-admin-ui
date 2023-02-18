@@ -22,3 +22,4 @@ export * from "./useCreateCampaignForSponsor.js";
 export * from "./useUpdateCampaignData.js";
 export * from "./useGetCouponsData.js";
 export * from "./useCountdownTimer.js";
+export * from "./useEventListener.js";
