@@ -45,7 +45,6 @@ export const Campaigns = () => {
       x.sponsorName.toLowerCase().includes(searchValue.toLowerCase())
     )
     .map((item, index) => {
-      console.log(item);
       return [
         <div key={"item" + index} className="campaigns__sponsor">
           <img
@@ -76,6 +75,15 @@ export const Campaigns = () => {
     },
   ];
 
+  const reduceCampaigns = (array, key) => {
+    const filtered = array?.filter(
+      (x) => Number(x.totalCampaigns) && Number(x.activeCampaigns)
+    );
+    if (filtered?.length > 0) {
+      return filtered?.reduce((a, b) => Number(a[key]) + Number(b[key]));
+    }
+  };
+
   return (
     <Block classes="campaigns">
       <div className="campaigns__buttons">
@@ -96,30 +104,13 @@ export const Campaigns = () => {
         <GridItem xs={4} md={2} lg={3}>
           <p>
             {t("campaigns")}:{" "}
-            <strong>
-              {data
-                ?.filter(
-                  (x) => Number(x.totalCampaigns) && Number(x.activeCampaigns)
-                )
-                .reduce(
-                  (a, b) => Number(a.totalCampaigns) + Number(b.totalCampaigns)
-                )}
-            </strong>
+            <strong>{reduceCampaigns(data, "totalCampaigns")}</strong>
           </p>
         </GridItem>
         <GridItem xs={4} md={2} lg={3}>
           <p>
             {t("active_campaigns")}:{" "}
-            <strong>
-              {data
-                ?.filter(
-                  (x) => Number(x.totalCampaigns) && Number(x.activeCampaigns)
-                )
-                .reduce(
-                  (a, b) =>
-                    Number(a.activeCampaigns) + Number(b.activeCampaigns)
-                )}
-            </strong>
+            <strong>{reduceCampaigns(data, "activeCampaigns")}</strong>
           </p>
         </GridItem>
         <GridItem xs={4} md={8} lg={3}>

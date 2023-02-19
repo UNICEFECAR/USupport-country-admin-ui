@@ -144,6 +144,7 @@ export const Page = ({
           countries={countries}
           initialLanguage={selectedLanguage}
           initialCountry={selectedCountry}
+          renderIn="country-admin"
         />
       )}
       <div

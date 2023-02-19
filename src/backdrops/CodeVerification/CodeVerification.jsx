@@ -4,6 +4,8 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import PinInput from "react-pin-input";
 
+import { useError, useCountdownTimer } from "#hooks";
+
 import {
   Backdrop,
   ButtonWithIcon,
@@ -12,11 +14,6 @@ import {
 } from "@USupport-components-library/src";
 
 import { adminSvc } from "@USupport-components-library/services";
-
-import {
-  useCountdownTimer,
-  useError,
-} from "@USupport-components-library/hooks";
 
 import "./code-verification.scss";
 
