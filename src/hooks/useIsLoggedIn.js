@@ -35,6 +35,8 @@ export const useIsLoggedIn = () => {
       }
     },
     onError: () => {
+      localStorage.removeItem("isRefreshingToken");
+
       setResult(false);
     },
     retry: false,
