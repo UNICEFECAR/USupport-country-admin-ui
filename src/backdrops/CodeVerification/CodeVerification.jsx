@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import PinInput from "react-pin-input";
 
-import { useError, useCountdownTimer } from "#hooks";
+import { useError } from "#hooks";
 
 import {
   Backdrop,
@@ -24,24 +24,23 @@ import "./code-verification.scss";
  *
  * @return {jsx}
  */
-export const CodeVerification = ({ isOpen, onClose, data }) => {
+export const CodeVerification = ({
+  isOpen,
+  onClose,
+  data,
+  requestOTP,
+  resendTimer,
+  showTimer,
+  canRequestNewEmail,
+  isMutating,
+}) => {
   const { t } = useTranslation("code-verification");
   const navigate = useNavigate();
   const queryClient = useQueryClient();
 
   const [isCodeHidden, setIsCodeHidden] = useState(true);
-  const [canRequestNewEmail, setCanRequestNewEmail] = useState(false);
   const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState();
 
-  const timeToRequestNewEmail = useCountdownTimer(3);
-  useEffect(() => {
-    if (timeToRequestNewEmail[2] === 0 && timeToRequestNewEmail[3] === 0) {
-      setCanRequestNewEmail(true);
-    }
-  }, [timeToRequestNewEmail]);
-
-  const time = useCountdownTimer();
   const [code, setCode] = useState("");
 
   const login = async () => {
@@ -64,9 +63,6 @@ export const CodeVerification = ({ isOpen, onClose, data }) => {
     onError: (err) => {
       const { message: errorMessage } = useError(err);
       setErrors({ submit: errorMessage });
-    },
-    onSettled: () => {
-      setIsSubmitting(false);
     },
   });
 
@@ -93,10 +89,6 @@ export const CodeVerification = ({ isOpen, onClose, data }) => {
           secret={isCodeHidden}
           onChange={(value) => handleCodeChange(value)}
         />
-        <p className="small-text code-verification__expire-time-text">
-          {t("expiration_text")} {time[2]}:
-          {time[3] > 9 ? time[3] : "0" + time[3]}
-        </p>
         <ButtonWithIcon
           classes="code-verification__view-code-button"
           type="ghost"
@@ -116,17 +108,22 @@ export const CodeVerification = ({ isOpen, onClose, data }) => {
           classes="code-verification__send-button"
           disabled={code.length === 4 ? false : true}
           onClick={handleSend}
+          loading={loginMutation.isLoading}
         />
         {errors.submit && <Error message={errors.submit} />}
         <div className="code-verification__resend-code-container">
           <p className="small-text">{t("didnt_get_code")}</p>
+
           <Button
-            disabled={!canRequestNewEmail}
+            disabled={!canRequestNewEmail || isMutating}
             label={t("resend_code_button_label")}
             type="link"
             classes="code-verification__resend-code-container__button"
-            onClick={handleSend}
+            onClick={requestOTP}
           />
+          <p className="small-text">
+            {showTimer ? t("seconds", { seconds: resendTimer }) : ""}
+          </p>
         </div>
       </div>
     </Backdrop>
