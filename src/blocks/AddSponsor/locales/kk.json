@@ -1,0 +1,22 @@
+{
+  "select_photo": "Select photo",
+  "sponsor_label": "Sponsor",
+  "email_label": "Электронды пошта",
+  "phone_label": "Телефон",
+  "sponsor_placeholder": "Enter name of sponsor",
+  "email_placeholder": "Enter email address",
+  "phone_placeholder": "Enter phone number",
+  "phone_prefix_placeholder": "Префикс",
+  "create_sponsor": "Create sponsor",
+
+  "sponsor_error": "Sponsor name is required",
+  "email_error": "Email is required",
+  "phone_prefix_error": "Телефон префиксін көрсету қажет",
+  "phone_error": "Телефон нөмірін көрсету қажет",
+
+  "save_changes": "Өзгерістерді сақтау",
+  "discard_changes": "Өзгерістерді болдырмау",
+  "delete_sponsor": "Delete sponsor",
+  "edit_success": "Changes saved successfully",
+  "success": "Sponsor created successfully"
+}

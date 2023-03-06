@@ -1,0 +1,14 @@
+{
+  "client": "Клиенттер",
+  "time": "Рет",
+  "price": "Price",
+  "campaign": "Campaign",
+  "free": "Бос",
+  "export_label": "Export",
+  "filter": "Сүзгі",
+  "filters": "Filters",
+  "no_results": "No activities found",
+  "start_date": "Басталу күні",
+  "end_date": "Аяқталу күні",
+  "submit": "Apply filters"
+}
