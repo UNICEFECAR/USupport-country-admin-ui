@@ -1,0 +1,12 @@
+{
+  "email": "Электронная почта",
+  "name": "Имя",
+  "nickname": "Псевдоним",
+  "time": "Time of suggestion",
+  "content_heading": "Suggestions",
+  "heading": "Information portal suggestions",
+  "filters": "Filters",
+  "starting_date": "Starting date",
+  "submit": "Apply filters",
+  "no_results": "There are no suggestions found"
+}

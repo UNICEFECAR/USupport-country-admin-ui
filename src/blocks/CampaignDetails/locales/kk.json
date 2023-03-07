@@ -1,0 +1,20 @@
+{
+  "filter": "Сүзгі",
+  "export_report": "Export report",
+  "activate_campaign": "Activate Campaign",
+  "deactivate_campaign": "Deactivate Campaign",
+  "coupon_code": "Coupon code",
+  "used_coupons": "Used coupons",
+  "number_of_coupons": "Total coupons",
+  "coupon_price": "Price per coupon",
+  "used_budget": "Used budget",
+  "budget": "Budget",
+  "max_coupons_per_client": "Max coupons per client",
+  "start_date": "Басталу күні",
+  "end_date": "Аяқталу күні",
+  "provider": "Консультанттар",
+  "used_on": "Used on",
+  "campaign_activated": "Campaign activated successfully",
+  "campaign_deactivated": "Campaign deactivated successfully",
+  "update_error": "An error occured. Please try again."
+}

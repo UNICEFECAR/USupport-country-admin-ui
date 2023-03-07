@@ -1,0 +1,22 @@
+{
+  "select_photo": "Select photo",
+  "sponsor_label": "Sponsor",
+  "email_label": "Электронная почта",
+  "phone_label": "Телефон",
+  "sponsor_placeholder": "Enter name of sponsor",
+  "email_placeholder": "Enter email address",
+  "phone_placeholder": "Enter phone number",
+  "phone_prefix_placeholder": "Префикс",
+  "create_sponsor": "Create sponsor",
+
+  "sponsor_error": "Sponsor name is required",
+  "email_error": "Email is required",
+  "phone_prefix_error": "Необходимо указать префикс телефона",
+  "phone_error": "Необходимо указать номер телефона",
+
+  "save_changes": "Сохранить изменения",
+  "discard_changes": "Отменить изменения",
+  "delete_sponsor": "Delete sponsor",
+  "edit_success": "Changes saved successfully",
+  "success": "Sponsor created successfully"
+}
