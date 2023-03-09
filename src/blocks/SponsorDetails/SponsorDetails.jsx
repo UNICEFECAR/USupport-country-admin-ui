@@ -66,7 +66,6 @@ export const SponsorDetails = ({ data }) => {
 
   const handleNavigate = (id, route) => {
     const campaignData = data.campaignsData?.find((x) => x.campaignId === id);
-    console.log(campaignData);
     navigate(`/${route}?campaignId=${id}`, {
       state: {
         sponsorName: data.sponsorName,
