@@ -7,8 +7,6 @@
   "done_consultations_label": "Overall done consultations",
   "description_label": "About me",
   "edit_details": "Edit details",
-  "change_password": "Change password",
-  "delete_account": "Delete account",
   "no_available_slot": "There is no available slot",
   "video_label": "Video representation",
   "city_label": "City",
@@ -27,6 +25,5 @@
   "anxiety": "Anxiety",
   "panic_attack": "Panic attack",
   "relationship": "Relationship",
-  "personal_development": "Personal development",
-  "hour_consultation": "for 1 hour consultation"
+  "personal_development": "Personal development"
 }

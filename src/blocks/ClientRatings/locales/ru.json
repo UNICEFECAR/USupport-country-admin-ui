@@ -1,0 +1,17 @@
+{
+  "heading": "Client Ratings",
+  "email": "Электронная почта",
+  "name": "Имя",
+  "nickname": "Псевдоним",
+  "rating": "Rating",
+  "time": "Раз",
+  "content_heading": "Feedback",
+
+  "filters": "Filters",
+  "filter": "Filter",
+  "minimum_rating": "Minimum rating",
+  "all": "All ratings",
+  "starting_date": "Starting date",
+  "submit": "Apply filters",
+  "no_results": "There are no ratings found"
+}

@@ -1,0 +1,29 @@
+{
+  "earliest_slot_label": "Самое раннее доступное свободное время для консультации",
+  "languages_label": "Языки",
+  "education_label": "Образование",
+  "work_with_label": "Специальности",
+  "specializations_label": "Специализации",
+  "done_consultations_label": "Всего проведено консультаций",
+  "description_label": "Обо мне",
+  "edit_details": "Редактировать детали",
+  "no_available_slot": "Нет свободного времени",
+  "video_label": "Видео-представление",
+  "city_label": "Город",
+  "street_label": "Улица",
+  "postcode_label": "Почтовый индекс",
+
+  "psychologist": "Психолог",
+  "psychiatrist": "Психиатр",
+  "psychotherapist": "Психотерапевт",
+
+  "addiction": "Зависимость",
+  "stress": "Стресс",
+  "burnout": "Выгорание",
+  "eating_disorder": "Расстройство пищевого поведения",
+  "depression": "Депрессия",
+  "anxiety": "Тревожность",
+  "panic_attack": "Паническая атака",
+  "relationship": "Отношения",
+  "personal_development": "Личное развитие"
+}

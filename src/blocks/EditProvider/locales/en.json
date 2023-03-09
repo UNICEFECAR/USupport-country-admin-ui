@@ -1,5 +1,4 @@
 {
-  "password_label": "Password",
   "name_label": "Name",
   "patronym_label": "Patronym",
   "surname_label": "Surname",
@@ -18,7 +17,6 @@
   "work_with_label": "Work with Category",
   "video_link_label": "Video representation",
 
-  "password_placeholder": "Enter a password",
   "name_placeholder": "Enter name",
   "patronym_placeholder": "Enter you patronym",
   "surname_placeholder": "Enter surname",
@@ -42,7 +40,6 @@
   "psychiatrist": "Psychiatrist",
   "psychotherapist": "Psychotherapist",
 
-  "password_error": "Password should contain at least 8 characters, 1 uppercase letter, 1 lowercase letter and 1 number",
   "name_error": "Name is required",
   "surname_error": "Surname is required",
   "nickname_error": "Nickname is required",

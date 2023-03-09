@@ -4,7 +4,7 @@
   "expiration_text": "Code will expire in ",
   "button_with_icon_label_view": "View Code",
   "button_with_icon_label_hide": "Hide Code",
-  "send_button_label": "Send",
+  "send_button_label": "Continue",
   "didnt_get_code": "Didn’t get code?",
   "resend_code_button_label": "Resend email",
   "seconds": "in {{seconds}} seconds"
