@@ -104,25 +104,25 @@ export const SponsorDetails = ({ data }) => {
         />
       </div>
       <Grid classes="sponsor-details__grid">
-        <GridItem md={2} classes="sponsor-details__grid-item">
+        <GridItem md={2} lg={2} classes="sponsor-details__grid-item">
           <p>
             {t("campaigns")}: <strong>{data.campaigns}</strong>
           </p>
         </GridItem>
 
-        <GridItem md={2} classes="sponsor-details__grid-item">
+        <GridItem md={2} lg={2} classes="sponsor-details__grid-item">
           <p>
             {t("active_campaigns")}: <strong>{data.activeCampaigns}</strong>
           </p>
         </GridItem>
 
-        <GridItem md={2} classes="sponsor-details__grid-item">
+        <GridItem md={2} lg={3} classes="sponsor-details__grid-item">
           <p>
             {t("email")}: <strong>{data.email}</strong>
           </p>
         </GridItem>
 
-        <GridItem md={2} classes="sponsor-details__grid-item">
+        <GridItem md={2} lg={3} classes="sponsor-details__grid-item">
           <p>
             {t("phone_number")}:{" "}
             <strong>
@@ -131,7 +131,7 @@ export const SponsorDetails = ({ data }) => {
           </p>
         </GridItem>
 
-        <GridItem md={8} classes="sponsor-details__grid-item">
+        <GridItem md={8} lg={2} classes="sponsor-details__grid-item">
           <InputSearch
             placeholder={t("search")}
             value={searchValue}

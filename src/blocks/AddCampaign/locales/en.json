@@ -16,9 +16,13 @@
   "dates_placeholder": "DD.MM.YYYY",
   "max_coupons_per_client_placeholder": "Max coupons per client",
   "terms_placeholder": "Write the terms and conditions",
+  "budget_info": "The price for a single consultation will be",
 
   "required_field": "The field is required",
   "budget_error": "The budget should be a positive number",
+  "start_date_error": "The start date of the campaign should be in the future",
+  "end_date_error": "The end date of the campaign should be in the future",
+  "period_error": "The end date should be after the start date",
 
   "create_campaign": "Create campaign",
   "save_changes": "Save changes",

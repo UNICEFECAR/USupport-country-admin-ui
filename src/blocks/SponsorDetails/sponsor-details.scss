@@ -13,6 +13,7 @@
   &__grid {
     padding-top: $spacing_2_4;
     justify-items: start;
+    align-items: center;
 
     @media screen and (min-width: $screen-md) {
       justify-items: center;
@@ -24,6 +25,15 @@
 
       @media screen and (min-width: $screen-md) {
         margin-bottom: $spacing_5_0;
+      }
+
+      @media screen and (min-width: $screen-lg) {
+        margin: 0;
+        width: 22rem;
+      }
+
+      @media screen and (min-width: 1920px) {
+        width: 28rem;
       }
     }
   }

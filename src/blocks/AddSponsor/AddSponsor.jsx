@@ -148,6 +148,7 @@ export const AddSponsor = ({
       uploadImageMutation.mutate(sponsorId);
     } else {
       toast(t("success"));
+      navigate("/campaigns");
     }
   };
   const onCreateError = (error) => setErrors({ submit: error });
@@ -189,8 +190,6 @@ export const AddSponsor = ({
   const handleDiscardChanges = () => {
     setDataToDataInQuery();
   };
-
-  const openDeleteAccountBackdrop = () => {};
 
   return (
     <Block classes="add-sponsor">
@@ -273,16 +272,6 @@ export const AddSponsor = ({
                 classes="add-sponsor__grid__create-button"
                 type="secondary"
                 color="green"
-              />
-              <ButtonWithIcon
-                iconName={"circle-close"}
-                iconSize={"md"}
-                size="lg"
-                iconColor={"#eb5757"}
-                color={"red"}
-                label={t("delete_sponsor")}
-                type={"ghost"}
-                onClick={openDeleteAccountBackdrop}
               />
             </>
           )}
