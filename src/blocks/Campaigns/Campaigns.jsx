@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -75,14 +75,23 @@ export const Campaigns = () => {
     },
   ];
 
-  const reduceCampaigns = (array, key) => {
-    const filtered = array?.filter(
-      (x) => Number(x.totalCampaigns) && Number(x.activeCampaigns)
-    );
-    if (filtered?.length > 0) {
-      return filtered?.reduce((a, b) => Number(a[key]) + Number(b[key]));
-    }
-  };
+  const reduceCampaigns = useCallback(
+    (array, key) => {
+      const filtered = array?.filter(
+        (x) => Number(x.totalCampaigns) && Number(x.activeCampaigns)
+      );
+      let sum = 0;
+      filtered?.forEach((item) => {
+        const amount = Number(item[key]);
+        if (amount) {
+          sum += amount;
+        }
+      });
+
+      return sum;
+    },
+    [data]
+  );
 
   return (
     <Block classes="campaigns">

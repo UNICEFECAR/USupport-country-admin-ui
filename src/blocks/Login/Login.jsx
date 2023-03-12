@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { useMutation } from "@tanstack/react-query";
 import {
   Block,
   Error,
@@ -11,8 +10,6 @@ import {
   InputPassword,
   Button,
 } from "@USupport-components-library/src";
-import { adminSvc } from "@USupport-components-library/services";
-import { useError } from "#hooks";
 
 import "./login.scss";
 
@@ -23,60 +20,9 @@ import "./login.scss";
  *
  * @return {jsx}
  */
-export const Login = ({ openCodeVerification, setLoginCredentials }) => {
+export const Login = ({ data, setData, handleLogin, errors, isLoading }) => {
   const { t } = useTranslation("login");
   const navigate = useNavigate();
-  const ROLE = "country";
-
-  const [data, setData] = useState({
-    email: "",
-    password: "",
-  });
-  const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const [showTimer, setShowTimer] = useState(false);
-  const [seconds, setSeconds] = useState(60);
-
-  const disableLoginButtonFor60Sec = () => {
-    setShowTimer(true);
-    const interval = setInterval(() => {
-      setSeconds((sec) => {
-        if (sec - 1 === 0) {
-          clearInterval(interval);
-          setIsSubmitting(false);
-          setShowTimer(false);
-          setSeconds(60);
-        }
-        return sec - 1;
-      });
-    }, 1000);
-  };
-
-  const requestOTP = async () => {
-    return await adminSvc.requestOTP(
-      data.email.toLowerCase(),
-      data.password.trim(),
-      ROLE
-    );
-  };
-
-  const requestOtpMutation = useMutation(requestOTP, {
-    onSuccess: () => {
-      setLoginCredentials({
-        email: data.email.toLocaleLowerCase(),
-        password: data.password.trim(),
-        role: ROLE,
-      });
-      openCodeVerification();
-      disableLoginButtonFor60Sec();
-    },
-    onError: (error) => {
-      const { message: errorMessage } = useError(error);
-      setErrors({ submit: errorMessage });
-      setIsSubmitting(false);
-    },
-  });
 
   const handleChange = (field, value) => {
     const newData = { ...data };
@@ -84,12 +30,6 @@ export const Login = ({ openCodeVerification, setLoginCredentials }) => {
     newData[field] = value;
 
     setData(newData);
-  };
-
-  const handleLogin = (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    requestOtpMutation.mutate();
   };
 
   const handleForgotPassowrd = () => {
@@ -130,14 +70,10 @@ export const Login = ({ openCodeVerification, setLoginCredentials }) => {
               label={t("login_label")}
               size="lg"
               classes="login-button"
-              disabled={!data.email || !data.password || isSubmitting}
+              disabled={!data.email || !data.password}
               isSubmit
+              loading={isLoading}
             />
-            {showTimer && (
-              <p className="login__try-again">
-                {t("try_again")} {seconds} {t("seconds")}
-              </p>
-            )}
           </form>
         </GridItem>
       </Grid>

@@ -92,7 +92,7 @@ export const ProviderActivities = ({ isLoading, data }) => {
             <p className="text">{activity.price || t("free")}</p>
           </td>
           <td className="provider-activities__table__td">
-            <p className="text">{activity.campaign || "N/A"}</p>
+            <p className="text">{activity.campaignName || "N/A"}</p>
           </td>
         </tr>
       );

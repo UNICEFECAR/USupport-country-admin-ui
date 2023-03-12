@@ -1,5 +1,6 @@
 import React, { useCallback, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { useQueryClient } from "@tanstack/react-query";
 
 import {
   Block,
@@ -28,8 +29,9 @@ import { toast } from "react-toastify";
  *
  * @return {jsx}
  */
-export const CampaignDetails = ({ data, campaignId }) => {
+export const CampaignDetails = ({ data, campaignId, sponsorId }) => {
   const { t } = useTranslation("campaign-details");
+  const queryClient = useQueryClient();
 
   const currencySymbol = localStorage.getItem("currency_symbol");
 
@@ -46,7 +48,7 @@ export const CampaignDetails = ({ data, campaignId }) => {
   ];
 
   const { data: couponsData, isLoading } = useGetCouponsData(campaignId);
-  console.log(data, "data");
+
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
@@ -69,6 +71,8 @@ export const CampaignDetails = ({ data, campaignId }) => {
 
   const onSuccess = (data) => {
     toast(t(data.active ? "campaign_activated" : "campaign_deactivated"));
+    queryClient.invalidateQueries({ queryKey: ["sponsor-data", sponsorId] });
+    queryClient.invalidateQueries({ queryKey: ["campaign-data", campaignId] });
   };
   const onError = () => {
     toast(t("update_error"), { type: "error" });
