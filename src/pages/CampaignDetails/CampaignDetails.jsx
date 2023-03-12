@@ -2,7 +2,10 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate, Navigate } from "react-router-dom";
 
+import { Loading } from "@USupport-components-library/src";
+
 import { Page, CampaignDetails as CampaignDetailsBlock } from "#blocks";
+import { useGetCampaignDataById } from "#hooks";
 
 const AMAZON_S3_BUCKET = `${import.meta.env.VITE_AMAZON_S3_BUCKET}`;
 
@@ -30,18 +33,27 @@ export const CampaignDetails = () => {
 
   const sponsorName = location.state?.sponsorName;
   const sponsorImage = location.state?.sponsorImage;
-  const campaignData = location.state?.campaignData;
 
-  if (!campaignId || !campaignData) return <Navigate to="/sponsors" />;
+  const { data: campaignData, isLoading } = useGetCampaignDataById(campaignId);
+
+  if (!campaignId) return <Navigate to="/sponsors" />;
 
   return (
     <Page
-      heading={`${sponsorName} / ${campaignData.name}`}
+      heading={`${sponsorName} / ${campaignData?.name}`}
       image={sponsorImage ? `${AMAZON_S3_BUCKET}/${sponsorImage}` : null}
       classes="page__campaign-details"
       handleGoBack={() => navigate(-1)}
     >
-      <CampaignDetailsBlock campaignId={campaignId} data={campaignData} />
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <CampaignDetailsBlock
+          campaignId={campaignId}
+          data={campaignData}
+          sponsorId={sponsorId}
+        />
+      )}
     </Page>
   );
 };
