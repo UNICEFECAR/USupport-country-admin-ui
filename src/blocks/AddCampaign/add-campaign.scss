@@ -10,6 +10,17 @@
       margin-bottom: $spacing_2_4;
     }
 
+    &__number-of-coupons {
+      &__input.input-container {
+        margin-bottom: 0.5rem;
+      }
+
+      &__info {
+        text-align: left;
+        margin-bottom: $spacing_2_4;
+      }
+    }
+
     &__toggle-container {
       align-items: center;
       display: flex;
