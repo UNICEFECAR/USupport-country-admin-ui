@@ -1,6 +1,7 @@
 import React, { useCallback, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useQueryClient } from "@tanstack/react-query";
+import { toast } from "react-toastify";
 
 import {
   Block,
@@ -20,7 +21,6 @@ import {
 import { useGetCouponsData, useUpdateCampaignData } from "#hooks";
 
 import "./campaign-details.scss";
-import { toast } from "react-toastify";
 
 /**
  * CampaignDetails
@@ -89,6 +89,7 @@ export const CampaignDetails = ({ data, campaignId, sponsorId }) => {
   };
 
   const handleExportReport = () => {};
+
   return (
     <Block classes="campaign-details">
       <Grid classes="campaign-details__grid">
