@@ -6,7 +6,7 @@
   "email_label": "Электронная почта",
   "phone_label": "Телефон",
   "specialization_label": "Специализация",
-  "consultation_price_label": "Стоимость консультации",
+  "consultation_price_label": "Стоимость консультации {{currencySymbol}}",
   "description_label": "Обо мне",
   "language_label": "Язык",
   "street_label": "Улица",

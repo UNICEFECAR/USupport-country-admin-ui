@@ -6,7 +6,7 @@
   "email_label": "Электронды пошта",
   "phone_label": "Телефон",
   "specialization_label": "Мамандандырылу",
-  "consultation_price_label": "Консультация бағасы",
+  "consultation_price_label": "Консультация бағасы {{currencySymbol}}",
   "description_label": "Мен туралы",
   "language_label": "Тіл",
   "street_label": "Көше",
