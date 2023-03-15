@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -9,9 +9,23 @@ import {
   Grid,
   GridItem,
   InputSearch,
+  Modal,
+  Input,
+  DateInput,
+  Toggle,
 } from "@USupport-components-library/src";
 
 import { getDateView } from "@USupport-components-library/utils";
+
+const initialFilters = {
+  minUsedCoupons: 0,
+  minCouponPrice: 0,
+  minUsedBudget: 0,
+  minMaxCouponsPerClient: 0,
+  startDate: "",
+  endDate: "",
+  showOnlyActive: true,
+};
 
 import "./sponsor-details.scss";
 
@@ -29,6 +43,17 @@ export const SponsorDetails = ({ data }) => {
 
   const [searchValue, setSearchValue] = useState("");
 
+  const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
+  const [filterData, setFilterData] = useState(initialFilters);
+
+  const [dataToDisplay, setDataToDisplay] = useState(data?.campaignsData);
+
+  useEffect(() => {
+    if (data && !dataToDisplay) {
+      setDataToDisplay(data.campaignsData);
+    }
+  }, [data]);
+
   const rows = [
     t("campaign"),
     t("used_total_coupons"),
@@ -39,7 +64,7 @@ export const SponsorDetails = ({ data }) => {
     t("status"),
   ];
 
-  const rowsData = data.campaignsData
+  const rowsData = dataToDisplay
     ?.filter((x) => x.name.toLowerCase().includes(searchValue.toLowerCase()))
     .map((item) => {
       return [
@@ -92,10 +117,63 @@ export const SponsorDetails = ({ data }) => {
       state: { sponsorName: data.sponsorName, sponsorImage: data.image },
     });
 
+  const handleFilterSave = () => {
+    let dataCopy = [...data.campaignsData];
+
+    dataCopy = dataCopy.filter((x) => {
+      const isMinUsedCouponMatching =
+        Number(x.usedCoupons) >= Number(filterData.minUsedCoupons);
+      const isMinCouponPriceMatching =
+        Number(x.couponPrice) >= Number(filterData.minCouponPrice);
+      const isMinUsedBudgetMatching =
+        Number(x.usedBudget) >= Number(filterData.minUsedBudget);
+      const isMinMaxCouponsPerClientMatching =
+        Number(x.maxCouponsPerClient) >=
+        Number(filterData.minMaxCouponsPerClient);
+      const isStartDateMatching = filterData.startDate
+        ? new Date(x.startDate) >= new Date(filterData.startDate)
+        : true;
+      const isEndDateMatching = filterData.endDate
+        ? new Date(x.endDate) <= new Date(filterData.endDate)
+        : true;
+      const isStatusMatching = filterData.showOnlyActive
+        ? x.active === filterData.showOnlyActive
+        : true;
+
+      return (
+        isMinUsedCouponMatching &&
+        isMinCouponPriceMatching &&
+        isMinUsedBudgetMatching &&
+        isMinMaxCouponsPerClientMatching &&
+        isStartDateMatching &&
+        isEndDateMatching &&
+        isStatusMatching
+      );
+    });
+    setDataToDisplay(dataCopy);
+    setIsFilterModalOpen(false);
+  };
+
+  const handleFilterChange = (field, e) => {
+    const value = e.target.value;
+    setFilterData({ ...filterData, [field]: value });
+  };
+
+  const handleFilterReset = () => {
+    setFilterData(initialFilters);
+    setDataToDisplay(data.campaignsData);
+    setIsFilterModalOpen(false);
+  };
   return (
     <Block classes="sponsor-details">
       <div className="sponsor-details__buttons-container">
-        <Button label={t("filter")} type="secondary" color="purple" size="md" />
+        <Button
+          onClick={() => setIsFilterModalOpen(true)}
+          label={t("filter")}
+          type="secondary"
+          color="purple"
+          size="md"
+        />
         <Button
           label={t("add_campaign")}
           color="purple"
@@ -140,12 +218,80 @@ export const SponsorDetails = ({ data }) => {
         </GridItem>
       </Grid>
       <BaseTable
-        data={data.campaignsData}
+        data={dataToDisplay}
         rows={rows}
         rowsData={rowsData}
         handleClickPropName="campaignId"
         menuOptions={menuOptions}
       />
+
+      <Modal
+        heading={t("filter_heading")}
+        isOpen={isFilterModalOpen}
+        closeModal={() => setIsFilterModalOpen(false)}
+        classes="sponsor-details__filter-modal"
+      >
+        <Input
+          type="number"
+          label={t("min_used_coupons")}
+          value={filterData.minUsedCoupons}
+          onChange={(e) => handleFilterChange("minUsedCoupons", e)}
+        />
+        <Input
+          type="number"
+          label={t("min_coupon_price")}
+          value={filterData.minCouponPrice}
+          onChange={(e) => handleFilterChange("minCouponPrice", e)}
+        />
+        <Input
+          type="number"
+          label={t("min_used_budget")}
+          value={filterData.minUsedBudget}
+          onChange={(e) => handleFilterChange("minUsedBudget", e)}
+        />
+        <Input
+          type="number"
+          label={t("min_max_coupons_per_client")}
+          value={filterData.minMaxCouponsPerClient}
+          onChange={(e) => handleFilterChange("minMaxCouponsPerClient", e)}
+        />
+        <DateInput
+          label={t("start_date")}
+          value={filterData.startDate}
+          onChange={(e) => handleFilterChange("startDate", e)}
+        />
+        <DateInput
+          label={t("end_date")}
+          value={filterData.endDate}
+          onChange={(e) => handleFilterChange("endDate", e)}
+        />
+        <div className="sponsor-details__filter-modal__toggle-container">
+          <p>{t("show_only_active")}</p>
+          <Toggle
+            isToggled={filterData.showOnlyActive}
+            setParentState={() =>
+              setFilterData({
+                ...filterData,
+                showOnlyActive: !filterData.showOnlyActive,
+              })
+            }
+          />
+        </div>
+
+        <Button
+          label={t("apply_filter")}
+          size="lg"
+          onClick={handleFilterSave}
+          classes="sponsor-details__filter-modal__cta"
+        />
+        <Button
+          label={t("reset_filter")}
+          size="lg"
+          type="secondary"
+          onClick={handleFilterReset}
+          classes="sponsor-details__filter-modal__cta"
+        />
+      </Modal>
     </Block>
   );
 };
