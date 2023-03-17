@@ -52,6 +52,7 @@ export const CampaignDetails = () => {
           campaignId={campaignId}
           data={campaignData}
           sponsorId={sponsorId}
+          campaign={`${sponsorName} / ${campaignData?.name}`}
         />
       )}
     </Page>
