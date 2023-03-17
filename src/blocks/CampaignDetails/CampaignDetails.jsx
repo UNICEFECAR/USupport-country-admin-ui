@@ -1,6 +1,7 @@
 import React, { useCallback, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useQueryClient } from "@tanstack/react-query";
+import { toast } from "react-toastify";
 
 import {
   Block,
@@ -15,12 +16,12 @@ import {
 import {
   pascalToSnakeCase,
   getDateView,
+  downloadCSVFile,
 } from "@USupport-components-library/utils";
 
 import { useGetCouponsData, useUpdateCampaignData } from "#hooks";
 
 import "./campaign-details.scss";
-import { toast } from "react-toastify";
 
 /**
  * CampaignDetails
@@ -29,7 +30,7 @@ import { toast } from "react-toastify";
  *
  * @return {jsx}
  */
-export const CampaignDetails = ({ data, campaignId, sponsorId }) => {
+export const CampaignDetails = ({ data, campaignId, sponsorId, campaign }) => {
   const { t } = useTranslation("campaign-details");
   const queryClient = useQueryClient();
 
@@ -48,7 +49,7 @@ export const CampaignDetails = ({ data, campaignId, sponsorId }) => {
   ];
 
   const { data: couponsData, isLoading } = useGetCouponsData(campaignId);
-
+  data["usedCoupons"] = couponsData?.length || 0;
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
@@ -88,7 +89,17 @@ export const CampaignDetails = ({ data, campaignId, sponsorId }) => {
     });
   };
 
-  const handleExportReport = () => {};
+  const handleExportReport = () => {
+    let csv = "Provider,Used on\n";
+    couponsData.forEach((c) => {
+      csv += `${c.providerName},${getDateView(c.createdAt)}\n`;
+    });
+
+    const reportDate = new Date().toISOString().split("T")[0];
+    const fileName = `coupons-report-${campaign}-${reportDate}.csv`;
+    downloadCSVFile(csv, fileName);
+  };
+
   return (
     <Block classes="campaign-details">
       <Grid classes="campaign-details__grid">

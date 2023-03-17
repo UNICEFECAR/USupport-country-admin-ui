@@ -73,7 +73,7 @@ export const ResetPassword = () => {
             label={t("submit")}
             type="primary"
             onClick={handleSubmit}
-            disabled={isLoading}
+            loading={isLoading}
           />
         </GridItem>
       </Grid>

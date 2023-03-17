@@ -36,7 +36,11 @@ export const ProviderActivities = () => {
       heading={providerName || ""}
       handleGoBack={() => navigate(-1)}
     >
-      <ProviderActivitiesBlock isLoading={isLoading} data={data} />
+      <ProviderActivitiesBlock
+        isLoading={isLoading}
+        data={data}
+        providerName={providerName}
+      />
     </Page>
   );
 };

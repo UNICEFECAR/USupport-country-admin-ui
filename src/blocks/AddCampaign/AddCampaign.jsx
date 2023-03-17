@@ -283,7 +283,8 @@ export const AddCampaign = ({
             <>
               <Button
                 label={t("save_changes")}
-                disabled={!canSaveChanges || updateCampaignMutation.isLoading}
+                disabled={!canSaveChanges}
+                loading={updateCampaignMutation.isLoading}
                 onClick={handleSaveChanges}
                 size="lg"
                 classes="add-campaign__grid__create-button"

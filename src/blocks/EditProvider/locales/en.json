@@ -6,7 +6,7 @@
   "email_label": "Email",
   "phone_label": "Phone",
   "specialization_label": "Specialization",
-  "consultation_price_label": "Consultation price",
+  "consultation_price_label": "Consultation price {{currencySymbol}}",
   "description_label": "About me",
   "language_label": "Language",
   "street_label": "Street",
@@ -50,6 +50,7 @@
   "city_error": "City is required",
   "postcode_error": "Postcode is required",
   "consultation_price_error": "Consultation price must be a non-negative number",
+  "min_price_error": "The minimum consultation price is {{minPrice}}{{currencySymbol}}",
 
   "specializations_error": "Select at least one specialization",
   "work_with_error": "Select at least one category",

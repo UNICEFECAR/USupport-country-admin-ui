@@ -75,8 +75,6 @@ export const CreateProvider = ({
 
   const [providerData, setProviderData] = useState(initialData);
 
-  const [isProcessing, setIsProcessing] = useState(false);
-
   const localizationQuery = useGetCountryAndLanguages();
   const workWithQuery = useGetWorkWithCategories();
 
@@ -232,7 +230,6 @@ export const CreateProvider = ({
   };
 
   const handleCreateProviderSuccess = () => {
-    setIsProcessing(false);
     toast(t("create_success"));
     setProviderData(initialData);
     setProviderImageUrl(null);
@@ -267,7 +264,6 @@ export const CreateProvider = ({
   };
 
   const onCreateError = (err) => {
-    setIsProcessing(false);
     setErrors({ submit: err });
   };
   const createProviderMutation = useCreateProvider(
@@ -276,11 +272,8 @@ export const CreateProvider = ({
   );
 
   const handleSave = async () => {
-    setIsProcessing(true);
     if ((await validate(providerData, schema, setErrors)) === null) {
       createProviderMutation.mutate(providerData);
-    } else {
-      setIsProcessing(false);
     }
   };
 
@@ -461,7 +454,9 @@ export const CreateProvider = ({
             label={t("create_button_text")}
             size="lg"
             onClick={handleSave}
-            disabled={isProcessing}
+            loading={
+              uploadImageMutation.isLoading || createProviderMutation.isLoading
+            }
           />
         </GridItem>
       </Grid>
