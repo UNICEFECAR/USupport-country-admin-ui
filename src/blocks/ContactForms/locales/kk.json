@@ -1,19 +1,19 @@
 {
   "email": "Электронды пошта",
-  "time": "Time of contact",
-  "subject": "Subject",
-  "content_heading": "Feedback",
-  "heading": "Contact Forms",
+  "time": "Байланыс уақыты",
+  "subject": "Тақырып",
+  "content_heading": "Кері байланыс",
+  "heading": "Байланыс формалары",
   "all": "Барлығы",
-  "filters": "Filters",
-  "sender": "Sender",
-  "starting_date": "Starting date",
+  "filters": "Сүзгілер",
+  "sender": "Жіберуші",
+  "starting_date": "Басталу күні",
   "contact_reason_placeholder": "Себебін таңдаңыз",
   "contact_reason_1": "Usupport туралы ақпарат",
   "contact_reason_2": "Техникалық мәселе",
   "contact_reason_3": "Консультанттар желісіне қосылыңыз",
   "contact_reason_4": "Серіктестік",
   "contact_reason_5": "Басқа",
-  "no_results": "There are no contact forms found",
-  "submit": "Apply filters"
+  "no_results": "Байланыс формалары табылмады",
+  "submit": "Сүзгілерді қолданыңыз"
 }

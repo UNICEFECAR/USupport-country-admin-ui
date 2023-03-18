@@ -1,22 +1,22 @@
 {
-  "select_photo": "Select photo",
-  "sponsor_label": "Sponsor",
+  "select_photo": "Выберите фотографию",
+  "sponsor_label": "Спонсор",
   "email_label": "Электронная почта",
   "phone_label": "Телефон",
-  "sponsor_placeholder": "Enter name of sponsor",
-  "email_placeholder": "Enter email address",
-  "phone_placeholder": "Enter phone number",
+  "sponsor_placeholder": "Введите имя спонсора",
+  "email_placeholder": "Введите адрес электронной почты",
+  "phone_placeholder": "Введите номер телефона",
   "phone_prefix_placeholder": "Префикс",
-  "create_sponsor": "Create sponsor",
+  "create_sponsor": "Создать спонсора",
 
-  "sponsor_error": "Sponsor name is required",
-  "email_error": "Email is required",
+  "sponsor_error": "Имя спонсора обязательно",
+  "email_error": "Требуется электронная почта",
   "phone_prefix_error": "Необходимо указать префикс телефона",
   "phone_error": "Необходимо указать номер телефона",
 
   "save_changes": "Сохранить изменения",
   "discard_changes": "Отменить изменения",
-  "delete_sponsor": "Delete sponsor",
-  "edit_success": "Changes saved successfully",
-  "success": "Sponsor created successfully"
+  "delete_sponsor": "Удалить спонсора",
+  "edit_success": "Изменения успешно сохранены",
+  "success": "Спонсор создан успешно"
 }

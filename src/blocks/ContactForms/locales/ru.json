@@ -1,19 +1,19 @@
 {
   "email": "Электронная почта",
-  "time": "Time of contact",
-  "subject": "Subject",
-  "content_heading": "Feedback",
-  "heading": "Contact Forms",
+  "time": "Время контакта",
+  "subject": "Предмет",
+  "content_heading": "Обратная связь",
+  "heading": "Контактные формы",
   "all": "Все",
-  "filters": "Filters",
-  "sender": "Sender",
-  "starting_date": "Starting date",
+  "filters": "Фильтры",
+  "sender": "Отправитель",
+  "starting_date": "Дата начала",
   "contact_reason_placeholder": "Выберите причину",
   "contact_reason_1": "Информация о Usupport",
   "contact_reason_2": "Техническая проблема",
   "contact_reason_3": "Присоединяйтесь к сети консультантов",
   "contact_reason_4": "Партнерства",
   "contact_reason_5": "Другое",
-  "no_results": "There are no contact forms found",
-  "submit": "Apply filters"
+  "no_results": "Контактные формы не найдены",
+  "submit": "Примените фильтры"
 }

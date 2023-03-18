@@ -1,8 +1,8 @@
 {
   "heading": "Сүзгі",
   "provider": "Консультанттар",
-  "all": "Show all providers",
-  "starting_date": "Starting date",
-  "number_of_issues": "Minimum number of issues",
-  "button_label": "Apply filters"
+  "all": "Барлық консультанттарды көрсету",
+  "starting_date": "Басталу күні",
+  "number_of_issues": "Сұрақтардың ең аз саны",
+  "button_label": "Сүзгілерді қолданыңыз"
 }
