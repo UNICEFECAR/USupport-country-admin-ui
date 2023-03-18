@@ -50,6 +50,7 @@
   "city_error": "Қаланы көрсету қажет",
   "postcode_error": "Пошта индексін көрсету қажет",
   "consultation_price_error": "Консультация бағасы теріс сан болмауы керек",
+  "min_price_error": "The minimum consultation price is {{minPrice}}{{currencySymbol}}",
 
   "specializations_error": "Кемінде бір мамандықты таңдаңыз",
   "work_with_error": "Кемінде бір категорияны таңдаңыз",

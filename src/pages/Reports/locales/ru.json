@@ -1,7 +1,7 @@
 {
-  "consultations": "Consultation Issues",
-  "suggestions": "Information Portal Suggestions",
-  "ratings": "Client Ratings",
-  "contact_form": "Contact Forms",
+  "consultations": "Вопросы консультаций",
+  "suggestions": "Предложения информационного портала",
+  "ratings": "Рейтинги клиента",
+  "contact_form": "Контактные формы",
   "filter": "Фильтр"
 }

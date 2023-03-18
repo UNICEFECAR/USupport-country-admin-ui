@@ -1,14 +1,14 @@
 {
   "client": "Клиенты",
   "time": "Раз",
-  "price": "Price",
-  "campaign": "Campaign",
+  "price": "Цена",
+  "campaign": "Кампания",
   "free": "Свободно",
-  "export_label": "Export",
+  "export_label": "Экспорт",
   "filter": "Фильтр",
-  "filters": "Filters",
-  "no_results": "No activities found",
+  "filters": "Фильтры",
+  "no_results": "Никаких действий не найдено",
   "start_date": "Дата начала",
   "end_date": "Дата окончания",
-  "submit": "Apply filters"
+  "submit": "Примените фильтры"
 }

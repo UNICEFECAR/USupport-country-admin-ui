@@ -1,13 +1,18 @@
 {
   "filter_button": "Фильтр",
-  "add_button": "Add sponsor",
-  "campaigns": "Campaigns",
-  "active_campaigns": "Active campaigns",
+  "add_button": "Добавить Спонсора",
+  "campaigns": "Кампании",
+  "active_campaigns": "Активные кампании",
   "sponsors": "Sponsors",
-  "sponsor": "Sponsor",
+  "sponsor": "Спонсор",
   "email": "Электронная почта",
   "phone": "Телефон",
-  "edit": "Edit",
-  "search": "Search",
-  "view": "Просмотр"
+  "edit": "Редактировать",
+  "search": "Поиск",
+  "view": "Просмотр",
+  "filter_heading": "Filter sponsors",
+  "min_total_campaigns": "Minimum number of total campaigns",
+  "min_active_campaigns": "Minimum number of active campaigns",
+  "apply_filter": "Примените фильтры",
+  "reset_filter": "Reset filters"
 }

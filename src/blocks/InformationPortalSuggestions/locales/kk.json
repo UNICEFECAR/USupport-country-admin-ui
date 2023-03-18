@@ -2,11 +2,11 @@
   "email": "Электронды пошта",
   "name": "Аты",
   "nickname": "Лақап аты",
-  "time": "Time of suggestion",
-  "content_heading": "Suggestions",
-  "heading": "Information portal suggestions",
-  "filters": "Filters",
-  "starting_date": "Starting date",
-  "submit": "Apply filters",
-  "no_results": "There are no suggestions found"
+  "time": "Ұсыныс уақыты",
+  "content_heading": "Ұсыныстар",
+  "heading": "Ақпараттық порталдың ұсыныстары",
+  "filters": "Сүзгілер",
+  "starting_date": "Басталу күні",
+  "submit": "Сүзгілерді қолданыңыз",
+  "no_results": "Рейтингтер табылған жоқ"
 }

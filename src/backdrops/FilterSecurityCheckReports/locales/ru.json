@@ -1,8 +1,8 @@
 {
   "heading": "Фильтр",
   "provider": "Консультанты",
-  "all": "Show all providers",
-  "starting_date": "Starting date",
-  "number_of_issues": "Minimum number of issues",
-  "button_label": "Apply filters"
+  "all": "Показать всех консультантов",
+  "starting_date": "Дата начала",
+  "number_of_issues": "Минимальное количество вопросов",
+  "button_label": "Примените фильтры"
 }
