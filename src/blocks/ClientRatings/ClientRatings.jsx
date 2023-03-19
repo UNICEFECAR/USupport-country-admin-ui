@@ -64,22 +64,6 @@ export const ClientRatings = ({ Heading }) => {
         <ReportCollapsible
           key={index}
           headingItems={[
-            <p>
-              {t(
-                suggestion.clientEmail
-                  ? "email"
-                  : suggestion.clientName
-                  ? "name"
-                  : "nickname"
-              )}
-              :{" "}
-              <span>
-                {suggestion.clientEmail ||
-                  suggestion.clientName ||
-                  suggestion.clientNickname}
-              </span>
-            </p>,
-
             <div className="client-ratings__rating-container">
               <p className="client-ratings__rating-container__label">
                 {t("rating")}

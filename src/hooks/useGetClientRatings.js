@@ -10,9 +10,6 @@ export const useGetClientRatings = () => {
         rating: item.rating,
         comment: item.comment,
         createdAt: new Date(item.created_at),
-        clientEmail: item.email,
-        clientName: item.name ? `${item.name} ${item.surname}` : null,
-        clientNickname: item.nickname,
       };
     });
   };

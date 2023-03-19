@@ -128,6 +128,7 @@ export const Campaigns = () => {
       minActiveCampaigns: 0,
     });
     setDataToDisplay(data);
+    setIsFilterModalOpen(false);
   };
 
   return (

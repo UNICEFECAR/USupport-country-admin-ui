@@ -7,7 +7,6 @@ export const useGetSecurityChecks = () => {
     const finalData = [];
     data.forEach((item) => {
       const providerData = item.providerData;
-      const clientData = item.clientData;
       const finalItem = {
         answers: {
           contactsDisclosure: item.contacts_disclosure,
@@ -18,10 +17,7 @@ export const useGetSecurityChecks = () => {
         },
         providerName: `${providerData.name} ${providerData.patronym} ${providerData.surname}`,
         providerDetailId: item.provider_detail_id,
-        clientName:
-          clientData.name && clientData.surname
-            ? `${clientData.name} ${clientData.surname}`
-            : clientData.nickname,
+        clientName: item.clientName,
         consultationTime: new Date(item.time),
         numberOfIssues: Object.values(item).filter((x) => x === true).length,
       };

@@ -6,11 +6,8 @@ export const useGetProviderActivitiesById = (providerId) => {
     const { data } = await adminSvc.getProviderActivitiesById(providerId);
 
     return data.map((activity) => {
-      const client = activity.clientData;
       return {
-        displayName: client.name
-          ? `${client.name} ${client.surname}`
-          : client.email || client.nickname,
+        displayName: activity.clientName,
         price: activity.price,
         status: activity.status,
         time: new Date(activity.time),

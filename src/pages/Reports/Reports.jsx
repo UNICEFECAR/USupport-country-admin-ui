@@ -27,11 +27,11 @@ export const Reports = () => {
   const { t } = useTranslation("reports-page");
 
   const [options, setOptions] = useState([
-    { label: t("consultations"), value: "consultations", isSelected: false },
+    { label: t("consultations"), value: "consultations", isSelected: true },
     {
       label: t("suggestions"),
       value: "suggestions",
-      isSelected: true,
+      isSelected: false,
     },
     { label: t("ratings"), value: "ratings", isSelected: false },
     { label: t("contact_form"), value: "contact_form", isSelected: false },
