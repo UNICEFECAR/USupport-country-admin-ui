@@ -14,5 +14,6 @@
   "min_total_campaigns": "Minimum number of total campaigns",
   "min_active_campaigns": "Minimum number of active campaigns",
   "apply_filter": "Сүзгілерді қолданыңыз",
-  "reset_filter": "Reset filters"
+  "reset_filter": "Reset filters",
+  "no_data_found": "No data found"
 }

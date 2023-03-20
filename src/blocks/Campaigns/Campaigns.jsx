@@ -183,6 +183,7 @@ export const Campaigns = () => {
           rowsData={rowsData}
           menuOptions={menuOptions}
           handleClickPropName={"sponsorId"}
+          t={t}
         />
       )}
 

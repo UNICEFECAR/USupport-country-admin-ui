@@ -223,6 +223,7 @@ export const SponsorDetails = ({ data }) => {
         rowsData={rowsData}
         handleClickPropName="campaignId"
         menuOptions={menuOptions}
+        t={t}
       />
 
       <Modal

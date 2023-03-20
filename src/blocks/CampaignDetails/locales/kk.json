@@ -17,5 +17,6 @@
   "campaign_activated": "Науқан сәтті іске қосылды",
   "campaign_deactivated": "Науқан сәтті өшірілді",
   "update_error": "Қате пайда болды. Қайталап көріңіз.",
-  "used_after": "Used afterKK"
+  "used_after": "Used afterKK",
+  "no_data_found": "No data found"
 }

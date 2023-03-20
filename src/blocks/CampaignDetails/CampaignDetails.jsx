@@ -224,6 +224,7 @@ export const CampaignDetails = ({
           rows={tableRows}
           rowsData={getTableRowsData()}
           hasMenu={false}
+          t={t}
         />
       )}
       <Modal

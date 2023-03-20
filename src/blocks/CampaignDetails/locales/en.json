@@ -17,5 +17,6 @@
   "campaign_activated": "Campaign activated successfully",
   "campaign_deactivated": "Campaign deactivated successfully",
   "update_error": "An error occured. Please try again.",
-  "used_after": "Used after"
+  "used_after": "Used after",
+  "no_data_found": "No data found"
 }
