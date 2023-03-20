@@ -16,5 +16,6 @@
   "used_on": "Қолданылды",
   "campaign_activated": "Науқан сәтті іске қосылды",
   "campaign_deactivated": "Науқан сәтті өшірілді",
-  "update_error": "Қате пайда болды. Қайталап көріңіз."
+  "update_error": "Қате пайда болды. Қайталап көріңіз.",
+  "used_after": "Used afterKK"
 }

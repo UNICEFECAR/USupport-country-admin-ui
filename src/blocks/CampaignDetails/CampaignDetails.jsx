@@ -4,13 +4,16 @@ import { useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 
 import {
+  BaseTable,
   Block,
+  Button,
+  DateInput,
+  DropdownWithLabel,
   Grid,
   GridItem,
-  Button,
-  BaseTable,
-  Toggle,
   Loading,
+  Modal,
+  Toggle,
 } from "@USupport-components-library/src";
 
 import {
@@ -30,12 +33,12 @@ import "./campaign-details.scss";
  *
  * @return {jsx}
  */
-export const CampaignDetails = ({ data, campaignId, sponsorId, campaign }) => {
-  const { t } = useTranslation("campaign-details");
-  const queryClient = useQueryClient();
-
-  const currencySymbol = localStorage.getItem("currency_symbol");
-
+export const CampaignDetails = ({
+  campaignData,
+  campaignId,
+  sponsorId,
+  campaign,
+}) => {
   const fieldsToDisplay = [
     "couponCode",
     "usedCoupons",
@@ -48,8 +51,21 @@ export const CampaignDetails = ({ data, campaignId, sponsorId, campaign }) => {
     "endDate",
   ];
 
+  const initialFilters = {
+    providerName: "",
+    usedAfter: "",
+  };
+  const currencySymbol = localStorage.getItem("currency_symbol");
+  const { t } = useTranslation("campaign-details");
+  const queryClient = useQueryClient();
+
+  const [data, setData] = useState(campaignData || {});
   const { data: couponsData, isLoading } = useGetCouponsData(campaignId);
-  data["usedCoupons"] = couponsData?.length || 0;
+  const [dataToDisplay, setDataToDisplay] = useState(couponsData);
+
+  const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
+  const [filters, setFilters] = useState(initialFilters);
+
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
@@ -58,17 +74,30 @@ export const CampaignDetails = ({ data, campaignId, sponsorId, campaign }) => {
     }
   }, [data]);
 
+  useEffect(() => {
+    if (couponsData) {
+      setData((prevData) => {
+        return {
+          ...prevData,
+          usedBudget: couponsData.length * prevData.couponPrice,
+          usedCoupons: couponsData.length,
+        };
+      });
+      setDataToDisplay(couponsData);
+    }
+  }, [couponsData]);
+
   const tableRows = ["№", t("provider"), t("used_on")];
 
   const getTableRowsData = useCallback(() => {
-    return couponsData?.map((coupon, index) => {
+    return dataToDisplay?.map((coupon, index) => {
       return [
         <p>{index + 1}</p>,
         <p>{coupon.providerName}</p>,
         <p>{getDateView(coupon.createdAt)}</p>,
       ];
     });
-  }, [couponsData]);
+  }, [dataToDisplay]);
 
   const onSuccess = (data) => {
     toast(t(data.active ? "campaign_activated" : "campaign_deactivated"));
@@ -89,8 +118,10 @@ export const CampaignDetails = ({ data, campaignId, sponsorId, campaign }) => {
     });
   };
 
+  // Create a CSV file with the data of the coupons
+  // And download it
   const handleExportReport = () => {
-    let csv = "Provider,Used on\n";
+    let csv = `${t("provider")},${t("used_on")}\n"`;
     couponsData.forEach((c) => {
       csv += `${c.providerName},${getDateView(c.createdAt)}\n`;
     });
@@ -98,6 +129,36 @@ export const CampaignDetails = ({ data, campaignId, sponsorId, campaign }) => {
     const reportDate = new Date().toISOString().split("T")[0];
     const fileName = `coupons-report-${campaign}-${reportDate}.csv`;
     downloadCSVFile(csv, fileName);
+  };
+
+  // Create an array of unique provider names to display in the filter dropdown
+  const providerNames = useCallback(() => {
+    const names = Array.from(
+      new Set(couponsData?.map((x) => x.providerName))
+    ).map((x) => ({ value: x, label: x }));
+    return names;
+  }, [couponsData]);
+
+  const handleFilterSave = () => {
+    // Check if the provider name is matching
+    const filteredData = couponsData.filter((coupon) => {
+      const isProviderNameIncluded =
+        !filters.providerName || coupon.providerName === filters.providerName;
+
+      // Check if the date of creation of the coupon
+      // is after the date selected by the admin
+      const isUsedAfter =
+        !filters.usedAfter ||
+        new Date(coupon.createdAt) >= new Date(filters.usedAfter);
+      return isProviderNameIncluded && isUsedAfter;
+    });
+    setDataToDisplay(filteredData);
+    setIsFilterModalOpen(false);
+  };
+
+  const handleFilterReset = () => {
+    setFilters(initialFilters);
+    setIsFilterModalOpen(false);
   };
 
   return (
@@ -110,6 +171,7 @@ export const CampaignDetails = ({ data, campaignId, sponsorId, campaign }) => {
               type="secondary"
               color="purple"
               size="md"
+              onClick={() => setIsFilterModalOpen(true)}
             />
             <Button
               label={t("export_report")}
@@ -158,8 +220,46 @@ export const CampaignDetails = ({ data, campaignId, sponsorId, campaign }) => {
       {isLoading ? (
         <Loading />
       ) : (
-        <BaseTable rows={tableRows} rowsData={getTableRowsData()} />
+        <BaseTable
+          rows={tableRows}
+          rowsData={getTableRowsData()}
+          hasMenu={false}
+        />
       )}
+      <Modal
+        isOpen={isFilterModalOpen}
+        handleClose={() => setIsFilterModalOpen(false)}
+        heading={t("filter")}
+        classes="campaign-details__filter-modal"
+      >
+        <DropdownWithLabel
+          options={providerNames()}
+          selected={filters.providerName}
+          label={t("provider")}
+          setSelected={(value) =>
+            setFilters({ ...filters, providerName: value })
+          }
+        />
+        <DateInput
+          value={filters.usedAfter}
+          label={t("used_after")}
+          onChange={(e) =>
+            setFilters({ ...filters, usedAfter: e.currentTarget.value })
+          }
+        />
+        <Button
+          classes="campaign-details__filter-modal__cta"
+          label={t("apply_filter")}
+          size="lg"
+          onClick={handleFilterSave}
+        />
+        <Button
+          classes="campaign-details__filter-modal__cta"
+          label={t("reset_filter")}
+          size="lg"
+          onClick={handleFilterReset}
+        />
+      </Modal>
     </Block>
   );
 };

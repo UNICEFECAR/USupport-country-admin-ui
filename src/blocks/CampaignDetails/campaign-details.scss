@@ -23,4 +23,14 @@
       }
     }
   }
+
+  &__filter-modal {
+    & .dropdown-with-label,
+    & .input-container,
+    &__cta {
+      margin: $spacing_1_6 auto;
+      // margin-bottom: $spacing_1_6;
+      width: 36.8rem;
+    }
+  }
 }
