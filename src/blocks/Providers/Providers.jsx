@@ -119,13 +119,15 @@ export const Providers = () => {
       <Grid classes="providers__grid">
         <GridItem md={8} lg={12} classes="providers__grid__heading">
           <h2>{t("providers")} </h2>
-          <Button
-            label={t("create_provider")}
-            classes="providers__create-provider-button"
-            onClick={() => navigate("/create-provider")}
-            size="sm"
-            color="purple"
-          />
+          <div className="providers__grid__heading__button-container">
+            <Button
+              label={t("create_provider")}
+              classes="providers__create-provider-button"
+              onClick={() => navigate("/create-provider")}
+              size="sm"
+              color="purple"
+            />
+          </div>
         </GridItem>
         {providersQuery.isLoading ? (
           <GridItem md={8} lg={12}>
