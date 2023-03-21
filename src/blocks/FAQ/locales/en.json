@@ -1,3 +1,6 @@
 {
-  "no_results": "No results found, please try a different language."
+  "no_results": "No results found, please try a different language.",
+  "client_tab_label": "Client",
+  "provider_tab_label": "Provider",
+  "website_tab_label": "Website"
 }

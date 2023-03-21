@@ -1,3 +1,6 @@
 {
-  "no_results": "Ештеңе табылмады, басқа тілді байқап көріңіз"
+  "no_results": "Ештеңе табылмады, басқа тілді байқап көріңіз",
+  "client_tab_label": "Консультанттар",
+  "provider_tab_label": "Provider",
+  "website_tab_label": "Website"
 }
