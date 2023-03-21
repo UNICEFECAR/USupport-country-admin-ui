@@ -11,8 +11,12 @@
     &__heading {
       display: flex;
       justify-content: space-between;
-      width: 90%;
+      width: 100%;
       padding-bottom: $spacing_2_4;
+
+      @media screen and (min-width: $screen_md) {
+        width: 90%;
+      }
     }
   }
 }

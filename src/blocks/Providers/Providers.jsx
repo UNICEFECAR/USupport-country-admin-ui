@@ -123,6 +123,7 @@ export const Providers = () => {
             label={t("create_provider")}
             classes="providers__create-provider-button"
             onClick={() => navigate("/create-provider")}
+            size="sm"
             color="purple"
           />
         </GridItem>
