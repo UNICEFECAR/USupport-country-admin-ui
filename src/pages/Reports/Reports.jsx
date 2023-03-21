@@ -81,7 +81,11 @@ export const Reports = () => {
   return (
     <Page classes="page__reports" showGoBackArrow={false}>
       <Block>
-        <TabsUnderlined options={options} handleSelect={handleTabSelect} />
+        <TabsUnderlined
+          options={options}
+          handleSelect={handleTabSelect}
+          t={t}
+        />
       </Block>
       {renderBlock()}
     </Page>

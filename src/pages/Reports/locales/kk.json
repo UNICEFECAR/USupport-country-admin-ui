@@ -1,7 +1,7 @@
 {
-  "consultations": "Консультация мәселелері",
-  "suggestions": "Ақпараттық порталдың ұсыныстары",
-  "ratings": "Клиенттің рейтингі",
-  "contact_form": "Байланыс формалары",
+  "consultations_tab_label": "Консультация мәселелері",
+  "suggestions_tab_label": "Ақпараттық порталдың ұсыныстары",
+  "ratings_tab_label": "Клиенттің рейтингі",
+  "contact_form_tab_label": "Байланыс формалары",
   "filter": "Сүзгі"
 }
