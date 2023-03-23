@@ -20,6 +20,7 @@ export const useGetSecurityChecks = () => {
         clientName: item.clientName,
         consultationTime: new Date(item.time),
         numberOfIssues: Object.values(item).filter((x) => x === true).length,
+        createdAt: item.created_at,
       };
       finalData.push(finalItem);
     });

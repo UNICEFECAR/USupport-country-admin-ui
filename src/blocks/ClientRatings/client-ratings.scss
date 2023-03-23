@@ -1,6 +1,8 @@
 @import "@USupport-components-library/styles";
 
 .client-ratings {
+  padding-bottom: $spacing_5_0;
+
   &__heading {
     display: flex;
     justify-content: space-between;
@@ -36,6 +38,7 @@
     }
 
     &__date-picker {
+      margin-bottom: $spacing_2_4;
       & input {
         text-transform: uppercase;
       }

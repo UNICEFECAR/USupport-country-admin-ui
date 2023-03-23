@@ -59,32 +59,36 @@ export const ClientRatings = ({ Heading }) => {
     const filteredRatings = data.filter(filterRatings);
     if (filteredRatings.length === 0) return <p>{t("no_results")}</p>;
 
-    return filteredRatings.map((suggestion, index) => {
-      return (
-        <ReportCollapsible
-          key={index}
-          headingItems={[
-            <div className="client-ratings__rating-container">
-              <p className="client-ratings__rating-container__label">
-                {t("rating")}
-              </p>
-              <Rating rating={suggestion.rating} />
-            </div>,
+    return filteredRatings
+      .sort((a, b) => {
+        return new Date(b.createdAt) - new Date(a.createdAt);
+      })
+      .map((suggestion, index) => {
+        return (
+          <ReportCollapsible
+            key={index}
+            headingItems={[
+              <div className="client-ratings__rating-container">
+                <p className="client-ratings__rating-container__label">
+                  {t("rating")}
+                </p>
+                <Rating rating={suggestion.rating} />
+              </div>,
 
-            <p>
-              {t("time")}:
-              <strong>
-                {" "}
-                {getTimeFromDate(suggestion.createdAt)},{" "}
-                {getDateView(suggestion.createdAt)}
-              </strong>
-            </p>,
-          ]}
-          contentHeading={t("content_heading")}
-          contentText={suggestion.comment}
-        />
-      );
-    });
+              <p>
+                {t("time")}:
+                <strong>
+                  {" "}
+                  {getTimeFromDate(suggestion.createdAt)},{" "}
+                  {getDateView(suggestion.createdAt)}
+                </strong>
+              </p>,
+            ]}
+            contentHeading={t("content_heading")}
+            contentText={suggestion.comment}
+          />
+        );
+      });
   }, [data, filters]);
 
   return (

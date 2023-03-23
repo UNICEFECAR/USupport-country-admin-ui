@@ -54,7 +54,11 @@ export const SecurityCheck = ({ Heading }) => {
   const renderSecurityChecks = useMemo(() => {
     if (!securityChecks) return null;
 
-    const filteredSecurityChecks = securityChecks.filter(filterSecurityChecks);
+    const filteredSecurityChecks = securityChecks
+      .sort((a, b) => {
+        return new Date(b.createdAt) - new Date(a.createdAt);
+      })
+      .filter(filterSecurityChecks);
     if (filteredSecurityChecks.length === 0)
       return (
         <p className="paragraph security-check__no-results">
