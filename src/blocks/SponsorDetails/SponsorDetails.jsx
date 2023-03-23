@@ -24,7 +24,7 @@ const initialFilters = {
   minMaxCouponsPerClient: 0,
   startDate: "",
   endDate: "",
-  showOnlyActive: true,
+  showOnlyActive: false,
 };
 
 import "./sponsor-details.scss";
