@@ -93,11 +93,8 @@ export const Campaigns = () => {
 
   const reduceCampaigns = useCallback(
     (array, key) => {
-      const filtered = array?.filter(
-        (x) => Number(x.totalCampaigns) && Number(x.activeCampaigns)
-      );
       let sum = 0;
-      filtered?.forEach((item) => {
+      array?.forEach((item) => {
         const amount = Number(item[key]);
         if (amount) {
           sum += amount;

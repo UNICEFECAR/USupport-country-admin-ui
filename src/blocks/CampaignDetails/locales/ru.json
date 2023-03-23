@@ -18,5 +18,7 @@
   "campaign_deactivated": "Кампания успешно деактивирована",
   "update_error": "Произошла ошибка. Пожалуйста, попробуйте снова.",
   "used_after": "Used afterRU",
-  "no_data_found": "No data found"
+  "no_data_found": "No data foundRU",
+  "apply_filter": "Примените фильтры",
+  "reset_filter": "Reset filtersRU"
 }

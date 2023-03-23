@@ -18,5 +18,7 @@
   "campaign_deactivated": "Campaign deactivated successfully",
   "update_error": "An error occured. Please try again.",
   "used_after": "Used after",
-  "no_data_found": "No data found"
+  "no_data_found": "No data found",
+  "apply_filter": "Apply filters",
+  "reset_filter": "Reset filters"
 }
