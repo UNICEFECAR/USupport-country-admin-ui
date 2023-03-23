@@ -1,4 +1,18 @@
-@import '@USupport-components-library/styles';
+@import "@USupport-components-library/styles";
 
-.contact-forms{
+.contact-forms {
+  &__filters {
+    &__date-picker {
+      margin-bottom: $spacing_1_6;
+
+      & input {
+        text-transform: uppercase;
+      }
+    }
+
+    &__apply-button,
+    &__reset-button {
+      margin-bottom: $spacing_1_6;
+    }
+  }
 }
