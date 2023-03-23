@@ -159,6 +159,7 @@ export const CampaignDetails = ({
   const handleFilterReset = () => {
     setFilters(initialFilters);
     setIsFilterModalOpen(false);
+    setDataToDisplay(couponsData);
   };
 
   return (
@@ -257,6 +258,7 @@ export const CampaignDetails = ({
         <Button
           classes="campaign-details__filter-modal__cta"
           label={t("reset_filter")}
+          type="secondary"
           size="lg"
           onClick={handleFilterReset}
         />
