@@ -137,7 +137,11 @@ export const FAQ = () => {
         <GridItem md={8} lg={12} classes="faq__tabs">
           <Grid>
             <GridItem md={6} lg={10}>
-              <TabsUnderlined options={options} handleSelect={handleTabPress} />
+              <TabsUnderlined
+                options={options}
+                handleSelect={handleTabPress}
+                t={t}
+              />
             </GridItem>
           </Grid>
         </GridItem>

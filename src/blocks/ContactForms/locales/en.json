@@ -15,5 +15,10 @@
   "contact_reason_4": "Partnerships",
   "contact_reason_5": "Other",
   "no_results": "There are no contact forms found",
-  "submit": "Apply filters"
+  "submit": "Apply filters",
+  "sent_from": "Sent from",
+  "website": "Website",
+  "provider": "Provider",
+  "client": "Client",
+  "reset_filter": "Reset filters"
 }

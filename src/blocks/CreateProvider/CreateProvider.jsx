@@ -72,6 +72,7 @@ export const CreateProvider = ({
 }) => {
   const navigate = useNavigate();
   const { t } = useTranslation("edit-provider");
+  const currencySymbol = localStorage.getItem("currency_symbol");
 
   const [providerData, setProviderData] = useState(initialData);
 
@@ -375,7 +376,7 @@ export const CreateProvider = ({
               handleChange("consultationPrice", e.currentTarget.value)
             }
             errorMessage={errors.consultationPrice}
-            label={t("consultation_price_label")}
+            label={t("consultation_price_label", { currencySymbol })}
             placeholder={t("consultation_price_placeholder")}
             onBlur={() => handleBlur("consultationPrice")}
           />

@@ -50,7 +50,7 @@ export const CampaignDetails = () => {
       ) : (
         <CampaignDetailsBlock
           campaignId={campaignId}
-          data={campaignData}
+          campaignData={campaignData}
           sponsorId={sponsorId}
           campaign={`${sponsorName} / ${campaignData?.name}`}
         />

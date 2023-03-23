@@ -16,6 +16,7 @@
     border: 0 !important;
     box-shadow: $shadow_1;
     border-radius: $border_radius_1_6;
+    -webkit-appearance: none;
   }
 
   & input[type="password"] {

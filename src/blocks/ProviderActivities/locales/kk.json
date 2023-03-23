@@ -1,14 +1,14 @@
 {
   "client": "Клиенттер",
   "time": "Рет",
-  "price": "Price",
-  "campaign": "Campaign",
+  "price": "Бағасы",
+  "campaign": "Науқан",
   "free": "Бос",
-  "export_label": "Export",
+  "export_label": "Экспорт",
   "filter": "Сүзгі",
-  "filters": "Filters",
-  "no_results": "No activities found",
+  "filters": "Сүзгілер",
+  "no_results": "Ешқандай әрекет табылған жоқ",
   "start_date": "Басталу күні",
   "end_date": "Аяқталу күні",
-  "submit": "Apply filters"
+  "submit": "Сүзгілерді қолданыңыз"
 }

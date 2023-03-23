@@ -51,41 +51,45 @@ export const InformationPortalSuggestions = ({ Heading }) => {
     const filteredSuggestions = data.filter(filterSuggestions);
     if (filteredSuggestions.length === 0) return <p>{t("no_results")}</p>;
 
-    return filteredSuggestions.map((suggestion, index) => {
-      return (
-        <ReportCollapsible
-          key={index}
-          headingItems={[
-            <p>
-              {t(
-                suggestion.clientEmail
-                  ? "email"
-                  : suggestion.clientName
-                  ? "name"
-                  : "nickname"
-              )}
-              :{" "}
-              <span>
-                {suggestion.clientEmail ||
-                  suggestion.clientName ||
-                  suggestion.clientNickname}
-              </span>
-            </p>,
+    return filteredSuggestions
+      .sort((a, b) => {
+        return new Date(b.createdAt) - new Date(a.createdAt);
+      })
+      .map((suggestion, index) => {
+        return (
+          <ReportCollapsible
+            key={index}
+            headingItems={[
+              <p>
+                {t(
+                  suggestion.clientEmail
+                    ? "email"
+                    : suggestion.clientName
+                    ? "name"
+                    : "nickname"
+                )}
+                :{" "}
+                <span>
+                  {suggestion.clientEmail ||
+                    suggestion.clientName ||
+                    suggestion.clientNickname}
+                </span>
+              </p>,
 
-            <p>
-              {t("time")}:
-              <strong>
-                {" "}
-                {getTimeFromDate(suggestion.createdAt)},{" "}
-                {getDateView(suggestion.createdAt)}
-              </strong>
-            </p>,
-          ]}
-          contentHeading={t("content_heading")}
-          contentText={suggestion.suggestion}
-        />
-      );
-    });
+              <p>
+                {t("time")}:
+                <strong>
+                  {" "}
+                  {getTimeFromDate(suggestion.createdAt)},{" "}
+                  {getDateView(suggestion.createdAt)}
+                </strong>
+              </p>,
+            ]}
+            contentHeading={t("content_heading")}
+            contentText={suggestion.suggestion}
+          />
+        );
+      });
   }, [data, filters]);
 
   return (

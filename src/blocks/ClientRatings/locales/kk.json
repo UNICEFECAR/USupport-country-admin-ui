@@ -1,17 +1,17 @@
 {
-  "heading": "Client Ratings",
+  "heading": "Рейтинги клиента",
   "email": "Электронды пошта",
   "name": "Аты",
   "nickname": "Лақап аты",
-  "rating": "Rating",
+  "rating": "Рейтинг",
   "time": "Рет",
-  "content_heading": "Feedback",
+  "content_heading": "Кері байланыс",
 
-  "filters": "Filters",
+  "filters": "Сүзгілер",
   "filter": "Filter",
-  "minimum_rating": "Minimum rating",
-  "all": "All ratings",
-  "starting_date": "Starting date",
-  "submit": "Apply filters",
-  "no_results": "There are no ratings found"
+  "minimum_rating": "Минималды рейтинг",
+  "all": "Барлық рейтингтер",
+  "starting_date": "Басталу күні",
+  "submit": "Сүзгілерді қолданыңыз",
+  "no_results": "Рейтингтер табылған жоқ"
 }

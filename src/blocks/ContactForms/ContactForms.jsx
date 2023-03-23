@@ -64,6 +64,13 @@ export const ContactForms = ({ Heading }) => {
     { value: "other", label: t("contact_reason_5") },
   ];
 
+  const sentFromOptions = [
+    { value: "all", label: t("all") },
+    { value: "website", label: t("website") },
+    { value: "provider", label: t("provider") },
+    { value: "client", label: t("client") },
+  ];
+
   const handleFilterSave = (filterData) => {
     setFilters(filterData);
   };
@@ -84,7 +91,15 @@ export const ContactForms = ({ Heading }) => {
         new Date(filters.startingDate).toLocaleDateString()
       : true;
 
-    return isSubjectMatching && isSenderMatching && isStartingDateMatching
+    const isSentFromMatching =
+      filters.sentFrom && filters.sentFrom !== "all"
+        ? form.sentFrom === filters.sentFrom
+        : true;
+
+    return isSubjectMatching &&
+      isSenderMatching &&
+      isStartingDateMatching &&
+      isSentFromMatching
       ? form
       : false;
   };
@@ -95,35 +110,44 @@ export const ContactForms = ({ Heading }) => {
     const filteredForms = data.filter(filterForms);
     if (filteredForms.length === 0) return <p>{t("no_results")}</p>;
 
-    return filteredForms.map((item, index) => {
-      const subjectTranslation =
-        subjectOptions.find((x) => x.value === item.subject)?.label ||
-        item.subject;
-      return (
-        <ReportCollapsible
-          key={index}
-          headingItems={[
-            <p>
-              {t("email")}: <strong>{item.sender}</strong>
-            </p>,
+    return filteredForms
+      .sort((a, b) => {
+        return new Date(b.createdAt) - new Date(a.createdAt);
+      })
+      .map((item, index) => {
+        const subjectTranslation =
+          subjectOptions.find((x) => x.value === item.subject)?.label ||
+          item.subject;
+        return (
+          <ReportCollapsible
+            key={index}
+            headingItems={[
+              <p>
+                {t("sent_from")}: <strong>{t(item.sentFrom)}</strong>
+              </p>,
 
-            <p>
-              {t("subject")}: <strong>{subjectTranslation}</strong>
-            </p>,
+              <p>
+                {t("email")}: <strong>{item.sender}</strong>
+              </p>,
 
-            <p>
-              {t("time")}:
-              <strong>
-                {" "}
-                {getTimeFromDate(item.createdAt)}, {getDateView(item.createdAt)}
-              </strong>
-            </p>,
-          ]}
-          contentHeading={t("content_heading")}
-          contentText={item.message}
-        />
-      );
-    });
+              <p>
+                {t("subject")}: <strong>{subjectTranslation}</strong>
+              </p>,
+
+              <p>
+                {t("time")}:
+                <strong>
+                  {" "}
+                  {getTimeFromDate(item.createdAt)},{" "}
+                  {getDateView(item.createdAt)}
+                </strong>
+              </p>,
+            ]}
+            contentHeading={t("content_heading")}
+            contentText={item.message}
+          />
+        );
+      });
   }, [data, filters]);
 
   return (
@@ -139,6 +163,7 @@ export const ContactForms = ({ Heading }) => {
         handleSave={handleFilterSave}
         subjectOptions={subjectOptions}
         emailOptions={emailOptions}
+        sentFromOptions={sentFromOptions}
         t={t}
       />
     </Block>
@@ -152,11 +177,14 @@ const Filters = ({
   t,
   subjectOptions,
   emailOptions,
+  sentFromOptions,
 }) => {
-  const [data, setData] = useState({
+  const initialFilters = {
     rating: "all",
     startingDate: "",
-  });
+    sentFrom: "all",
+  };
+  const [data, setData] = useState(initialFilters);
 
   const handleChange = (field, value) => {
     setData({
@@ -167,6 +195,12 @@ const Filters = ({
 
   const handleSubmit = () => {
     handleSave(data);
+    handleClose();
+  };
+
+  const handleResetFilter = () => {
+    setData(initialFilters);
+    handleSave(initialFilters);
     handleClose();
   };
 
@@ -191,6 +225,13 @@ const Filters = ({
             setSelected={(value) => handleChange("sender", value)}
             options={emailOptions}
           />
+          <DropdownWithLabel
+            label={t("sent_from")}
+            selected={data.sentFrom}
+            setSelected={(value) => handleChange("sentFrom", value)}
+            options={sentFromOptions}
+            classes="contact-forms__filters-dropdown"
+          />
           <Input
             type="date"
             label={t("starting_date")}
@@ -199,10 +240,22 @@ const Filters = ({
             }
             value={data.startingDate}
             placeholder="DD.MM.YYY"
-            classes="client-ratings__backdrop__date-picker"
+            classes="contact-forms__filters__date-picker"
           />
         </div>
-        <Button label={t("submit")} size="lg" onClick={handleSubmit} />
+        <Button
+          label={t("submit")}
+          size="lg"
+          onClick={handleSubmit}
+          classes="contact-forms__filters__apply-button"
+        />
+        <Button
+          label={t("reset_filter")}
+          type="secondary"
+          size="lg"
+          onClick={handleResetFilter}
+          classes="contact-forms__filters__reset-button"
+        />
       </>
     </Modal>
   );
