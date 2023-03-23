@@ -247,7 +247,13 @@ export const EditProvider = ({
   );
 
   const handleSave = async () => {
-    if (Number(countryMinPrice) > Number(providerData.consultationPrice)) {
+    // Check if the price is lower than the minimum price
+    // Allow the admin to save if the price is 0
+    const isPriceZero = Number(providerData.consultationPrice) === 0;
+    if (
+      !isPriceZero &&
+      Number(countryMinPrice) > Number(providerData.consultationPrice)
+    ) {
       setErrors({
         submit: t("min_price_error", {
           minPrice: countryMinPrice,
