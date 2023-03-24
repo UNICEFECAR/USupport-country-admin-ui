@@ -40,6 +40,7 @@ export const EditCampaign = () => {
         sponsorName={sponsorName}
         campaignData={campaignData}
         campaignId={campaignId}
+        isEdit
       />
     </Page>
   );

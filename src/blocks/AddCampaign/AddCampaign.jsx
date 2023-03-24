@@ -42,6 +42,7 @@ export const AddCampaign = ({
   sponsorImage,
   campaignData,
   campaignId,
+  isEdit,
 }) => {
   const navigate = useNavigate();
   const currencySymbol = localStorage.getItem("currency_symbol");
@@ -97,16 +98,20 @@ export const AddCampaign = ({
 
   const onCreateSuccess = (campaign) => {
     const campaignData = transformCampaignData(campaign);
-    navigate(
-      `/campaign-details?sponsorId=${sponsorId}&campaignId=${campaign.campaign_id}`,
-      {
-        state: {
-          sponsorName,
-          campaignData,
-          sponsorImage,
-        },
-      }
-    );
+    if (isEdit) {
+      navigate(-1);
+    } else {
+      navigate(
+        `/campaign-details?sponsorId=${sponsorId}&campaignId=${campaign.campaign_id}`,
+        {
+          state: {
+            sponsorName,
+            campaignData,
+            sponsorImage,
+          },
+        }
+      );
+    }
   };
   const onCreateError = (err) => {
     setErrors({ submit: err });
@@ -164,10 +169,7 @@ export const AddCampaign = ({
   const handleSaveChanges = async () => {
     setErrors({});
 
-    if (
-      oldData.startDate !== data.startDate ||
-      oldData.endDate !== data.endDate
-    ) {
+    if (oldData.startDate !== data.startDate) {
       const isValid = checkIsPeriodValid();
 
       if (!isValid) return;
