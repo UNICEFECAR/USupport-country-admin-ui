@@ -1,6 +1,7 @@
 @import "@USupport-components-library/styles";
 
 .sponsor-details {
+  padding-bottom: $spacing_4_0;
   &__buttons-container {
     display: flex;
     justify-content: flex-end;

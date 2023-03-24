@@ -165,6 +165,9 @@ export const AddSponsor = ({
   const onUpdateSuccess = () => {
     if (!sponsorImage || hasUploadedImage || isEditing) {
       toast(t("edit_success"));
+      if (isEditing) {
+        navigate(-1);
+      }
     } else {
       if (sponsorId) {
         uploadImageMutation.mutate(sponsorId);
