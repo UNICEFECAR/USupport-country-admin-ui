@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-
+import { useQueryClient } from "@tanstack/react-query";
 import Joi from "joi";
 
 import {
@@ -96,7 +96,9 @@ export const AddCampaign = ({
     }
   }, [data, oldData]);
 
+  const queryClient = useQueryClient();
   const onCreateSuccess = (campaign) => {
+    queryClient.invalidateQueries({ queryKey: ["sponsor-data", sponsorId] });
     const campaignData = transformCampaignData(campaign);
     if (isEdit) {
       navigate(-1);
