@@ -86,7 +86,11 @@ export const ProviderActivities = ({ isLoading, data, providerName }) => {
   };
 
   const renderData = useMemo(() => {
-    const filteredData = data?.filter(filterData);
+    const filteredData = data
+      ?.sort((a, b) => {
+        return new Date(b.createdAt) - new Date(a.createdAt);
+      })
+      ?.filter(filterData);
 
     if (!filteredData || filteredData?.length === 0)
       return (
