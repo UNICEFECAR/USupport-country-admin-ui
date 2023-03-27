@@ -193,10 +193,11 @@ export const ProviderActivities = ({ isLoading, data, providerName }) => {
 };
 
 const Filters = ({ isOpen, handleClose, handleSave, t, campaignOptions }) => {
-  const [data, setData] = useState({
+  const initialData = {
     startDate: "",
     endDate: "",
-  });
+  };
+  const [data, setData] = useState(initialData);
 
   const handleChange = (field, value) => {
     setData({
@@ -207,6 +208,11 @@ const Filters = ({ isOpen, handleClose, handleSave, t, campaignOptions }) => {
 
   const handleSubmit = () => {
     handleSave(data);
+    handleClose();
+  };
+
+  const handleFilterReset = () => {
+    handleSave(initialData);
     handleClose();
   };
 
@@ -247,7 +253,19 @@ const Filters = ({ isOpen, handleClose, handleSave, t, campaignOptions }) => {
           </div>
         </div>
         <div>
-          <Button label={t("submit")} size="lg" onClick={handleSubmit} />
+          <Button
+            label={t("apply_filter")}
+            size="lg"
+            onClick={handleSubmit}
+            classes="provider-activities__filter-modal__submit-button"
+          />
+          <Button
+            label={t("reset_filter")}
+            size="lg"
+            type="secondary"
+            onClick={handleFilterReset}
+            classes="provider-activities__filter-modal__reset-button"
+          />
         </div>
       </>
     </Modal>
