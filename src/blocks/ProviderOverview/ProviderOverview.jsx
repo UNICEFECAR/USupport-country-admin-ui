@@ -45,7 +45,7 @@ export const ProviderOverview = ({ handleEditRedirect, providerId }) => {
               <Button
                 label={t("edit_details")}
                 color="purple"
-                size="md"
+                size="lg"
                 onClick={handleEditRedirect}
                 classes="provider-profile__edit-button"
               />

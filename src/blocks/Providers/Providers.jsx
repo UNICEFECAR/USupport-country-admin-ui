@@ -1,6 +1,6 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useQueryClient, useMutation } from "@tanstack/react-query";
+import { useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import {
@@ -12,8 +12,8 @@ import {
   ProviderOverview,
   Modal,
 } from "@USupport-components-library/src";
-import { providerSvc } from "@USupport-components-library/services";
-import { useGetProvidersData, useError } from "#hooks";
+// import { providerSvc } from "@USupport-components-library/services";
+import { useGetProvidersData, useUpdateProviderStatus } from "#hooks";
 
 import "./providers.scss";
 /**
@@ -31,6 +31,8 @@ export const Providers = () => {
   const [providerId, setProviderId] = useState(null);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
+  const selectedProviderStatus = useRef();
+
   const redirectToEditProvider = (id) => {
     navigate(`/edit-provider?id=${id}`);
   };
@@ -39,38 +41,39 @@ export const Providers = () => {
     navigate(`/provider/details?id=${id}`);
   };
 
-  const deleteProvider = async () => {
-    setIsDeleteModalOpen(false);
-    await providerSvc.deleteProviderByIdAsAdmin(providerId);
-  };
-  const deleteMutation = useMutation(deleteProvider, {
-    onMutate: () => {
-      const oldData = queryClient.getQueryData({ queryKey: ["all-providers"] });
-
-      queryClient.setQueryData(
-        { queryKey: ["all-providers"] },
-        [...oldData].filter((x) => x.providerDetailId !== providerId)
-      );
-
-      return () => {
-        queryClient.setQueryData({ queryKey: ["all-providers"] }, oldData);
-      };
-    },
-    onSuccess: () => toast(t("provider_deleted")),
-    onError: (error, variables, rollback) => {
-      const { message: errorMessage } = useError(error);
-      toast(errorMessage, { type: "error" });
-      rollback();
-    },
-  });
-
-  const handleDelete = () => deleteMutation.mutate();
-
-  const openDeleteModal = (id) => {
-    setProviderId(id);
+  const openDeleteModal = (id, status) => {
+    selectedProviderStatus.current = {
+      status,
+      id,
+    };
     setIsDeleteModalOpen(true);
   };
+
   const closeDeleteModal = () => setIsDeleteModalOpen(false);
+
+  const onSuccess = (data) => {
+    queryClient.invalidateQueries({ queryKey: ["all-providers"] });
+    const newStatus = data.newStatus;
+    toast(
+      t(newStatus === "active" ? "provider_activated" : "provider_deactivated")
+    );
+    closeDeleteModal();
+  };
+  const onError = (err) => {
+    toast(err, { type: "error" });
+  };
+  const updateProviderStatusMutation = useUpdateProviderStatus(
+    onSuccess,
+    onError
+  );
+
+  const handleStatusChange = () => {
+    const status = selectedProviderStatus.current?.status;
+    const id = selectedProviderStatus.current?.id;
+    const newStatus = status === "active" ? "inactive" : "active";
+
+    updateProviderStatusMutation.mutate({ providerId: id, status: newStatus });
+  };
 
   const renderProviders = useCallback(() => {
     if (!providersQuery.data || providersQuery.data?.length === 0)
@@ -90,14 +93,20 @@ export const Providers = () => {
             specializations={provider.specializations.map((x) => t(x))}
             price={provider.consultationPrice}
             freeLabel={t("free")}
+            statusChangeLabel={
+              provider.status === "active" ? t("deactivate") : t("activate")
+            }
             activitiesLabel={t("activities")}
+            providerStatus={provider.status}
             hasMenu
             showActivities
             handleEdit={() => redirectToEditProvider(provider.providerDetailId)}
             handleViewProfile={() =>
               redirectToProviderDetails(provider.providerDetailId)
             }
-            handleDelete={() => openDeleteModal(provider.providerDetailId)}
+            handleUpdateStatus={() =>
+              openDeleteModal(provider.providerDetailId, provider.status)
+            }
             handleActivities={() =>
               navigate(
                 `/provider-activities?providerId=${provider.providerDetailId}`,
@@ -138,16 +147,29 @@ export const Providers = () => {
         )}
       </Grid>
       <Modal
-        heading={t("modal_heading")}
+        heading={
+          selectedProviderStatus.current?.status === "active"
+            ? t("modal_heading_deactivate")
+            : t("modal_heading_activate")
+        }
+        text={
+          selectedProviderStatus.current?.status === "active"
+            ? t("modal_text_deactivate")
+            : t("modal_text_activate")
+        }
         isOpen={isDeleteModalOpen}
         closeModal={closeDeleteModal}
         classes="providers__delete-modal"
         ctaLabel={t("yes")}
-        ctaHandleClick={handleDelete}
+        ctaHandleClick={handleStatusChange}
+        ctaColor={
+          selectedProviderStatus.current?.status === "active" ? "red" : "green"
+        }
+        isCtaLoading={updateProviderStatusMutation.isLoading}
         secondaryCtaLabel={t("no")}
         secondaryCtaHandleClick={closeDeleteModal}
         secondaryCtaType="secondary"
-      ></Modal>
+      />
     </Block>
   );
 };

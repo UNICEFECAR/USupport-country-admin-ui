@@ -62,6 +62,7 @@ export const ContactForms = ({ Heading }) => {
     { value: "join-as-provider", label: t("contact_reason_3") },
     { value: "partnerships", label: t("contact_reason_4") },
     { value: "other", label: t("contact_reason_5") },
+    { value: "services-information", label: t("contact_reason_6") },
   ];
 
   const sentFromOptions = [

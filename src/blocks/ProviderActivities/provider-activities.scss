@@ -103,5 +103,13 @@
         text-transform: uppercase;
       }
     }
+
+    &__submit-button {
+      margin-top: $spacing_2_0;
+    }
+
+    &__reset-button {
+      margin: $spacing_1_6 0;
+    }
   }
 }

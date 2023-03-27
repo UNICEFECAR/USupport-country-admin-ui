@@ -70,7 +70,8 @@ export const CodeVerification = ({
     setCode(value);
   };
 
-  const handleSend = () => {
+  const handleSend = (e) => {
+    e?.preventDefault();
     loginMutation.mutate();
   };
 
@@ -83,49 +84,52 @@ export const CodeVerification = ({
       heading={t("heading")}
       text={t("subheading")}
     >
-      <div className="code-verification__content">
-        <PinInput
-          length={4}
-          secret={isCodeHidden}
-          onChange={(value) => handleCodeChange(value)}
-        />
-        <ButtonWithIcon
-          classes="code-verification__view-code-button"
-          type="ghost"
-          color="purple"
-          iconName={isCodeHidden ? "view" : "hide"}
-          iconColor="#9749FA"
-          label={
-            isCodeHidden
-              ? t("button_with_icon_label_view")
-              : t("button_with_icon_label_hide")
-          }
-          onClick={() => setIsCodeHidden(!isCodeHidden)}
-        />
-        <Button
-          label={t("send_button_label")}
-          size="lg"
-          classes="code-verification__send-button"
-          disabled={code.length === 4 ? false : true}
-          onClick={handleSend}
-          loading={loginMutation.isLoading}
-        />
-        {errors.submit && <Error message={errors.submit} />}
-        <div className="code-verification__resend-code-container">
-          <p className="small-text">{t("didnt_get_code")}</p>
-
-          <Button
-            disabled={!canRequestNewEmail || isMutating}
-            label={t("resend_code_button_label")}
-            type="link"
-            classes="code-verification__resend-code-container__button"
-            onClick={requestOTP}
+      <form onSubmit={handleSend}>
+        <div className="code-verification__content">
+          <PinInput
+            length={4}
+            secret={isCodeHidden}
+            onChange={(value) => handleCodeChange(value)}
           />
-          <p className="small-text">
-            {showTimer ? t("seconds", { seconds: resendTimer }) : ""}
-          </p>
+          <ButtonWithIcon
+            classes="code-verification__view-code-button"
+            type="ghost"
+            color="purple"
+            iconName={isCodeHidden ? "view" : "hide"}
+            iconColor="#9749FA"
+            label={
+              isCodeHidden
+                ? t("button_with_icon_label_view")
+                : t("button_with_icon_label_hide")
+            }
+            onClick={() => setIsCodeHidden(!isCodeHidden)}
+          />
+          <Button
+            label={t("send_button_label")}
+            size="lg"
+            classes="code-verification__send-button"
+            disabled={code.length === 4 ? false : true}
+            onClick={handleSend}
+            loading={loginMutation.isLoading}
+            isSubmit
+          />
+          {errors.submit && <Error message={errors.submit} />}
+          <div className="code-verification__resend-code-container">
+            <p className="small-text">{t("didnt_get_code")}</p>
+
+            <Button
+              disabled={!canRequestNewEmail || isMutating}
+              label={t("resend_code_button_label")}
+              type="link"
+              classes="code-verification__resend-code-container__button"
+              onClick={requestOTP}
+            />
+            <p className="small-text">
+              {showTimer ? t("seconds", { seconds: resendTimer }) : ""}
+            </p>
+          </div>
         </div>
-      </div>
+      </form>
     </Backdrop>
   );
 };

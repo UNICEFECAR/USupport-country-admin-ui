@@ -24,3 +24,4 @@ export * from "./useGetCouponsData.js";
 export * from "./useCountdownTimer.js";
 export * from "./useEventListener.js";
 export * from "./useGetCampaignDataById.js";
+export * from "./useUpdateProviderStatus.js";
