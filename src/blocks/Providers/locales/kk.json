@@ -10,5 +10,9 @@
   "no_providers": "Консультанттар жоқ",
   "provider_deleted": "Консультант сәтті жойылды",
   "free": "Бос",
-  "activities": "Іс-шаралар"
+  "activities": "Іс-шаралар",
+  "activate": "Іске қосу",
+  "deactivate": "DeactivateKK",
+  "provider_activated": "Provider successfully activatedKK",
+  "provider_deactivated": "Provider successfully deactivatedKK"
 }

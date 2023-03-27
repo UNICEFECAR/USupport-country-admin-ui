@@ -13,7 +13,7 @@ import {
   Modal,
 } from "@USupport-components-library/src";
 import { providerSvc } from "@USupport-components-library/services";
-import { useGetProvidersData, useError } from "#hooks";
+import { useGetProvidersData, useError, useUpdateProviderStatus } from "#hooks";
 
 import "./providers.scss";
 /**
@@ -66,11 +66,27 @@ export const Providers = () => {
 
   const handleDelete = () => deleteMutation.mutate();
 
-  const openDeleteModal = (id) => {
-    setProviderId(id);
-    setIsDeleteModalOpen(true);
-  };
   const closeDeleteModal = () => setIsDeleteModalOpen(false);
+
+  const onSuccess = (data) => {
+    queryClient.invalidateQueries({ queryKey: ["all-providers"] });
+    const newStatus = data.newStatus;
+    toast(
+      t(newStatus === "active" ? "provider_activated" : "provider_deactivated")
+    );
+  };
+  const onError = (err) => {
+    toast(err, { type: "error" });
+  };
+  const updateProviderStatusMutation = useUpdateProviderStatus(
+    onSuccess,
+    onError
+  );
+
+  const handleStatusChange = (id, status) => {
+    const newStatus = status === "active" ? "inactive" : "active";
+    updateProviderStatusMutation.mutate({ providerId: id, status: newStatus });
+  };
 
   const renderProviders = useCallback(() => {
     if (!providersQuery.data || providersQuery.data?.length === 0)
@@ -90,14 +106,20 @@ export const Providers = () => {
             specializations={provider.specializations.map((x) => t(x))}
             price={provider.consultationPrice}
             freeLabel={t("free")}
+            statusChangeLabel={
+              provider.status === "active" ? t("deactivate") : t("activate")
+            }
             activitiesLabel={t("activities")}
+            providerStatus={provider.status}
             hasMenu
             showActivities
             handleEdit={() => redirectToEditProvider(provider.providerDetailId)}
             handleViewProfile={() =>
               redirectToProviderDetails(provider.providerDetailId)
             }
-            handleDelete={() => openDeleteModal(provider.providerDetailId)}
+            handleUpdateStatus={() =>
+              handleStatusChange(provider.providerDetailId, provider.status)
+            }
             handleActivities={() =>
               navigate(
                 `/provider-activities?providerId=${provider.providerDetailId}`,

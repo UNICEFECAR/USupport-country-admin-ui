@@ -10,5 +10,9 @@
   "no_providers": "There are no providers",
   "provider_deleted": "Provider successfully deleted",
   "free": "Free",
-  "activities": "Activities"
+  "activities": "Activities",
+  "activate": "Activate",
+  "deactivate": "Deactivate",
+  "provider_activated": "Provider successfully activated",
+  "provider_deactivated": "Provider successfully deactivated"
 }

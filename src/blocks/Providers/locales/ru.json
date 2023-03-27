@@ -10,5 +10,9 @@
   "no_providers": "Нет консультантов",
   "provider_deleted": "Консультант успешно удален",
   "free": "Свободно",
-  "activities": "Мероприятия"
+  "activities": "Мероприятия",
+  "activate": "Активировать",
+  "deactivate": "DeactivateRU",
+  "provider_activated": "Provider successfully activatedRU",
+  "provider_deactivated": "Provider successfully deactivatedRU"
 }
