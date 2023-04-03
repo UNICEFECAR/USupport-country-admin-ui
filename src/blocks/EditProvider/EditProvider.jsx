@@ -491,5 +491,5 @@ function generateCountryCodes() {
     });
   });
 
-  return codes;
+  return codes.sort((a, b) => (a.country > b.country ? 1 : -1));
 }
