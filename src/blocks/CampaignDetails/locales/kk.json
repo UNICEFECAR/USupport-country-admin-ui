@@ -20,5 +20,17 @@
   "used_after": "Used afterKK",
   "no_data_found": "No data foundKK",
   "apply_filter": "Сүзгілерді қолданыңыз",
-  "reset_filter": "Reset filtersKK"
+  "reset_filter": "Сүзгілерді қалпына келтіру",
+
+  "client": "Клиент",
+  "client_sex": "Client sex",
+  "client_yob": "Client year of birth",
+  "client_place_of_living": "Client place of living",
+  "male": "Ер",
+  "female": "Әйел",
+  "unspecified": "Көрсетілмеген",
+  "notMentioned": "Not mentioned",
+  "urban": "Қала",
+  "rural": "Ауыл",
+  "all": "Барлығы"
 }

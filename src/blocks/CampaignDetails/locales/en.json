@@ -20,5 +20,16 @@
   "used_after": "Used after",
   "no_data_found": "No data found",
   "apply_filter": "Apply filters",
-  "reset_filter": "Reset filters"
+  "reset_filter": "Reset filters",
+  "client": "Client",
+  "client_sex": "Client sex",
+  "client_yob": "Client year of birth",
+  "client_place_of_living": "Client place of living",
+  "male": "Male",
+  "female": "Female",
+  "unspecified": "Unspecified",
+  "notMentioned": "Not mentioned",
+  "rural": "Rural",
+  "urban": "Urban",
+  "all": "All"
 }

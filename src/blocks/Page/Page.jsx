@@ -69,6 +69,8 @@ export const Page = ({
         label: x.name,
         countryID: x["country_id"],
         iconName: x.alpha2,
+        minAge: x["min_client_age"],
+        maxAge: x["max_client_age"],
         currencySymbol: x["symbol"],
       };
 
