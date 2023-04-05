@@ -20,5 +20,17 @@
   "used_after": "Used afterRU",
   "no_data_found": "No data foundRU",
   "apply_filter": "Примените фильтры",
-  "reset_filter": "Reset filtersRU"
+  "reset_filter": "Сбросить фильтр",
+
+  "client": "Клиент",
+  "client_sex": "Client sex",
+  "client_yob": "Client year of birth",
+  "client_place_of_living": "Client place of living",
+  "male": "Мужчина",
+  "female": "Женщина",
+  "unspecified": "Не указан",
+  "notMentioned": "Предпочитаю не говорить",
+  "urban": "Город",
+  "rural": "Село",
+  "all": "Все"
 }

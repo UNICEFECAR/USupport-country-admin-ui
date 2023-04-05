@@ -203,8 +203,6 @@ function generateCountryCodes() {
       country: key,
     });
   });
-  codes.sort((a, b) => {
-    return a.country > b.country ? 1 : -1;
-  });
-  return codes;
+
+  return codes.sort((a, b) => (a.country > b.country ? 1 : -1));
 }
