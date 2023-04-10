@@ -28,7 +28,7 @@
   "male": "Male",
   "female": "Female",
   "unspecified": "Unspecified",
-  "notMentioned": "Not mentioned",
+  "not_mentioned": "Not mentioned",
   "rural": "Rural",
   "urban": "Urban",
   "all": "All"
