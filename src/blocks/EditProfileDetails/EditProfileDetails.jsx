@@ -30,7 +30,6 @@ export const EditProfileDetails = () => {
   const { t } = useTranslation("edit-profile-details");
   const [adminQuery, adminData, setAdminData] = useGetAdminData();
 
-  const [isProcessing, setIsProcessing] = useState(false);
   const [canSaveChanges, setCanSaveChanges] = useState(false);
 
   const [errors, setErrors] = useState({});
@@ -91,12 +90,10 @@ export const EditProfileDetails = () => {
   };
 
   const onUpdateSuccess = () => {
-    setIsProcessing(false);
     toast(t("edit_success"));
   };
   const onUpdateError = (err) => {
     setErrors({ submit: err });
-    setIsProcessing(false);
   };
   const updateAdminMutation = useUpdateAdminData(
     onUpdateSuccess,
@@ -104,11 +101,8 @@ export const EditProfileDetails = () => {
   );
 
   const handleSave = async () => {
-    setIsProcessing(true);
     if ((await validate(adminData, schema, setErrors)) === null) {
       updateAdminMutation.mutate(adminData);
-    } else {
-      setIsProcessing(false);
     }
   };
 
@@ -178,7 +172,8 @@ export const EditProfileDetails = () => {
               label={t("button_text")}
               size="lg"
               onClick={handleSave}
-              disabled={!canSaveChanges || isProcessing}
+              disabled={!canSaveChanges}
+              loading={updateAdminMutation.isLoading}
             />
             <Button
               type="secondary"
@@ -208,8 +203,6 @@ function generateCountryCodes() {
       country: key,
     });
   });
-  codes.sort((a, b) => {
-    return a.country > b.country ? 1 : -1;
-  });
-  return codes;
+
+  return codes.sort((a, b) => (a.country > b.country ? 1 : -1));
 }

@@ -10,5 +10,6 @@
   "no_results": "No activities found",
   "start_date": "Start date",
   "end_date": "End date",
-  "submit": "Apply filters"
+  "apply_filter": "Apply filters",
+  "reset_filter": "Reset filters"
 }

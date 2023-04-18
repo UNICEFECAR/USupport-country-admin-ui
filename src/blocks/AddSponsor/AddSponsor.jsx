@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import countryCodes from "country-codes-list";
@@ -41,6 +41,7 @@ export const AddSponsor = ({
   setSponsorImage,
   isEditing = false,
 }) => {
+  const queryClient = useQueryClient();
   const navigate = useNavigate();
   const { t } = useTranslation("add-sponsor");
 
@@ -62,7 +63,7 @@ export const AddSponsor = ({
     email: sponsorData ? sponsorData.email : "",
     phonePrefix: sponsorData ? sponsorData.phonePrefix : "",
     phone: sponsorData ? sponsorData.phone : "",
-    image: sponsorData ? sponsorData.image : "default",
+    image: sponsorData ? sponsorData.image : "default-sponsor",
   });
 
   const setDataToDataInQuery = () => {
@@ -148,7 +149,9 @@ export const AddSponsor = ({
       uploadImageMutation.mutate(sponsorId);
     } else {
       toast(t("success"));
+      navigate("/campaigns");
     }
+    queryClient.inavlidateQueries({ queryKey: ["sponsor-data"] });
   };
   const onCreateError = (error) => setErrors({ submit: error });
   const addSponsorMutation = useAddSponsor(onCreateSuccess, onCreateError);
@@ -162,6 +165,9 @@ export const AddSponsor = ({
   const onUpdateSuccess = () => {
     if (!sponsorImage || hasUploadedImage || isEditing) {
       toast(t("edit_success"));
+      if (isEditing) {
+        navigate(-1);
+      }
     } else {
       if (sponsorId) {
         uploadImageMutation.mutate(sponsorId);
@@ -190,14 +196,12 @@ export const AddSponsor = ({
     setDataToDataInQuery();
   };
 
-  const openDeleteAccountBackdrop = () => {};
-
   return (
     <Block classes="add-sponsor">
       <Grid classes="add-sponsor__grid">
         <GridItem md={8} lg={12}>
           <ProfilePicturePreview
-            image={data.image || "default"}
+            image={data.image || "default-sponsor"}
             changePhotoText={t("select_photo")}
             handleChangeClick={openUploadPicture}
             imageFile={sponsorImage}
@@ -248,7 +252,7 @@ export const AddSponsor = ({
               onClick={handleCreate}
               size="lg"
               classes="add-sponsor__grid__create-button"
-              disabled={
+              loading={
                 addSponsorMutation.isLoading || uploadImageMutation.isLoading
               }
             />
@@ -256,8 +260,8 @@ export const AddSponsor = ({
             <>
               <Button
                 label={t("save_changes")}
-                disabled={
-                  !canSaveChanges ||
+                disabled={!canSaveChanges}
+                loading={
                   updateSponsorMutation.isLoading ||
                   uploadImageMutation.isLoading
                 }
@@ -273,16 +277,6 @@ export const AddSponsor = ({
                 classes="add-sponsor__grid__create-button"
                 type="secondary"
                 color="green"
-              />
-              <ButtonWithIcon
-                iconName={"circle-close"}
-                iconSize={"md"}
-                size="lg"
-                iconColor={"#eb5757"}
-                color={"red"}
-                label={t("delete_sponsor")}
-                type={"ghost"}
-                onClick={openDeleteAccountBackdrop}
               />
             </>
           )}
@@ -306,5 +300,5 @@ function generateCountryCodes() {
     });
   });
 
-  return codes;
+  return codes.sort((a, b) => (a.country > b.country ? 1 : -1));
 }

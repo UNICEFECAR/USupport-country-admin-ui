@@ -29,11 +29,12 @@ export const FilterSecurityCheckReports = ({
   const [providersDataQuery] = useGetProvidersData();
   const { isLoading, data } = providersDataQuery;
 
-  const [filtersData, setFiltersData] = useState({
+  const initialFiltersData = {
     provider: null,
     numberOfIssues: 0,
     startingDate: null,
-  });
+  };
+  const [filtersData, setFiltersData] = useState({ ...initialFiltersData });
   const [providerOptions, setProviderOptions] = useState([]);
 
   useEffect(() => {
@@ -58,6 +59,11 @@ export const FilterSecurityCheckReports = ({
 
   const handleSubmit = () => {
     changeFilter(filtersData);
+    onClose();
+  };
+
+  const handleResetFilters = () => {
+    changeFilter(initialFiltersData);
     onClose();
   };
 
@@ -96,16 +102,26 @@ export const FilterSecurityCheckReports = ({
             <Input
               type="date"
               label={t("starting_date")}
-              onChange={(e) =>
-                handleChange("startingDate", e.currentTarget.value)
-              }
+              onChange={(e) => handleChange("startingDate", e.target.value)}
               value={filtersData.startingDate}
               placeholder="DD.MM.YYY"
               classes="filter-security-check-reports__date-picker"
             />
           </div>
 
-          <Button label={t("button_label")} size="lg" onClick={handleSubmit} />
+          <Button
+            label={t("button_label")}
+            size="lg"
+            onClick={handleSubmit}
+            classes="filter-security-check-reports__submit-button"
+          />
+          <Button
+            label={t("reset_filter")}
+            type="secondary"
+            size="lg"
+            onClick={handleResetFilters}
+            classes="filter-security-check-reports__reset-button"
+          />
         </>
       )}
     </Modal>

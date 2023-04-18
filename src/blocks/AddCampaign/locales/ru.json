@@ -1,0 +1,31 @@
+{
+  "activate": "Активировать",
+  "name_label": "Кампания",
+  "coupon_code_label": "Код купона",
+  "budget_label": "Бюджет - в {{currencySymbol}}",
+  "number_of_coupons_label": "Общее количество купонов",
+  "start_date_label": "Дата начала",
+  "end_date_label": "Дата окончания",
+  "max_coupons_per_client_label": "Максимальное количество купонов на одного клиента",
+  "terms_label": "Условия и положения",
+
+  "name_placeholder": "Название кампании",
+  "budget_placeholder": "Введите общий бюджет",
+  "coupon_code_placeholder": "Введите код для получения купона",
+  "number_of_coupons_placeholder": "Введите общее количество купонов",
+  "dates_placeholder": "ДД.ММ.ГГГГ",
+  "max_coupons_per_client_placeholder": "Максимальное количество купонов на одного клиента",
+  "terms_placeholder": "Напишите правила и условия",
+  "budget_info": "The price for a single consultation will be",
+
+  "required_field": "Поле обязательно для заполнения",
+  "budget_error": "Бюджет должен быть положительным числом",
+  "start_date_error": "The start date of the campaign should be in the future",
+  "end_date_error": "The end date of the campaign should be in the future",
+  "period_error": "The end date should be after the start date",
+
+  "create_campaign": "Создать кампанию",
+  "save_changes": "Save changes",
+  "discard_changes": "Отменить изменения",
+  "delete_campaign": "Удалить кампанию"
+}

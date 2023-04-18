@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useTranslation } from "react-i18next";
+import { useQuery } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import {
   Block,
@@ -17,6 +18,8 @@ import {
 } from "@USupport-components-library/src";
 
 import { validate, validateProperty } from "@USupport-components-library/utils";
+import { countrySvc } from "@USupport-components-library/services";
+
 import {
   useGetProviderData,
   useGetCountryAndLanguages,
@@ -27,6 +30,13 @@ import countryCodes from "country-codes-list";
 import Joi from "joi";
 
 import "./edit-provider.scss";
+
+const fetchCountryMinPrice = async () => {
+  const { data } = await countrySvc.getActiveCountries();
+  const currentCountryId = localStorage.getItem("country_id");
+  const currentCountry = data.find((x) => x.country_id === currentCountryId);
+  return currentCountry?.min_price;
+};
 
 /**s
  * EditProvider
@@ -43,13 +53,18 @@ export const EditProvider = ({
   setProviderImage,
   providerImageUrl,
 }) => {
+  const currencySymbol = localStorage.getItem("currency_symbol");
   const { t } = useTranslation("edit-provider");
   const [providersQuery, providerData, setProviderData] =
     useGetProviderData(providerId);
-  const [isProcessing, setIsProcessing] = useState(false);
   const [canSaveChanges, setCanSaveChanges] = useState(false);
 
   const [phonePrefixes, setPhonePrefixes] = useState();
+
+  const { data: countryMinPrice } = useQuery(
+    ["country-min-price"],
+    fetchCountryMinPrice
+  );
 
   useEffect(() => {
     if (providerData && !providerImage) {
@@ -220,13 +235,11 @@ export const EditProvider = ({
   };
 
   const onUpdateSuccess = () => {
-    setIsProcessing(false);
     toast(t("edit_success"));
   };
 
   const onUpdateError = (err) => {
     setErrors({ submit: err });
-    setIsProcessing(false);
   };
   const updateProviderMutation = useUpdateProviderData(
     onUpdateSuccess,
@@ -234,11 +247,23 @@ export const EditProvider = ({
   );
 
   const handleSave = async () => {
-    setIsProcessing(true);
+    // Check if the price is lower than the minimum price
+    // Allow the admin to save if the price is 0
+    const isPriceZero = Number(providerData.consultationPrice) === 0;
+    if (
+      !isPriceZero &&
+      Number(countryMinPrice) > Number(providerData.consultationPrice)
+    ) {
+      setErrors({
+        submit: t("min_price_error", {
+          minPrice: countryMinPrice,
+          currencySymbol,
+        }),
+      });
+      return;
+    }
     if ((await validate(providerData, schema, setErrors)) === null) {
       updateProviderMutation.mutate(providerData);
-    } else {
-      setIsProcessing(false);
     }
   };
 
@@ -351,7 +376,7 @@ export const EditProvider = ({
                 handleChange("consultationPrice", e.currentTarget.value)
               }
               errorMessage={errors.consultationPrice}
-              label={t("consultation_price_label")}
+              label={t("consultation_price_label", { currencySymbol })}
               placeholder={t("consultation_price_placeholder")}
               onBlur={() => handleBlur("consultationPrice")}
             />
@@ -421,7 +446,12 @@ export const EditProvider = ({
               errorMessage={errors.workWith}
             />
           </GridItem>
-          {errors.submit ? <Error message={errors.submit} /> : null}
+          {errors.submit ? (
+            <GridItem md={8} lg={12}>
+              <Error message={errors.submit} />{" "}
+            </GridItem>
+          ) : null}
+
           <GridItem md={8} lg={12} classes="edit-provider__grid__buttons-item">
             <Button
               classes="edit-provider__grid__save-button"
@@ -429,7 +459,8 @@ export const EditProvider = ({
               label={t("button_text")}
               size="lg"
               onClick={handleSave}
-              disabled={!canSaveChanges || isProcessing}
+              disabled={!canSaveChanges}
+              loading={updateProviderMutation.isLoading}
             />
             <Button
               type="secondary"
@@ -460,5 +491,5 @@ function generateCountryCodes() {
     });
   });
 
-  return codes;
+  return codes.sort((a, b) => (a.country > b.country ? 1 : -1));
 }

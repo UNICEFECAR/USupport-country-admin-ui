@@ -1,6 +1,7 @@
 @import "@USupport-components-library/styles";
 
 .sponsor-details {
+  padding-bottom: $spacing_4_0;
   &__buttons-container {
     display: flex;
     justify-content: flex-end;
@@ -13,6 +14,7 @@
   &__grid {
     padding-top: $spacing_2_4;
     justify-items: start;
+    align-items: center;
 
     @media screen and (min-width: $screen-md) {
       justify-items: center;
@@ -25,6 +27,28 @@
       @media screen and (min-width: $screen-md) {
         margin-bottom: $spacing_5_0;
       }
+
+      @media screen and (min-width: $screen-lg) {
+        margin: 0;
+        width: 22rem;
+      }
+
+      @media screen and (min-width: 1920px) {
+        width: 28rem;
+      }
+    }
+  }
+
+  &__filter-modal {
+    & .input-container,
+    &__cta,
+    &__toggle-container {
+      margin: 0 auto;
+      margin-bottom: $spacing_1_6;
+    }
+
+    &__toggle-container {
+      width: 34.6rem;
     }
   }
 }

@@ -13,6 +13,7 @@ import {
   getDateView,
   getTimeFromDate,
   ONE_HOUR,
+  downloadCSVFile,
 } from "@USupport-components-library/utils";
 
 import "./provider-activities.scss";
@@ -24,14 +25,33 @@ import "./provider-activities.scss";
  *
  * @return {jsx}
  */
-export const ProviderActivities = ({ isLoading, data }) => {
+export const ProviderActivities = ({ isLoading, data, providerName }) => {
   const { t } = useTranslation("provider-activities");
   const rows = ["client", "time", "price", "campaign"];
+  const currencySymbol = localStorage.getItem("currency_symbol");
 
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [filters, setFilters] = useState({});
 
-  const handleExport = () => {};
+  const handleExport = () => {
+    let csv = "";
+
+    csv += rows.map((x) => t(x)).join(",");
+
+    data.forEach((row) => {
+      const price = row.price ? `${row.price}${currencySymbol}` : t("free");
+      csv += "\n";
+      csv += `${row.displayName},`;
+      csv += `${getFormattedDate(row.time, false)},`;
+      csv += `${price},`;
+      csv += `${row.campaignName || "N/A"}`;
+    });
+
+    const reportDate = new Date().toISOString().split("T")[0];
+    const fileName = `Report-${providerName}-${reportDate}.csv`;
+    downloadCSVFile(csv, fileName);
+  };
+
   const handleFilterOpen = () => {
     setIsFilterOpen(true);
   };
@@ -54,8 +74,23 @@ export const ProviderActivities = ({ isLoading, data }) => {
     return isStartDateMatching && isEndDateMatching ? true : false;
   };
 
+  const getFormattedDate = (date, hasComma = true) => {
+    const endTime = new Date(date.getTime() + ONE_HOUR);
+
+    const displayTime = getTimeFromDate(date);
+    const displayEndTime = getTimeFromDate(endTime);
+
+    return `${displayTime} - ${displayEndTime}${
+      hasComma ? "," : ""
+    } ${getDateView(date)}`;
+  };
+
   const renderData = useMemo(() => {
-    const filteredData = data?.filter(filterData);
+    const filteredData = data
+      ?.sort((a, b) => {
+        return new Date(b.createdAt) - new Date(a.createdAt);
+      })
+      ?.filter(filterData);
 
     if (!filteredData || filteredData?.length === 0)
       return (
@@ -71,10 +106,7 @@ export const ProviderActivities = ({ isLoading, data }) => {
       );
 
     return filteredData?.map((activity, index) => {
-      const endTime = new Date(activity.time.getTime() + ONE_HOUR);
-
-      const displayTime = getTimeFromDate(activity.time);
-      const displayEndTime = getTimeFromDate(endTime);
+      const displayTime = getFormattedDate(activity.time);
 
       return (
         <tr key={index}>
@@ -85,14 +117,18 @@ export const ProviderActivities = ({ isLoading, data }) => {
           </td>
           <td className="provider-activities__table__td">
             <p className="text provider-activities__table__name">
-              {displayTime} - {displayEndTime}, {getDateView(activity.time)}
+              {displayTime}
             </p>
           </td>
           <td className="provider-activities__table__td">
-            <p className="text">{activity.price || t("free")}</p>
+            <p className="text">
+              {activity.price
+                ? `${activity.price}${currencySymbol}`
+                : t("free")}
+            </p>
           </td>
           <td className="provider-activities__table__td">
-            <p className="text">{activity.campaign || "N/A"}</p>
+            <p className="text">{activity.campaignName || "N/A"}</p>
           </td>
         </tr>
       );
@@ -157,10 +193,11 @@ export const ProviderActivities = ({ isLoading, data }) => {
 };
 
 const Filters = ({ isOpen, handleClose, handleSave, t, campaignOptions }) => {
-  const [data, setData] = useState({
+  const initialData = {
     startDate: "",
     endDate: "",
-  });
+  };
+  const [data, setData] = useState(initialData);
 
   const handleChange = (field, value) => {
     setData({
@@ -171,6 +208,11 @@ const Filters = ({ isOpen, handleClose, handleSave, t, campaignOptions }) => {
 
   const handleSubmit = () => {
     handleSave(data);
+    handleClose();
+  };
+
+  const handleFilterReset = () => {
+    handleSave(initialData);
     handleClose();
   };
 
@@ -211,7 +253,19 @@ const Filters = ({ isOpen, handleClose, handleSave, t, campaignOptions }) => {
           </div>
         </div>
         <div>
-          <Button label={t("submit")} size="lg" onClick={handleSubmit} />
+          <Button
+            label={t("apply_filter")}
+            size="lg"
+            onClick={handleSubmit}
+            classes="provider-activities__filter-modal__submit-button"
+          />
+          <Button
+            label={t("reset_filter")}
+            size="lg"
+            type="secondary"
+            onClick={handleFilterReset}
+            classes="provider-activities__filter-modal__reset-button"
+          />
         </div>
       </>
     </Modal>

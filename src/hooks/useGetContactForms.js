@@ -10,6 +10,7 @@ export const useGetContactForms = () => {
         subject: item.subject,
         message: item.message,
         createdAt: new Date(item.created_at),
+        sentFrom: item.sent_from,
       };
     });
   };

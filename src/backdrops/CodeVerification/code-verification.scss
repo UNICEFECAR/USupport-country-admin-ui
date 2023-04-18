@@ -16,6 +16,7 @@
     border: 0 !important;
     box-shadow: $shadow_1;
     border-radius: $border_radius_1_6;
+    -webkit-appearance: none;
   }
 
   & input[type="password"] {
@@ -42,7 +43,7 @@
     align-items: center;
 
     &__button {
-      margin-left: $spacing_0_4;
+      margin: 0 $spacing_0_4;
     }
   }
 }

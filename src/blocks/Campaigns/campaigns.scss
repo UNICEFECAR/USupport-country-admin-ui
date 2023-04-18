@@ -47,4 +47,16 @@
       font-weight: $font_bold;
     }
   }
+
+  &__filter-modal {
+    & .input-container {
+      margin: 0 auto;
+      margin-bottom: $spacing_2_4;
+    }
+
+    &__cta {
+      margin: 0 auto;
+      margin-bottom: $spacing_1_6;
+    }
+  }
 }

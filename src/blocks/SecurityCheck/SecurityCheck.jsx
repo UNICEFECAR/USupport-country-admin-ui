@@ -31,6 +31,10 @@ export const SecurityCheck = ({ Heading }) => {
   };
 
   const filterSecurityChecks = (securityCheck) => {
+    console.log(
+      new Date(securityCheck.consultationTime),
+      new Date(filters.startingDate)
+    );
     const isProviderIdMatching = filters.provider
       ? securityCheck.providerDetailId === filters.provider
       : true;
@@ -40,8 +44,8 @@ export const SecurityCheck = ({ Heading }) => {
       : true;
 
     const isStartingDateMatching = filters.startingDate
-      ? new Date(securityCheck.consultationTime).toLocaleDateString() >=
-        new Date(filters.startingDate).toLocaleDateString()
+      ? new Date(securityCheck.consultationTime) >=
+        new Date(filters.startingDate)
       : true;
 
     return isProviderIdMatching &&
@@ -54,7 +58,11 @@ export const SecurityCheck = ({ Heading }) => {
   const renderSecurityChecks = useMemo(() => {
     if (!securityChecks) return null;
 
-    const filteredSecurityChecks = securityChecks.filter(filterSecurityChecks);
+    const filteredSecurityChecks = securityChecks
+      .sort((a, b) => {
+        return new Date(b.createdAt) - new Date(a.createdAt);
+      })
+      .filter(filterSecurityChecks);
     if (filteredSecurityChecks.length === 0)
       return (
         <p className="paragraph security-check__no-results">

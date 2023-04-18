@@ -4,7 +4,7 @@
   "campaigns": "Campaigns",
   "active_campaigns": "Active campaigns",
   "email": "Email",
-  "phone_number": "Phone number",
+  "phone_number": "Phone",
   "search ": "Search",
   "used_total_coupons": "Used/Total coupons",
   "campaign": "Campaign",
@@ -17,5 +17,16 @@
   "inactive": "Inactive",
   "edit": "Edit",
   "view": "Details",
-  "search": "Search"
+  "search": "Search",
+  "filter_heading": "Filter campaigns",
+  "min_used_coupons": "Minimum amount of used coupons",
+  "min_coupon_price": "Minimum coupon price",
+  "min_used_budget": "Minimum used budget",
+  "min_max_coupons_per_client": "Minimum amount of coupons per client",
+  "show_only_active": "Show only active campaigns",
+  "start_date": "Start date",
+  "end_date": "End date",
+  "apply_filter": "Apply filters",
+  "reset_filter": "Reset filters",
+  "no_data_found": "No data found"
 }

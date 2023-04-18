@@ -1,0 +1,19 @@
+{
+  "filter_button": "Сүзгі",
+  "add_button": "Демеушіні қосу",
+  "campaigns": "Науқан",
+  "active_campaigns": "Белсенді науқандар",
+  "sponsors": "Sponsors",
+  "sponsor": "Демеуші",
+  "email": "Электронды пошта",
+  "phone": "Телефон",
+  "edit": "Өңдеу",
+  "search": "Іздеу",
+  "view": "Көріп шығу",
+  "filter_heading": "Filter sponsors",
+  "min_total_campaigns": "Minimum number of total campaigns",
+  "min_active_campaigns": "Minimum number of active campaigns",
+  "apply_filter": "Сүзгілерді қолданыңыз",
+  "reset_filter": "Reset filters",
+  "no_data_found": "No data found"
+}

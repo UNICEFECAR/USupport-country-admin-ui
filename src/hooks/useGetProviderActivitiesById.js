@@ -6,16 +6,14 @@ export const useGetProviderActivitiesById = (providerId) => {
     const { data } = await adminSvc.getProviderActivitiesById(providerId);
 
     return data.map((activity) => {
-      const client = activity.clientData;
       return {
-        displayName: client.name
-          ? `${client.name} ${client.surname}`
-          : client.email || client.nickname,
-        couponId: activity.coupon_id,
+        displayName: activity.clientName,
         price: activity.price,
         status: activity.status,
         time: new Date(activity.time),
         type: activity.type,
+        campaignName: activity.campaign_name,
+        createdAt: activity.created_at,
       };
     });
   };

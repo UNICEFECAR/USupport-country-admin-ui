@@ -69,14 +69,17 @@ export const Page = ({
         label: x.name,
         countryID: x["country_id"],
         iconName: x.alpha2,
+        minAge: x["min_client_age"],
+        maxAge: x["max_client_age"],
         currencySymbol: x["symbol"],
       };
 
       if (localStorageCountry === x.alpha2) {
         localStorage.setItem("currency_symbol", countryObject.currencySymbol);
+        localStorage.setItem("country_id", countryObject.countryID);
 
         setSelectedCountry(countryObject);
-      } else if (!localStorageCountry) {
+      } else if (!localStorageCountry || localStorageCountry === "undefined") {
         if (validCountry?.alpha2 === x.alpha2) {
           hasSetDefaultCountry = true;
           localStorage.setItem("country", x.alpha2);

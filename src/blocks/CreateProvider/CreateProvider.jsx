@@ -72,10 +72,9 @@ export const CreateProvider = ({
 }) => {
   const navigate = useNavigate();
   const { t } = useTranslation("edit-provider");
+  const currencySymbol = localStorage.getItem("currency_symbol");
 
   const [providerData, setProviderData] = useState(initialData);
-
-  const [isProcessing, setIsProcessing] = useState(false);
 
   const localizationQuery = useGetCountryAndLanguages();
   const workWithQuery = useGetWorkWithCategories();
@@ -232,7 +231,6 @@ export const CreateProvider = ({
   };
 
   const handleCreateProviderSuccess = () => {
-    setIsProcessing(false);
     toast(t("create_success"));
     setProviderData(initialData);
     setProviderImageUrl(null);
@@ -267,7 +265,6 @@ export const CreateProvider = ({
   };
 
   const onCreateError = (err) => {
-    setIsProcessing(false);
     setErrors({ submit: err });
   };
   const createProviderMutation = useCreateProvider(
@@ -276,11 +273,8 @@ export const CreateProvider = ({
   );
 
   const handleSave = async () => {
-    setIsProcessing(true);
     if ((await validate(providerData, schema, setErrors)) === null) {
       createProviderMutation.mutate(providerData);
-    } else {
-      setIsProcessing(false);
     }
   };
 
@@ -382,7 +376,7 @@ export const CreateProvider = ({
               handleChange("consultationPrice", e.currentTarget.value)
             }
             errorMessage={errors.consultationPrice}
-            label={t("consultation_price_label")}
+            label={t("consultation_price_label", { currencySymbol })}
             placeholder={t("consultation_price_placeholder")}
             onBlur={() => handleBlur("consultationPrice")}
           />
@@ -461,7 +455,9 @@ export const CreateProvider = ({
             label={t("create_button_text")}
             size="lg"
             onClick={handleSave}
-            disabled={isProcessing}
+            loading={
+              uploadImageMutation.isLoading || createProviderMutation.isLoading
+            }
           />
         </GridItem>
       </Grid>
@@ -483,5 +479,5 @@ function generateCountryCodes() {
     });
   });
 
-  return codes;
+  return codes.sort((a, b) => (a.country > b.country ? 1 : -1));
 }

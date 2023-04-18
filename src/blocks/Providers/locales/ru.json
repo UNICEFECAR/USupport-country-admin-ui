@@ -1,0 +1,18 @@
+{
+  "providers": "Консультанты",
+  "create_provider": "Добавить консультанта",
+  "psychologist": "Психолог",
+  "psychiatrist": "Психиатр",
+  "psychotherapist": "Психотерапевт",
+  "modal_heading": "Уверены, что хотите удалить этого консультанта?",
+  "yes": "Да",
+  "no": "Нет",
+  "no_providers": "Нет консультантов",
+  "provider_deleted": "Консультант успешно удален",
+  "free": "Свободно",
+  "activities": "Мероприятия",
+  "activate": "Активировать",
+  "deactivate": "DeactivateRU",
+  "provider_activated": "Provider successfully activatedRU",
+  "provider_deactivated": "Provider successfully deactivatedRU"
+}

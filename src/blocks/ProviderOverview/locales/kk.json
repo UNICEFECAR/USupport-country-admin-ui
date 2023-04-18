@@ -1,0 +1,29 @@
+{
+  "earliest_slot_label": "Консультация алу үшін жақын арада қолжетімді бос уақыт",
+  "languages_label": "Тілдер",
+  "education_label": "Білім",
+  "work_with_label": "Мамандықтар",
+  "specializations_label": "Мамандану салалары",
+  "done_consultations_label": "Барлығы өткізілген консультациялар саны",
+  "description_label": "Мен туралы",
+  "edit_details": "Мәліметтерді өзгерту",
+  "no_available_slot": "Бос уақыт жоқ",
+  "video_label": "Бейне-таныстырылым",
+  "city_label": "Қала",
+  "street_label": "Көше",
+  "postcode_label": "Пошта индексі",
+
+  "psychologist": "Психолог",
+  "psychiatrist": "Психиатр",
+  "psychotherapist": "Психотерапевт",
+
+  "addiction": "Тәуелділік",
+  "stress": "Стресс",
+  "burnout": "Күю (жану)",
+  "eating_disorder": "Тамақтану мінез-құлқының бұзылуы",
+  "depression": "Депрессия",
+  "anxiety": "Үрейлілік",
+  "panic_attack": "Паникалық шабуыл",
+  "relationship": "Қарым-қатынас",
+  "personal_development": "Жеке даму"
+}

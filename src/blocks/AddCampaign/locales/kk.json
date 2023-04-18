@@ -1,0 +1,31 @@
+{
+  "activate": "Іске қосу",
+  "name_label": "Науқан",
+  "coupon_code_label": "Купон коды",
+  "budget_label": "Бюджет - {{currencySymbol}}",
+  "number_of_coupons_label": "Купондардың жалпы саны",
+  "start_date_label": "Басталу күні",
+  "end_date_label": "Аяқталу күні",
+  "max_coupons_per_client_label": "Бір клиентке арналған купондардың ең көп саны",
+  "terms_label": "Шарттар мен ережелер",
+
+  "name_placeholder": "Науқан атауы",
+  "budget_placeholder": "Жалпы бюджетті енгізіңіз",
+  "coupon_code_placeholder": "Купонды алу үшін кодты енгізіңіз",
+  "number_of_coupons_placeholder": "Купондардың жалпы санын енгізіңіз",
+  "dates_placeholder": "КК.АА.ЖЖЖЖ",
+  "max_coupons_per_client_placeholder": "Бір клиентке арналған купондардың ең көп саны",
+  "terms_placeholder": "Ережелер мен шарттарды жазыңыз",
+  "budget_info": "The price for a single consultation will be",
+
+  "required_field": "Өріс міндетті түрде толтырылады",
+  "budget_error": "Бюджет оң сан болуы керек",
+  "start_date_error": "The start date of the campaign should be in the future",
+  "end_date_error": "The end date of the campaign should be in the future",
+  "period_error": "The end date should be after the start date",
+
+  "create_campaign": "Науқан құру",
+  "save_changes": "Save changes",
+  "discard_changes": "Өзгерістерді болдырмау",
+  "delete_campaign": "Науқанды жою"
+}

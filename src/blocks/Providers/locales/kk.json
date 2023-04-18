@@ -1,0 +1,18 @@
+{
+  "providers": "Консультанттар",
+  "create_provider": "Консультантты қосу",
+  "psychologist": "Психолог",
+  "psychiatrist": "Психиатр",
+  "psychotherapist": "Психотерапевт",
+  "modal_heading": "Осы консультантты шынымен жойғыңыз келе ме?",
+  "yes": "Иә",
+  "no": "Жоқ",
+  "no_providers": "Консультанттар жоқ",
+  "provider_deleted": "Консультант сәтті жойылды",
+  "free": "Бос",
+  "activities": "Іс-шаралар",
+  "activate": "Іске қосу",
+  "deactivate": "DeactivateKK",
+  "provider_activated": "Provider successfully activatedKK",
+  "provider_deactivated": "Provider successfully deactivatedKK"
+}

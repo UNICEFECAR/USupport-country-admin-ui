@@ -29,12 +29,16 @@ export const useIsLoggedIn = () => {
       localStorage.setItem("token-expires-in", expiresIn);
       localStorage.setItem("refresh-token", refreshToken);
 
+      setResult(true);
+
       const decoded = decodeToken();
       if (Date.now() >= decoded.exp * 1000) {
         throw new Error("Token expired");
       }
     },
     onError: () => {
+      localStorage.removeItem("isRefreshingToken");
+
       setResult(false);
     },
     retry: false,

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-
+import { useQueryClient } from "@tanstack/react-query";
 import Joi from "joi";
 
 import {
@@ -42,6 +42,7 @@ export const AddCampaign = ({
   sponsorImage,
   campaignData,
   campaignId,
+  isEdit,
 }) => {
   const navigate = useNavigate();
   const currencySymbol = localStorage.getItem("currency_symbol");
@@ -95,18 +96,24 @@ export const AddCampaign = ({
     }
   }, [data, oldData]);
 
+  const queryClient = useQueryClient();
   const onCreateSuccess = (campaign) => {
+    queryClient.invalidateQueries({ queryKey: ["sponsor-data", sponsorId] });
     const campaignData = transformCampaignData(campaign);
-    navigate(
-      `/campaign-details?sponsorId=${sponsorId}&campaignId=${campaign.campaign_id}`,
-      {
-        state: {
-          sponsorName,
-          campaignData,
-          sponsorImage,
-        },
-      }
-    );
+    if (isEdit) {
+      navigate(-1);
+    } else {
+      navigate(
+        `/campaign-details?sponsorId=${sponsorId}&campaignId=${campaign.campaign_id}`,
+        {
+          state: {
+            sponsorName,
+            campaignData,
+            sponsorImage,
+          },
+        }
+      );
+    }
   };
   const onCreateError = (err) => {
     setErrors({ submit: err });
@@ -115,7 +122,41 @@ export const AddCampaign = ({
     onCreateSuccess,
     onCreateError
   );
+
+  const checkIsPeriodValid = () => {
+    const today = new Date().getTime();
+    const campaignStartDate = new Date(data.startDate).getTime();
+    const campaignEndDate = new Date(data.endDate).getTime();
+
+    if (today > campaignStartDate) {
+      setErrors({
+        submit: t("start_date_error"),
+      });
+      return false;
+    }
+
+    if (today > campaignEndDate) {
+      setErrors({
+        submit: t("end_date_error"),
+      });
+      return false;
+    }
+
+    if (campaignEndDate < campaignStartDate) {
+      setErrors({
+        submit: t("period_error"),
+      });
+      return false;
+    }
+    return true;
+  };
+
   const handleSubmit = async () => {
+    setErrors({});
+    const isValid = checkIsPeriodValid();
+
+    if (!isValid) return;
+
     if ((await validate(data, schema, setErrors)) === null) {
       createCampaignMutation.mutate({
         sponsorId,
@@ -128,6 +169,13 @@ export const AddCampaign = ({
     onCreateError
   );
   const handleSaveChanges = async () => {
+    setErrors({});
+
+    if (oldData.startDate !== data.startDate) {
+      const isValid = checkIsPeriodValid();
+
+      if (!isValid) return;
+    }
     if ((await validate(data, schema, setErrors)) === null) {
       updateCampaignMutation.mutate({
         campaignId,
@@ -140,7 +188,6 @@ export const AddCampaign = ({
   const handleDiscardChanges = () => {
     setData(oldData);
   };
-  const deleteCampaign = () => {};
 
   return (
     <Block classes="add-campaign">
@@ -148,6 +195,15 @@ export const AddCampaign = ({
         <GridItem md={8} lg={12}>
           {Object.keys(data).map((key, index) => {
             const keyName = pascalToSnakeCase(key);
+
+            const singleCouponPrice = data.budget / data.numberOfCoupons;
+            const showSingleCouponPrice =
+              keyName === "number_of_coupons" &&
+              !isNaN(data.budget) &&
+              !isNaN(data.numberOfCoupons) &&
+              !isNaN(singleCouponPrice) &&
+              singleCouponPrice !== Infinity;
+
             if (key === "termsAndConditions")
               return (
                 <Textarea
@@ -192,20 +248,32 @@ export const AddCampaign = ({
                 />
               );
             return (
-              <Input
-                key={index}
-                label={t(
-                  `${keyName}_label`,
-                  keyName === "budget" && { currencySymbol }
+              <>
+                <Input
+                  key={index}
+                  label={t(
+                    `${keyName}_label`,
+                    keyName === "budget" && { currencySymbol }
+                  )}
+                  placeholder={t(`${keyName}_placeholder`)}
+                  value={data[key]}
+                  errorMessage={errors[key]}
+                  classes={
+                    showSingleCouponPrice &&
+                    "add-campaign__grid__number-of-coupons__input"
+                  }
+                  onChange={(e) => {
+                    let value = e.currentTarget.value;
+                    setData({ ...data, [key]: value });
+                  }}
+                />
+                {showSingleCouponPrice && (
+                  <p className="add-campaign__grid__number-of-coupons__info small-text">
+                    {t("budget_info")} {singleCouponPrice.toFixed(2)}
+                    {currencySymbol}
+                  </p>
                 )}
-                placeholder={t(`${keyName}_placeholder`)}
-                value={data[key]}
-                errorMessage={errors[key]}
-                onChange={(e) => {
-                  let value = e.currentTarget.value;
-                  setData({ ...data, [key]: value });
-                }}
-              />
+              </>
             );
           })}
           {errors.submit && <Error message={errors.submit} />}
@@ -219,7 +287,8 @@ export const AddCampaign = ({
             <>
               <Button
                 label={t("save_changes")}
-                disabled={!canSaveChanges || updateCampaignMutation.isLoading}
+                disabled={!canSaveChanges}
+                loading={updateCampaignMutation.isLoading}
                 onClick={handleSaveChanges}
                 size="lg"
                 classes="add-campaign__grid__create-button"
@@ -233,16 +302,6 @@ export const AddCampaign = ({
                 classes="add-campaign__grid__create-button"
                 type="secondary"
                 color="green"
-              />
-              <ButtonWithIcon
-                iconName={"circle-close"}
-                iconSize={"md"}
-                size="lg"
-                iconColor={"#eb5757"}
-                color={"red"}
-                label={t("delete_campaign")}
-                type={"ghost"}
-                onClick={deleteCampaign}
               />
             </>
           )}

@@ -9,5 +9,11 @@
   "phone": "Phone",
   "edit": "Edit",
   "search": "Search",
-  "view": "View"
+  "view": "View",
+  "filter_heading": "Filter sponsors",
+  "min_total_campaigns": "Minimum number of total campaigns",
+  "min_active_campaigns": "Minimum number of active campaigns",
+  "apply_filter": "Apply filters",
+  "reset_filter": "Reset filters",
+  "no_data_found": "No data found"
 }
