@@ -3,5 +3,6 @@
   "suggestions_tab_label": "Information Portal Suggestions",
   "ratings_tab_label": "Client Ratings",
   "contact_form_tab_label": "Contact Forms",
-  "filter": "Filter"
+  "filter": "Filter",
+  "my_qa_tab_label": "Q&A Archive"
 }
