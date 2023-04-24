@@ -1,6 +1,12 @@
 @import "@USupport-components-library/styles";
 
 .my-qa {
+  padding-bottom: $spacing_6_0;
+
+  &__other-reason-text {
+    color: $color_blue_3d527b;
+  }
+
   &__filter-modal__content-wrapper {
     min-height: 25rem;
     display: flex;

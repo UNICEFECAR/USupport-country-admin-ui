@@ -37,8 +37,9 @@ export const MyQA = ({ Heading }) => {
 
   const questionsQuery = useGetArchivedQuestions();
 
-  const onSuccess = () => {
+  const onSuccess = (action) => {
     questionsQuery.refetch();
+    toast(t(`${action}_success`));
   };
   const onError = (errorMessage) => {
     toast(errorMessage);
@@ -100,6 +101,7 @@ export const MyQA = ({ Heading }) => {
     if (questionsToRender.length === 0) return <p>{t("no_data_found")}</p>;
     else
       return questionsToRender.map((question, index) => {
+        console.log(question);
         return (
           <ReportCollapsible
             key={index}
@@ -111,7 +113,9 @@ export const MyQA = ({ Heading }) => {
           >
             {question.reason === "other" && (
               <>
-                <p className="text">{t("other_reason_text")}</p>
+                <p className="paragraph my-qa__other-reason-text">
+                  <strong>{t("other_reason_text")}</strong>
+                </p>
                 <p className="text">{question.additionalText}</p>
               </>
             )}

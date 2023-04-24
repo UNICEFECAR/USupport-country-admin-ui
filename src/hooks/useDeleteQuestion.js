@@ -9,7 +9,7 @@ export default function useDeleteQuestion(onSuccess, onError) {
   };
 
   const deleteQuestionMutation = useMutation(deleteQuestion, {
-    onSuccess,
+    onSuccess: () => onSuccess("delete"),
     onError: (err) => {
       const { message: error } = useError(err);
       onError(error);
