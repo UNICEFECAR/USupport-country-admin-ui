@@ -1,0 +1,17 @@
+{
+    "heading": "Archived questions in the Q&A section",
+    "duplicate": "Already exist",
+    "spam": "Spam",
+    "other": "Other",
+    "save": "Save",
+    "reset": "Reset filters",
+    "dropdown_label": "Filter by reason",
+    "no_data_found": "No data found",
+    "provider": "Provider",
+    "email": "Email",
+    "archiving_reason_label": "Reason for marking as archive",
+    "archiving_date_label": "Time of archiving",
+    "content_heading": "Client question:",
+    "activate_button_label": "Bring back to active questions",
+    "delete_button_label": "Delete question"
+}
