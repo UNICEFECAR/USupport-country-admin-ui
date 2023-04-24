@@ -1,4 +1,6 @@
 {
   "no_results": "Ничего не нашлось, попробуйте другой язык.",
-  "view_button": "просмотр"
+  "view_button": "просмотр",
+  "article_added": "Article added successfullyRU",
+  "article_removed": "Article removed successfullyRU"
 }
