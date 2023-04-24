@@ -9,7 +9,7 @@ export default function useActivateQuestion(onSuccess, onError) {
   };
 
   const activateQuestionMutation = useMutation(activateQuestion, {
-    onSuccess,
+    onSuccess: () => onSuccess("activate"),
     onError: (err) => {
       const { message: error } = useError(err);
       onError(error);

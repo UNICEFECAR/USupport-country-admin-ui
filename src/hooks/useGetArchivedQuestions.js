@@ -8,6 +8,8 @@ export default function useGetArchivedQuestions() {
       return {
         questionId: question.question_id,
         createdAt: question.created_at,
+        additionalText: question.additional_text,
+        reason: question.reason,
         ...question,
       };
     });
