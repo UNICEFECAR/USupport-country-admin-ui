@@ -13,5 +13,6 @@
     "archiving_date_label": "Time of archiving",
     "content_heading": "Client question:",
     "activate_button_label": "Bring back to active questions",
-    "delete_button_label": "Delete question"
+    "delete_button_label": "Delete question",
+    "other_reason_text": "Other reason for marking as archive:"
 }

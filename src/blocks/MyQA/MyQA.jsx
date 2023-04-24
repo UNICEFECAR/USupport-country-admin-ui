@@ -108,7 +108,14 @@ export const MyQA = ({ Heading }) => {
             contentText={question.question}
             contentMenuOptions={contentMenuOptions}
             componentId={question.questionId}
-          />
+          >
+            {question.reason === "other" && (
+              <>
+                <p className="text">{t("other_reason_text")}</p>
+                <p className="text">{question.additionalText}</p>
+              </>
+            )}
+          </ReportCollapsible>
         );
       });
   };
