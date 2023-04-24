@@ -2,5 +2,7 @@
   "no_results": "Ничего не нашлось, попробуйте другой язык.",
   "client_tab_label": "Клиент",
   "provider_tab_label": "Консультанты",
-  "website_tab_label": "Website"
+  "website_tab_label": "WebsiteRU",
+  "faq_added": "FAQ added successfullyRU",
+  "faq_removed": "FAQ removed successfullyRU"
 }

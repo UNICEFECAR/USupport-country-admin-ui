@@ -14,5 +14,16 @@
   "activate": "Активировать",
   "deactivate": "DeactivateRU",
   "provider_activated": "Provider successfully activatedRU",
-  "provider_deactivated": "Provider successfully deactivatedRU"
+  "provider_deactivated": "Provider successfully deactivatedRU",
+
+  "filter_providers": "Отфильтровать консультантов",
+  "min_price": "Min price",
+  "status": "Статус",
+  "active": "Активный",
+  "inactive": "Неактивный",
+  "show_only_free": "Show only free",
+  "specialization": "Специализация",
+  "all": "Все",
+  "apply_filter": "Примените фильтры",
+  "reset_filter": "Сбросить фильтр"
 }

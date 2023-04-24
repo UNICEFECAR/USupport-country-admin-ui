@@ -3,6 +3,7 @@
 .providers {
   @include full-height-page-navbar;
   padding-top: $spacing_4_8;
+  padding-bottom: $spacing_10_0;
 
   &__grid {
     place-items: center;
@@ -17,12 +18,49 @@
 
       &__button-container {
         margin-left: $spacing_1_6;
+        display: flex;
+
+        & .btn:first-of-type {
+          margin-right: $spacing_1_2;
+        }
       }
 
       @media screen and (min-width: $screen_md) {
         width: 90%;
         margin-left: 0;
       }
+    }
+  }
+
+  &__filter-modal {
+    & .input-container,
+    & .dropdown-with-label {
+      margin: 0 auto;
+      margin-bottom: $spacing_1_2;
+      width: 34.3rem;
+    }
+
+    &__toggle-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 34.3rem;
+      margin: 0 auto;
+      margin-bottom: $spacing_1_2;
+
+      & p {
+        margin-bottom: $spacing_0_4;
+        color: $color_blue_3d527b;
+      }
+    }
+
+    &__submit-button {
+      margin: 0 auto;
+      margin-top: $spacing_4_8;
+    }
+
+    &__reset-button {
+      margin: $spacing_1_2 auto;
     }
   }
 }

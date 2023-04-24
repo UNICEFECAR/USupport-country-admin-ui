@@ -14,5 +14,16 @@
   "activate": "Іске қосу",
   "deactivate": "DeactivateKK",
   "provider_activated": "Provider successfully activatedKK",
-  "provider_deactivated": "Provider successfully deactivatedKK"
+  "provider_deactivated": "Provider successfully deactivatedKK",
+
+  "filter_providers": "Консультанттарды сүзгілеу",
+  "min_price": "Min price",
+  "status": "Статусы",
+  "active": "Белсенді",
+  "inactive": "Белсенді емес",
+  "show_only_free": "Show only free",
+  "specialization": "Мамандандырылу",
+  "all": "Барлығы",
+  "apply_filter": "Сүзгілерді қолданыңыз",
+  "reset_filter": "Сүзгілерді қалпына келтіру"
 }

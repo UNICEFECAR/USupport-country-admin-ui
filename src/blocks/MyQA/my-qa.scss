@@ -1,0 +1,17 @@
+@import "@USupport-components-library/styles";
+
+.my-qa {
+  &__filter-modal__content-wrapper {
+    min-height: 25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: $spacing_2_0;
+  }
+
+  &__filter-modal__content {
+    & .base-modal__footer {
+      margin: 0 auto;
+    }
+  }
+}

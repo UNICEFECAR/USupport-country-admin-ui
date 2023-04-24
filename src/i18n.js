@@ -26,6 +26,7 @@ import {
   SponsorDetails,
   AddCampaign,
   CampaignDetails,
+  MyQA,
 } from "#blocks/locales.js";
 
 import {
@@ -83,6 +84,7 @@ const resources = {
     "sponsor-details": SponsorDetails.en,
     "add-campaign": AddCampaign.en,
     "campaign-details": CampaignDetails.en,
+    "my-qa": MyQA.en,
 
     // Pages
     "not-found-page": NotFoundPage.en,
@@ -137,6 +139,7 @@ const resources = {
     "sponsor-details": SponsorDetails.kk,
     "add-campaign": AddCampaign.kk,
     "campaign-details": CampaignDetails.kk,
+    "my-qa": MyQA.kk,
 
     // Pages
     "not-found-page": NotFoundPage.kk,
@@ -191,6 +194,7 @@ const resources = {
     "sponsor-details": SponsorDetails.ru,
     "add-campaign": AddCampaign.ru,
     "campaign-details": CampaignDetails.ru,
+    "my-qa": MyQA.ru,
 
     // Pages
     "not-found-page": NotFoundPage.ru,

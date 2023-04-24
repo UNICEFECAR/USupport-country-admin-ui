@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { toast } from "react-toastify";
 import {
   Block,
   Grid,
@@ -73,7 +74,7 @@ export const Articles = () => {
       res = await adminSvc.deleteArticle(articleLocales.en.toString());
     }
 
-    return res.data;
+    return data.newValue;
   };
 
   const updateArticlesMutation = useMutation(updateArticles, {
@@ -87,7 +88,9 @@ export const Articles = () => {
         queryClient.setQueryData(["articles", i18n.language], oldData);
       };
     },
-    onSuccess: (data) => {},
+    onSuccess: (isAdding) => {
+      toast(t(isAdding ? "article_added" : "article_removed"));
+    },
     onError: (error, variables, rollback) => {
       const { message: errorMessage } = useError(error);
       setError(errorMessage);
@@ -105,9 +108,9 @@ export const Articles = () => {
               return (
                 <ArticleRow
                   selected={article.isSelected}
-                  setSelected={() =>
-                    handleSelectArticle(article.id, !article.isSelected, index)
-                  }
+                  setSelected={() => {
+                    handleSelectArticle(article.id, !article.isSelected, index);
+                  }}
                   heading={article.attributes.title}
                   description={article.attributes.description}
                   key={index}

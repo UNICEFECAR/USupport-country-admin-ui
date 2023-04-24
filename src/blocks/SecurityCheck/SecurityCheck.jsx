@@ -31,10 +31,6 @@ export const SecurityCheck = ({ Heading }) => {
   };
 
   const filterSecurityChecks = (securityCheck) => {
-    console.log(
-      new Date(securityCheck.consultationTime),
-      new Date(filters.startingDate)
-    );
     const isProviderIdMatching = filters.provider
       ? securityCheck.providerDetailId === filters.provider
       : true;

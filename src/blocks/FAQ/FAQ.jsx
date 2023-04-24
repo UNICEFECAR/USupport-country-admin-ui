@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { toast } from "react-toastify";
+
 import {
   Block,
   Grid,
@@ -106,7 +108,7 @@ export const FAQ = () => {
         faqAvailableLocales.en.toString()
       );
     }
-    return res.data;
+    return data.newValue;
   };
 
   const updateFAQsMutation = useMutation(updateFAQs, {
@@ -124,7 +126,9 @@ export const FAQ = () => {
         queryClient.setQueryData(["FAQs", options, i18n.language], oldData);
       };
     },
-    onSuccess: (data) => {},
+    onSuccess: (isAdding) => {
+      toast(t(isAdding ? "faq_added" : "faq_removed"));
+    },
     onError: (error, variables, rollback) => {
       const { message: errorMessage } = useError(error);
       setError(errorMessage);
