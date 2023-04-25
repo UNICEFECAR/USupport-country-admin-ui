@@ -90,7 +90,7 @@ export const Providers = () => {
   };
 
   useEffect(() => {
-    if (!dataToDisplay && providersQuery.data) {
+    if (providersQuery.data) {
       setDataToDisplay(providersQuery.data);
     }
   }, [providersQuery.data]);
@@ -121,6 +121,7 @@ export const Providers = () => {
             hasMenu
             showActivities
             handleEdit={() => redirectToEditProvider(provider.providerDetailId)}
+            t={t}
             handleViewProfile={() =>
               redirectToProviderDetails(provider.providerDetailId)
             }

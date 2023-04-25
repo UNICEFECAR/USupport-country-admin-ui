@@ -7,12 +7,18 @@
     color: $color_blue_3d527b;
   }
 
+  &__filter-modal {
+    & .dropdown-with-label {
+      margin-bottom: $spacing_1_6;
+    }
+  }
+
   &__filter-modal__content-wrapper {
     min-height: 25rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: $spacing_2_0;
+    padding-bottom: $spacing_8_0;
   }
 
   &__filter-modal__content {

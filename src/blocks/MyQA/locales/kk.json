@@ -3,12 +3,12 @@
   "duplicate": "Already exist",
   "spam": "Spam",
   "other": "Other",
-  "save": "Save",
-  "reset": "Reset filters",
+  "save": "Сүзгілерді қолданыңыз",
+  "reset": "Сүзгілерді қалпына келтіру",
   "dropdown_label": "Filter by reason",
   "no_data_found": "No data found",
-  "provider": "Provider",
-  "email": "Email",
+  "provider": "Консультанттар",
+  "email": "Электронды пошта",
   "archiving_reason_label": "Reason for marking as archive",
   "archiving_date_label": "Time of archiving",
   "content_heading": "Client question:",
@@ -16,5 +16,7 @@
   "delete_button_label": "Delete question",
   "other_reason_text": "Other reason for marking as archive:",
   "activate_success": "Question has been successfully brought back as active",
-  "delete_success": "Question has been successfully deleted"
+  "delete_success": "Question has been successfully deleted",
+  "all": "Барлығы",
+  "filters": "Сүзгілер"
 }
