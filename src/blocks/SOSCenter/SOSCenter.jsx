@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { toast } from "react-toastify";
 import {
   Block,
   Grid,
@@ -77,7 +78,7 @@ export const SOSCenter = () => {
         sosCenterAvailableLocales.en.toString()
       );
     }
-    return res.data;
+    return data.newValue;
   };
 
   const updateSOSCentersMutation = useMutation(updateSOSCenters, {
@@ -94,7 +95,9 @@ export const SOSCenter = () => {
         queryClient.setQueryData(["SOSCenters", i18n.language], oldData);
       };
     },
-    onSuccess: (data) => {},
+    onSuccess: (isAdding) => {
+      toast(t(isAdding ? "sos_center_added" : "sos_center_removed"));
+    },
     onError: (error, variables, rollback) => {
       const { message: errorMessage } = useError(error);
       setError(errorMessage);

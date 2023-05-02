@@ -6,12 +6,13 @@ import {
   InformationPortalSuggestions,
   ClientRatings,
   ContactForms,
+  MyQA,
 } from "#blocks";
 
 import {
   TabsUnderlined,
   Block,
-  Button,
+  ButtonWithIcon,
 } from "@USupport-components-library/src";
 
 import "./reports.scss";
@@ -35,6 +36,7 @@ export const Reports = () => {
     },
     { label: t("ratings"), value: "ratings", isSelected: false },
     { label: t("contact_form"), value: "contact_form", isSelected: false },
+    { label: t("my_qa"), value: "my_qa", isSelected: false },
   ]);
 
   const handleTabSelect = (index) => {
@@ -60,6 +62,8 @@ export const Reports = () => {
         return <ClientRatings Heading={ReportBlockHeading} />;
       case "contact_form":
         return <ContactForms Heading={ReportBlockHeading} />;
+      case "my_qa":
+        return <MyQA Heading={ReportBlockHeading} />;
     }
   };
 
@@ -67,11 +71,14 @@ export const Reports = () => {
     return (
       <div className="page__reports__report-block-heading">
         <h4>{headingLabel}</h4>
-        <Button
+        <ButtonWithIcon
           type="primary"
           label={t("filter")}
+          iconName="filter"
+          iconColor="#ffffff"
+          iconSize="sm"
           color="purple"
-          size="sm"
+          size="xs"
           onClick={handleButtonClick}
         />
       </div>

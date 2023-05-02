@@ -1,6 +1,8 @@
 {
   "no_results": "Ештеңе табылмады, басқа тілді байқап көріңіз",
   "client_tab_label": "Консультанттар",
-  "provider_tab_label": "Provider",
-  "website_tab_label": "Website"
+  "provider_tab_label": "ProviderKK",
+  "website_tab_label": "WebsiteKK",
+  "faq_added": "FAQ added successfullyKK",
+  "faq_removed": "FAQ removed successfullyKK"
 }

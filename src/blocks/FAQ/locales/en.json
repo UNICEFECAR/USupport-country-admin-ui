@@ -2,5 +2,7 @@
   "no_results": "No results found, please try a different language.",
   "client_tab_label": "Client",
   "provider_tab_label": "Provider",
-  "website_tab_label": "Website"
+  "website_tab_label": "Website",
+  "faq_added": "FAQ added successfully",
+  "faq_removed": "FAQ removed successfully"
 }

@@ -17,5 +17,16 @@
   "activate": "Activate",
   "deactivate": "Deactivate",
   "provider_activated": "Provider successfully activated",
-  "provider_deactivated": "Provider successfully deactivated"
+  "provider_deactivated": "Provider successfully deactivated",
+
+  "filter_providers": "Filter providers",
+  "min_price": "Min price",
+  "status": "Status",
+  "active": "Active",
+  "inactive": "Inactive",
+  "show_only_free": "Show only free",
+  "specialization": "Specialization",
+  "all": "All",
+  "apply_filter": "Apply filters",
+  "reset_filter": "Reset filter"
 }

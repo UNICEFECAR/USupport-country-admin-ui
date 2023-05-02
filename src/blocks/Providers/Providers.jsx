@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useRef, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
@@ -6,11 +6,14 @@ import { toast } from "react-toastify";
 import {
   Block,
   Button,
+  DropdownWithLabel,
   Grid,
   GridItem,
+  Input,
   Loading,
-  ProviderOverview,
   Modal,
+  ProviderOverview,
+  Toggle,
 } from "@USupport-components-library/src";
 // import { providerSvc } from "@USupport-components-library/services";
 import { useGetProvidersData, useUpdateProviderStatus } from "#hooks";
@@ -24,12 +27,23 @@ import "./providers.scss";
  * @return {jsx}
  */
 export const Providers = () => {
+  const initialFilters = {
+    price: "",
+    status: "",
+    free: false,
+    specialization: "",
+  };
+
   const navigate = useNavigate();
   const { t } = useTranslation("providers");
   const queryClient = useQueryClient();
   const providersQuery = useGetProvidersData()[0];
-  const [providerId, setProviderId] = useState(null);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+
+  const [filters, setFilters] = useState(initialFilters);
+  const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
+
+  const [dataToDisplay, setDataToDisplay] = useState();
 
   const selectedProviderStatus = useRef();
 
@@ -75,14 +89,20 @@ export const Providers = () => {
     updateProviderStatusMutation.mutate({ providerId: id, status: newStatus });
   };
 
+  useEffect(() => {
+    if (providersQuery.data) {
+      setDataToDisplay(providersQuery.data);
+    }
+  }, [providersQuery.data]);
+
   const renderProviders = useCallback(() => {
-    if (!providersQuery.data || providersQuery.data?.length === 0)
+    if (!dataToDisplay || dataToDisplay?.length === 0)
       return (
         <GridItem md={8} lg={12}>
           <h4>{t("no_providers")}</h4>
         </GridItem>
       );
-    return providersQuery.data?.map((provider, index) => {
+    return dataToDisplay?.map((provider, index) => {
       return (
         <GridItem key={index} md={4} lg={4}>
           <ProviderOverview
@@ -101,6 +121,7 @@ export const Providers = () => {
             hasMenu
             showActivities
             handleEdit={() => redirectToEditProvider(provider.providerDetailId)}
+            t={t}
             handleViewProfile={() =>
               redirectToProviderDetails(provider.providerDetailId)
             }
@@ -121,7 +142,32 @@ export const Providers = () => {
         </GridItem>
       );
     });
-  }, [providersQuery.data]);
+  }, [dataToDisplay]);
+
+  const handleFilterSave = () => {
+    const dataCopy = [...providersQuery.data];
+
+    const filteredData = dataCopy.filter((provider) => {
+      const { price, status, free, specialization } = filters;
+      console.log(provider);
+      if (price && provider.consultationPrice < Number(price)) return false;
+      if (status && provider.status !== status) return false;
+      if (free && provider.consultationPrice > 0) return false;
+      if (specialization && !provider.specializations.includes(specialization))
+        return false;
+
+      return true;
+    });
+
+    setIsFilterModalOpen(false);
+    setDataToDisplay(filteredData);
+  };
+
+  const handleResetFilters = () => {
+    setFilters(initialFilters);
+    setIsFilterModalOpen(false);
+    setDataToDisplay(providersQuery.data);
+  };
 
   return (
     <Block classes="providers">
@@ -133,6 +179,12 @@ export const Providers = () => {
               label={t("create_provider")}
               classes="providers__create-provider-button"
               onClick={() => navigate("/create-provider")}
+              size="sm"
+              color="purple"
+            />
+            <Button
+              label={t("filter_providers")}
+              onClick={() => setIsFilterModalOpen(true)}
               size="sm"
               color="purple"
             />
@@ -170,6 +222,70 @@ export const Providers = () => {
         secondaryCtaHandleClick={closeDeleteModal}
         secondaryCtaType="secondary"
       />
+
+      <Modal
+        classes="providers__filter-modal"
+        heading={t("filter_providers")}
+        isOpen={isFilterModalOpen}
+        closeModal={() => setIsFilterModalOpen(false)}
+      >
+        <Input
+          label={t("min_price")}
+          value={filters.price}
+          placeholder={0}
+          onChange={(e) => {
+            const value = e.target.value;
+            if (!isNaN(Number(value))) {
+              setFilters({ ...filters, price: e.target.value });
+            }
+          }}
+        />
+        <DropdownWithLabel
+          label={t("status")}
+          options={[
+            { label: t("all"), value: "" },
+            { label: t("active"), value: "active" },
+            { label: t("inactive"), value: "inactive" },
+          ]}
+          selected={filters.status}
+          setSelected={(val) => {
+            setFilters({ ...filters, status: val });
+          }}
+        />
+        <DropdownWithLabel
+          label={t("specialization")}
+          options={[
+            { label: t("all"), value: "" },
+            { label: t("psychologist"), value: "psychologist" },
+            { label: t("psychiatrist"), value: "psychiatrist" },
+            { label: t("psychotherapist"), value: "psychotherapist" },
+          ]}
+          selected={filters.specialization}
+          setSelected={(val) => setFilters({ ...filters, specialization: val })}
+        />
+        <div className="providers__filter-modal__toggle-container">
+          <p className="paragraph">{t("show_only_free")}</p>
+          <Toggle
+            isToggled={filters.free}
+            setParentState={() =>
+              setFilters({ ...filters, free: !filters.free })
+            }
+          />
+        </div>
+        <Button
+          label={t("apply_filter")}
+          size="lg"
+          onClick={handleFilterSave}
+          classes="providers__filter-modal__submit-button"
+        />
+        <Button
+          label={t("reset_filter")}
+          type="secondary"
+          size="lg"
+          onClick={handleResetFilters}
+          classes="providers__filter-modal__reset-button"
+        />
+      </Modal>
     </Block>
   );
 };
