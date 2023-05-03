@@ -28,6 +28,7 @@ import {
   AddCampaign,
   EditCampaign,
   CampaignDetails,
+  MyQA,
 } from "#pages";
 
 import { CountryValidationRoute, ProtectedRoute } from "#routes";
@@ -241,6 +242,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <CampaignDetails />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/my-qa"
+            element={
+              <ProtectedRoute>
+                <MyQA />
               </ProtectedRoute>
             }
           />

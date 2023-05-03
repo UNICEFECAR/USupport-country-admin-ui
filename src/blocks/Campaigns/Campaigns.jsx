@@ -132,15 +132,15 @@ export const Campaigns = () => {
     <Block classes="campaigns">
       <div className="campaigns__buttons">
         <Button
-          label={t("filter_button")}
-          color="purple"
-          type="secondary"
-          onClick={() => setIsFilterModalOpen(true)}
-        />
-        <Button
           label={t("add_button")}
           color="purple"
+          type="secondary"
           onClick={() => navigate("/add-sponsor")}
+        />
+        <Button
+          label={t("filter_button")}
+          color="purple"
+          onClick={() => setIsFilterModalOpen(true)}
         />
       </div>
 

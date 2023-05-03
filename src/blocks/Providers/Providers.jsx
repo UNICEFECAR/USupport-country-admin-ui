@@ -180,7 +180,6 @@ export const Providers = () => {
               classes="providers__create-provider-button"
               onClick={() => navigate("/create-provider")}
               size="sm"
-              color="purple"
             />
             <Button
               label={t("filter_providers")}

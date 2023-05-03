@@ -1,0 +1,10 @@
+{
+    "all": "All",
+    "filters": "Filters",
+    "reset": "Reset filters",
+    "save": "Apply filters",
+    "provider": "Provider",
+    "duplicate": "Already exist",
+    "spam": "Spam",
+    "other": "Other"
+}

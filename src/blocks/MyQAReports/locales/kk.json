@@ -1,0 +1,22 @@
+{
+  "heading": "Archived questions in the Q&A section",
+  "duplicate": "Already exist",
+  "spam": "Spam",
+  "other": "Басқа",
+  "save": "Сүзгілерді қолданыңыз",
+  "reset": "Сүзгілерді қалпына келтіру",
+  "dropdown_label": "Filter by reason",
+  "no_data_found": "No data found",
+  "provider": "Консультанттар",
+  "email": "Электронды пошта",
+  "archiving_reason_label": "Reason for marking as archive",
+  "archiving_date_label": "Time of archiving",
+  "content_heading": "Client question:",
+  "activate_button_label": "Bring back to active questions",
+  "delete_button_label": "Delete question",
+  "other_reason_text": "Other reason for marking as archive:",
+  "activate_success": "Question has been successfully brought back as active",
+  "delete_success": "Question has been successfully deleted",
+  "all": "Барлығы",
+  "filters": "Сүзгілер"
+}
