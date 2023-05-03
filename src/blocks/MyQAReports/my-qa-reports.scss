@@ -1,0 +1,9 @@
+@import "@USupport-components-library/styles";
+
+.my-qa-reports {
+  padding-bottom: $spacing_6_0;
+
+  &__other-reason-text {
+    color: $color_blue_3d527b;
+  }
+}
