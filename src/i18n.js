@@ -26,6 +26,7 @@ import {
   SponsorDetails,
   AddCampaign,
   CampaignDetails,
+  MyQAReports,
   MyQA,
 } from "#blocks/locales.js";
 
@@ -48,6 +49,7 @@ import {
   AddCampaign as AddCampaignPage,
   EditCampaign as EditCampaignPage,
   EditSponsor as EditSponsorPage,
+  MyQA as MyQAPage,
 } from "#pages/locales.js";
 
 import {
@@ -55,6 +57,8 @@ import {
   DeleteProfilePicture,
   FilterSecurityCheckReports,
   CodeVerification,
+  QuestionDetails,
+  FilterQuestions,
 } from "#backdrops/locales.js";
 
 const resources = {
@@ -84,6 +88,7 @@ const resources = {
     "sponsor-details": SponsorDetails.en,
     "add-campaign": AddCampaign.en,
     "campaign-details": CampaignDetails.en,
+    "my-qa-reports": MyQAReports.en,
     "my-qa": MyQA.en,
 
     // Pages
@@ -105,12 +110,15 @@ const resources = {
     "add-campaign-page": AddCampaignPage.en,
     "edit-campaign-page": EditCampaignPage.en,
     "edit-sponsor-page": EditSponsorPage.en,
+    "my-qa-page": MyQAPage.en,
 
     // Backdrops
     "upload-picture": UploadPicture.en,
     "delete-profile-picture": DeleteProfilePicture.en,
     "filter-security-check-reports": FilterSecurityCheckReports.en,
     "code-verification": CodeVerification.en,
+    "question-details": QuestionDetails.en,
+    "filter-questions": FilterQuestions.en,
   },
 
   kk: {
@@ -139,6 +147,7 @@ const resources = {
     "sponsor-details": SponsorDetails.kk,
     "add-campaign": AddCampaign.kk,
     "campaign-details": CampaignDetails.kk,
+    "my-qa-reports": MyQAReports.kk,
     "my-qa": MyQA.kk,
 
     // Pages
@@ -160,12 +169,15 @@ const resources = {
     "add-campaign-page": AddCampaignPage.kk,
     "edit-campaign-page": EditCampaignPage.kk,
     "edit-sponsor-page": EditSponsorPage.kk,
+    "my-qa-page": MyQAPage.kk,
 
     // Backdrops
     "upload-picture": UploadPicture.kk,
     "delete-profile-picture": DeleteProfilePicture.kk,
     "filter-security-check-reports": FilterSecurityCheckReports.kk,
     "code-verification": CodeVerification.kk,
+    "question-details": QuestionDetails.kk,
+    "filter-questions": FilterQuestions.en,
   },
 
   ru: {
@@ -194,6 +206,7 @@ const resources = {
     "sponsor-details": SponsorDetails.ru,
     "add-campaign": AddCampaign.ru,
     "campaign-details": CampaignDetails.ru,
+    "my-qa-reports": MyQAReports.ru,
     "my-qa": MyQA.ru,
 
     // Pages
@@ -215,12 +228,15 @@ const resources = {
     "add-campaign-page": AddCampaignPage.ru,
     "edit-campaign-page": EditCampaignPage.ru,
     "edit-sponsor-page": EditSponsorPage.ru,
+    "my-qa-page": MyQAPage.ru,
 
     // Backdrops
     "upload-picture": UploadPicture.ru,
     "delete-profile-picture": DeleteProfilePicture.ru,
     "filter-security-check-reports": FilterSecurityCheckReports.ru,
     "code-verification": CodeVerification.ru,
+    "question-details": QuestionDetails.ru,
+    "filter-questions": FilterQuestions.en,
   },
 };
 

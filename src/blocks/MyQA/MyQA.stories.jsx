@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
-import { MyQA } from './MyQA';
+import { MyQA } from "./MyQA";
 
 export default {
-  title: 'Country Admin UI/blocks/MyQA',
+  title: "Country Admin UI/blocks/MyQA",
   component: MyQA,
   argTypes: {},
 };

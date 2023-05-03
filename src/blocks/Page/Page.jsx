@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { Navbar, Icon } from "@USupport-components-library/src";
+import { Navbar, Icon, Block } from "@USupport-components-library/src";
 import { countrySvc, languageSvc } from "@USupport-components-library/services";
 import { getCountryFromTimezone } from "@USupport-components-library/utils";
 import { useIsLoggedIn } from "#hooks";
@@ -49,6 +49,7 @@ export const Page = ({
     { name: t("page_5"), url: "/faq" },
     { name: t("page_6"), url: "/reports" },
     { name: t("page_7"), url: "/campaigns" },
+    { name: t("page_8"), url: "/my-qa" },
   ];
 
   const localStorageCountry = localStorage.getItem("country");
@@ -158,20 +159,22 @@ export const Page = ({
         ].join(" ")}
       >
         {(heading || showGoBackArrow || headingButton) && (
-          <div className="page__header">
-            {showGoBackArrow && (
-              <Icon
-                classes="page__header-icon"
-                name="arrow-chevron-back"
-                size="md"
-                color="#20809E"
-                onClick={handleGoBack}
-              />
-            )}
-            {image && <img className="page__header__image" src={image} />}
-            {heading && <h3 className="page__header-heading">{heading}</h3>}
-            {headingButton && headingButton}
-          </div>
+          <Block>
+            <div className="page__header">
+              {showGoBackArrow && (
+                <Icon
+                  classes="page__header-icon"
+                  name="arrow-chevron-back"
+                  size="md"
+                  color="#20809E"
+                  onClick={handleGoBack}
+                />
+              )}
+              {image && <img className="page__header__image" src={image} />}
+              {heading && <h3 className="page__header-heading">{heading}</h3>}
+              {headingButton && headingButton}
+            </div>
+          </Block>
         )}
         {children}
       </div>
