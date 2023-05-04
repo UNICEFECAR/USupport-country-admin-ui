@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
+import { useQueryClient } from "@tanstack/react-query";
 
 import {
   Block,
@@ -31,6 +32,8 @@ import "./my-qa-reports.scss";
 export const MyQAReports = ({ Heading }) => {
   const { t } = useTranslation("my-qa-reports");
 
+  const queryClient = useQueryClient();
+
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [filters, setFilters] = useState({
     reason: null,
@@ -42,13 +45,13 @@ export const MyQAReports = ({ Heading }) => {
   const questionsQuery = useGetArchivedQuestions();
 
   useEffect(() => {
-    if (!questionsToDisplay && questionsQuery.data) {
+    if (questionsQuery.data) {
       setQuestionsToDisplay(questionsQuery.data);
     }
   }, [questionsQuery.data]);
 
   const onSuccess = (action) => {
-    questionsQuery.refetch();
+    queryClient.invalidateQueries({ queryKey: ["archived-questions"] });
     toast(t(`${action}_success`));
   };
   const onError = (errorMessage) => {

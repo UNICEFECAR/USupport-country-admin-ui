@@ -6,5 +6,6 @@
     "provider": "Provider",
     "duplicate": "Already exist",
     "spam": "Spam",
-    "other": "Other"
+    "other": "Other",
+    "tag": "Tag"
 }
