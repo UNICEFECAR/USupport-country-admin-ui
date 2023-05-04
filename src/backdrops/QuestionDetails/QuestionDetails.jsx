@@ -2,7 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 
 import {
-  Backdrop,
+  Modal,
   Icon,
   Like,
   Label,
@@ -18,7 +18,7 @@ import "./question-details.scss";
 /**
  * QuestionDetails
  *
- * The QuestionDetails backdrop
+ * The QuestionDetails Modal
  *
  * @return {jsx}
  */
@@ -42,11 +42,11 @@ export const QuestionDetails = ({ question, handleLike, isOpen, onClose }) => {
   };
 
   return (
-    <Backdrop
+    <Modal
       classes="question-details"
       title="QuestionDetails"
       isOpen={isOpen}
-      onClose={onClose}
+      closeModal={onClose}
     >
       <div className="question-details__date-container">
         <Icon name="calendar" color="#92989B" />
@@ -60,9 +60,9 @@ export const QuestionDetails = ({ question, handleLike, isOpen, onClose }) => {
       {question.answerText && (
         <>
           <div className="question-details__heading">
-            <p className="text question-details__heading__text">
+            <h4 className="question-details__heading__text">
               {question.answerTitle}
-            </p>
+            </h4>
             <Like
               handleClick={handleLike}
               likes={question.likes}
@@ -104,6 +104,6 @@ export const QuestionDetails = ({ question, handleLike, isOpen, onClose }) => {
           </div>
         </>
       )}
-    </Backdrop>
+    </Modal>
   );
 };

@@ -77,14 +77,14 @@ export const MyQA = ({
     }
 
     const filteredQuestions = questionsQuery.data.filter((question) => {
-      if (filters.tag) {
+      if (filters.tag && filters.tag !== "All") {
         const tags = question.tags;
         if (!tags.includes(filters.tag)) {
           return null;
         }
       }
 
-      if (filters.provider && !filters.provider === "all") {
+      if (filters.provider && filters.provider !== "all") {
         if (question.providerDetailId !== filters.provider) return null;
       }
 
@@ -142,23 +142,7 @@ export const MyQA = ({
   ).map((x) => {
     return x;
   });
-
-  const handleApplyFilters = () => {
-    const { tag, provider } = filters;
-    setFilters({
-      tag: tag,
-      provider: provider,
-    });
-    closeFilterModal();
-  };
-
-  const handleResetFilters = () => {
-    setFilters({
-      tag: null,
-      provider: null,
-    });
-    closeFilterModal();
-  };
+  tagsOptions.unshift(t("all"));
 
   const closeFilterModal = () => setIsFilterOpen(false);
 
@@ -203,20 +187,8 @@ export const MyQA = ({
           filters={filters}
           setFilters={setFilters}
           providerOptions={providerOptions}
-          handleApplyFilters={handleApplyFilters}
-          handleResetFilters={handleResetFilters}
-        >
-          <DropdownWithLabel
-            label={t("tag")}
-            options={tagsOptions.flat().map((x) => {
-              return { label: x, value: x, isSelected: filters.tag === x };
-            })}
-            selected={filters.tag}
-            setSelected={(value) =>
-              setFilters((prev) => ({ ...prev, tag: value }))
-            }
-          />
-        </FilterQuestions>
+          tagsOptions={tagsOptions}
+        />
       )}
     </>
   );
