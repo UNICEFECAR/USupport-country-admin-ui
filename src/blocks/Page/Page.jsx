@@ -149,8 +149,6 @@ export const Page = ({
           initialLanguage={selectedLanguage}
           initialCountry={selectedCountry}
           renderIn="country-admin"
-          buttonText={t("button_text")}
-          showCta={true}
         />
       )}
       <div
