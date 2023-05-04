@@ -1,11 +1,14 @@
 @import "@USupport-components-library/styles";
 
 .question-details {
+  position: relative;
+
   &__date-container {
+    position: absolute;
     display: flex;
     flex-direction: row;
     align-items: center;
-    top: $spacing_1_0;
+    top: $spacing_2_4;
 
     &__text {
       margin-left: $spacing_0_4;
@@ -51,7 +54,6 @@
 
     @media screen and (min-width: $screen-md) {
       margin-top: $spacing_1_2;
-      align-items: flex-end;
     }
 
     &__archive-button {
