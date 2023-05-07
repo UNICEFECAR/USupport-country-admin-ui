@@ -53,16 +53,18 @@ export const FilterQuestions = ({
       secondaryCtaType="secondary"
     >
       <div className="filter-modal__content-wrapper">
-        <DropdownWithLabel
-          label={t("tag")}
-          options={tagsOptions.flat().map((x) => {
-            return { label: x, value: x, isSelected: currFilter.tag === x };
-          })}
-          selected={currFilter.tag}
-          setSelected={(value) =>
-            setCurrFilter((prev) => ({ ...prev, tag: value }))
-          }
-        />
+        {tagsOptions && (
+          <DropdownWithLabel
+            label={t("tag")}
+            options={tagsOptions.flat().map((x) => {
+              return { label: x, value: x, isSelected: currFilter.tag === x };
+            })}
+            selected={currFilter.tag}
+            setSelected={(value) =>
+              setCurrFilter((prev) => ({ ...prev, tag: value }))
+            }
+          />
+        )}
         <DropdownWithLabel
           label={t("provider")}
           options={providerOptions}
