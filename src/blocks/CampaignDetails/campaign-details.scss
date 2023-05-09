@@ -12,6 +12,11 @@
 
   &__grid {
     text-align: left;
+    justify-items: center;
+
+    @media screen and (min-width: $screen_md) {
+      justify-items: normal;
+    }
 
     &__activate-campaign {
       align-items: center;
@@ -21,6 +26,19 @@
       & .toggle {
         margin-right: $spacing_2_4;
       }
+    }
+
+    &__button-item {
+      justify-self: right;
+    }
+  }
+
+  &__box {
+    width: "75%";
+    padding: $spacing_2_4;
+
+    &__grid {
+      justify-items: center;
     }
   }
 

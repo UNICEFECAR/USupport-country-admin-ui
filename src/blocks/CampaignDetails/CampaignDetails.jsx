@@ -14,6 +14,7 @@ import {
   Loading,
   Modal,
   Toggle,
+  Box,
 } from "@USupport-components-library/src";
 
 import {
@@ -237,6 +238,50 @@ export const CampaignDetails = ({
     <Block classes="campaign-details">
       <Grid classes="campaign-details__grid">
         <GridItem md={8} lg={12}>
+          <Box classes="campaign-details__box">
+            <Grid classes="campaign-details__box__grid">
+              <GridItem md={8} lg={12}>
+                <div className="campaign-details__grid__activate-campaign">
+                  <Toggle
+                    isToggled={isActive}
+                    setParentState={(toggled) =>
+                      handleChangeCampaignStatus(toggled)
+                    }
+                  />
+                  <p>
+                    {t(isActive ? "deactivate_campaign" : "activate_campaign")}
+                  </p>
+                </div>
+              </GridItem>
+              {fieldsToDisplay.map((field, index) => {
+                const fieldLabel = t(pascalToSnakeCase(field));
+                const showCurrencySymbol = [
+                  "usedBudget",
+                  "budget",
+                  "couponPrice",
+                ].includes(field);
+                return (
+                  <GridItem md={2} lg={3} key={index}>
+                    <p>
+                      {fieldLabel}:{" "}
+                      <strong>
+                        {field.includes("Date")
+                          ? getDateView(data[field])
+                          : data[field]}
+                        {showCurrencySymbol ? currencySymbol : ""}
+                      </strong>
+                    </p>
+                  </GridItem>
+                );
+              })}
+            </Grid>
+          </Box>
+        </GridItem>
+        <GridItem
+          md={8}
+          lg={12}
+          classes="campaign-details__box__grid__button-item"
+        >
           <div className="campaign-details__buttons-container">
             <Button
               label={t("filter")}
@@ -253,41 +298,6 @@ export const CampaignDetails = ({
             />
           </div>
         </GridItem>
-
-        <>
-          <GridItem md={8} lg={12}>
-            <div className="campaign-details__grid__activate-campaign">
-              <Toggle
-                isToggled={isActive}
-                setParentState={(toggled) =>
-                  handleChangeCampaignStatus(toggled)
-                }
-              />
-              <p>{t(isActive ? "deactivate_campaign" : "activate_campaign")}</p>
-            </div>
-          </GridItem>
-          {fieldsToDisplay.map((field, index) => {
-            const fieldLabel = t(pascalToSnakeCase(field));
-            const showCurrencySymbol = [
-              "usedBudget",
-              "budget",
-              "couponPrice",
-            ].includes(field);
-            return (
-              <GridItem md={2} lg={3} key={index}>
-                <p>
-                  {fieldLabel}:{" "}
-                  <strong>
-                    {field.includes("Date")
-                      ? getDateView(data[field])
-                      : data[field]}
-                    {showCurrencySymbol ? currencySymbol : ""}
-                  </strong>
-                </p>
-              </GridItem>
-            );
-          })}
-        </>
       </Grid>
       {isLoading ? (
         <Loading />

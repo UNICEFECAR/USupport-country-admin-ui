@@ -12,6 +12,7 @@ import {
   Loading,
   Input,
   Modal,
+  Box,
 } from "@USupport-components-library/src";
 
 import { useGetAllSponsorsData } from "#hooks";
@@ -130,46 +131,49 @@ export const Campaigns = () => {
 
   return (
     <Block classes="campaigns">
-      <div className="campaigns__buttons">
-        <Button
-          label={t("add_button")}
-          color="purple"
-          type="secondary"
-          onClick={() => navigate("/add-sponsor")}
-        />
-        <Button
-          label={t("filter_button")}
-          color="purple"
-          onClick={() => setIsFilterModalOpen(true)}
-        />
-      </div>
+      <Box classes="campaigns__box">
+        <Grid classes="campaigns__information">
+          <GridItem xs={2} md={2} lg={4}>
+            <p>
+              {t("sponsors")}: <strong>{data?.length}</strong>
+            </p>
+          </GridItem>
+          <GridItem xs={2} md={3} lg={4}>
+            <p>
+              {t("campaigns")}:{" "}
+              <strong>{reduceCampaigns(data, "totalCampaigns")}</strong>
+            </p>
+          </GridItem>
+          <GridItem xs={4} md={3} lg={4}>
+            <p>
+              {t("active_campaigns")}:{" "}
+              <strong>{reduceCampaigns(data, "activeCampaigns")}</strong>
+            </p>
+          </GridItem>
+        </Grid>
+      </Box>
 
-      <Grid classes="campaigns__information">
-        <GridItem xs={4} md={2} lg={3}>
-          <p>
-            {t("sponsors")}: <strong>{data?.length}</strong>
-          </p>
-        </GridItem>
-        <GridItem xs={4} md={2} lg={3}>
-          <p>
-            {t("campaigns")}:{" "}
-            <strong>{reduceCampaigns(data, "totalCampaigns")}</strong>
-          </p>
-        </GridItem>
-        <GridItem xs={4} md={2} lg={3}>
-          <p>
-            {t("active_campaigns")}:{" "}
-            <strong>{reduceCampaigns(data, "activeCampaigns")}</strong>
-          </p>
-        </GridItem>
-        <GridItem xs={4} md={8} lg={3}>
-          <InputSearch
-            placeholder={t("search")}
-            value={searchValue}
-            onChange={setSearchValue}
+      <div className="campaigns__search-container">
+        <InputSearch
+          placeholder={t("search")}
+          value={searchValue}
+          onChange={setSearchValue}
+          classes="campaigns__search"
+        />
+        <div className="sponsor-details__search-container__buttons-container">
+          <Button
+            label={t("add_button")}
+            color="purple"
+            type="secondary"
+            onClick={() => navigate("/add-sponsor")}
           />
-        </GridItem>
-      </Grid>
+          <Button
+            label={t("filter_button")}
+            color="purple"
+            onClick={() => setIsFilterModalOpen(true)}
+          />
+        </div>
+      </div>
 
       {isLoading ? (
         <Loading />

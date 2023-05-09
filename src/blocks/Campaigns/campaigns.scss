@@ -1,34 +1,47 @@
 @import "@USupport-components-library/styles";
 
 .campaigns {
-  &__buttons {
-    display: flex;
-    justify-content: center;
-    padding: $spacing_2_4 0;
-
-    & button:first-of-type {
-      margin-right: $spacing_1_0;
-    }
+  &__box {
+    padding: $spacing_1_6;
   }
 
   &__information {
-    place-items: start;
+    place-items: center;
+    justify-items: center;
 
     & p {
       text-align: left;
     }
 
-    @media screen and (min-width: $screen-md) {
-      padding-top: $spacing_2_4;
-      place-items: center;
-    }
-
-    @media screen and (min-width: $screen-lg) {
-      justify-items: start;
-    }
-
     & .grid-item:last-of-type {
       margin: 1rem;
+    }
+  }
+
+  &__search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: $spacing_2_4;
+
+    &__buttons-container {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: $spacing_2_0;
+
+      @media screen and (min-width: $screen-md) {
+        margin-top: 0;
+      }
+
+      & button:first-of-type {
+        margin-right: $spacing_1_0;
+      }
+    }
+
+    @media screen and (min-width: $screen-md) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
     }
   }
 

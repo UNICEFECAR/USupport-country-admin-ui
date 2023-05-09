@@ -13,6 +13,7 @@ import {
   Input,
   DateInput,
   Toggle,
+  Box,
 } from "@USupport-components-library/src";
 
 import { getDateView } from "@USupport-components-library/utils";
@@ -166,57 +167,58 @@ export const SponsorDetails = ({ data }) => {
   };
   return (
     <Block classes="sponsor-details">
-      <div className="sponsor-details__buttons-container">
-        <Button
-          onClick={() => setIsFilterModalOpen(true)}
-          label={t("filter")}
-          type="secondary"
-          color="purple"
-          size="md"
+      <Box classes="sponsor-details__box">
+        <Grid classes="sponsor-details__grid">
+          <GridItem xs={2} md={2} lg={3}>
+            <p>
+              {t("campaigns")}: <strong>{data.campaigns}</strong>
+            </p>
+          </GridItem>
+
+          <GridItem xs={2} md={2} lg={3}>
+            <p>
+              {t("active_campaigns")}: <strong>{data.activeCampaigns}</strong>
+            </p>
+          </GridItem>
+
+          <GridItem xs={2} md={2} lg={3}>
+            <p>
+              {t("email")}: <strong>{data.email}</strong>
+            </p>
+          </GridItem>
+
+          <GridItem xs={2} md={2} lg={3}>
+            <p>
+              {t("phone_number")}:{" "}
+              <strong>
+                {data.phonePrefix} {data.phone}
+              </strong>
+            </p>
+          </GridItem>
+        </Grid>
+      </Box>
+      <div className="sponsor-details__search-container">
+        <InputSearch
+          placeholder={t("search")}
+          value={searchValue}
+          onChange={setSearchValue}
         />
-        <Button
-          label={t("add_campaign")}
-          color="purple"
-          size="md"
-          onClick={handleAddCampaign}
-        />
-      </div>
-      <Grid classes="sponsor-details__grid">
-        <GridItem md={2} lg={2} classes="sponsor-details__grid-item">
-          <p>
-            {t("campaigns")}: <strong>{data.campaigns}</strong>
-          </p>
-        </GridItem>
-
-        <GridItem md={2} lg={2} classes="sponsor-details__grid-item">
-          <p>
-            {t("active_campaigns")}: <strong>{data.activeCampaigns}</strong>
-          </p>
-        </GridItem>
-
-        <GridItem md={2} lg={3} classes="sponsor-details__grid-item">
-          <p>
-            {t("email")}: <strong>{data.email}</strong>
-          </p>
-        </GridItem>
-
-        <GridItem md={2} lg={3} classes="sponsor-details__grid-item">
-          <p>
-            {t("phone_number")}:{" "}
-            <strong>
-              {data.phonePrefix} {data.phone}
-            </strong>
-          </p>
-        </GridItem>
-
-        <GridItem md={8} lg={2} classes="sponsor-details__grid-item">
-          <InputSearch
-            placeholder={t("search")}
-            value={searchValue}
-            onChange={setSearchValue}
+        <div className="sponsor-details__search-container__buttons-container">
+          <Button
+            onClick={() => setIsFilterModalOpen(true)}
+            label={t("filter")}
+            type="secondary"
+            color="purple"
+            size="md"
           />
-        </GridItem>
-      </Grid>
+          <Button
+            label={t("add_campaign")}
+            color="purple"
+            size="md"
+            onClick={handleAddCampaign}
+          />
+        </div>
+      </div>
       <BaseTable
         data={dataToDisplay}
         rows={rows}
