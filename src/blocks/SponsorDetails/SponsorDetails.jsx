@@ -167,36 +167,41 @@ export const SponsorDetails = ({ data }) => {
   };
   return (
     <Block classes="sponsor-details">
-      <Box classes="sponsor-details__box">
-        <Grid classes="sponsor-details__grid">
-          <GridItem xs={2} md={2} lg={3}>
-            <p>
-              {t("campaigns")}: <strong>{data.campaigns}</strong>
-            </p>
-          </GridItem>
+      <Grid classes="sponsor-details__grid">
+        <GridItem md={8} lg={12}>
+          <Box classes="sponsor-details__box">
+            <Grid classes="sponsor-details__box__grid">
+              <GridItem xs={4} md={2} lg={3}>
+                <p>
+                  {t("campaigns")}: <strong>{data.campaigns}</strong>
+                </p>
+              </GridItem>
 
-          <GridItem xs={2} md={2} lg={3}>
-            <p>
-              {t("active_campaigns")}: <strong>{data.activeCampaigns}</strong>
-            </p>
-          </GridItem>
+              <GridItem xs={4} md={2} lg={3}>
+                <p>
+                  {t("active_campaigns")}:{" "}
+                  <strong>{data.activeCampaigns}</strong>
+                </p>
+              </GridItem>
 
-          <GridItem xs={2} md={2} lg={3}>
-            <p>
-              {t("email")}: <strong>{data.email}</strong>
-            </p>
-          </GridItem>
+              <GridItem xs={4} md={2} lg={3}>
+                <p>
+                  {t("email")}: <strong>{data.email}</strong>
+                </p>
+              </GridItem>
 
-          <GridItem xs={2} md={2} lg={3}>
-            <p>
-              {t("phone_number")}:{" "}
-              <strong>
-                {data.phonePrefix} {data.phone}
-              </strong>
-            </p>
-          </GridItem>
-        </Grid>
-      </Box>
+              <GridItem xs={4} md={2} lg={3}>
+                <p>
+                  {t("phone_number")}:{" "}
+                  <strong>
+                    {data.phonePrefix} {data.phone}
+                  </strong>
+                </p>
+              </GridItem>
+            </Grid>
+          </Box>
+        </GridItem>
+      </Grid>
       <div className="sponsor-details__search-container">
         <InputSearch
           placeholder={t("search")}

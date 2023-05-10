@@ -4,20 +4,28 @@
   padding-bottom: $spacing_4_0;
 
   &__grid {
-    @media screen and (min-width: $screen-md) {
-      align-items: center;
-      justify-items: center;
+    text-align: left;
+    justify-items: center;
+
+    @media screen and (min-width: $screen_md) {
+      justify-items: normal;
     }
   }
 
   &__box {
-    width: 93%;
     margin-top: $spacing_2_4;
     padding: $spacing_1_6;
 
     @media screen and (min-width: $screen-md) {
       width: 96%;
       padding: $spacing_2_4 $spacing_3_0 $spacing_2_4 0;
+    }
+
+    &__grid {
+      @media screen and (min-width: $screen-md) {
+        align-items: center;
+        justify-items: center;
+      }
     }
   }
 

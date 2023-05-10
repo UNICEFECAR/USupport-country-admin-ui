@@ -131,28 +131,31 @@ export const Campaigns = () => {
 
   return (
     <Block classes="campaigns">
-      <Box classes="campaigns__box">
-        <Grid classes="campaigns__information">
-          <GridItem xs={2} md={2} lg={4}>
-            <p>
-              {t("sponsors")}: <strong>{data?.length}</strong>
-            </p>
-          </GridItem>
-          <GridItem xs={2} md={3} lg={4}>
-            <p>
-              {t("campaigns")}:{" "}
-              <strong>{reduceCampaigns(data, "totalCampaigns")}</strong>
-            </p>
-          </GridItem>
-          <GridItem xs={4} md={3} lg={4}>
-            <p>
-              {t("active_campaigns")}:{" "}
-              <strong>{reduceCampaigns(data, "activeCampaigns")}</strong>
-            </p>
-          </GridItem>
-        </Grid>
-      </Box>
-
+      <Grid classes="campaigns__grid">
+        <GridItem md={8} lg={12}>
+          <Box classes="campaigns__box" boxShadow={2}>
+            <Grid classes="campaigns__box__grid">
+              <GridItem xs={4} md={2} lg={4}>
+                <p>
+                  {t("sponsors")}: <strong>{data?.length}</strong>
+                </p>
+              </GridItem>
+              <GridItem xs={4} md={3} lg={4}>
+                <p>
+                  {t("campaigns")}:{" "}
+                  <strong>{reduceCampaigns(data, "totalCampaigns")}</strong>
+                </p>
+              </GridItem>
+              <GridItem xs={4} md={3} lg={4}>
+                <p>
+                  {t("active_campaigns")}:{" "}
+                  <strong>{reduceCampaigns(data, "activeCampaigns")}</strong>
+                </p>
+              </GridItem>
+            </Grid>
+          </Box>
+        </GridItem>
+      </Grid>
       <div className="campaigns__search-container">
         <InputSearch
           placeholder={t("search")}
