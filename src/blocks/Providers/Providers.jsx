@@ -1,6 +1,6 @@
 import React, { useCallback, useRef, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { useQueryClient } from "@tanstack/react-query";
+import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import {
@@ -15,8 +15,10 @@ import {
   ProviderOverview,
   Toggle,
 } from "@USupport-components-library/src";
-// import { providerSvc } from "@USupport-components-library/services";
-import { useGetProvidersData, useUpdateProviderStatus } from "#hooks";
+import { adminSvc } from "@USupport-components-library/services";
+
+import { useUpdateProviderStatus } from "#hooks";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 import "./providers.scss";
 /**
@@ -37,11 +39,45 @@ export const Providers = () => {
   const navigate = useNavigate();
   const { t } = useTranslation("providers");
   const queryClient = useQueryClient();
-  const providersQuery = useGetProvidersData()[0];
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
   const [filters, setFilters] = useState(initialFilters);
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
+  const [appliedFilters, setAppliedFilters] = useState();
+
+  const fetchProvidersData = async ({ pageParam = 1 }) => {
+    const { data } = await adminSvc.getAllProviders(pageParam, filters);
+    const formattedData = [];
+    for (let i = 0; i < data.length; i++) {
+      const providerData = data[i];
+      const formattedProvider = {
+        providerDetailId: providerData.provider_detail_id || "",
+        name: providerData.name || "",
+        patronym: providerData.patronym || "",
+        surname: providerData.surname || "",
+        nickname: providerData.nickname || "",
+        email: providerData.email || "",
+        image: providerData.image || "default",
+        specializations: providerData.specializations || [],
+        consultationPrice: providerData.consultation_price || 0,
+        status: providerData.status,
+      };
+      formattedData.push(formattedProvider);
+    }
+    return formattedData;
+  };
+
+  const providersQuery = useInfiniteQuery(
+    ["all-providers", appliedFilters],
+    fetchProvidersData,
+    {
+      getNextPageParam: (lastPage, pages) => {
+        if (lastPage.length === 0) return undefined;
+        return pages.length + 1;
+      },
+    }
+  );
+
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
   const [dataToDisplay, setDataToDisplay] = useState();
 
@@ -96,13 +132,13 @@ export const Providers = () => {
   }, [providersQuery.data]);
 
   const renderProviders = useCallback(() => {
-    if (!dataToDisplay || dataToDisplay?.length === 0)
+    if (!providersQuery.data?.pages || providersQuery.data?.pages.length === 0)
       return (
         <GridItem md={8} lg={12}>
           <h4>{t("no_providers")}</h4>
         </GridItem>
       );
-    return dataToDisplay?.map((provider, index) => {
+    return providersQuery.data.pages?.flat().map((provider, index) => {
       return (
         <GridItem key={index} md={4} lg={4}>
           <ProviderOverview
@@ -142,25 +178,26 @@ export const Providers = () => {
         </GridItem>
       );
     });
-  }, [dataToDisplay]);
+  }, [providersQuery.data]);
 
   const handleFilterSave = () => {
-    const dataCopy = [...providersQuery.data];
+    setAppliedFilters(filters);
+    // const dataCopy = [...providersQuery.data];
 
-    const filteredData = dataCopy.filter((provider) => {
-      const { price, status, free, specialization } = filters;
-      console.log(provider);
-      if (price && provider.consultationPrice < Number(price)) return false;
-      if (status && provider.status !== status) return false;
-      if (free && provider.consultationPrice > 0) return false;
-      if (specialization && !provider.specializations.includes(specialization))
-        return false;
+    // const filteredData = dataCopy.filter((provider) => {
+    //   const { price, status, free, specialization } = filters;
+    //   console.log(provider);
+    //   if (price && provider.consultationPrice < Number(price)) return false;
+    //   if (status && provider.status !== status) return false;
+    //   if (free && provider.consultationPrice > 0) return false;
+    //   if (specialization && !provider.specializations.includes(specialization))
+    //     return false;
 
-      return true;
-    });
+    //   return true;
+    // });
 
     setIsFilterModalOpen(false);
-    setDataToDisplay(filteredData);
+    // setDataToDisplay(filteredData);
   };
 
   const handleResetFilters = () => {
@@ -169,34 +206,53 @@ export const Providers = () => {
     setDataToDisplay(providersQuery.data);
   };
 
+  const [currentPage, setCurrentPage] = useState(0);
+  const [hasMore, setHasMore] = useState(true);
+
+  const loadMore = () => {
+    setCurrentPage(currentPage + 1);
+  };
+
   return (
     <Block classes="providers">
-      <Grid classes="providers__grid">
-        <GridItem md={8} lg={12} classes="providers__grid__heading">
-          <h2>{t("providers")} </h2>
-          <div className="providers__grid__heading__button-container">
-            <Button
-              label={t("create_provider")}
-              classes="providers__create-provider-button"
-              onClick={() => navigate("/create-provider")}
-              size="sm"
-            />
-            <Button
-              label={t("filter_providers")}
-              onClick={() => setIsFilterModalOpen(true)}
-              size="sm"
-              color="purple"
-            />
-          </div>
-        </GridItem>
-        {providersQuery.isLoading ? (
-          <GridItem md={8} lg={12}>
-            <Loading size="lg" />
+      <InfiniteScroll
+        dataLength={providersQuery.data?.pages.length || 0}
+        next={providersQuery.fetchNextPage}
+        hasMore={providersQuery.hasNextPage}
+        loader={<Loading />}
+        className="providers__infinite-scroll"
+        initialScrollY={20}
+        hasChildren={true}
+        scrollThreshold={0}
+      >
+        <Grid classes="providers__grid">
+          <GridItem md={8} lg={12} classes="providers__grid__heading">
+            <h2>{t("providers")} </h2>
+            <div className="providers__grid__heading__button-container">
+              <Button
+                label={t("create_provider")}
+                classes="providers__create-provider-button"
+                onClick={() => navigate("/create-provider")}
+                size="sm"
+              />
+              <Button
+                label={t("filter_providers")}
+                onClick={() => setIsFilterModalOpen(true)}
+                size="sm"
+                color="purple"
+              />
+            </div>
           </GridItem>
-        ) : (
-          renderProviders()
-        )}
-      </Grid>
+          {providersQuery.isLoading ? (
+            <GridItem md={8} lg={12}>
+              <Loading size="lg" />
+            </GridItem>
+          ) : (
+            renderProviders()
+          )}
+        </Grid>
+      </InfiniteScroll>
+
       <Modal
         heading={
           selectedProviderStatus.current?.status === "active"

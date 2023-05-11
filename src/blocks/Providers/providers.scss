@@ -5,6 +5,10 @@
   padding-top: $spacing_4_8;
   padding-bottom: $spacing_10_0;
 
+  &__infinite-scroll {
+    padding-bottom: $spacing_4_8;
+  }
+
   &__grid {
     place-items: center;
     padding-bottom: $spacing_6_0;
