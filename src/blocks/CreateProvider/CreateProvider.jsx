@@ -446,7 +446,9 @@ export const CreateProvider = ({
             errorMessage={errors.workWith}
           />
         </GridItem>
-        {errors.submit ? <Error message={errors.submit} /> : null}
+        <GridItem md={8} lg={12} classes="create-provider__grid__button-item">
+          {errors.submit ? <Error message={errors.submit} /> : null}
+        </GridItem>
 
         <GridItem md={8} lg={12} classes="create-provider__grid__button-item">
           <Button
