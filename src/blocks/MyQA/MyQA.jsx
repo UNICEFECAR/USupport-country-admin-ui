@@ -166,7 +166,7 @@ export const MyQA = ({
             <InputSearch
               placeholder={t("search_placeholder")}
               value={searchValue}
-              onChange={(value) => setSearchValue(value.toLowerCase())}
+              onChange={(value) => setSearchValue(value)}
               classes="my-qa__search-input"
             />
           )}
