@@ -9,8 +9,6 @@ import {
   Button,
 } from "@USupport-components-library/src";
 
-import { useGetProvidersData } from "#hooks";
-
 import "./filter-security-check-reports.scss";
 
 /**
@@ -24,10 +22,9 @@ export const FilterSecurityCheckReports = ({
   isOpen,
   onClose,
   changeFilter,
+  data,
 }) => {
   const { t } = useTranslation("filter-security-check-reports");
-  const [providersDataQuery] = useGetProvidersData();
-  const { isLoading, data } = providersDataQuery;
 
   const initialFiltersData = {
     provider: null,
@@ -43,7 +40,7 @@ export const FilterSecurityCheckReports = ({
       data.forEach((provider) => {
         options.push({
           value: provider.providerDetailId,
-          label: `${provider.name} ${provider.patronym} ${provider.surname}`,
+          label: provider.providerName,
           isSelected: false,
         });
       });
@@ -74,7 +71,7 @@ export const FilterSecurityCheckReports = ({
       isOpen={isOpen}
       closeModal={onClose}
     >
-      {isLoading ? (
+      {!data ? (
         <Loading />
       ) : (
         <>

@@ -73,6 +73,25 @@ export const SecurityCheck = ({ Heading }) => {
     });
   }, [securityChecks, filters]);
 
+  const providerDetails = useMemo(() => {
+    if (securityChecks) {
+      const providerIds = Array.from(
+        new Set(securityChecks.map((x) => x.providerDetailId))
+      );
+      const providers = providerIds.map((providerId) => {
+        const details = securityChecks.find(
+          (x) => x.providerDetailId === providerId
+        );
+        return {
+          providerDetailId: details.providerDetailId,
+          providerName: details.providerName,
+        };
+      });
+      return providers;
+    }
+    return null;
+  }, [securityChecks]);
+
   return (
     <Block classes="security-check">
       <Heading
@@ -93,6 +112,7 @@ export const SecurityCheck = ({ Heading }) => {
         isOpen={isFilterOpen}
         onClose={() => setIsFilterOpen(false)}
         changeFilter={changeFilter}
+        data={providerDetails}
       />
     </Block>
   );
