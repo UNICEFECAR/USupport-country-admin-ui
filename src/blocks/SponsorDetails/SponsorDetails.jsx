@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -55,15 +55,29 @@ export const SponsorDetails = ({ data }) => {
     }
   }, [data]);
 
-  const rows = [
-    t("campaign"),
-    t("used_total_coupons"),
-    t("coupon_price"),
-    t("used_total_budget"),
-    t("max_coupons"),
-    t("period"),
-    t("status"),
-  ];
+  const rows = useMemo(() => {
+    return [
+      { label: t("campaign"), sortingKey: "name" },
+      {
+        label: t("used_total_coupons"),
+        sortingKey: "usedCoupons",
+        isNumbered: true,
+      },
+      { label: t("coupon_price"), sortingKey: "couponPrice", isNumbered: true },
+      {
+        label: t("used_total_budget"),
+        sortingKey: "usedBudget",
+        isNumbered: true,
+      },
+      {
+        label: t("max_coupons"),
+        sortingKey: "maxCouponsPerClient",
+        isNumbered: true,
+      },
+      { label: t("period"), sortingKey: "startDate", isDate: true },
+      { label: t("status"), sortingKey: "status" },
+    ];
+  }, []);
 
   const rowsData = dataToDisplay
     ?.filter((x) => x.name.toLowerCase().includes(searchValue.toLowerCase()))
@@ -226,6 +240,7 @@ export const SponsorDetails = ({ data }) => {
       </div>
       <BaseTable
         data={dataToDisplay}
+        updateData={setDataToDisplay}
         rows={rows}
         rowsData={rowsData}
         handleClickPropName="campaignId"

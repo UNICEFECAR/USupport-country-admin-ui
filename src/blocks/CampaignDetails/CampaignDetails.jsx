@@ -96,15 +96,17 @@ export const CampaignDetails = ({
     }
   }, [couponsData]);
 
-  const tableRows = [
-    "№",
-    t("provider"),
-    t("client"),
-    t("client_sex"),
-    t("client_yob"),
-    t("client_place_of_living"),
-    t("used_on"),
-  ];
+  const tableRows = useMemo(() => {
+    return [
+      { label: "№" },
+      { label: t("provider"), sortingKey: "providerName" },
+      { label: t("client"), sortingKey: "clientName" },
+      { label: t("client_sex"), sortingKey: "clientSex" },
+      { label: t("client_yob"), sortingKey: "clientYob", isNumbered: true },
+      { label: t("client_place_of_living"), sortingKey: "clientPlaceOfLiving" },
+      { label: t("used_on"), sortingKey: "createdAt", isDate: true },
+    ];
+  }, []);
 
   const getTableRowsData = useCallback(() => {
     return dataToDisplay?.map((coupon, index) => {
@@ -303,9 +305,11 @@ export const CampaignDetails = ({
         <Loading />
       ) : (
         <BaseTable
+          data={dataToDisplay}
           rows={tableRows}
           rowsData={getTableRowsData()}
           hasMenu={false}
+          updateData={setDataToDisplay}
           t={t}
         />
       )}

@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -31,13 +31,19 @@ import "./campaigns.scss";
 export const Campaigns = () => {
   const navigate = useNavigate();
   const { t } = useTranslation("campaigns");
-  const rows = [
-    t("sponsor"),
-    t("campaigns"),
-    t("active_campaigns"),
-    t("email"),
-    t("phone"),
-  ];
+  const rows = useMemo(() => {
+    return [
+      { label: t("sponsor"), sortingKey: "sponsorName" },
+      { label: t("campaigns"), sortingKey: "totalCampaigns", isNumbered: true },
+      {
+        label: t("active_campaigns"),
+        sortingKey: "activeCampaigns",
+        isNumbered: true,
+      },
+      { label: t("email"), sortingKey: "email" },
+      { label: t("phone"), sortingKey: "phone" },
+    ];
+  }, []);
 
   const [searchValue, setSearchValue] = useState("");
 
@@ -187,6 +193,7 @@ export const Campaigns = () => {
           rowsData={rowsData}
           menuOptions={menuOptions}
           handleClickPropName={"sponsorId"}
+          updateData={setDataToDisplay}
           t={t}
         />
       )}
