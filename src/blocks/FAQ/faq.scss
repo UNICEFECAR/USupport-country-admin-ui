@@ -13,4 +13,13 @@
       padding-top: $spacing_4_0;
     }
   }
+
+  &__search {
+    margin: $spacing_1_6 auto;
+
+    @media screen and (min-width: $screen-md) {
+      margin: 0;
+      margin-left: auto;
+    }
+  }
 }

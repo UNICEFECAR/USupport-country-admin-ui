@@ -4,5 +4,6 @@
   "provider_tab_label": "Provider",
   "website_tab_label": "Website",
   "faq_added": "FAQ added successfully",
-  "faq_removed": "FAQ removed successfully"
+  "faq_removed": "FAQ removed successfully",
+  "search_placeholder": "Search"
 }

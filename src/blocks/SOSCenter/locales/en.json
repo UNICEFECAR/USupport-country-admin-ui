@@ -1,5 +1,6 @@
 {
   "no_results": "No results found, please try a different language.",
   "sos_center_added": "SOS Center added successfully.",
-  "sos_center_removed": "SOS Center removed successfully."
+  "sos_center_removed": "SOS Center removed successfully.",
+  "search_placeholder": "Search"
 }

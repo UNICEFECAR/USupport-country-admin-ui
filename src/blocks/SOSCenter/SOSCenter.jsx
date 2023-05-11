@@ -8,6 +8,7 @@ import {
   SOSCenterRow,
   Loading,
   Error as ErrorComponent,
+  InputSearch,
 } from "@USupport-components-library/src";
 import { useTranslation } from "react-i18next";
 
@@ -29,6 +30,7 @@ export const SOSCenter = () => {
   const { i18n, t } = useTranslation("sos-center");
 
   const [error, setError] = useState();
+  const [searchValue, setSearchValue] = useState("");
 
   //--------------------- SOS Centers ----------------------//
   const getSOSCenters = async () => {
@@ -105,41 +107,73 @@ export const SOSCenter = () => {
     },
   });
 
+  const renderItems = () => {
+    if (!SOSCentersData?.length && SOSCentersLoading) return <Loading />;
+
+    const filteredData = SOSCentersData.filter((sosCenter) => {
+      if (searchValue) {
+        const value = searchValue.toLowerCase();
+        const { attributes } = sosCenter;
+
+        const isUrlMatching = attributes.url && attributes.url.includes(value);
+        const isTitleMatching = attributes.title.toLowerCase().includes(value);
+        const isTextMatching = attributes.text.toLowerCase().includes(value);
+        const isPhoneMatching =
+          attributes.phone && attributes.phone.includes(value);
+
+        return (
+          isUrlMatching || isTitleMatching || isTextMatching || isPhoneMatching
+        );
+      }
+      return true;
+    });
+
+    return (
+      <>
+        {isSOSCentersFetched &&
+          SOSCentersData &&
+          filteredData.map((sosCenter, index) => {
+            return (
+              <SOSCenterRow
+                selected={sosCenter.isSelected}
+                setSelected={() =>
+                  handleSelectSOSCenter(
+                    sosCenter.id,
+                    !sosCenter.isSelected,
+                    index
+                  )
+                }
+                heading={sosCenter.attributes.title}
+                text={sosCenter.attributes.text}
+                link={sosCenter.attributes.url}
+                phone={sosCenter.attributes.phone}
+                image={
+                  sosCenter.attributes.image?.data?.attributes?.formats?.medium
+                    ?.url
+                }
+                key={index}
+              />
+            );
+          })}
+        {!filteredData?.length && !SOSCentersLoading && isSOSCentersFetched && (
+          <h3 className="sos-center__no-results">{t("no_results")}</h3>
+        )}
+      </>
+    );
+  };
+
   return (
     <Block classes="sos-center">
       <Grid>
+        <GridItem md={8} lg={12} classes="sos-center__search-input-item">
+          <InputSearch
+            placeholder={t("search_placeholder")}
+            value={searchValue}
+            onChange={(value) => setSearchValue(value)}
+          />
+        </GridItem>
         <GridItem md={8} lg={12} classes="sos-center__rows">
-          {isSOSCentersFetched &&
-            SOSCentersData &&
-            SOSCentersData.map((sosCenter, index) => {
-              return (
-                <SOSCenterRow
-                  selected={sosCenter.isSelected}
-                  setSelected={() =>
-                    handleSelectSOSCenter(
-                      sosCenter.id,
-                      !sosCenter.isSelected,
-                      index
-                    )
-                  }
-                  heading={sosCenter.attributes.title}
-                  text={sosCenter.attributes.text}
-                  link={sosCenter.attributes.url}
-                  phone={sosCenter.attributes.phone}
-                  image={
-                    sosCenter.attributes.image?.data?.attributes?.formats
-                      ?.medium?.url
-                  }
-                  key={index}
-                />
-              );
-            })}
-          {!SOSCentersData?.length && SOSCentersLoading && <Loading />}
-          {!SOSCentersData?.length &&
-            !SOSCentersLoading &&
-            isSOSCentersFetched && (
-              <h3 className="sos-center__no-results">{t("no_results")}</h3>
-            )}
+          {renderItems()}
           {error ? <ErrorComponent message={error} /> : null}
         </GridItem>
       </Grid>

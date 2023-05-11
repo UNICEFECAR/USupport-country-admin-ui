@@ -1,6 +1,13 @@
 @import "@USupport-components-library/styles";
 
 .sos-center {
+  &__search-input-item {
+    place-self: center;
+    @media screen and (min-width: $screen-md) {
+      place-self: end;
+    }
+  }
+
   &__rows {
     padding-top: $spacing_3_0;
     @media screen and (min-width: $screen-md) {
