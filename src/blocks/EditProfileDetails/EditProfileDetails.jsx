@@ -123,14 +123,14 @@ export const EditProfileDetails = () => {
               value={adminData.name}
               onChange={(e) => handleChange("name", e.currentTarget.value)}
               errorMessage={errors.name}
-              label={t("name_label")}
+              label={t("name_label") + " *"}
               placeholder={t("name_placeholder")}
             />
             <Input
               value={adminData.surname}
               onChange={(e) => handleChange("surname", e.currentTarget.value)}
               errorMessage={errors.surname}
-              label={t("surname_label")}
+              label={t("surname_label") + " *"}
               placeholder={t("surname_placeholder")}
             />
             <div className="edit-profile-details__grid__phone-container">
@@ -161,7 +161,7 @@ export const EditProfileDetails = () => {
               value={adminData.email}
               onChange={(e) => handleChange("email", e.currentTarget.value)}
               errorMessage={errors.email}
-              label={t("email_label")}
+              label={t("email_label") + " *"}
               placeholder={t("email_placeholder")}
               onBlur={() => handleBlur("email")}
             />
