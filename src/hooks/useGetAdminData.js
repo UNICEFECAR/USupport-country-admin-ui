@@ -7,9 +7,7 @@ export default function useGetAdminData() {
   const fetchData = async () => {
     const { data } = await adminSvc.getData();
     data.adminId = data.admin_id;
-    data.phonePrefix = data.phone_prefix;
 
-    delete data.phone_prefix;
     delete data.admin_id;
     delete data.is_active;
     delete data.password;

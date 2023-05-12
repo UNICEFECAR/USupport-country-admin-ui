@@ -12,7 +12,6 @@ export const useGetSponsorData = (sponsorId) => {
       sponsorName: data.name,
       email: data.email,
       phone: data.phone,
-      phonePrefix: data.phone_prefix,
       image: data.image,
       campaigns: data.campaigns_data.length,
       activeCampaigns: data.campaigns_data?.filter((x) => x.active).length,
