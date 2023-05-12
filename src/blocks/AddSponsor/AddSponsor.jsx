@@ -210,14 +210,14 @@ export const AddSponsor = ({
             value={data.name}
             onChange={(e) => handleChange("name", e.currentTarget.value)}
             errorMessage={errors.name}
-            label={t("sponsor_label")}
+            label={t("sponsor_label") + " *"}
             placeholder={t("sponsor_placeholder")}
           />
           <Input
             value={data.email}
             onChange={(e) => handleChange("email", e.currentTarget.value)}
             errorMessage={errors.email}
-            label={t("email_label")}
+            label={t("email_label") + " *"}
             placeholder={t("email_placeholder")}
           />
           <div className="add-sponsor__grid__phone-container">

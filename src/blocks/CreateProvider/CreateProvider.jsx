@@ -293,7 +293,7 @@ export const CreateProvider = ({
             value={providerData.name}
             onChange={(e) => handleChange("name", e.currentTarget.value)}
             errorMessage={errors.name}
-            label={t("name_label")}
+            label={t("name_label") + " *"}
             placeholder={t("name_placeholder")}
           />
           <Input
@@ -307,7 +307,7 @@ export const CreateProvider = ({
             value={providerData.surname}
             onChange={(e) => handleChange("surname", e.currentTarget.value)}
             errorMessage={errors.surname}
-            label={t("surname_label")}
+            label={t("surname_label") + " *"}
             placeholder={t("surname_placeholder")}
           />
           <Textarea
@@ -358,12 +358,12 @@ export const CreateProvider = ({
             value={providerData.email}
             onChange={(e) => handleChange("email", e.currentTarget.value)}
             errorMessage={errors.email}
-            label={t("email_label")}
+            label={t("email_label") + " *"}
             placeholder={t("email_placeholder")}
             onBlur={() => handleBlur("email")}
           />
           <DropdownWithLabel
-            label={t("sex_label")}
+            label={t("sex_label") + " *"}
             placeholder={t("sex_placeholder")}
             options={sexOptions}
             selected={providerData.sex}
@@ -377,7 +377,7 @@ export const CreateProvider = ({
               handleChange("consultationPrice", e.currentTarget.value)
             }
             errorMessage={errors.consultationPrice}
-            label={t("consultation_price_label", { currencySymbol })}
+            label={t("consultation_price_label", { currencySymbol }) + " *"}
             placeholder={t("consultation_price_placeholder")}
             onBlur={() => handleBlur("consultationPrice")}
           />
@@ -385,7 +385,7 @@ export const CreateProvider = ({
             value={providerData.city}
             onChange={(e) => handleChange("city", e.currentTarget.value)}
             errorMessage={errors.city}
-            label={t("city_label")}
+            label={t("city_label") + " *"}
             placeholder={t("city_placeholder")}
             onBlur={() => handleBlur("city")}
           />
@@ -393,7 +393,7 @@ export const CreateProvider = ({
             value={providerData.postcode}
             onChange={(e) => handleChange("postcode", e.currentTarget.value)}
             errorMessage={errors.postcode}
-            label={t("postcode_label")}
+            label={t("postcode_label") + " *"}
             placeholder={t("postcode_placeholder")}
             onBlur={() => handleBlur("postcode")}
           />
@@ -401,7 +401,7 @@ export const CreateProvider = ({
             value={providerData.street}
             onChange={(e) => handleChange("street", e.currentTarget.value)}
             errorMessage={errors.street}
-            label={t("street_label")}
+            label={t("street_label") + " *"}
             placeholder={t("street_placeholder")}
             onBlur={() => handleBlur("street")}
           />
