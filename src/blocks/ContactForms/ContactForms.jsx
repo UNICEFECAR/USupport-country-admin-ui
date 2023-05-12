@@ -9,6 +9,7 @@ import {
   Loading,
   ReportCollapsible,
   Modal,
+  InputSearch,
 } from "@USupport-components-library/src";
 
 import {
@@ -35,6 +36,7 @@ export const ContactForms = ({ Heading }) => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [filters, setFilters] = useState({});
   const [emailOptions, setEmailOptions] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     if (data) {
@@ -97,10 +99,23 @@ export const ContactForms = ({ Heading }) => {
         ? form.sentFrom === filters.sentFrom
         : true;
 
+    const searchVal = searchValue.toLowerCase();
+    const subjectTranslation =
+      subjectOptions.find((x) => x.value === form.subject)?.label ||
+      form.subject;
+
+    const isSearchMatching = !searchVal
+      ? true
+      : subjectTranslation.toLowerCase().includes(searchVal) ||
+        form.sender.toLowerCase().includes(searchVal) ||
+        form.sentFrom.toLowerCase().includes(searchVal) ||
+        form.message.toLowerCase().includes(searchVal);
+
     return isSubjectMatching &&
       isSenderMatching &&
       isStartingDateMatching &&
-      isSentFromMatching
+      isSentFromMatching &&
+      isSearchMatching
       ? form
       : false;
   };
@@ -149,13 +164,18 @@ export const ContactForms = ({ Heading }) => {
           />
         );
       });
-  }, [data, filters]);
+  }, [data, filters, searchValue]);
 
   return (
     <Block classes="contact-forms">
       <Heading
         headingLabel={t("heading")}
         handleButtonClick={() => setIsFilterOpen(true)}
+      />
+      <InputSearch
+        placeholder={t("search")}
+        value={searchValue}
+        onChange={setSearchValue}
       />
       {isLoading ? <Loading /> : renderForms}
       <Filters
