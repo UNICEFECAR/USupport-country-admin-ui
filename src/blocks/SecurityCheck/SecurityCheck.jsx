@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import {
   Block,
-  Button,
   SecurityCheckReport,
   Loading,
+  InputSearch,
 } from "@USupport-components-library/src";
 
 import { useGetSecurityChecks } from "#hooks";
@@ -25,6 +25,7 @@ export const SecurityCheck = ({ Heading }) => {
   const { t } = useTranslation("security-check");
   const { data: securityChecks, isLoading } = useGetSecurityChecks();
   const [filters, setFilters] = useState({});
+  const [searchValue, setSearchValue] = useState("");
 
   const changeFilter = (filterData) => {
     setFilters(filterData);
@@ -44,9 +45,17 @@ export const SecurityCheck = ({ Heading }) => {
         new Date(filters.startingDate)
       : true;
 
+    const searchVal = searchValue.toLowerCase();
+    const isSearchMatching = !searchVal
+      ? true
+      : securityCheck.providerName?.toLowerCase().includes(searchVal) ||
+        securityCheck.clientName?.toLowerCase().includes(searchVal) ||
+        String(securityCheck.numberOfIssues)?.toLowerCase().includes(searchVal);
+
     return isProviderIdMatching &&
       isNumberOfIssuesMatching &&
-      isStartingDateMatching
+      isStartingDateMatching &&
+      isSearchMatching
       ? securityCheck
       : false;
   };
@@ -71,7 +80,7 @@ export const SecurityCheck = ({ Heading }) => {
         <SecurityCheckReport securityCheck={securityCheck} t={t} key={index} />
       );
     });
-  }, [securityChecks, filters]);
+  }, [securityChecks, filters, searchValue]);
 
   const providerDetails = useMemo(() => {
     if (securityChecks) {
@@ -97,6 +106,12 @@ export const SecurityCheck = ({ Heading }) => {
       <Heading
         headingLabel={t("heading")}
         handleButtonClick={() => setIsFilterOpen(true)}
+      />
+      <InputSearch
+        placeholder={t("search")}
+        value={searchValue}
+        onChange={setSearchValue}
+        classes="security-check__search"
       />
 
       {isLoading ? (
