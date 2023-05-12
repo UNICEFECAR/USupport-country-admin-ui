@@ -10,6 +10,7 @@ import {
   Rating,
   ReportCollapsible,
   Modal,
+  InputSearch,
 } from "@USupport-components-library/src";
 
 import { useGetClientRatings } from "#hooks";
@@ -34,6 +35,7 @@ export const ClientRatings = ({ Heading }) => {
 
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [filters, setFilters] = useState({});
+  const [searchValue, setSearchValue] = useState("");
 
   const handleFilterSave = (filterData) => {
     setFilters(filterData);
@@ -50,7 +52,15 @@ export const ClientRatings = ({ Heading }) => {
         new Date(filters.startingDate).toLocaleDateString()
       : true;
 
-    return isRatingMatching && isStartingDateMatching ? rating : false;
+    const searchVal = searchValue.toLowerCase();
+    const isSearchMatching = !searchVal
+      ? true
+      : rating.comment?.toLowerCase().includes(searchVal) ||
+        String(rating.rating)?.includes(searchVal);
+
+    return isRatingMatching && isStartingDateMatching && isSearchMatching
+      ? rating
+      : false;
   };
 
   const renderRatings = useMemo(() => {
@@ -89,13 +99,18 @@ export const ClientRatings = ({ Heading }) => {
           />
         );
       });
-  }, [data, filters]);
+  }, [data, filters, searchValue]);
 
   return (
     <Block classes="client-ratings">
       <Heading
         headingLabel={t("heading")}
         handleButtonClick={() => setIsFilterOpen(true)}
+      />
+      <InputSearch
+        placeholder={t("search")}
+        value={searchValue}
+        onChange={setSearchValue}
       />
 
       {isLoading ? <Loading /> : renderRatings}
