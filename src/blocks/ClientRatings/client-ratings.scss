@@ -38,9 +38,18 @@
     }
 
     &__date-picker {
-      margin-bottom: $spacing_2_4;
+      margin-bottom: $spacing_1_8;
+
       & input {
         text-transform: uppercase;
+      }
+    }
+
+    &__buttons-container {
+      margin-bottom: $spacing_1_8;
+
+      & button {
+        margin-bottom: $spacing_1_2;
       }
     }
   }

@@ -42,7 +42,12 @@ export const SecurityCheck = ({ Heading }) => {
 
     const isStartingDateMatching = filters.startingDate
       ? new Date(securityCheck.consultationTime) >=
-        new Date(filters.startingDate)
+        new Date(new Date(filters.startingDate).setHours(0, 0, 0))
+      : true;
+
+    const isEndDateMatching = filters.endingDate
+      ? new Date(securityCheck.consultationTime).getTime() <=
+        new Date(new Date(filters.endingDate).setHours(23, 59, 59)).getTime()
       : true;
 
     const searchVal = searchValue.toLowerCase();
@@ -55,6 +60,7 @@ export const SecurityCheck = ({ Heading }) => {
     return isProviderIdMatching &&
       isNumberOfIssuesMatching &&
       isStartingDateMatching &&
+      isEndDateMatching &&
       isSearchMatching
       ? securityCheck
       : false;
@@ -126,6 +132,7 @@ export const SecurityCheck = ({ Heading }) => {
       <FilterSecurityCheckReports
         isOpen={isFilterOpen}
         onClose={() => setIsFilterOpen(false)}
+        filters={filters}
         changeFilter={changeFilter}
         data={providerDetails}
       />

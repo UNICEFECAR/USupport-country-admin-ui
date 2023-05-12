@@ -214,12 +214,20 @@ export const CampaignDetails = ({
 
       // Check if the date of creation of the coupon
       // is after the date selected by the admin
-      const isUsedAfter =
+      const isStartDateMatching =
         !filters.usedAfter ||
-        new Date(coupon.createdAt) >= new Date(filters.usedAfter);
+        new Date(new Date(coupon.createdAt).setHours(0, 0, 0)) >=
+          new Date(filters.usedAfter);
+
+      const isEndDateMatching =
+        !filters.endDate ||
+        new Date(new Date(coupon.createdAt).setHours(0, 0, 0)) <=
+          new Date(filters.endDate);
+
       return (
         isProviderNameMatching &&
-        isUsedAfter &&
+        isStartDateMatching &&
+        isEndDateMatching &&
         isClientNameMatching &&
         isClientSexMatching &&
         isClientAgeMatching &&
@@ -355,10 +363,17 @@ export const CampaignDetails = ({
           }
         />
         <DateInput
-          value={filters.usedAfter}
-          label={t("used_after")}
+          value={filters.startDate}
+          label={t("start_date")}
           onChange={(e) =>
-            setFilters({ ...filters, usedAfter: e.currentTarget.value })
+            setFilters({ ...filters, startDate: e.currentTarget.value })
+          }
+        />
+        <DateInput
+          value={filters.endDate}
+          label={t("end_date")}
+          onChange={(e) =>
+            setFilters({ ...filters, endDate: e.currentTarget.value })
           }
         />
         <Button

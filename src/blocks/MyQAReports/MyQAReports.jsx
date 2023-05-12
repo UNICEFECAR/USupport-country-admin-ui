@@ -107,7 +107,7 @@ export const MyQAReports = ({ Heading }) => {
     if (questionsQuery.isLoading || !questionsToDisplay) return <Loading />;
 
     const searchVal = searchValue.toLowerCase();
-    const { reason, provider } = filters;
+    const { reason, provider, startingDate, endingDate } = filters;
     const filterData = (question) => {
       const isSearchMatching = !searchVal
         ? true
@@ -125,7 +125,23 @@ export const MyQAReports = ({ Heading }) => {
       const isReasonMatching =
         !reason || reason === "all" ? true : question.reason === reason;
 
-      return isSearchMatching && isProviderMatching && isReasonMatching;
+      const isStartingDateMatching = startingDate
+        ? new Date(question.createdAt).getTime() >=
+          new Date(new Date(startingDate).setHours(0, 0, 0)).getTime()
+        : true;
+
+      const isEndDateMatching = endingDate
+        ? new Date(question.createdAt).getTime() <=
+          new Date(new Date(endingDate).setHours(23, 59, 59)).getTime()
+        : true;
+
+      return (
+        isSearchMatching &&
+        isProviderMatching &&
+        isReasonMatching &&
+        isStartingDateMatching &&
+        isEndDateMatching
+      );
     };
     const filteredQuestions = questionsToDisplay?.filter(filterData);
 

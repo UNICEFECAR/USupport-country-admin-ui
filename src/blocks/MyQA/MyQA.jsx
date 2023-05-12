@@ -86,6 +86,16 @@ export const MyQA = ({
           ? true
           : question.providerDetailId === filters.provider;
 
+      const isStartingDateMatching = filters.startingDate
+        ? new Date(question.createdAt).getTime() >=
+          new Date(new Date(filters?.startingDate).setHours(0, 0, 0)).getTime()
+        : true;
+
+      const isEndDateMatching = filters.endingDate
+        ? new Date(question.createdAt).getTime() <=
+          new Date(new Date(filters?.endingDate).setHours(23, 59, 59)).getTime()
+        : true;
+
       const value = searchValue.toLowerCase();
       const isSearchMatching = !value
         ? true
@@ -98,7 +108,13 @@ export const MyQA = ({
           question.providerData?.patronym?.toLowerCase().includes(value) ||
           question.providerData?.email?.toLowerCase().includes(value);
 
-      return isTagMatching && isProviderMatching && isSearchMatching;
+      return (
+        isTagMatching &&
+        isProviderMatching &&
+        isSearchMatching &&
+        isStartingDateMatching &&
+        isEndDateMatching
+      );
     });
 
     if (!filteredQuestions.length) {

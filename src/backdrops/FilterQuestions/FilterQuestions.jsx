@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
-import { Modal, DropdownWithLabel } from "@USupport-components-library/src";
+import {
+  Modal,
+  DropdownWithLabel,
+  DateInput,
+} from "@USupport-components-library/src";
 
 import "./filter-questions.scss";
 
@@ -24,7 +28,12 @@ export const FilterQuestions = ({
 }) => {
   const { t } = useTranslation("filter-questions");
 
-  const [currFilter, setCurrFilter] = useState({});
+  const [currFilter, setCurrFilter] = useState({
+    reason: "",
+    provider: "",
+    startingDate: "",
+    endingDate: "",
+  });
 
   useEffect(() => {
     setCurrFilter(filters);
@@ -89,6 +98,30 @@ export const FilterQuestions = ({
             }
           />
         )}
+        <DateInput
+          label={t("starting_date")}
+          onChange={(e) =>
+            setCurrFilter((prev) => ({
+              ...prev,
+              startingDate: e.currentTarget.value,
+            }))
+          }
+          value={currFilter.startingDate || ""}
+          placeholder="DD.MM.YYY"
+          classes={["client-ratings__backdrop__date-picker"]}
+        />
+        <DateInput
+          label={t("ending_date")}
+          onChange={(e) =>
+            setCurrFilter((prev) => ({
+              ...prev,
+              endingDate: e.currentTarget.value,
+            }))
+          }
+          value={currFilter.endingDate || ""}
+          placeholder="DD.MM.YYY"
+          classes={["client-ratings__backdrop__date-picker"]}
+        />
       </div>
     </Modal>
   );
