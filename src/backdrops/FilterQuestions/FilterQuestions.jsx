@@ -16,27 +16,27 @@ export const FilterQuestions = ({
   isOpen,
   handleClose,
   tagsOptions,
-  filters,
-  setFilters,
+  handleApplyFilters,
+  handleResetFilters,
   providerOptions,
+  reasonOptions,
+  filters,
 }) => {
   const { t } = useTranslation("filter-questions");
 
   const [currFilter, setCurrFilter] = useState({});
 
   useEffect(() => {
-    if (filters.provider || filters.tag) {
-      setCurrFilter(filters);
-    }
-  }, []);
+    setCurrFilter(filters);
+  }, [filters]);
 
-  const handleApplyFilter = () => {
-    setFilters(currFilter);
+  const applyFilter = () => {
+    handleApplyFilters(currFilter);
     handleClose();
   };
 
-  const hanleResetFilter = () => {
-    setFilters({ provider: null, tag: null });
+  const resetFilter = () => {
+    handleResetFilters();
     handleClose();
   };
 
@@ -47,9 +47,9 @@ export const FilterQuestions = ({
       closeModal={handleClose}
       classes="filter-modal"
       ctaLabel={t("save")}
-      ctaHandleClick={handleApplyFilter}
+      ctaHandleClick={applyFilter}
       secondaryCtaLabel={t("reset")}
-      secondaryCtaHandleClick={hanleResetFilter}
+      secondaryCtaHandleClick={resetFilter}
       secondaryCtaType="secondary"
     >
       <div className="filter-modal__content-wrapper">
@@ -73,6 +73,22 @@ export const FilterQuestions = ({
             setCurrFilter((prev) => ({ ...prev, provider: value }))
           }
         />
+        {reasonOptions && (
+          <DropdownWithLabel
+            label={t("reason_dropdown_label")}
+            options={reasonOptions.map((option) => {
+              return {
+                label: t(`${option.value}`),
+                value: option.value,
+                isSelected: currFilter.reason === option.value,
+              };
+            })}
+            selected={currFilter.reason}
+            setSelected={(value) =>
+              setCurrFilter((prev) => ({ ...prev, reason: value }))
+            }
+          />
+        )}
       </div>
     </Modal>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 
 import {
@@ -7,7 +7,6 @@ import {
   InputSearch,
   Loading,
   Answer,
-  DropdownWithLabel,
 } from "@USupport-components-library/src";
 import { QuestionDetails, FilterQuestions } from "#backdrops";
 import { useGetQuestions } from "#hooks";
@@ -67,7 +66,7 @@ export const MyQA = ({
     setIsQuestionDetailsOpen(true);
   };
 
-  const renderQuestions = () => {
+  const renderQuestions = useCallback(() => {
     if (questionsQuery.isLoading) {
       return <Loading />;
     }
@@ -77,29 +76,29 @@ export const MyQA = ({
     }
 
     const filteredQuestions = questionsQuery.data.filter((question) => {
-      if (filters.tag && filters.tag !== "All") {
-        const tags = question.tags;
-        if (!tags.includes(filters.tag)) {
-          return null;
-        }
-      }
+      const isTagMatching =
+        !filters.tag || filters.tag === "All"
+          ? true
+          : question.tags?.includes(filters.tag);
 
-      if (filters.provider && filters.provider !== "all") {
-        if (question.providerDetailId !== filters.provider) return null;
-      }
+      const isProviderMatching =
+        !filters.provider || filters.provider === "all"
+          ? true
+          : question.providerDetailId === filters.provider;
 
       const value = searchValue.toLowerCase();
+      const isSearchMatching = !value
+        ? true
+        : question.answerTitle?.toLowerCase().includes(value) ||
+          question.answerText?.toLowerCase().includes(value) ||
+          question.question?.toLowerCase().includes(value) ||
+          question.tags?.find((x) => x?.toLowerCase().includes(value)) ||
+          question.providerData?.name?.toLowerCase().includes(value) ||
+          question.providerData?.surname?.toLowerCase().includes(value) ||
+          question.providerData?.patronym?.toLowerCase().includes(value) ||
+          question.providerData?.email?.toLowerCase().includes(value);
 
-      if (value) {
-        if (
-          !question.answerTitle?.toLowerCase().includes(value) &&
-          !question.answerText?.toLowerCase().includes(value) &&
-          !question.question?.toLowerCase().includes(value) &&
-          !question.tags?.find((x) => x?.toLowerCase().includes(value))
-        )
-          return null;
-      }
-      return true;
+      return isTagMatching && isProviderMatching && isSearchMatching;
     });
 
     if (!filteredQuestions.length) {
@@ -118,7 +117,7 @@ export const MyQA = ({
         />
       );
     });
-  };
+  }, [questionsQuery.data, searchValue, filters, t]);
 
   const providerOptions = Array.from(
     new Set(questionsQuery.data?.map((x) => x.providerData?.provider_detail_id))
@@ -143,6 +142,19 @@ export const MyQA = ({
     return x;
   });
   tagsOptions.unshift(t("all"));
+
+  const handleApplyFilters = (filterData) => {
+    setFilters(filterData);
+    closeFilterModal();
+  };
+
+  const handleResetFilters = () => {
+    setFilters({
+      reason: null,
+      provider: null,
+    });
+    closeFilterModal();
+  };
 
   const closeFilterModal = () => setIsFilterOpen(false);
 
@@ -188,6 +200,8 @@ export const MyQA = ({
           setFilters={setFilters}
           providerOptions={providerOptions}
           tagsOptions={tagsOptions}
+          handleApplyFilters={handleApplyFilters}
+          handleResetFilters={handleResetFilters}
         />
       )}
     </>
