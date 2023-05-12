@@ -1,14 +1,18 @@
 import React, { useCallback, useRef, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import InfiniteScroll from "react-infinite-scroll-component";
 import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import {
+  Avatar,
+  BaseTable,
   Block,
   Button,
   DropdownWithLabel,
   Grid,
   GridItem,
+  Icon,
   Input,
   Loading,
   Modal,
@@ -18,9 +22,11 @@ import {
 import { adminSvc } from "@USupport-components-library/services";
 
 import { useUpdateProviderStatus } from "#hooks";
-import InfiniteScroll from "react-infinite-scroll-component";
 
 import "./providers.scss";
+
+const AMAZON_S3_BUCKET = `${import.meta.env.VITE_AMAZON_S3_BUCKET}`;
+
 /**
  * Providers
  *
@@ -35,10 +41,10 @@ export const Providers = () => {
     free: false,
     specialization: "",
   };
-
   const navigate = useNavigate();
   const { t } = useTranslation("providers");
   const queryClient = useQueryClient();
+  const currencySymbol = localStorage.getItem("currency_symbol");
 
   const [filters, setFilters] = useState(initialFilters);
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
@@ -180,39 +186,129 @@ export const Providers = () => {
     });
   }, [providersQuery.data]);
 
+  const menuOptions = [
+    {
+      icon: "person",
+      text: t("view"),
+      handleClick: (id) => redirectToProviderDetails(id),
+    },
+    {
+      icon: "edit",
+      text: t("edit"),
+      handleClick: (id) => redirectToEditProvider(id),
+    },
+    {
+      icon: "activities",
+      text: t("activities"),
+      handleClick: (id) => {
+        const provider = providersQuery.data.pages
+          ?.flat()
+          .find((x) => x.providerDetailId === id);
+        navigate(
+          `/provider-activities?providerId=${provider.providerDetailId}`,
+          {
+            state: {
+              providerName: `${provider.name} ${provider.patronym} ${provider.surname}`,
+            },
+          }
+        );
+      },
+    },
+  ];
+
   const handleFilterSave = () => {
     setAppliedFilters(filters);
-    // const dataCopy = [...providersQuery.data];
-
-    // const filteredData = dataCopy.filter((provider) => {
-    //   const { price, status, free, specialization } = filters;
-    //   console.log(provider);
-    //   if (price && provider.consultationPrice < Number(price)) return false;
-    //   if (status && provider.status !== status) return false;
-    //   if (free && provider.consultationPrice > 0) return false;
-    //   if (specialization && !provider.specializations.includes(specialization))
-    //     return false;
-
-    //   return true;
-    // });
-
     setIsFilterModalOpen(false);
-    // setDataToDisplay(filteredData);
   };
 
   const handleResetFilters = () => {
     setFilters(initialFilters);
+    setAppliedFilters(initialFilters);
     setIsFilterModalOpen(false);
-    setDataToDisplay(providersQuery.data);
   };
 
-  const [currentPage, setCurrentPage] = useState(0);
-  const [hasMore, setHasMore] = useState(true);
+  const rows = [
+    {
+      label: t("name"),
+      // sortingKey: "displayName",
+    },
+    {
+      label: t("email"),
+      // sortingKey: "email",
+    },
 
-  const loadMore = () => {
-    setCurrentPage(currentPage + 1);
-  };
+    {
+      label: t("status"),
+      // sortingKey: "status",
+    },
+    {
+      label: t("price"),
+      // sortingKey: "consultationPrice",
+    },
+    {
+      label: t("specializations"),
+      // sortingKey: "specializations",
+    },
+    {
+      label: t("actions"),
+    },
+  ];
 
+  const rowsData = providersQuery.data?.pages?.flat().map((provider, idx) => {
+    return [
+      <div className="providers__list-view__name">
+        <Avatar image={AMAZON_S3_BUCKET + "/" + provider.image} size="sm" />
+        <p>{`${provider.name} ${provider.patronym || ""} ${
+          provider.surname
+        }`}</p>
+      </div>,
+
+      <p>{provider.email}</p>,
+
+      <div
+        className={`providers__list-view__status providers__list-view__status--${provider.status}`}
+      >
+        <p className="small-text">{t(provider.status)}</p>
+      </div>,
+
+      <div
+        className={[
+          "providers__list-view__price-badge",
+          !provider.consultationPrice &&
+            "providers__list-view__price-badge--free",
+        ].join(" ")}
+      >
+        <p className="small-text">
+          {provider.consultationPrice
+            ? `${provider.consultationPrice}${currencySymbol}`
+            : t("free")}
+        </p>
+      </div>,
+
+      <p>{provider.specializations.map((x) => t(x)).join(", ")}</p>,
+
+      <div
+        onClick={() => {
+          openDeleteModal(provider.providerDetailId, provider.status);
+        }}
+        className="providers__list-view__actions-container"
+      >
+        <Icon
+          color={provider.status === "active" ? "#eb5757" : "#20809E"}
+          name={
+            provider.status === "active"
+              ? "circle-actions-close"
+              : "circle-actions-success"
+          }
+          size="md"
+        />
+        <p className="text">
+          {provider.status === "active" ? t("deactivate") : t("activate")}
+        </p>
+      </div>,
+    ];
+  });
+  const [displayListView, setDisplayListView] = useState(false);
   return (
     <Block classes="providers">
       <InfiniteScroll
@@ -229,6 +325,12 @@ export const Providers = () => {
           <GridItem md={8} lg={12} classes="providers__grid__heading">
             <h2>{t("providers")} </h2>
             <div className="providers__grid__heading__button-container">
+              <Icon
+                color="#20809E"
+                name={displayListView ? "grid-view" : "list-view"}
+                size="lg"
+                onClick={() => setDisplayListView(!displayListView)}
+              />
               <Button
                 label={t("create_provider")}
                 classes="providers__create-provider-button"
@@ -247,10 +349,20 @@ export const Providers = () => {
             <GridItem md={8} lg={12}>
               <Loading size="lg" />
             </GridItem>
-          ) : (
+          ) : !displayListView ? (
             renderProviders()
-          )}
+          ) : null}
         </Grid>
+        {!providersQuery.isLoading && displayListView && (
+          <BaseTable
+            data={providersQuery.data?.pages?.flat() || []}
+            rows={rows}
+            rowsData={rowsData}
+            menuOptions={menuOptions}
+            handleClickPropName={"providerDetailId"}
+            t={t}
+          />
+        )}
       </InfiniteScroll>
 
       <Modal
