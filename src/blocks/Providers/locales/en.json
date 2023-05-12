@@ -28,5 +28,13 @@
   "specialization": "Specialization",
   "all": "All",
   "apply_filter": "Apply filters",
-  "reset_filter": "Reset filter"
+  "reset_filter": "Reset filter",
+
+  "name": "Name",
+  "email": "Email",
+  "price": "Price",
+  "specializations": "Specializations",
+  "actions": "Actions",
+  "view": "View",
+  "edit": "Edit"
 }

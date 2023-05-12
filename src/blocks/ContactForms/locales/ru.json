@@ -8,6 +8,7 @@
   "filters": "Фильтры",
   "sender": "Отправитель",
   "starting_date": "Дата начала",
+  "ending_date": "Дата окончания",
   "contact_reason_placeholder": "Выберите причину",
   "contact_reason_1": "Информация о Usupport",
   "contact_reason_2": "Техническая проблема",
@@ -21,5 +22,6 @@
   "website": "Веб-сайт",
   "provider": "Консультанты",
   "client": "Клиент",
-  "reset_filter": "Сбросить фильтр"
+  "reset_filter": "Сбросить фильтр",
+  "search": "Поиск"
 }

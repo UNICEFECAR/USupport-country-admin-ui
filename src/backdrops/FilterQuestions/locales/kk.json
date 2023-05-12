@@ -1,10 +1,12 @@
 {
-    "all": "Барлығы",
-    "filters": "Сүзгілер",
-    "reset": "Сүзгілерді қалпына келтіру",
-    "save": "Сүзгілерді қолданыңыз",
-    "provider": "Консультанттар",
-    "duplicate": "Already exist",
-    "spam": "Spam",
-    "other": "Басқа"
+  "all": "Барлығы",
+  "filters": "Сүзгілер",
+  "reset": "Сүзгілерді қалпына келтіру",
+  "save": "Сүзгілерді қолданыңыз",
+  "provider": "Консультанттар",
+  "duplicate": "Already exist",
+  "spam": "Spam",
+  "other": "Басқа",
+  "starting_date": "Басталу күні",
+  "ending_date": "Аяқталу күні"
 }

@@ -2,7 +2,8 @@
   "heading": "Filter",
   "provider": "Provider",
   "all": "Show all providers",
-  "starting_date": "Starting date",
+  "starting_date": "Start date",
+  "end_date": "End date",
   "number_of_issues": "Minimum number of issues",
   "button_label": "Apply filters",
   "reset_filter": "Reset filters"

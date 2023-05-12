@@ -2,5 +2,6 @@
   "heading": "Парақшаңыздағы фотосуретті шынымен жойғыңыз келе ме?",
   "text": "Бұл парақшаңыздағы фотосуретіңді жояды.",
   "remove_button": "Фотосуретті жою",
-  "cancel_button": "Болдырмау"
+  "cancel_button": "Болдырмау",
+  "delete_success": "Photo removed successfully"
 }

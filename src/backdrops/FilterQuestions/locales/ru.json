@@ -1,10 +1,12 @@
 {
-    "all": "Все",
-    "filters": "Фильтры",
-    "reset": "Сбросить фильтры",
-    "save": "Примените фильтры",
-    "provider": "Консультанты",
-    "duplicate": "Already exist",
-    "spam": "Spam",
-    "other": "Другое"
+  "all": "Все",
+  "filters": "Фильтры",
+  "reset": "Сбросить фильтры",
+  "save": "Примените фильтры",
+  "provider": "Консультанты",
+  "duplicate": "Already exist",
+  "spam": "Spam",
+  "other": "Другое",
+  "starting_date": "Дата начала",
+  "ending_date": "Дата окончания"
 }

@@ -1,11 +1,11 @@
 {
-    "heading": "Questions",
-    "answered": "Answered",
-    "unanswered": "Unanswered",
-    "search_placeholder": "Search",
-    "answer_by": "Answered by:",
-    "no_data_found": "No data found",
-    "all": "All",
-    "read_more": "Read more",
-    "Today": "Today"
+  "heading": "Questions",
+  "answered": "Answered",
+  "unanswered": "Unanswered",
+  "search_placeholder": "Search",
+  "answer_by": "Answered by:",
+  "no_data_found": "No data found",
+  "all": "All",
+  "read_more": "Read more",
+  "Today": "Today"
 }
