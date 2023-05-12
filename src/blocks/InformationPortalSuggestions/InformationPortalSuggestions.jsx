@@ -6,6 +6,7 @@ import {
   Loading,
   Modal,
   ReportCollapsible,
+  InputSearch,
 } from "@USupport-components-library/src";
 
 import {
@@ -31,6 +32,7 @@ export const InformationPortalSuggestions = ({ Heading }) => {
 
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [filters, setFilters] = useState({});
+  const [searchValue, setSearchValue] = useState("");
 
   const handleFilterSave = (filterData) => {
     setFilters(filterData);
@@ -42,7 +44,15 @@ export const InformationPortalSuggestions = ({ Heading }) => {
         new Date(filters.startingDate).toLocaleDateString()
       : true;
 
-    return isStartingDateMatching ? suggestion : false;
+    const search = searchValue.toLowerCase();
+    const isSearchValueMatching = !searchValue
+      ? true
+      : suggestion.clientEmail?.toLowerCase().includes(search) ||
+        suggestion.clientName?.toLowerCase().includes(search) ||
+        suggestion.clientNickname?.toLowerCase().includes(search) ||
+        suggestion.suggestion?.toLowerCase().includes(search);
+
+    return isStartingDateMatching && isSearchValueMatching ? suggestion : false;
   };
 
   const renderSuggestions = useMemo(() => {
@@ -90,13 +100,18 @@ export const InformationPortalSuggestions = ({ Heading }) => {
           />
         );
       });
-  }, [data, filters]);
+  }, [data, filters, searchValue]);
 
   return (
     <Block classes="information-portal-suggestions">
       <Heading
         headingLabel={t("heading")}
         handleButtonClick={() => setIsFilterOpen(true)}
+      />
+      <InputSearch
+        placeholder={t("search")}
+        value={searchValue}
+        onChange={setSearchValue}
       />
       {isLoading ? <Loading /> : renderSuggestions}
       <Filters
