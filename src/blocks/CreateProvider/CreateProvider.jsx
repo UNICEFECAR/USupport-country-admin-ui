@@ -170,7 +170,10 @@ export const CreateProvider = ({
         const language = localizationQuery.data.languages[i];
         // Construct the new object
         newLanguageOption.value = language.language_id;
-        newLanguageOption.label = language.name;
+        newLanguageOption.label =
+          language.name === "English"
+            ? language.name
+            : `${language.name} (${language.local_name})`;
         newLanguageOption.selected = providerLanguages.includes(
           language.language_id
         );
