@@ -72,9 +72,7 @@ export const Campaigns = () => {
       <p>{item.totalCampaigns}</p>,
       <p>{item.activeCampaigns}</p>,
       <p>{item.email}</p>,
-      <p>
-        {item.phonePrefix} {item.phone}
-      </p>,
+      <p>{item.phone}</p>,
     ];
   });
 

@@ -78,5 +78,8 @@
   "relationship": "Отношения",
   "personal_development": "Личное развитие",
   "edit_success": "Профиль успешно обновлен",
-  "create_success": "Консультант успешно создан"
+  "create_success": "Консультант успешно создан",
+
+  "search": "Поиск",
+  "no_data_found": "No data found"
 }

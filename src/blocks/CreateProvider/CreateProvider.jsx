@@ -13,9 +13,9 @@ import {
   GridItem,
   Input,
   InputGroup,
-  InputPassword,
   ProfilePicturePreview,
   Textarea,
+  InputPhone,
 } from "@USupport-components-library/src";
 
 import { validate, validateProperty } from "@USupport-components-library/utils";
@@ -37,7 +37,6 @@ const initialData = {
   surname: "",
   nickname: "",
   email: "",
-  phonePrefix: "",
   phone: "",
   image: "default",
   specializations: [],
@@ -81,27 +80,6 @@ export const CreateProvider = ({
 
   const [errors, setErrors] = useState({});
 
-  const [phonePrefixes, setPhonePrefixes] = useState();
-  useEffect(() => {
-    const codes = generateCountryCodes();
-    if (providerData && !providerData?.phonePrefix) {
-      const usersCountry = localStorage.getItem("country");
-
-      const userCountryCode = codes.find(
-        (x) => x.country === usersCountry
-      )?.value;
-      if (userCountryCode) {
-        handleChange("phonePrefix", userCountryCode);
-      } else {
-        handleChange(
-          "phonePrefix",
-          codes.find((x) => x.country === "KZ")?.value
-        );
-      }
-    }
-    setPhonePrefixes(codes);
-  }, [providerData]);
-
   const specializationOptions = [
     { value: "psychologist", label: t("psychologist"), selected: false },
     { value: "psychiatrist", label: t("psychiatrist"), selected: false },
@@ -117,7 +95,6 @@ export const CreateProvider = ({
     email: Joi.string()
       .email({ tlds: { allow: false } })
       .label(t("email_error")),
-    phonePrefix: Joi.string().label(t("phone_prefix_error")),
     phone: Joi.string().label(t("phone_error")),
     image: Joi.string(),
     street: Joi.string().label(t("street_error")),
@@ -317,7 +294,7 @@ export const CreateProvider = ({
             value={providerData.description}
             onChange={(value) => handleChange("description", value)}
             errorMessage={errors.description}
-            label={t("description_label")}
+            label={t("description_label") + " *"}
             placeholder={t("description_placeholder")}
             onBlur={() => handleBlur("description")}
           />
@@ -330,33 +307,16 @@ export const CreateProvider = ({
         </GridItem>
 
         <GridItem md={8} lg={4}>
-          <div className="create-provider__grid__phone-container">
-            {phonePrefixes && (
-              <DropdownWithLabel
-                options={phonePrefixes}
-                label={t("phone_label")}
-                selected={
-                  providerData.phonePrefix ||
-                  phonePrefixes.find((x) => x.country === usersCountry)?.value
-                }
-                setSelected={(value) => handleChange("phonePrefix", value)}
-                placeholder={t("phone_prefix_placeholder")}
-              />
-            )}
-            <Input
-              value={providerData.phone}
-              onChange={(e) => handleChange("phone", e.currentTarget.value)}
-              placeholder={t("phone_placeholder")}
-              onBlur={() => handleBlur("phone")}
-              classes="create-provider__grid__phone-container__phone-input"
-            />
-          </div>
-          {errors.phone || errors.phonePrefix ? (
-            <Error
-              classes="create-provider__grid__phone-error"
-              message={errors.phone || errors.phonePrefix}
-            />
-          ) : null}
+          <InputPhone
+            label={t("phone_label")}
+            placeholder={t("phone_placeholder")}
+            value={providerData.phone}
+            onChange={(value) => handleChange("phone", value)}
+            searchPlaceholder={t("search")}
+            errorMessage={errors.phone}
+            searchNotFound={t("no_entries_found")}
+            classes="add-sponsor__grid__phone"
+          />
           <Input
             value={providerData.email}
             onChange={(e) => handleChange("email", e.currentTarget.value)}

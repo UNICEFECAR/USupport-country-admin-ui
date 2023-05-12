@@ -18,5 +18,8 @@
   "discard_changes": "Discard changes",
   "delete_sponsor": "Delete sponsor",
   "edit_success": "Changes saved successfully",
-  "success": "Sponsor created successfully"
+  "success": "Sponsor created successfully",
+
+  "search": "Search",
+  "no_data_found": "No data found"
 }
