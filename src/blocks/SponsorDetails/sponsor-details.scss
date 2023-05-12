@@ -55,4 +55,17 @@
       align-items: center;
     }
   }
+
+  &__filter-modal {
+    & .input-container,
+    &__cta,
+    &__toggle-container {
+      margin: 0 auto;
+      margin-bottom: $spacing_1_6;
+    }
+
+    &__toggle-container {
+      width: 34.6rem;
+    }
+  }
 }

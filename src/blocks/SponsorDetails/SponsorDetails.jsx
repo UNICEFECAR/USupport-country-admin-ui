@@ -181,63 +181,7 @@ export const SponsorDetails = ({ data }) => {
   };
   return (
     <Block classes="sponsor-details">
-      <Grid classes="sponsor-details__grid">
-        <GridItem md={8} lg={12}>
-          <Box classes="sponsor-details__box">
-            <Grid classes="sponsor-details__box__grid">
-              <GridItem xs={4} md={2} lg={3}>
-                <p>
-                  {t("campaigns")}: <strong>{data.campaigns}</strong>
-                </p>
-              </GridItem>
-
-              <GridItem xs={4} md={2} lg={3}>
-                <p>
-                  {t("active_campaigns")}:{" "}
-                  <strong>{data.activeCampaigns}</strong>
-                </p>
-              </GridItem>
-
-              <GridItem xs={4} md={2} lg={3}>
-                <p>
-                  {t("email")}: <strong>{data.email}</strong>
-                </p>
-              </GridItem>
-
-              <GridItem xs={4} md={2} lg={3}>
-                <p>
-                  {t("phone_number")}:{" "}
-                  <strong>
-                    {data.phonePrefix} {data.phone}
-                  </strong>
-                </p>
-              </GridItem>
-            </Grid>
-          </Box>
-        </GridItem>
-      </Grid>
-      <div className="sponsor-details__search-container">
-        <InputSearch
-          placeholder={t("search")}
-          value={searchValue}
-          onChange={setSearchValue}
-        />
-        <div className="sponsor-details__search-container__buttons-container">
-          <Button
-            onClick={() => setIsFilterModalOpen(true)}
-            label={t("filter")}
-            type="secondary"
-            color="purple"
-            size="md"
-          />
-          <Button
-            label={t("add_campaign")}
-            color="purple"
-            size="md"
-            onClick={handleAddCampaign}
-          />
-        </div>
-      </div>
+      <Heading t={t} data={data} />
       <BaseTable
         data={dataToDisplay}
         updateData={setDataToDisplay}
@@ -245,6 +189,11 @@ export const SponsorDetails = ({ data }) => {
         rowsData={rowsData}
         handleClickPropName="campaignId"
         menuOptions={menuOptions}
+        hasSearch
+        buttonLabel={t("filter")}
+        buttonAction={() => setIsFilterModalOpen(true)}
+        secondaryButtonLabel={t("add_campaign")}
+        secondaryButtonAction={handleAddCampaign}
         t={t}
       />
 
@@ -316,5 +265,44 @@ export const SponsorDetails = ({ data }) => {
         />
       </Modal>
     </Block>
+  );
+};
+
+const Heading = ({ t, data }) => {
+  return (
+    <Grid classes="sponsor-details__grid">
+      <GridItem md={8} lg={12}>
+        <Box classes="sponsor-details__box">
+          <Grid classes="sponsor-details__box__grid">
+            <GridItem xs={4} md={2} lg={3}>
+              <p>
+                {t("campaigns")}: <strong>{data.campaigns}</strong>
+              </p>
+            </GridItem>
+
+            <GridItem xs={4} md={2} lg={3}>
+              <p>
+                {t("active_campaigns")}: <strong>{data.activeCampaigns}</strong>
+              </p>
+            </GridItem>
+
+            <GridItem xs={4} md={2} lg={3}>
+              <p>
+                {t("email")}: <strong>{data.email}</strong>
+              </p>
+            </GridItem>
+
+            <GridItem xs={4} md={2} lg={3}>
+              <p>
+                {t("phone_number")}:{" "}
+                <strong>
+                  {data.phonePrefix} {data.phone}
+                </strong>
+              </p>
+            </GridItem>
+          </Grid>
+        </Box>
+      </GridItem>
+    </Grid>
   );
 };

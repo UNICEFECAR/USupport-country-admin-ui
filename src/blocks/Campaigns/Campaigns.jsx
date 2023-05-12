@@ -8,7 +8,6 @@ import {
   Button,
   Grid,
   GridItem,
-  InputSearch,
   Loading,
   Input,
   Modal,
@@ -45,8 +44,6 @@ export const Campaigns = () => {
     ];
   }, []);
 
-  const [searchValue, setSearchValue] = useState("");
-
   const [filterData, setFilterData] = useState({
     minTotalCampaigns: 0,
     minActiveCampaigns: 0,
@@ -63,27 +60,23 @@ export const Campaigns = () => {
     }
   }, [data]);
 
-  const rowsData = dataToDisplay
-    ?.filter((x) =>
-      x.sponsorName.toLowerCase().includes(searchValue.toLowerCase())
-    )
-    .map((item, index) => {
-      return [
-        <div key={"item" + index} className="campaigns__sponsor">
-          <img
-            className="campaigns__sponsor__image"
-            src={AMAZON_S3_BUCKET + (`/${item.image}` || "default")}
-          />
-          <p className="text campaigns__sponsor__name">{item.sponsorName}</p>
-        </div>,
-        <p>{item.totalCampaigns}</p>,
-        <p>{item.activeCampaigns}</p>,
-        <p>{item.email}</p>,
-        <p>
-          {item.phonePrefix} {item.phone}
-        </p>,
-      ];
-    });
+  const rowsData = dataToDisplay?.map((item, index) => {
+    return [
+      <div key={"item" + index} className="campaigns__sponsor">
+        <img
+          className="campaigns__sponsor__image"
+          src={AMAZON_S3_BUCKET + (`/${item.image}` || "default")}
+        />
+        <p className="text campaigns__sponsor__name">{item.sponsorName}</p>
+      </div>,
+      <p>{item.totalCampaigns}</p>,
+      <p>{item.activeCampaigns}</p>,
+      <p>{item.email}</p>,
+      <p>
+        {item.phonePrefix} {item.phone}
+      </p>,
+    ];
+  });
 
   const menuOptions = [
     {
@@ -162,27 +155,6 @@ export const Campaigns = () => {
           </Box>
         </GridItem>
       </Grid>
-      <div className="campaigns__search-container">
-        <InputSearch
-          placeholder={t("search")}
-          value={searchValue}
-          onChange={setSearchValue}
-          classes="campaigns__search"
-        />
-        <div className="sponsor-details__search-container__buttons-container">
-          <Button
-            label={t("add_button")}
-            color="purple"
-            type="secondary"
-            onClick={() => navigate("/add-sponsor")}
-          />
-          <Button
-            label={t("filter_button")}
-            color="purple"
-            onClick={() => setIsFilterModalOpen(true)}
-          />
-        </div>
-      </div>
 
       {isLoading ? (
         <Loading />
@@ -194,6 +166,11 @@ export const Campaigns = () => {
           menuOptions={menuOptions}
           handleClickPropName={"sponsorId"}
           updateData={setDataToDisplay}
+          hasSearch
+          buttonLabel={t("add_button")}
+          buttonAction={() => navigate("/add-sponsor")}
+          secondaryButtonLabel={t("filter_button")}
+          secondaryButtonAction={() => setIsFilterModalOpen(true)}
           t={t}
         />
       )}

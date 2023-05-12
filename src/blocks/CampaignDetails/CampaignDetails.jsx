@@ -310,6 +310,7 @@ export const CampaignDetails = ({
           rowsData={getTableRowsData()}
           hasMenu={false}
           updateData={setDataToDisplay}
+          hasSearch
           t={t}
         />
       )}
