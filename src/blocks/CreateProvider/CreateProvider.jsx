@@ -284,6 +284,7 @@ export const CreateProvider = ({
         <GridItem md={8} lg={4}>
           <ProfilePicturePreview
             image={providerData.image}
+            imageFile={providerImageUrl}
             handleDeleteClick={openDeletePictureBackdrop}
             handleChangeClick={openUploadPictureBackdrop}
             changePhotoText={t("change_photo")}

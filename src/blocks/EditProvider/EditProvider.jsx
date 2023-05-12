@@ -73,6 +73,10 @@ export const EditProvider = ({
   }, [providerData]);
 
   useEffect(() => {
+    setProviderImage(providerImageUrl);
+  }, [providerImageUrl]);
+
+  useEffect(() => {
     const codes = generateCountryCodes();
     if (providerData && !providerData?.phonePrefix) {
       const usersCountry = localStorage.getItem("country");
@@ -286,9 +290,11 @@ export const EditProvider = ({
           <GridItem md={8} lg={4}>
             <ProfilePicturePreview
               image={providerData.image}
+              imageFile={providerImageUrl}
               handleDeleteClick={openDeletePictureBackdrop}
               handleChangeClick={openUploadPictureBackdrop}
               changePhotoText={t("change_photo")}
+              providerId={providerData.providerDetailId}
             />
             <Input
               value={providerData.name}
