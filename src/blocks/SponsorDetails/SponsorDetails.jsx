@@ -294,10 +294,7 @@ const Heading = ({ t, data }) => {
 
             <GridItem xs={4} md={2} lg={3}>
               <p>
-                {t("phone_number")}:{" "}
-                <strong>
-                  {data.phonePrefix} {data.phone}
-                </strong>
+                {t("phone_number")}: <strong>{data.phone}</strong>
               </p>
             </GridItem>
           </Grid>

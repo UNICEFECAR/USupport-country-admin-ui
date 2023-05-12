@@ -88,7 +88,6 @@ export const AddSponsor = ({
     const oldData = JSON.stringify({
       sponsor: sponsorData?.sponsor,
       email: sponsorData?.email,
-      phonePrefix: sponsorData?.phonePrefix,
       phone: sponsorData?.phone,
     });
     const currentData = JSON.stringify(data);
@@ -206,10 +205,10 @@ export const AddSponsor = ({
             searchNotFound={t("no_entries_found")}
             classes="add-sponsor__grid__phone"
           />
-          {errors.phone || errors.phonePrefix || errors.submit ? (
+          {errors.submit ? (
             <Error
               classes="add-sponsor__grid__phone-error"
-              message={errors.phone || errors.phonePrefix || errors.submit}
+              message={errors.submit}
             />
           ) : null}
           {!sponsorData ? (
