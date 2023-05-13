@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import {
   Block,
   Button,
-  DropdownWithLabel,
+  InputPhone,
   Error,
   Grid,
   GridItem,
@@ -34,28 +34,6 @@ export const EditProfileDetails = () => {
 
   const [errors, setErrors] = useState({});
 
-  const [phonePrefixes, setPhonePrefixes] = useState();
-
-  useEffect(() => {
-    const codes = generateCountryCodes();
-    if (adminData && !adminData?.phonePrefix) {
-      const usersCountry = localStorage.getItem("country");
-
-      const userCountryCode = codes.find(
-        (x) => x.country === usersCountry
-      )?.value;
-      if (userCountryCode) {
-        handleChange("phonePrefix", userCountryCode);
-      } else {
-        handleChange(
-          "phonePrefix",
-          codes.find((x) => x.country === "KZ")?.value
-        );
-      }
-    }
-    setPhonePrefixes(codes);
-  }, [adminData]);
-
   useEffect(() => {
     if (adminData && adminQuery.data) {
       const adminDataStringified = JSON.stringify(adminData);
@@ -71,10 +49,6 @@ export const EditProfileDetails = () => {
     email: Joi.string()
       .email({ tlds: { allow: false } })
       .label(t("email_error")),
-    phonePrefix: Joi.string()
-      .optional()
-      .allow(null, "", " ")
-      .label(t("phone_prefix_error")),
     phone: Joi.string().optional().allow(null, "", " ").label(t("phone_error")),
     role: Joi.any(),
   });
@@ -123,45 +97,30 @@ export const EditProfileDetails = () => {
               value={adminData.name}
               onChange={(e) => handleChange("name", e.currentTarget.value)}
               errorMessage={errors.name}
-              label={t("name_label")}
+              label={t("name_label") + " *"}
               placeholder={t("name_placeholder")}
             />
             <Input
               value={adminData.surname}
               onChange={(e) => handleChange("surname", e.currentTarget.value)}
               errorMessage={errors.surname}
-              label={t("surname_label")}
+              label={t("surname_label") + " *"}
               placeholder={t("surname_placeholder")}
             />
-            <div className="edit-profile-details__grid__phone-container">
-              {phonePrefixes && (
-                <DropdownWithLabel
-                  options={phonePrefixes}
-                  label={t("phone_label")}
-                  selected={adminData.phonePrefix}
-                  setSelected={(value) => handleChange("phonePrefix", value)}
-                  placeholder={t("phone_prefix_placeholder")}
-                />
-              )}
-              <Input
-                value={adminData.phone}
-                onChange={(e) => handleChange("phone", e.currentTarget.value)}
-                placeholder={t("phone_placeholder")}
-                onBlur={() => handleBlur("phone")}
-                classes="edit-profile-details__grid__phone-container__phone-input"
-              />
-            </div>
-            {errors.phone || errors.phonePrefix ? (
-              <Error
-                classes="edit-profile-details__grid__phone-error"
-                message={errors.phone || errors.phonePrefix}
-              />
-            ) : null}
+            <InputPhone
+              label={t("phone_label")}
+              errorMessage={errors.phone}
+              onBlur={() => handleBlur("phone")}
+              value={adminData.phone}
+              onChange={(value) => handleChange("phone", value)}
+              placeholder={t("phone_placeholder")}
+              classes="edit-profile-details__grid__phone-input"
+            />
             <Input
               value={adminData.email}
               onChange={(e) => handleChange("email", e.currentTarget.value)}
               errorMessage={errors.email}
-              label={t("email_label")}
+              label={t("email_label") + " *"}
               placeholder={t("email_placeholder")}
               onBlur={() => handleBlur("email")}
             />
@@ -189,20 +148,3 @@ export const EditProfileDetails = () => {
     </Block>
   );
 };
-
-function generateCountryCodes() {
-  const countryCodesList = countryCodes.customList(
-    "countryCode",
-    "+{countryCallingCode}"
-  );
-  const codes = [];
-  Object.keys(countryCodesList).forEach((key) => {
-    codes.push({
-      value: countryCodesList[key],
-      label: `${key}: ${countryCodesList[key]}`,
-      country: key,
-    });
-  });
-
-  return codes.sort((a, b) => (a.country > b.country ? 1 : -1));
-}

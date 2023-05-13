@@ -1,14 +1,15 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 import {
   Block,
   Button,
   DropdownWithLabel,
-  Input,
+  DateInput,
   Loading,
   ReportCollapsible,
   Modal,
+  InputSearch,
 } from "@USupport-components-library/src";
 
 import {
@@ -19,7 +20,6 @@ import {
 import { useGetContactForms } from "#hooks";
 
 import "./contact-forms.scss";
-import { useEffect } from "react";
 
 /**
  * ContactForms
@@ -35,6 +35,7 @@ export const ContactForms = ({ Heading }) => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [filters, setFilters] = useState({});
   const [emailOptions, setEmailOptions] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     if (data) {
@@ -88,8 +89,13 @@ export const ContactForms = ({ Heading }) => {
         : true;
 
     const isStartingDateMatching = filters.startingDate
-      ? new Date(form.createdAt).toLocaleDateString() >=
-        new Date(filters.startingDate).toLocaleDateString()
+      ? new Date(form.createdAt).getTime() >=
+        new Date(new Date(filters.startingDate).setHours(0, 0, 0)).getTime()
+      : true;
+
+    const isEndDateMatching = filters.endingDate
+      ? new Date(form.createdAt).getTime() <=
+        new Date(new Date(filters.endingDate).setHours(23, 59, 59)).getTime()
       : true;
 
     const isSentFromMatching =
@@ -97,10 +103,24 @@ export const ContactForms = ({ Heading }) => {
         ? form.sentFrom === filters.sentFrom
         : true;
 
+    const searchVal = searchValue.toLowerCase();
+    const subjectTranslation =
+      subjectOptions.find((x) => x.value === form.subject)?.label ||
+      form.subject;
+
+    const isSearchMatching = !searchVal
+      ? true
+      : subjectTranslation.toLowerCase().includes(searchVal) ||
+        form.sender.toLowerCase().includes(searchVal) ||
+        form.sentFrom.toLowerCase().includes(searchVal) ||
+        form.message.toLowerCase().includes(searchVal);
+
     return isSubjectMatching &&
       isSenderMatching &&
       isStartingDateMatching &&
-      isSentFromMatching
+      isSentFromMatching &&
+      isSearchMatching &&
+      isEndDateMatching
       ? form
       : false;
   };
@@ -149,13 +169,18 @@ export const ContactForms = ({ Heading }) => {
           />
         );
       });
-  }, [data, filters]);
+  }, [data, filters, searchValue]);
 
   return (
     <Block classes="contact-forms">
       <Heading
         headingLabel={t("heading")}
         handleButtonClick={() => setIsFilterOpen(true)}
+      />
+      <InputSearch
+        placeholder={t("search")}
+        value={searchValue}
+        onChange={setSearchValue}
       />
       {isLoading ? <Loading /> : renderForms}
       <Filters
@@ -165,6 +190,7 @@ export const ContactForms = ({ Heading }) => {
         subjectOptions={subjectOptions}
         emailOptions={emailOptions}
         sentFromOptions={sentFromOptions}
+        filters={filters}
         t={t}
       />
     </Block>
@@ -175,17 +201,21 @@ const Filters = ({
   isOpen,
   handleClose,
   handleSave,
-  t,
   subjectOptions,
   emailOptions,
   sentFromOptions,
+  filters,
+  t,
 }) => {
   const initialFilters = {
     rating: "all",
     startingDate: "",
+    endingDate: "",
     sentFrom: "all",
   };
-  const [data, setData] = useState(initialFilters);
+  const [data, setData] = useState(
+    Object.keys(filters).length ? filters : initialFilters
+  );
 
   const handleChange = (field, value) => {
     setData({
@@ -233,15 +263,21 @@ const Filters = ({
             options={sentFromOptions}
             classes="contact-forms__filters-dropdown"
           />
-          <Input
-            type="date"
+          <DateInput
             label={t("starting_date")}
             onChange={(e) =>
               handleChange("startingDate", e.currentTarget.value)
             }
             value={data.startingDate}
             placeholder="DD.MM.YYY"
-            classes="contact-forms__filters__date-picker"
+            classes={["contact-forms__filters__date-picker"]}
+          />
+          <DateInput
+            label={t("ending_date")}
+            onChange={(e) => handleChange("endingDate", e.currentTarget.value)}
+            value={data.endingDate}
+            placeholder="DD.MM.YYY"
+            classes={["contact-forms__filters__date-picker"]}
           />
         </div>
         <Button

@@ -7,6 +7,9 @@
   "heading": "Information portal suggestions",
   "filters": "Filters",
   "starting_date": "Starting date",
+  "ending_date": "Ending date",
   "submit": "Apply filters",
-  "no_results": "There are no suggestions found"
+  "reset": "Reset filters",
+  "no_results": "There are no suggestions found",
+  "search": "Search"
 }

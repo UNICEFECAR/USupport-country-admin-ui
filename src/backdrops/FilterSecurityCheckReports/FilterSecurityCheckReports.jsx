@@ -7,9 +7,8 @@ import {
   Loading,
   Input,
   Button,
+  DateInput,
 } from "@USupport-components-library/src";
-
-import { useGetProvidersData } from "#hooks";
 
 import "./filter-security-check-reports.scss";
 
@@ -24,17 +23,23 @@ export const FilterSecurityCheckReports = ({
   isOpen,
   onClose,
   changeFilter,
+  data,
+  filters,
 }) => {
   const { t } = useTranslation("filter-security-check-reports");
-  const [providersDataQuery] = useGetProvidersData();
-  const { isLoading, data } = providersDataQuery;
 
   const initialFiltersData = {
-    provider: null,
-    numberOfIssues: 0,
-    startingDate: null,
+    provider: "",
+    numberOfIssues: "",
+    startingDate: "",
+    endingDate: "",
   };
-  const [filtersData, setFiltersData] = useState({ ...initialFiltersData });
+  const [filtersData, setFiltersData] = useState({
+    provider: filters.provider,
+    numberOfIssues: filters.numberOfIssues,
+    startingDate: filters.startingDate,
+    endingDate: filters.endingDate,
+  });
   const [providerOptions, setProviderOptions] = useState([]);
 
   useEffect(() => {
@@ -43,7 +48,7 @@ export const FilterSecurityCheckReports = ({
       data.forEach((provider) => {
         options.push({
           value: provider.providerDetailId,
-          label: `${provider.name} ${provider.patronym} ${provider.surname}`,
+          label: provider.providerName,
           isSelected: false,
         });
       });
@@ -74,7 +79,7 @@ export const FilterSecurityCheckReports = ({
       isOpen={isOpen}
       closeModal={onClose}
     >
-      {isLoading ? (
+      {!data ? (
         <Loading />
       ) : (
         <>
@@ -99,13 +104,24 @@ export const FilterSecurityCheckReports = ({
               selected={filtersData.numberOfIssues}
               setSelected={(value) => handleChange("numberOfIssues", value)}
             />
-            <Input
-              type="date"
+            <DateInput
               label={t("starting_date")}
-              onChange={(e) => handleChange("startingDate", e.target.value)}
-              value={filtersData.startingDate}
-              placeholder="DD.MM.YYY"
-              classes="filter-security-check-reports__date-picker"
+              placeholder={t("dates_placeholder")}
+              value={filtersData["startingDate"]}
+              onChange={(e) => {
+                let value = e.currentTarget.value;
+                handleChange("startingDate", value);
+              }}
+              classes={["filter-security-check-reports__date-picker"]}
+            />
+            <DateInput
+              label={t("end_date")}
+              placeholder={t("dates_placeholder")}
+              value={filtersData["endingDate"]}
+              onChange={(e) => {
+                let value = e.currentTarget.value;
+                handleChange("endingDate", value);
+              }}
             />
           </div>
 

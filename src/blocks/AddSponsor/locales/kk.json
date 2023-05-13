@@ -18,5 +18,8 @@
   "discard_changes": "Өзгерістерді болдырмау",
   "delete_sponsor": "Демеушіні жою",
   "edit_success": "Өзгерістер сәтті сақталды",
-  "success": "Демеуші сәтті тіркерілді"
+  "success": "Демеуші сәтті тіркерілді",
+
+  "search": "Іздеу",
+  "no_data_found": "No data found"
 }

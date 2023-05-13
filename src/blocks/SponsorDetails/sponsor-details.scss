@@ -2,40 +2,57 @@
 
 .sponsor-details {
   padding-bottom: $spacing_4_0;
-  &__buttons-container {
-    display: flex;
-    justify-content: flex-end;
 
-    & button:first-of-type {
-      margin-right: $spacing_1_0;
+  &__grid {
+    text-align: left;
+    justify-items: center;
+
+    @media screen and (min-width: $screen_md) {
+      justify-items: normal;
     }
   }
 
-  &__grid {
-    padding-top: $spacing_2_4;
-    justify-items: start;
-    align-items: center;
+  &__box {
+    margin-top: $spacing_2_4;
+    padding: $spacing_1_6;
 
     @media screen and (min-width: $screen-md) {
-      justify-items: center;
+      width: 96%;
+      padding: $spacing_2_4 $spacing_3_0 $spacing_2_4 0;
     }
 
-    & .input-container {
-      margin-top: $spacing_2_4;
-      margin-bottom: $spacing_3_6;
+    &__grid {
+      @media screen and (min-width: $screen-md) {
+        align-items: center;
+        justify-items: center;
+      }
+    }
+  }
+
+  &__search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: $spacing_2_4;
+
+    &__buttons-container {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: $spacing_2_0;
 
       @media screen and (min-width: $screen-md) {
-        margin-bottom: $spacing_5_0;
+        margin-top: 0;
       }
 
-      @media screen and (min-width: $screen-lg) {
-        margin: 0;
-        width: 22rem;
+      & button:first-of-type {
+        margin-right: $spacing_1_0;
       }
+    }
 
-      @media screen and (min-width: 1920px) {
-        width: 28rem;
-      }
+    @media screen and (min-width: $screen-md) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
     }
   }
 

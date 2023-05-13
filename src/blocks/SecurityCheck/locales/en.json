@@ -14,5 +14,6 @@
   "question_5": "Explanation about feeling unsafe during the consultation.",
   "yes": "Yes",
   "no": "No",
-  "no_results": "There are no security check reports found"
+  "no_results": "There are no security check reports found",
+  "search": "Search"
 }

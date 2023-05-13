@@ -1,11 +1,14 @@
 {
-    "all": "All",
-    "filters": "Filters",
-    "reset": "Reset filters",
-    "save": "Apply filters",
-    "provider": "Provider",
-    "duplicate": "Already exist",
-    "spam": "Spam",
-    "other": "Other",
-    "tag": "Tag"
+  "all": "All",
+  "filters": "Filters",
+  "reset": "Reset filters",
+  "save": "Apply filters",
+  "provider": "Provider",
+  "duplicate": "Already exist",
+  "spam": "Spam",
+  "other": "Other",
+  "tag": "Tag",
+  "reason_dropdown_label": "Reason",
+  "starting_date": "Starting date",
+  "ending_date": "Ending date"
 }

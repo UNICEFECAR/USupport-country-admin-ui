@@ -4,5 +4,6 @@
   "provider_tab_label": "Консультанты",
   "website_tab_label": "WebsiteRU",
   "faq_added": "FAQ added successfullyRU",
-  "faq_removed": "FAQ removed successfullyRU"
+  "faq_removed": "FAQ removed successfullyRU",
+  "search_placeholder": "Поиск"
 }

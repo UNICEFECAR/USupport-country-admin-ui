@@ -10,6 +10,7 @@ import {
   Loading,
   TabsUnderlined,
   Error as ErrorComponent,
+  InputSearch,
 } from "@USupport-components-library/src";
 import { useTranslation } from "react-i18next";
 
@@ -31,6 +32,7 @@ export const FAQ = () => {
   const { i18n, t } = useTranslation("faq");
 
   const [error, setError] = useState();
+  const [searchValue, setSearchValue] = useState("");
 
   //--------------------- Tabs ----------------------//
   const [options, setOptions] = useState([
@@ -135,41 +137,78 @@ export const FAQ = () => {
       rollback();
     },
   });
+
+  const renderAllFAQs = () => {
+    if (!FAQsData?.length && FAQsLoading) return <Loading />;
+
+    const filteredQuestions = FAQsData?.filter((faq) => {
+      if (searchValue) {
+        const value = searchValue.toLowerCase();
+        const attributes = faq.attributes;
+
+        const isQuestionMatching = attributes.question
+          .toLowerCase()
+          .includes(value);
+        const isAnswerMatching = attributes.answer
+          .toLowerCase()
+          .includes(value);
+
+        return isQuestionMatching || isAnswerMatching;
+      }
+
+      return true;
+    });
+
+    return (
+      <>
+        {isFAQsFetched &&
+          filteredQuestions &&
+          filteredQuestions?.map((faq, index) => {
+            return (
+              <FAQRow
+                selected={faq.isSelected}
+                setSelected={() =>
+                  handleSelectFAQ(faq.id, !faq.isSelected, index)
+                }
+                question={faq.attributes.question}
+                answer={faq.attributes.answer}
+                key={index}
+              />
+            );
+          })}
+
+        {!filteredQuestions?.length && !FAQsLoading && isFAQsFetched && (
+          <h3 className="page__faq__no-results">{t("no_results")}</h3>
+        )}
+      </>
+    );
+  };
+
   return (
     <Block classes="faq">
       <Grid>
         <GridItem md={8} lg={12} classes="faq__tabs">
           <Grid>
-            <GridItem md={6} lg={10}>
+            <GridItem md={4} lg={6}>
               <TabsUnderlined
                 options={options}
                 handleSelect={handleTabPress}
                 t={t}
               />
             </GridItem>
+            <GridItem md={4} lg={6}>
+              <InputSearch
+                placeholder={t("search_placeholder")}
+                value={searchValue}
+                onChange={(value) => setSearchValue(value)}
+                classes="faq__search"
+              />
+            </GridItem>
           </Grid>
         </GridItem>
 
         <GridItem md={8} lg={12} classes="faq__rows">
-          {isFAQsFetched &&
-            FAQsData &&
-            FAQsData?.map((faq, index) => {
-              return (
-                <FAQRow
-                  selected={faq.isSelected}
-                  setSelected={() =>
-                    handleSelectFAQ(faq.id, !faq.isSelected, index)
-                  }
-                  question={faq.attributes.question}
-                  answer={faq.attributes.answer}
-                  key={index}
-                />
-              );
-            })}
-          {!FAQsData?.length && FAQsLoading && <Loading />}
-          {!FAQsData?.length && !FAQsLoading && isFAQsFetched && (
-            <h3 className="page__faq__no-results">{t("no_results")}</h3>
-          )}
+          {renderAllFAQs()}
           {error ? <ErrorComponent message={error} /> : null}
         </GridItem>
       </Grid>

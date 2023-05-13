@@ -6,7 +6,7 @@ export const transformCampaignData = (campaign) => {
 
     return startDate >= now <= endDate && campaign.active;
   };
-
+  const isActive = checkIsCampaignActive(campaign);
   return {
     couponCode: campaign.coupon_code,
     campaignId: campaign.campaign_id,
@@ -21,6 +21,7 @@ export const transformCampaignData = (campaign) => {
     couponData: campaign.coupons,
     usedCoupons: campaign.coupons?.length || 0,
     usedBudget: (campaign.coupons?.length || 0) * campaign.price_per_coupon,
-    active: checkIsCampaignActive(campaign),
+    active: isActive,
+    status: isActive ? "active" : "inactive",
   };
 };

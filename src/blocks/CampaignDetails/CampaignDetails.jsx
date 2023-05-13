@@ -14,6 +14,7 @@ import {
   Loading,
   Modal,
   Toggle,
+  Box,
 } from "@USupport-components-library/src";
 
 import {
@@ -95,15 +96,17 @@ export const CampaignDetails = ({
     }
   }, [couponsData]);
 
-  const tableRows = [
-    "№",
-    t("provider"),
-    t("client"),
-    t("client_sex"),
-    t("client_yob"),
-    t("client_place_of_living"),
-    t("used_on"),
-  ];
+  const tableRows = useMemo(() => {
+    return [
+      { label: "№" },
+      { label: t("provider"), sortingKey: "providerName" },
+      { label: t("client"), sortingKey: "clientName" },
+      { label: t("client_sex"), sortingKey: "clientSex" },
+      { label: t("client_yob"), sortingKey: "clientYob", isNumbered: true },
+      { label: t("client_place_of_living"), sortingKey: "clientPlaceOfLiving" },
+      { label: t("used_on"), sortingKey: "createdAt", isDate: true },
+    ];
+  }, []);
 
   const getTableRowsData = useCallback(() => {
     return dataToDisplay?.map((coupon, index) => {
@@ -211,12 +214,20 @@ export const CampaignDetails = ({
 
       // Check if the date of creation of the coupon
       // is after the date selected by the admin
-      const isUsedAfter =
+      const isStartDateMatching =
         !filters.usedAfter ||
-        new Date(coupon.createdAt) >= new Date(filters.usedAfter);
+        new Date(new Date(coupon.createdAt).setHours(0, 0, 0)) >=
+          new Date(filters.usedAfter);
+
+      const isEndDateMatching =
+        !filters.endDate ||
+        new Date(new Date(coupon.createdAt).setHours(0, 0, 0)) <=
+          new Date(filters.endDate);
+
       return (
         isProviderNameMatching &&
-        isUsedAfter &&
+        isStartDateMatching &&
+        isEndDateMatching &&
         isClientNameMatching &&
         isClientSexMatching &&
         isClientAgeMatching &&
@@ -237,6 +248,50 @@ export const CampaignDetails = ({
     <Block classes="campaign-details">
       <Grid classes="campaign-details__grid">
         <GridItem md={8} lg={12}>
+          <Box classes="campaign-details__box">
+            <Grid classes="campaign-details__box__grid">
+              <GridItem md={8} lg={12}>
+                <div className="campaign-details__grid__activate-campaign">
+                  <Toggle
+                    isToggled={isActive}
+                    setParentState={(toggled) =>
+                      handleChangeCampaignStatus(toggled)
+                    }
+                  />
+                  <p>
+                    {t(isActive ? "deactivate_campaign" : "activate_campaign")}
+                  </p>
+                </div>
+              </GridItem>
+              {fieldsToDisplay.map((field, index) => {
+                const fieldLabel = t(pascalToSnakeCase(field));
+                const showCurrencySymbol = [
+                  "usedBudget",
+                  "budget",
+                  "couponPrice",
+                ].includes(field);
+                return (
+                  <GridItem md={2} lg={3} key={index}>
+                    <p>
+                      {fieldLabel}:{" "}
+                      <strong>
+                        {field.includes("Date")
+                          ? getDateView(data[field])
+                          : data[field]}
+                        {showCurrencySymbol ? currencySymbol : ""}
+                      </strong>
+                    </p>
+                  </GridItem>
+                );
+              })}
+            </Grid>
+          </Box>
+        </GridItem>
+        <GridItem
+          md={8}
+          lg={12}
+          classes="campaign-details__box__grid__button-item"
+        >
           <div className="campaign-details__buttons-container">
             <Button
               label={t("filter")}
@@ -253,49 +308,17 @@ export const CampaignDetails = ({
             />
           </div>
         </GridItem>
-
-        <>
-          <GridItem md={8} lg={12}>
-            <div className="campaign-details__grid__activate-campaign">
-              <Toggle
-                isToggled={isActive}
-                setParentState={(toggled) =>
-                  handleChangeCampaignStatus(toggled)
-                }
-              />
-              <p>{t(isActive ? "deactivate_campaign" : "activate_campaign")}</p>
-            </div>
-          </GridItem>
-          {fieldsToDisplay.map((field, index) => {
-            const fieldLabel = t(pascalToSnakeCase(field));
-            const showCurrencySymbol = [
-              "usedBudget",
-              "budget",
-              "couponPrice",
-            ].includes(field);
-            return (
-              <GridItem md={2} lg={3} key={index}>
-                <p>
-                  {fieldLabel}:{" "}
-                  <strong>
-                    {field.includes("Date")
-                      ? getDateView(data[field])
-                      : data[field]}
-                    {showCurrencySymbol ? currencySymbol : ""}
-                  </strong>
-                </p>
-              </GridItem>
-            );
-          })}
-        </>
       </Grid>
       {isLoading ? (
         <Loading />
       ) : (
         <BaseTable
+          data={dataToDisplay}
           rows={tableRows}
           rowsData={getTableRowsData()}
           hasMenu={false}
+          updateData={setDataToDisplay}
+          hasSearch
           t={t}
         />
       )}
@@ -340,10 +363,17 @@ export const CampaignDetails = ({
           }
         />
         <DateInput
-          value={filters.usedAfter}
-          label={t("used_after")}
+          value={filters.startDate}
+          label={t("start_date")}
           onChange={(e) =>
-            setFilters({ ...filters, usedAfter: e.currentTarget.value })
+            setFilters({ ...filters, startDate: e.currentTarget.value })
+          }
+        />
+        <DateInput
+          value={filters.endDate}
+          label={t("end_date")}
+          onChange={(e) =>
+            setFilters({ ...filters, endDate: e.currentTarget.value })
           }
         />
         <Button

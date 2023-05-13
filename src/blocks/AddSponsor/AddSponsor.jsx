@@ -9,13 +9,12 @@ import { toast } from "react-toastify";
 import {
   Block,
   Button,
-  ButtonWithIcon,
   Error,
   Grid,
   GridItem,
   ProfilePicturePreview,
   Input,
-  DropdownWithLabel,
+  InputPhone,
 } from "@USupport-components-library/src";
 
 import { validate } from "@USupport-components-library/utils";
@@ -53,7 +52,6 @@ export const AddSponsor = ({
     email: Joi.string()
       .email({ tlds: { allow: false } })
       .label(t("email_error")),
-    phonePrefix: Joi.string().label(t("phone_prefix_error")),
     phone: Joi.string().label(t("phone_error")),
     image: Joi.string().allow("", null),
   });
@@ -61,7 +59,6 @@ export const AddSponsor = ({
   const [data, setData] = useState({
     name: sponsorData ? sponsorData.name : "",
     email: sponsorData ? sponsorData.email : "",
-    phonePrefix: sponsorData ? sponsorData.phonePrefix : "",
     phone: sponsorData ? sponsorData.phone : "",
     image: sponsorData ? sponsorData.image : "default-sponsor",
   });
@@ -70,7 +67,6 @@ export const AddSponsor = ({
     setData({
       name: sponsorData.sponsorName,
       email: sponsorData.email,
-      phonePrefix: sponsorData.phonePrefix,
       phone: sponsorData.phone,
       image: sponsorData.image,
     });
@@ -85,34 +81,13 @@ export const AddSponsor = ({
   const [hasUploadedImage, setHasUploadedImage] = useState(false);
   const [errors, setErrors] = useState("");
 
-  const [phonePrefixes, setPhonePrefixes] = useState();
-
   const [canSaveChanges, setCanSaveChanges] = useState(false);
-  const usersCountry = localStorage.getItem("country");
 
   useEffect(() => {
-    // Country codes logic
-    const codes = generateCountryCodes();
-    if (data && !data?.phonePrefix) {
-      const userCountryCode = codes.find(
-        (x) => x.country === usersCountry
-      )?.value;
-      if (userCountryCode) {
-        handleChange("phonePrefix", userCountryCode);
-      } else {
-        handleChange(
-          "phonePrefix",
-          codes.find((x) => x.country === "KZ")?.value
-        );
-      }
-    }
-    setPhonePrefixes(codes);
-
     // Compare current data with data coming from DB to check if the changes can be saved
     const oldData = JSON.stringify({
       sponsor: sponsorData?.sponsor,
       email: sponsorData?.email,
-      phonePrefix: sponsorData?.phonePrefix,
       phone: sponsorData?.phone,
     });
     const currentData = JSON.stringify(data);
@@ -210,40 +185,30 @@ export const AddSponsor = ({
             value={data.name}
             onChange={(e) => handleChange("name", e.currentTarget.value)}
             errorMessage={errors.name}
-            label={t("sponsor_label")}
+            label={t("sponsor_label") + " *"}
             placeholder={t("sponsor_placeholder")}
           />
           <Input
             value={data.email}
             onChange={(e) => handleChange("email", e.currentTarget.value)}
             errorMessage={errors.email}
-            label={t("email_label")}
+            label={t("email_label") + " *"}
             placeholder={t("email_placeholder")}
           />
-          <div className="add-sponsor__grid__phone-container">
-            {phonePrefixes && (
-              <DropdownWithLabel
-                options={phonePrefixes}
-                label={t("phone_label")}
-                selected={
-                  data.phonePrefix ||
-                  phonePrefixes.find((x) => x.country === usersCountry)?.value
-                }
-                setSelected={(value) => handleChange("phonePrefix", value)}
-                placeholder={t("phone_prefix_placeholder")}
-              />
-            )}
-            <Input
-              value={data.phone}
-              onChange={(e) => handleChange("phone", e.currentTarget.value)}
-              placeholder={t("phone_placeholder")}
-              classes="add-sponsor__grid__phone-container__phone-input"
-            />
-          </div>
-          {errors.phone || errors.phonePrefix || errors.submit ? (
+          <InputPhone
+            label={t("phone_label")}
+            placeholder={t("phone_placeholder")}
+            value={data.phone}
+            onChange={(value) => handleChange("phone", value)}
+            searchPlaceholder={t("search")}
+            errorMessage={errors.phone}
+            searchNotFound={t("no_entries_found")}
+            classes="add-sponsor__grid__phone"
+          />
+          {errors.submit ? (
             <Error
               classes="add-sponsor__grid__phone-error"
-              message={errors.phone || errors.phonePrefix || errors.submit}
+              message={errors.submit}
             />
           ) : null}
           {!sponsorData ? (

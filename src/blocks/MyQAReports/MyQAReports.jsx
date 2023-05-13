@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import { useQueryClient } from "@tanstack/react-query";
@@ -7,12 +7,13 @@ import {
   Block,
   Loading,
   ReportCollapsible,
-  DropdownWithLabel,
+  InputSearch,
 } from "@USupport-components-library/src";
 import {
   getTimeFromDate,
   getDateView,
 } from "@USupport-components-library/utils";
+
 import { FilterQuestions } from "#backdrops";
 import {
   useGetArchivedQuestions,
@@ -39,6 +40,7 @@ export const MyQAReports = ({ Heading }) => {
     reason: null,
     provider: null,
   });
+  const [searchValue, setSearchValue] = useState("");
 
   const [questionsToDisplay, setQuestionsToDisplay] = useState();
 
@@ -101,11 +103,51 @@ export const MyQAReports = ({ Heading }) => {
     ];
   };
 
-  const renderQuestions = () => {
+  const renderQuestions = useCallback(() => {
     if (questionsQuery.isLoading || !questionsToDisplay) return <Loading />;
-    if (questionsToDisplay?.length === 0) return <p>{t("no_data_found")}</p>;
-    else
-      return questionsToDisplay?.map((question, index) => {
+
+    const searchVal = searchValue.toLowerCase();
+    const { reason, provider, startingDate, endingDate } = filters;
+    const filterData = (question) => {
+      const isSearchMatching = !searchVal
+        ? true
+        : question.question.toLowerCase().includes(searchVal) ||
+          question.additionalText.toLowerCase().includes(searchVal) ||
+          question.providerData?.name.toLowerCase().includes(searchVal) ||
+          question.providerData?.surname.toLowerCase().includes(searchVal) ||
+          question.providerData?.email.toLowerCase().includes(searchVal) ||
+          question.reason.toLowerCase().includes(searchVal);
+
+      const isProviderMatching =
+        !provider || provider === "all"
+          ? true
+          : question.providerData?.provider_detail_id === provider;
+      const isReasonMatching =
+        !reason || reason === "all" ? true : question.reason === reason;
+
+      const isStartingDateMatching = startingDate
+        ? new Date(question.createdAt).getTime() >=
+          new Date(new Date(startingDate).setHours(0, 0, 0)).getTime()
+        : true;
+
+      const isEndDateMatching = endingDate
+        ? new Date(question.createdAt).getTime() <=
+          new Date(new Date(endingDate).setHours(23, 59, 59)).getTime()
+        : true;
+
+      return (
+        isSearchMatching &&
+        isProviderMatching &&
+        isReasonMatching &&
+        isStartingDateMatching &&
+        isEndDateMatching
+      );
+    };
+    const filteredQuestions = questionsToDisplay?.filter(filterData);
+
+    if (filteredQuestions?.length === 0) return <p>{t("no_data_found")}</p>;
+    else {
+      return filteredQuestions?.filter(filterData).map((question, index) => {
         return (
           <ReportCollapsible
             key={index}
@@ -126,7 +168,8 @@ export const MyQAReports = ({ Heading }) => {
           </ReportCollapsible>
         );
       });
-  };
+    }
+  }, [questionsToDisplay, filters, searchValue]);
 
   // Create an array of unique provider options
   const providerOptions = Array.from(
@@ -146,20 +189,8 @@ export const MyQAReports = ({ Heading }) => {
     value: "all",
   });
 
-  const handleApplyFilters = () => {
-    const { reason, provider } = filters;
-
-    const filteredQuestions = questionsQuery.data?.filter((question) => {
-      const isProviderMatching =
-        !provider || provider === "all"
-          ? true
-          : question.providerData?.provider_detail_id === provider;
-      const isReasonMatching =
-        !reason || reason === "all" ? true : question.reason === reason;
-
-      return isProviderMatching && isReasonMatching;
-    });
-    setQuestionsToDisplay(filteredQuestions);
+  const handleApplyFilters = (filterData) => {
+    setFilters(filterData);
     closeFilterModal();
   };
 
@@ -168,7 +199,6 @@ export const MyQAReports = ({ Heading }) => {
       reason: null,
       provider: null,
     });
-    setQuestionsToDisplay(questionsQuery.data);
     closeFilterModal();
   };
 
@@ -187,32 +217,22 @@ export const MyQAReports = ({ Heading }) => {
         headingLabel={t("heading")}
         handleButtonClick={() => setIsFilterOpen(true)}
       />
+      <InputSearch
+        placeholder={t("search")}
+        value={searchValue}
+        onChange={setSearchValue}
+      />
       {renderQuestions()}
       {isFilterOpen && (
         <FilterQuestions
           isOpen={isFilterOpen}
           handleClose={closeFilterModal}
           filters={filters}
-          setFilters={setFilters}
           providerOptions={providerOptions}
           handleApplyFilters={handleApplyFilters}
           handleResetFilters={handleResetFilters}
-        >
-          <DropdownWithLabel
-            label={t("dropdown_label")}
-            options={dropdownOptions.map((option) => {
-              return {
-                label: t(`${option.value}`),
-                value: option.value,
-                isSelected: filters === option.value,
-              };
-            })}
-            selected={filters.reason}
-            setSelected={(value) =>
-              setFilters((prev) => ({ ...prev, reason: value }))
-            }
-          />
-        </FilterQuestions>
+          reasonOptions={dropdownOptions}
+        />
       )}
     </Block>
   );

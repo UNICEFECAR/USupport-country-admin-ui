@@ -25,5 +25,13 @@
   "specialization": "Специализация",
   "all": "Все",
   "apply_filter": "Примените фильтры",
-  "reset_filter": "Сбросить фильтр"
+  "reset_filter": "Сбросить фильтр",
+
+  "name": "Имя",
+  "email": "Электронная почта",
+  "price": "Цена",
+  "specializations": "Специализации",
+  "actions": "ActionsRU",
+  "view": "Просмотр",
+  "edit": "Редактировать"
 }

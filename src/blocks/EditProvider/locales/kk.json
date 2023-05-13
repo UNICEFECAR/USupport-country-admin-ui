@@ -78,5 +78,8 @@
   "relationship": "Қарым-қатынас",
   "personal_development": "Жеке даму",
   "edit_success": "Парақша сәтті жаңартылды",
-  "create_success": "Консультант сәтті тіркелді"
+  "create_success": "Консультант сәтті тіркелді",
+
+  "search": "Іздеу",
+  "no_data_found": "No data found"
 }

@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -8,10 +8,10 @@ import {
   Button,
   Grid,
   GridItem,
-  InputSearch,
   Loading,
   Input,
   Modal,
+  Box,
 } from "@USupport-components-library/src";
 
 import { useGetAllSponsorsData } from "#hooks";
@@ -30,15 +30,19 @@ import "./campaigns.scss";
 export const Campaigns = () => {
   const navigate = useNavigate();
   const { t } = useTranslation("campaigns");
-  const rows = [
-    t("sponsor"),
-    t("campaigns"),
-    t("active_campaigns"),
-    t("email"),
-    t("phone"),
-  ];
-
-  const [searchValue, setSearchValue] = useState("");
+  const rows = useMemo(() => {
+    return [
+      { label: t("sponsor"), sortingKey: "sponsorName" },
+      { label: t("campaigns"), sortingKey: "totalCampaigns", isNumbered: true },
+      {
+        label: t("active_campaigns"),
+        sortingKey: "activeCampaigns",
+        isNumbered: true,
+      },
+      { label: t("email"), sortingKey: "email" },
+      { label: t("phone"), sortingKey: "phone" },
+    ];
+  }, []);
 
   const [filterData, setFilterData] = useState({
     minTotalCampaigns: 0,
@@ -56,27 +60,21 @@ export const Campaigns = () => {
     }
   }, [data]);
 
-  const rowsData = dataToDisplay
-    ?.filter((x) =>
-      x.sponsorName.toLowerCase().includes(searchValue.toLowerCase())
-    )
-    .map((item, index) => {
-      return [
-        <div key={"item" + index} className="campaigns__sponsor">
-          <img
-            className="campaigns__sponsor__image"
-            src={AMAZON_S3_BUCKET + (`/${item.image}` || "default")}
-          />
-          <p className="text campaigns__sponsor__name">{item.sponsorName}</p>
-        </div>,
-        <p>{item.totalCampaigns}</p>,
-        <p>{item.activeCampaigns}</p>,
-        <p>{item.email}</p>,
-        <p>
-          {item.phonePrefix} {item.phone}
-        </p>,
-      ];
-    });
+  const rowsData = dataToDisplay?.map((item, index) => {
+    return [
+      <div key={"item" + index} className="campaigns__sponsor">
+        <img
+          className="campaigns__sponsor__image"
+          src={AMAZON_S3_BUCKET + (`/${item.image}` || "default")}
+        />
+        <p className="text campaigns__sponsor__name">{item.sponsorName}</p>
+      </div>,
+      <p>{item.totalCampaigns}</p>,
+      <p>{item.activeCampaigns}</p>,
+      <p>{item.email}</p>,
+      <p>{item.phone}</p>,
+    ];
+  });
 
   const menuOptions = [
     {
@@ -130,44 +128,29 @@ export const Campaigns = () => {
 
   return (
     <Block classes="campaigns">
-      <div className="campaigns__buttons">
-        <Button
-          label={t("add_button")}
-          color="purple"
-          type="secondary"
-          onClick={() => navigate("/add-sponsor")}
-        />
-        <Button
-          label={t("filter_button")}
-          color="purple"
-          onClick={() => setIsFilterModalOpen(true)}
-        />
-      </div>
-
-      <Grid classes="campaigns__information">
-        <GridItem xs={4} md={2} lg={3}>
-          <p>
-            {t("sponsors")}: <strong>{data?.length}</strong>
-          </p>
-        </GridItem>
-        <GridItem xs={4} md={2} lg={3}>
-          <p>
-            {t("campaigns")}:{" "}
-            <strong>{reduceCampaigns(data, "totalCampaigns")}</strong>
-          </p>
-        </GridItem>
-        <GridItem xs={4} md={2} lg={3}>
-          <p>
-            {t("active_campaigns")}:{" "}
-            <strong>{reduceCampaigns(data, "activeCampaigns")}</strong>
-          </p>
-        </GridItem>
-        <GridItem xs={4} md={8} lg={3}>
-          <InputSearch
-            placeholder={t("search")}
-            value={searchValue}
-            onChange={setSearchValue}
-          />
+      <Grid classes="campaigns__grid">
+        <GridItem md={8} lg={12}>
+          <Box classes="campaigns__box" boxShadow={2}>
+            <Grid classes="campaigns__box__grid">
+              <GridItem xs={4} md={2} lg={4}>
+                <p>
+                  {t("sponsors")}: <strong>{data?.length}</strong>
+                </p>
+              </GridItem>
+              <GridItem xs={4} md={3} lg={4}>
+                <p>
+                  {t("campaigns")}:{" "}
+                  <strong>{reduceCampaigns(data, "totalCampaigns")}</strong>
+                </p>
+              </GridItem>
+              <GridItem xs={4} md={3} lg={4}>
+                <p>
+                  {t("active_campaigns")}:{" "}
+                  <strong>{reduceCampaigns(data, "activeCampaigns")}</strong>
+                </p>
+              </GridItem>
+            </Grid>
+          </Box>
         </GridItem>
       </Grid>
 
@@ -180,6 +163,12 @@ export const Campaigns = () => {
           rowsData={rowsData}
           menuOptions={menuOptions}
           handleClickPropName={"sponsorId"}
+          updateData={setDataToDisplay}
+          hasSearch
+          buttonLabel={t("add_button")}
+          buttonAction={() => navigate("/add-sponsor")}
+          secondaryButtonLabel={t("filter_button")}
+          secondaryButtonAction={() => setIsFilterModalOpen(true)}
           t={t}
         />
       )}
