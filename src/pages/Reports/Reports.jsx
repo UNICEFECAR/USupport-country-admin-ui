@@ -91,7 +91,11 @@ export const Reports = () => {
   };
 
   return (
-    <Page classes="page__reports" showGoBackArrow={false}>
+    <Page
+      classes="page__reports"
+      showGoBackArrow={false}
+      heading={t("heading")}
+    >
       <Block>
         <TabsUnderlined
           options={options}
