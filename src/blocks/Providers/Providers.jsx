@@ -34,7 +34,11 @@ const AMAZON_S3_BUCKET = `${import.meta.env.VITE_AMAZON_S3_BUCKET}`;
  *
  * @return {jsx}
  */
-export const Providers = () => {
+export const Providers = ({
+  displayListView,
+  isFilterModalOpen,
+  setIsFilterModalOpen,
+}) => {
   const initialFilters = {
     price: "",
     status: "",
@@ -47,7 +51,6 @@ export const Providers = () => {
   const currencySymbol = localStorage.getItem("currency_symbol");
 
   const [filters, setFilters] = useState(initialFilters);
-  const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
   const [appliedFilters, setAppliedFilters] = useState();
 
   const fetchProvidersData = async ({ pageParam = 1 }) => {
@@ -311,7 +314,6 @@ export const Providers = () => {
       </div>,
     ];
   });
-  const [displayListView, setDisplayListView] = useState(false);
   return (
     <Block classes="providers">
       <InfiniteScroll
@@ -325,29 +327,6 @@ export const Providers = () => {
         scrollThreshold={0}
       >
         <Grid classes="providers__grid">
-          <GridItem md={8} lg={12} classes="providers__grid__heading">
-            <h2>{t("providers")} </h2>
-            <div className="providers__grid__heading__button-container">
-              <Icon
-                color="#20809E"
-                name={displayListView ? "grid-view" : "list-view"}
-                size="lg"
-                onClick={() => setDisplayListView(!displayListView)}
-              />
-              <Button
-                label={t("create_provider")}
-                classes="providers__create-provider-button"
-                onClick={() => navigate("/create-provider")}
-                size="sm"
-              />
-              <Button
-                label={t("filter_providers")}
-                onClick={() => setIsFilterModalOpen(true)}
-                size="sm"
-                color="purple"
-              />
-            </div>
-          </GridItem>
           {providersQuery.isLoading ? (
             <GridItem md={8} lg={12}>
               <Loading size="lg" />
