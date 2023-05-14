@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { Page, EditProfileDetails as EditProfileDetailsBlock } from "#blocks";
+import { ChangePassword } from "#backdrops";
 
 import "./edit-profile-details.scss";
 
@@ -15,6 +16,7 @@ import "./edit-profile-details.scss";
 export const EditProfileDetails = () => {
   const { t } = useTranslation("edit-profile-details-page");
   const navigate = useNavigate();
+  const [showChangePassword, setShowChangePassword] = useState(false);
 
   const handleGoBack = () => navigate("/profile");
 
@@ -24,7 +26,13 @@ export const EditProfileDetails = () => {
       heading={t("heading")}
       handleGoBack={handleGoBack}
     >
-      <EditProfileDetailsBlock />
+      <EditProfileDetailsBlock
+        openChangePassword={() => setShowChangePassword(true)}
+      />
+      <ChangePassword
+        isOpen={showChangePassword}
+        onClose={() => setShowChangePassword(false)}
+      />
     </Page>
   );
 };

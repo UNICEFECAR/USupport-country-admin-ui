@@ -59,6 +59,7 @@ import {
   CodeVerification,
   QuestionDetails,
   FilterQuestions,
+  ChangePassword,
 } from "#backdrops/locales.js";
 
 const resources = {
@@ -119,6 +120,7 @@ const resources = {
     "code-verification": CodeVerification.en,
     "question-details": QuestionDetails.en,
     "filter-questions": FilterQuestions.en,
+    "change-password-backdrop": ChangePassword.en,
   },
 
   kk: {
@@ -178,6 +180,7 @@ const resources = {
     "code-verification": CodeVerification.kk,
     "question-details": QuestionDetails.kk,
     "filter-questions": FilterQuestions.en,
+    "change-password-backdrop": ChangePassword.kk,
   },
 
   ru: {
@@ -237,6 +240,7 @@ const resources = {
     "code-verification": CodeVerification.ru,
     "question-details": QuestionDetails.ru,
     "filter-questions": FilterQuestions.en,
+    "change-password-backdrop": ChangePassword.ru,
   },
 };
 
