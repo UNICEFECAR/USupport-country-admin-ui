@@ -24,6 +24,7 @@ import {
   Modal,
   ProviderOverview,
   Toggle,
+  StatusBadge,
 } from "@USupport-components-library/src";
 import { adminSvc } from "@USupport-components-library/services";
 
@@ -279,12 +280,7 @@ export const Providers = ({
 
       <p>{provider.email}</p>,
 
-      <div
-        className={`providers__list-view__status providers__list-view__status--${provider.status}`}
-      >
-        <p className="small-text">{t(provider.status)}</p>
-      </div>,
-
+      <StatusBadge label={t(provider.status)} status={provider.status} />,
       <div
         className={[
           "providers__list-view__price-badge",

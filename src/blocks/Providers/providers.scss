@@ -52,33 +52,6 @@
         }
       }
     }
-
-    &__status {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      border-radius: $spacing_1_2;
-      margin-top: $spacing_0_4;
-      margin-right: auto;
-      padding: $spacing_0_4 $spacing_1_2;
-
-      & p {
-        color: $color_white_ff;
-      }
-
-      &--active {
-        background-color: $color_green_7ec680;
-
-        & p {
-          color: $color_white_ff;
-        }
-      }
-
-      &--inactive {
-        background-color: $color_red_eb5757;
-      }
-    }
   }
 
   &__filter-modal {
