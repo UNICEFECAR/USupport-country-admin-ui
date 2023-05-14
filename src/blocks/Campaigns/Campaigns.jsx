@@ -33,11 +33,17 @@ export const Campaigns = () => {
   const rows = useMemo(() => {
     return [
       { label: t("sponsor"), sortingKey: "sponsorName" },
-      { label: t("campaigns"), sortingKey: "totalCampaigns", isNumbered: true },
+      {
+        label: t("campaigns"),
+        sortingKey: "totalCampaigns",
+        isNumbered: true,
+        isCentered: true,
+      },
       {
         label: t("active_campaigns"),
         sortingKey: "activeCampaigns",
         isNumbered: true,
+        isCentered: true,
       },
       { label: t("email"), sortingKey: "email" },
       { label: t("phone"), sortingKey: "phone" },
@@ -69,10 +75,10 @@ export const Campaigns = () => {
         />
         <p className="text campaigns__sponsor__name">{item.sponsorName}</p>
       </div>,
-      <p>{item.totalCampaigns}</p>,
-      <p>{item.activeCampaigns}</p>,
-      <p>{item.email}</p>,
-      <p>{item.phone}</p>,
+      <p className="text centered">{item.totalCampaigns}</p>,
+      <p className="text centered">{item.activeCampaigns}</p>,
+      <p className="text">{item.email}</p>,
+      <p className="text">{item.phone}</p>,
     ];
   });
 

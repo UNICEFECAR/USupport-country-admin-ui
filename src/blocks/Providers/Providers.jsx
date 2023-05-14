@@ -239,10 +239,12 @@ export const Providers = () => {
 
     {
       label: t("status"),
+      isCentered: true,
       // sortingKey: "status",
     },
     {
       label: t("price"),
+      isCentered: true,
       // sortingKey: "consultationPrice",
     },
     {
@@ -251,6 +253,7 @@ export const Providers = () => {
     },
     {
       label: t("actions"),
+      isCentered: true,
     },
   ];
 
@@ -302,7 +305,7 @@ export const Providers = () => {
           }
           size="md"
         />
-        <p className="text">
+        <p className="text centered">
           {provider.status === "active" ? t("deactivate") : t("activate")}
         </p>
       </div>,
