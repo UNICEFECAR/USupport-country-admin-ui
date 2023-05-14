@@ -50,6 +50,8 @@ import {
   EditCampaign as EditCampaignPage,
   EditSponsor as EditSponsorPage,
   MyQA as MyQAPage,
+  Dashboard,
+  Providers as ProvidersPage,
 } from "#pages/locales.js";
 
 import {
@@ -112,6 +114,8 @@ const resources = {
     "edit-campaign-page": EditCampaignPage.en,
     "edit-sponsor-page": EditSponsorPage.en,
     "my-qa-page": MyQAPage.en,
+    "dashboard-page": Dashboard.en,
+    "providers-page": ProvidersPage.en,
 
     // Backdrops
     "upload-picture": UploadPicture.en,
@@ -172,6 +176,8 @@ const resources = {
     "edit-campaign-page": EditCampaignPage.kk,
     "edit-sponsor-page": EditSponsorPage.kk,
     "my-qa-page": MyQAPage.kk,
+    "dashboard-page": Dashboard.kk,
+    "providers-page": ProvidersPage.kk,
 
     // Backdrops
     "upload-picture": UploadPicture.kk,
@@ -179,7 +185,7 @@ const resources = {
     "filter-security-check-reports": FilterSecurityCheckReports.kk,
     "code-verification": CodeVerification.kk,
     "question-details": QuestionDetails.kk,
-    "filter-questions": FilterQuestions.en,
+    "filter-questions": FilterQuestions.kk,
     "change-password-backdrop": ChangePassword.kk,
   },
 
@@ -232,6 +238,8 @@ const resources = {
     "edit-campaign-page": EditCampaignPage.ru,
     "edit-sponsor-page": EditSponsorPage.ru,
     "my-qa-page": MyQAPage.ru,
+    "dashboard-page": Dashboard.ru,
+    "providers-page": ProvidersPage.ru,
 
     // Backdrops
     "upload-picture": UploadPicture.ru,
@@ -239,7 +247,7 @@ const resources = {
     "filter-security-check-reports": FilterSecurityCheckReports.ru,
     "code-verification": CodeVerification.ru,
     "question-details": QuestionDetails.ru,
-    "filter-questions": FilterQuestions.en,
+    "filter-questions": FilterQuestions.ru,
     "change-password-backdrop": ChangePassword.ru,
   },
 };

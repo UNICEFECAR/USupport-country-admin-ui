@@ -11,44 +11,6 @@
 
   &__grid {
     place-items: center;
-
-    &__heading {
-      align-items: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding-bottom: $spacing_2_4;
-      width: 100%;
-
-      @media screen and (min-width: $screen_md) {
-        flex-direction: row;
-      }
-
-      & .icon {
-        margin-right: $spacing_0_8;
-        cursor: pointer;
-      }
-
-      &__button-container {
-        margin-left: $spacing_1_6;
-        display: flex;
-        flex-direction: row;
-        margin-top: $spacing_1_6;
-
-        @media screen and (min-width: $screen_md) {
-          margin-top: 0;
-        }
-
-        & .btn:first-of-type {
-          margin-right: $spacing_1_2;
-        }
-      }
-
-      @media screen and (min-width: $screen_md) {
-        width: 90%;
-        margin-left: 0;
-      }
-    }
   }
 
   &__list-view {
