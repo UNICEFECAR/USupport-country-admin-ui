@@ -190,10 +190,10 @@ export const SponsorDetails = ({ data }) => {
         handleClickPropName="campaignId"
         menuOptions={menuOptions}
         hasSearch
-        buttonLabel={t("filter")}
-        buttonAction={() => setIsFilterModalOpen(true)}
-        secondaryButtonLabel={t("add_campaign")}
-        secondaryButtonAction={handleAddCampaign}
+        buttonLabel={t("add_campaign")}
+        buttonAction={handleAddCampaign}
+        secondaryButtonLabel={t("filter")}
+        secondaryButtonAction={() => setIsFilterModalOpen(true)}
         t={t}
       />
 

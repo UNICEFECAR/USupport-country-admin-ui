@@ -287,27 +287,6 @@ export const CampaignDetails = ({
             </Grid>
           </Box>
         </GridItem>
-        <GridItem
-          md={8}
-          lg={12}
-          classes="campaign-details__box__grid__button-item"
-        >
-          <div className="campaign-details__buttons-container">
-            <Button
-              label={t("filter")}
-              type="secondary"
-              color="purple"
-              size="md"
-              onClick={() => setIsFilterModalOpen(true)}
-            />
-            <Button
-              label={t("export_report")}
-              color="purple"
-              size="md"
-              onClick={handleExportReport}
-            />
-          </div>
-        </GridItem>
       </Grid>
       {isLoading ? (
         <Loading />
@@ -319,6 +298,10 @@ export const CampaignDetails = ({
           hasMenu={false}
           updateData={setDataToDisplay}
           hasSearch
+          buttonLabel={t("export_report")}
+          buttonAction={handleExportReport}
+          secondaryButtonLabel={t("filter")}
+          secondaryButtonAction={() => setIsFilterModalOpen(true)}
           t={t}
         />
       )}
