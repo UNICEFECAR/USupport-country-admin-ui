@@ -8,7 +8,6 @@ import {
   Button,
   Grid,
   GridItem,
-  InputSearch,
   Modal,
   Input,
   DateInput,
@@ -39,7 +38,7 @@ import "./sponsor-details.scss";
  */
 export const SponsorDetails = ({ data }) => {
   const navigate = useNavigate();
-  const { t } = useTranslation("sponsor-details");
+  const { t, i18n } = useTranslation("sponsor-details");
   const currencySymbol = localStorage.getItem("currency_symbol");
 
   const [searchValue, setSearchValue] = useState("");
@@ -85,7 +84,7 @@ export const SponsorDetails = ({ data }) => {
       { label: t("period"), sortingKey: "startDate", isDate: true },
       { label: t("status"), sortingKey: "status", isCentered: true },
     ];
-  }, []);
+  }, [i18n.language]);
 
   const rowsData = dataToDisplay
     ?.filter((x) => x.name.toLowerCase().includes(searchValue.toLowerCase()))

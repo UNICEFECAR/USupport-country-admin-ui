@@ -29,7 +29,7 @@ import "./campaigns.scss";
  */
 export const Campaigns = () => {
   const navigate = useNavigate();
-  const { t } = useTranslation("campaigns");
+  const { t, i18n } = useTranslation("campaigns");
   const rows = useMemo(() => {
     return [
       { label: t("sponsor"), sortingKey: "sponsorName" },
@@ -48,7 +48,7 @@ export const Campaigns = () => {
       { label: t("email"), sortingKey: "email" },
       { label: t("phone"), sortingKey: "phone" },
     ];
-  }, []);
+  }, [i18n.language]);
 
   const [filterData, setFilterData] = useState({
     minTotalCampaigns: 0,

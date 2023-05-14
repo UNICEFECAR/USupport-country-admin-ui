@@ -1,4 +1,10 @@
-import React, { useCallback, useRef, useState, useEffect } from "react";
+import React, {
+  useCallback,
+  useRef,
+  useState,
+  useEffect,
+  useMemo,
+} from "react";
 import { useTranslation } from "react-i18next";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
@@ -46,7 +52,7 @@ export const Providers = ({
     specialization: "",
   };
   const navigate = useNavigate();
-  const { t } = useTranslation("providers");
+  const { t, i18n } = useTranslation("providers");
   const queryClient = useQueryClient();
   const currencySymbol = localStorage.getItem("currency_symbol");
 
@@ -230,35 +236,37 @@ export const Providers = ({
     setIsFilterModalOpen(false);
   };
 
-  const rows = [
-    {
-      label: t("name"),
-      // sortingKey: "displayName",
-    },
-    {
-      label: t("email"),
-      // sortingKey: "email",
-    },
+  const rows = useMemo(() => {
+    return [
+      {
+        label: t("name"),
+        // sortingKey: "displayName",
+      },
+      {
+        label: t("email"),
+        // sortingKey: "email",
+      },
 
-    {
-      label: t("status"),
-      isCentered: true,
-      // sortingKey: "status",
-    },
-    {
-      label: t("price"),
-      isCentered: true,
-      // sortingKey: "consultationPrice",
-    },
-    {
-      label: t("specializations"),
-      // sortingKey: "specializations",
-    },
-    {
-      label: t("actions"),
-      isCentered: true,
-    },
-  ];
+      {
+        label: t("status"),
+        isCentered: true,
+        // sortingKey: "status",
+      },
+      {
+        label: t("price"),
+        isCentered: true,
+        // sortingKey: "consultationPrice",
+      },
+      {
+        label: t("specializations"),
+        // sortingKey: "specializations",
+      },
+      {
+        label: t("actions"),
+        isCentered: true,
+      },
+    ];
+  }, [i18n.language]);
 
   const rowsData = providersQuery.data?.pages?.flat().map((provider, idx) => {
     return [
