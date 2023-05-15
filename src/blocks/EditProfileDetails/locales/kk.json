@@ -19,6 +19,9 @@
   "button_text": "Өзгерістерді сақтау",
   "button_secondary_text": "Өзгерістерді болдырмау",
 
-  "create_success": "Консультант сәтті құрылды",
-  "edit_success": "Парақша сәтті жаңартылды"
+  "edit_success": "Парақша сәтті жаңартылды",
+
+  "search": "Іздеу",
+  "no_data_found": "No data found",
+  "button_change_password": "Кілтсөзді өзгерту"
 }
