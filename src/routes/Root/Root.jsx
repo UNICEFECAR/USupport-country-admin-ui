@@ -1,5 +1,10 @@
 import React, { useState, useCallback } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  // BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { IdleTimer } from "@USupport-components-library/src";
@@ -58,8 +63,14 @@ export default function Root() {
   useEventListener("login", loginHandler);
 
   return (
-    <Router basename="/country-admin">
-      {loggedIn && <IdleTimer setLoggedIn={setLoggedIn} t={t} />}
+    <React.Fragment>
+      {loggedIn && (
+        <IdleTimer
+          setLoggedIn={setLoggedIn}
+          t={t}
+          NavigateComponent={Navigate}
+        />
+      )}
       <Routes>
         <Route
           path="/login"
@@ -256,7 +267,7 @@ export default function Root() {
         <Route path="/" element={<Welcome />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </Router>
+    </React.Fragment>
   );
 }
 
