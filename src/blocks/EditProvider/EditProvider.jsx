@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import {
   Block,
   Button,
-  DropdownGroup,
+  Select,
   DropdownWithLabel,
   Error,
   Grid,
@@ -27,7 +27,6 @@ import {
   useGetWorkWithCategories,
   useUpdateProviderData,
 } from "#hooks";
-import countryCodes from "country-codes-list";
 import Joi from "joi";
 
 import "./edit-provider.scss";
@@ -380,7 +379,8 @@ export const EditProvider = ({
           </GridItem>
 
           <GridItem md={8} lg={4}>
-            <DropdownGroup
+            <Select
+              placeholder={t("select")}
               options={getLanguageOptions()}
               handleChange={(languages) =>
                 handleWorkWithAndLanguageSelect("languages", languages)
@@ -390,7 +390,8 @@ export const EditProvider = ({
               addMoreText={t("add_more_languages")}
               errorMessage={errors.languages}
             />
-            <DropdownGroup
+            <Select
+              placeholder={t("select")}
               label={t("specialization_label")}
               options={getSpecializationsOptions()}
               handleChange={(options) =>
@@ -408,7 +409,8 @@ export const EditProvider = ({
               addMoreText={t("add_more_education")}
               errorMessage={errors.education}
             />
-            <DropdownGroup
+            <Select
+              placeholder={t("select")}
               options={getWorkWithOptions()}
               handleChange={(workWith) =>
                 handleWorkWithAndLanguageSelect("workWith", workWith)

@@ -81,5 +81,6 @@
   "create_success": "Консультант успешно создан",
 
   "search": "Поиск",
-  "no_data_found": "No data found"
+  "no_data_found": "No data found",
+  "select": "Выбрать"
 }

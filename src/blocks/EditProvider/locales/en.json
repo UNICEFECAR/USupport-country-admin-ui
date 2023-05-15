@@ -81,5 +81,6 @@
   "create_success": "Provider created successfully",
 
   "search": "Search",
-  "no_data_found": "No data found"
+  "no_data_found": "No data found",
+  "select": "Select"
 }
