@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { Page, CreateProvider as CreateProviderPage } from "#blocks";
+import { Page, CreateProvider as CreateProviderBlock } from "#blocks";
 import { UploadPicture, DeleteProfilePicture } from "#backdrops";
 
 import "./create-provider.scss";
@@ -51,7 +51,7 @@ export const CreateProvider = () => {
       heading={t("heading")}
       handleGoBack={handleGoBack}
     >
-      <CreateProviderPage
+      <CreateProviderBlock
         {...{
           openUploadPictureBackdrop,
           openDeletePictureBackdrop,
