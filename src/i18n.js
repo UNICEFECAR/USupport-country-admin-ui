@@ -64,6 +64,8 @@ import {
   ChangePassword,
 } from "#backdrops/locales.js";
 
+import { Root } from "#routes/locales.js";
+
 const resources = {
   en: {
     // Blocks
@@ -125,6 +127,9 @@ const resources = {
     "question-details": QuestionDetails.en,
     "filter-questions": FilterQuestions.en,
     "change-password-backdrop": ChangePassword.en,
+
+    // Routes
+    root: Root.en,
   },
 
   kk: {
@@ -187,6 +192,9 @@ const resources = {
     "question-details": QuestionDetails.kk,
     "filter-questions": FilterQuestions.kk,
     "change-password-backdrop": ChangePassword.kk,
+
+    // Routes
+    root: Root.kk,
   },
 
   ru: {
@@ -249,6 +257,9 @@ const resources = {
     "question-details": QuestionDetails.ru,
     "filter-questions": FilterQuestions.ru,
     "change-password-backdrop": ChangePassword.ru,
+
+    // Routes
+    root: Root.ru,
   },
 };
 
