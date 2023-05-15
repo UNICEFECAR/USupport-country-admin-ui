@@ -6,7 +6,6 @@ import { useMutation } from "@tanstack/react-query";
 import {
   Block,
   Button,
-  DropdownGroup,
   DropdownWithLabel,
   Error,
   Grid,
@@ -16,6 +15,7 @@ import {
   ProfilePicturePreview,
   Textarea,
   InputPhone,
+  Select,
 } from "@USupport-components-library/src";
 
 import { validate, validateProperty } from "@USupport-components-library/utils";
@@ -371,7 +371,8 @@ export const CreateProvider = ({
         </GridItem>
 
         <GridItem md={8} lg={4}>
-          <DropdownGroup
+          <Select
+            placeholder={t("select")}
             options={getLanguageOptions()}
             handleChange={(languages) =>
               handleWorkWithAndLanguageSelect("languages", languages)
@@ -381,7 +382,8 @@ export const CreateProvider = ({
             addMoreText={t("add_more_languages")}
             errorMessage={errors.languages}
           />
-          <DropdownGroup
+          <Select
+            placeholder={t("select")}
             label={t("specialization_label")}
             options={getSpecializationsOptions()}
             handleChange={(options) =>
@@ -399,14 +401,13 @@ export const CreateProvider = ({
             addMoreText={t("add_more_education")}
             errorMessage={errors.education}
           />
-          <DropdownGroup
-            options={getWorkWithOptions()}
-            handleChange={(workWith) =>
-              handleWorkWithAndLanguageSelect("workWith", workWith)
-            }
+          <Select
+            placeholder={t("select")}
             label={t("work_with_label")}
-            maxShown={5}
-            addMoreText={t("add_more_work_with")}
+            options={getWorkWithOptions()}
+            handleChange={(workWith) => {
+              handleWorkWithAndLanguageSelect("workWith", workWith);
+            }}
             errorMessage={errors.workWith}
           />
         </GridItem>

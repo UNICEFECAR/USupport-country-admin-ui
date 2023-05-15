@@ -1,4 +1,10 @@
-import React, { useCallback, useRef, useState, useEffect } from "react";
+import React, {
+  useCallback,
+  useRef,
+  useState,
+  useEffect,
+  useMemo,
+} from "react";
 import { useTranslation } from "react-i18next";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
@@ -18,6 +24,7 @@ import {
   Modal,
   ProviderOverview,
   Toggle,
+  StatusBadge,
 } from "@USupport-components-library/src";
 import { adminSvc } from "@USupport-components-library/services";
 
@@ -34,7 +41,11 @@ const AMAZON_S3_BUCKET = `${import.meta.env.VITE_AMAZON_S3_BUCKET}`;
  *
  * @return {jsx}
  */
-export const Providers = () => {
+export const Providers = ({
+  displayListView,
+  isFilterModalOpen,
+  setIsFilterModalOpen,
+}) => {
   const initialFilters = {
     price: "",
     status: "",
@@ -42,12 +53,11 @@ export const Providers = () => {
     specialization: "",
   };
   const navigate = useNavigate();
-  const { t } = useTranslation("providers");
+  const { t, i18n } = useTranslation("providers");
   const queryClient = useQueryClient();
   const currencySymbol = localStorage.getItem("currency_symbol");
 
   const [filters, setFilters] = useState(initialFilters);
-  const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
   const [appliedFilters, setAppliedFilters] = useState();
 
   const fetchProvidersData = async ({ pageParam = 1 }) => {
@@ -227,32 +237,37 @@ export const Providers = () => {
     setIsFilterModalOpen(false);
   };
 
-  const rows = [
-    {
-      label: t("name"),
-      // sortingKey: "displayName",
-    },
-    {
-      label: t("email"),
-      // sortingKey: "email",
-    },
+  const rows = useMemo(() => {
+    return [
+      {
+        label: t("name"),
+        // sortingKey: "displayName",
+      },
+      {
+        label: t("email"),
+        // sortingKey: "email",
+      },
 
-    {
-      label: t("status"),
-      // sortingKey: "status",
-    },
-    {
-      label: t("price"),
-      // sortingKey: "consultationPrice",
-    },
-    {
-      label: t("specializations"),
-      // sortingKey: "specializations",
-    },
-    {
-      label: t("actions"),
-    },
-  ];
+      {
+        label: t("status"),
+        isCentered: true,
+        // sortingKey: "status",
+      },
+      {
+        label: t("price"),
+        isCentered: true,
+        // sortingKey: "consultationPrice",
+      },
+      {
+        label: t("specializations"),
+        // sortingKey: "specializations",
+      },
+      {
+        label: t("actions"),
+        isCentered: true,
+      },
+    ];
+  }, [i18n.language]);
 
   const rowsData = providersQuery.data?.pages?.flat().map((provider, idx) => {
     return [
@@ -265,12 +280,7 @@ export const Providers = () => {
 
       <p>{provider.email}</p>,
 
-      <div
-        className={`providers__list-view__status providers__list-view__status--${provider.status}`}
-      >
-        <p className="small-text">{t(provider.status)}</p>
-      </div>,
-
+      <StatusBadge label={t(provider.status)} status={provider.status} />,
       <div
         className={[
           "providers__list-view__price-badge",
@@ -302,13 +312,12 @@ export const Providers = () => {
           }
           size="md"
         />
-        <p className="text">
+        <p className="text centered">
           {provider.status === "active" ? t("deactivate") : t("activate")}
         </p>
       </div>,
     ];
   });
-  const [displayListView, setDisplayListView] = useState(false);
   return (
     <Block classes="providers">
       <InfiniteScroll
@@ -322,29 +331,6 @@ export const Providers = () => {
         scrollThreshold={0}
       >
         <Grid classes="providers__grid">
-          <GridItem md={8} lg={12} classes="providers__grid__heading">
-            <h2>{t("providers")} </h2>
-            <div className="providers__grid__heading__button-container">
-              <Icon
-                color="#20809E"
-                name={displayListView ? "grid-view" : "list-view"}
-                size="lg"
-                onClick={() => setDisplayListView(!displayListView)}
-              />
-              <Button
-                label={t("create_provider")}
-                classes="providers__create-provider-button"
-                onClick={() => navigate("/create-provider")}
-                size="sm"
-              />
-              <Button
-                label={t("filter_providers")}
-                onClick={() => setIsFilterModalOpen(true)}
-                size="sm"
-                color="purple"
-              />
-            </div>
-          </GridItem>
           {providersQuery.isLoading ? (
             <GridItem md={8} lg={12}>
               <Loading size="lg" />

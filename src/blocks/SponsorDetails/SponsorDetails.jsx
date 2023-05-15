@@ -8,7 +8,6 @@ import {
   Button,
   Grid,
   GridItem,
-  InputSearch,
   Modal,
   Input,
   DateInput,
@@ -39,7 +38,7 @@ import "./sponsor-details.scss";
  */
 export const SponsorDetails = ({ data }) => {
   const navigate = useNavigate();
-  const { t } = useTranslation("sponsor-details");
+  const { t, i18n } = useTranslation("sponsor-details");
   const currencySymbol = localStorage.getItem("currency_symbol");
 
   const [searchValue, setSearchValue] = useState("");
@@ -62,45 +61,55 @@ export const SponsorDetails = ({ data }) => {
         label: t("used_total_coupons"),
         sortingKey: "usedCoupons",
         isNumbered: true,
+        isCentered: true,
       },
-      { label: t("coupon_price"), sortingKey: "couponPrice", isNumbered: true },
+      {
+        label: t("coupon_price"),
+        sortingKey: "couponPrice",
+        isNumbered: true,
+        isCentered: true,
+      },
       {
         label: t("used_total_budget"),
         sortingKey: "usedBudget",
         isNumbered: true,
+        isCentered: true,
       },
       {
         label: t("max_coupons"),
         sortingKey: "maxCouponsPerClient",
         isNumbered: true,
+        isCentered: true,
       },
       { label: t("period"), sortingKey: "startDate", isDate: true },
-      { label: t("status"), sortingKey: "status" },
+      { label: t("status"), sortingKey: "status", isCentered: true },
     ];
-  }, []);
+  }, [i18n.language]);
 
   const rowsData = dataToDisplay
     ?.filter((x) => x.name.toLowerCase().includes(searchValue.toLowerCase()))
     .map((item) => {
       return [
-        <p>{item.name}</p>,
-        <p>
+        <p className="text ">{item.name}</p>,
+        <p className="text centered">
           {item.couponData.length}/{item.numberOfCoupons}
         </p>,
-        <p>
+        <p className="text centered">
           {item.couponPrice}
           {currencySymbol}
         </p>,
-        <p>
+        <p className="text centered">
           {item.couponPrice * item.couponData.length}
           {currencySymbol}/{item.budget}
           {currencySymbol}
         </p>,
-        <p>{item.maxCouponsPerClient}</p>,
-        <p>
+        <p className="text centered">{item.maxCouponsPerClient}</p>,
+        <p className="text ">
           {getDateView(item.startDate)} - {getDateView(item.endDate)}
         </p>,
-        <p>{t(item.active ? "active" : "inactive")}</p>,
+        <p className="text centered">
+          {t(item.active ? "active" : "inactive")}
+        </p>,
       ];
     });
 
@@ -190,10 +199,10 @@ export const SponsorDetails = ({ data }) => {
         handleClickPropName="campaignId"
         menuOptions={menuOptions}
         hasSearch
-        buttonLabel={t("filter")}
-        buttonAction={() => setIsFilterModalOpen(true)}
-        secondaryButtonLabel={t("add_campaign")}
-        secondaryButtonAction={handleAddCampaign}
+        buttonLabel={t("add_campaign")}
+        buttonAction={handleAddCampaign}
+        secondaryButtonLabel={t("filter")}
+        secondaryButtonAction={() => setIsFilterModalOpen(true)}
         t={t}
       />
 

@@ -31,7 +31,7 @@ export const AdminProfile = () => {
       classes="page__admin-profile"
       heading={t("heading")}
       subheading={t("subheading")}
-      handleGoBack={handleGoBack}
+      showGoBackArrow={false}
       headingButton={
         <ButtonWithIcon
           label={t("button_label")}

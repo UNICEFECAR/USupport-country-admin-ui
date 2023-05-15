@@ -98,12 +98,21 @@ export const CampaignDetails = ({
 
   const tableRows = useMemo(() => {
     return [
-      { label: "№" },
+      { label: "№", isCentered: true },
       { label: t("provider"), sortingKey: "providerName" },
       { label: t("client"), sortingKey: "clientName" },
-      { label: t("client_sex"), sortingKey: "clientSex" },
-      { label: t("client_yob"), sortingKey: "clientYob", isNumbered: true },
-      { label: t("client_place_of_living"), sortingKey: "clientPlaceOfLiving" },
+      { label: t("client_sex"), sortingKey: "clientSex", isCentered: true },
+      {
+        label: t("client_yob"),
+        sortingKey: "clientYob",
+        isNumbered: true,
+        isCentered: true,
+      },
+      {
+        label: t("client_place_of_living"),
+        sortingKey: "clientPlaceOfLiving",
+        isCentered: true,
+      },
       { label: t("used_on"), sortingKey: "createdAt", isDate: true },
     ];
   }, []);
@@ -111,13 +120,13 @@ export const CampaignDetails = ({
   const getTableRowsData = useCallback(() => {
     return dataToDisplay?.map((coupon, index) => {
       return [
-        <p>{index + 1}</p>,
-        <p>{coupon.providerName}</p>,
-        <p>{coupon.clientName}</p>,
-        <p>{t(coupon.clientSex)}</p>,
-        <p>{coupon.clientYob}</p>,
-        <p>{t(coupon.clientPlaceOfLiving)}</p>,
-        <p>{getDateView(coupon.createdAt)}</p>,
+        <p className="text centered">{index + 1}</p>,
+        <p className="text">{coupon.providerName}</p>,
+        <p className="text">{coupon.clientName}</p>,
+        <p className="text centered">{t(coupon.clientSex)}</p>,
+        <p className="text centered">{coupon.clientYob}</p>,
+        <p className="text centered">{t(coupon.clientPlaceOfLiving)}</p>,
+        <p className="text">{getDateView(coupon.createdAt)}</p>,
       ];
     });
   }, [dataToDisplay]);
@@ -287,27 +296,6 @@ export const CampaignDetails = ({
             </Grid>
           </Box>
         </GridItem>
-        <GridItem
-          md={8}
-          lg={12}
-          classes="campaign-details__box__grid__button-item"
-        >
-          <div className="campaign-details__buttons-container">
-            <Button
-              label={t("filter")}
-              type="secondary"
-              color="purple"
-              size="md"
-              onClick={() => setIsFilterModalOpen(true)}
-            />
-            <Button
-              label={t("export_report")}
-              color="purple"
-              size="md"
-              onClick={handleExportReport}
-            />
-          </div>
-        </GridItem>
       </Grid>
       {isLoading ? (
         <Loading />
@@ -319,6 +307,10 @@ export const CampaignDetails = ({
           hasMenu={false}
           updateData={setDataToDisplay}
           hasSearch
+          buttonLabel={t("export_report")}
+          buttonAction={handleExportReport}
+          secondaryButtonLabel={t("filter")}
+          secondaryButtonAction={() => setIsFilterModalOpen(true)}
           t={t}
         />
       )}

@@ -4,3 +4,4 @@ export * as FilterSecurityCheckReports from "./FilterSecurityCheckReports/locale
 export * as CodeVerification from "./CodeVerification/locales.js";
 export * as QuestionDetails from "./QuestionDetails/locales.js";
 export * as FilterQuestions from "./FilterQuestions/locales.js";
+export * as ChangePassword from "./ChangePassword/locales.js";

@@ -6,7 +6,10 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { Navbar, Icon, Block } from "@USupport-components-library/src";
 import { countrySvc, languageSvc } from "@USupport-components-library/services";
-import { getCountryFromTimezone } from "@USupport-components-library/utils";
+import {
+  getCountryFromTimezone,
+  useWindowDimensions,
+} from "@USupport-components-library/utils";
 import { useIsLoggedIn } from "#hooks";
 
 import "./page.scss";
@@ -33,6 +36,8 @@ export const Page = ({
   classes,
   children,
   handleGoBack,
+  showHeadingButtonInline = false,
+  showHeadingButtonBelow = true,
   image,
 }) => {
   const navigateTo = useNavigate();
@@ -40,6 +45,8 @@ export const Page = ({
 
   const isLoggedIn = useIsLoggedIn();
   const isNavbarShown = showNavbar !== null ? showNavbar : isLoggedIn;
+
+  const { width } = useWindowDimensions();
 
   const pages = [
     { name: t("page_1"), url: "/dashboard" },
@@ -115,7 +122,8 @@ export const Page = ({
       const languageObject = {
         value: x.alpha2,
         label: x.name,
-        id: x["language_id"],
+        localName: x.local_name,
+        id: x.language_id,
       };
       if (localStorageLanguage === x.alpha2) {
         setSelectedLanguage(languageObject);
@@ -159,8 +167,15 @@ export const Page = ({
         ].join(" ")}
       >
         {(heading || showGoBackArrow || headingButton) && (
-          <Block>
-            <div className="page__header">
+          <>
+            <div
+              className={[
+                "page__header",
+                showHeadingButtonBelow &&
+                  !width >= 768 &&
+                  "page__header__button-below",
+              ].join(" ")}
+            >
               {showGoBackArrow && (
                 <Icon
                   classes="page__header-icon"
@@ -171,11 +186,26 @@ export const Page = ({
                 />
               )}
               {image && <img className="page__header__image" src={image} />}
-              {heading && <h3 className="page__header-heading">{heading}</h3>}
-              {headingButton && headingButton}
+              {heading && <h2 className="page__header-heading">{heading}</h2>}
+              {headingButton && (width >= 768 || showHeadingButtonInline) && (
+                <div className="page__header-button-container">
+                  {headingButton}
+                </div>
+              )}
             </div>
-          </Block>
+            {headingButton && (
+              <div className="page__mobile-button-container">
+                {width < 768 &&
+                !showHeadingButtonInline &&
+                headingButton &&
+                showHeadingButtonBelow
+                  ? headingButton
+                  : null}
+              </div>
+            )}
+          </>
         )}
+
         {children}
       </div>
     </>
