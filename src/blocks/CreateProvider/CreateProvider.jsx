@@ -308,7 +308,7 @@ export const CreateProvider = ({
 
         <GridItem md={8} lg={4}>
           <InputPhone
-            label={t("phone_label")}
+            label={t("phone_label") + " *"}
             placeholder={t("phone_placeholder")}
             value={providerData.phone}
             onChange={(value) => handleChange("phone", value)}
@@ -377,14 +377,14 @@ export const CreateProvider = ({
             handleChange={(languages) =>
               handleWorkWithAndLanguageSelect("languages", languages)
             }
-            label={t("language_label")}
+            label={t("language_label") + " *"}
             maxShown={5}
             addMoreText={t("add_more_languages")}
             errorMessage={errors.languages}
           />
           <Select
             placeholder={t("select")}
-            label={t("specialization_label")}
+            label={t("specialization_label") + " *"}
             options={getSpecializationsOptions()}
             handleChange={(options) =>
               handleWorkWithAndLanguageSelect("specializations", options)
@@ -403,7 +403,7 @@ export const CreateProvider = ({
           />
           <Select
             placeholder={t("select")}
-            label={t("work_with_label")}
+            label={t("work_with_label") + " *"}
             options={getWorkWithOptions()}
             handleChange={(workWith) => {
               handleWorkWithAndLanguageSelect("workWith", workWith);
