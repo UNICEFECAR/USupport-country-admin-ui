@@ -2,5 +2,12 @@
   "no_results": "No results found, please try a different language.",
   "sos_center_added": "SOS Center added successfully.",
   "sos_center_removed": "SOS Center removed successfully.",
-  "search_placeholder": "Search"
+  "search": "Search",
+  "published": "Published",
+  "image": "Image",
+  "content": "Content",
+  "url": "Link",
+  "phone": "Phone",
+  "published_at": "Published At",
+  "no_data_found": "No data found"
 }

@@ -2,5 +2,12 @@
   "no_results": "Ничего не нашлось, попробуйте другой язык.",
   "sos_center_added": "SOS Center added successfullyRU.",
   "sos_center_removed": "SOS Center removed successfullyRU.",
-  "search_placeholder": "Поиск"
+  "search": "Поиск",
+  "published": "Published",
+  "image": "Image",
+  "content": "Content",
+  "url": "Link",
+  "phone": "Телефон",
+  "published_at": "Published At",
+  "no_data_found": "No data found"
 }

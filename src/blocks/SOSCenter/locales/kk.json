@@ -2,5 +2,12 @@
   "no_results": "Ештеңе табылмады, басқа тілді байқап көріңіз",
   "sos_center_added": "SOS Center added successfullyKK.",
   "sos_center_removed": "SOS Center removed successfullyKK.",
-  "search_placeholder": "Іздеу"
+  "search": "Іздеу",
+  "published": "Published",
+  "image": "Image",
+  "content": "Content",
+  "url": "Link",
+  "phone": "Телефон",
+  "published_at": "Published At",
+  "no_data_found": "No data found"
 }
