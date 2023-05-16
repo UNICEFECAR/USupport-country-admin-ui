@@ -153,8 +153,11 @@ export const CampaignDetails = ({
   // Create a CSV file with the data of the coupons
   // And download it
   const handleExportReport = () => {
-    let csv = `${tableRows.slice(1).join(",")}\n`;
-    couponsData.forEach((c) => {
+    let csv = `${tableRows
+      .slice(1)
+      .map((x) => x.label)
+      .join(",")}\n`;
+    dataToDisplay.forEach((c) => {
       csv += `${c.providerName},${c.clientName},${t(c.clientSex)},${
         c.clientYob
       },${c.clientPlaceOfLiving},${getDateView(c.createdAt)}\n`;
@@ -206,10 +209,9 @@ export const CampaignDetails = ({
         coupon.providerName === filters.providerName;
 
       const isClientNameMatching =
-        filters.clientName === "all" ||
-        !filters.clientName ||
-        !filters.clientName !== "all" ||
-        coupon.clientName === filters.clientName;
+        filters.clientName === "all" || !filters.clientName
+          ? true
+          : coupon.clientName === filters.clientName;
 
       const isClientSexMatching =
         !filters.clientSex || coupon.clientSex === filters.clientSex;
