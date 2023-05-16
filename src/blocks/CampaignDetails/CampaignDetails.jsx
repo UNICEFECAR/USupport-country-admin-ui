@@ -227,8 +227,8 @@ export const CampaignDetails = ({
       // is after the date selected by the admin
       const isStartDateMatching =
         !filters.usedAfter ||
-        new Date(new Date(coupon.createdAt).setHours(0, 0, 0)) >=
-          new Date(filters.usedAfter);
+        new Date(coupon.createdAt) >=
+          new Date(new Date(filters.usedAfter).setHours(0, 0, 0));
 
       const isEndDateMatching =
         !filters.endDate ||

@@ -41,8 +41,6 @@ export const SponsorDetails = ({ data }) => {
   const { t, i18n } = useTranslation("sponsor-details");
   const currencySymbol = localStorage.getItem("currency_symbol");
 
-  const [searchValue, setSearchValue] = useState("");
-
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
   const [filterData, setFilterData] = useState(initialFilters);
 
@@ -86,32 +84,28 @@ export const SponsorDetails = ({ data }) => {
     ];
   }, [i18n.language]);
 
-  const rowsData = dataToDisplay
-    ?.filter((x) => x.name.toLowerCase().includes(searchValue.toLowerCase()))
-    .map((item) => {
-      return [
-        <p className="text ">{item.name}</p>,
-        <p className="text centered">
-          {item.couponData.length}/{item.numberOfCoupons}
-        </p>,
-        <p className="text centered">
-          {item.couponPrice}
-          {currencySymbol}
-        </p>,
-        <p className="text centered">
-          {item.couponPrice * item.couponData.length}
-          {currencySymbol}/{item.budget}
-          {currencySymbol}
-        </p>,
-        <p className="text centered">{item.maxCouponsPerClient}</p>,
-        <p className="text ">
-          {getDateView(item.startDate)} - {getDateView(item.endDate)}
-        </p>,
-        <p className="text centered">
-          {t(item.active ? "active" : "inactive")}
-        </p>,
-      ];
-    });
+  const rowsData = dataToDisplay.map((item) => {
+    return [
+      <p className="text ">{item.name}</p>,
+      <p className="text centered">
+        {item.couponData.length}/{item.numberOfCoupons}
+      </p>,
+      <p className="text centered">
+        {item.couponPrice}
+        {currencySymbol}
+      </p>,
+      <p className="text centered">
+        {item.couponPrice * item.couponData.length}
+        {currencySymbol}/{item.budget}
+        {currencySymbol}
+      </p>,
+      <p className="text centered">{item.maxCouponsPerClient}</p>,
+      <p className="text ">
+        {getDateView(item.startDate)} - {getDateView(item.endDate)}
+      </p>,
+      <p className="text centered">{t(item.active ? "active" : "inactive")}</p>,
+    ];
+  });
 
   const handleNavigate = (id, route) => {
     const campaignData = data.campaignsData?.find((x) => x.campaignId === id);
@@ -154,11 +148,14 @@ export const SponsorDetails = ({ data }) => {
       const isMinMaxCouponsPerClientMatching =
         Number(x.maxCouponsPerClient) >=
         Number(filterData.minMaxCouponsPerClient);
+
       const isStartDateMatching = filterData.startDate
-        ? new Date(x.startDate) >= new Date(filterData.startDate)
+        ? new Date(x.startDate) >=
+          new Date(new Date(filterData.startDate).setHours(0, 0, 0, 0))
         : true;
       const isEndDateMatching = filterData.endDate
-        ? new Date(x.endDate) <= new Date(filterData.endDate)
+        ? new Date(new Date(x.endDate).setHours(0, 0, 0, 0)) <=
+          new Date(filterData.endDate)
         : true;
       const isStatusMatching = filterData.showOnlyActive
         ? x.active === filterData.showOnlyActive
