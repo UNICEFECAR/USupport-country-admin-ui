@@ -407,6 +407,7 @@ export const EditProvider = ({
               label={t("education_label")}
               handleParentChange={(data) => handleEducationChange(data)}
               addMoreText={t("add_more_education")}
+              removeText={t("remove")}
               errorMessage={errors.education}
             />
             <Select
