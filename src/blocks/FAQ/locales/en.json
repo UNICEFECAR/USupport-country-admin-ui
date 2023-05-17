@@ -5,5 +5,8 @@
   "website_tab_label": "Website",
   "faq_added": "FAQ added successfully",
   "faq_removed": "FAQ removed successfully",
-  "search_placeholder": "Search"
+  "search_placeholder": "Search",
+  "published": "Published",
+  "content": "Content",
+  "published_at": "Published At"
 }

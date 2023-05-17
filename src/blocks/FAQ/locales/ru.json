@@ -5,5 +5,8 @@
   "website_tab_label": "WebsiteRU",
   "faq_added": "FAQ added successfullyRU",
   "faq_removed": "FAQ removed successfullyRU",
-  "search_placeholder": "Поиск"
+  "search_placeholder": "Поиск",
+  "published": "Published",
+  "content": "Content",
+  "published_at": "Published At"
 }

@@ -7,13 +7,6 @@
     }
   }
 
-  &__rows {
-    padding-top: $spacing_3_0;
-    @media screen and (min-width: $screen-md) {
-      padding-top: $spacing_4_0;
-    }
-  }
-
   &__search {
     margin: $spacing_1_6 auto;
 
@@ -21,5 +14,9 @@
       margin: 0;
       margin-left: auto;
     }
+  }
+
+  &__row-text-container {
+    text-align: left;
   }
 }

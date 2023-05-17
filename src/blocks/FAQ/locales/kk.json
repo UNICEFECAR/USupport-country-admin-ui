@@ -5,5 +5,8 @@
   "website_tab_label": "WebsiteKK",
   "faq_added": "FAQ added successfullyKK",
   "faq_removed": "FAQ removed successfullyKK",
-  "search_placeholder": "Іздеу"
+  "search_placeholder": "Іздеу",
+  "published": "Published",
+  "content": "Content",
+  "published_at": "Published At"
 }
