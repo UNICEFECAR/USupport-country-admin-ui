@@ -12,5 +12,6 @@
   "end_date": "Дата окончания",
   "apply_filter": "Примените фильтры",
   "reset_filter": "Сбросить фильтр",
-  "search": "Поиск"
+  "search": "Поиск",
+  "no_data_found": "No data found"
 }
