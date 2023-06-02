@@ -1,6 +1,13 @@
 @import "@USupport-components-library/styles";
 
 .sos-center {
+  &__image {
+    width: 11.7rem;
+    height: 8.6rem;
+    border-radius: $border_radius_0_8;
+    object-fit: cover;
+  }
+
   &__search-input-item {
     place-self: center;
     @media screen and (min-width: $screen-md) {

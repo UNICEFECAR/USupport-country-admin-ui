@@ -7,4 +7,15 @@
       padding-top: $spacing_4_0;
     }
   }
+  &__image {
+    width: 11.7rem;
+    height: 8.6rem;
+    border-radius: $border_radius_0_8;
+  }
+
+  &__heading {
+    color: $color_blue_3d527b;
+    font-weight: $font_bold;
+    margin-bottom: $spacing_0_4;
+  }
 }

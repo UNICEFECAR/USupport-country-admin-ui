@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 
@@ -6,16 +6,20 @@ import {
   Block,
   Grid,
   GridItem,
-  FAQRow,
   Loading,
   TabsUnderlined,
   Error as ErrorComponent,
   InputSearch,
+  BaseTable,
+  CheckBox,
 } from "@USupport-components-library/src";
 import { useTranslation } from "react-i18next";
 
 import { cmsSvc, adminSvc } from "@USupport-components-library/services";
-import { filterAdminData } from "@USupport-components-library/utils";
+import {
+  filterAdminData,
+  getDateView,
+} from "@USupport-components-library/utils";
 import { useError } from "#hooks";
 
 import "./faq.scss";
@@ -33,6 +37,7 @@ export const FAQ = () => {
 
   const [error, setError] = useState();
   const [searchValue, setSearchValue] = useState("");
+  const [faqData, setFaqData] = useState([]);
 
   //--------------------- Tabs ----------------------//
   const [options, setOptions] = useState([
@@ -44,18 +49,6 @@ export const FAQ = () => {
     },
     { label: "Provider", value: "provider", isSelected: false },
   ]);
-
-  const handleTabPress = (index) => {
-    const optionsCopy = [...options];
-
-    optionsCopy.forEach((option) => {
-      option.isSelected = false;
-    });
-
-    optionsCopy[index].isSelected = !optionsCopy[index].isSelected;
-
-    setOptions(optionsCopy);
-  };
 
   //--------------------- FAQs ----------------------//
 
@@ -73,7 +66,13 @@ export const FAQ = () => {
 
     const filteredData = filterAdminData(data.data, data.meta.localizedIds);
 
-    return filteredData;
+    return filteredData.map((faq) => {
+      return {
+        id: faq.id,
+        isSelected: !!faq.isSelected,
+        ...faq.attributes,
+      };
+    });
   };
 
   const {
@@ -82,10 +81,34 @@ export const FAQ = () => {
     isFetched: isFAQsFetched,
   } = useQuery(["FAQs", options, i18n.language], getFAQs);
 
-  const handleSelectFAQ = async (id, newValue, index) => {
+  const rows = useMemo(() => {
+    return [
+      { label: t("published"), sortingKey: "isSelected", isCentered: true },
+      { label: t("content"), sortingKey: "question" },
+      { label: t("published_at"), sortingKey: "publishedAt", isCentered: true },
+    ];
+  }, [i18n.language]);
+
+  useEffect(() => {
+    setFaqData(FAQsData);
+  }, [FAQsData]);
+
+  const handleTabPress = (index) => {
+    const optionsCopy = [...options];
+
+    optionsCopy.forEach((option) => {
+      option.isSelected = false;
+    });
+
+    optionsCopy[index].isSelected = !optionsCopy[index].isSelected;
+
+    setOptions(optionsCopy);
+  };
+
+  const handleSelectFAQ = async (id, newValue) => {
     let newData = JSON.parse(JSON.stringify(FAQsData));
     const platform = options.find((x) => x.isSelected).value;
-    newData[index].isSelected = newValue;
+    newData.find((x) => x.id === id).isSelected = newValue;
 
     updateFAQsMutation.mutate({
       id: id.toString(),
@@ -138,20 +161,13 @@ export const FAQ = () => {
     },
   });
 
-  const renderAllFAQs = () => {
-    if (!FAQsData?.length && FAQsLoading) return <Loading />;
-
-    const filteredQuestions = FAQsData?.filter((faq) => {
+  const getFilteredQuestions = () => {
+    const filteredQuestions = faqData?.filter((faq) => {
       if (searchValue) {
         const value = searchValue.toLowerCase();
-        const attributes = faq.attributes;
 
-        const isQuestionMatching = attributes.question
-          .toLowerCase()
-          .includes(value);
-        const isAnswerMatching = attributes.answer
-          .toLowerCase()
-          .includes(value);
+        const isQuestionMatching = faq.question.toLowerCase().includes(value);
+        const isAnswerMatching = faq.answer.toLowerCase().includes(value);
 
         return isQuestionMatching || isAnswerMatching;
       }
@@ -159,29 +175,29 @@ export const FAQ = () => {
       return true;
     });
 
-    return (
-      <>
-        {isFAQsFetched &&
-          filteredQuestions &&
-          filteredQuestions?.map((faq, index) => {
-            return (
-              <FAQRow
-                selected={faq.isSelected}
-                setSelected={() =>
-                  handleSelectFAQ(faq.id, !faq.isSelected, index)
-                }
-                question={faq.attributes.question}
-                answer={faq.attributes.answer}
-                key={index}
-              />
-            );
-          })}
+    return filteredQuestions;
+  };
 
-        {!filteredQuestions?.length && !FAQsLoading && isFAQsFetched && (
-          <h3 className="page__faq__no-results">{t("no_results")}</h3>
-        )}
-      </>
-    );
+  const getTableRows = () => {
+    const data = getFilteredQuestions();
+
+    return data?.map((faq) => {
+      return [
+        <div>
+          <CheckBox
+            isChecked={faq.isSelected}
+            setIsChecked={() => handleSelectFAQ(faq.id, !faq.isSelected)}
+          />
+        </div>,
+        <div className="faq__row-text-container">
+          <h4>{faq.question}</h4>
+          <p className="text">{faq.answer}</p>
+        </div>,
+        <p className="text centered">
+          {getDateView(new Date(faq.publishedAt))}
+        </p>,
+      ];
+    });
   };
 
   return (
@@ -206,9 +222,20 @@ export const FAQ = () => {
             </GridItem>
           </Grid>
         </GridItem>
-
-        <GridItem md={8} lg={12} classes="faq__rows">
-          {renderAllFAQs()}
+        <GridItem md={8} lg={12}>
+          {!FAQsData?.length && FAQsLoading ? (
+            <Loading />
+          ) : (
+            <BaseTable
+              rows={rows}
+              t={t}
+              data={getFilteredQuestions()}
+              rowsData={getTableRows()}
+              hasMenu={false}
+              updateData={setFaqData}
+              noteText={t("note")}
+            />
+          )}
           {error ? <ErrorComponent message={error} /> : null}
         </GridItem>
       </Grid>

@@ -27,6 +27,7 @@ import {
   StatusBadge,
 } from "@USupport-components-library/src";
 import { adminSvc } from "@USupport-components-library/services";
+import { useWindowDimensions } from "@USupport-components-library/utils";
 
 import { useUpdateProviderStatus } from "#hooks";
 
@@ -59,9 +60,10 @@ export const Providers = ({
 
   const [filters, setFilters] = useState(initialFilters);
   const [appliedFilters, setAppliedFilters] = useState();
-
+  const { width } = useWindowDimensions();
   const fetchProvidersData = async ({ pageParam = 1 }) => {
-    const { data } = await adminSvc.getAllProviders(pageParam, filters);
+    const limit = width < 1366 ? 15 : 40;
+    const { data } = await adminSvc.getAllProviders(limit, pageParam, filters);
     const formattedData = [];
     for (let i = 0; i < data.length; i++) {
       const providerData = data[i];

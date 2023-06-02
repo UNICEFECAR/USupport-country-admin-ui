@@ -1,19 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useMemo, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import {
   Block,
+  Button,
   Grid,
   GridItem,
-  ArticleRow,
+  CheckBox,
   Loading,
   Error as ErrorComponent,
+  BaseTable,
 } from "@USupport-components-library/src";
 import { useTranslation } from "react-i18next";
 
 import { cmsSvc, adminSvc } from "@USupport-components-library/services";
-import { filterAdminData } from "@USupport-components-library/utils";
+import { articlePlaceholder } from "@USupport-components-library/assets";
+import {
+  filterAdminData,
+  getDateView,
+} from "@USupport-components-library/utils";
+
 import { useError } from "#hooks";
 
 import "./articles.scss";
@@ -30,6 +37,7 @@ export const Articles = () => {
   const { i18n, t } = useTranslation("articles");
   const navigate = useNavigate();
   const [error, setError] = useState();
+  const [dataToDisplay, setDataToDisplay] = useState();
 
   //--------------------- Articles ----------------------//
   const getArticles = async () => {
@@ -45,7 +53,13 @@ export const Articles = () => {
 
     const filteredData = filterAdminData(data.data, data.meta.localizedIds);
 
-    return filteredData;
+    const formattedData = filteredData.map((x) => ({
+      ...x.attributes,
+      id: x.id,
+      isSelected: x.isSelected,
+    }));
+    setDataToDisplay(formattedData);
+    return formattedData;
   };
 
   const {
@@ -54,9 +68,12 @@ export const Articles = () => {
     isFetched: isArticlesFetched,
   } = useQuery(["articles", i18n.language], getArticles);
 
-  const handleSelectArticle = async (id, newValue, index) => {
-    let newData = JSON.parse(JSON.stringify(articlesData));
+  const handleSelectArticle = async (id, newValue) => {
+    let newData = JSON.parse(JSON.stringify(dataToDisplay));
+    const index = newData.indexOf(newData.find((x) => x.id === id));
+    console.log(index, "index");
     newData[index].isSelected = newValue;
+    setDataToDisplay(newData);
 
     updateArticlesMutation.mutate({
       id: id.toString(),
@@ -98,33 +115,81 @@ export const Articles = () => {
     },
   });
 
+  const rows = useMemo(() => {
+    return [
+      {
+        label: t("published"),
+        sortingKey: "isSelected",
+        isCentered: true,
+      },
+      {
+        label: t("image"),
+        isCentered: true,
+      },
+      {
+        label: t("content"),
+        sortingKey: "title",
+      },
+      {
+        label: t("created_at"),
+        sortingKey: "createdAt",
+        isDate: true,
+      },
+      {
+        label: t("view"),
+        isCentered: true,
+      },
+    ];
+  }, []);
+
+  const rowsData = useCallback(() => {
+    return dataToDisplay?.map((article) => {
+      return [
+        <CheckBox
+          isChecked={article.isSelected}
+          setIsChecked={() =>
+            handleSelectArticle(article.id, !article.isSelected)
+          }
+        />,
+        <img
+          className="articles__image"
+          src={
+            article.image?.data?.attributes?.formats?.medium?.url ||
+            articlePlaceholder
+          }
+        />,
+        <div>
+          <p className="articles__heading">{article.title}</p>
+          <p className="text">{article.description}</p>
+        </div>,
+        <div>{getDateView(new Date(article.createdAt))}</div>,
+        <Button
+          label={t("view_button")}
+          onClick={(e) => {
+            e.sstopPropagation();
+            navigate(`/article/${article.id}`);
+          }}
+        />,
+      ];
+    });
+  }, [dataToDisplay]);
+
   return (
     <Block classes="articles">
       <Grid>
         <GridItem md={8} lg={12} classes="articles__rows">
-          {isArticlesFetched &&
-            articlesData &&
-            articlesData.map((article, index) => {
-              return (
-                <ArticleRow
-                  selected={article.isSelected}
-                  setSelected={() => {
-                    handleSelectArticle(article.id, !article.isSelected, index);
-                  }}
-                  heading={article.attributes.title}
-                  description={article.attributes.description}
-                  key={index}
-                  buttonLabel={t("view_button")}
-                  onClick={() => {
-                    navigate(`/article/${article.id}`);
-                  }}
-                  image={
-                    article.attributes.image?.data?.attributes?.formats?.medium
-                      ?.url
-                  }
-                />
-              );
-            })}
+          {isArticlesFetched && articlesData && (
+            <BaseTable
+              data={articlesData || []}
+              rows={rows}
+              rowsData={rowsData()}
+              updateData={setDataToDisplay}
+              t={t}
+              hasSearch
+              hasMenu={false}
+              noteText={t("note")}
+            />
+          )}
           {!articlesData?.length && articlesLoading && <Loading />}
           {!articlesData?.length && !articlesLoading && isArticlesFetched && (
             <h3 className="articles__no-results">{t("no_results")}</h3>

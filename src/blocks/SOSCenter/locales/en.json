@@ -2,5 +2,13 @@
   "no_results": "No results found, please try a different language.",
   "sos_center_added": "SOS Center added successfully.",
   "sos_center_removed": "SOS Center removed successfully.",
-  "search_placeholder": "Search"
+  "search": "Search",
+  "published": "Published",
+  "image": "Image",
+  "content": "Content",
+  "url": "Link",
+  "phone": "Phone",
+  "published_at": "Created At",
+  "no_data_found": "No data found",
+  "note": "<0>Note*</0> If the checkbox in the \"Published\" column is marked as selected it means that the SOS Center is visible to the users in the platform"
 }
