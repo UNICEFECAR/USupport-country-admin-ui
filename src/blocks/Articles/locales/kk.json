@@ -7,7 +7,7 @@
   "image": "ImageKK",
   "content": "ContentKK",
   "view": "Көріп шығу",
-  "note": "<0>Note*</0> If the checkbox in the \"Published\" column is marked as selected it means that the Article is visible to the users in the platformKK",
+  "note": "<0>Note*</0> If the checkbox in the \"Published\" column is marked as selected it means that the Article is visible to the users of the platformKK",
   "search": "Іздеу",
   "no_data_found": "Ақпарат табылмады",
   "created_at": "Created AtKK"

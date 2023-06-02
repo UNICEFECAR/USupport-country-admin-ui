@@ -7,7 +7,7 @@
   "image": "ImageRU",
   "content": "ContentRU",
   "view": "Просмотр",
-  "note": "<0>Note*</0> If the checkbox in the \"Published\" column is marked as selected it means that the Article is visible to the users in the platformRU",
+  "note": "<0>Note*</0> If the checkbox in the \"Published\" column is marked as selected it means that the Article is visible to the users of the platformRU",
   "search": "Поиск",
   "no_data_found": "Данные не найдены",
   "created_at": "Created AtRU"
