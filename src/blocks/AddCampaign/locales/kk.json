@@ -16,13 +16,13 @@
   "dates_placeholder": "КК.АА.ЖЖЖЖ",
   "max_coupons_per_client_placeholder": "Бір клиентке арналған купондардың ең көп саны",
   "terms_placeholder": "Ережелер мен шарттарды жазыңыз",
-  "budget_info": "The price for a single consultation will be",
+  "budget_info": "Бір реттік консультацияның бағасы",
 
   "required_field": "Өріс міндетті түрде толтырылады",
   "budget_error": "Бюджет оң сан болуы керек",
-  "start_date_error": "The start date of the campaign should be in the future",
-  "end_date_error": "The end date of the campaign should be in the future",
-  "period_error": "The end date should be after the start date",
+  "start_date_error": "Науқанның басталу күні болашақта болуы тиіс",
+  "end_date_error": "Науқанның аяқталуы болашақта болуы тиіс",
+  "period_error": "Науқанның аяқталуы басталуынан кейін болуы тиіс",
 
   "create_campaign": "Науқан құру",
   "save_changes": "Save changes",

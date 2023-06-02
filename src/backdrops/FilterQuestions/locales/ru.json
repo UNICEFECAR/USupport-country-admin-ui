@@ -4,9 +4,11 @@
   "reset": "Сбросить фильтры",
   "save": "Примените фильтры",
   "provider": "Консультанты",
-  "duplicate": "Already exist",
-  "spam": "Spam",
+  "duplicate": "Уже существует",
+  "spam": "Спам",
   "other": "Другое",
+  "tag": "Tag",
+  "reason_dropdown_label": "Reason",
   "starting_date": "Дата начала",
   "ending_date": "Дата окончания"
 }

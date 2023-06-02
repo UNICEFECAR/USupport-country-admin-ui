@@ -1,12 +1,11 @@
 {
-    "heading": "Questions",
-    "answered": "Answered",
-    "unanswered": "Unanswered",
+    "heading": "Вопросы",
+    "answered": "Отвеченные",
+    "unanswered": "Неотвеченные",
     "search_placeholder": "Поиск",
-    "answer_by": "Answer by:",
-    "no_data_found": "No data found",
-    "all": "All",
-    "tag": "Tag",
-    "read_more": "Read more",
-    "Today": "Today"
+    "answer_by": "Ответил:",
+    "no_data_found": "Данные не найдены",
+    "all": "Все",
+    "read_more": "Узнать больше",
+    "Today": "Сегодня"
 }

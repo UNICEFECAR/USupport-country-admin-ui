@@ -4,9 +4,11 @@
   "reset": "Сүзгілерді қалпына келтіру",
   "save": "Сүзгілерді қолданыңыз",
   "provider": "Консультанттар",
-  "duplicate": "Already exist",
-  "spam": "Spam",
+  "duplicate": "Қазірдің өзінде бар",
+  "spam": "Спам",
   "other": "Басқа",
+  "tag": "Tag",
+  "reason_dropdown_label": "Reason",
   "starting_date": "Басталу күні",
   "ending_date": "Аяқталу күні"
 }

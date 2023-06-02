@@ -1,14 +1,14 @@
 {
   "no_results": "Ештеңе табылмады, басқа тілді байқап көріңіз",
   "view_button": "көріп шығу",
-  "article_added": "Article added successfullyKK",
-  "article_removed": "Article removed successfullyKK",
+  "article_added": "Мақала сәтті қосылды",
+  "article_removed": "Мақала сәтті жойылды",
   "published": "PublishedKK",
   "image": "ImageKK",
   "content": "ContentKK",
   "view": "Көріп шығу",
   "note": "<0>Note*</0> If the checkbox in the \"Published\" column is marked as selected it means that the Article is visible to the users in the platformKK",
   "search": "Іздеу",
-  "no_data_found": "No data foundKK",
+  "no_data_found": "Ақпарат табылмады",
   "created_at": "Created AtKK"
 }
