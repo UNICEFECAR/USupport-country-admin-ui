@@ -196,6 +196,7 @@ export const SOSCenter = () => {
         hasSearch
         hasMenu={false}
         isLoading={isLoading}
+        noteText={t("note")}
         t={t}
       />
     </Block>

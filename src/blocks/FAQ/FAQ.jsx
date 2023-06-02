@@ -233,6 +233,7 @@ export const FAQ = () => {
               rowsData={getTableRows()}
               hasMenu={false}
               updateData={setFaqData}
+              noteText={t("note")}
             />
           )}
           {error ? <ErrorComponent message={error} /> : null}
