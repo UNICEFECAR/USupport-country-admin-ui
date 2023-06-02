@@ -2,5 +2,13 @@
   "no_results": "No results found, please try a different language.",
   "view_button": "view",
   "article_added": "Article added successfully",
-  "article_removed": "Article removed successfully"
+  "article_removed": "Article removed successfully",
+  "published": "Published",
+  "image": "Image",
+  "content": "Content",
+  "view": "View",
+  "note": "<0>Note*</0> If the checkbox in the \"Published\" column is marked as selected it means that the Article is visible to the users in the platform",
+  "search": "Search",
+  "no_data_found": "No data found",
+  "created_at": "Created At"
 }

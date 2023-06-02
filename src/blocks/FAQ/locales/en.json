@@ -8,5 +8,6 @@
   "search_placeholder": "Search",
   "published": "Published",
   "content": "Content",
-  "published_at": "Created At"
+  "published_at": "Created At",
+  "note": "<0>Note*</0> If the checkbox in the \"Published\" column is marked as selected it means that the FAQ is visible to the users in the platform"
 }
