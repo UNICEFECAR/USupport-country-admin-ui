@@ -1,7 +1,7 @@
 {
   "no_results": "Ничего не нашлось, попробуйте другой язык.",
-  "sos_center_added": "SOS Center added successfullyRU.",
-  "sos_center_removed": "SOS Center removed successfullyRU.",
+  "sos_center_added": "SOS-центр успешно добавлен",
+  "sos_center_removed": "SOS-центр успешно удален",
   "search": "Поиск",
   "published": "Published",
   "image": "Image",
@@ -10,5 +10,5 @@
   "phone": "Телефон",
   "published_at": "Created At",
   "no_data_found": "No data found",
-  "note": "<0>Note*</0> If the checkbox in the \"Published\" column is marked as selected it means that the SOS Center is visible to the users in the platformRU"
+  "note": "<0>Note*</0> If the checkbox in the \"Published\" column is marked as selected it means that the SOS Center is visible to the users of the platformRU"
 }
