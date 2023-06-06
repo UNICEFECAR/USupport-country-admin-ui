@@ -20,7 +20,7 @@ export const Providers = () => {
   const navigate = useNavigate();
   const { width } = useWindowDimensions();
 
-  const [displayListView, setDisplayListView] = useState(false);
+  const [displayListView, setDisplayListView] = useState(true);
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
 
   const headingButton = (
