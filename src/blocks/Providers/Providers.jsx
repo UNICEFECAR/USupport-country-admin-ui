@@ -29,7 +29,7 @@ import {
 import { adminSvc } from "@USupport-components-library/services";
 import { useWindowDimensions } from "@USupport-components-library/utils";
 
-import { useUpdateProviderStatus } from "#hooks";
+import { useUpdateProviderStatus, useDebounce } from "#hooks";
 
 import "./providers.scss";
 
@@ -59,11 +59,27 @@ export const Providers = ({
   const currencySymbol = localStorage.getItem("currency_symbol");
 
   const [filters, setFilters] = useState(initialFilters);
+  const [sort, setSort] = useState({
+    name: null,
+    email: null,
+    status: null,
+    consultationPrice: null,
+  });
+
   const [appliedFilters, setAppliedFilters] = useState();
+  const [searchValue, setSearchValue] = useState("");
+  const debouncedSearchValue = useDebounce(searchValue, 500);
+
   const { width } = useWindowDimensions();
   const fetchProvidersData = async ({ pageParam = 1 }) => {
     const limit = width < 1366 ? 15 : 40;
-    const { data } = await adminSvc.getAllProviders(limit, pageParam, filters);
+    const { data } = await adminSvc.getAllProviders(
+      limit,
+      pageParam,
+      filters,
+      sort,
+      debouncedSearchValue
+    );
     const formattedData = [];
     for (let i = 0; i < data.length; i++) {
       const providerData = data[i];
@@ -85,7 +101,7 @@ export const Providers = ({
   };
 
   const providersQuery = useInfiniteQuery(
-    ["all-providers", appliedFilters],
+    ["all-providers", appliedFilters, sort, debouncedSearchValue],
     fetchProvidersData,
     {
       getNextPageParam: (lastPage, pages) => {
@@ -243,22 +259,22 @@ export const Providers = ({
     return [
       {
         label: t("name"),
-        // sortingKey: "displayName",
+        sortingKey: "name",
       },
       {
         label: t("email"),
-        // sortingKey: "email",
+        sortingKey: "email",
       },
 
       {
         label: t("status"),
         isCentered: true,
-        // sortingKey: "status",
+        sortingKey: "status",
       },
       {
         label: t("price"),
         isCentered: true,
-        // sortingKey: "consultationPrice",
+        sortingKey: "consultationPrice",
       },
       {
         label: t("specializations"),
@@ -320,6 +336,11 @@ export const Providers = ({
       </div>,
     ];
   });
+
+  const handleSort = (key, sort) => {
+    setSort({ [key]: sort });
+  };
+
   return (
     <Block classes="providers">
       <InfiniteScroll
@@ -333,7 +354,7 @@ export const Providers = ({
         scrollThreshold={0}
       >
         <Grid classes="providers__grid">
-          {providersQuery.isLoading ? (
+          {providersQuery.isLoading && !displayListView ? (
             <GridItem md={8} lg={12}>
               <Loading size="lg" />
             </GridItem>
@@ -341,13 +362,17 @@ export const Providers = ({
             renderProviders()
           ) : null}
         </Grid>
-        {!providersQuery.isLoading && displayListView && (
+        {displayListView && (
           <BaseTable
             data={providersQuery.data?.pages?.flat() || []}
             rows={rows}
             rowsData={rowsData}
             menuOptions={menuOptions}
             handleClickPropName={"providerDetailId"}
+            isLoading={providersQuery.isLoading}
+            customSort={handleSort}
+            customSearch={setSearchValue}
+            hasSearch
             t={t}
           />
         )}
