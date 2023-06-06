@@ -9,6 +9,12 @@ import { adminSvc } from "@USupport-components-library/services";
 
 import Joi from "joi";
 
+const initialData = {
+  oldPassword: "",
+  newPassword: "",
+  confirmPassword: "",
+};
+
 import "./change-password.scss";
 /**
  * ChangePassword
@@ -27,12 +33,11 @@ export const ChangePassword = ({ isOpen, onClose }) => {
     newPassword: Joi.string()
       .pattern(new RegExp("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}"))
       .label(t("password_error")),
+    confirmPassword: Joi.string().pattern(
+      new RegExp("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}")
+    ),
   });
-
-  const [data, setData] = useState({
-    oldPassword: "",
-    newPassword: "",
-  });
+  const [data, setData] = useState(initialData);
   const [errors, setErrors] = useState({});
 
   const changePassword = async () => {
@@ -46,10 +51,7 @@ export const ChangePassword = ({ isOpen, onClose }) => {
   };
   const changePasswordMutation = useMutation(changePassword, {
     onSuccess: () => {
-      setData({
-        oldPassword: "",
-        newPassword: "",
-      });
+      setData(initialData);
       toast(t("success"));
       onClose();
     },
@@ -102,6 +104,15 @@ export const ChangePassword = ({ isOpen, onClose }) => {
           value={data.newPassword}
           onBlur={() => handleBlur("newPassword", data.newPassword)}
           onChange={(e) => handleChange("newPassword", e.currentTarget.value)}
+        />
+        <InputPassword
+          errorMessage={errors.confirmPassword}
+          label={t("confirm_password")}
+          value={data.confirmPassword}
+          onBlur={() => handleBlur("confirmPassword", data.confirmPassword)}
+          onChange={(e) =>
+            handleChange("confirmPassword", e.currentTarget.value)
+          }
         />
       </div>
     </Backdrop>
