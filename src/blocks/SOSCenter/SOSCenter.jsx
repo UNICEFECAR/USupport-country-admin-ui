@@ -9,7 +9,7 @@ import {
   filterAdminData,
   getDateView,
 } from "@USupport-components-library/utils";
-import { noImagePlaceholder } from "USupport-components-library/assets";
+import { noImagePlaceholder } from "@USupport-components-library/assets";
 import { useError } from "#hooks";
 
 import "./sos-center.scss";
