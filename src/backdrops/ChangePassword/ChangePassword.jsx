@@ -33,9 +33,9 @@ export const ChangePassword = ({ isOpen, onClose }) => {
     newPassword: Joi.string()
       .pattern(new RegExp("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}"))
       .label(t("password_error")),
-    confirmPassword: Joi.string().pattern(
-      new RegExp("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}")
-    ),
+    confirmPassword: Joi.string()
+      .pattern(new RegExp("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}"))
+      .label(t("password_match_error")),
   });
   const [data, setData] = useState(initialData);
   const [errors, setErrors] = useState({});
