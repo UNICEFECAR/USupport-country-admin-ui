@@ -204,23 +204,19 @@ export const FAQ = () => {
     <Block classes="faq">
       <Grid>
         <GridItem md={8} lg={12} classes="faq__tabs">
-          <Grid>
-            <GridItem md={4} lg={6}>
-              <TabsUnderlined
-                options={options}
-                handleSelect={handleTabPress}
-                t={t}
-              />
-            </GridItem>
-            <GridItem md={4} lg={6}>
-              <InputSearch
-                placeholder={t("search_placeholder")}
-                value={searchValue}
-                onChange={(value) => setSearchValue(value)}
-                classes="faq__search"
-              />
-            </GridItem>
-          </Grid>
+          <TabsUnderlined
+            options={options}
+            handleSelect={handleTabPress}
+            t={t}
+          />
+        </GridItem>
+        <GridItem md={4} lg={6}>
+          <InputSearch
+            placeholder={t("search_placeholder")}
+            value={searchValue}
+            onChange={(value) => setSearchValue(value)}
+            classes="faq__search"
+          />
         </GridItem>
         <GridItem md={8} lg={12}>
           {!FAQsData?.length && FAQsLoading ? (
