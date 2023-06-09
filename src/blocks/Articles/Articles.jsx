@@ -170,10 +170,19 @@ export const Articles = () => {
       if (searchValue) {
         const search = searchValue.toLowerCase();
         const date = getDateView(new Date(article.createdAt)).toString();
+        const category = article.category?.data?.attributes.name?.toLowerCase();
+        const labels = article.labels?.data?.map((x) =>
+          x.attributes.Name?.toLowerCase()
+        );
+
         if (
           !article.title.toLowerCase().includes(search) &&
           !article.description.toLowerCase().includes(search) &&
-          !date.includes(search)
+          !date?.includes(search) &&
+          !category?.includes(search) &&
+          !labels?.some((x) => {
+            return x?.includes(search);
+          })
         ) {
           return null;
         }
