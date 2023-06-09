@@ -25,6 +25,7 @@ import {
 import { useError } from "#hooks";
 
 import "./articles.scss";
+import { InputSearch } from "../../../USupport-components-library/src/components/inputs";
 
 /**
  * Articles
@@ -163,8 +164,29 @@ export const Articles = () => {
     ];
   }, []);
 
+  const [searchValue, setSearchValue] = useState("");
   const rowsData = useCallback(() => {
     return dataToDisplay?.map((article) => {
+      if (searchValue) {
+        const search = searchValue.toLowerCase();
+        const date = getDateView(new Date(article.createdAt)).toString();
+        const category = article.category?.data?.attributes.name?.toLowerCase();
+        const labels = article.labels?.data?.map((x) =>
+          x.attributes.Name?.toLowerCase()
+        );
+
+        if (
+          !article.title.toLowerCase().includes(search) &&
+          !article.description.toLowerCase().includes(search) &&
+          !date?.includes(search) &&
+          !category?.includes(search) &&
+          !labels?.some((x) => {
+            return x?.includes(search);
+          })
+        ) {
+          return null;
+        }
+      }
       return [
         <CheckBox
           isChecked={article.isSelected}
@@ -193,11 +215,19 @@ export const Articles = () => {
         />,
       ];
     });
-  }, [dataToDisplay]);
+  }, [dataToDisplay, searchValue]);
 
   return (
     <Block classes="articles">
       <Grid>
+        <GridItem>
+          <InputSearch
+            value={searchValue}
+            onChange={(val) => setSearchValue(val)}
+            placeholder={t("search")}
+            classes="articles__search"
+          />
+        </GridItem>
         <GridItem md={8} lg={12} classes="articles__rows">
           {isArticlesFetched && articlesData && (
             <BaseTable
@@ -206,7 +236,6 @@ export const Articles = () => {
               rowsData={rowsData()}
               updateData={setDataToDisplay}
               t={t}
-              hasSearch
               hasMenu={false}
               noteText={t("note")}
             />

@@ -2,7 +2,12 @@ import React, { useState, useMemo } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
-import { Block, BaseTable, CheckBox } from "@USupport-components-library/src";
+import {
+  Block,
+  BaseTable,
+  CheckBox,
+  InputSearch,
+} from "@USupport-components-library/src";
 
 import { cmsSvc, adminSvc } from "@USupport-components-library/services";
 import {
@@ -25,6 +30,7 @@ export const SOSCenter = () => {
   const { i18n, t } = useTranslation("sos-center");
 
   const [dataToDisplay, setDataToDisplay] = useState();
+  const [searchValue, setSearchValue] = useState("");
 
   const rows = useMemo(() => {
     return [
@@ -137,6 +143,19 @@ export const SOSCenter = () => {
   });
 
   const rowsData = dataToDisplay?.map((sosCenter, index) => {
+    const searchFields = [
+      sosCenter.title,
+      sosCenter.text,
+      sosCenter.url,
+      sosCenter.phone,
+    ];
+
+    if (
+      searchValue &&
+      !searchFields.some((x) => x?.toLowerCase().includes(searchValue))
+    ) {
+      return null;
+    }
     return [
       <div>
         <CheckBox
@@ -188,12 +207,17 @@ export const SOSCenter = () => {
 
   return (
     <Block classes="sos-center">
+      <InputSearch
+        placeholder={t("search")}
+        value={searchValue}
+        onChange={(val) => setSearchValue(val)}
+        classes="sos-center__search"
+      />
       <BaseTable
         rows={rows}
         rowsData={rowsData}
         data={dataToDisplay}
         updateData={setDataToDisplay}
-        hasSearch
         hasMenu={false}
         isLoading={isLoading}
         noteText={t("note")}
