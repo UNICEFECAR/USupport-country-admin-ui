@@ -6,9 +6,9 @@
   "faq_added": "Часто задаваемые вопросы успешно добавлены",
   "faq_removed": "Часто задаваемые вопросы успешно удалены",
   "search_placeholder": "Поиск",
-  "published": "Published",
-  "content": "Content",
-  "published_at": "Created At",
-  "note": "<0>Note*</0> If the checkbox in the \"Published\" column is marked as selected it means that the FAQ is visible to the users of the platformRU",
+  "published": "Опубликовано",
+  "content": "Содержание",
+  "published_at": "Опубликовано",
+  "note": "<0>Примечание*</0> Если флажок в столбце \"Опубликовано\" помечен как выбранный, это означает, что Часто задаваемые вопросы видны всем пользователям платформы.",
   "no_data_found": "Данные не найдены"
 }
