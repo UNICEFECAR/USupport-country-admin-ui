@@ -24,7 +24,7 @@
   "status": "Статус",
   "active": "Активный",
   "inactive": "Неактивный",
-  "show_only_free": "Show only free",
+  "show_only_free": "Показать только бесплатные",
   "specialization": "Специализация",
   "all": "Все",
   "apply_filter": "Примените фильтры",
@@ -34,7 +34,7 @@
   "email": "Электронная почта",
   "price": "Цена",
   "specializations": "Специализации",
-  "actions": "ActionsRU",
+  "actions": "Действия",
   "view": "Просмотр",
   "edit": "Редактировать",
   "search": "Поиск"
