@@ -3,12 +3,12 @@
   "view_button": "просмотр",
   "article_added": "Статья успешно добавлена",
   "article_removed": "Статья успешно удалена",
-  "published": "PublishedRU",
-  "image": "ImageRU",
-  "content": "ContentRU",
+  "published": "Опубликовано",
+  "image": "Изображение",
+  "content": "Содержание",
   "view": "Просмотр",
-  "note": "<0>Note*</0> If the checkbox in the \"Published\" column is marked as selected it means that the Article is visible to the users of the platformRU",
+  "note": "<0>Примечание*</0> Если флажок в столбце \"Опубликовано\" отмечен как установленный, это означает, что Статья видна пользователям платформы.",
   "search": "Поиск",
   "no_data_found": "Данные не найдены",
-  "created_at": "Created AtRU"
+  "created_at": "Опубликовано"
 }

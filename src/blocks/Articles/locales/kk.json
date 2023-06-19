@@ -3,12 +3,12 @@
   "view_button": "көріп шығу",
   "article_added": "Мақала сәтті қосылды",
   "article_removed": "Мақала сәтті жойылды",
-  "published": "PublishedKK",
-  "image": "ImageKK",
-  "content": "ContentKK",
+  "published": "Жарияланды",
+  "image": "Сурет",
+  "content": "Мазмұны",
   "view": "Көріп шығу",
-  "note": "<0>Note*</0> If the checkbox in the \"Published\" column is marked as selected it means that the Article is visible to the users of the platformKK",
+  "note": "<0>Ескертпе*</0> Егер \"Жарияланған\" бағанындағы белгі таңдалған ретінде белгіленсе, бұл Мақала платформаның барлық пайдаланушыларына көрінетінін білдіреді.",
   "search": "Іздеу",
   "no_data_found": "Ақпарат табылмады",
-  "created_at": "Created AtKK"
+  "created_at": "Жарияланды"
 }

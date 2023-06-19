@@ -3,12 +3,12 @@
   "sos_center_added": "SOS-орталық табысты қосылды",
   "sos_center_removed": "SOS-орталық табысты өшірілді",
   "search": "Іздеу",
-  "published": "Published",
-  "image": "Image",
-  "content": "Content",
-  "url": "Link",
+  "published": "Жарияланды",
+  "image": "Сурет",
+  "content": "Мазмұны",
+  "url": "Сілтеме",
   "phone": "Телефон",
-  "published_at": "Created At",
-  "no_data_found": "No data found",
-  "note": "<0>Note*</0> If the checkbox in the \"Published\" column is marked as selected it means that the SOS Center is visible to the users of the platformKK"
+  "published_at": "Жарияланды",
+  "no_data_found": "Ақпарат табылмады",
+  "note": "<0>Ескертпе*</0> Егер \"Жарияланған\" бағанындағы белгі таңдалған ретінде белгіленсе, бұл SOS-орталық платформаның барлық пайдаланушыларына көрінетінін білдіреді."
 }

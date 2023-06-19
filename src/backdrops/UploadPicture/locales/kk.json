@@ -5,5 +5,5 @@
   "upload": "Компьютерден жүктеңіз",
   "upload_error": "Фотосуретті жүктеу кезінде қате шықты,тағы бір рет көріңіз",
   "file_size_error": "Ең үлкен файл өлшемі - 1 МБ",
-  "upload_success": "Photo uploaded successfullyKK"
+  "upload_success": "Фотосурет сәтті жүктелді"
 }
