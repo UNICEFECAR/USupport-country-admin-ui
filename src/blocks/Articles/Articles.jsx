@@ -209,7 +209,7 @@ export const Articles = () => {
         <Button
           label={t("view_button")}
           onClick={(e) => {
-            e.sstopPropagation();
+            e.stopPropagation();
             navigate(`/article/${article.id}`);
           }}
         />,

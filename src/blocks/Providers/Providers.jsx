@@ -278,7 +278,6 @@ export const Providers = ({
       },
       {
         label: t("specializations"),
-        // sortingKey: "specializations",
       },
       {
         label: t("actions"),
