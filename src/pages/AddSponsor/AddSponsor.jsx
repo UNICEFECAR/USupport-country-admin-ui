@@ -47,8 +47,6 @@ export const AddSponsor = () => {
         onClose={() => setIsUploadPictureBackdropOpen(false)}
         handleUploadFile={handleUploadFile}
         targetImage={sponsorImage}
-        // providerImage={providerImage}
-        // setProviderImage={setProviderImage}
       />
     </Page>
   );
