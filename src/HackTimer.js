@@ -1,4 +1,4 @@
-// eslint-disable
+/* eslint-disable */
 (function (workerScript) {
   if (!/MSIE 10/i.test(navigator.userAgent)) {
     try {
