@@ -2,7 +2,7 @@ import React, { useState, useMemo, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-toastify";
-import InfiniteScroll from "react-infinite-scroll-component";
+import { useTranslation } from "react-i18next";
 import {
   Block,
   Button,
@@ -12,8 +12,8 @@ import {
   Loading,
   Error as ErrorComponent,
   BaseTable,
+  InputSearch,
 } from "@USupport-components-library/src";
-import { useTranslation } from "react-i18next";
 
 import { cmsSvc, adminSvc } from "@USupport-components-library/services";
 import { articlePlaceholder } from "@USupport-components-library/assets";
@@ -25,7 +25,6 @@ import {
 import { useError } from "#hooks";
 
 import "./articles.scss";
-import { InputSearch } from "../../../USupport-components-library/src/components/inputs";
 
 /**
  * Articles
