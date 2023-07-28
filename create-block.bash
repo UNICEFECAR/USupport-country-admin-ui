@@ -61,7 +61,6 @@ mkdir "src/blocks/$block_name"
 touch "src/blocks/$block_name/index.js"
 touch "src/blocks/$block_name/$block_name.jsx"
 touch "src/blocks/$block_name/$block_name_caterpillar.scss"
-touch "src/blocks/$block_name/$block_name.stories.jsx"
 
 # Add the block to the block index file
 echo "export * from './$block_name.jsx';" >> "src/blocks/$block_name/index.js"
@@ -113,22 +112,6 @@ fi
     </Block>
   );
 };" >> "src/blocks/$block_name/$block_name.jsx"
-
-# Add the block to the stories file
-echo "import React from 'react';
-
-import { $block_name } from './$block_name';
-
-export default {
-  title: 'Country Admin UI/blocks/$block_name',
-  component: $block_name,
-  argTypes: {},
-};
-
-const Template = (props) => <$block_name {...props} />;
-
-export const Default = Template.bind({});
-Default.args = {};" >> "src/blocks/$block_name/$block_name.stories.jsx"
 
 # Add the theme to the block styles file
 echo "@import '@USupport-components-library/styles';
