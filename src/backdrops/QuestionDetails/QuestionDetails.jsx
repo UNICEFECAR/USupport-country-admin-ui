@@ -85,9 +85,9 @@ export const QuestionDetails = ({ question, handleLike, isOpen, onClose }) => {
               })}
             </div>
           ) : null}
-          <p className="text question-details__answer-text">
+          <pre className="text question-details__answer-text">
             {question.answerText}
-          </p>
+          </pre>
           <div className="question-details__bottom-container">
             <div className="question-details__answered-by-container">
               <p className="text">{t("answered_by")}</p>
