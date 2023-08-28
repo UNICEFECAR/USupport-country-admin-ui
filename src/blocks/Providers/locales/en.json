@@ -10,7 +10,7 @@
   "modal_text_activate": "The provider will be able to adjust their availability, enroll into campaigns, suggest consultations to clients and appear into client searches.",
   "yes": "Yes",
   "no": "No",
-  "no_providers": "There are no providers",
+  "no_data_found": "There are no providers",
   "provider_deleted": "Provider successfully deleted",
   "free": "Free",
   "activities": "Activities",
