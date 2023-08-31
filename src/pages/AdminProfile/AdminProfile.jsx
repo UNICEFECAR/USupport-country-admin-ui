@@ -24,8 +24,6 @@ export const AdminProfile = () => {
     navigate("/");
   };
 
-  const handleGoBack = () => navigate(-1);
-
   return (
     <Page
       classes="page__admin-profile"

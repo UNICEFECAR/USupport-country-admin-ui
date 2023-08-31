@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import countryCodes from "country-codes-list";
 import Joi from "joi";
 import { toast } from "react-toastify";
 
@@ -250,20 +249,3 @@ export const AddSponsor = ({
     </Block>
   );
 };
-
-function generateCountryCodes() {
-  const countryCodesList = countryCodes.customList(
-    "countryCode",
-    "+{countryCallingCode}"
-  );
-  const codes = [];
-  Object.keys(countryCodesList).forEach((key) => {
-    codes.push({
-      value: countryCodesList[key],
-      label: `${key}: ${countryCodesList[key]}`,
-      country: key,
-    });
-  });
-
-  return codes.sort((a, b) => (a.country > b.country ? 1 : -1));
-}

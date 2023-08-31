@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { Navbar, Icon, Block } from "@USupport-components-library/src";
+import { Navbar, Icon } from "@USupport-components-library/src";
 import { countrySvc, languageSvc } from "@USupport-components-library/services";
 import {
   getCountryFromTimezone,

@@ -1,1 +1,1 @@
-export * from './InformationPortalSuggestions.jsx';
+export * from "./InformationPortalSuggestions.jsx";

@@ -1,5 +1,4 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate, Navigate } from "react-router-dom";
 
 import { Loading } from "@USupport-components-library/src";
@@ -19,7 +18,6 @@ import "./campaign-details.scss";
  * @returns {JSX.Element}
  */
 export const CampaignDetails = () => {
-  const { t } = useTranslation("campaign-details-page");
   const navigate = useNavigate();
   const location = useLocation();
 

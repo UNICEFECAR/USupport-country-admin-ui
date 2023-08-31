@@ -1,1 +1,1 @@
-export * from './ClientRatings.jsx';
+export * from "./ClientRatings.jsx";
