@@ -105,11 +105,10 @@ export const Articles = () => {
 
   const updateArticles = async (data) => {
     const articleLocales = await cmsSvc.getArticleLocales(data.id);
-    let res;
     if (data.newValue === true) {
-      res = await adminSvc.putArticle(articleLocales.en.toString());
+      await adminSvc.putArticle(articleLocales.en.toString());
     } else {
-      res = await adminSvc.deleteArticle(articleLocales.en.toString());
+      await adminSvc.deleteArticle(articleLocales.en.toString());
     }
 
     return data.newValue;

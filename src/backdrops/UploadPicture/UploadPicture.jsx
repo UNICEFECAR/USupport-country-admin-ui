@@ -24,7 +24,6 @@ export const UploadPicture = ({
   handleUploadFile,
   targetImage,
   fileName,
-  sponsorId,
   setTargetImageUrl,
   providerId,
 }) => {

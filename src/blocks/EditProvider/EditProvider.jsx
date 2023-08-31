@@ -129,7 +129,7 @@ export const EditProvider = ({
 
   const getSpecializationsOptions = useCallback(() => {
     if (providerData && providerData.specializations) {
-      return specializationOptions.map((option, index) => {
+      return specializationOptions.map((option) => {
         if (providerData.specializations.includes(option.value)) {
           return {
             ...option,

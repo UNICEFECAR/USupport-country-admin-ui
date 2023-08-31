@@ -23,7 +23,6 @@ export const EditSponsor = () => {
     useState(false);
 
   const [sponsorImage, setSponsorImage] = useState();
-  const [sponsorImageFile, setSponsorImageFile] = useState();
   const [sponsorImageUrl, setSponsorImageUrl] = useState();
 
   const sponsorId = new URLSearchParams(window.location.search).get(

@@ -1,1 +1,1 @@
-export * from './ProviderActivities.jsx';
+export * from "./ProviderActivities.jsx";

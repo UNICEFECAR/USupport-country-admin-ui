@@ -107,15 +107,11 @@ export const SOSCenter = () => {
     const sosCenterAvailableLocales = await cmsSvc.getSOSCenterAvailableLocales(
       data.id
     );
-    let res;
+
     if (data.newValue === true) {
-      res = await adminSvc.putSOSCenters(
-        sosCenterAvailableLocales.en.toString()
-      );
+      await adminSvc.putSOSCenters(sosCenterAvailableLocales.en.toString());
     } else {
-      res = await adminSvc.deleteSOSCenters(
-        sosCenterAvailableLocales.en.toString()
-      );
+      await adminSvc.deleteSOSCenters(sosCenterAvailableLocales.en.toString());
     }
     return data.newValue;
   };
@@ -178,7 +174,7 @@ export const SOSCenter = () => {
       </div>,
       <div>
         {sosCenter.url ? (
-          <a href={sosCenter.url} target="_blank">
+          <a href={sosCenter.url} target="_blank" rel="noreferrer">
             <p className="text sos-center-row__heading centered">
               {sosCenter.url}
             </p>
@@ -190,7 +186,7 @@ export const SOSCenter = () => {
 
       <div>
         {sosCenter.phone ? (
-          <a href={`tel:${sosCenter.phone}`} target="_blank">
+          <a href={`tel:${sosCenter.phone}`} target="_blank" rel="noreferrer">
             <p className="text sos-center-row__heading centered centered">
               {sosCenter.phone}
             </p>

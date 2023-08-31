@@ -18,9 +18,9 @@ export const EditCampaign = () => {
   const location = useLocation();
   const { t } = useTranslation("edit-campaign-page");
 
-  const sponsorId = new URLSearchParams(window.location.search).get(
-    "sponsorId"
-  );
+  // const sponsorId = new URLSearchParams(window.location.search).get(
+  //   "sponsorId"
+  // );
   const campaignId = new URLSearchParams(window.location.search).get(
     "campaignId"
   );
