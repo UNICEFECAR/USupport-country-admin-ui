@@ -21,5 +21,8 @@
 
   "button_text": "Шығу",
   "contact_us": "Бізге хабарласыңыз",
-  "your_profile_text": "Профиль"
+  "your_profile_text": "Профиль",
+  "password": "Құпия сөз",
+  "wrong_password": "Құпия сөз дұрыс емес",
+  "submit": "Жіберу"
 }

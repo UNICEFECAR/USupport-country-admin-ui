@@ -21,5 +21,8 @@
 
   "button_text": "Выйти",
   "contact_us": "Свяжитесь с нами",
-  "your_profile_text": "Профиль"
+  "your_profile_text": "Профиль",
+  "password": "Пароль",
+  "wrong_password": "Неверный пароль",
+  "submit": "Отправить"
 }
