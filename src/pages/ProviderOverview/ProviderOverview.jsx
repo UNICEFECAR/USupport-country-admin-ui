@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { Page, ProviderOverview as ProviderOverviewBlock } from "#blocks";
 import { useWindowDimensions } from "@USupport-components-library/src/utils";
-import { RadialCircle, Button } from "@USupport-components-library/src";
+import { RadialCircle } from "@USupport-components-library/src";
 
 import "./provider-overview.scss";
 

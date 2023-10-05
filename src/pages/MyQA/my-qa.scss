@@ -1,0 +1,10 @@
+/* MyQA styles */
+@import "@USupport-components-library/styles";
+
+.page__my-qa {
+  &__filter-button {
+    @media screen and (min-width: $screen-md) {
+      margin-left: auto;
+    }
+  }
+}

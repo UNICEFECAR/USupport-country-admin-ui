@@ -2,10 +2,11 @@ import React, { useState, useMemo } from "react";
 import {
   Block,
   Button,
-  Input,
+  DateInput,
   Loading,
   Modal,
   ReportCollapsible,
+  InputSearch,
 } from "@USupport-components-library/src";
 
 import {
@@ -31,6 +32,7 @@ export const InformationPortalSuggestions = ({ Heading }) => {
 
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [filters, setFilters] = useState({});
+  const [searchValue, setSearchValue] = useState("");
 
   const handleFilterSave = (filterData) => {
     setFilters(filterData);
@@ -38,11 +40,28 @@ export const InformationPortalSuggestions = ({ Heading }) => {
 
   const filterSuggestions = (suggestion) => {
     const isStartingDateMatching = filters.startingDate
-      ? new Date(suggestion.createdAt).toLocaleDateString() >=
-        new Date(filters.startingDate).toLocaleDateString()
+      ? new Date(suggestion.createdAt).getTime() >=
+        new Date(new Date(filters.startingDate).setHours(0, 0, 0)).getTime()
       : true;
 
-    return isStartingDateMatching ? suggestion : false;
+    const isStartDateMatching = filters.endingDate
+      ? new Date(suggestion.createdAt).getTime() <=
+        new Date(new Date(filters.endingDate).setHours(23, 59, 59)).getTime()
+      : true;
+
+    const search = searchValue.toLowerCase();
+    const isSearchValueMatching = !searchValue
+      ? true
+      : suggestion.clientEmail?.toLowerCase().includes(search) ||
+        suggestion.clientName?.toLowerCase().includes(search) ||
+        suggestion.clientNickname?.toLowerCase().includes(search) ||
+        suggestion.suggestion?.toLowerCase().includes(search);
+
+    return isStartingDateMatching &&
+      isSearchValueMatching &&
+      isStartDateMatching
+      ? suggestion
+      : false;
   };
 
   const renderSuggestions = useMemo(() => {
@@ -90,7 +109,7 @@ export const InformationPortalSuggestions = ({ Heading }) => {
           />
         );
       });
-  }, [data, filters]);
+  }, [data, filters, searchValue]);
 
   return (
     <Block classes="information-portal-suggestions">
@@ -98,8 +117,14 @@ export const InformationPortalSuggestions = ({ Heading }) => {
         headingLabel={t("heading")}
         handleButtonClick={() => setIsFilterOpen(true)}
       />
+      <InputSearch
+        placeholder={t("search")}
+        value={searchValue}
+        onChange={setSearchValue}
+      />
       {isLoading ? <Loading /> : renderSuggestions}
       <Filters
+        filters={filters}
         isOpen={isFilterOpen}
         handleClose={() => setIsFilterOpen(false)}
         handleSave={handleFilterSave}
@@ -109,9 +134,14 @@ export const InformationPortalSuggestions = ({ Heading }) => {
   );
 };
 
-const Filters = ({ isOpen, handleClose, handleSave, t }) => {
-  const [data, setData] = useState({
+const Filters = ({ isOpen, handleClose, handleSave, filters, t }) => {
+  const initialFilters = {
     startingDate: "",
+    endingDate: "",
+  };
+  const [data, setData] = useState({
+    startingDate: filters.startingDate,
+    endingDate: filters.endingDate,
   });
 
   const handleChange = (field, value) => {
@@ -126,6 +156,11 @@ const Filters = ({ isOpen, handleClose, handleSave, t }) => {
     handleClose();
   };
 
+  const handleResetFilters = () => {
+    setData(initialFilters);
+    handleSave(initialFilters);
+  };
+
   return (
     <Modal
       isOpen={isOpen}
@@ -135,18 +170,32 @@ const Filters = ({ isOpen, handleClose, handleSave, t }) => {
     >
       <>
         <div>
-          <Input
-            type="date"
+          <DateInput
             label={t("starting_date")}
             onChange={(e) =>
               handleChange("startingDate", e.currentTarget.value)
             }
             value={data.startingDate}
             placeholder="DD.MM.YYY"
-            classes="client-ratings__backdrop__date-picker"
+            classes={["client-ratings__backdrop__date-picker"]}
+          />
+          <DateInput
+            label={t("ending_date")}
+            onChange={(e) => handleChange("endingDate", e.currentTarget.value)}
+            value={data.endingDate}
+            placeholder="DD.MM.YYY"
+            classes={["client-ratings__backdrop__date-picker"]}
           />
         </div>
-        <Button label={t("submit")} size="lg" onClick={handleSubmit} />
+        <div className="client-ratings__backdrop__buttons-container">
+          <Button label={t("submit")} size="lg" onClick={handleSubmit} />
+          <Button
+            label={t("reset")}
+            size="lg"
+            type="secondary"
+            onClick={handleResetFilters}
+          />
+        </div>
       </>
     </Modal>
   );

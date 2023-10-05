@@ -17,20 +17,21 @@
   "campaign_activated": "Науқан сәтті іске қосылды",
   "campaign_deactivated": "Науқан сәтті өшірілді",
   "update_error": "Қате пайда болды. Қайталап көріңіз.",
-  "used_after": "Used afterKK",
-  "no_data_found": "No data foundKK",
+  "used_after": "Использован после",
+  "no_data_found": "Ақпарат табылмады",
   "apply_filter": "Сүзгілерді қолданыңыз",
   "reset_filter": "Сүзгілерді қалпына келтіру",
 
   "client": "Клиент",
-  "client_sex": "Client sex",
-  "client_yob": "Client year of birth",
-  "client_place_of_living": "Client place of living",
+  "client_sex": "Клиенттің жынысы",
+  "client_yob": "Клиенттің туған жылы",
+  "client_place_of_living": "Клиенттің тұрғылықты мекен-жайы",
   "male": "Ер",
   "female": "Әйел",
   "unspecified": "Көрсетілмеген",
-  "not_mentioned": "Not mentioned",
+  "not_mentioned": "Көрсетілмеген",
   "urban": "Қала",
   "rural": "Ауыл",
-  "all": "Барлығы"
+  "all": "Барлығы",
+  "search": "Іздеу"
 }

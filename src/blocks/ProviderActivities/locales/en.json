@@ -11,5 +11,7 @@
   "start_date": "Start date",
   "end_date": "End date",
   "apply_filter": "Apply filters",
-  "reset_filter": "Reset filters"
+  "reset_filter": "Reset filters",
+  "search": "Search",
+  "no_data_found": "No data found"
 }

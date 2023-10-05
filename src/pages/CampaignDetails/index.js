@@ -1,1 +1,1 @@
-export * from './CampaignDetails.jsx';
+export * from "./CampaignDetails.jsx";

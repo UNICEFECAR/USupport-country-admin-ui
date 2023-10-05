@@ -48,7 +48,7 @@ export const ArticleInformation = () => {
       heading={t("heading")}
       handleGoBack={() => navigate("/articles")}
     >
-      {articleData && <ArticleView articleData={articleData} />}
+      {articleData && <ArticleView articleData={articleData} t={t} />}
       {!articleData && isArticleDataLoading && <Loading />}
     </Page>
   );

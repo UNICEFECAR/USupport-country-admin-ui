@@ -78,5 +78,10 @@
   "relationship": "Relationship",
   "personal_development": "Personal development",
   "edit_success": "Profile updated successfully",
-  "create_success": "Provider created successfully"
+  "create_success": "Provider created successfully",
+
+  "search": "Search",
+  "no_data_found": "No data found",
+  "select": "Select",
+  "remove": "Remove"
 }

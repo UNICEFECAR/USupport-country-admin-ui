@@ -39,7 +39,8 @@ export const Welcome = () => {
       const countryObject = {
         value: x.alpha2,
         label: x.name,
-        id: x["country_id"],
+        localName: x.local_name,
+        id: x.country_id,
       };
 
       if (localStorageCountry === x.alpha2) {
@@ -59,7 +60,7 @@ export const Welcome = () => {
     const languages = res.data.map((x) => {
       const languageObject = {
         value: x.alpha2,
-        label: x.name,
+        label: x.name === "English" ? x.name : `${x.name} (${x.local_name})`,
         id: x["language_id"],
       };
       if (localStorageLanguage === x.alpha2) {
@@ -109,7 +110,14 @@ export const Welcome = () => {
           {!(countriesQuery.isLoading || languagesQuery.isLoading) ? (
             <>
               <DropdownWithLabel
-                options={countriesQuery.data}
+                options={
+                  countriesQuery.data?.map((x) => {
+                    return {
+                      ...x,
+                      label: `${x.label} (${x.localName})`,
+                    };
+                  }) || []
+                }
                 classes="welcome__grid__content-item__countries-dropdown"
                 selected={selectedCountry}
                 setSelected={setSelectedCountry}
@@ -117,9 +125,12 @@ export const Welcome = () => {
                 placeholder={t("placeholder")}
               />
               <DropdownWithLabel
-                options={languagesQuery.data}
+                options={languagesQuery.data || []}
                 selected={selectedLanguage}
-                setSelected={setSelectedLanguage}
+                setSelected={(lang) => {
+                  setSelectedLanguage(lang);
+                  i18n.changeLanguage(lang);
+                }}
                 classes="welcome__grid__content-item__languages-dropdown"
                 label={t("language")}
                 placeholder={t("placeholder")}

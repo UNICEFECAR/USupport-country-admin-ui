@@ -50,7 +50,7 @@
   "city_error": "Необходимо указать город",
   "postcode_error": "Необходимо указать почтовый индекс",
   "consultation_price_error": "Цена консультации не может быть отрицательным числом",
-  "min_price_error": "The minimum consultation price is {{minPrice}}{{currencySymbol}}",
+  "min_price_error": "Минимальная стоимость консультации  {{minPrice}}{{currencySymbol}}",
 
   "specializations_error": "Выберите хотя бы одну специализацию",
   "work_with_error": "Выберите хотя бы одну категорию",
@@ -78,5 +78,10 @@
   "relationship": "Отношения",
   "personal_development": "Личное развитие",
   "edit_success": "Профиль успешно обновлен",
-  "create_success": "Консультант успешно создан"
+  "create_success": "Консультант успешно создан",
+
+  "search": "Поиск",
+  "no_data_found": "Данные не найдены",
+  "select": "Выбрать",
+  "remove": "Удалить"
 }

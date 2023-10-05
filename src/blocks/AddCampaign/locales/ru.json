@@ -16,13 +16,13 @@
   "dates_placeholder": "ДД.ММ.ГГГГ",
   "max_coupons_per_client_placeholder": "Максимальное количество купонов на одного клиента",
   "terms_placeholder": "Напишите правила и условия",
-  "budget_info": "The price for a single consultation will be",
+  "budget_info": "Стоимость разовой консультации составит",
 
   "required_field": "Поле обязательно для заполнения",
   "budget_error": "Бюджет должен быть положительным числом",
-  "start_date_error": "The start date of the campaign should be in the future",
-  "end_date_error": "The end date of the campaign should be in the future",
-  "period_error": "The end date should be after the start date",
+  "start_date_error": "Дата начала кампании должна быть в будущем",
+  "end_date_error": "Дата окончания кампании должна быть в будущем.",
+  "period_error": "Дата окончания должна быть позже даты начала",
 
   "create_campaign": "Создать кампанию",
   "save_changes": "Save changes",

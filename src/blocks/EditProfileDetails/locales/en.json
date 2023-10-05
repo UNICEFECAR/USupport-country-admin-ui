@@ -19,6 +19,9 @@
   "button_text": "Save changes",
   "button_secondary_text": "Discard changes",
 
-  "create_success": "Provider created successfully",
-  "edit_success": "Profile updated successfully"
+  "edit_success": "Profile updated successfully",
+
+  "search": "Search",
+  "no_data_found": "No data found",
+  "button_change_password": "Change password"
 }

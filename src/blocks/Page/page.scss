@@ -8,13 +8,6 @@
   }
 
   @media screen and (min-width: 1050px) {
-    padding-top: $spacing_7_0;
-    &--no-additional-top-padding {
-      padding-top: 0;
-    }
-  }
-
-  @media screen and (min-width: 1050px) {
     padding-top: $spacing_8_0;
     &--no-additional-top-padding {
       padding-top: 0;
@@ -30,28 +23,26 @@
     @media screen and (min-width: $screen-md) {
       padding-top: $spacing_5_0;
       padding-left: $spacing_5_0;
+      padding-right: $spacing_5_0;
     }
     @media screen and (min-width: $screen-lg) {
       padding-top: $spacing_5_0;
       padding-left: $spacing_23_0;
+      padding-right: $spacing_23_0;
     }
 
     &-heading {
       max-width: 75rem;
       width: 75%;
-      word-break: break-all;
+      word-break: break-word;
       text-align: left;
     }
 
     &-icon {
       cursor: pointer;
       margin-right: $spacing_2_4;
-      align-self: center;
       @media screen and (min-width: $screen-md) {
         margin-right: $spacing_3_2;
-      }
-      @media screen and (min-width: $screen-lg) {
-        margin-right: $spacing_8_0;
       }
     }
 
@@ -67,6 +58,12 @@
       @media screen and (min-width: $screen-lg) {
         padding-right: $spacing_5_0;
       }
+    }
+
+    &-button-container {
+      display: flex;
+      flex: 1;
+      justify-content: flex-end;
     }
 
     &__image {

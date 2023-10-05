@@ -6,7 +6,7 @@ import {
   InformationPortalSuggestions,
   ClientRatings,
   ContactForms,
-  MyQA,
+  MyQAReports,
 } from "#blocks";
 
 import {
@@ -63,11 +63,15 @@ export const Reports = () => {
       case "contact_form":
         return <ContactForms Heading={ReportBlockHeading} />;
       case "my_qa":
-        return <MyQA Heading={ReportBlockHeading} />;
+        return <MyQAReports Heading={ReportBlockHeading} />;
     }
   };
 
-  const ReportBlockHeading = ({ headingLabel, handleButtonClick }) => {
+  const ReportBlockHeading = ({
+    headingLabel,
+    handleButtonClick,
+    isButtonDisabled = false,
+  }) => {
     return (
       <div className="page__reports__report-block-heading">
         <h4>{headingLabel}</h4>
@@ -80,13 +84,18 @@ export const Reports = () => {
           color="purple"
           size="xs"
           onClick={handleButtonClick}
+          disabled={isButtonDisabled}
         />
       </div>
     );
   };
 
   return (
-    <Page classes="page__reports" showGoBackArrow={false}>
+    <Page
+      classes="page__reports"
+      showGoBackArrow={false}
+      heading={t("heading")}
+    >
       <Block>
         <TabsUnderlined
           options={options}

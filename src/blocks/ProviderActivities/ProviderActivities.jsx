@@ -1,10 +1,10 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 import {
+  BaseTable,
   Block,
   Button,
-  Loading,
   DropdownWithLabel,
   Input,
   Modal,
@@ -26,19 +26,47 @@ import "./provider-activities.scss";
  * @return {jsx}
  */
 export const ProviderActivities = ({ isLoading, data, providerName }) => {
-  const { t } = useTranslation("provider-activities");
-  const rows = ["client", "time", "price", "campaign"];
+  const { t, i18n } = useTranslation("provider-activities");
   const currencySymbol = localStorage.getItem("currency_symbol");
 
+  const [dataToDisplay, setDataToDisplay] = useState(data);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const [filters, setFilters] = useState({});
+
+  useEffect(() => {
+    setDataToDisplay(data);
+  }, [data]);
+
+  const rows = useMemo(() => {
+    return [
+      {
+        label: t("client"),
+        sortingKey: "displayName",
+      },
+      {
+        label: t("time"),
+        sortingKey: "time",
+        isCentered: true,
+        isDate: true,
+      },
+      {
+        label: t("price"),
+        sortingKey: "price",
+        isCentered: true,
+      },
+      {
+        label: t("campaign"),
+        sortingKey: "campaignName",
+        isCentered: true,
+      },
+    ];
+  }, [i18n.language]);
 
   const handleExport = () => {
     let csv = "";
 
-    csv += rows.map((x) => t(x)).join(",");
+    csv += rows.map((x) => x.label).join(",");
 
-    data.forEach((row) => {
+    dataToDisplay.forEach((row) => {
       const price = row.price ? `${row.price}${currencySymbol}` : t("free");
       csv += "\n";
       csv += `${row.displayName},`;
@@ -56,22 +84,29 @@ export const ProviderActivities = ({ isLoading, data, providerName }) => {
     setIsFilterOpen(true);
   };
 
-  const handleFilterSave = (data) => {
-    setFilters(data);
+  const filterSingleActivity = (activity, currentFilters) => {
+    const isStartDateMatching = currentFilters.startDate
+      ? new Date(activity.time) >=
+        new Date(new Date(currentFilters.startDate).setHours(0, 0, 0, 0))
+      : true;
+
+    const isEndDateMatching = currentFilters.endDate
+      ? new Date(new Date(activity.time).setHours(0, 0, 0, 0)) <=
+        new Date(currentFilters.endDate).getTime()
+      : true;
+
+    const isCampaignMatching = currentFilters.campaign
+      ? activity.campaignName === currentFilters.campaign
+      : true;
+
+    return isStartDateMatching && isEndDateMatching && isCampaignMatching;
   };
 
-  const filterData = (activity) => {
-    // TODO: Add filter for campaigns
-    const isStartDateMatching = filters.startDate
-      ? new Date(activity.time).getTime() >=
-        new Date(filters.startDate).getTime()
-      : true;
-
-    const isEndDateMatching = filters.endDate
-      ? new Date(activity.time).getTime() <= new Date(filters.endDate).getTime()
-      : true;
-
-    return isStartDateMatching && isEndDateMatching ? true : false;
+  const handleFilterSave = (currentFilters) => {
+    const filtered = data?.filter((x) =>
+      filterSingleActivity(x, currentFilters)
+    );
+    setDataToDisplay(filtered);
   };
 
   const getFormattedDate = (date, hasComma = true) => {
@@ -85,102 +120,44 @@ export const ProviderActivities = ({ isLoading, data, providerName }) => {
     } ${getDateView(date)}`;
   };
 
-  const renderData = useMemo(() => {
-    const filteredData = data
-      ?.sort((a, b) => {
-        return new Date(b.createdAt) - new Date(a.createdAt);
-      })
-      ?.filter(filterData);
+  const rowsData = dataToDisplay?.map((activity) => {
+    const displayTime = getFormattedDate(activity.time);
 
-    if (!filteredData || filteredData?.length === 0)
-      return (
-        <tr>
-          <td
-            className="provider-activities__table__td__no-results"
-            align="center"
-            colSpan={4}
-          >
-            <h4>{t("no_results")}</h4>
-          </td>
-        </tr>
-      );
+    return [
+      <p className="text">{activity.displayName}</p>,
+      <p className="text centered">{displayTime}</p>,
+      <p className="text centered">
+        {activity.price ? `${activity.price}${currencySymbol}` : t("free")}
+      </p>,
+      <p className="text centered">{activity.campaignName || "N/A"}</p>,
+    ];
+  });
 
-    return filteredData?.map((activity, index) => {
-      const displayTime = getFormattedDate(activity.time);
-
-      return (
-        <tr key={index}>
-          <td className="provider-activities__table__td">
-            <p className="text provider-activities__table__name">
-              {activity.displayName}
-            </p>
-          </td>
-          <td className="provider-activities__table__td">
-            <p className="text provider-activities__table__name">
-              {displayTime}
-            </p>
-          </td>
-          <td className="provider-activities__table__td">
-            <p className="text">
-              {activity.price
-                ? `${activity.price}${currencySymbol}`
-                : t("free")}
-            </p>
-          </td>
-          <td className="provider-activities__table__td">
-            <p className="text">{activity.campaignName || "N/A"}</p>
-          </td>
-        </tr>
-      );
-    });
-  }, [data, filters]);
-
-  let campaignOptions =
-    data
-      ?.map((x) => {
-        if (x.campaign) {
-          return { value: x.campaign, label: x.campaign };
-        }
-        return null;
-      })
-      .filter((x) => x !== null) || [];
+  let campaignOptions = Array.from(
+    new Set(data?.filter((x) => x.campaignName).map((x) => x.campaignName))
+  ).map((x) => {
+    return {
+      value: x,
+      label: x,
+    };
+  });
 
   return (
     <Block classes="provider-activities">
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <>
-          <div className="provider-activities__buttons">
-            <Button
-              type="secondary"
-              color="purple"
-              label={t("export_label")}
-              onClick={handleExport}
-              size="md"
-            />
-            <Button
-              type="primary"
-              color="purple"
-              label={t("filter")}
-              onClick={handleFilterOpen}
-              size="md"
-            />
-          </div>
-          <div className="provider-activities__container">
-            <table className="provider-activities__table">
-              <thead>
-                <tr>
-                  {rows.map((row, index) => {
-                    return <th key={row + index}>{t(row)}</th>;
-                  })}
-                </tr>
-              </thead>
-              <tbody>{renderData}</tbody>
-            </table>
-          </div>
-        </>
-      )}
+      <BaseTable
+        buttonAction={handleExport}
+        buttonLabel={t("export_label")}
+        data={dataToDisplay}
+        hasMenu={false}
+        hasSearch
+        isLoading={isLoading}
+        rows={rows}
+        rowsData={rowsData}
+        secondaryButtonAction={handleFilterOpen}
+        secondaryButtonLabel={t("filter")}
+        t={t}
+        updateData={setDataToDisplay}
+      />
       <Filters
         isOpen={isFilterOpen}
         handleClose={() => setIsFilterOpen(false)}
@@ -196,6 +173,7 @@ const Filters = ({ isOpen, handleClose, handleSave, t, campaignOptions }) => {
   const initialData = {
     startDate: "",
     endDate: "",
+    campaign: "",
   };
   const [data, setData] = useState(initialData);
 
@@ -213,6 +191,7 @@ const Filters = ({ isOpen, handleClose, handleSave, t, campaignOptions }) => {
 
   const handleFilterReset = () => {
     handleSave(initialData);
+    setData(initialData);
     handleClose();
   };
 

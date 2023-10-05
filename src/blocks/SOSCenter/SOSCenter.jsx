@@ -1,18 +1,20 @@
-import React, { useState } from "react";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import React, { useState, useMemo } from "react";
+import { useQuery, useMutation } from "@tanstack/react-query";
+import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import {
   Block,
-  Grid,
-  GridItem,
-  SOSCenterRow,
-  Loading,
-  Error as ErrorComponent,
+  BaseTable,
+  CheckBox,
+  InputSearch,
 } from "@USupport-components-library/src";
-import { useTranslation } from "react-i18next";
 
 import { cmsSvc, adminSvc } from "@USupport-components-library/services";
-import { filterAdminData } from "@USupport-components-library/utils";
+import {
+  filterAdminData,
+  getDateView,
+} from "@USupport-components-library/utils";
+import { noImagePlaceholder } from "@USupport-components-library/assets";
 import { useError } from "#hooks";
 
 import "./sos-center.scss";
@@ -25,10 +27,43 @@ import "./sos-center.scss";
  * @return {jsx}
  */
 export const SOSCenter = () => {
-  const queryClient = useQueryClient();
   const { i18n, t } = useTranslation("sos-center");
 
-  const [error, setError] = useState();
+  const [dataToDisplay, setDataToDisplay] = useState();
+  const [searchValue, setSearchValue] = useState("");
+
+  const rows = useMemo(() => {
+    return [
+      {
+        label: t("published"),
+        sortingKey: "isSelected",
+        isCentered: true,
+      },
+      {
+        label: t("image"),
+        isCentered: true,
+      },
+      {
+        label: t("content"),
+        sortingKey: "title",
+      },
+      {
+        label: t("url"),
+        sortingKey: "url",
+        isCentered: true,
+      },
+      {
+        label: t("phone"),
+        sortingKey: "phone",
+        isCentered: true,
+      },
+      {
+        label: t("published_at"),
+        sortingKey: "publishedAt",
+        isCentered: true,
+      },
+    ];
+  }, [i18n.language]);
 
   //--------------------- SOS Centers ----------------------//
   const getSOSCenters = async () => {
@@ -44,17 +79,21 @@ export const SOSCenter = () => {
 
     const filteredData = filterAdminData(data.data, data.meta.localizedIds);
 
+    setDataToDisplay(
+      filteredData.map((x) => ({
+        isSelected: !!x.isSelected,
+        id: x.id,
+        ...x.attributes,
+      }))
+    );
+
     return filteredData;
   };
 
-  const {
-    data: SOSCentersData,
-    isLoading: SOSCentersLoading,
-    isFetched: isSOSCentersFetched,
-  } = useQuery(["SOSCenters", i18n.language], getSOSCenters);
+  const { isLoading } = useQuery(["SOSCenters", i18n.language], getSOSCenters);
 
   const handleSelectSOSCenter = async (id, newValue, index) => {
-    let newData = JSON.parse(JSON.stringify(SOSCentersData));
+    let newData = JSON.parse(JSON.stringify(dataToDisplay));
     newData[index].isSelected = newValue;
 
     updateSOSCentersMutation.mutate({
@@ -68,31 +107,25 @@ export const SOSCenter = () => {
     const sosCenterAvailableLocales = await cmsSvc.getSOSCenterAvailableLocales(
       data.id
     );
-    let res;
+
     if (data.newValue === true) {
-      res = await adminSvc.putSOSCenters(
-        sosCenterAvailableLocales.en.toString()
-      );
+      await adminSvc.putSOSCenters(sosCenterAvailableLocales.en.toString());
     } else {
-      res = await adminSvc.deleteSOSCenters(
-        sosCenterAvailableLocales.en.toString()
-      );
+      await adminSvc.deleteSOSCenters(sosCenterAvailableLocales.en.toString());
     }
     return data.newValue;
   };
 
   const updateSOSCentersMutation = useMutation(updateSOSCenters, {
     onMutate: (data) => {
-      const oldData = queryClient.getQueryData(["SOSCenters", i18n.language]);
+      const oldData = JSON.parse(JSON.stringify(dataToDisplay));
 
       // Perform an optimistic update to the UI
-      queryClient.setQueryData(
-        ["SOSCenters", i18n.language],
-        data.sosCenterData
-      );
+      setDataToDisplay(data.sosCenterData);
 
       return () => {
-        queryClient.setQueryData(["SOSCenters", i18n.language], oldData);
+        // queryClient.setQueryData(["SOSCenters", i18n.language], oldData);
+        setDataToDisplay(oldData);
       };
     },
     onSuccess: (isAdding) => {
@@ -100,49 +133,92 @@ export const SOSCenter = () => {
     },
     onError: (error, variables, rollback) => {
       const { message: errorMessage } = useError(error);
-      setError(errorMessage);
+      toast(errorMessage, { type: "error" });
       rollback();
     },
   });
 
+  const rowsData = dataToDisplay?.map((sosCenter, index) => {
+    const searchFields = [
+      sosCenter.title,
+      sosCenter.text,
+      sosCenter.url,
+      sosCenter.phone,
+    ];
+
+    if (
+      searchValue &&
+      !searchFields.some((x) => x?.toLowerCase().includes(searchValue))
+    ) {
+      return null;
+    }
+    return [
+      <div>
+        <CheckBox
+          classes="sos-center-row__checkbox"
+          isChecked={sosCenter.isSelected}
+          setIsChecked={() =>
+            handleSelectSOSCenter(sosCenter.id, !sosCenter.isSelected, index)
+          }
+        />
+      </div>,
+      <img
+        className="sos-center__image"
+        src={sosCenter.image?.data?.attributes?.url || noImagePlaceholder}
+      />,
+      <div>
+        <p className="text heading sos-center-row__heading">
+          {sosCenter.title}
+        </p>
+        <p className="small-text">{sosCenter.text}</p>
+      </div>,
+      <div>
+        {sosCenter.url ? (
+          <a href={sosCenter.url} target="_blank" rel="noreferrer">
+            <p className="text sos-center-row__heading centered">
+              {sosCenter.url}
+            </p>
+          </a>
+        ) : (
+          <p className="centered">-</p>
+        )}
+      </div>,
+
+      <div>
+        {sosCenter.phone ? (
+          <a href={`tel:${sosCenter.phone}`} target="_blank" rel="noreferrer">
+            <p className="text sos-center-row__heading centered centered">
+              {sosCenter.phone}
+            </p>
+          </a>
+        ) : (
+          <p className="centered">-</p>
+        )}
+      </div>,
+      <p className="text centered">
+        {getDateView(new Date(sosCenter.publishedAt))}
+      </p>,
+    ];
+  });
+
   return (
     <Block classes="sos-center">
-      <Grid>
-        <GridItem md={8} lg={12} classes="sos-center__rows">
-          {isSOSCentersFetched &&
-            SOSCentersData &&
-            SOSCentersData.map((sosCenter, index) => {
-              return (
-                <SOSCenterRow
-                  selected={sosCenter.isSelected}
-                  setSelected={() =>
-                    handleSelectSOSCenter(
-                      sosCenter.id,
-                      !sosCenter.isSelected,
-                      index
-                    )
-                  }
-                  heading={sosCenter.attributes.title}
-                  text={sosCenter.attributes.text}
-                  link={sosCenter.attributes.url}
-                  phone={sosCenter.attributes.phone}
-                  image={
-                    sosCenter.attributes.image?.data?.attributes?.formats
-                      ?.medium?.url
-                  }
-                  key={index}
-                />
-              );
-            })}
-          {!SOSCentersData?.length && SOSCentersLoading && <Loading />}
-          {!SOSCentersData?.length &&
-            !SOSCentersLoading &&
-            isSOSCentersFetched && (
-              <h3 className="sos-center__no-results">{t("no_results")}</h3>
-            )}
-          {error ? <ErrorComponent message={error} /> : null}
-        </GridItem>
-      </Grid>
+      <InputSearch
+        placeholder={t("search")}
+        value={searchValue}
+        onChange={(val) => setSearchValue(val)}
+        classes="sos-center__search"
+      />
+      <BaseTable
+        rows={rows}
+        rowsData={rowsData}
+        data={dataToDisplay}
+        updateData={setDataToDisplay}
+        hasMenu={false}
+        isLoading={isLoading}
+        noteText={t("note")}
+        t={t}
+      />
     </Block>
   );
 };

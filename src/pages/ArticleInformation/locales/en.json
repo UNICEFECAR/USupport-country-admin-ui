@@ -1,3 +1,4 @@
 {
-  "heading": "Article Preview"
+  "heading": "Article Preview",
+  "by": "by {{creator}}"
 }

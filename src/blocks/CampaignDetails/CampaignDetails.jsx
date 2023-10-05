@@ -14,6 +14,7 @@ import {
   Loading,
   Modal,
   Toggle,
+  Box,
 } from "@USupport-components-library/src";
 
 import {
@@ -95,26 +96,37 @@ export const CampaignDetails = ({
     }
   }, [couponsData]);
 
-  const tableRows = [
-    "№",
-    t("provider"),
-    t("client"),
-    t("client_sex"),
-    t("client_yob"),
-    t("client_place_of_living"),
-    t("used_on"),
-  ];
+  const tableRows = useMemo(() => {
+    return [
+      { label: "№", isCentered: true },
+      { label: t("provider"), sortingKey: "providerName" },
+      { label: t("client"), sortingKey: "clientName" },
+      { label: t("client_sex"), sortingKey: "clientSex", isCentered: true },
+      {
+        label: t("client_yob"),
+        sortingKey: "clientYob",
+        isNumbered: true,
+        isCentered: true,
+      },
+      {
+        label: t("client_place_of_living"),
+        sortingKey: "clientPlaceOfLiving",
+        isCentered: true,
+      },
+      { label: t("used_on"), sortingKey: "createdAt", isDate: true },
+    ];
+  }, []);
 
   const getTableRowsData = useCallback(() => {
     return dataToDisplay?.map((coupon, index) => {
       return [
-        <p>{index + 1}</p>,
-        <p>{coupon.providerName}</p>,
-        <p>{coupon.clientName}</p>,
-        <p>{t(coupon.clientSex)}</p>,
-        <p>{coupon.clientYob}</p>,
-        <p>{t(coupon.clientPlaceOfLiving)}</p>,
-        <p>{getDateView(coupon.createdAt)}</p>,
+        <p className="text centered">{index + 1}</p>,
+        <p className="text">{coupon.providerName}</p>,
+        <p className="text">{coupon.clientName}</p>,
+        <p className="text centered">{t(coupon.clientSex)}</p>,
+        <p className="text centered">{coupon.clientYob}</p>,
+        <p className="text centered">{t(coupon.clientPlaceOfLiving)}</p>,
+        <p className="text">{getDateView(coupon.createdAt)}</p>,
       ];
     });
   }, [dataToDisplay]);
@@ -141,8 +153,11 @@ export const CampaignDetails = ({
   // Create a CSV file with the data of the coupons
   // And download it
   const handleExportReport = () => {
-    let csv = `${tableRows.slice(1).join(",")}\n`;
-    couponsData.forEach((c) => {
+    let csv = `${tableRows
+      .slice(1)
+      .map((x) => x.label)
+      .join(",")}\n`;
+    dataToDisplay.forEach((c) => {
       csv += `${c.providerName},${c.clientName},${t(c.clientSex)},${
         c.clientYob
       },${c.clientPlaceOfLiving},${getDateView(c.createdAt)}\n`;
@@ -194,10 +209,9 @@ export const CampaignDetails = ({
         coupon.providerName === filters.providerName;
 
       const isClientNameMatching =
-        filters.clientName === "all" ||
-        !filters.clientName ||
-        !filters.clientName !== "all" ||
-        coupon.clientName === filters.clientName;
+        filters.clientName === "all" || !filters.clientName
+          ? true
+          : coupon.clientName === filters.clientName;
 
       const isClientSexMatching =
         !filters.clientSex || coupon.clientSex === filters.clientSex;
@@ -211,12 +225,20 @@ export const CampaignDetails = ({
 
       // Check if the date of creation of the coupon
       // is after the date selected by the admin
-      const isUsedAfter =
+      const isStartDateMatching =
         !filters.usedAfter ||
-        new Date(coupon.createdAt) >= new Date(filters.usedAfter);
+        new Date(coupon.createdAt) >=
+          new Date(new Date(filters.usedAfter).setHours(0, 0, 0));
+
+      const isEndDateMatching =
+        !filters.endDate ||
+        new Date(new Date(coupon.createdAt).setHours(0, 0, 0)) <=
+          new Date(filters.endDate);
+
       return (
         isProviderNameMatching &&
-        isUsedAfter &&
+        isStartDateMatching &&
+        isEndDateMatching &&
         isClientNameMatching &&
         isClientSexMatching &&
         isClientAgeMatching &&
@@ -237,65 +259,60 @@ export const CampaignDetails = ({
     <Block classes="campaign-details">
       <Grid classes="campaign-details__grid">
         <GridItem md={8} lg={12}>
-          <div className="campaign-details__buttons-container">
-            <Button
-              label={t("filter")}
-              type="secondary"
-              color="purple"
-              size="md"
-              onClick={() => setIsFilterModalOpen(true)}
-            />
-            <Button
-              label={t("export_report")}
-              color="purple"
-              size="md"
-              onClick={handleExportReport}
-            />
-          </div>
-        </GridItem>
-
-        <>
-          <GridItem md={8} lg={12}>
-            <div className="campaign-details__grid__activate-campaign">
-              <Toggle
-                isToggled={isActive}
-                setParentState={(toggled) =>
-                  handleChangeCampaignStatus(toggled)
-                }
-              />
-              <p>{t(isActive ? "deactivate_campaign" : "activate_campaign")}</p>
-            </div>
-          </GridItem>
-          {fieldsToDisplay.map((field, index) => {
-            const fieldLabel = t(pascalToSnakeCase(field));
-            const showCurrencySymbol = [
-              "usedBudget",
-              "budget",
-              "couponPrice",
-            ].includes(field);
-            return (
-              <GridItem md={2} lg={3} key={index}>
-                <p>
-                  {fieldLabel}:{" "}
-                  <strong>
-                    {field.includes("Date")
-                      ? getDateView(data[field])
-                      : data[field]}
-                    {showCurrencySymbol ? currencySymbol : ""}
-                  </strong>
-                </p>
+          <Box classes="campaign-details__box">
+            <Grid classes="campaign-details__box__grid">
+              <GridItem md={8} lg={12}>
+                <div className="campaign-details__grid__activate-campaign">
+                  <Toggle
+                    isToggled={isActive}
+                    setParentState={(toggled) =>
+                      handleChangeCampaignStatus(toggled)
+                    }
+                  />
+                  <p>
+                    {t(isActive ? "deactivate_campaign" : "activate_campaign")}
+                  </p>
+                </div>
               </GridItem>
-            );
-          })}
-        </>
+              {fieldsToDisplay.map((field, index) => {
+                const fieldLabel = t(pascalToSnakeCase(field));
+                const showCurrencySymbol = [
+                  "usedBudget",
+                  "budget",
+                  "couponPrice",
+                ].includes(field);
+                return (
+                  <GridItem md={2} lg={3} key={index}>
+                    <p>
+                      {fieldLabel}:{" "}
+                      <strong>
+                        {field.includes("Date")
+                          ? getDateView(data[field])
+                          : data[field]}
+                        {showCurrencySymbol ? currencySymbol : ""}
+                      </strong>
+                    </p>
+                  </GridItem>
+                );
+              })}
+            </Grid>
+          </Box>
+        </GridItem>
       </Grid>
       {isLoading ? (
         <Loading />
       ) : (
         <BaseTable
+          data={dataToDisplay}
           rows={tableRows}
           rowsData={getTableRowsData()}
           hasMenu={false}
+          updateData={setDataToDisplay}
+          hasSearch
+          buttonLabel={t("export_report")}
+          buttonAction={handleExportReport}
+          secondaryButtonLabel={t("filter")}
+          secondaryButtonAction={() => setIsFilterModalOpen(true)}
           t={t}
         />
       )}
@@ -340,10 +357,17 @@ export const CampaignDetails = ({
           }
         />
         <DateInput
-          value={filters.usedAfter}
-          label={t("used_after")}
+          value={filters.startDate}
+          label={t("start_date")}
           onChange={(e) =>
-            setFilters({ ...filters, usedAfter: e.currentTarget.value })
+            setFilters({ ...filters, startDate: e.currentTarget.value })
+          }
+        />
+        <DateInput
+          value={filters.endDate}
+          label={t("end_date")}
+          onChange={(e) =>
+            setFilters({ ...filters, endDate: e.currentTarget.value })
           }
         />
         <Button

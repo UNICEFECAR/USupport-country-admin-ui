@@ -1,10 +1,23 @@
 @import "@USupport-components-library/styles";
 
 .sos-center {
-  &__rows {
+  &__image {
+    width: 11.7rem;
+    height: 8.6rem;
+    border-radius: $border_radius_0_8;
+    object-fit: cover;
+  }
+
+  & .table__container {
+    padding-top: $spacing_2_4;
+  }
+
+  &__search {
     padding-top: $spacing_3_0;
+    place-self: center;
     @media screen and (min-width: $screen-md) {
       padding-top: $spacing_4_0;
+      place-self: end;
     }
   }
 }

@@ -7,7 +7,8 @@
   "all": "All",
   "filters": "Filters",
   "sender": "Sender",
-  "starting_date": "Starting date",
+  "starting_date": "Start date",
+  "ending_date": "End date",
   "contact_reason_placeholder": "Select a reason",
   "contact_reason_1": "Information about USupport",
   "contact_reason_2": "Technical problem",
@@ -21,5 +22,6 @@
   "website": "Website",
   "provider": "Provider",
   "client": "Client",
-  "reset_filter": "Reset filters"
+  "reset_filter": "Reset filters",
+  "search": "Search"
 }

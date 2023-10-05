@@ -23,3 +23,4 @@ export * from "./SponsorDetails";
 export * from "./AddCampaign";
 export * from "./EditCampaign";
 export * from "./CampaignDetails";
+export * from "./MyQA";

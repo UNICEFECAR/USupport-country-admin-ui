@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useEffect } from "react";
+import { toast } from "react-toastify";
 import { useDropzone } from "react-dropzone";
 import { useMutation } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
@@ -23,8 +24,8 @@ export const UploadPicture = ({
   handleUploadFile,
   targetImage,
   fileName,
-  sponsorId,
   setTargetImageUrl,
+  providerId,
 }) => {
   const { t } = useTranslation("upload-picture");
 
@@ -47,7 +48,11 @@ export const UploadPicture = ({
       content.append("fileContent", data.imageFile);
 
       await userSvc.uploadFileAsAdmin(content);
+      if (providerId) {
+        await providerSvc.changeImageAsAdmin(providerId, providerId);
+      }
       setTargetImageUrl(data.imageAsUrl);
+      toast(t("upload_success"));
     }
     return true;
   };

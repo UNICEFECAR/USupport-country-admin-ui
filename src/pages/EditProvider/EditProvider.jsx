@@ -55,11 +55,13 @@ export const EditProvider = () => {
         setProviderImage={setProviderImage}
         setTargetImageUrl={setProviderImageUrl}
         fileName={providerId}
+        providerId={providerId}
       />
       <DeleteProfilePicture
         isOpen={isDeletePictureBackdropShown}
         onClose={closeDeletePictureBackdrop}
         providerId={providerId}
+        setProviderImageUrl={setProviderImageUrl}
       />
     </Page>
   );

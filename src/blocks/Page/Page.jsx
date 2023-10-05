@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { Navbar, Icon } from "@USupport-components-library/src";
+import { Navbar, Icon, PasswordModal } from "@USupport-components-library/src";
 import { countrySvc, languageSvc } from "@USupport-components-library/services";
-import { getCountryFromTimezone } from "@USupport-components-library/utils";
+import {
+  getCountryFromTimezone,
+  useWindowDimensions,
+} from "@USupport-components-library/utils";
 import { useIsLoggedIn } from "#hooks";
 
 import "./page.scss";
@@ -33,6 +36,8 @@ export const Page = ({
   classes,
   children,
   handleGoBack,
+  showHeadingButtonInline = false,
+  showHeadingButtonBelow = true,
   image,
 }) => {
   const navigateTo = useNavigate();
@@ -40,6 +45,8 @@ export const Page = ({
 
   const isLoggedIn = useIsLoggedIn();
   const isNavbarShown = showNavbar !== null ? showNavbar : isLoggedIn;
+
+  const { width } = useWindowDimensions();
 
   const pages = [
     { name: t("page_1"), url: "/dashboard" },
@@ -49,6 +56,7 @@ export const Page = ({
     { name: t("page_5"), url: "/faq" },
     { name: t("page_6"), url: "/reports" },
     { name: t("page_7"), url: "/campaigns" },
+    { name: t("page_8"), url: "/my-qa" },
   ];
 
   const localStorageCountry = localStorage.getItem("country");
@@ -114,7 +122,8 @@ export const Page = ({
       const languageObject = {
         value: x.alpha2,
         label: x.name,
-        id: x["language_id"],
+        localName: x.local_name,
+        id: x.language_id,
       };
       if (localStorageLanguage === x.alpha2) {
         setSelectedLanguage(languageObject);
@@ -131,8 +140,34 @@ export const Page = ({
   const { data: countries } = useQuery(["countries"], fetchCountries);
   const { data: languages } = useQuery(["languages"], fetchLanguages);
 
+  const queryClient = useQueryClient();
+
+  const hasEnteredPassword = queryClient.getQueryData(["hasEnteredPassword"]);
+
+  const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(
+    !hasEnteredPassword
+  );
+  const [password, setPasswordError] = useState("");
+
+  const handlePasswordCheck = (password) => {
+    if (password === "USupport!2023") {
+      queryClient.setQueryData(["hasEnteredPassword"], true);
+      setIsPasswordModalOpen(false);
+    } else {
+      setPasswordError(t("wrong_password"));
+    }
+  };
+
   return (
     <>
+      <PasswordModal
+        label={t("password")}
+        btnLabel={t("submit")}
+        isOpen={isPasswordModalOpen}
+        error={password}
+        handleSubmit={handlePasswordCheck}
+      />
+
       {isNavbarShown === true && (
         <Navbar
           pages={pages}
@@ -158,21 +193,45 @@ export const Page = ({
         ].join(" ")}
       >
         {(heading || showGoBackArrow || headingButton) && (
-          <div className="page__header">
-            {showGoBackArrow && (
-              <Icon
-                classes="page__header-icon"
-                name="arrow-chevron-back"
-                size="md"
-                color="#20809E"
-                onClick={handleGoBack}
-              />
+          <>
+            <div
+              className={[
+                "page__header",
+                showHeadingButtonBelow &&
+                  !width >= 768 &&
+                  "page__header__button-below",
+              ].join(" ")}
+            >
+              {showGoBackArrow && (
+                <Icon
+                  classes="page__header-icon"
+                  name="arrow-chevron-back"
+                  size="md"
+                  color="#20809E"
+                  onClick={handleGoBack}
+                />
+              )}
+              {image && <img className="page__header__image" src={image} />}
+              {heading && <h2 className="page__header-heading">{heading}</h2>}
+              {headingButton && (width >= 768 || showHeadingButtonInline) && (
+                <div className="page__header-button-container">
+                  {headingButton}
+                </div>
+              )}
+            </div>
+            {headingButton && (
+              <div className="page__mobile-button-container">
+                {width < 768 &&
+                !showHeadingButtonInline &&
+                headingButton &&
+                showHeadingButtonBelow
+                  ? headingButton
+                  : null}
+              </div>
             )}
-            {image && <img className="page__header__image" src={image} />}
-            {heading && <h3 className="page__header-heading">{heading}</h3>}
-            {headingButton && headingButton}
-          </div>
+          </>
         )}
+
         {children}
       </div>
     </>

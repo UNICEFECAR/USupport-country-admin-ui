@@ -5,7 +5,8 @@
   "page_4": "SOS",
   "page_5": "Вопросы",
   "page_6": "Отчеты",
-  "page_7": "Кампании",
+  "page_7": "Купоны",
+  "page_8": "Мой Q&A",
 
   "country_1": "",
   "country_2": "",
@@ -18,7 +19,10 @@
   "language_5": "",
   "language_6": "",
 
-  "button_text": "Перейти к приложению",
+  "button_text": "Выйти",
   "contact_us": "Свяжитесь с нами",
-  "your_profile_text": "Профиль"
+  "your_profile_text": "Профиль",
+  "password": "Пароль",
+  "wrong_password": "Неверный пароль",
+  "submit": "Отправить"
 }

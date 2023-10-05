@@ -22,3 +22,5 @@ export * as SponsorDetails from "./SponsorDetails/locales.js";
 export * as AddCampaign from "./AddCampaign/locales.js";
 export * as EditCampaign from "./EditCampaign/locales.js";
 export * as CampaignDetails from "./CampaignDetails/locales.js";
+export * as MyQA from "./MyQA/locales.js";
+export * as Dashboard from "./Dashboard/locales.js";

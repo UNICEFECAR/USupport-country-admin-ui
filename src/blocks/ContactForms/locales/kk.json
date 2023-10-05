@@ -8,8 +8,9 @@
   "filters": "Сүзгілер",
   "sender": "Жіберуші",
   "starting_date": "Басталу күні",
+  "ending_date": "Аяқталу күні",
   "contact_reason_placeholder": "Себебін таңдаңыз",
-  "contact_reason_1": "Usupport туралы ақпарат",
+  "contact_reason_1": "USupport туралы ақпарат",
   "contact_reason_2": "Техникалық мәселе",
   "contact_reason_3": "Консультанттар желісіне қосылыңыз",
   "contact_reason_4": "Серіктестік",
@@ -17,9 +18,10 @@
   "contact_reason_6": "Қызметтер туралы ақпарат",
   "no_results": "Байланыс формалары табылмады",
   "submit": "Сүзгілерді қолданыңыз",
-  "sent_from": "Жіберілген жер",
+  "sent_from": "Жіберген",
   "website": "Веб-сайт",
   "provider": "Консультанттар",
   "client": "Клиент",
-  "reset_filter": "Сүзгілерді қалпына келтіру"
+  "reset_filter": "Сүзгілерді қалпына келтіру",
+  "search": "Іздеу"
 }

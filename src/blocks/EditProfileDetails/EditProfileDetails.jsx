@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import {
   Block,
   Button,
-  DropdownWithLabel,
+  InputPhone,
   Error,
   Grid,
   GridItem,
@@ -14,7 +14,6 @@ import {
 
 import { validate, validateProperty } from "@USupport-components-library/utils";
 import { useGetAdminData, useUpdateAdminData } from "#hooks";
-import countryCodes from "country-codes-list";
 import Joi from "joi";
 
 import "./edit-profile-details.scss";
@@ -26,35 +25,13 @@ import "./edit-profile-details.scss";
  *
  * @return {jsx}
  */
-export const EditProfileDetails = () => {
+export const EditProfileDetails = ({ openChangePassword }) => {
   const { t } = useTranslation("edit-profile-details");
   const [adminQuery, adminData, setAdminData] = useGetAdminData();
 
   const [canSaveChanges, setCanSaveChanges] = useState(false);
 
   const [errors, setErrors] = useState({});
-
-  const [phonePrefixes, setPhonePrefixes] = useState();
-
-  useEffect(() => {
-    const codes = generateCountryCodes();
-    if (adminData && !adminData?.phonePrefix) {
-      const usersCountry = localStorage.getItem("country");
-
-      const userCountryCode = codes.find(
-        (x) => x.country === usersCountry
-      )?.value;
-      if (userCountryCode) {
-        handleChange("phonePrefix", userCountryCode);
-      } else {
-        handleChange(
-          "phonePrefix",
-          codes.find((x) => x.country === "KZ")?.value
-        );
-      }
-    }
-    setPhonePrefixes(codes);
-  }, [adminData]);
 
   useEffect(() => {
     if (adminData && adminQuery.data) {
@@ -71,10 +48,6 @@ export const EditProfileDetails = () => {
     email: Joi.string()
       .email({ tlds: { allow: false } })
       .label(t("email_error")),
-    phonePrefix: Joi.string()
-      .optional()
-      .allow(null, "", " ")
-      .label(t("phone_prefix_error")),
     phone: Joi.string().optional().allow(null, "", " ").label(t("phone_error")),
     role: Joi.any(),
   });
@@ -123,86 +96,60 @@ export const EditProfileDetails = () => {
               value={adminData.name}
               onChange={(e) => handleChange("name", e.currentTarget.value)}
               errorMessage={errors.name}
-              label={t("name_label")}
+              label={t("name_label") + " *"}
               placeholder={t("name_placeholder")}
             />
             <Input
               value={adminData.surname}
               onChange={(e) => handleChange("surname", e.currentTarget.value)}
               errorMessage={errors.surname}
-              label={t("surname_label")}
+              label={t("surname_label") + " *"}
               placeholder={t("surname_placeholder")}
             />
-            <div className="edit-profile-details__grid__phone-container">
-              {phonePrefixes && (
-                <DropdownWithLabel
-                  options={phonePrefixes}
-                  label={t("phone_label")}
-                  selected={adminData.phonePrefix}
-                  setSelected={(value) => handleChange("phonePrefix", value)}
-                  placeholder={t("phone_prefix_placeholder")}
-                />
-              )}
-              <Input
-                value={adminData.phone}
-                onChange={(e) => handleChange("phone", e.currentTarget.value)}
-                placeholder={t("phone_placeholder")}
-                onBlur={() => handleBlur("phone")}
-                classes="edit-profile-details__grid__phone-container__phone-input"
-              />
-            </div>
-            {errors.phone || errors.phonePrefix ? (
-              <Error
-                classes="edit-profile-details__grid__phone-error"
-                message={errors.phone || errors.phonePrefix}
-              />
-            ) : null}
+            <InputPhone
+              label={t("phone_label")}
+              errorMessage={errors.phone}
+              onBlur={() => handleBlur("phone")}
+              value={adminData.phone}
+              onChange={(value) => handleChange("phone", value)}
+              placeholder={t("phone_placeholder")}
+              classes="edit-profile-details__grid__phone-input"
+            />
             <Input
               value={adminData.email}
               onChange={(e) => handleChange("email", e.currentTarget.value)}
               errorMessage={errors.email}
-              label={t("email_label")}
+              label={t("email_label") + " *"}
               placeholder={t("email_placeholder")}
               onBlur={() => handleBlur("email")}
             />
             {errors.submit ? <Error message={errors.submit} /> : null}
-            <Button
-              classes="edit-profile-details__grid__save-button"
-              type="primary"
-              label={t("button_text")}
-              size="lg"
-              onClick={handleSave}
-              disabled={!canSaveChanges}
-              loading={updateAdminMutation.isLoading}
-            />
-            <Button
-              type="secondary"
-              classes="edit-profile-details__grid__discard-button"
-              label={t("button_secondary_text")}
-              size="lg"
-              disabled={!canSaveChanges}
-              onClick={handleDiscard}
-            />
+            <div className="edit-profile-details__grid__buttons-container">
+              <Button
+                type="primary"
+                label={t("button_text")}
+                size="lg"
+                onClick={handleSave}
+                disabled={!canSaveChanges}
+                loading={updateAdminMutation.isLoading}
+              />
+              <Button
+                type="primary"
+                label={t("button_change_password")}
+                size="lg"
+                onClick={openChangePassword}
+              />
+              <Button
+                type="secondary"
+                label={t("button_secondary_text")}
+                size="lg"
+                disabled={!canSaveChanges}
+                onClick={handleDiscard}
+              />
+            </div>
           </GridItem>
         </Grid>
       )}
     </Block>
   );
 };
-
-function generateCountryCodes() {
-  const countryCodesList = countryCodes.customList(
-    "countryCode",
-    "+{countryCallingCode}"
-  );
-  const codes = [];
-  Object.keys(countryCodesList).forEach((key) => {
-    codes.push({
-      value: countryCodesList[key],
-      label: `${key}: ${countryCodesList[key]}`,
-      country: key,
-    });
-  });
-
-  return codes.sort((a, b) => (a.country > b.country ? 1 : -1));
-}

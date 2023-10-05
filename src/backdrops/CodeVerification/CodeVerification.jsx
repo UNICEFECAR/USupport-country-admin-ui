@@ -56,6 +56,7 @@ export const CodeVerification = ({
       localStorage.setItem("refresh-token", refreshToken);
 
       queryClient.invalidateQueries({ queryKey: ["provider-data"] });
+      window.dispatchEvent(new Event("login"));
 
       setErrors({});
       navigate("/dashboard");

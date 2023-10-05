@@ -9,7 +9,6 @@ export const useGetAllSponsorsData = () => {
         sponsorId: sponsor.sponsor_id,
         sponsorName: sponsor.name,
         email: sponsor.email,
-        phonePrefix: sponsor.phone_prefix,
         phone: sponsor.phone,
         image: sponsor.image,
         activeCampaigns: sponsor.active_campaigns,

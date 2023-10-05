@@ -23,7 +23,7 @@ export const AddSponsor = () => {
 
   const [sponsorImage, setSponsorImage] = useState();
   const [sponsorImageFile, setSponsorImageFile] = useState();
-  const [sponsorImageUrl, setSponsorImageUrl] = useState();
+  const [sponsorImageUrl] = useState();
 
   const handleUploadFile = (data) => {
     setSponsorImage(data.imageAsUrl);
@@ -47,8 +47,6 @@ export const AddSponsor = () => {
         onClose={() => setIsUploadPictureBackdropOpen(false)}
         handleUploadFile={handleUploadFile}
         targetImage={sponsorImage}
-        // providerImage={providerImage}
-        // setProviderImage={setProviderImage}
       />
     </Page>
   );

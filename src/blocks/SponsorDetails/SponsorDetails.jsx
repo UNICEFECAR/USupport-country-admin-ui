@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -8,11 +8,11 @@ import {
   Button,
   Grid,
   GridItem,
-  InputSearch,
   Modal,
   Input,
   DateInput,
   Toggle,
+  Box,
 } from "@USupport-components-library/src";
 
 import { getDateView } from "@USupport-components-library/utils";
@@ -38,10 +38,8 @@ import "./sponsor-details.scss";
  */
 export const SponsorDetails = ({ data }) => {
   const navigate = useNavigate();
-  const { t } = useTranslation("sponsor-details");
+  const { t, i18n } = useTranslation("sponsor-details");
   const currencySymbol = localStorage.getItem("currency_symbol");
-
-  const [searchValue, setSearchValue] = useState("");
 
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
   const [filterData, setFilterData] = useState(initialFilters);
@@ -54,40 +52,60 @@ export const SponsorDetails = ({ data }) => {
     }
   }, [data]);
 
-  const rows = [
-    t("campaign"),
-    t("used_total_coupons"),
-    t("coupon_price"),
-    t("used_total_budget"),
-    t("max_coupons"),
-    t("period"),
-    t("status"),
-  ];
+  const rows = useMemo(() => {
+    return [
+      { label: t("campaign"), sortingKey: "name" },
+      {
+        label: t("used_total_coupons"),
+        sortingKey: "usedCoupons",
+        isNumbered: true,
+        isCentered: true,
+      },
+      {
+        label: t("coupon_price"),
+        sortingKey: "couponPrice",
+        isNumbered: true,
+        isCentered: true,
+      },
+      {
+        label: t("used_total_budget"),
+        sortingKey: "usedBudget",
+        isNumbered: true,
+        isCentered: true,
+      },
+      {
+        label: t("max_coupons"),
+        sortingKey: "maxCouponsPerClient",
+        isNumbered: true,
+        isCentered: true,
+      },
+      { label: t("period"), sortingKey: "startDate", isDate: true },
+      { label: t("status"), sortingKey: "status", isCentered: true },
+    ];
+  }, [i18n.language]);
 
-  const rowsData = dataToDisplay
-    ?.filter((x) => x.name.toLowerCase().includes(searchValue.toLowerCase()))
-    .map((item) => {
-      return [
-        <p>{item.name}</p>,
-        <p>
-          {item.couponData.length}/{item.numberOfCoupons}
-        </p>,
-        <p>
-          {item.couponPrice}
-          {currencySymbol}
-        </p>,
-        <p>
-          {item.couponPrice * item.couponData.length}
-          {currencySymbol}/{item.budget}
-          {currencySymbol}
-        </p>,
-        <p>{item.maxCouponsPerClient}</p>,
-        <p>
-          {getDateView(item.startDate)} - {getDateView(item.endDate)}
-        </p>,
-        <p>{t(item.active ? "active" : "inactive")}</p>,
-      ];
-    });
+  const rowsData = dataToDisplay.map((item) => {
+    return [
+      <p className="text ">{item.name}</p>,
+      <p className="text centered">
+        {item.couponData.length}/{item.numberOfCoupons}
+      </p>,
+      <p className="text centered">
+        {item.couponPrice}
+        {currencySymbol}
+      </p>,
+      <p className="text centered">
+        {item.couponPrice * item.couponData.length}
+        {currencySymbol}/{item.budget}
+        {currencySymbol}
+      </p>,
+      <p className="text centered">{item.maxCouponsPerClient}</p>,
+      <p className="text ">
+        {getDateView(item.startDate)} - {getDateView(item.endDate)}
+      </p>,
+      <p className="text centered">{t(item.active ? "active" : "inactive")}</p>,
+    ];
+  });
 
   const handleNavigate = (id, route) => {
     const campaignData = data.campaignsData?.find((x) => x.campaignId === id);
@@ -130,11 +148,14 @@ export const SponsorDetails = ({ data }) => {
       const isMinMaxCouponsPerClientMatching =
         Number(x.maxCouponsPerClient) >=
         Number(filterData.minMaxCouponsPerClient);
+
       const isStartDateMatching = filterData.startDate
-        ? new Date(x.startDate) >= new Date(filterData.startDate)
+        ? new Date(x.startDate) >=
+          new Date(new Date(filterData.startDate).setHours(0, 0, 0, 0))
         : true;
       const isEndDateMatching = filterData.endDate
-        ? new Date(x.endDate) <= new Date(filterData.endDate)
+        ? new Date(new Date(x.endDate).setHours(0, 0, 0, 0)) <=
+          new Date(filterData.endDate)
         : true;
       const isStatusMatching = filterData.showOnlyActive
         ? x.active === filterData.showOnlyActive
@@ -166,63 +187,19 @@ export const SponsorDetails = ({ data }) => {
   };
   return (
     <Block classes="sponsor-details">
-      <div className="sponsor-details__buttons-container">
-        <Button
-          onClick={() => setIsFilterModalOpen(true)}
-          label={t("filter")}
-          type="secondary"
-          color="purple"
-          size="md"
-        />
-        <Button
-          label={t("add_campaign")}
-          color="purple"
-          size="md"
-          onClick={handleAddCampaign}
-        />
-      </div>
-      <Grid classes="sponsor-details__grid">
-        <GridItem md={2} lg={2} classes="sponsor-details__grid-item">
-          <p>
-            {t("campaigns")}: <strong>{data.campaigns}</strong>
-          </p>
-        </GridItem>
-
-        <GridItem md={2} lg={2} classes="sponsor-details__grid-item">
-          <p>
-            {t("active_campaigns")}: <strong>{data.activeCampaigns}</strong>
-          </p>
-        </GridItem>
-
-        <GridItem md={2} lg={3} classes="sponsor-details__grid-item">
-          <p>
-            {t("email")}: <strong>{data.email}</strong>
-          </p>
-        </GridItem>
-
-        <GridItem md={2} lg={3} classes="sponsor-details__grid-item">
-          <p>
-            {t("phone_number")}:{" "}
-            <strong>
-              {data.phonePrefix} {data.phone}
-            </strong>
-          </p>
-        </GridItem>
-
-        <GridItem md={8} lg={2} classes="sponsor-details__grid-item">
-          <InputSearch
-            placeholder={t("search")}
-            value={searchValue}
-            onChange={setSearchValue}
-          />
-        </GridItem>
-      </Grid>
+      <Heading t={t} data={data} />
       <BaseTable
         data={dataToDisplay}
+        updateData={setDataToDisplay}
         rows={rows}
         rowsData={rowsData}
         handleClickPropName="campaignId"
         menuOptions={menuOptions}
+        hasSearch
+        buttonLabel={t("add_campaign")}
+        buttonAction={handleAddCampaign}
+        secondaryButtonLabel={t("filter")}
+        secondaryButtonAction={() => setIsFilterModalOpen(true)}
         t={t}
       />
 
@@ -294,5 +271,41 @@ export const SponsorDetails = ({ data }) => {
         />
       </Modal>
     </Block>
+  );
+};
+
+const Heading = ({ t, data }) => {
+  return (
+    <Grid classes="sponsor-details__grid">
+      <GridItem md={8} lg={12}>
+        <Box classes="sponsor-details__box">
+          <Grid classes="sponsor-details__box__grid">
+            <GridItem xs={4} md={2} lg={3}>
+              <p>
+                {t("campaigns")}: <strong>{data.campaigns}</strong>
+              </p>
+            </GridItem>
+
+            <GridItem xs={4} md={2} lg={3}>
+              <p>
+                {t("active_campaigns")}: <strong>{data.activeCampaigns}</strong>
+              </p>
+            </GridItem>
+
+            <GridItem xs={4} md={2} lg={3}>
+              <p>
+                {t("email")}: <strong>{data.email}</strong>
+              </p>
+            </GridItem>
+
+            <GridItem xs={4} md={2} lg={3}>
+              <p>
+                {t("phone_number")}: <strong>{data.phone}</strong>
+              </p>
+            </GridItem>
+          </Grid>
+        </Box>
+      </GridItem>
+    </Grid>
   );
 };

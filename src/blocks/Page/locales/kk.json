@@ -5,7 +5,8 @@
   "page_4": "SOS",
   "page_5": "Сұрақ",
   "page_6": "Есеп",
-  "page_7": "Науқан",
+  "page_7": "Купондар",
+  "page_8": "Менің Q&A",
 
   "country_1": "",
   "country_2": "",
@@ -18,7 +19,10 @@
   "language_5": "",
   "language_6": "",
 
-  "button_text": "Қосымшаға өту",
+  "button_text": "Шығу",
   "contact_us": "Бізге хабарласыңыз",
-  "your_profile_text": "Профиль"
+  "your_profile_text": "Профиль",
+  "password": "Құпия сөз",
+  "wrong_password": "Құпия сөз дұрыс емес",
+  "submit": "Жіберу"
 }

@@ -1,6 +1,8 @@
 @import "@USupport-components-library/styles";
 
 .edit-provider {
+  padding-bottom: $spacing_3_2;
+
   &__grid {
     place-items: center;
     padding-bottom: $spacing_3_6;

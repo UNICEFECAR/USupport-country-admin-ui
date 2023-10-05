@@ -1,6 +1,6 @@
 /* AddSponsor styles */
-@import '@USupport-components-library/styles';
+@import "@USupport-components-library/styles";
 
-.page__add-sponsor{
+.page__add-sponsor {
+  @include full-height-page-navbar;
 }
-

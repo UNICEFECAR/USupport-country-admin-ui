@@ -1,6 +1,14 @@
 {
   "no_results": "Ничего не нашлось, попробуйте другой язык.",
   "view_button": "просмотр",
-  "article_added": "Article added successfullyRU",
-  "article_removed": "Article removed successfullyRU"
+  "article_added": "Статья успешно добавлена",
+  "article_removed": "Статья успешно удалена",
+  "published": "Опубликовано",
+  "image": "Изображение",
+  "content": "Содержание",
+  "view": "Просмотр",
+  "note": "<0>Примечание*</0> Если флажок в столбце \"Опубликовано\" отмечен как установленный, это означает, что Статья видна пользователям платформы.",
+  "search": "Поиск",
+  "no_data_found": "Данные не найдены",
+  "created_at": "Опубликовано"
 }

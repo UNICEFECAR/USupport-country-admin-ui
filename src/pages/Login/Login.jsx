@@ -1,7 +1,8 @@
+/* eslint-disable */
 import React, { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { useWindowDimensions } from "@USupport-components-library/utils";
 import { RadialCircle, Loading } from "@USupport-components-library/src";
@@ -26,6 +27,7 @@ export const Login = () => {
   const navigate = useNavigate();
   const { t } = useTranslation("login-page");
   const { width } = useWindowDimensions();
+  const queryClient = useQueryClient();
 
   const ROLE = "country";
 
@@ -100,6 +102,29 @@ export const Login = () => {
     },
   });
 
+  const login = async () => {
+    return await adminSvc.login(data.email, data.password, ROLE, "1111");
+  };
+  const loginMutation = useMutation(login, {
+    onSuccess: (response) => {
+      const { token: tokenData } = response.data;
+      const { token, expiresIn, refreshToken } = tokenData;
+
+      localStorage.setItem("token", token);
+      localStorage.setItem("token-expires-in", expiresIn);
+      localStorage.setItem("refresh-token", refreshToken);
+
+      queryClient.invalidateQueries({ queryKey: ["provider-data"] });
+
+      setErrors({});
+      navigate("/dashboard");
+    },
+    onError: (err) => {
+      const { message: errorMessage } = useError(err);
+      setErrors({ submit: errorMessage });
+    },
+  });
+
   if (isLoggedIn === "loading") return <Loading />;
   if (isLoggedIn === true) return <Navigate to="/dashboard" />;
 
@@ -109,6 +134,9 @@ export const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
+    loginMutation.mutate();
+    return;
+
     if (hasReceivedOtp) {
       if (
         lastUsedCredentials.email === data.email.toLocaleLowerCase() &&

@@ -1,29 +1,53 @@
 @import "@USupport-components-library/styles";
 
 .my-qa {
-  padding-bottom: $spacing_6_0;
-
-  &__other-reason-text {
-    color: $color_blue_3d527b;
-  }
-
-  &__filter-modal {
-    & .dropdown-with-label {
-      margin-bottom: $spacing_1_6;
-    }
-  }
-
-  &__filter-modal__content-wrapper {
-    min-height: 25rem;
+  &__tabs-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: $spacing_8_0;
+    justify-content: center;
+    padding-bottom: $spacing_2_0;
+
+    @media screen and (min-width: $screen-md) {
+      flex-direction: row;
+      justify-content: space-between;
+      padding-left: $spacing_5_0;
+    }
+    @media screen and (min-width: $screen-lg) {
+      padding-left: $spacing_23_0;
+    }
   }
 
-  &__filter-modal__content {
-    & .base-modal__footer {
-      margin: 0 auto;
+  &__tabs-container {
+    display: flex;
+    flex-direction: column;
+    padding-top: $spacing_1_6;
+    overflow-y: auto;
+
+    @media screen and (min-width: $screen-md) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin-left: 0;
     }
+  }
+
+  &__search-input {
+    margin: 0 auto;
+
+    @media screen and (min-width: $screen-md) {
+      margin-right: $spacing_2_0;
+    }
+  }
+
+  &__questions-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__answer {
+    margin-bottom: $spacing_1_6;
   }
 }

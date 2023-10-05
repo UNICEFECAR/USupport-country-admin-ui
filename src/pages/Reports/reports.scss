@@ -5,7 +5,7 @@
   & .tabs-underlined-container {
     margin: $spacing_3_2 0;
     align-self: center;
-    overflow-x: scroll;
+    overflow-x: auto;
 
     & .tab {
       & .label {

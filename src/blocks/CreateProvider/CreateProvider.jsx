@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import { useMutation } from "@tanstack/react-query";
@@ -6,16 +6,16 @@ import { useMutation } from "@tanstack/react-query";
 import {
   Block,
   Button,
-  DropdownGroup,
   DropdownWithLabel,
   Error,
   Grid,
   GridItem,
   Input,
   InputGroup,
-  InputPassword,
   ProfilePicturePreview,
   Textarea,
+  InputPhone,
+  Select,
 } from "@USupport-components-library/src";
 
 import { validate, validateProperty } from "@USupport-components-library/utils";
@@ -25,7 +25,6 @@ import {
   useGetWorkWithCategories,
   useCreateProvider,
 } from "#hooks";
-import countryCodes from "country-codes-list";
 import Joi from "joi";
 
 import "./create-provider.scss";
@@ -37,7 +36,6 @@ const initialData = {
   surname: "",
   nickname: "",
   email: "",
-  phonePrefix: "",
   phone: "",
   image: "default",
   specializations: [],
@@ -63,7 +61,6 @@ const initialData = {
 export const CreateProvider = ({
   openDeletePictureBackdrop,
   openUploadPictureBackdrop,
-  providerImage,
   providerImageFile,
   providerImageUrl,
   setProviderImage,
@@ -81,27 +78,6 @@ export const CreateProvider = ({
 
   const [errors, setErrors] = useState({});
 
-  const [phonePrefixes, setPhonePrefixes] = useState();
-  useEffect(() => {
-    const codes = generateCountryCodes();
-    if (providerData && !providerData?.phonePrefix) {
-      const usersCountry = localStorage.getItem("country");
-
-      const userCountryCode = codes.find(
-        (x) => x.country === usersCountry
-      )?.value;
-      if (userCountryCode) {
-        handleChange("phonePrefix", userCountryCode);
-      } else {
-        handleChange(
-          "phonePrefix",
-          codes.find((x) => x.country === "KZ")?.value
-        );
-      }
-    }
-    setPhonePrefixes(codes);
-  }, [providerData]);
-
   const specializationOptions = [
     { value: "psychologist", label: t("psychologist"), selected: false },
     { value: "psychiatrist", label: t("psychiatrist"), selected: false },
@@ -117,7 +93,6 @@ export const CreateProvider = ({
     email: Joi.string()
       .email({ tlds: { allow: false } })
       .label(t("email_error")),
-    phonePrefix: Joi.string().label(t("phone_prefix_error")),
     phone: Joi.string().label(t("phone_error")),
     image: Joi.string(),
     street: Joi.string().label(t("street_error")),
@@ -144,7 +119,7 @@ export const CreateProvider = ({
 
   const getSpecializationsOptions = useCallback(() => {
     if (providerData && providerData.specializations) {
-      return specializationOptions.map((option, index) => {
+      return specializationOptions.map((option) => {
         if (providerData.specializations.includes(option.value)) {
           return {
             ...option,
@@ -170,7 +145,10 @@ export const CreateProvider = ({
         const language = localizationQuery.data.languages[i];
         // Construct the new object
         newLanguageOption.value = language.language_id;
-        newLanguageOption.label = language.name;
+        newLanguageOption.label =
+          language.name === "English"
+            ? language.name
+            : `${language.name} (${language.local_name})`;
         newLanguageOption.selected = providerLanguages.includes(
           language.language_id
         );
@@ -284,6 +262,7 @@ export const CreateProvider = ({
         <GridItem md={8} lg={4}>
           <ProfilePicturePreview
             image={providerData.image}
+            imageFile={providerImageUrl}
             handleDeleteClick={openDeletePictureBackdrop}
             handleChangeClick={openUploadPictureBackdrop}
             changePhotoText={t("change_photo")}
@@ -292,7 +271,7 @@ export const CreateProvider = ({
             value={providerData.name}
             onChange={(e) => handleChange("name", e.currentTarget.value)}
             errorMessage={errors.name}
-            label={t("name_label")}
+            label={t("name_label") + " *"}
             placeholder={t("name_placeholder")}
           />
           <Input
@@ -306,14 +285,14 @@ export const CreateProvider = ({
             value={providerData.surname}
             onChange={(e) => handleChange("surname", e.currentTarget.value)}
             errorMessage={errors.surname}
-            label={t("surname_label")}
+            label={t("surname_label") + " *"}
             placeholder={t("surname_placeholder")}
           />
           <Textarea
             value={providerData.description}
             onChange={(value) => handleChange("description", value)}
             errorMessage={errors.description}
-            label={t("description_label")}
+            label={t("description_label") + " *"}
             placeholder={t("description_placeholder")}
             onBlur={() => handleBlur("description")}
           />
@@ -326,43 +305,26 @@ export const CreateProvider = ({
         </GridItem>
 
         <GridItem md={8} lg={4}>
-          <div className="create-provider__grid__phone-container">
-            {phonePrefixes && (
-              <DropdownWithLabel
-                options={phonePrefixes}
-                label={t("phone_label")}
-                selected={
-                  providerData.phonePrefix ||
-                  phonePrefixes.find((x) => x.country === usersCountry)?.value
-                }
-                setSelected={(value) => handleChange("phonePrefix", value)}
-                placeholder={t("phone_prefix_placeholder")}
-              />
-            )}
-            <Input
-              value={providerData.phone}
-              onChange={(e) => handleChange("phone", e.currentTarget.value)}
-              placeholder={t("phone_placeholder")}
-              onBlur={() => handleBlur("phone")}
-              classes="create-provider__grid__phone-container__phone-input"
-            />
-          </div>
-          {errors.phone || errors.phonePrefix ? (
-            <Error
-              classes="create-provider__grid__phone-error"
-              message={errors.phone || errors.phonePrefix}
-            />
-          ) : null}
+          <InputPhone
+            label={t("phone_label") + " *"}
+            placeholder={t("phone_placeholder")}
+            value={providerData.phone}
+            onChange={(value) => handleChange("phone", value)}
+            searchPlaceholder={t("search")}
+            errorMessage={errors.phone}
+            searchNotFound={t("no_entries_found")}
+            classes="add-sponsor__grid__phone"
+          />
           <Input
             value={providerData.email}
             onChange={(e) => handleChange("email", e.currentTarget.value)}
             errorMessage={errors.email}
-            label={t("email_label")}
+            label={t("email_label") + " *"}
             placeholder={t("email_placeholder")}
             onBlur={() => handleBlur("email")}
           />
           <DropdownWithLabel
-            label={t("sex_label")}
+            label={t("sex_label") + " *"}
             placeholder={t("sex_placeholder")}
             options={sexOptions}
             selected={providerData.sex}
@@ -376,7 +338,7 @@ export const CreateProvider = ({
               handleChange("consultationPrice", e.currentTarget.value)
             }
             errorMessage={errors.consultationPrice}
-            label={t("consultation_price_label", { currencySymbol })}
+            label={t("consultation_price_label", { currencySymbol }) + " *"}
             placeholder={t("consultation_price_placeholder")}
             onBlur={() => handleBlur("consultationPrice")}
           />
@@ -384,7 +346,7 @@ export const CreateProvider = ({
             value={providerData.city}
             onChange={(e) => handleChange("city", e.currentTarget.value)}
             errorMessage={errors.city}
-            label={t("city_label")}
+            label={t("city_label") + " *"}
             placeholder={t("city_placeholder")}
             onBlur={() => handleBlur("city")}
           />
@@ -392,7 +354,7 @@ export const CreateProvider = ({
             value={providerData.postcode}
             onChange={(e) => handleChange("postcode", e.currentTarget.value)}
             errorMessage={errors.postcode}
-            label={t("postcode_label")}
+            label={t("postcode_label") + " *"}
             placeholder={t("postcode_placeholder")}
             onBlur={() => handleBlur("postcode")}
           />
@@ -400,25 +362,27 @@ export const CreateProvider = ({
             value={providerData.street}
             onChange={(e) => handleChange("street", e.currentTarget.value)}
             errorMessage={errors.street}
-            label={t("street_label")}
+            label={t("street_label") + " *"}
             placeholder={t("street_placeholder")}
             onBlur={() => handleBlur("street")}
           />
         </GridItem>
 
         <GridItem md={8} lg={4}>
-          <DropdownGroup
+          <Select
+            placeholder={t("select")}
             options={getLanguageOptions()}
             handleChange={(languages) =>
               handleWorkWithAndLanguageSelect("languages", languages)
             }
-            label={t("language_label")}
+            label={t("language_label") + " *"}
             maxShown={5}
             addMoreText={t("add_more_languages")}
             errorMessage={errors.languages}
           />
-          <DropdownGroup
-            label={t("specialization_label")}
+          <Select
+            placeholder={t("select")}
+            label={t("specialization_label") + " *"}
             options={getSpecializationsOptions()}
             handleChange={(options) =>
               handleWorkWithAndLanguageSelect("specializations", options)
@@ -433,20 +397,22 @@ export const CreateProvider = ({
             label={t("education_label")}
             handleParentChange={(data) => handleEducationChange(data)}
             addMoreText={t("add_more_education")}
+            removeText={t("remove")}
             errorMessage={errors.education}
           />
-          <DropdownGroup
+          <Select
+            placeholder={t("select")}
+            label={t("work_with_label") + " *"}
             options={getWorkWithOptions()}
-            handleChange={(workWith) =>
-              handleWorkWithAndLanguageSelect("workWith", workWith)
-            }
-            label={t("work_with_label")}
-            maxShown={5}
-            addMoreText={t("add_more_work_with")}
+            handleChange={(workWith) => {
+              handleWorkWithAndLanguageSelect("workWith", workWith);
+            }}
             errorMessage={errors.workWith}
           />
         </GridItem>
-        {errors.submit ? <Error message={errors.submit} /> : null}
+        <GridItem md={8} lg={12} classes="create-provider__grid__button-item">
+          {errors.submit ? <Error message={errors.submit} /> : null}
+        </GridItem>
 
         <GridItem md={8} lg={12} classes="create-provider__grid__button-item">
           <Button
@@ -464,20 +430,3 @@ export const CreateProvider = ({
     </Block>
   );
 };
-
-function generateCountryCodes() {
-  const countryCodesList = countryCodes.customList(
-    "countryCode",
-    "+{countryCallingCode}"
-  );
-  const codes = [];
-  Object.keys(countryCodesList).forEach((key) => {
-    codes.push({
-      value: countryCodesList[key],
-      label: `${key}: ${countryCodesList[key]}`,
-      country: key,
-    });
-  });
-
-  return codes.sort((a, b) => (a.country > b.country ? 1 : -1));
-}
