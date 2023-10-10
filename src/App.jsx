@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { ThemeContext } from "@USupport-components-library/utils";
 
 import { Root } from "#routes";
 
@@ -40,12 +41,27 @@ function App() {
     });
   }, []);
 
+  const getDefaultTheme = () => {
+    const localStorageTheme = localStorage.getItem("default-theme");
+    return localStorageTheme || "light";
+  };
+
+  const [theme, setTheme] = useState(getDefaultTheme());
+
+  useEffect(() => {
+    localStorage.setItem("default-theme", theme);
+  }, [theme]);
+
   return (
-    <QueryClientProvider client={queryClient}>
-      <Root />
-      <ReactQueryDevtools initialOpen />
-      <ToastContainer />
-    </QueryClientProvider>
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      <div className={`theme-${theme}`}>
+        <QueryClientProvider client={queryClient}>
+          <Root />
+          <ReactQueryDevtools initialOpen />
+          <ToastContainer />
+        </QueryClientProvider>
+      </div>
+    </ThemeContext.Provider>
   );
 }
 
