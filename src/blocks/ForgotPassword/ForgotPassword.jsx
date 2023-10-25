@@ -58,7 +58,7 @@ export const ForgotPassword = () => {
     <Block classes="forgot-password">
       <Grid md={8} lg={12} classes="forgot-password__grid">
         <GridItem md={8} lg={12} classes="forgot-password__grid__content-item">
-          <div className="login__grid__logo">
+          <div>
             <h2 className="welcome__grid__logo-item__heading">
               {t("heading")}
             </h2>
@@ -89,6 +89,11 @@ export const ForgotPassword = () => {
             />
           </div>
         </GridItem>
+        <GridItem
+          md={8}
+          lg={12}
+          classes="forgot-password__grid__content-item"
+        ></GridItem>
       </Grid>
       <Modal
         isOpen={isModalOpen}
