@@ -13,6 +13,7 @@ import { validate } from "@USupport-components-library/utils";
 import { adminSvc } from "@USupport-components-library/services";
 import { useError } from "#hooks";
 import Joi from "joi";
+import { logoVerticalSvg } from "@USupport-components-library/assets";
 
 import "./forgot-password.scss";
 
@@ -57,6 +58,17 @@ export const ForgotPassword = () => {
     <Block classes="forgot-password">
       <Grid md={8} lg={12} classes="forgot-password__grid">
         <GridItem md={8} lg={12} classes="forgot-password__grid__content-item">
+          <div className="login__grid__logo">
+            <h2 className="welcome__grid__logo-item__heading">
+              {t("heading")}
+            </h2>
+            <img
+              src={logoVerticalSvg}
+              alt="Logo"
+              className="welcome__grid__logo-item__logo"
+            />
+            <h2 className="welcome__grid__logo-item__heading">{t("admin")}</h2>
+          </div>
           <div className="forgot-password__grid__content-item__main-container">
             <Input
               label={t("input_email_label")}
