@@ -12,6 +12,11 @@
     place-items: center;
     text-align: left;
 
+    &__logo {
+      text-align: center;
+      margin-bottom: 10rem;
+    }
+
     &__inputs-item {
       &__input--password {
         margin-top: $spacing_2_4;
