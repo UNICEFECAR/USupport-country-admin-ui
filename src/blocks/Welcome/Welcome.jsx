@@ -105,6 +105,7 @@ export const Welcome = () => {
             alt="Logo"
             className="welcome__grid__logo-item__logo"
           />
+          <h2 className="welcome__grid__logo-item__heading">{t("admin")}</h2>
         </GridItem>
         <GridItem md={8} lg={12} classes="welcome__grid__content-item">
           {!(countriesQuery.isLoading || languagesQuery.isLoading) ? (
