@@ -33,7 +33,7 @@ export const Login = ({ data, setData, handleLogin, errors, isLoading }) => {
     setData(newData);
   };
 
-  const handleForgotPassowrd = () => {
+  const handleForgotPassword = () => {
     navigate("/forgot-password");
   };
 
@@ -52,6 +52,8 @@ export const Login = ({ data, setData, handleLogin, errors, isLoading }) => {
             />
             <h2 className="welcome__grid__logo-item__heading">{t("admin")}</h2>
           </div>
+        </GridItem>
+        <GridItem md={8} lg={12} classes="login__grid__inputs-item">
           <form onSubmit={handleLogin}>
             <Input
               label={t("email_label")}
@@ -75,7 +77,7 @@ export const Login = ({ data, setData, handleLogin, errors, isLoading }) => {
               color="purple"
               classes="login__grid__forgot-password"
               label={t("forgot_password_label")}
-              onClick={() => handleForgotPassowrd()}
+              onClick={() => handleForgotPassword()}
             />
             {errors.submit ? <Error message={errors.submit} /> : null}
             <Button

@@ -57,8 +57,8 @@ export const ForgotPassword = () => {
   return (
     <Block classes="forgot-password">
       <Grid md={8} lg={12} classes="forgot-password__grid">
-        <GridItem md={8} lg={12} classes="forgot-password__grid__content-item">
-          <div>
+        <GridItem md={8} lg={12} classes="login__grid__inputs-item">
+          <div className="login__grid__logo-item">
             <h2 className="welcome__grid__logo-item__heading">
               {t("heading")}
             </h2>
@@ -69,6 +69,8 @@ export const ForgotPassword = () => {
             />
             <h2 className="welcome__grid__logo-item__heading">{t("admin")}</h2>
           </div>
+        </GridItem>
+        <GridItem md={8} lg={12} classes="forgot-password__grid__content-item">
           <div className="forgot-password__grid__content-item__main-container">
             <Input
               label={t("input_email_label")}
