@@ -51,6 +51,16 @@ export const AdminProfile = () => {
             classes="admin-profile__grid__item__button "
             onClick={() => handleRedirect("profile/details/edit")}
           />
+          <ButtonSelector
+            label={t("user_guide")}
+            classes="admin-profile__grid__item__button "
+            onClick={() =>
+              window.open(
+                "https://7digit-1.gitbook.io/usupport/y0yJCW2nZ6Sb52p4arjv",
+                "_blank"
+              )
+            }
+          />
         </GridItem>
         {/* <GridItem md={8} lg={12} classes="admin-profile__grid__item">
           <p className="text admin-profile__grid__item__label">{t("other")}</p>
