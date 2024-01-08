@@ -8,8 +8,10 @@ import {
   ButtonSelector,
 } from "@USupport-components-library/src";
 
-import "./admin-profile.scss";
 import { useGetAdminData } from "#hooks";
+import "./admin-profile.scss";
+
+const GIT_BOOK_URL = `${import.meta.env.VITE_GIT_BOOK_URL}`;
 
 /**
  * AdminProfile
@@ -54,12 +56,7 @@ export const AdminProfile = () => {
           <ButtonSelector
             label={t("user_guide")}
             classes="admin-profile__grid__item__button "
-            onClick={() =>
-              window.open(
-                "https://7digit-1.gitbook.io/usupport/y0yJCW2nZ6Sb52p4arjv",
-                "_blank"
-              )
-            }
+            onClick={() => window.open(GIT_BOOK_URL, "_blank")}
           />
         </GridItem>
         {/* <GridItem md={8} lg={12} classes="admin-profile__grid__item">
