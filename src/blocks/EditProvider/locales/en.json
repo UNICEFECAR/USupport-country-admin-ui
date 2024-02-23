@@ -51,6 +51,7 @@
   "postcode_error": "Postcode is required",
   "consultation_price_error": "Consultation price must be a non-negative number",
   "min_price_error": "The minimum consultation price is {{minPrice}}{{currencySymbol}}",
+  "consultation_price_disabled": "Paid consultations are not available in your country",
 
   "specializations_error": "Select at least one specialization",
   "work_with_error": "Select at least one category",
