@@ -35,7 +35,10 @@ const fetchCountryMinPrice = async () => {
   const { data } = await countrySvc.getActiveCountries();
   const currentCountryId = localStorage.getItem("country_id");
   const currentCountry = data.find((x) => x.country_id === currentCountryId);
-  return currentCountry?.min_price;
+  return {
+    minPrice: currentCountry?.min_price,
+    countryAlpha2: currentCountry?.alpha2,
+  };
 };
 
 /**s
@@ -59,11 +62,6 @@ export const EditProvider = ({
     useGetProviderData(providerId);
   const [canSaveChanges, setCanSaveChanges] = useState(false);
 
-  const { data: countryMinPrice } = useQuery(
-    ["country-min-price"],
-    fetchCountryMinPrice
-  );
-
   useEffect(() => {
     if (providerData && !providerImage) {
       setProviderImage(providerData.image);
@@ -78,6 +76,17 @@ export const EditProvider = ({
   const workWithQuery = useGetWorkWithCategories();
 
   const [errors, setErrors] = useState({});
+
+  const [countryMinPrice, setCountryMinPrice] = useState(0);
+  const [countryAlpha2, setCountryAlpha2] = useState("");
+  const { data } = useQuery(["country-min-price"], fetchCountryMinPrice);
+
+  useEffect(() => {
+    if (data) {
+      setCountryMinPrice(data.minPrice);
+      setCountryAlpha2(data.countryAlpha2);
+    }
+  }, [data]);
 
   const specializationOptions = [
     { value: "psychologist", label: t("psychologist"), selected: false },
@@ -124,7 +133,7 @@ export const EditProvider = ({
     { label: t("sex_male"), value: "male" },
     { label: t("sex_female"), value: "female" },
     { label: t("sex_unspecified"), value: "unspecified" },
-    { label: t("sex_none"), value: "notMentioned" },
+    // { label: t("sex_none"), value: "notMentioned" },
   ];
 
   const getSpecializationsOptions = useCallback(() => {
@@ -351,7 +360,11 @@ export const EditProvider = ({
               label={t("consultation_price_label", { currencySymbol }) + " *"}
               placeholder={t("consultation_price_placeholder")}
               onBlur={() => handleBlur("consultationPrice")}
+              disabled={countryAlpha2 === "KZ"}
             />
+            {countryAlpha2 === "KZ" && (
+              <Error message={t("consultation_price_disabled")} />
+            )}
             <Input
               value={providerData.city}
               onChange={(e) => handleChange("city", e.currentTarget.value)}

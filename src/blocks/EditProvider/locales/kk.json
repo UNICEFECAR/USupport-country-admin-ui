@@ -51,6 +51,7 @@
   "postcode_error": "Пошта индексін көрсету қажет",
   "consultation_price_error": "Консультация бағасы теріс сан болмауы керек",
   "min_price_error": "Консультацияның ең аз бағасы  {{minPrice}}{{currencySymbol}}",
+  "consultation_price_disabled": "Төленген кеңестер сіздің елде қолжетімді емес",
 
   "specializations_error": "Кемінде бір мамандықты таңдаңыз",
   "work_with_error": "Кемінде бір категорияны таңдаңыз",

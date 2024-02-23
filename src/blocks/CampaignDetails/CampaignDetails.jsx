@@ -190,7 +190,7 @@ export const CampaignDetails = ({
     { label: t("male"), value: "male" },
     { label: t("female"), value: "female" },
     { label: t("unspecified"), value: "unspecified" },
-    { label: t("not_mentioned"), value: "notMentioned" },
+    // { label: t("not_mentioned"), value: "notMentioned" },
   ];
 
   const clientAgeOptions = useGetCountryAges();
