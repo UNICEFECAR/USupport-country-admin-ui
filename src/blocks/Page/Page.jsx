@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { Navbar, Icon, PasswordModal } from "@USupport-components-library/src";
-import { countrySvc, languageSvc } from "@USupport-components-library/services";
+import {
+  countrySvc,
+  languageSvc,
+  userSvc,
+} from "@USupport-components-library/services";
 import {
   getCountryFromTimezone,
   useWindowDimensions,
 } from "@USupport-components-library/utils";
-import { useIsLoggedIn } from "#hooks";
+import { useIsLoggedIn, useError } from "#hooks";
 
 import "./page.scss";
 
@@ -142,29 +146,40 @@ export const Page = ({
 
   const queryClient = useQueryClient();
 
-  const hasEnteredPassword = queryClient.getQueryData(["hasEnteredPassword"]);
+  const hasPassedValidation = queryClient.getQueryData(["hasPassedValidation"]);
 
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(
-    !hasEnteredPassword
+    !hasPassedValidation
   );
-  const [password, setPasswordError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
 
-  const handlePasswordCheck = (password) => {
-    if (password === "USupport!2023") {
-      queryClient.setQueryData(["hasEnteredPassword"], true);
-      setIsPasswordModalOpen(false);
-    } else {
-      setPasswordError(t("wrong_password"));
+  const validatePlatformPasswordMutation = useMutation(
+    async (value) => {
+      return await userSvc.validatePlatformPassword(value);
+    },
+    {
+      onError: (error) => {
+        const { message: errorMessage } = useError(error);
+        setPasswordError(errorMessage);
+      },
+      onSuccess: () => {
+        queryClient.setQueryData(["hasPassedValidation"], true);
+        setIsPasswordModalOpen(false);
+      },
     }
-  };
+  );
 
+  const handlePasswordCheck = (value) => {
+    validatePlatformPasswordMutation.mutate(value);
+  };
   return (
     <>
       <PasswordModal
         label={t("password")}
         btnLabel={t("submit")}
         isOpen={isPasswordModalOpen}
-        error={password}
+        isLoading={validatePlatformPasswordMutation.isLoading}
+        error={passwordError}
         handleSubmit={handlePasswordCheck}
         placeholder={t("password_placeholder")}
       />
