@@ -25,7 +25,7 @@ export const useGetSecurityChecks = () => {
         providerDetailId: item.provider_detail_id,
         clientName: item.clientName,
         consultationTime: new Date(item.time),
-        numberOfIssues: Object.values(item).filter((x) => x === true).length,
+        numberOfIssues: item.numberOfIssues,
         createdAt: item.created_at,
       };
       finalData.push(finalItem);
