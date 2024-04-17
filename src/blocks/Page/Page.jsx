@@ -49,6 +49,7 @@ export const Page = ({
 
   const isLoggedIn = useIsLoggedIn();
   const isNavbarShown = showNavbar !== null ? showNavbar : isLoggedIn;
+  const IS_DEV = process.env.NODE_ENV === "development";
 
   const { width } = useWindowDimensions();
 
@@ -149,7 +150,7 @@ export const Page = ({
   const hasPassedValidation = queryClient.getQueryData(["hasPassedValidation"]);
 
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(
-    !hasPassedValidation
+    IS_DEV ? false : !hasPassedValidation
   );
   const [passwordError, setPasswordError] = useState("");
 

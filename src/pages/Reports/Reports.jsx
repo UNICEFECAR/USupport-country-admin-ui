@@ -35,6 +35,11 @@ export const Reports = () => {
       isSelected: false,
     },
     { label: t("ratings"), value: "ratings", isSelected: false },
+    {
+      label: t("provider_ratings"),
+      value: "provider_ratings",
+      isSelected: false,
+    },
     { label: t("contact_form"), value: "contact_form", isSelected: false },
     { label: t("my_qa"), value: "my_qa", isSelected: false },
   ]);
@@ -60,6 +65,10 @@ export const Reports = () => {
         return <InformationPortalSuggestions Heading={ReportBlockHeading} />;
       case "ratings":
         return <ClientRatings Heading={ReportBlockHeading} />;
+      case "provider_ratings":
+        return (
+          <ClientRatings Heading={ReportBlockHeading} userType="provider" />
+        );
       case "contact_form":
         return <ContactForms Heading={ReportBlockHeading} />;
       case "my_qa":
