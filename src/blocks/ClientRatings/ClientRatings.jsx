@@ -29,9 +29,9 @@ import "./client-ratings.scss";
  *
  * @return {jsx}
  */
-export const ClientRatings = ({ Heading }) => {
+export const ClientRatings = ({ Heading, userType = "client" }) => {
   const { t } = useTranslation("client-ratings");
-  const { isLoading, data } = useGetClientRatings();
+  const { isLoading, data } = useGetClientRatings(userType);
 
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [filters, setFilters] = useState({});
@@ -112,7 +112,7 @@ export const ClientRatings = ({ Heading }) => {
   return (
     <Block classes="client-ratings">
       <Heading
-        headingLabel={t("heading")}
+        headingLabel={t(userType === "client" ? "heading" : "heading_provider")}
         handleButtonClick={() => setIsFilterOpen(true)}
       />
       <InputSearch
