@@ -1,1 +1,1 @@
-export * from './SecurityCheck.jsx';
+export * from "./SecurityCheck.jsx";

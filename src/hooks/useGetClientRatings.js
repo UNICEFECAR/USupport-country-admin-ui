@@ -1,10 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
 import { adminSvc } from "@USupport-components-library/services";
 
-export const useGetClientRatings = () => {
+export const useGetClientRatings = (userType = "client") => {
   const getClientRatings = async () => {
     const countryId = localStorage.getItem("country_id");
-    const { data } = await adminSvc.getClientRatings(countryId);
+    let data;
+    if (userType === "client") {
+      const response = await adminSvc.getClientRatings(countryId);
+      data = response.data;
+    } else {
+      const response = await adminSvc.getProviderRatings(countryId);
+      data = response.data;
+    }
     return data.map((item) => {
       return {
         rating: item.rating,
@@ -14,5 +21,5 @@ export const useGetClientRatings = () => {
     });
   };
 
-  return useQuery(["client-ratings"], getClientRatings);
+  return useQuery(["client-ratings", userType], getClientRatings);
 };

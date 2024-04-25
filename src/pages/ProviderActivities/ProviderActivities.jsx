@@ -1,5 +1,4 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
 import { useNavigate, Navigate, useLocation } from "react-router-dom";
 
 import { Page, ProviderActivities as ProviderActivitiesBlock } from "#blocks";
@@ -16,7 +15,6 @@ import { useGetProviderActivitiesById } from "#hooks";
  * @returns {JSX.Element}
  */
 export const ProviderActivities = () => {
-  const { t } = useTranslation("provider-activities-page");
   const navigate = useNavigate();
   const location = useLocation();
 

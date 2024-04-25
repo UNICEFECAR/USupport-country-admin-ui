@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import { useMutation } from "@tanstack/react-query";
@@ -25,7 +25,6 @@ import {
   useGetWorkWithCategories,
   useCreateProvider,
 } from "#hooks";
-import countryCodes from "country-codes-list";
 import Joi from "joi";
 
 import "./create-provider.scss";
@@ -62,7 +61,6 @@ const initialData = {
 export const CreateProvider = ({
   openDeletePictureBackdrop,
   openUploadPictureBackdrop,
-  providerImage,
   providerImageFile,
   providerImageUrl,
   setProviderImage,
@@ -121,7 +119,7 @@ export const CreateProvider = ({
 
   const getSpecializationsOptions = useCallback(() => {
     if (providerData && providerData.specializations) {
-      return specializationOptions.map((option, index) => {
+      return specializationOptions.map((option) => {
         if (providerData.specializations.includes(option.value)) {
           return {
             ...option,
@@ -432,20 +430,3 @@ export const CreateProvider = ({
     </Block>
   );
 };
-
-function generateCountryCodes() {
-  const countryCodesList = countryCodes.customList(
-    "countryCode",
-    "+{countryCallingCode}"
-  );
-  const codes = [];
-  Object.keys(countryCodesList).forEach((key) => {
-    codes.push({
-      value: countryCodesList[key],
-      label: `${key}: ${countryCodesList[key]}`,
-      country: key,
-    });
-  });
-
-  return codes.sort((a, b) => (a.country > b.country ? 1 : -1));
-}

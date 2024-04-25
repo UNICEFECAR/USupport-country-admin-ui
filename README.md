@@ -1,6 +1,6 @@
-# USupport-country-admin-ui
+# uSupport-country-admin-ui
 
-USupport Country Admin Interface
+uSupport Country Admin Interface
 
 # Contribute
 
@@ -18,7 +18,7 @@ To install all the dependencies use:
 npm install
 ```
 
-The USupport Country Admin UI can be run via the Vite build tool. For more information about Vite [please see the documentation](https://vitejs.dev/guide)
+The uSupport Country Admin UI can be run via the Vite build tool. For more information about Vite [please see the documentation](https://vitejs.dev/guide)
 
 To run the project via Vite use the following command:
 
@@ -26,7 +26,7 @@ To run the project via Vite use the following command:
 npm run dev
 ```
 
-## Adding a new block to the USupport Country Admin UI
+## Adding a new block to the uSupport Country Admin UI
 
 To create a new block, please use the provided bash script `create-block.bash`. By executing the following command from the root directory of the project:
 
@@ -37,7 +37,7 @@ chmod +x create-block.bash
 
 Then, you will be prompted to provide block name, block description, and whether the block requires locale files.
 
-## Adding a new page to the USupport Country Admin UI
+## Adding a new page to the uSupport Country Admin UI
 
 To create a new page, please use the provided bash script `create-page.bash`. By executing the following command from the root directory of the project:
 

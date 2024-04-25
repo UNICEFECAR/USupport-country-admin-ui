@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { Navbar, Icon, Block } from "@USupport-components-library/src";
-import { countrySvc, languageSvc } from "@USupport-components-library/services";
+import { Navbar, Icon, PasswordModal } from "@USupport-components-library/src";
+import {
+  countrySvc,
+  languageSvc,
+  userSvc,
+} from "@USupport-components-library/services";
 import {
   getCountryFromTimezone,
   useWindowDimensions,
 } from "@USupport-components-library/utils";
-import { useIsLoggedIn } from "#hooks";
+import { useIsLoggedIn, useError } from "#hooks";
 
 import "./page.scss";
 
@@ -45,6 +49,7 @@ export const Page = ({
 
   const isLoggedIn = useIsLoggedIn();
   const isNavbarShown = showNavbar !== null ? showNavbar : isLoggedIn;
+  const IS_DEV = process.env.NODE_ENV === "development";
 
   const { width } = useWindowDimensions();
 
@@ -140,8 +145,46 @@ export const Page = ({
   const { data: countries } = useQuery(["countries"], fetchCountries);
   const { data: languages } = useQuery(["languages"], fetchLanguages);
 
+  const queryClient = useQueryClient();
+
+  const hasPassedValidation = queryClient.getQueryData(["hasPassedValidation"]);
+
+  const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(
+    IS_DEV ? false : !hasPassedValidation
+  );
+  const [passwordError, setPasswordError] = useState("");
+
+  const validatePlatformPasswordMutation = useMutation(
+    async (value) => {
+      return await userSvc.validatePlatformPassword(value);
+    },
+    {
+      onError: (error) => {
+        const { message: errorMessage } = useError(error);
+        setPasswordError(errorMessage);
+      },
+      onSuccess: () => {
+        queryClient.setQueryData(["hasPassedValidation"], true);
+        setIsPasswordModalOpen(false);
+      },
+    }
+  );
+
+  const handlePasswordCheck = (value) => {
+    validatePlatformPasswordMutation.mutate(value);
+  };
   return (
     <>
+      <PasswordModal
+        label={t("password")}
+        btnLabel={t("submit")}
+        isOpen={isPasswordModalOpen}
+        isLoading={validatePlatformPasswordMutation.isLoading}
+        error={passwordError}
+        handleSubmit={handlePasswordCheck}
+        placeholder={t("password_placeholder")}
+      />
+
       {isNavbarShown === true && (
         <Navbar
           pages={pages}
@@ -186,7 +229,7 @@ export const Page = ({
                 />
               )}
               {image && <img className="page__header__image" src={image} />}
-              {heading && <h2 className="page__header-heading">{heading}</h2>}
+              {heading && <h3 className="page__header-heading">{heading}</h3>}
               {headingButton && (width >= 768 || showHeadingButtonInline) && (
                 <div className="page__header-button-container">
                   {headingButton}

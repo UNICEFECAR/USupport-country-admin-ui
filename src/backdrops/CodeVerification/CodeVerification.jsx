@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import PinInput from "react-pin-input";
+import { PinInput } from "@USupport-components-library/src";
 
 import { useError } from "#hooks";
 

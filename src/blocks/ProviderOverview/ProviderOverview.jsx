@@ -1,6 +1,5 @@
-import React, { useState, useCallback } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
 import {
   Block,
   Button,
@@ -24,9 +23,7 @@ import "./provider-overview.scss";
  */
 export const ProviderOverview = ({ handleEditRedirect, providerId }) => {
   const { t } = useTranslation("provider-overview");
-  const navigate = useNavigate();
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [providerDataQuery] = useGetProviderData(providerId);
   const provider = providerDataQuery.data;
   const image = AMAZON_S3_BUCKET + "/" + (provider?.image || "default");

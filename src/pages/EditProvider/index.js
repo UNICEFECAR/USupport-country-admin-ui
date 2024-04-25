@@ -1,1 +1,1 @@
-export * from './EditProvider.jsx';
+export * from "./EditProvider.jsx";

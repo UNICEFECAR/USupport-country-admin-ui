@@ -7,7 +7,7 @@
   "start_date_label": "Start date",
   "end_date_label": "End date",
   "max_coupons_per_client_label": "Max coupons per client",
-  "terms_label": "Terms and conditions",
+  "terms_label": "Terms of Use",
 
   "name_placeholder": "Name of the campaign",
   "budget_placeholder": "Enter the total budget",
@@ -15,7 +15,7 @@
   "number_of_coupons_placeholder": "Enter total number of coupons",
   "dates_placeholder": "DD.MM.YYYY",
   "max_coupons_per_client_placeholder": "Max coupons per client",
-  "terms_placeholder": "Write the terms and conditions",
+  "terms_placeholder": "Write the Terms of Use",
   "budget_info": "The price for a single consultation will be",
 
   "required_field": "The field is required",

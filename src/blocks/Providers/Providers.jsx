@@ -1,10 +1,4 @@
-import React, {
-  useCallback,
-  useRef,
-  useState,
-  useEffect,
-  useMemo,
-} from "react";
+import React, { useCallback, useRef, useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
@@ -113,8 +107,6 @@ export const Providers = ({
 
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
-  const [dataToDisplay, setDataToDisplay] = useState();
-
   const selectedProviderStatus = useRef();
 
   const redirectToEditProvider = (id) => {
@@ -158,12 +150,6 @@ export const Providers = ({
 
     updateProviderStatusMutation.mutate({ providerId: id, status: newStatus });
   };
-
-  useEffect(() => {
-    if (providersQuery.data) {
-      setDataToDisplay(providersQuery.data);
-    }
-  }, [providersQuery.data]);
 
   const renderProviders = useCallback(() => {
     if (!providersQuery.data?.pages || providersQuery.data?.pages.length === 0)
@@ -286,7 +272,7 @@ export const Providers = ({
     ];
   }, [i18n.language]);
 
-  const rowsData = providersQuery.data?.pages?.flat().map((provider, idx) => {
+  const rowsData = providersQuery.data?.pages?.flat().map((provider) => {
     return [
       <div className="providers__list-view__name">
         <Avatar image={AMAZON_S3_BUCKET + "/" + provider.image} size="sm" />

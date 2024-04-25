@@ -1,1 +1,1 @@
-export * from './AddSponsor.jsx';
+export * from "./AddSponsor.jsx";

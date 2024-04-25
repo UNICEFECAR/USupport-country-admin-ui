@@ -7,7 +7,6 @@ import Joi from "joi";
 import {
   Block,
   Button,
-  ButtonWithIcon,
   DateInput,
   Error,
   Grid,
@@ -208,7 +207,7 @@ export const AddCampaign = ({
               return (
                 <Textarea
                   key={index}
-                  label={t(`terms_label`) + " *"}
+                  label={t("terms_label") + " *"}
                   placeholder={t("terms_placeholder")}
                   value={data[key]}
                   errorMessage={errors[key]}

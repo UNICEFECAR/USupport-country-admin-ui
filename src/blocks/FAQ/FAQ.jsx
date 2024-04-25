@@ -75,11 +75,10 @@ export const FAQ = () => {
     });
   };
 
-  const {
-    data: FAQsData,
-    isLoading: FAQsLoading,
-    isFetched: isFAQsFetched,
-  } = useQuery(["FAQs", options, i18n.language], getFAQs);
+  const { data: FAQsData, isLoading: FAQsLoading } = useQuery(
+    ["FAQs", options, i18n.language],
+    getFAQs
+  );
 
   const rows = useMemo(() => {
     return [
@@ -121,14 +120,10 @@ export const FAQ = () => {
   const updateFAQs = async (data) => {
     const faqAvailableLocales = await cmsSvc.getFAQAvailableLocales(data.id);
 
-    let res;
     if (data.newValue === true) {
-      res = await adminSvc.putFAQ(
-        data.platform,
-        faqAvailableLocales.en.toString()
-      );
+      await adminSvc.putFAQ(data.platform, faqAvailableLocales.en.toString());
     } else {
-      res = await adminSvc.deleteFAQ(
+      await adminSvc.deleteFAQ(
         data.platform,
         faqAvailableLocales.en.toString()
       );
