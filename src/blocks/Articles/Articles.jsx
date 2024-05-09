@@ -39,11 +39,9 @@ export const Articles = () => {
   const navigate = useNavigate();
   const [error, setError] = useState();
   const [dataToDisplay, setDataToDisplay] = useState([]);
-  const [numberOfArticles, setNumberOfArticles] = useState();
+  // const [numberOfArticles, setNumberOfArticles] = useState();
   const [hasMore, setHasMore] = useState(true);
   const [startFrom, setStartFrom] = useState(0);
-
-  console.log(startFrom, "startFRom");
 
   //--------------------- Articles ----------------------//
   const getArticles = async () => {
@@ -78,8 +76,8 @@ export const Articles = () => {
     isFetched: isArticlesFetched,
   } = useQuery(["articles", i18n.language, startFrom], getArticles, {
     onSuccess: (data) => {
-      setNumberOfArticles(data.numberOfArticles);
-      console.log("hasMore in Query", hasMore);
+      // setNumberOfArticles(data.numberOfArticles);
+
       if (hasMore) {
         setStartFrom((prev) => prev + data.formattedData.length);
       }
