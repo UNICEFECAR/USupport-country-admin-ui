@@ -65,7 +65,7 @@ export const Articles = () => {
       id: x.id,
       isSelected: !!x.isSelected,
     }));
-    setDataToDisplay(formattedData);
+    setDataToDisplay((prev) => [...prev, formattedData]);
 
     return { formattedData, numberOfArticles };
   };
