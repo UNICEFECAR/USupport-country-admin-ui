@@ -43,6 +43,8 @@ export const Articles = () => {
   const [hasMore, setHasMore] = useState(true);
   const [startFrom, setStartFrom] = useState(0);
 
+  console.log(startFrom, "startFRom");
+
   //--------------------- Articles ----------------------//
   const getArticles = async () => {
     // Request Articles ids from the master DB
@@ -77,18 +79,15 @@ export const Articles = () => {
   } = useQuery(["articles", i18n.language, startFrom], getArticles, {
     onSuccess: (data) => {
       setNumberOfArticles(data.numberOfArticles);
+      console.log("hasMore in Query", hasMore);
       if (hasMore) {
         setStartFrom((prev) => prev + data.formattedData.length);
       }
       setDataToDisplay([...dataToDisplay, ...data.formattedData]);
+      const newHasMore = data.numberOfArticles > dataToDisplay.length;
+      setHasMore(newHasMore);
     },
   });
-
-  useEffect(() => {
-    if (articlesData && articlesData.formattedData) {
-      setHasMore(numberOfArticles > dataToDisplay.length);
-    }
-  }, [articlesData]);
 
   const handleSelectArticle = async (id, newValue) => {
     let newData = JSON.parse(JSON.stringify(dataToDisplay));
