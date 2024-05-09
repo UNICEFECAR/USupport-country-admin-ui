@@ -39,7 +39,7 @@ export const Articles = () => {
   const navigate = useNavigate();
   const [error, setError] = useState();
   const [dataToDisplay, setDataToDisplay] = useState([]);
-  const [numberOfArticles, setNumberOfArticles] = useState();
+  // const [numberOfArticles, setNumberOfArticles] = useState();
   const [hasMore, setHasMore] = useState(true);
   const [startFrom, setStartFrom] = useState(0);
 
@@ -65,7 +65,7 @@ export const Articles = () => {
       id: x.id,
       isSelected: !!x.isSelected,
     }));
-    setDataToDisplay(formattedData);
+    setDataToDisplay((prev) => [...prev, formattedData]);
 
     return { formattedData, numberOfArticles };
   };
@@ -76,19 +76,16 @@ export const Articles = () => {
     isFetched: isArticlesFetched,
   } = useQuery(["articles", i18n.language, startFrom], getArticles, {
     onSuccess: (data) => {
-      setNumberOfArticles(data.numberOfArticles);
+      // setNumberOfArticles(data.numberOfArticles);
+
       if (hasMore) {
         setStartFrom((prev) => prev + data.formattedData.length);
       }
       setDataToDisplay([...dataToDisplay, ...data.formattedData]);
+      const newHasMore = data.numberOfArticles > dataToDisplay.length;
+      setHasMore(newHasMore);
     },
   });
-
-  useEffect(() => {
-    if (articlesData && articlesData.formattedData) {
-      setHasMore(numberOfArticles > dataToDisplay.length);
-    }
-  }, [articlesData]);
 
   const handleSelectArticle = async (id, newValue) => {
     let newData = JSON.parse(JSON.stringify(dataToDisplay));
