@@ -171,8 +171,8 @@ export const Articles = () => {
         );
 
         if (
-          !article.title.toLowerCase().includes(search) &&
-          !article.description.toLowerCase().includes(search) &&
+          !article.title?.toLowerCase().includes(search) &&
+          !article.description?.toLowerCase().includes(search) &&
           !date?.includes(search) &&
           !category?.includes(search) &&
           !labels?.some((x) => {
