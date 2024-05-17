@@ -1,0 +1,30 @@
+{
+  "page_1": "Pulpit nawigacyjny",
+  "page_2": "Konsultanci",
+  "page_3": "Artykuły",
+  "page_4": "Centrum SOS",
+  "page_5": "Najczęściej zadawane pytania",
+  "page_6": "Raporty",
+  "page_7": "Kupony",
+  "page_8": "Moje Pytania i odpowiedzi",
+
+  "country_1": "",
+  "country_2": "",
+  "country_3": "",
+
+  "language_1": "",
+  "language_2": "",
+  "language_3": "",
+  "language_4": "",
+  "language_5": "",
+  "language_6": "",
+
+  "button_text": "Wylogowanie",
+  "contact_us": "Skontaktuj się z nami",
+  "your_profile_text": "Twój profil",
+
+  "password_placeholder": "Password", 
+  "password": "Please enter your password to access the site",
+  "wrong_password": "Wrong password",
+  "submit": "Submit"
+}

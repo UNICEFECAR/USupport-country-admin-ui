@@ -1,0 +1,27 @@
+{
+  "name_label": "Ім'я",
+  "surname_label": "Прізвище",
+  "email_label": "Електронна пошта",
+  "phone_label": "Телефон",
+
+  "name_placeholder": "Введіть ім'я",
+  "surname_placeholder": "Введіть прізвище",
+  "email_placeholder": "user@mail.com",
+  "phone_prefix_placeholder": "Код",
+  "phone_placeholder": "Номер телефону",
+
+  "name_error": "Ім'я обов'язкове",
+  "surname_error": "Прізвище обов'язкове",
+  "email_error": "Електронна пошта обов'язкова",
+  "phone_prefix_error": "Телефонний код обов'язковий",
+  "phone_error": "Номер телефону обов'язковий",
+
+  "button_text": "Зберегти зміни",
+  "button_secondary_text": "Відкинути зміни",
+
+  "edit_success": "Профіль оновлено",
+
+  "search": "Пошук",
+  "no_data_found": "Дані не знайдено",
+  "button_change_password": "Змінити пароль"
+}

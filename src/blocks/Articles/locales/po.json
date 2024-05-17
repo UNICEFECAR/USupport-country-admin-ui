@@ -1,0 +1,14 @@
+{
+  "no_results": "Nie znaleziono wyników, spróbuj użyć innego języka.",
+  "view_button": "User@mail.com",
+  "article_added": "Artykuł został pomyślnie dodany",
+  "article_removed": "Artykuł został pomyślnie usunięty",
+  "published": "Opublikowano",
+  "image": "Obraz",
+  "content": "Treść",
+  "view": "Widok",
+  "note": "<0>Uwaga*</0> Jeśli pole wyboru w kolumnie \"Opublikowane\" jest zaznaczone, oznacza to, że artykuł jest widoczny dla użytkowników platformy.",
+  "search": "Wyszukiwanie",
+  "no_data_found": "Nie znaleziono danych",
+  "created_at": "Utworzono w"
+}
