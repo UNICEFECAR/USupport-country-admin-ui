@@ -1,0 +1,23 @@
+{
+  "heading": "Zarchiwizowane pytania w sekcji Moje pytania i odpowiedzi",
+  "duplicate": "Już istnieją",
+  "spam": "Spam",
+  "other": "Inne",
+  "save": "Zastosuj filtry",
+  "reset": "Zresetuj filtry",
+  "no_data_found": "Nie znaleziono danych",
+  "provider": "Konsultant",
+  "email": "E-mail",
+  "archiving_reason_label": "Powód oznaczenia jako archiwum",
+  "archiving_date_label": "Czas archiwizacji",
+  "content_heading": "Pytanie klienta:",
+  "activate_button_label": "Powrót do aktywnych pytań",
+  "delete_button_label": "Usunąć pytanie",
+  "other_reason_text": "Inny powód oznaczenia jako archiwum:",
+  "activate_success": "Pytanie zostało pomyślnie przywrócone jako aktywne",
+  "delete_success": "Pytanie zostało pomyślnie usunięte",
+  "all": "Wszystkie",
+  "filters": "Filtry",
+  "dropdown_label": "Filtruj według powodu",
+  "search": "Wyszukiwanie"
+}

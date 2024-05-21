@@ -1,0 +1,15 @@
+{
+  "email": "E-mail",
+  "name": "Imie",
+  "nickname": "Nick",
+  "time": "Czas sugestii",
+  "content_heading": "Sugestie",
+  "heading": "Sugestie portalu informacyjnego",
+  "filters": "Filtry",
+  "starting_date": "Data rozpoczęcia",
+  "ending_date": "Data zakończenia",
+  "submit": "Zastosuj filtry",
+  "reset": "Zresetuj filtry",
+  "no_results": "Nie znaleziono żadnych ocen",
+  "search": "Wyszukiwanie"
+}

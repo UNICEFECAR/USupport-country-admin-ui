@@ -1,0 +1,21 @@
+{
+  "heading": "Oceny klientów",
+  "heading_provider": "Provider Ratings",
+  "email": "E-mail",
+  "name": "Imie",
+  "nickname": "Nick",
+  "rating": "Ocena",
+  "time": "Raz",
+  "content_heading": "Informacje zwrotne",
+
+  "filters": "Filtry",
+  "filter": "Filtr",
+  "minimum_rating": "Minimalna ocena",
+  "all": "Wszystkie oceny",
+  "starting_date": "Data rozpoczęcia",
+  "ending_date": "Data zakończenia",
+  "submit": "Zastosuj filtry",
+  "reset_filters": "Zresetuj filtry",
+  "no_results": "Nie znaleziono żadnych ocen",
+  "search": "Wyszukiwanie"
+}

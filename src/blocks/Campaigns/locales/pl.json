@@ -1,0 +1,19 @@
+{
+  "filter_button": "Filtr",
+  "add_button": "Dodaj sponsora",
+  "campaigns": "Kampanie",
+  "active_campaigns": "Aktywne kampanie",
+  "sponsors": "Sponsorzy",
+  "sponsor": "Sponsor",
+  "email": "E-mail",
+  "phone": "Telefon",
+  "edit": "Edytuj",
+  "search": "Wyszukiwanie",
+  "view": "Wyświetl kampanie",
+  "filter_heading": "Filtruj sponsorów",
+  "min_total_campaigns": "Minimalna liczba wszystkich kampanii",
+  "min_active_campaigns": "Minimalna liczba aktywnych kampanii",
+  "apply_filter": "Zastosuj filtry",
+  "reset_filter": "Zresetuj filtry",
+  "no_data_found": "Nie znaleziono danych"
+}

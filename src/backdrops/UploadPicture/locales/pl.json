@@ -1,0 +1,9 @@
+{
+  "heading": "Zmienić zdjęcie profilowe",
+  "drag_and_drop": "Przeciągnij i upuść zdjęcie tutaj",
+  "or": "lub",
+  "upload": "Prześlij z komputera",
+  "upload_error": "Błąd przesyłania zdjęcia, spróbuj ponownie",
+  "file_size_error": "Maksymalny rozmiar pliku to 1 MB",
+  "upload_success": "Zdjęcie zostało pomyślnie przesłane"
+}

@@ -1,0 +1,14 @@
+{
+  "no_results": "Nie znaleziono wyników, spróbuj użyć innego języka.",
+  "sos_center_added": "Centrum SOS zostało pomyślnie dodane",
+  "sos_center_removed": "Centrum SOS zostało pomyślnie usunięte",
+  "search": "Wyszukiwanie",
+  "published": "Opublikowano",
+  "image": "Obraz",
+  "content": "Treść",
+  "url": "Link",
+  "phone": "Telefon",
+  "published_at": "Utworzono w",
+  "no_data_found": "Nie znaleziono danych",
+  "note": "<0>Uwaga*</0> Jeśli pole wyboru w kolumnie \"Opublikowane\" jest zaznaczone, oznacza to, że Centrum SOS jest widoczne dla użytkowników platformy."
+}
