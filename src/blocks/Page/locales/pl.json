@@ -3,10 +3,10 @@
   "page_2": "Konsultanci",
   "page_3": "Artykuły",
   "page_4": "Centrum SOS",
-  "page_5": "Najczęściej zadawane pytania",
+  "page_5": "FAQ",
   "page_6": "Raporty",
   "page_7": "Kupony",
-  "page_8": "Moje Pytania i odpowiedzi",
+  "page_8": "Q&A",
 
   "country_1": "",
   "country_2": "",
@@ -23,8 +23,8 @@
   "contact_us": "Skontaktuj się z nami",
   "your_profile_text": "Twój profil",
 
-  "password_placeholder": "Password", 
-  "password": "Please enter your password to access the site",
-  "wrong_password": "Wrong password",
-  "submit": "Submit"
+  "password_placeholder": "Hasło",
+  "password": "Proszę wprowadź hasło dla",
+  "wrong_password": "Nieprawidłowe hasło",
+  "submit": "Wprowadź"
 }

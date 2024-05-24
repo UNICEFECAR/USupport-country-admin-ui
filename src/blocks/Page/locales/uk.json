@@ -3,10 +3,10 @@
   "page_2": "Консультанти(ки)",
   "page_3": "Статті",
   "page_4": "SOS-центр",
-  "page_5": "ПОШИРЕНІ ЗАПИТАННЯ",
+  "page_5": "FAQ",
   "page_6": "Звіти",
   "page_7": "Купони",
-  "page_8": "Мої запитання й відповіді",
+  "page_8": "Q&A",
 
   "country_1": "",
   "country_2": "",
@@ -23,8 +23,8 @@
   "contact_us": "Зв'яжіться з нами",
   "your_profile_text": "Ваш профіль",
 
-  "password_placeholder": "Password", 
-  "password": "Please enter your password to access the site",
-  "wrong_password": "Wrong password",
-  "submit": "Submit"
+  "password_placeholder": "Пароль",
+  "password": "Будь ласка, введіть пароль для доступу на сайт",
+  "wrong_password": "Пароль невірний",
+  "submit": "Надіслати"
 }
