@@ -193,6 +193,9 @@ export const Articles = () => {
           className="articles__image"
           src={
             article.image?.data?.attributes?.formats?.medium?.url ||
+            article.image?.data?.attributes?.formats?.small?.url ||
+            article.image?.data?.attributes?.formats?.thumbnail?.url ||
+            article.image?.data?.attributes?.formats?.large?.url ||
             articlePlaceholder
           }
         />,

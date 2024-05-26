@@ -1,0 +1,12 @@
+{
+  "email_label": "Електронна пошта",
+  "email_placeholder": "Введіть електронну пошту",
+  "password_label": "Пароль",
+  "password_placeholder": "Введіть пароль",
+  "forgot_password_label": "Я забув(ла) пароль",
+  "login_label": "Логін",
+  "try_again": "Спробуйте ще раз за",
+  "seconds": "секунди",
+  "heading": "Вітаємо в",
+  "admin": "Адміністратор країни"
+}

@@ -6,5 +6,6 @@
   "button_with_icon_label_hide": "Скрыть код",
   "send_button_label": "Продолжить",
   "didnt_get_code": "Не получили код?",
-  "resend_code_button_label": "Повторно отправить электронное письмо"
+  "resend_code_button_label": "Повторно отправить электронное письмо",
+  "seconds": "in {{seconds}} seconds"
 }

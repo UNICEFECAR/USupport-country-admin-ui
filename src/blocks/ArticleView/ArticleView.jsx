@@ -20,7 +20,7 @@ import "./article-view.scss";
  */
 export const ArticleView = ({ articleData, t }) => {
   const creator = articleData.creator ? articleData.creator : null;
-  console.log(creator);
+  console.log(articleData);
   return (
     <Block classes="article-view">
       <Grid classes="article-view__main-grid">
@@ -28,9 +28,11 @@ export const ArticleView = ({ articleData, t }) => {
           <img
             className="article-view__image-item"
             src={
-              articleData.imageMedium
-                ? articleData.imageMedium
-                : "https://picsum.photos/300/400"
+              articleData.imageMedium ||
+              articleData.imageLarge ||
+              articleData.imageSmall ||
+              articleData.imageThumbnail ||
+              "https://picsum.photos/300/400"
             }
             alt=""
           />
