@@ -1,0 +1,10 @@
+{
+  "heading": "Filtr",
+  "provider": "Konsultant",
+  "all": "Pokaż wszystkich konsultantów",
+  "starting_date": "Data rozpoczęcia",
+  "end_date": "Data zakończenia",
+  "number_of_issues": "Minimalna liczba zagadnienień",
+  "button_label": "Zastosuj filtry",
+  "reset_filter": "Zresetuj filtry"
+}

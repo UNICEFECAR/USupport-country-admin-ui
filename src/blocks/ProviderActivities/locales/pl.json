@@ -1,0 +1,17 @@
+{
+  "client": "Klienci",
+  "time": "Raz",
+  "price": "Cena",
+  "campaign": "Kampania",
+  "free": "Wolny",
+  "export_label": "Eksport",
+  "filter": "Filtr",
+  "filters": "Filtry",
+  "no_results": "Nie znaleziono żadnej działalności",
+  "start_date": "Data rozpoczęcia",
+  "end_date": "Data zakończenia",
+  "apply_filter": "Zastosuj filtry",
+  "reset_filter": "Zresetuj filtry",
+  "search": "Wyszukiwanie",
+  "no_data_found": "Nie znaleziono danych"
+}

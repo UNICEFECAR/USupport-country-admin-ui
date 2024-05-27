@@ -1,0 +1,25 @@
+{
+  "select_photo": "Wybrać zdjęcie",
+  "sponsor_label": "Sponsor",
+  "email_label": "E-mail",
+  "phone_label": "Telefon",
+  "sponsor_placeholder": "Wprowadzić nazwę sponsora",
+  "email_placeholder": "Wprowadzić adres e-mail",
+  "phone_placeholder": "Wprowadzić numer telefonu",
+  "phone_prefix_placeholder": "Prefiks",
+  "create_sponsor": "Utwórz sponsora",
+
+  "sponsor_error": "Nazwa sponsora jest wymagana",
+  "email_error": "Adres e-mail jest wymagany",
+  "phone_prefix_error": "Prefiks telefonu jest wymagany",
+  "phone_error": "Numer telefonu jest wymagany",
+
+  "save_changes": "Zapisać zmiany",
+  "discard_changes": "Odrzucić zmiany",
+  "delete_sponsor": "Usuń sponsora",
+  "edit_success": "Zmiany zostały pomyślnie zapisane",
+  "success": "Sponsor został pomyślnie utworzony",
+
+  "search": "Wyszukiwanie",
+  "no_data_found": "Nie znaleziono danych"
+}
