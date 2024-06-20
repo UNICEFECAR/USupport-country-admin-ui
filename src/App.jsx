@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ThemeContext } from "@USupport-components-library/utils";
@@ -31,14 +31,16 @@ function App() {
     once: false,
   });
 
+  const logoutFunction = useCallback(() => {
+    adminSvc.logout();
+  }, []);
+
   useEffect(() => {
-    window.addEventListener("beforeunload", (e) => {
-      if (!(performance.getEntriesByType("navigation")[0].type === "reload")) {
-        // If the page is being refreshed, do nothing
-        e.preventDefault();
-        adminSvc.logout();
-      }
-    });
+    const existingSession = sessionStorage.getItem("userSession");
+
+    if (!existingSession) {
+      logoutFunction();
+    }
   }, []);
 
   const getDefaultTheme = () => {

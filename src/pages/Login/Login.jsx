@@ -113,6 +113,7 @@ export const Login = () => {
       localStorage.setItem("token", token);
       localStorage.setItem("token-expires-in", expiresIn);
       localStorage.setItem("refresh-token", refreshToken);
+      sessionStorage.setItem("userSession", true);
 
       queryClient.invalidateQueries({ queryKey: ["provider-data"] });
 
