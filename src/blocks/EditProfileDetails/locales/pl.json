@@ -10,7 +10,7 @@
   "phone_prefix_placeholder": "Prefiks",
   "phone_placeholder": "Numer telefonu",
 
-  "name_error": "Imie jest wymagane",
+  "name_error": "Imię jest wymagane",
   "surname_error": "Nazwisko jest wymagane",
   "email_error": "Adres email jest wymagany",
   "phone_prefix_error": "Prefiks telefonu jest wymagany",
@@ -23,5 +23,5 @@
 
   "search": "Wyszukiwanie",
   "no_data_found": "Nie znaleziono danych",
-  "button_change_password": "Zmienić hasło"
+  "button_change_password": "Zmień hasło"
 }
