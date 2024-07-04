@@ -15,7 +15,7 @@
   "number_of_coupons_placeholder": "Wprowadzić całkowitą liczbę kuponów",
   "dates_placeholder": "DD.MM.RRRR",
   "max_coupons_per_client_placeholder": "Maksymalna liczba kuponów na klienta",
-  "terms_placeholder": "Napisz warunki",
+  "terms_placeholder": "Napisz warunki użytkowania",
   "budget_info": "Cena za pojedynczą konsultację wynosi",
 
   "required_field": "Pole jest wymagane",
@@ -25,7 +25,7 @@
   "period_error": "Data końcowa powinna przypadać po dacie początkowej",
 
   "create_campaign": "Utwórz kampanię",
-  "save_changes": "Zapisać zmiany",
-  "discard_changes": "Odrzucić zmiany",
+  "save_changes": "Zapisz zmiany",
+  "discard_changes": "Odrzuć zmiany",
   "delete_campaign": "Usuń kampanię"
 }
