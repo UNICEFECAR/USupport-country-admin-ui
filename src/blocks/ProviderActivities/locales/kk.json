@@ -13,5 +13,10 @@
   "apply_filter": "Сүзгілерді қолданыңыз",
   "reset_filter": "Сүзгілерді қалпына келтіру",
   "search": "Іздеу",
-  "no_data_found": "Ақпарат табылмады"
+  "no_data_found": "Ақпарат табылмады",
+  "status": "Status",
+  "finished": "Finished",
+  "late-canceled": "Late canceled",
+  "scheduled": "Scheduled",
+  "active": "Белсенді"
 }

@@ -27,6 +27,6 @@
   "start_date": "Дата начала",
   "end_date": "Дата окончания",
   "apply_filter": "Примените фильтры",
-  "reset_filter": "Reset filters",
+  "reset_filter": "Сбросить фильтры",
   "no_data_found": "Данные не найдены"
 }

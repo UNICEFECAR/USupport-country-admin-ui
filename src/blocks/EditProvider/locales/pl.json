@@ -1,6 +1,6 @@
 {
   "name_label": "Imię",
-  "patronym_label": "Imię odojcowskie",
+  "patronym_label": "",
   "surname_label": "Nazwisko",
   "sex_label": "Płeć",
   "email_label": "Email",
