@@ -7,5 +7,5 @@
   "send_button_label": "Жалғастыру",
   "didnt_get_code": "Кодты алмадыңыз ба?",
   "resend_code_button_label": "Электрондық поштаны қайта жіберу",
-  "seconds": "in {{seconds}} seconds"
+  "seconds": "{{seconds}} секундта"
 }

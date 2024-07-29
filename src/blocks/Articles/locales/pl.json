@@ -7,7 +7,7 @@
   "image": "Obraz",
   "content": "Treść",
   "view": "Widok",
-  "note": "<0>Uwaga*</0> Jeśli pole wyboru w kolumnie \"Opublikowane\" jest zaznaczone, oznacza to, że artykuł jest widoczny dla użytkowników platformy.",
+  "note": "<0>Pamiętaj*</0> Jeśli pole wyboru w kolumnie \"Opublikowane\" jest zaznaczone, to artykuł jest widoczny dla użytkowników platformy\".",
   "search": "Wyszukiwanie",
   "no_data_found": "Nie znaleziono danych",
   "created_at": "Utworzono w"
