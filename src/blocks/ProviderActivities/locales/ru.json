@@ -17,5 +17,6 @@
   "status": "Status",
   "finished": "Finished",
   "late-canceled": "Late canceled",
-  "scheduled": "Scheduled"
+  "scheduled": "Scheduled",
+  "active": "Активный"
 }
