@@ -106,5 +106,8 @@
   "search": "Іздеу",
   "no_data_found": "Ақпарат табылмады",
   "select": "Таңдау",
-  "remove": "Жою"
+  "remove": "Жою",
+
+  "organizations_label": "Ұйымдар",
+  "organizations_error": "Кемінде бір ұйымды таңдау қажет"
 }

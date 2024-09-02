@@ -30,6 +30,7 @@ import {
 import Joi from "joi";
 
 import "./edit-provider.scss";
+import { useGetAllOrganizations } from "../../hooks";
 
 const fetchCountryMinPrice = async () => {
   const { data } = await countrySvc.getActiveCountries();
@@ -77,6 +78,9 @@ export const EditProvider = ({
   const localizationQuery = useGetCountryAndLanguages();
   const workWithQuery = useGetWorkWithCategories();
 
+  const { data: organizations, isLoading: organizationsLoading } =
+    useGetAllOrganizations();
+
   const [errors, setErrors] = useState({});
 
   const specializationOptions = [
@@ -118,6 +122,7 @@ export const EditProvider = ({
     totalConsultations: Joi.any(),
     earliestAvailableSlot: Joi.any(),
     videoLink: Joi.string().uri().allow("", null),
+    organizations: Joi.array().min(1).label(t("organizations_error")),
   });
 
   const sexOptions = [
@@ -192,6 +197,30 @@ export const EditProvider = ({
     }
     return workWithOptions;
   }, [workWithQuery.data, providerData]);
+
+  const getOrganizationOptions = useCallback(() => {
+    const organizationOptions = [];
+
+    if (organizations && providerData) {
+      const providerOrganizations = providerData.organizations.map(
+        (x) => x.organization_id || x
+      );
+      for (let i = 0; i < organizations.length; i++) {
+        const newOrganization = {};
+        const organization = organizations[i];
+        newOrganization.value = organization.organization_id;
+        newOrganization.label = organization.name;
+        newOrganization.selected = providerOrganizations.includes(
+          organization.organization_id
+        );
+        newOrganization.selectedIndex = providerOrganizations.indexOf(
+          organization.organization_id
+        );
+        organizationOptions.push(newOrganization);
+      }
+    }
+    return organizationOptions;
+  }, [organizations, providerData]);
 
   const handleChange = (field, value) => {
     const data = { ...providerData };
@@ -420,6 +449,17 @@ export const EditProvider = ({
               maxShown={5}
               addMoreText={t("add_more_work_with")}
               errorMessage={errors.workWith}
+            />
+            <Select
+              placeholder={t("select")}
+              options={getOrganizationOptions()}
+              handleChange={(organizations) =>
+                handleWorkWithAndLanguageSelect("organizations", organizations)
+              }
+              label={t("organizations_label") + " *"}
+              maxShown={5}
+              addMoreText={t("add_more_organizations")}
+              errorMessage={errors.organizations}
             />
           </GridItem>
           {errors.submit ? (
