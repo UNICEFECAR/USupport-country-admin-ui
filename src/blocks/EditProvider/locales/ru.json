@@ -106,5 +106,7 @@
   "search": "Поиск",
   "no_data_found": "Данные не найдены",
   "select": "Выбрать",
-  "remove": "Удалить"
+  "remove": "Удалить",
+  "organizations_label": "Организации",
+  "organizations_error": "Выберите хотя бы одну организацию"
 }

@@ -106,5 +106,7 @@
   "search": "Пошук",
   "no_data_found": "Дані не знайдено",
   "select": "Виберіть",
-  "remove": "Видалити"
+  "remove": "Видалити",
+  "organizations_label": "Організації",
+  "organizations_error": "Виберіть принаймні одну організацію"
 }
