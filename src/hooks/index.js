@@ -32,3 +32,4 @@ export * from "./useDeleteQuestion.js";
 export * from "./useGetQuestions.js";
 export * from "./useDebounce.js";
 export * from "./useGetAllOrganizations.js";
+export * from "./useGetOrganizationsWithDetails.js";
