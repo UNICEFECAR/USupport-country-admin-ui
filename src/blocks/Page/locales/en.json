@@ -7,6 +7,7 @@
   "page_6": "Reports",
   "page_7": "Coupons",
   "page_8": "My Q&A",
+  "page_9": "Organizations",
 
   "country_1": "",
   "country_2": "",
@@ -23,7 +24,7 @@
   "contact_us": "Contact us",
   "your_profile_text": "Your profile",
 
-  "password_placeholder": "Password", 
+  "password_placeholder": "Password",
   "password": "Please enter your password to access the site",
   "wrong_password": "Wrong password",
   "submit": "Submit"
