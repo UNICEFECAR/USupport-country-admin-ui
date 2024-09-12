@@ -33,3 +33,5 @@ export * from "./useGetQuestions.js";
 export * from "./useDebounce.js";
 export * from "./useGetAllOrganizations.js";
 export * from "./useGetOrganizationsWithDetails.js";
+export * from "./useEditOrganization.js";
+export * from "./useCreateOrganization.js";
