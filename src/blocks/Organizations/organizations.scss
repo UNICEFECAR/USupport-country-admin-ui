@@ -1,0 +1,10 @@
+@import "@USupport-components-library/styles";
+
+.organizations {
+  &__modal {
+    & .input-container {
+      margin-block: 1rem;
+      margin-left: 1rem;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "Атауы",
+  "total_consultations": "Барлық кеңестер",
+  "unique_providers": "Барлық провайдерлер",
+  "unique_clients": "Барлық клиенттер",
+  "add_button": "Ұйым қосу",
+  "filter_button": "Сүзу",
+  "view": "Көру",
+  "edit": "Өңдеу",
+  "save": "Сақтау",
+  "add": "Жасау",
+  "edit_organization": "Ұйымды өңдеу",
+  "create_organization": "Ұйым жасау",
+  "organization_added": "Ұйым құрылды",
+  "organization_updated": "Ұйым жаңартылды"
+}
