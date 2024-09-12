@@ -24,3 +24,4 @@ export * as EditCampaign from "./EditCampaign/locales.js";
 export * as CampaignDetails from "./CampaignDetails/locales.js";
 export * as MyQA from "./MyQA/locales.js";
 export * as Dashboard from "./Dashboard/locales.js";
+export * as Organizations from './Organizations/locales.js';
