@@ -75,9 +75,26 @@ if [ "$page_locale" == "y" ]; then
 
     touch "src/pages/$page_name/locales/en.json"
     echo "{}" >> "src/pages/$page_name/locales/en.json"
+    
+    touch "src/pages/$page_name/locales/kk.json"
+    echo "{}" >> "src/pages/$page_name/locales/kk.json"
+
+    touch "src/pages/$page_name/locales/ru.json"
+    echo "{}" >> "src/pages/$page_name/locales/ru.json"
+
+    touch "src/pages/$page_name/locales/uk.json"
+    echo "{}" >> "src/pages/$page_name/locales/uk.json"
+
+    touch "src/pages/$page_name/locales/pl.json"
+    echo "{}" >> "src/pages/$page_name/locales/pl.json"
+
 
     touch "src/pages/$page_name/locales.js"
     echo "export * as en from './locales/en.json';" >> "src/pages/$page_name/locales.js"
+    echo "export * as kk from './locales/kk.json';" >> "src/pages/$page_name/locales.js"
+    echo "export * as ru from './locales/ru.json';" >> "src/pages/$page_name/locales.js"
+    echo "export * as uk from './locales/uk.json';" >> "src/pages/$page_name/locales.js"
+    echo "export * as pl from './locales/pl.json';" >> "src/pages/$page_name/locales.js"
 
     echo "export * as $page_name from './$page_name/locales.js';" >> "src/pages/locales.js"
 fi
