@@ -1,0 +1,19 @@
+{
+  "heading": "Organizacja {{name}}",
+  "providers": "Przypisani dostawcy: {{count}}",
+  "consultations_number": "Łączna liczba sesji: {{count}}",
+  "clients_number": "Łączna liczba klientów: {{count}}",
+  "name": "Nazwa",
+  "clients": "Łączna liczba klientów",
+  "consultations": "Łączna liczba sesji",
+  "joined_date": "Data zapisania",
+  "add_providers": "Dodaj dostawców",
+  "select_providers": "Wybierz dostawców",
+  "add": "Dodaj",
+  "remove_provider": "Usuń dostawcę",
+  "remove_provider_subheading": "Czy na pewno chcesz usunąć dostawcę {{name}}?",
+  "remove": "Usuń",
+  "provider_assigned": "Dostawca przypisany",
+  "provider_removed": "Dostawca usunięty",
+  "select": "Wybierz jednego lub więcej"
+}

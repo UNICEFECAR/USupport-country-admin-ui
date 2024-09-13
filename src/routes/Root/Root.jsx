@@ -39,6 +39,7 @@ import {
   CampaignDetails,
   MyQA,
   Organizations,
+  OrganizationDetails,
 } from "#pages";
 
 import { CountryValidationRoute, ProtectedRoute } from "../../routes";
@@ -271,6 +272,14 @@ export default function Root() {
           element={
             <ProtectedRoute>
               <Organizations />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/organization-details"
+          element={
+            <ProtectedRoute>
+              <OrganizationDetails />
             </ProtectedRoute>
           }
         />

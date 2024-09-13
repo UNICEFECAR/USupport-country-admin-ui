@@ -1,0 +1,19 @@
+{
+  "heading": "Организация {{name}}",
+  "providers": "Назначенные провайдеры: {{count}}",
+  "consultations_number": "Всего сессий: {{count}}",
+  "clients_number": "Всего клиентов: {{count}}",
+  "name": "Название",
+  "clients": "Всего клиентов",
+  "consultations": "Всего сессий",
+  "joined_date": "Дата зачисления",
+  "add_providers": "Добавить провайдеров",
+  "select_providers": "Выбрать провайдеров",
+  "add": "Добавить",
+  "remove_provider": "Удалить провайдера",
+  "remove_provider_subheading": "Вы уверены, что хотите удалить провайдера {{name}}?",
+  "remove": "Удалить",
+  "provider_assigned": "Провайдер назначен",
+  "provider_removed": "Провайдер удален",
+  "select": "Выберите одного или нескольких"
+}

@@ -1,0 +1,20 @@
+{
+  "heading": "Organization {{name}}",
+
+  "providers": "Assigned Providers: {{count}}",
+  "consultations_number": "Total Sessions : {{count}}",
+  "clients_number": "Total Clients : {{count}}",
+  "name": "Name",
+  "clients": "Total Clients",
+  "consultations": "Total sessions",
+  "joined_date": "Enrolled Date",
+  "add_providers": "Add Providers",
+  "select_providers": "Select Providers",
+  "add": "Add",
+  "remove_provider": "Remove Provider",
+  "remove_provider_subheading": "Are you sure you want to remove provider {{name}}?",
+  "remove": "Remove",
+  "provider_assigned": "Provider assigned",
+  "provider_removed": "Provider removed",
+  "select": "Select one or more"
+}

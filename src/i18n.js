@@ -54,6 +54,7 @@ import {
   Dashboard,
   Providers as ProvidersPage,
   Organizations as OrganizationsPage,
+  OrganizationDetails as OrganizationDetailsPage,
 } from "#pages/locales.js";
 
 import {
@@ -122,6 +123,7 @@ const resources = {
     "dashboard-page": Dashboard.en,
     "providers-page": ProvidersPage.en,
     "organizations-page": OrganizationsPage.en,
+    "organization-details-page": OrganizationDetailsPage.en,
 
     // Backdrops
     "upload-picture": UploadPicture.en,
@@ -189,6 +191,7 @@ const resources = {
     "dashboard-page": Dashboard.kk,
     "providers-page": ProvidersPage.kk,
     "organizations-page": OrganizationsPage.kk,
+    "organization-details-page": OrganizationDetailsPage.kk,
 
     // Backdrops
     "upload-picture": UploadPicture.kk,
@@ -256,6 +259,7 @@ const resources = {
     "dashboard-page": Dashboard.ru,
     "providers-page": ProvidersPage.ru,
     "organizations-page": OrganizationsPage.ru,
+    "organization-details-page": OrganizationDetailsPage.ru,
 
     // Backdrops
     "upload-picture": UploadPicture.ru,
@@ -323,6 +327,7 @@ const resources = {
     "dashboard-page": Dashboard.uk,
     "providers-page": ProvidersPage.uk,
     "organizations-page": Organizations.uk,
+    "organization-details-page": OrganizationDetailsPage.uk,
 
     // Backdrops
     "upload-picture": UploadPicture.uk,
@@ -390,6 +395,7 @@ const resources = {
     "dashboard-page": Dashboard.pl,
     "providers-page": ProvidersPage.pl,
     "organizations-page": OrganizationsPage.pl,
+    "organization-details-page": OrganizationDetailsPage.pl,
 
     // Backdrops
     "upload-picture": UploadPicture.pl,

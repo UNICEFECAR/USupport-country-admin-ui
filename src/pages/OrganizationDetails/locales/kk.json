@@ -1,0 +1,19 @@
+{
+  "heading": "Ұйым {{name}}",
+  "providers": "Таңдалған провайдерлер: {{count}}",
+  "consultations_number": "Барлық сессиялар: {{count}}",
+  "clients_number": "Барлық клиенттер: {{count}}",
+  "name": "Атауы",
+  "clients": "Барлық клиенттер",
+  "consultations": "Барлық сессиялар",
+  "joined_date": "Қатысқан күні",
+  "add_providers": "Провайдерлерді қосу",
+  "select_providers": "Провайдерлерді таңдау",
+  "add": "Қосу",
+  "remove_provider": "Провайдерді жою",
+  "remove_provider_subheading": "Сіз шынымен {{name}} провайдерін жойғыңыз келе ме?",
+  "remove": "Жою",
+  "provider_assigned": "Провайдер тағайындалды",
+  "provider_removed": "Провайдер жойылды",
+  "select": "Бір немесе бірнеше таңдаңыз"
+}

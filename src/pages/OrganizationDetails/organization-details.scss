@@ -1,0 +1,31 @@
+/* OrganizationDetails styles */
+@import "@USupport-components-library/styles";
+
+.page__organization-details {
+  &__box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3.2rem;
+    margin-top: 2rem;
+
+    & h4 {
+      margin-bottom: 1rem;
+    }
+
+    @media screen and (min-width: $screen_md) {
+      flex-direction: row;
+
+      & h4 {
+        margin-bottom: unset;
+      }
+    }
+  }
+
+  &__modal {
+    & .base-modal__body {
+      min-height: 30rem;
+    }
+  }
+}
