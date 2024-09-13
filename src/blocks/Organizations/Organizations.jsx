@@ -1,6 +1,8 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
+import { useQueryClient } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 
 import {
   Block,
@@ -9,11 +11,13 @@ import {
   Modal,
   Input,
 } from "@USupport-components-library/src";
-import { useGetOrganizationsWithDetails, useEditOrganization } from "#hooks";
+import {
+  useGetOrganizationsWithDetails,
+  useEditOrganization,
+  useCreateOrganization,
+} from "#hooks";
 
 import "./organizations.scss";
-import { useQueryClient } from "@tanstack/react-query";
-import useCreateOrganization from "../../hooks/useCreateOrganization";
 
 /**
  * Organizations
@@ -25,6 +29,7 @@ import useCreateOrganization from "../../hooks/useCreateOrganization";
 export const Organizations = () => {
   const queryClient = useQueryClient();
   const { t, i18n } = useTranslation("organizations");
+  const navigate = useNavigate();
 
   const { data, isLoading } = useGetOrganizationsWithDetails();
 
@@ -63,7 +68,8 @@ export const Organizations = () => {
     {
       icon: "view",
       text: t("view"),
-      handleClick: (id) => navigate(`/sponsor-details?sponsorId=${id}`),
+      handleClick: (id) =>
+        navigate(`/organization-details?organizationId=${id}`),
     },
     {
       icon: "edit",
