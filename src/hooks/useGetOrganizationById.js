@@ -9,8 +9,8 @@ export const useGetOrganizationById = (organizationId) => {
 
       const { totalClients, totalConsultations } = data.providers.reduce(
         (acc, provider) => {
-          acc.totalClients += Number(provider.clients_count);
-          acc.totalConsultations += Number(provider.consultations_count);
+          acc.totalClients += Number(provider.clients_count || 0);
+          acc.totalConsultations += Number(provider.consultations_count || 0);
           return acc;
         },
         { totalClients: 0, totalConsultations: 0 }
@@ -22,13 +22,13 @@ export const useGetOrganizationById = (organizationId) => {
         totalClients,
         totalConsultations,
         providers: data.providers.map((x) => ({
-          providerDetailId: x.providerDetailId,
+          providerDetailId: x.provider_detail_id,
           joinDate: x.provider_join_date,
           name: `${x.name} ${x.patronym ? ` ${x.patronym}` : ""} ${x.surname}`,
           image: x.image,
           email: x.email,
-          consultations: x.consultations_count,
-          clients: x.clients_count,
+          consultations: x.consultations_count || 0,
+          clients: x.clients_count || 0,
         })),
       };
     },
