@@ -38,3 +38,4 @@ export * from "./useCreateOrganization.js";
 export * from './useGetOrganizationById';
 export * from './useGetAllProviderNames';
 export * from './useAssignProvidersToOrganization';
+export * from './useRemoveProviderFromOrganization';
