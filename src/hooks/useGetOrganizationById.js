@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { organizationSvc } from "@USupport-components-library/services";
 
 export const useGetOrganizationById = (organizationId, filters) => {
-  const { startDate, endDate, startTime, endTime, weekdays, weekends } =
+  const { startDate, endDate, startTime, endTime, weekdays, weekends, search } =
     filters;
 
   return useQuery({
@@ -15,6 +15,7 @@ export const useGetOrganizationById = (organizationId, filters) => {
       endTime,
       weekdays,
       weekends,
+      search,
     ],
     queryFn: async () => {
       const data = await organizationSvc.getOrganizationById(
@@ -39,12 +40,14 @@ export const useGetOrganizationById = (organizationId, filters) => {
         providers: data.providers.map((x) => ({
           providerDetailId: x.provider_detail_id,
           joinDate: x.provider_join_date,
+          leaveDate: x.provider_leave_date,
           name: `${x.name} ${x.patronym ? ` ${x.patronym}` : ""} ${x.surname}`,
           image: x.image,
           email: x.email,
           consultations_count: x.consultations_count || 0,
           consultations: x.consultations || [],
           clients: x.clients_count || 0,
+          futureConsultations: Number(x.future_consultations),
         })),
       };
     },

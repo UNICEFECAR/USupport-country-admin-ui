@@ -13,15 +13,16 @@ import {
 } from "#hooks";
 
 import {
-  Loading,
   BaseTable,
   Block,
   Box,
-  Select,
-  Modal,
+  CheckBox,
   DateInput,
   DropdownWithLabel,
-  CheckBox,
+  Loading,
+  Modal,
+  InputSearch,
+  Select,
 } from "@USupport-components-library/src";
 import {
   getDateView,
@@ -35,6 +36,7 @@ import {
 const { firstDay, lastDay } = getFirstAndLastDayOfPastMonth();
 
 const initialFilters = {
+  search: "",
   startDate: firstDay,
   endDate: lastDay,
   startTime: "09:00",
@@ -102,6 +104,7 @@ export const OrganizationDetails = () => {
         sortingKey: "consultations",
       },
       { isCentered: true, label: t("joined_date"), sortingKey: "joinDate" },
+      { isCentered: true, label: t("leave_date"), sortingKey: "leaveDate" },
     ];
   }, [i18n.language]);
 
@@ -112,6 +115,9 @@ export const OrganizationDetails = () => {
         <p className="text centered">{item.clients}</p>,
         <p className="text centered">{item.consultations_count}</p>,
         <p className="text centered">{getDateView(item.joinDate)}</p>,
+        <p className="text centered">
+          {item.leaveDate ? getDateView(item.leaveDate) : "-"}
+        </p>,
       ];
     });
   }, [dataToDisplay]);
@@ -238,15 +244,30 @@ export const OrganizationDetails = () => {
     >
       <Modal
         isOpen={isFilterModalOpen}
-        closeModal={() => setIsFilterModalOpen(false)}
+        closeModal={() => {
+          setIsFilterModalOpen(false);
+          setFilters(appliedFilters);
+        }}
         heading={t("filters")}
         ctaLabel={t("apply")}
         ctaHandleClick={() => {
           setAppliedFilters(filters);
           setIsFilterModalOpen(false);
         }}
+        secondaryCtaLabel={t("reset_filters")}
+        secondaryCtaHandleClick={() => {
+          setFilters(initialFilters);
+          setAppliedFilters(initialFilters);
+          setIsFilterModalOpen(false);
+        }}
+        secondaryCtaType="secondary"
         classes="page__organization-details__filters-modal"
       >
+        <InputSearch
+          value={filters.search}
+          placeholder={t("search")}
+          onChange={(val) => setFilters({ ...filters, search: val })}
+        />
         <DateInput
           value={filters.startDate}
           label={t("start_date")}
@@ -298,8 +319,10 @@ export const OrganizationDetails = () => {
         heading={t("remove_provider")}
         text={t("remove_provider_subheading", {
           name: providerToRemove?.name,
+          organizationName: data?.name,
         })}
         ctaLabel={t("remove")}
+        ctaColor="red"
         ctaHandleClick={() => {
           removeProviderMutation.mutate({
             organizationId,
@@ -307,7 +330,15 @@ export const OrganizationDetails = () => {
           });
         }}
         isCtaLoading={removeProviderMutation.isLoading}
-      />
+      >
+        {providerToRemove?.futureConsultations && (
+          <h3 style={{ marginTop: "2rem" }}>
+            {t("has_future_consultations", {
+              count: providerToRemove?.futureConsultations,
+            })}
+          </h3>
+        )}
+      </Modal>
       <Modal
         isOpen={showAddProviderModal}
         closeModal={() => setShowAddProviderModal(false)}
@@ -331,7 +362,7 @@ export const OrganizationDetails = () => {
           }}
         />
       </Modal>
-      {isLoading ? (
+      {isLoading || isProvidersLoading ? (
         <Loading />
       ) : (
         <Block>
