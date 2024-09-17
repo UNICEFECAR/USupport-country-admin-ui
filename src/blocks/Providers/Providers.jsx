@@ -46,6 +46,7 @@ export const Providers = ({
     status: "",
     free: false,
     specialization: "",
+    organization: "",
   };
   const navigate = useNavigate();
   const { t, i18n } = useTranslation("providers");
