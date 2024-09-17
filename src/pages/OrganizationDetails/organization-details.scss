@@ -28,4 +28,28 @@
       min-height: 30rem;
     }
   }
+
+  &__filters-modal {
+    & .base-modal__body {
+      min-height: 50rem;
+      justify-content: center;
+      align-items: center;
+    }
+    & .input-container,
+    & .dropdown-with-label {
+      margin: 0 auto;
+      margin-bottom: $spacing_1_6;
+      width: 34.3rem;
+    }
+
+    &__checkbox-container {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin: 0 auto;
+      margin-top: $spacing_1_6;
+      width: 34.3rem;
+    }
+  }
 }

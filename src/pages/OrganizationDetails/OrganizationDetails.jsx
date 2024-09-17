@@ -19,8 +19,30 @@ import {
   Box,
   Select,
   Modal,
+  DateInput,
+  DropdownWithLabel,
+  CheckBox,
 } from "@USupport-components-library/src";
-import { getDateView } from "@USupport-components-library/src/utils";
+import {
+  getDateView,
+  getFirstAndLastDayOfPastMonth,
+  hours,
+  formatDateWithTimeRange,
+  downloadCSVFile,
+  getTime,
+} from "@USupport-components-library/src/utils";
+
+const { firstDay, lastDay } = getFirstAndLastDayOfPastMonth();
+
+const initialFilters = {
+  startDate: firstDay,
+  endDate: lastDay,
+  startTime: "09:00",
+  endTime: "17:00",
+  weekdays: true,
+  weekends: false,
+};
+const hoursOptions = hours.map((hour) => ({ label: hour, value: hour }));
 
 import "./organization-details.scss";
 
@@ -44,12 +66,23 @@ export const OrganizationDetails = () => {
   const [showAddProviderModal, setShowAddProviderModal] = useState(false);
   const [providersToAdd, setProvidersToAdd] = useState([]);
   const [providerToRemove, setProviderToRemove] = useState();
+  const [filters, setFilters] = useState({
+    ...initialFilters,
+  });
+  const [appliedFilters, setAppliedFilters] = useState({
+    ...filters,
+  });
+
+  const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
 
   if (!organizationId) {
     return <Navigate to="/organizations" />;
   }
 
-  const { data, isLoading } = useGetOrganizationById(organizationId);
+  const { data, isLoading } = useGetOrganizationById(
+    organizationId,
+    appliedFilters
+  );
   const { data: allProviders, isLoading: isProvidersLoading } =
     useGetAllProviderNames();
 
@@ -77,7 +110,7 @@ export const OrganizationDetails = () => {
       return [
         <p className="text">{item.name}</p>,
         <p className="text centered">{item.clients}</p>,
-        <p className="text centered">{item.consultations}</p>,
+        <p className="text centered">{item.consultations_count}</p>,
         <p className="text centered">{getDateView(item.joinDate)}</p>,
       ];
     });
@@ -118,7 +151,7 @@ export const OrganizationDetails = () => {
         },
       },
     ];
-  }, [i18n.language]);
+  }, [i18n.language, dataToDisplay]);
 
   const onProvidersAssignSuccess = () => {
     toast(t("provider_assigned"));
@@ -150,12 +183,115 @@ export const OrganizationDetails = () => {
     onProvidersAssignError
   );
 
+  const handleCsvExport = () => {
+    let csv = "";
+    const headers = [
+      t("provider_name"),
+      t("client_name"),
+      t("time"),
+      t("client_joined"),
+      t("client_joined_at"),
+      t("provider_joined"),
+      t("provider_joined_at"),
+      t("created_at"),
+    ];
+
+    csv += headers.join(",");
+    csv += "\n";
+
+    dataToDisplay.forEach((row) => {
+      row.consultations?.forEach((consultation) => {
+        let clientJoined = consultation.client_join_time ? t("yes") : t("no");
+        let providerJoined = consultation.provider_join_time
+          ? t("yes")
+          : t("no");
+        let clientJoinedAt = consultation.client_join_time
+          ? getTime(consultation.client_join_time)
+          : "-";
+        let providerJoinedAt = consultation.provider_join_time
+          ? getTime(consultation.provider_join_time)
+          : "-";
+
+        csv += `${row.name},`;
+        csv += `${consultation.clientName},`;
+        csv += `${formatDateWithTimeRange(new Date(consultation.time))},`;
+        csv += `${clientJoined},`;
+        csv += `${clientJoinedAt},`;
+        csv += `${providerJoined},`;
+        csv += `${providerJoinedAt},`;
+        csv += `${getDateView(consultation.created_at)}`;
+        csv += "\n";
+      });
+    });
+
+    const fileName = `${data.name}_consultations(${getDateView(
+      filters.startDate
+    )} - ${getDateView(filters.endDate)}).csv`;
+    downloadCSVFile(csv, fileName);
+  };
+
   return (
     <Page
       classes="page__organization-details"
       heading={t("heading", { name: data?.name || "" })}
       handleGoBack={() => navigate(-1)}
     >
+      <Modal
+        isOpen={isFilterModalOpen}
+        closeModal={() => setIsFilterModalOpen(false)}
+        heading={t("filters")}
+        ctaLabel={t("apply")}
+        ctaHandleClick={() => {
+          setAppliedFilters(filters);
+          setIsFilterModalOpen(false);
+        }}
+        classes="page__organization-details__filters-modal"
+      >
+        <DateInput
+          value={filters.startDate}
+          label={t("start_date")}
+          onChange={(e) =>
+            setFilters({ ...filters, startDate: e.currentTarget.value })
+          }
+        />
+
+        <DateInput
+          value={filters.endDate}
+          label={t("end_date")}
+          onChange={(e) =>
+            setFilters({ ...filters, endDate: e.currentTarget.value })
+          }
+        />
+        <DropdownWithLabel
+          label={t("start_time")}
+          options={hoursOptions}
+          selected={filters.startTime}
+          setSelected={(value) => setFilters({ ...filters, startTime: value })}
+        />
+        <DropdownWithLabel
+          label={t("end_time")}
+          options={hoursOptions}
+          selected={filters.endTime}
+          setSelected={(value) => setFilters({ ...filters, endTime: value })}
+        />
+        <div className="page__organization-details__filters-modal__checkbox-container">
+          <CheckBox
+            label={t("weekdays")}
+            isChecked={filters.weekdays}
+            setIsChecked={() => {
+              setFilters({ ...filters, weekdays: !filters.weekdays });
+            }}
+          />
+          <CheckBox
+            label={t("weekends")}
+            isChecked={filters.weekends}
+            setIsChecked={() => {
+              setFilters({ ...filters, weekends: !filters.weekends });
+            }}
+          />
+        </div>
+      </Modal>
+
       <Modal
         isOpen={!!providerToRemove}
         closeModal={() => setProviderToRemove(null)}
@@ -178,8 +314,6 @@ export const OrganizationDetails = () => {
         heading={t("add_providers")}
         ctaLabel={t("add")}
         ctaHandleClick={() => {
-          console.log("click");
-          console.log(providersToAdd);
           assignProvidersMutation.mutate({
             organizationId,
             providerDetailIds: providersToAdd.map((x) => x.value),
@@ -217,7 +351,10 @@ export const OrganizationDetails = () => {
             menuOptions={menuOptions}
             buttonLabel={t("add_providers")}
             buttonAction={() => setShowAddProviderModal(true)}
-            // secondaryButtonLabel={t("filter_button")}
+            secondaryButtonLabel={t("filters")}
+            secondaryButtonAction={() => setIsFilterModalOpen(true)}
+            thirdButtonLabel={t("export_report")}
+            thirdButtonAction={handleCsvExport}
             t={t}
           />
         </Block>
