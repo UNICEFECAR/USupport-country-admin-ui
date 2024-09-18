@@ -1,1 +1,1 @@
-export * from './Organizations.jsx';
+export * from "./Organizations.jsx";

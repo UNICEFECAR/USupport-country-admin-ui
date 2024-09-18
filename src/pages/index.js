@@ -24,5 +24,5 @@ export * from "./AddCampaign";
 export * from "./EditCampaign";
 export * from "./CampaignDetails";
 export * from "./MyQA";
-export * from './Organizations';
-export * from './OrganizationDetails';
+export * from "./Organizations";
+export * from "./OrganizationDetails";
