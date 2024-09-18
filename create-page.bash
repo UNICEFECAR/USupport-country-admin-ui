@@ -64,10 +64,10 @@ touch "src/pages/$page_name/$page_name.jsx"
 touch "src/pages/$page_name/$page_name_caterpillar.scss"
 
 # Add the page to the page index file
-echo "export * from './$page_name.jsx';" >> "src/pages/$page_name/index.js"
+echo "export * from \"./$page_name.jsx\";" >> "src/pages/$page_name/index.js"
 
 # Add the page to the page group index file
-echo "export * from './$page_name';" >> "src/pages/index.js"
+echo "export * from \"./$page_name\";" >> "src/pages/index.js"
 
 # Create the page locale files if page_locale is y
 if [ "$page_locale" == "y" ]; then
@@ -90,11 +90,11 @@ if [ "$page_locale" == "y" ]; then
 
 
     touch "src/pages/$page_name/locales.js"
-    echo "export * as en from './locales/en.json';" >> "src/pages/$page_name/locales.js"
-    echo "export * as kk from './locales/kk.json';" >> "src/pages/$page_name/locales.js"
-    echo "export * as ru from './locales/ru.json';" >> "src/pages/$page_name/locales.js"
-    echo "export * as uk from './locales/uk.json';" >> "src/pages/$page_name/locales.js"
-    echo "export * as pl from './locales/pl.json';" >> "src/pages/$page_name/locales.js"
+    echo "export * as en from \"./locales/en.json\";" >> "src/pages/$page_name/locales.js"
+    echo "export * as kk from \"./locales/kk.json\";" >> "src/pages/$page_name/locales.js"
+    echo "export * as ru from \"./locales/ru.json\";" >> "src/pages/$page_name/locales.js"
+    echo "export * as uk from \"./locales/uk.json\";" >> "src/pages/$page_name/locales.js"
+    echo "export * as pl from \"./locales/pl.json\";" >> "src/pages/$page_name/locales.js"
 
     echo "export * as $page_name from './$page_name/locales.js';" >> "src/pages/locales.js"
 fi

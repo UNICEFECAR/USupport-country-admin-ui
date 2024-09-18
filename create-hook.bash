@@ -84,7 +84,7 @@ export default use$hook_name;
 fi
 
 # Add the hook to the hooks index file
-echo "export * from './use$hook_name';" >> "src/hooks/index.js"
+echo "export * from \"./use$hook_name\";" >> "src/hooks/index.js"
 
 # Output to the user's console 
 echo "Successfully created use$hook_name hook in src/hooks"
