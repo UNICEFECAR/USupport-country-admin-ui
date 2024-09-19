@@ -127,9 +127,12 @@ export const OrganizationDetails = () => {
     if (!allProviders || !data) return [];
 
     if (data) {
-      const existingProviders = data.providers.map(
-        (provider) => provider.providerDetailId
-      );
+      const existingProviders = data.providers.reduce((acc, provider) => {
+        if (!provider.leaveDate) {
+          acc.push(provider.providerDetailId);
+        }
+        return acc;
+      }, []);
 
       return allProviders.reduce((acc, provider) => {
         if (existingProviders.includes(provider.providerDetailId)) return acc;
