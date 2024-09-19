@@ -38,5 +38,6 @@
   "no": "Нет",
   "has_future_consultations": "У поставщика назначено {{count}} будущих консультаций",
   "reset_filters": "Сбросить фильтры",
-  "no_data_found": "Данные не найдены"
+  "no_data_found": "Данные не найдены",
+  "search": "Поиск"
 }

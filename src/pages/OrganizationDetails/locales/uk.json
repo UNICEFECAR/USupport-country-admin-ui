@@ -38,5 +38,6 @@
   "no": "Ні",
   "has_future_consultations": "У постачальника заплановано {{count}} майбутніх консультацій",
   "reset_filters": "Скинути фільтри",
-  "no_data_found": "Дані не знайдено"
+  "no_data_found": "Дані не знайдено",
+  "search": "Пошук"
 }

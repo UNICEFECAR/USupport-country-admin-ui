@@ -39,5 +39,6 @@
   "no": "No",
   "has_future_consultations": "Provider has {{count}} scheduled future consultations",
   "reset_filters": "Reset filters",
-  "no_data_found": "No data found"
+  "no_data_found": "No data found",
+  "search": "Search"
 }

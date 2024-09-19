@@ -38,5 +38,6 @@
   "no": "Nie",
   "has_future_consultations": "Dostawca ma {{count}} zaplanowanych przyszłych konsultacji",
   "reset_filters": "Zresetuj filtry",
-  "no_data_found": "Nie znaleziono danych"
+  "no_data_found": "Nie znaleziono danych",
+  "search": "Szukaj"
 }
