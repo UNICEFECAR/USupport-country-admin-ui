@@ -331,13 +331,13 @@ export const OrganizationDetails = () => {
         }}
         isCtaLoading={removeProviderMutation.isLoading}
       >
-        {providerToRemove?.futureConsultations && (
+        {providerToRemove?.futureConsultations ? (
           <h3 style={{ marginTop: "2rem" }}>
             {t("has_future_consultations", {
               count: providerToRemove?.futureConsultations,
             })}
           </h3>
-        )}
+        ) : null}
       </Modal>
       <Modal
         isOpen={showAddProviderModal}
