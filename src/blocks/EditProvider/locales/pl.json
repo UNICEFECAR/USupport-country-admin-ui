@@ -106,5 +106,8 @@
   "search": "Wyszukiwanie",
   "no_data_found": "Nie znaleziono danych",
   "select": "Wybierz",
-  "remove": "Usuń"
+  "remove": "Usuń",
+
+  "organizations_label": "Organizacje",
+  "organizations_error": "Wybierz co najmniej jedną organizację"
 }

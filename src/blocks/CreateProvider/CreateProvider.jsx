@@ -24,6 +24,7 @@ import {
   useGetCountryAndLanguages,
   useGetWorkWithCategories,
   useCreateProvider,
+  useGetAllOrganizations,
 } from "#hooks";
 import Joi from "joi";
 
@@ -49,6 +50,7 @@ const initialData = {
   languages: [],
   workWith: [],
   videoLink: "",
+  organizations: [],
 };
 
 /**s
@@ -75,6 +77,8 @@ export const CreateProvider = ({
 
   const localizationQuery = useGetCountryAndLanguages();
   const workWithQuery = useGetWorkWithCategories();
+  const { data: organizations, isLoading: organizationsLoading } =
+    useGetAllOrganizations();
 
   const [errors, setErrors] = useState({});
 
@@ -108,6 +112,7 @@ export const CreateProvider = ({
     totalConsultations: Joi.any(),
     earliestAvailableSlot: Joi.any(),
     videoLink: Joi.string().uri().allow("", null),
+    organizations: Joi.array().min(1).label(t("organizations_error")),
   });
 
   const sexOptions = [
@@ -182,6 +187,29 @@ export const CreateProvider = ({
     }
     return workWithOptions;
   }, [workWithQuery.data, providerData]);
+
+  const getOrganizationOptions = useCallback(() => {
+    const organizationOptions = [];
+    if (organizations && providerData) {
+      const providerOrganizations = providerData.organizations.map(
+        (x) => x.organization_id || x
+      );
+      for (let i = 0; i < organizations.length; i++) {
+        const newOrganizationOption = {};
+        const organization = organizations[i];
+        newOrganizationOption.value = organization.organization_id;
+        newOrganizationOption.label = organization.name;
+        newOrganizationOption.selected = providerOrganizations.includes(
+          organization.organization_id
+        );
+        newOrganizationOption.selectedIndex = providerOrganizations.indexOf(
+          organization.organization_id
+        );
+        organizationOptions.push(newOrganizationOption);
+      }
+    }
+    return organizationOptions;
+  });
 
   const handleChange = (field, value) => {
     const data = { ...providerData };
@@ -408,6 +436,17 @@ export const CreateProvider = ({
               handleWorkWithAndLanguageSelect("workWith", workWith);
             }}
             errorMessage={errors.workWith}
+          />
+          <Select
+            placeholder={t("select")}
+            options={getOrganizationOptions()}
+            handleChange={(organizations) =>
+              handleWorkWithAndLanguageSelect("organizations", organizations)
+            }
+            label={t("organizations_label") + " *"}
+            maxShown={5}
+            addMoreText={t("add_more_organizations")}
+            errorMessage={errors.organizations}
           />
         </GridItem>
         <GridItem md={8} lg={12} classes="create-provider__grid__button-item">
