@@ -13,5 +13,6 @@
   "apply_filter": "Zastosuj filtry",
   "reset_filter": "Zresetuj filtry",
   "search": "Wyszukiwanie",
-  "no_data_found": "Nie znaleziono danych"
+  "no_data_found": "Nie znaleziono danych",
+  "organization": "Organizacja"
 }

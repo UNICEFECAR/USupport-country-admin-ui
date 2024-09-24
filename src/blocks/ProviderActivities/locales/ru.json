@@ -14,9 +14,5 @@
   "reset_filter": "Сбросить фильтр",
   "search": "Поиск",
   "no_data_found": "Данные не найдены",
-  "status": "Status",
-  "finished": "Finished",
-  "late-canceled": "Late canceled",
-  "scheduled": "Scheduled",
-  "active": "Активный"
+  "organization": "Организация"
 }

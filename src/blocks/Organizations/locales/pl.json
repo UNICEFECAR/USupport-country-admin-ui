@@ -1,0 +1,16 @@
+{
+  "name": "Nazwa",
+  "total_consultations": "Łączna liczba konsultacji",
+  "unique_providers": "Łączna liczba dostawców",
+  "unique_clients": "Łączna liczba klientów",
+  "add_button": "Dodaj organizację",
+  "filter_button": "Filtruj",
+  "view": "Zobacz",
+  "edit": "Edytuj",
+  "save": "Zapisz",
+  "add": "Utwórz",
+  "edit_organization": "Edytuj organizację",
+  "create_organization": "Utwórz organizację",
+  "organization_added": "Organizacja została utworzona",
+  "organization_updated": "Organizacja została zaktualizowana"
+}

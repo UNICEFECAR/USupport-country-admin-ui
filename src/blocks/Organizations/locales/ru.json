@@ -1,0 +1,16 @@
+{
+  "name": "Название",
+  "total_consultations": "Всего консультаций",
+  "unique_providers": "Всего провайдеров",
+  "unique_clients": "Всего клиентов",
+  "add_button": "Добавить организацию",
+  "filter_button": "Фильтр",
+  "view": "Просмотр",
+  "edit": "Редактировать",
+  "save": "Сохранить",
+  "add": "Создать",
+  "edit_organization": "Редактировать организацию",
+  "create_organization": "Создать организацию",
+  "organization_added": "Организация создана",
+  "organization_updated": "Организация обновлена"
+}

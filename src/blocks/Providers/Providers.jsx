@@ -46,6 +46,7 @@ export const Providers = ({
     status: "",
     free: false,
     specialization: "",
+    organization: "",
   };
   const navigate = useNavigate();
   const { t, i18n } = useTranslation("providers");
@@ -88,6 +89,7 @@ export const Providers = ({
         specializations: providerData.specializations || [],
         consultationPrice: providerData.consultation_price || 0,
         status: providerData.status,
+        organizations: providerData.organizations || "N/A",
       };
       formattedData.push(formattedProvider);
     }
@@ -266,6 +268,9 @@ export const Providers = ({
         label: t("specializations"),
       },
       {
+        label: t("organizations"),
+      },
+      {
         label: t("actions"),
         isCentered: true,
       },
@@ -299,6 +304,7 @@ export const Providers = ({
       </div>,
 
       <p>{provider.specializations.map((x) => t(x)).join(", ")}</p>,
+      <p>{provider.organizations}</p>,
 
       <div
         onClick={() => {

@@ -28,6 +28,7 @@ import {
   CampaignDetails,
   MyQAReports,
   MyQA,
+  Organizations,
 } from "#blocks/locales.js";
 
 import {
@@ -52,6 +53,8 @@ import {
   MyQA as MyQAPage,
   Dashboard,
   Providers as ProvidersPage,
+  Organizations as OrganizationsPage,
+  OrganizationDetails as OrganizationDetailsPage,
 } from "#pages/locales.js";
 
 import {
@@ -95,6 +98,7 @@ const resources = {
     "campaign-details": CampaignDetails.en,
     "my-qa-reports": MyQAReports.en,
     "my-qa": MyQA.en,
+    organizations: Organizations.en,
 
     // Pages
     "not-found-page": NotFoundPage.en,
@@ -118,6 +122,8 @@ const resources = {
     "my-qa-page": MyQAPage.en,
     "dashboard-page": Dashboard.en,
     "providers-page": ProvidersPage.en,
+    "organizations-page": OrganizationsPage.en,
+    "organization-details-page": OrganizationDetailsPage.en,
 
     // Backdrops
     "upload-picture": UploadPicture.en,
@@ -160,6 +166,7 @@ const resources = {
     "campaign-details": CampaignDetails.kk,
     "my-qa-reports": MyQAReports.kk,
     "my-qa": MyQA.kk,
+    Organizations: Organizations.kk,
 
     // Pages
     "not-found-page": NotFoundPage.kk,
@@ -183,6 +190,8 @@ const resources = {
     "my-qa-page": MyQAPage.kk,
     "dashboard-page": Dashboard.kk,
     "providers-page": ProvidersPage.kk,
+    "organizations-page": OrganizationsPage.kk,
+    "organization-details-page": OrganizationDetailsPage.kk,
 
     // Backdrops
     "upload-picture": UploadPicture.kk,
@@ -225,6 +234,7 @@ const resources = {
     "campaign-details": CampaignDetails.ru,
     "my-qa-reports": MyQAReports.ru,
     "my-qa": MyQA.ru,
+    organizations: Organizations.ru,
 
     // Pages
     "not-found-page": NotFoundPage.ru,
@@ -248,6 +258,8 @@ const resources = {
     "my-qa-page": MyQAPage.ru,
     "dashboard-page": Dashboard.ru,
     "providers-page": ProvidersPage.ru,
+    "organizations-page": OrganizationsPage.ru,
+    "organization-details-page": OrganizationDetailsPage.ru,
 
     // Backdrops
     "upload-picture": UploadPicture.ru,
@@ -290,6 +302,7 @@ const resources = {
     "campaign-details": CampaignDetails.uk,
     "my-qa-reports": MyQAReports.uk,
     "my-qa": MyQA.uk,
+    organizations: Organizations.uk,
 
     // Pages
     "not-found-page": NotFoundPage.uk,
@@ -313,6 +326,8 @@ const resources = {
     "my-qa-page": MyQAPage.uk,
     "dashboard-page": Dashboard.uk,
     "providers-page": ProvidersPage.uk,
+    "organizations-page": Organizations.uk,
+    "organization-details-page": OrganizationDetailsPage.uk,
 
     // Backdrops
     "upload-picture": UploadPicture.uk,
@@ -355,6 +370,7 @@ const resources = {
     "campaign-details": CampaignDetails.pl,
     "my-qa-reports": MyQAReports.pl,
     "my-qa": MyQA.pl,
+    organizations: Organizations.pl,
 
     // Pages
     "not-found-page": NotFoundPage.pl,
@@ -378,6 +394,8 @@ const resources = {
     "my-qa-page": MyQAPage.pl,
     "dashboard-page": Dashboard.pl,
     "providers-page": ProvidersPage.pl,
+    "organizations-page": OrganizationsPage.pl,
+    "organization-details-page": OrganizationDetailsPage.pl,
 
     // Backdrops
     "upload-picture": UploadPicture.pl,
