@@ -14,6 +14,7 @@ export const useGetProviderActivitiesById = (providerId) => {
         type: activity.type,
         campaignName: activity.campaign_name,
         createdAt: activity.created_at,
+        organizationName: activity.organization_name,
       };
     });
   };

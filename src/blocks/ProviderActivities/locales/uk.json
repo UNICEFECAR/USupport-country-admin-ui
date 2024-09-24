@@ -13,5 +13,6 @@
   "apply_filter": "Застосувати фільтри",
   "reset_filter": "Скидання фільтрів",
   "search": "Пошук",
-  "no_data_found": "Дані не знайдено"
+  "no_data_found": "Дані не знайдено",
+  "organization": "Організація"
 }

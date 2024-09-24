@@ -38,6 +38,8 @@ import {
   EditCampaign,
   CampaignDetails,
   MyQA,
+  Organizations,
+  OrganizationDetails,
 } from "#pages";
 
 import { CountryValidationRoute, ProtectedRoute } from "../../routes";
@@ -262,6 +264,22 @@ export default function Root() {
           element={
             <ProtectedRoute>
               <MyQA />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/organizations"
+          element={
+            <ProtectedRoute>
+              <Organizations />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/organization-details"
+          element={
+            <ProtectedRoute>
+              <OrganizationDetails />
             </ProtectedRoute>
           }
         />

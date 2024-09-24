@@ -1,0 +1,16 @@
+{
+  "name": "Назва",
+  "total_consultations": "Всього консультацій",
+  "unique_providers": "Всього провайдерів",
+  "unique_clients": "Всього клієнтів",
+  "add_button": "Додати організацію",
+  "filter_button": "Фільтр",
+  "view": "Переглянути",
+  "edit": "Редагувати",
+  "save": "Зберегти",
+  "add": "Створити",
+  "edit_organization": "Редагувати організацію",
+  "create_organization": "Створити організацію",
+  "organization_added": "Організацію створено",
+  "organization_updated": "Організацію оновлено"
+}

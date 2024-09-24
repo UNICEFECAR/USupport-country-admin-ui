@@ -1,0 +1,16 @@
+{
+  "name": "Name",
+  "total_consultations": "Total consultations",
+  "unique_providers": "Total providers",
+  "unique_clients": "Total clients",
+  "add_button": "Add organization",
+  "filter_button": "Filter",
+  "view": "View",
+  "edit": "Edit",
+  "save": "Save",
+  "add": "Create",
+  "edit_organization": "Edit organization",
+  "create_organization": "Create organization",
+  "organization_added": "Organization created",
+  "organization_updated": "Organization updated"
+}
