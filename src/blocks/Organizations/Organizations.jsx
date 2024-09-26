@@ -121,7 +121,6 @@ export const Organizations = () => {
     });
   };
 
-  console.log(organizationToEdit);
   return (
     <React.Fragment>
       <Modal

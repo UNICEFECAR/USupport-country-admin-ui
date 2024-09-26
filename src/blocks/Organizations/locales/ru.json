@@ -12,5 +12,6 @@
   "edit_organization": "Редактировать организацию",
   "create_organization": "Создать организацию",
   "organization_added": "Организация создана",
-  "organization_updated": "Организация обновлена"
+  "organization_updated": "Организация обновлена",
+  "no_data_found": "Данные не найдены"
 }
