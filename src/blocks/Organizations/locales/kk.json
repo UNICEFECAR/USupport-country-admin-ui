@@ -12,5 +12,6 @@
   "edit_organization": "Ұйымды өңдеу",
   "create_organization": "Ұйым жасау",
   "organization_added": "Ұйым құрылды",
-  "organization_updated": "Ұйым жаңартылды"
+  "organization_updated": "Ұйым жаңартылды",
+  "no_data_found": "Деректер табылмады"
 }
