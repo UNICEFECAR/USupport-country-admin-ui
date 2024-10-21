@@ -20,24 +20,10 @@ import "./article-view.scss";
  */
 export const ArticleView = ({ articleData, t }) => {
   const creator = articleData.creator ? articleData.creator : null;
-  console.log(articleData);
+
   return (
     <Block classes="article-view">
       <Grid classes="article-view__main-grid">
-        <GridItem md={8} lg={12}>
-          <img
-            className="article-view__image-item"
-            src={
-              articleData.imageMedium ||
-              articleData.imageLarge ||
-              articleData.imageSmall ||
-              articleData.imageThumbnail ||
-              "https://picsum.photos/300/400"
-            }
-            alt=""
-          />
-        </GridItem>
-
         <GridItem md={8} lg={12} classes="article-view__title-item">
           <h3>{articleData.title}</h3>
         </GridItem>
@@ -62,6 +48,20 @@ export const ArticleView = ({ articleData, t }) => {
               />
             );
           })}
+        </GridItem>
+
+        <GridItem md={8} lg={12}>
+          <img
+            className="article-view__image-item"
+            src={
+              articleData.imageMedium ||
+              articleData.imageLarge ||
+              articleData.imageSmall ||
+              articleData.imageThumbnail ||
+              "https://picsum.photos/300/400"
+            }
+            alt=""
+          />
         </GridItem>
 
         <GridItem md={8} lg={12} classes="article-view__body-item">
