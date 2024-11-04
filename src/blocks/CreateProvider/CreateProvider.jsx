@@ -1,7 +1,9 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import { useMutation } from "@tanstack/react-query";
+import Joi from "joi";
+import { useNavigate } from "react-router-dom";
 
 import {
   Block,
@@ -17,19 +19,17 @@ import {
   InputPhone,
   Select,
 } from "@USupport-components-library/src";
-
 import { validate, validateProperty } from "@USupport-components-library/utils";
 import { userSvc, providerSvc } from "@USupport-components-library/services";
+
 import {
   useGetCountryAndLanguages,
   useGetWorkWithCategories,
   useCreateProvider,
   useGetAllOrganizations,
 } from "#hooks";
-import Joi from "joi";
 
 import "./create-provider.scss";
-import { useNavigate } from "react-router-dom";
 
 const initialData = {
   name: "",
@@ -53,6 +53,8 @@ const initialData = {
   organizations: [],
 };
 
+const COUNTRIES_WITH_DISABLED_PRICE = ["KZ", "PL"];
+
 /**s
  * CreateProvider
  *
@@ -74,13 +76,26 @@ export const CreateProvider = ({
   const currencySymbol = localStorage.getItem("currency_symbol");
 
   const [providerData, setProviderData] = useState(initialData);
+  const [errors, setErrors] = useState({});
+  const [countryAlpha2, setCountryAlpha2] = useState("");
 
   const localizationQuery = useGetCountryAndLanguages();
   const workWithQuery = useGetWorkWithCategories();
   const { data: organizations, isLoading: organizationsLoading } =
     useGetAllOrganizations();
 
-  const [errors, setErrors] = useState({});
+  const isPriceDisabled = COUNTRIES_WITH_DISABLED_PRICE.includes(countryAlpha2);
+
+  useEffect(() => {
+    if (localizationQuery.data) {
+      const currentCountryId = localStorage.getItem("country_id");
+      const currentCountry = localizationQuery.data.countries.find(
+        (x) => x.country_id === currentCountryId
+      );
+      console.log(currentCountry, "currentCountry");
+      setCountryAlpha2(currentCountry.alpha2);
+    }
+  }, [localizationQuery.data]);
 
   const specializationOptions = [
     { value: "psychologist", label: t("psychologist"), selected: false },
@@ -369,7 +384,11 @@ export const CreateProvider = ({
             label={t("consultation_price_label", { currencySymbol }) + " *"}
             placeholder={t("consultation_price_placeholder")}
             onBlur={() => handleBlur("consultationPrice")}
+            disabled={isPriceDisabled}
           />
+          {isPriceDisabled && (
+            <Error message={t("consultation_price_disabled")} />
+          )}
           <Input
             value={providerData.city}
             onChange={(e) => handleChange("city", e.currentTarget.value)}
@@ -440,6 +459,7 @@ export const CreateProvider = ({
           <Select
             placeholder={t("select")}
             options={getOrganizationOptions()}
+            disabled={organizationsLoading}
             handleChange={(organizations) =>
               handleWorkWithAndLanguageSelect("organizations", organizations)
             }
