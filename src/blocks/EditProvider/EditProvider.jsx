@@ -92,7 +92,6 @@ export const EditProvider = ({
       const currentCountry = localizationQuery.data.countries.find(
         (x) => x.country_id === currentCountryId
       );
-      console.log(currentCountry, "currentCountry");
       setCountryAlpha2(currentCountry.alpha2);
     }
   }, [localizationQuery.data]);
