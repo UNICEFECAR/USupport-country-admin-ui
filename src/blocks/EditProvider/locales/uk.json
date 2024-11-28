@@ -51,6 +51,7 @@
   "postcode_error": "Поштовий індекс обов'язковий",
   "consultation_price_error": "Ціна консультації має бути невід'ємним числом",
   "min_price_error": "Мінімальна вартість консультації становить {{minPrice}}{{currencySymbol}}",
+  "consultation_price_disabled": "Платные консультации в вашей стране не доступны.",
 
   "specializations_error": "Оберіть принаймні одну спеціалізацію",
   "work_with_error": "Виберіть принаймні одну категорію",
