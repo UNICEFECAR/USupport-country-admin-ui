@@ -26,11 +26,11 @@ import {
   useGetCountryAndLanguages,
   useGetWorkWithCategories,
   useUpdateProviderData,
+  useGetAllOrganizations,
 } from "#hooks";
 import Joi from "joi";
 
 import "./edit-provider.scss";
-import { useGetAllOrganizations } from "../../hooks";
 
 const fetchCountryMinPrice = async () => {
   const { data } = await countrySvc.getActiveCountries();
@@ -38,6 +38,8 @@ const fetchCountryMinPrice = async () => {
   const currentCountry = data.find((x) => x.country_id === currentCountryId);
   return currentCountry?.min_price;
 };
+
+const COUNTRIES_WITH_DISABLED_PRICE = ["KZ", "PL"];
 
 /**s
  * EditProvider
@@ -59,6 +61,8 @@ export const EditProvider = ({
   const [providersQuery, providerData, setProviderData] =
     useGetProviderData(providerId);
   const [canSaveChanges, setCanSaveChanges] = useState(false);
+  const [errors, setErrors] = useState({});
+  const [countryAlpha2, setCountryAlpha2] = useState("");
 
   const { data: countryMinPrice } = useQuery(
     ["country-min-price"],
@@ -77,11 +81,20 @@ export const EditProvider = ({
 
   const localizationQuery = useGetCountryAndLanguages();
   const workWithQuery = useGetWorkWithCategories();
-
   const { data: organizations, isLoading: organizationsLoading } =
     useGetAllOrganizations();
 
-  const [errors, setErrors] = useState({});
+  const isPriceDisabled = COUNTRIES_WITH_DISABLED_PRICE.includes(countryAlpha2);
+
+  useEffect(() => {
+    if (localizationQuery.data) {
+      const currentCountryId = localStorage.getItem("country_id");
+      const currentCountry = localizationQuery.data.countries.find(
+        (x) => x.country_id === currentCountryId
+      );
+      setCountryAlpha2(currentCountry.alpha2);
+    }
+  }, [localizationQuery.data]);
 
   const specializationOptions = [
     { value: "psychologist", label: t("psychologist"), selected: false },
@@ -380,7 +393,11 @@ export const EditProvider = ({
               label={t("consultation_price_label", { currencySymbol }) + " *"}
               placeholder={t("consultation_price_placeholder")}
               onBlur={() => handleBlur("consultationPrice")}
+              disabled={isPriceDisabled}
             />
+            {isPriceDisabled && (
+              <Error message={t("consultation_price_disabled")} />
+            )}
             <Input
               value={providerData.city}
               onChange={(e) => handleChange("city", e.currentTarget.value)}
@@ -453,6 +470,7 @@ export const EditProvider = ({
             <Select
               placeholder={t("select")}
               options={getOrganizationOptions()}
+              disabled={organizationsLoading}
               handleChange={(organizations) =>
                 handleWorkWithAndLanguageSelect("organizations", organizations)
               }

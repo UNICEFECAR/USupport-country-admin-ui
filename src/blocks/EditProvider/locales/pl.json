@@ -51,6 +51,7 @@
   "postcode_error": "Kod pocztowy jest wymagany",
   "consultation_price_error": "Cena konsultacji musi być liczbą nieujemną",
   "min_price_error": "Minimalna cena konsultacji wynosi {{minPrice}}{{currencySymbol}}",
+  "consultation_price_disabled": "Płatne konsultacje nie są dostępne w twoim kraju",
 
   "specializations_error": "Wybrać co najmniej jedną specjalizację",
   "work_with_error": "Wybierz co najmniej jedną kategorię",
