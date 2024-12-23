@@ -269,14 +269,14 @@ const Filters = ({
               handleChange("startingDate", e.currentTarget.value)
             }
             value={data.startingDate}
-            placeholder="DD.MM.YYY"
+            placeholder={t("starting_date")}
             classes={["contact-forms__filters__date-picker"]}
           />
           <DateInput
             label={t("ending_date")}
             onChange={(e) => handleChange("endingDate", e.currentTarget.value)}
             value={data.endingDate}
-            placeholder="DD.MM.YYY"
+            placeholder={t("ending_date")}
             classes={["contact-forms__filters__date-picker"]}
           />
         </div>

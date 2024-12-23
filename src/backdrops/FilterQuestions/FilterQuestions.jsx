@@ -107,7 +107,7 @@ export const FilterQuestions = ({
             }))
           }
           value={currFilter.startingDate || ""}
-          placeholder="DD.MM.YYY"
+          placeholder={t("starting_date")}
           classes={["client-ratings__backdrop__date-picker"]}
         />
         <DateInput
@@ -119,7 +119,7 @@ export const FilterQuestions = ({
             }))
           }
           value={currFilter.endingDate || ""}
-          placeholder="DD.MM.YYY"
+          placeholder={t("ending_date")}
           classes={["client-ratings__backdrop__date-picker"]}
         />
       </div>
