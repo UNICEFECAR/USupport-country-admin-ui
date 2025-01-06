@@ -14,5 +14,6 @@
   "reset_filter": "Сүзгілерді қалпына келтіру",
   "search": "Іздеу",
   "no_data_found": "Ақпарат табылмады",
-  "organization": "Ұйым"
+  "organization": "Ұйым",
+  "dates_placeholder": "КК.АА.ЖЖЖЖ"
 }
