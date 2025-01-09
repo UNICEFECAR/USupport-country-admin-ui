@@ -14,5 +14,6 @@
   "reset_filter": "Скидання фільтрів",
   "search": "Пошук",
   "no_data_found": "Дані не знайдено",
-  "organization": "Організація"
+  "organization": "Організація",
+  "dates_placeholder": "ДД.ММ.РРРР"
 }
