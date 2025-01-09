@@ -191,14 +191,14 @@ const Filters = ({ isOpen, handleClose, handleSave, filters, t }) => {
               handleChange("startingDate", e.currentTarget.value)
             }
             value={data.startingDate}
-            placeholder="DD.MM.YYY"
+            placeholder={t("starting_date")}
             classes={["client-ratings__backdrop__date-picker"]}
           />
           <DateInput
             label={t("ending_date")}
             onChange={(e) => handleChange("endingDate", e.currentTarget.value)}
             value={data.endingDate}
-            placeholder="DD.MM.YYY"
+            placeholder={t("ending_date")}
             classes={["client-ratings__backdrop__date-picker"]}
           />
         </div>

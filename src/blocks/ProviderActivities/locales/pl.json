@@ -14,5 +14,6 @@
   "reset_filter": "Zresetuj filtry",
   "search": "Wyszukiwanie",
   "no_data_found": "Nie znaleziono danych",
-  "organization": "Organizacja"
+  "organization": "Organizacja",
+  "dates_placeholder": "DD.MM.RRRR"
 }
