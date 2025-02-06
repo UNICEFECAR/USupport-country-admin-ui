@@ -1,11 +1,12 @@
 {
-    "heading": "Сұрақтар",
-    "answered": "Жауап берілген",
-    "unanswered": "Жауап берілмеген",
-    "search_placeholder": "Іздеу",
-    "answer_by": "Жауап берді:",
-    "no_data_found": "Ақпарат табылмады",
-    "all": "Барлығы",
-    "read_more": "Ары қарай оқу",
-    "Today": "Бүгін"
+  "heading": "Сұрақтар",
+  "answered": "Жауап берілген",
+  "unanswered": "Жауап берілмеген",
+  "search_placeholder": "Іздеу",
+  "answer_by": "Жауап берді:",
+  "no_data_found": "Ақпарат табылмады",
+  "all": "Барлығы",
+  "read_more": "Ары қарай оқу",
+  "Today": "Бүгін",
+  "language": "Тіл"
 }
