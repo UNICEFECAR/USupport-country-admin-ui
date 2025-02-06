@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
 import {
@@ -7,9 +7,10 @@ import {
   InputSearch,
   Loading,
   Answer,
+  DropdownWithLabel,
 } from "@USupport-components-library/src";
 import { QuestionDetails, FilterQuestions } from "#backdrops";
-import { useGetQuestions } from "#hooks";
+import { useGetQuestions, useGetLanguages } from "#hooks";
 
 import "./my-qa.scss";
 
@@ -39,9 +40,29 @@ export const MyQA = ({
     provider: null,
   });
   const [selectedQuestion, setSelectedQuestion] = useState(null);
+  const [selectedLanguage, setSelectedLanguage] = useState("all");
+  const { data: languages } = useGetLanguages();
+
+  const languageOptions = useMemo(() => {
+    const showAllOption = {
+      value: "all",
+      label: t("all"),
+    };
+
+    if (!languages) return [showAllOption];
+
+    return [
+      showAllOption,
+      ...languages.map((x) => ({
+        value: x.language_id,
+        label: x.local_name,
+      })),
+    ];
+  }, [languages, t]);
 
   const questionsQuery = useGetQuestions(
-    tabs.find((tab) => tab.isSelected).value
+    tabs.find((tab) => tab.isSelected).value,
+    selectedLanguage
   );
 
   const handleSelectTab = (index) => {
@@ -72,7 +93,11 @@ export const MyQA = ({
     }
 
     if (questionsQuery.data.length === 0) {
-      return <p className="text">{t("no_data_found")}</p>;
+      return (
+        <p className="text my-qa__questions-container__no-data ">
+          {t("no_data_found")}
+        </p>
+      );
     }
 
     const filteredQuestions = questionsQuery.data.filter((question) => {
@@ -191,12 +216,25 @@ export const MyQA = ({
             />
           </div>
           {isFilterButtonShown && (
-            <InputSearch
-              placeholder={t("search_placeholder")}
-              value={searchValue}
-              onChange={(value) => setSearchValue(value)}
-              classes="my-qa__search-input"
-            />
+            <div>
+              <InputSearch
+                placeholder={t("search_placeholder")}
+                value={searchValue}
+                onChange={(value) => setSearchValue(value)}
+                classes="my-qa__search-input"
+              />
+              <DropdownWithLabel
+                options={languageOptions}
+                selected={selectedLanguage}
+                setSelected={(lang) => {
+                  console.log(lang);
+                  setSelectedLanguage(lang);
+                }}
+                label={t("language")}
+                placeholder={t("placeholder")}
+                classes="my-qa__categories-item__language-dropdown"
+              />
+            </div>
           )}
         </div>
         <div className="my-qa__questions-container">{renderQuestions()}</div>
