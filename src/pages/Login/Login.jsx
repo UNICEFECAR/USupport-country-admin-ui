@@ -164,7 +164,7 @@ export const Login = () => {
         handleLogin={handleLogin}
         errors={errors}
         showTimer={showTimer}
-        isLoading={requestOtpMutation.isLoading}
+        isLoading={requestOtpMutation.isLoading || loginMutation.isLoading}
       />
       {width < 768 && <RadialCircle color="purple" />}
       {isCodeVerificationOpen && (
