@@ -237,13 +237,13 @@ export const AddCampaign = ({
                 <DateInput
                   key={index}
                   label={t(`${keyName}_label`) + " *"}
-                  placeholder={t("dates_placeholder")}
                   value={data[key]}
                   errorMessage={errors[key]}
                   onChange={(e) => {
-                    let value = e.currentTarget.value;
+                    let value = e.target.value;
                     setData({ ...data, [key]: value });
                   }}
+                  classes={["client-ratings__backdrop__date-picker"]}
                 />
               );
             return (
