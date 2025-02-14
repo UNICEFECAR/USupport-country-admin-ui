@@ -275,16 +275,14 @@ export const OrganizationDetails = () => {
           value={filters.startDate}
           label={t("start_date")}
           onChange={(e) =>
-            setFilters({ ...filters, startDate: e.currentTarget.value })
+            setFilters({ ...filters, startDate: e.target.value })
           }
         />
 
         <DateInput
           value={filters.endDate}
           label={t("end_date")}
-          onChange={(e) =>
-            setFilters({ ...filters, endDate: e.currentTarget.value })
-          }
+          onChange={(e) => setFilters({ ...filters, endDate: e.target.value })}
         />
         <DropdownWithLabel
           label={t("start_time")}
