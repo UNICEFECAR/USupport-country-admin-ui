@@ -1,7 +1,9 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import { useMutation } from "@tanstack/react-query";
+import Joi from "joi";
+import { useNavigate } from "react-router-dom";
 
 import {
   Block,
@@ -17,18 +19,17 @@ import {
   InputPhone,
   Select,
 } from "@USupport-components-library/src";
-
 import { validate, validateProperty } from "@USupport-components-library/utils";
 import { userSvc, providerSvc } from "@USupport-components-library/services";
+
 import {
   useGetCountryAndLanguages,
   useGetWorkWithCategories,
   useCreateProvider,
+  useGetAllOrganizations,
 } from "#hooks";
-import Joi from "joi";
 
 import "./create-provider.scss";
-import { useNavigate } from "react-router-dom";
 
 const initialData = {
   name: "",
@@ -49,7 +50,10 @@ const initialData = {
   languages: [],
   workWith: [],
   videoLink: "",
+  organizations: [],
 };
+
+const COUNTRIES_WITH_DISABLED_PRICE = ["KZ", "PL"];
 
 /**s
  * CreateProvider
@@ -72,11 +76,26 @@ export const CreateProvider = ({
   const currencySymbol = localStorage.getItem("currency_symbol");
 
   const [providerData, setProviderData] = useState(initialData);
+  const [errors, setErrors] = useState({});
+  const [countryAlpha2, setCountryAlpha2] = useState("");
 
   const localizationQuery = useGetCountryAndLanguages();
   const workWithQuery = useGetWorkWithCategories();
+  const { data: organizations, isLoading: organizationsLoading } =
+    useGetAllOrganizations();
 
-  const [errors, setErrors] = useState({});
+  const isPriceDisabled = COUNTRIES_WITH_DISABLED_PRICE.includes(countryAlpha2);
+
+  useEffect(() => {
+    if (localizationQuery.data) {
+      const currentCountryId = localStorage.getItem("country_id");
+      const currentCountry = localizationQuery.data.countries.find(
+        (x) => x.country_id === currentCountryId
+      );
+      console.log(currentCountry, "currentCountry");
+      setCountryAlpha2(currentCountry.alpha2);
+    }
+  }, [localizationQuery.data]);
 
   const specializationOptions = [
     { value: "psychologist", label: t("psychologist"), selected: false },
@@ -108,6 +127,7 @@ export const CreateProvider = ({
     totalConsultations: Joi.any(),
     earliestAvailableSlot: Joi.any(),
     videoLink: Joi.string().uri().allow("", null),
+    organizations: Joi.array().min(1).label(t("organizations_error")),
   });
 
   const sexOptions = [
@@ -182,6 +202,29 @@ export const CreateProvider = ({
     }
     return workWithOptions;
   }, [workWithQuery.data, providerData]);
+
+  const getOrganizationOptions = useCallback(() => {
+    const organizationOptions = [];
+    if (organizations && providerData) {
+      const providerOrganizations = providerData.organizations.map(
+        (x) => x.organization_id || x
+      );
+      for (let i = 0; i < organizations.length; i++) {
+        const newOrganizationOption = {};
+        const organization = organizations[i];
+        newOrganizationOption.value = organization.organization_id;
+        newOrganizationOption.label = organization.name;
+        newOrganizationOption.selected = providerOrganizations.includes(
+          organization.organization_id
+        );
+        newOrganizationOption.selectedIndex = providerOrganizations.indexOf(
+          organization.organization_id
+        );
+        organizationOptions.push(newOrganizationOption);
+      }
+    }
+    return organizationOptions;
+  });
 
   const handleChange = (field, value) => {
     const data = { ...providerData };
@@ -341,7 +384,11 @@ export const CreateProvider = ({
             label={t("consultation_price_label", { currencySymbol }) + " *"}
             placeholder={t("consultation_price_placeholder")}
             onBlur={() => handleBlur("consultationPrice")}
+            disabled={isPriceDisabled}
           />
+          {isPriceDisabled && (
+            <Error message={t("consultation_price_disabled")} />
+          )}
           <Input
             value={providerData.city}
             onChange={(e) => handleChange("city", e.currentTarget.value)}
@@ -408,6 +455,18 @@ export const CreateProvider = ({
               handleWorkWithAndLanguageSelect("workWith", workWith);
             }}
             errorMessage={errors.workWith}
+          />
+          <Select
+            placeholder={t("select")}
+            options={getOrganizationOptions()}
+            disabled={organizationsLoading}
+            handleChange={(organizations) =>
+              handleWorkWithAndLanguageSelect("organizations", organizations)
+            }
+            label={t("organizations_label") + " *"}
+            maxShown={5}
+            addMoreText={t("add_more_organizations")}
+            errorMessage={errors.organizations}
           />
         </GridItem>
         <GridItem md={8} lg={12} classes="create-provider__grid__button-item">

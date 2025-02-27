@@ -68,6 +68,7 @@ export const FilterSecurityCheckReports = ({
 
   const handleResetFilters = () => {
     changeFilter(initialFiltersData);
+    setFiltersData(initialFiltersData);
     onClose();
   };
 
@@ -105,20 +106,20 @@ export const FilterSecurityCheckReports = ({
             />
             <DateInput
               label={t("starting_date")}
-              placeholder={t("dates_placeholder")}
-              value={filtersData["startingDate"]}
+              placeholder={t("starting_date")}
+              value={filtersData["startingDate"] || ""}
               onChange={(e) => {
-                let value = e.currentTarget.value;
+                let value = e.target.value;
                 handleChange("startingDate", value);
               }}
               classes={["filter-security-check-reports__date-picker"]}
             />
             <DateInput
               label={t("end_date")}
-              placeholder={t("dates_placeholder")}
-              value={filtersData["endingDate"]}
+              placeholder={t("end_date")}
+              value={filtersData["endingDate"] || ""}
               onChange={(e) => {
-                let value = e.currentTarget.value;
+                let value = e.target.value;
                 handleChange("endingDate", value);
               }}
             />

@@ -100,26 +100,26 @@ export const FilterQuestions = ({
         )}
         <DateInput
           label={t("starting_date")}
-          onChange={(e) =>
+          onChange={(e) => {
             setCurrFilter((prev) => ({
               ...prev,
-              startingDate: e.currentTarget.value,
-            }))
-          }
+              startingDate: e.target?.value,
+            }));
+          }}
           value={currFilter.startingDate || ""}
-          placeholder="DD.MM.YYY"
+          placeholder={t("starting_date")}
           classes={["client-ratings__backdrop__date-picker"]}
         />
         <DateInput
           label={t("ending_date")}
-          onChange={(e) =>
+          onChange={(e) => {
             setCurrFilter((prev) => ({
               ...prev,
-              endingDate: e.currentTarget.value,
-            }))
-          }
+              endingDate: e.target?.value,
+            }));
+          }}
           value={currFilter.endingDate || ""}
-          placeholder="DD.MM.YYY"
+          placeholder={t("ending_date")}
           classes={["client-ratings__backdrop__date-picker"]}
         />
       </div>

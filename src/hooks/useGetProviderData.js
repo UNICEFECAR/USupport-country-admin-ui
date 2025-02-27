@@ -32,6 +32,7 @@ export default function useGetProviderData(id = null) {
       totalConsultations: data.total_consultations || 0,
       earliestAvailableSlot: data.earliest_available_slot || "",
       videoLink: data.video_link || "",
+      organizations: data.organizations || [],
     };
     return formattedData;
   };

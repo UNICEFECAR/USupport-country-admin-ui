@@ -62,6 +62,7 @@ export const Page = ({
     { name: t("page_6"), url: "/reports" },
     { name: t("page_7"), url: "/campaigns" },
     { name: t("page_8"), url: "/my-qa" },
+    { name: t("page_9"), url: "/organizations" },
   ];
 
   const localStorageCountry = localStorage.getItem("country");

@@ -1,7 +1,7 @@
 {
   "name_label": "Imie",
   "surname_label": "Nazwisko",
-  "email_label": "E-mail",
+  "email_label": "Email",
   "phone_label": "Telefon",
 
   "name_placeholder": "Wpisz swoje imię",
@@ -10,18 +10,18 @@
   "phone_prefix_placeholder": "Prefiks",
   "phone_placeholder": "Numer telefonu",
 
-  "name_error": "Imie jest wymagane",
+  "name_error": "Imię jest wymagane",
   "surname_error": "Nazwisko jest wymagane",
-  "email_error": "Adres e-mail jest wymagany",
+  "email_error": "Adres email jest wymagany",
   "phone_prefix_error": "Prefiks telefonu jest wymagany",
   "phone_error": "Numer telefonu jest wymagany",
 
-  "button_text": "Zapisać zmiany",
-  "button_secondary_text": "Odrzucić zmiany",
+  "button_text": "Zapisz zmiany",
+  "button_secondary_text": "Odrzuć zmiany",
 
   "edit_success": "Profil został pomyślnie zaktualizowany",
 
   "search": "Wyszukiwanie",
   "no_data_found": "Nie znaleziono danych",
-  "button_change_password": "Zmienić hasło"
+  "button_change_password": "Zmień hasło"
 }

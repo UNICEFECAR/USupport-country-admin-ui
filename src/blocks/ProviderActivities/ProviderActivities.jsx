@@ -58,6 +58,11 @@ export const ProviderActivities = ({ isLoading, data, providerName }) => {
         sortingKey: "campaignName",
         isCentered: true,
       },
+      {
+        label: t("organization"),
+        sortingKey: "organizationName",
+        isCentered: true,
+      },
     ];
   }, [i18n.language]);
 
@@ -72,7 +77,8 @@ export const ProviderActivities = ({ isLoading, data, providerName }) => {
       csv += `${row.displayName},`;
       csv += `${getFormattedDate(row.time, false)},`;
       csv += `${price},`;
-      csv += `${row.campaignName || "N/A"}`;
+      csv += `${row.campaignName || "N/A"},`;
+      csv += `${row.organizationName || "N/A"}`;
     });
 
     const reportDate = new Date().toISOString().split("T")[0];
@@ -99,7 +105,16 @@ export const ProviderActivities = ({ isLoading, data, providerName }) => {
       ? activity.campaignName === currentFilters.campaign
       : true;
 
-    return isStartDateMatching && isEndDateMatching && isCampaignMatching;
+    const isOrganizationMatching = currentFilters.organization
+      ? activity.organizationName === currentFilters.organization
+      : true;
+
+    return (
+      isStartDateMatching &&
+      isEndDateMatching &&
+      isCampaignMatching &&
+      isOrganizationMatching
+    );
   };
 
   const handleFilterSave = (currentFilters) => {
@@ -130,11 +145,23 @@ export const ProviderActivities = ({ isLoading, data, providerName }) => {
         {activity.price ? `${activity.price}${currencySymbol}` : t("free")}
       </p>,
       <p className="text centered">{activity.campaignName || "N/A"}</p>,
+      <p className="text centered">{activity.organizationName || "N/A"}</p>,
     ];
   });
 
   let campaignOptions = Array.from(
     new Set(data?.filter((x) => x.campaignName).map((x) => x.campaignName))
+  ).map((x) => {
+    return {
+      value: x,
+      label: x,
+    };
+  });
+
+  let organizationOptions = Array.from(
+    new Set(
+      data?.filter((x) => x.organizationName).map((x) => x.organizationName)
+    )
   ).map((x) => {
     return {
       value: x,
@@ -163,17 +190,26 @@ export const ProviderActivities = ({ isLoading, data, providerName }) => {
         handleClose={() => setIsFilterOpen(false)}
         handleSave={handleFilterSave}
         campaignOptions={campaignOptions}
+        organizationOptions={organizationOptions}
         t={t}
       />
     </Block>
   );
 };
 
-const Filters = ({ isOpen, handleClose, handleSave, t, campaignOptions }) => {
+const Filters = ({
+  isOpen,
+  handleClose,
+  handleSave,
+  t,
+  campaignOptions,
+  organizationOptions,
+}) => {
   const initialData = {
     startDate: "",
     endDate: "",
     campaign: "",
+    organization: "",
   };
   const [data, setData] = useState(initialData);
 
@@ -212,13 +248,21 @@ const Filters = ({ isOpen, handleClose, handleSave, t, campaignOptions }) => {
               options={campaignOptions}
             />
           )}
+          {organizationOptions.length > 0 && (
+            <DropdownWithLabel
+              label={t("organization")}
+              selected={data.organization}
+              setSelected={(value) => handleChange("organization", value)}
+              options={organizationOptions}
+            />
+          )}
           <div className="provider-activities__filter-modal__date-container">
             <Input
               type="date"
               label={t("start_date")}
               onChange={(e) => handleChange("startDate", e.currentTarget.value)}
               value={data.startDate}
-              placeholder="DD.MM.YYY"
+              placeholder={t("dates_placeholder")}
               classes="provider-activities__filter-modal__date-picker"
             />
             <Input
@@ -226,7 +270,7 @@ const Filters = ({ isOpen, handleClose, handleSave, t, campaignOptions }) => {
               label={t("end_date")}
               onChange={(e) => handleChange("endDate", e.currentTarget.value)}
               value={data.endDate}
-              placeholder="DD.MM.YYY"
+              placeholder={t("dates_placeholder")}
               classes="provider-activities__filter-modal__date-picker"
             />
           </div>

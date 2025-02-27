@@ -1,17 +1,19 @@
 {
   "client": "Klienci",
-  "time": "Raz",
+  "time": "Czas",
   "price": "Cena",
   "campaign": "Kampania",
   "free": "Wolny",
   "export_label": "Eksport",
   "filter": "Filtr",
   "filters": "Filtry",
-  "no_results": "Nie znaleziono żadnej działalności",
+  "no_results": "Nie znaleziono żadnej aktywności",
   "start_date": "Data rozpoczęcia",
   "end_date": "Data zakończenia",
   "apply_filter": "Zastosuj filtry",
   "reset_filter": "Zresetuj filtry",
   "search": "Wyszukiwanie",
-  "no_data_found": "Nie znaleziono danych"
+  "no_data_found": "Nie znaleziono danych",
+  "organization": "Organizacja",
+  "dates_placeholder": "DD.MM.RRRR"
 }

@@ -13,5 +13,7 @@
   "apply_filter": "Apply filters",
   "reset_filter": "Reset filters",
   "search": "Search",
-  "no_data_found": "No data found"
+  "no_data_found": "No data found",
+  "organization": "Organization",
+  "dates_placeholder": "DD.MM.YYYY"
 }

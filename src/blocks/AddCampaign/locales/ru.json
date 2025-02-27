@@ -25,7 +25,7 @@
   "period_error": "Дата окончания должна быть позже даты начала",
 
   "create_campaign": "Создать кампанию",
-  "save_changes": "Save changes",
+  "save_changes": "Сохранить изменения",
   "discard_changes": "Отменить изменения",
   "delete_campaign": "Удалить кампанию"
 }

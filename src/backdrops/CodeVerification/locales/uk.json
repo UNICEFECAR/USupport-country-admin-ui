@@ -7,5 +7,5 @@
   "send_button_label": "Продовжити",
   "didnt_get_code": "Не отримали коду?",
   "resend_code_button_label": "Повторно надіслати листа",
-  "seconds": "in {{seconds}} seconds"
+  "seconds": "за {{seconds}} секунд"
 }

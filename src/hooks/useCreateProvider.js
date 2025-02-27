@@ -24,6 +24,13 @@ export default function useCreateProvider(onSuccess, onError) {
       }
     });
 
+    newPayload.organizationIds = newPayload.organizations.map((item) => {
+      if (typeof item === "object") {
+        return item.organization_id;
+      }
+      return item;
+    });
+
     newPayload.consultationPrice = Number(newPayload.consultationPrice);
     newPayload.email = newPayload.email.toLowerCase();
     newPayload.password = "Password1";
@@ -34,6 +41,7 @@ export default function useCreateProvider(onSuccess, onError) {
     delete newPayload.image;
     delete newPayload.totalConsultations;
     delete newPayload.earliestAvailableSlot;
+    delete newPayload.organizations;
     return newPayload;
   };
 

@@ -63,10 +63,10 @@ touch "src/blocks/$block_name/$block_name.jsx"
 touch "src/blocks/$block_name/$block_name_caterpillar.scss"
 
 # Add the block to the block index file
-echo "export * from './$block_name.jsx';" >> "src/blocks/$block_name/index.js"
+echo "export * from \"./$block_name.jsx\";" >> "src/blocks/$block_name/index.js"
 
 # Add the block to the block group index file
-echo "export * from './$block_name';" >> "src/blocks/index.js"
+echo "export * from \"./$block_name\";" >> "src/blocks/index.js"
 
 # Create the locale file if block_locales is y
 if [ "$block_locale" == "y" ]; then
@@ -75,10 +75,26 @@ if [ "$block_locale" == "y" ]; then
     touch "src/blocks/$block_name/locales/en.json"
     echo "{}" >> "src/blocks/$block_name/locales/en.json"
 
-    touch "src/blocks/$block_name/locales.js"
-    echo "export * as en from './locales/en.json';" >> "src/blocks/$block_name/locales.js"
+    touch "src/blocks/$block_name/locales/kk.json"
+    echo "{}" >> "src/blocks/$block_name/locales/kk.json"
 
-    echo "export * as $block_name from './$block_name/locales.js';" >> "src/blocks/locales.js"
+    touch "src/blocks/$block_name/locales/ru.json"
+    echo "{}" >> "src/blocks/$block_name/locales/ru.json"
+
+    touch "src/blocks/$block_name/locales/uk.json"
+    echo "{}" >> "src/blocks/$block_name/locales/uk.json"
+
+    touch "src/blocks/$block_name/locales/pl.json"
+    echo "{}" >> "src/blocks/$block_name/locales/pl.json"
+
+    touch "src/blocks/$block_name/locales.js"
+    echo "export * as en from \"./locales/en.json\";" >> "src/blocks/$block_name/locales.js"
+    echo "export * as kk from \"./locales/kk.json\";" >> "src/blocks/$block_name/locales.js"
+    echo "export * as ru from \"./locales/ru.json\";" >> "src/blocks/$block_name/locales.js"
+    echo "export * as uk from \"./locales/uk.json\";" >> "src/blocks/$block_name/locales.js"
+    echo "export * as pl from \"./locales/pl.json\";" >> "src/blocks/$block_name/locales.js"
+
+    echo "export * as $block_name from \"./$block_name/locales.js\";" >> "src/blocks/locales.js"
 fi
 
 # Add the block to the main block file

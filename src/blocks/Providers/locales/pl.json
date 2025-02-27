@@ -7,7 +7,7 @@
   "modal_heading_deactivate": "Czy na pewno chcesz dezaktywować konto tego konsultanta?",
   "modal_text_deactivate": "Konsultant nie będzie już mógł dostosowywać swojej dostępności, rejestrować się w kampaniach, sugerować konsultacji klientom ani pojawiać się w wyszukiwaniach klientów. \n\nUwaga: konsultant nadal będzie mógł uzyskać dostęp do swojego konta, przeglądać swoje wcześniejsze konsultacje i przeprowadzać już zaplanowane konsultacje.",
   "modal_heading_activate": "Czy na pewno chcesz aktywować konto tego konsultanta?",
-  "modal_text_activate": "Konsultant będzie mógł dostosować swoją dostępność, zapisać się do kampanii, sugerować klientom konsultacje i pojawić się w wyszukiwaniach klientów.",
+  "modal_text_activate": "Konsultant będzie mógł dostosować swoją dostępność, zapisać się do kampanii, sugerować klientom konsultacje i pojawiać się w wyszukiwaniach klientów.",
   "yes": "Tak",
   "no": "Nie",
   "no_data_found": "Nie ma żadnych konsultantów",
@@ -22,7 +22,7 @@
   "filter_providers": "Filtruj konsultantów",
   "min_price": "Cena minimalna",
   "status": "Status",
-  "active": "Aktywny",
+  "active": "Aktywność",
   "inactive": "Nieaktywny",
   "show_only_free": "Pokaż tylko bezpłatne",
   "specialization": "Specjalizacja",
@@ -30,12 +30,13 @@
   "apply_filter": "Zastosuj filtry",
   "reset_filter": "Zresetuj filtry",
 
-  "name": "Imie",
-  "email": "E-mail",
+  "name": "Imię",
+  "email": "Email",
   "price": "Cena",
   "specializations": "Specjalizacja",
   "actions": "Działania",
   "view": "Widok",
   "edit": "Edytuj",
-  "search": "Wyszukiwanie"
+  "search": "Wyszukiwanie",
+  "organizations": "Organizacje"
 }

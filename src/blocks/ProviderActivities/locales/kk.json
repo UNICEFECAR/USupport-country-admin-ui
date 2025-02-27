@@ -1,9 +1,9 @@
 {
   "client": "Клиенттер",
-  "time": "Рет",
+  "time": "Уақыт",
   "price": "Бағасы",
   "campaign": "Науқан",
-  "free": "Бос",
+  "free": "Тегін",
   "export_label": "Экспорт",
   "filter": "Сүзгі",
   "filters": "Сүзгілер",
@@ -13,5 +13,7 @@
   "apply_filter": "Сүзгілерді қолданыңыз",
   "reset_filter": "Сүзгілерді қалпына келтіру",
   "search": "Іздеу",
-  "no_data_found": "Ақпарат табылмады"
+  "no_data_found": "Ақпарат табылмады",
+  "organization": "Ұйым",
+  "dates_placeholder": "КК.АА.ЖЖЖЖ"
 }

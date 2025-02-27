@@ -1,9 +1,9 @@
 {
   "client": "Клиенты",
-  "time": "Раз",
+  "time": "Время",
   "price": "Цена",
   "campaign": "Кампания",
-  "free": "Свободно",
+  "free": "Бесплатно",
   "export_label": "Экспорт",
   "filter": "Фильтр",
   "filters": "Фильтры",
@@ -14,8 +14,6 @@
   "reset_filter": "Сбросить фильтр",
   "search": "Поиск",
   "no_data_found": "Данные не найдены",
-  "status": "Status",
-  "finished": "Finished",
-  "late-canceled": "Late canceled",
-  "scheduled": "Scheduled"
+  "organization": "Организация",
+  "dates_placeholder": "ДД.ММ.ГГГГ"
 }

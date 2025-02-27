@@ -16,6 +16,11 @@
     @media screen and (min-width: $screen-lg) {
       padding-left: $spacing_23_0;
     }
+
+    & .dropdown-with-label {
+      text-align: left;
+      margin-top: $spacing_1_6;
+    }
   }
 
   &__tabs-container {
@@ -45,6 +50,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    &__no-data {
+      padding-bottom: $spacing_12_0;
+    }
   }
 
   &__answer {
