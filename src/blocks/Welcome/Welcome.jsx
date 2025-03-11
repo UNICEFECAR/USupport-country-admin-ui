@@ -40,7 +40,7 @@ export const Welcome = () => {
         value: x.alpha2,
         label: x.name,
         localName: x.local_name,
-        id: x.country_id,
+        countryID: x.country_id,
       };
 
       if (localStorageCountry === x.alpha2) {
@@ -80,20 +80,22 @@ export const Welcome = () => {
     fetchLanguages,
     {
       retry: false,
+      staleTime: Infinity,
+      cacheTime: 1000 * 60 * 60 * 24, // Keep cached for 24 hours
+      enabled: !!selectedCountry,
     }
   );
 
   const handleContinue = () => {
     const country = selectedCountry;
     const language = selectedLanguage;
-
+    const selectedCountryId = countriesQuery.data.find(
+      (x) => x.value === selectedCountry
+    ).countryID;
     localStorage.setItem("country", country);
-    localStorage.setItem(
-      "country_id",
-      countriesQuery.data.find((x) => x.value === selectedCountry).id
-    );
+    localStorage.setItem("country_id", selectedCountryId);
     localStorage.setItem("language", language);
-
+    window.dispatchEvent(new Event("countryChanged"));
     i18n.changeLanguage(language);
 
     navigate("/login");
@@ -112,7 +114,7 @@ export const Welcome = () => {
           <h2 className="welcome__grid__logo-item__heading">{t("admin")}</h2>
         </GridItem>
         <GridItem md={8} lg={12} classes="welcome__grid__content-item">
-          {!(countriesQuery.isLoading || languagesQuery.isLoading) ? (
+          {!(countriesQuery.isFetching || languagesQuery.isFetching) ? (
             <>
               <DropdownWithLabel
                 options={
