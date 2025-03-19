@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+
 import { Navbar, Icon, PasswordModal } from "@USupport-components-library/src";
 import {
   countrySvc,
@@ -14,7 +15,7 @@ import {
   getCountryFromTimezone,
   useWindowDimensions,
 } from "@USupport-components-library/utils";
-import { useIsLoggedIn, useError } from "#hooks";
+import { useIsLoggedIn, useError, useEventListener } from "#hooks";
 
 import "./page.scss";
 
@@ -71,12 +72,58 @@ export const Page = ({
     localStorageLanguage ? { value: localStorageLanguage.toUpperCase() } : null
   );
   const [selectedCountry, setSelectedCountry] = useState();
+  useEventListener("countryChanged", () => {
+    const country = localStorage.getItem("country");
+    if (country) {
+      setSelectedCountry(country);
+    }
+  });
+  const handleCountrySelection = (countries) => {
+    let hasSetDefaultCountry = false;
+
+    const usersCountry = getCountryFromTimezone();
+    const validCountry = countries.find((x) => x.value === usersCountry);
+
+    for (let i = 0; i < countries.length; i++) {
+      const country = countries[i];
+
+      if (localStorageCountry === country.value) {
+        localStorage.setItem("country_id", country.countryID);
+        localStorage.setItem("currency_symbol", country.currencySymbol);
+
+        setSelectedCountry(country);
+      } else if (!localStorageCountry || localStorageCountry === "undefined") {
+        if (validCountry?.value === country.value) {
+          hasSetDefaultCountry = true;
+
+          localStorage.setItem("country", country.value);
+          localStorage.setItem("country_id", country.countryID);
+
+          localStorage.setItem("currency_symbol", country.currencySymbol);
+
+          setSelectedCountry(country);
+        }
+      }
+    }
+
+    if (!hasSetDefaultCountry && !localStorageCountry) {
+      const kazakhstanCountryObject = countries.find(
+        (x) => x.value === kazakhstanCountry.value
+      );
+
+      localStorage.setItem("country", kazakhstanCountry.value);
+      localStorage.setItem("country_id", kazakhstanCountryObject.countryID);
+
+      localStorage.setItem(
+        "currency_symbol",
+        kazakhstanCountryObject.currencySymbol
+      );
+    }
+  };
 
   const fetchCountries = async () => {
     const res = await countrySvc.getActiveCountries();
-    const usersCountry = getCountryFromTimezone();
-    const validCountry = res.data.find((x) => x.alpha2 === usersCountry);
-    let hasSetDefaultCountry = false;
+
     const countries = res.data.map((x) => {
       const countryObject = {
         value: x.alpha2,
@@ -86,42 +133,15 @@ export const Page = ({
         minAge: x["min_client_age"],
         maxAge: x["max_client_age"],
         currencySymbol: x["symbol"],
+        localName: x.local_name,
       };
-
-      if (localStorageCountry === x.alpha2) {
-        localStorage.setItem("currency_symbol", countryObject.currencySymbol);
-        localStorage.setItem("country_id", countryObject.countryID);
-
-        setSelectedCountry(countryObject);
-      } else if (!localStorageCountry || localStorageCountry === "undefined") {
-        if (validCountry?.alpha2 === x.alpha2) {
-          hasSetDefaultCountry = true;
-          localStorage.setItem("country", x.alpha2);
-          localStorage.setItem("currency_symbol", countryObject.currencySymbol);
-
-          setSelectedCountry(countryObject);
-        }
-      }
-
       return countryObject;
     });
 
-    if (!hasSetDefaultCountry && !localStorageCountry) {
-      const kazakhstanCountryObject = countries.find(
-        (x) => x.value === kazakhstanCountry.value
-      );
-
-      localStorage.setItem("country", kazakhstanCountry.value);
-      localStorage.setItem("country_id", kazakhstanCountryObject.countryID);
-      localStorage.setItem(
-        "currency_symbol",
-        kazakhstanCountryObject.currencySymbol
-      );
-    }
+    handleCountrySelection(countries);
 
     return countries;
   };
-
   const fetchLanguages = async () => {
     const res = await languageSvc.getActiveLanguages();
     const languages = res.data.map((x) => {
@@ -143,8 +163,25 @@ export const Page = ({
     return languages;
   };
 
-  const { data: countries } = useQuery(["countries"], fetchCountries);
-  const { data: languages } = useQuery(["languages"], fetchLanguages);
+  const { data: countries } = useQuery(["countries"], fetchCountries, {
+    staleTime: Infinity,
+  });
+  const { data: languages } = useQuery(
+    ["languages", selectedCountry],
+    fetchLanguages,
+    {
+      staleTime: Infinity,
+      cacheTime: 1000 * 60 * 60 * 24, // Keep cached for 24 hours
+      enabled: !!selectedCountry,
+    }
+  );
+
+  useEffect(() => {
+    const countries = queryClient.getQueryData(["countries"]);
+    if (countries) {
+      handleCountrySelection(countries);
+    }
+  }, []);
 
   const queryClient = useQueryClient();
 

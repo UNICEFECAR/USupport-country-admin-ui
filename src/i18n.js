@@ -274,7 +274,7 @@ const resources = {
     root: Root.ru,
   },
 
-  uk: {
+  ua: {
     // Blocks
     page: Page.uk,
     statistics: Statistics.uk,

@@ -3,6 +3,13 @@ import { adminSvc } from "@USupport-components-library/services";
 
 export default function useGetStatistics(countryId) {
   const fetchData = async () => {
+    if (!countryId)
+      return [
+        { type: "clients", value: 0 },
+        { type: "providers", value: 0 },
+        { type: "articles", value: 0 },
+        { type: "consultations", value: 0 },
+      ];
     let response;
     response = await adminSvc.getCountryStatistics(countryId);
 
@@ -15,7 +22,9 @@ export default function useGetStatistics(countryId) {
     ];
     return formattedData;
   };
-  const statisticsQuery = useQuery(["statistics", countryId], fetchData);
+  const statisticsQuery = useQuery(["statistics", countryId], fetchData, {
+    enabled: !!countryId,
+  });
 
   return statisticsQuery;
 }
