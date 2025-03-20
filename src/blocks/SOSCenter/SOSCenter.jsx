@@ -108,10 +108,15 @@ export const SOSCenter = () => {
       data.id
     );
 
+    const currentLang = i18n.language;
     if (data.newValue === true) {
-      await adminSvc.putSOSCenters(sosCenterAvailableLocales.en.toString());
+      await adminSvc.putSOSCenters(
+        sosCenterAvailableLocales[currentLang].toString()
+      );
     } else {
-      await adminSvc.deleteSOSCenters(sosCenterAvailableLocales.en.toString());
+      await adminSvc.deleteSOSCenters(
+        sosCenterAvailableLocales[currentLang].toString()
+      );
     }
     return data.newValue;
   };
