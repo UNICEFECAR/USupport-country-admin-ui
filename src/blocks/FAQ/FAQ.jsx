@@ -119,13 +119,16 @@ export const FAQ = () => {
 
   const updateFAQs = async (data) => {
     const faqAvailableLocales = await cmsSvc.getFAQAvailableLocales(data.id);
-
+    const currentLang = i18n.language;
     if (data.newValue === true) {
-      await adminSvc.putFAQ(data.platform, faqAvailableLocales.en.toString());
+      await adminSvc.putFAQ(
+        data.platform,
+        faqAvailableLocales[currentLang].toString()
+      );
     } else {
       await adminSvc.deleteFAQ(
         data.platform,
-        faqAvailableLocales.en.toString()
+        faqAvailableLocales[currentLang].toString()
       );
     }
     return data.newValue;

@@ -37,20 +37,39 @@ export const Articles = () => {
   const queryClient = useQueryClient();
   const { i18n, t } = useTranslation("articles");
   const navigate = useNavigate();
+
+  const [languageOfData, setLanguageOfData] = useState(i18n.language);
   const [error, setError] = useState();
   const [dataToDisplay, setDataToDisplay] = useState([]);
   // const [numberOfArticles, setNumberOfArticles] = useState();
   const [hasMore, setHasMore] = useState(true);
   const [startFrom, setStartFrom] = useState(0);
 
+  const [articleIds, setArticleIds] = useState([]);
+
+  useEffect(() => {
+    if (i18n.language !== languageOfData) {
+      setLanguageOfData(i18n.language);
+      setDataToDisplay([]);
+      setStartFrom(0);
+      setHasMore(true);
+    }
+  }, [i18n.language, languageOfData]);
+
   //--------------------- Articles ----------------------//
   const getArticles = async () => {
     // Request Articles ids from the master DB
-    const articleIds = await adminSvc.getArticles();
+    let dbArticleIds = [];
+    if (articleIds.length === 0) {
+      dbArticleIds = await adminSvc.getArticles();
+      setArticleIds(dbArticleIds);
+    } else {
+      dbArticleIds = articleIds;
+    }
 
     let { data } = await cmsSvc.getArticles({
       locale: i18n.language,
-      ids: articleIds,
+      ids: dbArticleIds,
       isForAdmin: true,
       populate: true,
       startFrom: startFrom,
@@ -65,27 +84,26 @@ export const Articles = () => {
       id: x.id,
       isSelected: !!x.isSelected,
     }));
-    setDataToDisplay((prev) => [...prev, formattedData]);
+    setDataToDisplay((prev) => [...prev, ...formattedData]);
 
     return { formattedData, numberOfArticles };
   };
 
-  const {
-    data: articlesData,
-    isLoading: articlesLoading,
-    isFetched: isArticlesFetched,
-  } = useQuery(["articles", i18n.language, startFrom], getArticles, {
-    onSuccess: (data) => {
-      // setNumberOfArticles(data.numberOfArticles);
-
-      if (hasMore) {
-        setStartFrom((prev) => prev + data.formattedData.length);
-      }
-      setDataToDisplay([...dataToDisplay, ...data.formattedData]);
-      const newHasMore = data.numberOfArticles > dataToDisplay.length;
-      setHasMore(newHasMore);
-    },
-  });
+  const { isLoading: articlesLoading, isFetched: isArticlesFetched } = useQuery(
+    ["articles", i18n.language, startFrom],
+    getArticles,
+    {
+      onSuccess: (data) => {
+        // setNumberOfArticles(data.numberOfArticles);
+        if (hasMore) {
+          setStartFrom((prev) => prev + data.formattedData.length);
+        }
+        setDataToDisplay([...dataToDisplay, ...data.formattedData]);
+        const newHasMore = data.numberOfArticles > dataToDisplay.length;
+        setHasMore(newHasMore);
+      },
+    }
+  );
 
   const handleSelectArticle = async (id, newValue) => {
     let newData = JSON.parse(JSON.stringify(dataToDisplay));
@@ -102,10 +120,12 @@ export const Articles = () => {
 
   const updateArticles = async (data) => {
     const articleLocales = await cmsSvc.getArticleLocales(data.id);
+    const currentLang = i18n.language;
+
     if (data.newValue === true) {
-      await adminSvc.putArticle(articleLocales.en.toString());
+      await adminSvc.putArticle(articleLocales[currentLang].toString());
     } else {
-      await adminSvc.deleteArticle(articleLocales.en.toString());
+      await adminSvc.deleteArticle(articleLocales[currentLang].toString());
     }
 
     return data.newValue;
@@ -182,6 +202,7 @@ export const Articles = () => {
           return null;
         }
       }
+
       return [
         <CheckBox
           isChecked={article.isSelected}
@@ -227,7 +248,7 @@ export const Articles = () => {
           />
         </GridItem>
         <GridItem md={8} lg={12} classes="articles__rows">
-          {isArticlesFetched && articlesData && (
+          {dataToDisplay.length ? (
             <BaseTable
               data={dataToDisplay || []}
               rows={rows}
@@ -237,7 +258,7 @@ export const Articles = () => {
               hasMenu={false}
               noteText={t("note")}
             />
-          )}
+          ) : null}
           {!dataToDisplay.length && articlesLoading && <Loading />}
           {!dataToDisplay.length && !articlesLoading && isArticlesFetched && (
             <h3 className="articles__no-results">{t("no_results")}</h3>
