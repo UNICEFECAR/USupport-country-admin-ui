@@ -11,7 +11,7 @@
   "add": "Utwórz",
   "edit_organization": "Edytuj organizację",
   "create_organization": "Utwórz organizację",
-  "organization_added": "Organizacja została utworzona",
+  "organization_added": "Organizacja została pomyślnie utworzona",
   "organization_updated": "Organizacja została zaktualizowana",
   "no_data_found": "Nie znaleziono danych"
 }

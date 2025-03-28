@@ -20,8 +20,8 @@
 
   "required_field": "Pole jest wymagane",
   "budget_error": "Budżet powinien być liczbą dodatnią",
-  "start_date_error": "Data rozpoczęcia kampanii powinna być w przyszłości",
-  "end_date_error": "Data zakończenia kampanii powinna być w przyszłości",
+  "start_date_error": "Data rozpoczęcia kampanii musi być datą z przyszłości",
+  "end_date_error": "Data zakończenia kampanii musi być datą z przyszłości",
   "period_error": "Data końcowa powinna przypadać po dacie początkowej",
 
   "create_campaign": "Utwórz kampanię",
