@@ -41,6 +41,7 @@ export const Welcome = () => {
         label: x.name,
         localName: x.local_name,
         countryID: x.country_id,
+        currencySymbol: x.symbol,
       };
 
       if (localStorageCountry === x.alpha2) {
@@ -89,12 +90,15 @@ export const Welcome = () => {
   const handleContinue = () => {
     const country = selectedCountry;
     const language = selectedLanguage;
-    const selectedCountryId = countriesQuery.data.find(
+    const selectedCountryObject = countriesQuery.data.find(
       (x) => x.value === selectedCountry
-    ).countryID;
+    );
+    const { countryID, currencySymbol } = selectedCountryObject;
+
     localStorage.setItem("country", country);
-    localStorage.setItem("country_id", selectedCountryId);
+    localStorage.setItem("country_id", countryID);
     localStorage.setItem("language", language);
+    localStorage.setItem("currency_symbol", currencySymbol);
     window.dispatchEvent(new Event("countryChanged"));
     i18n.changeLanguage(language);
 

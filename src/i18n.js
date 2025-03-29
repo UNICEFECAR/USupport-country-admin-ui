@@ -414,7 +414,7 @@ const resources = {
 i18n.use(initReactI18next).init({
   resources,
   fallbackLng: "en",
-  lng: "en",
+  lng: localStorage.getItem("language") || "en",
 });
 
 export default i18n;
