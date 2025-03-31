@@ -84,26 +84,32 @@ export const Articles = () => {
       id: x.id,
       isSelected: !!x.isSelected,
     }));
-    setDataToDisplay((prev) => [...prev, ...formattedData]);
+    const newData = [...dataToDisplay, ...formattedData].filter(
+      (x) => x.locale === i18n.language
+    );
+    setDataToDisplay(newData);
 
     return { formattedData, numberOfArticles };
   };
 
-  const { isLoading: articlesLoading, isFetched: isArticlesFetched } = useQuery(
-    ["articles", i18n.language, startFrom],
-    getArticles,
-    {
-      onSuccess: (data) => {
-        // setNumberOfArticles(data.numberOfArticles);
-        if (hasMore) {
-          setStartFrom((prev) => prev + data.formattedData.length);
-        }
-        setDataToDisplay([...dataToDisplay, ...data.formattedData]);
-        const newHasMore = data.numberOfArticles > dataToDisplay.length;
-        setHasMore(newHasMore);
-      },
-    }
-  );
+  const {
+    isLoading: articlesLoading,
+    isFetched: isArticlesFetched,
+    isFetching: isArticlesFetching,
+  } = useQuery(["articles", i18n.language, startFrom], getArticles, {
+    onSuccess: (data) => {
+      // setNumberOfArticles(data.numberOfArticles);
+      if (hasMore) {
+        setStartFrom((prev) => prev + data.formattedData.length);
+      }
+      const newData = [...dataToDisplay, ...data.formattedData].filter(
+        (x) => x.locale === i18n.language
+      );
+      setDataToDisplay(newData);
+      const newHasMore = data.numberOfArticles > dataToDisplay.length;
+      setHasMore(newHasMore);
+    },
+  });
 
   const handleSelectArticle = async (id, newValue) => {
     let newData = JSON.parse(JSON.stringify(dataToDisplay));
@@ -260,9 +266,12 @@ export const Articles = () => {
             />
           ) : null}
           {!dataToDisplay.length && articlesLoading && <Loading />}
-          {!dataToDisplay.length && !articlesLoading && isArticlesFetched && (
-            <h3 className="articles__no-results">{t("no_results")}</h3>
-          )}
+          {!dataToDisplay.length &&
+            !articlesLoading &&
+            isArticlesFetched &&
+            !isArticlesFetching && (
+              <h3 className="articles__no-results">{t("no_results")}</h3>
+            )}
           {error ? <ErrorComponent message={error} /> : null}
         </GridItem>
       </Grid>
