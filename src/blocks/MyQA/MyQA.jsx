@@ -7,7 +7,8 @@ import {
   InputSearch,
   Loading,
   Answer,
-  DropdownWithLabel,
+  Dropdown,
+  ButtonWithIcon,
 } from "@USupport-components-library/src";
 import { QuestionDetails, FilterQuestions } from "#backdrops";
 import { useGetQuestions, useGetLanguages } from "#hooks";
@@ -214,25 +215,33 @@ export const MyQA = ({
               })}
               handleSelect={handleSelectTab}
             />
+            <ButtonWithIcon
+              type="primary"
+              label={t("filter")}
+              iconName="filter"
+              iconColor="#ffffff"
+              iconSize="sm"
+              color="purple"
+              size="sm"
+              onClick={() => setIsFilterOpen(true)}
+              classes="my-qa__tabs-container__filter-button"
+            />
           </div>
           {isFilterButtonShown && (
-            <div>
+            <div className="my-qa__tabs-container__search">
               <InputSearch
                 placeholder={t("search_placeholder")}
                 value={searchValue}
                 onChange={(value) => setSearchValue(value)}
                 classes="my-qa__search-input"
               />
-              <DropdownWithLabel
+              <Dropdown
                 options={languageOptions}
                 selected={selectedLanguage}
                 setSelected={(lang) => {
                   console.log(lang);
                   setSelectedLanguage(lang);
                 }}
-                label={t("language")}
-                placeholder={t("placeholder")}
-                classes="my-qa__categories-item__language-dropdown"
               />
             </div>
           )}

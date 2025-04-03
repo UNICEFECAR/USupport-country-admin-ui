@@ -19,26 +19,7 @@ export const MyQA = () => {
 
   const { t } = useTranslation("my-qa-page");
   return (
-    <Page
-      classes="page__my-qa"
-      showGoBackArrow={false}
-      heading={t("heading")}
-      headingButton={
-        isFilterButtonShown ? (
-          <ButtonWithIcon
-            type="primary"
-            label={t("filter")}
-            iconName="filter"
-            iconColor="#ffffff"
-            iconSize="sm"
-            color="purple"
-            size="sm"
-            onClick={() => setIsFilterOpen(true)}
-            classes="page__my-qa__filter-button"
-          />
-        ) : null
-      }
-    >
+    <Page classes="page__my-qa" showGoBackArrow={false} heading={t("heading")}>
       <MyQABlock
         isFilterOpen={isFilterOpen}
         setIsFilterOpen={setIsFilterOpen}
