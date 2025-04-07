@@ -5,8 +5,9 @@
   "search_placeholder": "Поиск",
   "answer_by": "Ответил:",
   "no_data_found": "Данные не найдены",
-  "all": "Все",
+  "all": "Все языки",
   "read_more": "Узнать больше",
   "Today": "Сегодня",
-  "language": "Язык"
+  "language": "Язык",
+  "filter": "Фильтр"
 }

@@ -9,11 +9,11 @@
     padding-bottom: $spacing_2_0;
 
     @media screen and (min-width: $screen-md) {
-      flex-direction: row;
       justify-content: space-between;
       padding-left: $spacing_5_0;
     }
     @media screen and (min-width: $screen-lg) {
+      align-items: flex-start;
       padding-left: $spacing_23_0;
     }
 
@@ -31,16 +31,42 @@
 
     @media screen and (min-width: $screen-md) {
       flex-direction: row;
-      align-items: center;
+      align-items: start;
       justify-content: space-between;
       margin-left: 0;
+
+      & .btn {
+        margin-left: $spacing_1_2;
+        padding: $spacing_0_8 $spacing_1_6;
+
+        @media screen and (min-width: $screen-lg) {
+          margin-left: $spacing_2_0;
+        }
+      }
+    }
+
+    &__search {
+      display: flex;
+      flex-direction: column;
+      margin-top: $spacing_2_4;
+
+      @media screen and (min-width: $screen-md) {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      @media screen and (min-width: $screen-lg) {
+        align-items: flex-start;
+        justify-content: flex-start;
+      }
     }
   }
 
   &__search-input {
-    margin: 0 auto;
+    margin-bottom: $spacing_1_6;
 
     @media screen and (min-width: $screen-md) {
+      margin-bottom: 0;
       margin-right: $spacing_2_0;
     }
   }
