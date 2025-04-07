@@ -5,8 +5,9 @@
   "search_placeholder": "Пошук",
   "answer_by": "Відповідає",
   "no_data_found": "Дані не знайдено",
-  "all": "Усі",
+  "all": "Усі мови",
   "read_more": "Читати далі",
   "Today": "Сьогодні",
-  "language": "Мова"
+  "language": "Мова",
+  "filter": "Фільтр"
 }

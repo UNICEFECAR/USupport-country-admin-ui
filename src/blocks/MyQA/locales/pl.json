@@ -5,8 +5,9 @@
   "search_placeholder": "Wyszukiwanie",
   "answer_by": "Odpowiedź udzielona przez:",
   "no_data_found": "Nie znaleziono danych",
-  "all": "Wszystkie",
+  "all": "Wszystkie języki",
   "read_more": "Czytaj więcej",
   "Today": "Dzisiaj",
-  "language": "Język"
+  "language": "Język",
+  "filter": "Filtr"
 }

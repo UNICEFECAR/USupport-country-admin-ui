@@ -5,8 +5,9 @@
   "search_placeholder": "Іздеу",
   "answer_by": "Жауап берді:",
   "no_data_found": "Ақпарат табылмады",
-  "all": "Барлығы",
+  "all": "Барлық тілдер",
   "read_more": "Ары қарай оқу",
   "Today": "Бүгін",
-  "language": "Тіл"
+  "language": "Тіл",
+  "filter": "Сүзгі"
 }
