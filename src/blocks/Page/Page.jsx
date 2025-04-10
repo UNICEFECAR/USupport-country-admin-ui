@@ -211,6 +211,13 @@ export const Page = ({
   const handlePasswordCheck = (value) => {
     validatePlatformPasswordMutation.mutate(value);
   };
+
+  const decodeHTMLEntities = (text) => {
+    const textarea = document.createElement("textarea");
+    textarea.innerHTML = text;
+    return textarea.value;
+  };
+
   return (
     <>
       <PasswordModal
@@ -267,7 +274,11 @@ export const Page = ({
                 />
               )}
               {image && <img className="page__header__image" src={image} />}
-              {heading && <h3 className="page__header-heading">{heading}</h3>}
+              {heading && (
+                <h3 className="page__header-heading">
+                  {decodeHTMLEntities(heading)}
+                </h3>
+              )}
               {headingButton && (width >= 768 || showHeadingButtonInline) && (
                 <div className="page__header-button-container">
                   {headingButton}
