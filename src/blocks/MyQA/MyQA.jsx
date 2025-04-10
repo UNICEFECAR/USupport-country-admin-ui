@@ -47,7 +47,7 @@ export const MyQA = ({
   const languageOptions = useMemo(() => {
     const showAllOption = {
       value: "all",
-      label: t("all"),
+      label: t("all_languages"),
     };
 
     if (!languages) return [showAllOption];
@@ -215,17 +215,19 @@ export const MyQA = ({
               })}
               handleSelect={handleSelectTab}
             />
-            <ButtonWithIcon
-              type="primary"
-              label={t("filter")}
-              iconName="filter"
-              iconColor="#ffffff"
-              iconSize="sm"
-              color="purple"
-              size="sm"
-              onClick={() => setIsFilterOpen(true)}
-              classes="my-qa__tabs-container__filter-button"
-            />
+            {isFilterButtonShown && (
+              <ButtonWithIcon
+                type="primary"
+                label={t("filter")}
+                iconName="filter"
+                iconColor="#ffffff"
+                iconSize="sm"
+                color="purple"
+                size="sm"
+                onClick={() => setIsFilterOpen(true)}
+                classes="my-qa__tabs-container__filter-button"
+              />
+            )}
           </div>
           {isFilterButtonShown && (
             <div className="my-qa__tabs-container__search">
