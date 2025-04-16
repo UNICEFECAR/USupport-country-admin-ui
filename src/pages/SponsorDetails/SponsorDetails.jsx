@@ -1,11 +1,11 @@
 import React from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 import { Loading } from "@USupport-components-library/src";
 
 import { Page, SponsorDetails as SponsorDetailsBlock } from "#blocks";
 
-import { useGetSponsorData } from "#hooks";
+import { useGetSponsorData, useCustomNavigate as useNavigate } from "#hooks";
 
 const AMAZON_S3_BUCKET = `${import.meta.env.VITE_AMAZON_S3_BUCKET}`;
 
@@ -24,7 +24,12 @@ export const SponsorDetails = () => {
     "sponsorId"
   );
 
-  if (!sponsorId) return <Navigate to="/campaigns" />;
+  if (!sponsorId)
+    return (
+      <Navigate
+        to={`/${localStorage.getItem("language")}/country-admin/campaigns`}
+      />
+    );
 
   const { data: sponsorData, isLoading } = useGetSponsorData(sponsorId);
 

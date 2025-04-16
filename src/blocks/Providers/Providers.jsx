@@ -2,7 +2,7 @@ import React, { useCallback, useRef, useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
+import { useCustomNavigate as useNavigate } from "#hooks";
 import { toast } from "react-toastify";
 import {
   Avatar,
