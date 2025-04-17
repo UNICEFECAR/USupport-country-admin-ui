@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { Page, AddSponsor as AddSponsorBlock } from "#blocks";
-
+import { useCustomNavigate as useNavigate } from "#hooks";
 import { UploadPicture } from "#backdrops";
 
 import "./edit-sponsor.scss";
@@ -29,7 +29,12 @@ export const EditSponsor = () => {
     "sponsorId"
   );
 
-  if (!sponsorId) return <Navigate to="/campaigns" />;
+  if (!sponsorId)
+    return (
+      <Navigate
+        to={`/${localStorage.getItem("language")}/country-admin/campaigns`}
+      />
+    );
 
   return (
     <Page
