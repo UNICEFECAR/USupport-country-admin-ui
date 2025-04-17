@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { useCustomNavigate as useNavigate } from "#hooks";
 import { Page, ProviderOverview as ProviderOverviewBlock } from "#blocks";
 import { useWindowDimensions } from "@USupport-components-library/src/utils";
 import { RadialCircle } from "@USupport-components-library/src";

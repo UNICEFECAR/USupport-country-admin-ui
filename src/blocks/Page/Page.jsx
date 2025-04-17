@@ -14,6 +14,8 @@ import {
 import {
   getCountryFromTimezone,
   useWindowDimensions,
+  replaceLanguageInUrl,
+  getLanguageFromUrl,
 } from "@USupport-components-library/utils";
 import { useIsLoggedIn, useError, useEventListener } from "#hooks";
 
@@ -66,10 +68,12 @@ export const Page = ({
     { name: t("page_9"), url: "/organizations" },
   ];
 
-  const localStorageCountry = localStorage.getItem("country");
+  let localStorageCountry = localStorage.getItem("country");
   const localStorageLanguage = localStorage.getItem("language");
   const [selectedLanguage, setSelectedLanguage] = useState(
-    localStorageLanguage ? { value: localStorageLanguage.toUpperCase() } : null
+    localStorageLanguage
+      ? { value: localStorageLanguage.toUpperCase() }
+      : { value: "EN" }
   );
   const [selectedCountry, setSelectedCountry] = useState();
   useEventListener("countryChanged", () => {
@@ -123,6 +127,14 @@ export const Page = ({
 
   const fetchCountries = async () => {
     const res = await countrySvc.getActiveCountries();
+    const subdomain = window.location.hostname.split(".")[0];
+
+    if (subdomain && subdomain !== "www" && subdomain !== "usupport") {
+      localStorageCountry =
+        res.data.find((x) => x.name.toLocaleLowerCase() === subdomain)
+          ?.alpha2 || localStorageCountry;
+      localStorage.setItem("country", localStorageCountry);
+    }
 
     const countries = res.data.map((x) => {
       const countryObject = {
@@ -142,24 +154,37 @@ export const Page = ({
 
     return countries;
   };
+
   const fetchLanguages = async () => {
     const res = await languageSvc.getActiveLanguages();
+
+    const languageFromUrl = getLanguageFromUrl();
+
     const languages = res.data.map((x) => {
       const languageObject = {
         value: x.alpha2,
         label: x.name,
-        localName: x.local_name,
-        id: x.language_id,
+        id: x["language_id"],
+        localName: x["local_name"],
       };
-      if (localStorageLanguage === x.alpha2) {
-        setSelectedLanguage(languageObject);
-        i18n.changeLanguage(localStorageLanguage);
-      } else if (!localStorageLanguage) {
+      if (!localStorageLanguage || !languageFromUrl) {
         localStorage.setItem("language", "en");
         i18n.changeLanguage("en");
+        replaceLanguageInUrl("en");
       }
       return languageObject;
     });
+
+    const foundLanguageFromUrl = languages.find(
+      (x) => x.value === languageFromUrl
+    );
+    if (foundLanguageFromUrl) {
+      localStorage.setItem("language", languageFromUrl);
+      setSelectedLanguage(foundLanguageFromUrl);
+      i18n.changeLanguage(languageFromUrl);
+      replaceLanguageInUrl(languageFromUrl);
+    }
+
     return languages;
   };
 

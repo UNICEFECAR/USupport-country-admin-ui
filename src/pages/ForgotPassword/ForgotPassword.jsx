@@ -1,10 +1,12 @@
 import React from "react";
-import { Navigate, useNavigate } from "react-router-dom";
-import { useWindowDimensions } from "@USupport-components-library/utils";
+import { Navigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Page, ForgotPassword as ForgotPasswordBlock } from "#blocks";
+
+import { useWindowDimensions } from "@USupport-components-library/utils";
 import { RadialCircle, Loading } from "@USupport-components-library/src";
-import { useIsLoggedIn } from "#hooks";
+
+import { Page, ForgotPassword as ForgotPasswordBlock } from "#blocks";
+import { useIsLoggedIn, useCustomNavigate as useNavigate } from "#hooks";
 
 import "./forgot-password.scss";
 
@@ -23,7 +25,12 @@ export const ForgotPassword = () => {
   const isLoggedIn = useIsLoggedIn();
 
   if (isLoggedIn === "loading") return <Loading />;
-  if (isLoggedIn === true) return <Navigate to="/dashboard" />;
+  if (isLoggedIn === true)
+    return (
+      <Navigate
+        to={`/${localStorage.getItem("language")}/country-admin/dashboard`}
+      />
+    );
 
   const handleGoBack = () => navigate(-1);
 

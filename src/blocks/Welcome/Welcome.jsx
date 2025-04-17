@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useQuery } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
+import { useCustomNavigate as useNavigate } from "#hooks";
 
 import {
   Block,
@@ -13,6 +13,10 @@ import {
 } from "@USupport-components-library/src";
 import { languageSvc, countrySvc } from "@USupport-components-library/services";
 import { logoVerticalSvg } from "@USupport-components-library/assets";
+import {
+  replaceLanguageInUrl,
+  getLanguageFromUrl,
+} from "@USupport-components-library/utils";
 
 import "./welcome.scss";
 
@@ -29,12 +33,22 @@ export const Welcome = () => {
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [selectedLanguage, setSelectedLanguage] = useState(null);
 
-  const localStorageCountry = localStorage.getItem("country");
+  let localStorageCountry = localStorage.getItem("country");
   const localStorageLanguage = localStorage.getItem("language");
   const localStorageCountryID = localStorage.getItem("country_id");
 
   const fetchCountries = async () => {
     const res = await countrySvc.getActiveCountries();
+
+    const subdomain = window.location.hostname.split(".")[0];
+
+    if (subdomain && subdomain !== "www" && subdomain !== "usupport") {
+      localStorageCountry =
+        res.data.find((x) => x.name.toLocaleLowerCase() === subdomain)
+          ?.alpha2 || localStorageCountry;
+      localStorage.setItem("country", localStorageCountry);
+    }
+
     const countries = res.data.map((x) => {
       const countryObject = {
         value: x.alpha2,
@@ -58,21 +72,33 @@ export const Welcome = () => {
 
   const fetchLanguages = async () => {
     const res = await languageSvc.getActiveLanguages();
+    const languageFromUrl = getLanguageFromUrl();
+    let hasUpdatedUrl = false;
+    const hasLanguage = res.data.find((x) => x.alpha2 === languageFromUrl);
+
+    if (hasLanguage) {
+      localStorage.setItem("language", languageFromUrl);
+      setSelectedLanguage(languageFromUrl);
+      i18n.changeLanguage(languageFromUrl);
+      replaceLanguageInUrl(languageFromUrl);
+      hasUpdatedUrl = true;
+    }
+
     const languages = res.data.map((x) => {
       const languageObject = {
         value: x.alpha2,
         label: x.name === "English" ? x.name : `${x.name} (${x.local_name})`,
         id: x["language_id"],
       };
-      if (localStorageLanguage === x.alpha2) {
+      if (localStorageLanguage === x.alpha2 && !hasUpdatedUrl) {
         setSelectedLanguage(x.alpha2);
         i18n.changeLanguage(localStorageLanguage);
+        replaceLanguageInUrl(localStorageLanguage);
       }
       return languageObject;
     });
     return languages;
   };
-
   const countriesQuery = useQuery(["countries"], fetchCountries, {
     retry: false,
   });
@@ -86,6 +112,32 @@ export const Welcome = () => {
       enabled: !!selectedCountry,
     }
   );
+
+  const handleSelectCountry = (country) => {
+    localStorage.setItem("country", country);
+    setTimeout(() => {
+      setSelectedCountry(country);
+    }, 1);
+    const countryObject = countriesQuery.data.find(
+      (x) => x.value.toLocaleLowerCase() === country.toLocaleLowerCase()
+    );
+    const subdomain = window.location.hostname.split(".")[0];
+    if (
+      !window.location.href.includes("localhost") &&
+      subdomain !== "staging"
+    ) {
+      const label = countryObject.label.toLocaleLowerCase();
+      const newUrl = window.location.href.replace(subdomain, label);
+      window.location.href = newUrl;
+    }
+  };
+
+  const handleSelectLanguage = (lang) => {
+    localStorage.setItem("language", lang);
+    setSelectedLanguage(lang);
+    i18n.changeLanguage(lang);
+    replaceLanguageInUrl(lang);
+  };
 
   const handleContinue = () => {
     const country = selectedCountry;
@@ -131,12 +183,7 @@ export const Welcome = () => {
                 }
                 classes="welcome__grid__content-item__countries-dropdown"
                 selected={selectedCountry}
-                setSelected={(country) => {
-                  localStorage.setItem("country", country);
-                  setTimeout(() => {
-                    setSelectedCountry(country);
-                  }, 1);
-                }}
+                setSelected={handleSelectCountry}
                 label={t("country")}
                 placeholder={t("placeholder")}
               />
@@ -144,10 +191,7 @@ export const Welcome = () => {
                 options={languagesQuery.data || []}
                 disabled={!selectedCountry}
                 selected={selectedLanguage}
-                setSelected={(lang) => {
-                  setSelectedLanguage(lang);
-                  i18n.changeLanguage(lang);
-                }}
+                setSelected={handleSelectLanguage}
                 classes="welcome__grid__content-item__languages-dropdown"
                 label={t("language")}
                 placeholder={t("placeholder")}

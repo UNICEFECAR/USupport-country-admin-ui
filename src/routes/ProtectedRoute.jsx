@@ -9,7 +9,10 @@ export const ProtectedRoute = ({ children }) => {
   const decoded = token ? jwtDecode(token) : null;
   const isAdmin = decoded?.adminRole === "country";
 
-  if (!isLoggedIn || !isAdmin) return <Navigate to="/" />;
+  if (!isLoggedIn || !isAdmin)
+    return (
+      <Navigate to={`${localStorage.getItem("language")}/country-admin/`} />
+    );
 
   return children;
 };
