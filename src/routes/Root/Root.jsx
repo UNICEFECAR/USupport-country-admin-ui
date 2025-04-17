@@ -302,7 +302,7 @@ export default function Root() {
       )}
       <Routes>
         <Route
-          path="/country-admin/:language"
+          path="/:language"
           element={<Navigate to={`/${language}/country-admin`} replace />}
         />
         <Route path=":language/*" element={<LanguageLayout />} />
