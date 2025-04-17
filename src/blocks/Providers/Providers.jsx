@@ -171,6 +171,8 @@ export const Providers = ({
             specializations={provider.specializations.map((x) => t(x))}
             price={provider.consultationPrice}
             freeLabel={t("free")}
+            viewProfileLabel={t("view")}
+            editLabel={t("edit")}
             statusChangeLabel={
               provider.status === "active" ? t("deactivate") : t("activate")
             }
