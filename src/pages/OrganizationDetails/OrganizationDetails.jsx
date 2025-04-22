@@ -392,6 +392,7 @@ export const OrganizationDetails = () => {
             secondaryButtonAction={() => setIsFilterModalOpen(true)}
             thirdButtonLabel={t("export_report")}
             thirdButtonAction={handleCsvExport}
+            filters={appliedFilters}
             t={t}
           />
         </Block>
