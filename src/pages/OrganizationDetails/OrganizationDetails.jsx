@@ -81,7 +81,7 @@ export const OrganizationDetails = () => {
   if (!organizationId) {
     return (
       <Navigate
-        to={`/${localStorage.getItem("language")}/country-admin/organizations`}
+        to={`/country-admin/${localStorage.getItem("language")}/organizations`}
       />
     );
   }
