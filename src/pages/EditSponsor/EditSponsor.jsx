@@ -32,7 +32,7 @@ export const EditSponsor = () => {
   if (!sponsorId)
     return (
       <Navigate
-        to={`/${localStorage.getItem("language")}/country-admin/campaigns`}
+        to={`/country-admin/${localStorage.getItem("language")}/campaigns`}
       />
     );
 

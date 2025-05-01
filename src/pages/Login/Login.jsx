@@ -133,7 +133,7 @@ export const Login = () => {
   if (isLoggedIn === true)
     return (
       <Navigate
-        to={`/${localStorage.getItem("language")}/country-admin/dashboard`}
+        to={`/country-admin/${localStorage.getItem("language")}/dashboard`}
       />
     );
 

@@ -19,7 +19,7 @@ export const EditProvider = () => {
   if (!providerId)
     return (
       <Navigate
-        to={`/${localStorage.getItem("language")}/country-admin/providers`}
+        to={`/country-admin/${localStorage.getItem("language")}/providers`}
       />
     );
 

@@ -53,12 +53,12 @@ const LanguageLayout = () => {
   const allLangs = ["en", "ru", "kk", "pl", "uk"];
 
   if (!allLangs.includes(language) || !language) {
-    return <Navigate to="/en/country-admin" />;
+    return <Navigate to="/country-admin/en" />;
   }
   return (
     <Routes>
       <Route
-        path="/country-admin/login"
+        path="login"
         element={
           <CountryValidationRoute>
             <Login />
@@ -66,7 +66,7 @@ const LanguageLayout = () => {
         }
       />
       <Route
-        path="/country-admin/forgot-password"
+        path="forgot-password"
         element={
           <CountryValidationRoute>
             <ForgotPassword />
@@ -74,7 +74,7 @@ const LanguageLayout = () => {
         }
       />
       <Route
-        path="/country-admin/reset-password"
+        path="reset-password"
         element={
           <CountryValidationRoute>
             <ResetPassword />
@@ -82,7 +82,7 @@ const LanguageLayout = () => {
         }
       />
       <Route
-        path="/country-admin/providers"
+        path="providers"
         element={
           <ProtectedRoute>
             <Providers />
@@ -90,7 +90,7 @@ const LanguageLayout = () => {
         }
       />
       <Route
-        path="/country-admin/provider/details"
+        path="provider/details"
         element={
           <ProtectedRoute>
             <ProviderOverview />
@@ -98,7 +98,7 @@ const LanguageLayout = () => {
         }
       />
       <Route
-        path="/country-admin/create-provider"
+        path="create-provider"
         element={
           <ProtectedRoute>
             <CreateProvider />
@@ -106,7 +106,7 @@ const LanguageLayout = () => {
         }
       />
       <Route
-        path="/country-admin/edit-provider"
+        path="edit-provider"
         element={
           <ProtectedRoute>
             <EditProvider />
@@ -114,7 +114,7 @@ const LanguageLayout = () => {
         }
       />
       <Route
-        path="/country-admin/profile"
+        path="profile"
         element={
           <ProtectedRoute>
             <AdminProfile />
@@ -122,7 +122,7 @@ const LanguageLayout = () => {
         }
       />
       <Route
-        path="/country-admin/profile/details/edit"
+        path="profile/details/edit"
         element={
           <ProtectedRoute>
             <EditProfileDetails />
@@ -130,7 +130,7 @@ const LanguageLayout = () => {
         }
       />
       <Route
-        path="/country-admin/dashboard"
+        path="dashboard"
         element={
           <ProtectedRoute>
             <Dashboard />
@@ -138,7 +138,7 @@ const LanguageLayout = () => {
         }
       />
       <Route
-        path="/country-admin/articles"
+        path="articles"
         element={
           <ProtectedRoute>
             <Articles />
@@ -146,7 +146,7 @@ const LanguageLayout = () => {
         }
       />
       <Route
-        path="/country-admin/article/:id"
+        path="article/:id"
         element={
           <ProtectedRoute>
             <ArticleInformation />
@@ -154,7 +154,7 @@ const LanguageLayout = () => {
         }
       />
       <Route
-        path="/country-admin/faq"
+        path="faq"
         element={
           <ProtectedRoute>
             <FAQ />
@@ -162,7 +162,7 @@ const LanguageLayout = () => {
         }
       />
       <Route
-        path="/country-admin/sos-center"
+        path="sos-center"
         element={
           <ProtectedRoute>
             <SOSCenter />
@@ -170,7 +170,7 @@ const LanguageLayout = () => {
         }
       />
       <Route
-        path="/country-admin/reports"
+        path="reports"
         element={
           <ProtectedRoute>
             <Reports />
@@ -178,7 +178,7 @@ const LanguageLayout = () => {
         }
       />
       <Route
-        path="/country-admin/provider-activities"
+        path="provider-activities"
         element={
           <ProtectedRoute>
             <ProviderActivities />
@@ -186,7 +186,7 @@ const LanguageLayout = () => {
         }
       />
       <Route
-        path="/country-admin/campaigns"
+        path="campaigns"
         element={
           <ProtectedRoute>
             <Campaigns />
@@ -194,7 +194,7 @@ const LanguageLayout = () => {
         }
       />
       <Route
-        path="/country-admin/add-sponsor"
+        path="add-sponsor"
         element={
           <ProtectedRoute>
             <AddSponsor />
@@ -202,7 +202,7 @@ const LanguageLayout = () => {
         }
       />
       <Route
-        path="/country-admin/edit-sponsor"
+        path="edit-sponsor"
         element={
           <ProtectedRoute>
             <EditSponsor />
@@ -210,7 +210,7 @@ const LanguageLayout = () => {
         }
       />
       <Route
-        path="/country-admin/sponsor-details"
+        path="sponsor-details"
         element={
           <ProtectedRoute>
             <SponsorDetails />
@@ -218,7 +218,7 @@ const LanguageLayout = () => {
         }
       />
       <Route
-        path="/country-admin/add-campaign"
+        path="add-campaign"
         element={
           <ProtectedRoute>
             <AddCampaign />
@@ -226,7 +226,7 @@ const LanguageLayout = () => {
         }
       />
       <Route
-        path="/country-admin/edit-campaign"
+        path="edit-campaign"
         element={
           <ProtectedRoute>
             <EditCampaign />
@@ -234,7 +234,7 @@ const LanguageLayout = () => {
         }
       />
       <Route
-        path="/country-admin/campaign-details"
+        path="campaign-details"
         element={
           <ProtectedRoute>
             <CampaignDetails />
@@ -242,7 +242,7 @@ const LanguageLayout = () => {
         }
       />
       <Route
-        path="/country-admin/my-qa"
+        path="my-qa"
         element={
           <ProtectedRoute>
             <MyQA />
@@ -250,7 +250,7 @@ const LanguageLayout = () => {
         }
       />
       <Route
-        path="/country-admin/organizations"
+        path="organizations"
         element={
           <ProtectedRoute>
             <Organizations />
@@ -258,15 +258,15 @@ const LanguageLayout = () => {
         }
       />
       <Route
-        path="/country-admin/organization-details"
+        path="organization-details"
         element={
           <ProtectedRoute>
             <OrganizationDetails />
           </ProtectedRoute>
         }
       />
-      <Route path="/country-admin" element={<Welcome />} />
-      <Route path="/country-admin/*" element={<NotFound />} />
+      <Route path="/" element={<Welcome />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
@@ -302,10 +302,12 @@ export default function Root() {
       )}
       <Routes>
         <Route
-          path="/:language"
-          element={<Navigate to={`/${language}/country-admin`} replace />}
+          path="/country-admin"
+          element={
+            <Navigate to={`/country-admin/${language || "en"}`} replace />
+          }
         />
-        <Route path=":language/*" element={<LanguageLayout />} />
+        <Route path="/country-admin/:language/*" element={<LanguageLayout />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </React.Fragment>
