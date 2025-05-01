@@ -5,6 +5,7 @@ import {
   GridItem,
   Icon,
   Label,
+  Like,
   Markdown,
 } from "@USupport-components-library/src";
 import propTypes from "prop-types";
@@ -38,7 +39,8 @@ export const ArticleView = ({ articleData, t }) => {
             <p className="small-text ">{articleData.categoryName}</p>
           </div>
         </GridItem>
-        <GridItem md={8} lg={12} classes="article-view__labels-item">
+
+        <GridItem xs={3} md={6} lg={8} classes="article-view__labels-item">
           {articleData.labels.map((label, index) => {
             return (
               <Label
@@ -48,6 +50,15 @@ export const ArticleView = ({ articleData, t }) => {
               />
             );
           })}
+        </GridItem>
+
+        <GridItem xs={1} md={2} lg={4} classes="article-view__like-item">
+          <Like
+            likes={articleData.contentRating?.likes || 0}
+            isLiked={false}
+            dislikes={articleData.contentRating?.dislikes || 0}
+            isDisliked={false}
+          />
         </GridItem>
 
         <GridItem md={8} lg={12}>

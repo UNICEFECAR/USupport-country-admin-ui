@@ -6,7 +6,7 @@ import { Page, ArticleView } from "#blocks";
 import { destructureArticleData } from "@USupport-components-library/utils";
 import { Loading } from "@USupport-components-library/src";
 
-import { cmsSvc } from "@USupport-components-library/services";
+import { cmsSvc, userSvc } from "@USupport-components-library/services";
 
 import "./article-information.scss";
 
@@ -26,12 +26,18 @@ export const ArticleInformation = () => {
   const getArticleData = async () => {
     let articleIdToFetch = id;
 
+    const contentRatings = await userSvc.getRatingsForContent({
+      contentType: "article",
+      contentId: articleIdToFetch,
+    });
+
     const { data } = await cmsSvc.getArticleById(
       articleIdToFetch,
       i18n.language
     );
 
     const finalData = destructureArticleData(data);
+    finalData.contentRating = contentRatings.data;
     return finalData;
   };
 
