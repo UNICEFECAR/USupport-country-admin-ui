@@ -41,6 +41,7 @@ import {
   MyQA,
   Organizations,
   OrganizationDetails,
+  ContentManagement,
 } from "#pages";
 
 import { CountryValidationRoute, ProtectedRoute } from "../../routes";
@@ -262,6 +263,14 @@ const LanguageLayout = () => {
         element={
           <ProtectedRoute>
             <OrganizationDetails />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="content-management"
+        element={
+          <ProtectedRoute>
+            <ContentManagement />
           </ProtectedRoute>
         }
       />

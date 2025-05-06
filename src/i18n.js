@@ -55,6 +55,7 @@ import {
   Providers as ProvidersPage,
   Organizations as OrganizationsPage,
   OrganizationDetails as OrganizationDetailsPage,
+  ContentManagement as ContentManagementPage,
 } from "#pages/locales.js";
 
 import {
@@ -124,7 +125,7 @@ const resources = {
     "providers-page": ProvidersPage.en,
     "organizations-page": OrganizationsPage.en,
     "organization-details-page": OrganizationDetailsPage.en,
-
+    "content-management-page": ContentManagementPage.en,
     // Backdrops
     "upload-picture": UploadPicture.en,
     "delete-profile-picture": DeleteProfilePicture.en,
@@ -192,7 +193,7 @@ const resources = {
     "providers-page": ProvidersPage.kk,
     "organizations-page": OrganizationsPage.kk,
     "organization-details-page": OrganizationDetailsPage.kk,
-
+    "content-management-page": ContentManagementPage.kk,
     // Backdrops
     "upload-picture": UploadPicture.kk,
     "delete-profile-picture": DeleteProfilePicture.kk,
@@ -260,7 +261,7 @@ const resources = {
     "providers-page": ProvidersPage.ru,
     "organizations-page": OrganizationsPage.ru,
     "organization-details-page": OrganizationDetailsPage.ru,
-
+    "content-management-page": ContentManagementPage.ru,
     // Backdrops
     "upload-picture": UploadPicture.ru,
     "delete-profile-picture": DeleteProfilePicture.ru,
@@ -328,7 +329,7 @@ const resources = {
     "providers-page": ProvidersPage.uk,
     "organizations-page": Organizations.uk,
     "organization-details-page": OrganizationDetailsPage.uk,
-
+    "content-management-page": ContentManagementPage.uk,
     // Backdrops
     "upload-picture": UploadPicture.uk,
     "delete-profile-picture": DeleteProfilePicture.uk,
@@ -396,7 +397,7 @@ const resources = {
     "providers-page": ProvidersPage.pl,
     "organizations-page": OrganizationsPage.pl,
     "organization-details-page": OrganizationDetailsPage.pl,
-
+    "content-management-page": ContentManagementPage.pl,
     // Backdrops
     "upload-picture": UploadPicture.pl,
     "delete-profile-picture": DeleteProfilePicture.pl,

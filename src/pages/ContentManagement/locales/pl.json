@@ -1,0 +1,19 @@
+{
+  "title": "Zarządzanie treścią",
+  "articles": "Artykuły",
+  "videos": "Wideo",
+  "sos_centers": "Centra SOS",
+  "faqs": "FAQ",
+  "published": "Opublikowane",
+  "thumbnail": "Miniatura",
+  "table_title": "Tytuł",
+  "description": "Opis",
+  "url": "URL",
+  "category": "Kategoria",
+  "likes": "Likes",
+  "dislikes": "Dislikes",
+  "created_at": "Utworzono",
+  "search": "Szukaj",
+  "note": "<0>Uwaga*</0> Jeśli pole \"Opublikowane\" jest zaznaczone, wideo jest widoczne dla użytkowników platformy",
+  "no_data_found": "Brak danych"
+}
