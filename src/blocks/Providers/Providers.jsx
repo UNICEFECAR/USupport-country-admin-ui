@@ -2,7 +2,7 @@ import React, { useCallback, useRef, useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
+import { useCustomNavigate as useNavigate } from "#hooks";
 import { toast } from "react-toastify";
 import {
   Avatar,
@@ -171,6 +171,8 @@ export const Providers = ({
             specializations={provider.specializations.map((x) => t(x))}
             price={provider.consultationPrice}
             freeLabel={t("free")}
+            viewProfileLabel={t("view")}
+            editLabel={t("edit")}
             statusChangeLabel={
               provider.status === "active" ? t("deactivate") : t("activate")
             }

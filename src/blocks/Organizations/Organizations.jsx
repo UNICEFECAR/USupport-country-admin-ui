@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import { useQueryClient } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
+import { useCustomNavigate as useNavigate } from "#hooks";
 
 import {
   Block,

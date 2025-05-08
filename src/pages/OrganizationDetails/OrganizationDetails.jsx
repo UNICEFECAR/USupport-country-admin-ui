@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import React, { useEffect, useMemo, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 
@@ -10,6 +10,7 @@ import {
   useGetAllProviderNames,
   useAssignProvidersToOrganization,
   useRemoveProviderFromOrganization,
+  useCustomNavigate as useNavigate,
 } from "#hooks";
 
 import {
@@ -78,7 +79,11 @@ export const OrganizationDetails = () => {
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
 
   if (!organizationId) {
-    return <Navigate to="/organizations" />;
+    return (
+      <Navigate
+        to={`/country-admin/${localStorage.getItem("language")}/organizations`}
+      />
+    );
   }
 
   const { data, isLoading } = useGetOrganizationById(
@@ -387,6 +392,7 @@ export const OrganizationDetails = () => {
             secondaryButtonAction={() => setIsFilterModalOpen(true)}
             thirdButtonLabel={t("export_report")}
             thirdButtonAction={handleCsvExport}
+            filters={appliedFilters}
             t={t}
           />
         </Block>

@@ -4,6 +4,7 @@ import {
   Routes,
   Route,
   Navigate,
+  useParams,
 } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -46,10 +47,235 @@ import { CountryValidationRoute, ProtectedRoute } from "../../routes";
 
 const RootContext = React.createContext();
 
+const LanguageLayout = () => {
+  const { language } = useParams();
+
+  const allLangs = ["en", "ru", "kk", "pl", "uk"];
+
+  if (!allLangs.includes(language) || !language) {
+    return <Navigate to="/country-admin/en" />;
+  }
+  return (
+    <Routes>
+      <Route
+        path="login"
+        element={
+          <CountryValidationRoute>
+            <Login />
+          </CountryValidationRoute>
+        }
+      />
+      <Route
+        path="forgot-password"
+        element={
+          <CountryValidationRoute>
+            <ForgotPassword />
+          </CountryValidationRoute>
+        }
+      />
+      <Route
+        path="reset-password"
+        element={
+          <CountryValidationRoute>
+            <ResetPassword />
+          </CountryValidationRoute>
+        }
+      />
+      <Route
+        path="providers"
+        element={
+          <ProtectedRoute>
+            <Providers />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="provider/details"
+        element={
+          <ProtectedRoute>
+            <ProviderOverview />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="create-provider"
+        element={
+          <ProtectedRoute>
+            <CreateProvider />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="edit-provider"
+        element={
+          <ProtectedRoute>
+            <EditProvider />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="profile"
+        element={
+          <ProtectedRoute>
+            <AdminProfile />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="profile/details/edit"
+        element={
+          <ProtectedRoute>
+            <EditProfileDetails />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="dashboard"
+        element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="articles"
+        element={
+          <ProtectedRoute>
+            <Articles />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="article/:id"
+        element={
+          <ProtectedRoute>
+            <ArticleInformation />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="faq"
+        element={
+          <ProtectedRoute>
+            <FAQ />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="sos-center"
+        element={
+          <ProtectedRoute>
+            <SOSCenter />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="reports"
+        element={
+          <ProtectedRoute>
+            <Reports />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="provider-activities"
+        element={
+          <ProtectedRoute>
+            <ProviderActivities />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="campaigns"
+        element={
+          <ProtectedRoute>
+            <Campaigns />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="add-sponsor"
+        element={
+          <ProtectedRoute>
+            <AddSponsor />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="edit-sponsor"
+        element={
+          <ProtectedRoute>
+            <EditSponsor />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="sponsor-details"
+        element={
+          <ProtectedRoute>
+            <SponsorDetails />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="add-campaign"
+        element={
+          <ProtectedRoute>
+            <AddCampaign />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="edit-campaign"
+        element={
+          <ProtectedRoute>
+            <EditCampaign />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="campaign-details"
+        element={
+          <ProtectedRoute>
+            <CampaignDetails />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="my-qa"
+        element={
+          <ProtectedRoute>
+            <MyQA />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="organizations"
+        element={
+          <ProtectedRoute>
+            <Organizations />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="organization-details"
+        element={
+          <ProtectedRoute>
+            <OrganizationDetails />
+          </ProtectedRoute>
+        }
+      />
+      <Route path="/" element={<Welcome />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  );
+};
+
 export default function Root() {
   const { t } = useTranslation("root");
 
   const token = localStorage.getItem("token");
+  const language = localStorage.getItem("language");
   const [loggedIn, setLoggedIn] = useState(!!token);
 
   const logoutHandler = useCallback(() => {
@@ -76,214 +302,12 @@ export default function Root() {
       )}
       <Routes>
         <Route
-          path="/login"
+          path="/country-admin"
           element={
-            <CountryValidationRoute>
-              <Login />
-            </CountryValidationRoute>
+            <Navigate to={`/country-admin/${language || "en"}`} replace />
           }
         />
-        <Route
-          path="/forgot-password"
-          element={
-            <CountryValidationRoute>
-              <ForgotPassword />
-            </CountryValidationRoute>
-          }
-        />
-        <Route
-          path="/reset-password"
-          element={
-            <CountryValidationRoute>
-              <ResetPassword />
-            </CountryValidationRoute>
-          }
-        />
-        <Route
-          path="/providers"
-          element={
-            <ProtectedRoute>
-              <Providers />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/provider/details"
-          element={
-            <ProtectedRoute>
-              <ProviderOverview />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/create-provider"
-          element={
-            <ProtectedRoute>
-              <CreateProvider />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/edit-provider"
-          element={
-            <ProtectedRoute>
-              <EditProvider />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/profile"
-          element={
-            <ProtectedRoute>
-              <AdminProfile />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/profile/details/edit"
-          element={
-            <ProtectedRoute>
-              <EditProfileDetails />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/articles"
-          element={
-            <ProtectedRoute>
-              <Articles />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/article/:id"
-          element={
-            <ProtectedRoute>
-              <ArticleInformation />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/faq"
-          element={
-            <ProtectedRoute>
-              <FAQ />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/sos-center"
-          element={
-            <ProtectedRoute>
-              <SOSCenter />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/reports"
-          element={
-            <ProtectedRoute>
-              <Reports />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/provider-activities"
-          element={
-            <ProtectedRoute>
-              <ProviderActivities />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/campaigns"
-          element={
-            <ProtectedRoute>
-              <Campaigns />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/add-sponsor"
-          element={
-            <ProtectedRoute>
-              <AddSponsor />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/edit-sponsor"
-          element={
-            <ProtectedRoute>
-              <EditSponsor />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/sponsor-details"
-          element={
-            <ProtectedRoute>
-              <SponsorDetails />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/add-campaign"
-          element={
-            <ProtectedRoute>
-              <AddCampaign />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/edit-campaign"
-          element={
-            <ProtectedRoute>
-              <EditCampaign />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/campaign-details"
-          element={
-            <ProtectedRoute>
-              <CampaignDetails />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/my-qa"
-          element={
-            <ProtectedRoute>
-              <MyQA />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/organizations"
-          element={
-            <ProtectedRoute>
-              <Organizations />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/organization-details"
-          element={
-            <ProtectedRoute>
-              <OrganizationDetails />
-            </ProtectedRoute>
-          }
-        />
-        <Route path="/" element={<Welcome />} />
+        <Route path="/country-admin/:language/*" element={<LanguageLayout />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </React.Fragment>

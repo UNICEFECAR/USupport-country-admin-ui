@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import { useMutation } from "@tanstack/react-query";
 import Joi from "joi";
-import { useNavigate } from "react-router-dom";
+import { useCustomNavigate as useNavigate } from "#hooks";
 
 import {
   Block,

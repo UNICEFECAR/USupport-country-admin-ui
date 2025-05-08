@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { Page, EditProvider as EditProvierBlock } from "#blocks";
 import { UploadPicture, DeleteProfilePicture } from "#backdrops";
+import { useCustomNavigate as useNavigate } from "#hooks";
 
 import "./edit-provider.scss";
 
@@ -15,7 +16,12 @@ import "./edit-provider.scss";
 export const EditProvider = () => {
   const navigate = useNavigate();
   const providerId = new URLSearchParams(window.location.search).get("id");
-  if (!providerId) return <Navigate to="/providers" />;
+  if (!providerId)
+    return (
+      <Navigate
+        to={`/country-admin/${localStorage.getItem("language")}/providers`}
+      />
+    );
 
   const [providerImage, setProviderImage] = useState();
   const [providerImageUrl, setProviderImageUrl] = useState();
