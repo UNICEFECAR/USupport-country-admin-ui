@@ -1,17 +1,10 @@
 import { useTranslation } from "react-i18next";
 import React, { useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import {
-  Page,
-  Articles,
-  SOSCenter,
-  Videos,
-  // FAQ - You'll need to create this component
-} from "#blocks";
+import { Page, Articles, SOSCenter, Videos, Podcasts, FAQ } from "#blocks";
 import { Block, Tabs, Grid, GridItem } from "@USupport-components-library/src";
 
 import "./content-management.scss";
-import { FAQ } from "../../blocks";
 
 /**
  * ContentManagement
@@ -28,6 +21,7 @@ export const ContentManagement = () => {
   const [contentTabs, setContentTabs] = useState([
     { label: "articles", value: "articles", isSelected: tab === "articles" },
     { label: "videos", value: "videos", isSelected: tab === "videos" },
+    { label: "podcasts", value: "podcasts", isSelected: tab === "podcasts" },
     {
       label: "sos_centers",
       value: "sos_centers",
@@ -53,6 +47,8 @@ export const ContentManagement = () => {
         return <Articles />;
       case "videos":
         return <Videos t={t} i18n={i18n} />;
+      case "podcasts":
+        return <Podcasts t={t} i18n={i18n} />;
       case "sos_centers":
         return <SOSCenter />;
       case "faqs":

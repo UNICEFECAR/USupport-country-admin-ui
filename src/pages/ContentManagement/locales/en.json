@@ -4,6 +4,7 @@
   "videos": "Videos",
   "sos_centers": "SOS Center",
   "faqs": "FAQs",
+  "podcasts": "Podcasts",
   "published": "Published",
   "thumbnail": "Thumbnail",
   "table_title": "Title",
@@ -15,5 +16,10 @@
   "created_at": "Created at",
   "search": "Search",
   "note": "<0>Note*</0> If the checkbox in the \"Published\" column is marked as selected it means that the Video is visible to the users of the platform",
-  "no_data_found": "No data found"
+  "note_podcasts": "<0>Note*</0> If the checkbox in the \"Published\" column is marked as selected it means that the Podcast is visible to the users of the platform",
+  "no_data_found": "No data found",
+  "podcast_added": "Podcast added",
+  "podcast_removed": "Podcast removed",
+  "video_added": "Video added",
+  "video_removed": "Video removed"
 }
