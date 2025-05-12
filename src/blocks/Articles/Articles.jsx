@@ -83,6 +83,8 @@ export const Articles = () => {
       ...x.attributes,
       id: x.id,
       isSelected: !!x.isSelected,
+      likes: Number(x.attributes.likes) || 0,
+      dislikes: Number(x.attributes.dislikes) || 0,
     }));
     const newData = [...dataToDisplay, ...formattedData].filter(
       (x) => x.locale === i18n.language
@@ -174,6 +176,18 @@ export const Articles = () => {
         sortingKey: "title",
       },
       {
+        label: t("likes"),
+        sortingKey: "likes",
+        isCentered: true,
+        isNumbered: true,
+      },
+      {
+        label: t("dislikes"),
+        sortingKey: "dislikes",
+        isCentered: true,
+        isNumbered: true,
+      },
+      {
         label: t("created_at"),
         sortingKey: "createdAt",
         isDate: true,
@@ -230,6 +244,8 @@ export const Articles = () => {
           <p className="articles__heading">{article.title}</p>
           <p className="text">{article.description}</p>
         </div>,
+        <p className="text centered">{article.likes || 0}</p>,
+        <p className="text centered">{article.dislikes || 0}</p>,
         <div>{getDateView(new Date(article.createdAt))}</div>,
         <Button
           label={t("view_button")}

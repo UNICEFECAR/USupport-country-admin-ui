@@ -14,10 +14,9 @@
 
   &__search {
     padding-top: $spacing_3_0;
-    place-self: center;
+    place-self: start;
     @media screen and (min-width: $screen-md) {
       padding-top: $spacing_4_0;
-      place-self: end;
     }
   }
 }
