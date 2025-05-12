@@ -1,0 +1,17 @@
+/* ContentManagement styles */
+@import "@USupport-components-library/styles";
+
+.page__content-management {
+  & .tabs {
+    justify-content: center;
+    margin-top: $spacing_4_0;
+  }
+
+  &__tabs-container {
+    margin-bottom: $spacing_3_2;
+  }
+
+  &__grid {
+    padding-bottom: $spacing_3_2;
+  }
+}
