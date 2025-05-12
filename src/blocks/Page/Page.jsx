@@ -16,6 +16,7 @@ import {
   useWindowDimensions,
   replaceLanguageInUrl,
   getLanguageFromUrl,
+  redirectToLocalStorageCountry,
 } from "@USupport-components-library/utils";
 import { useIsLoggedIn, useError, useEventListener } from "#hooks";
 
@@ -129,6 +130,10 @@ export const Page = ({
   const fetchCountries = async () => {
     const res = await countrySvc.getActiveCountries();
     const subdomain = window.location.hostname.split(".")[0];
+
+    if (subdomain === "usupport") {
+      redirectToLocalStorageCountry("country-admin");
+    }
 
     if (subdomain && subdomain !== "www" && subdomain !== "usupport") {
       localStorageCountry =
