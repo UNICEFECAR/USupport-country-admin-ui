@@ -54,6 +54,11 @@ export const Welcome = () => {
           subdomain,
           `${countryLabel}.usupport`
         );
+      } else if (subdomain === "staging") {
+        window.location.href = window.location.href.replace(
+          subdomain,
+          `${countryLabel}.staging`
+        );
       }
     }
 
