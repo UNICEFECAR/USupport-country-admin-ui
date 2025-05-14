@@ -6,12 +6,17 @@ import { useIsLoggedIn } from "#hooks";
 export const ProtectedRoute = ({ children }) => {
   const isLoggedIn = useIsLoggedIn();
   const token = localStorage.getItem("token");
-  const decoded = token ? jwtDecode(token) : null;
+  let decoded = null;
+  try {
+    decoded = token ? jwtDecode(token) : null;
+  } catch (error) {
+    console.log(error);
+  }
   const isAdmin = decoded?.adminRole === "country";
 
   if (!isLoggedIn || !isAdmin)
     return (
-      <Navigate to={`${localStorage.getItem("language")}/country-admin/`} />
+      <Navigate to={`/country-admin/${localStorage.getItem("language")}/`} />
     );
 
   return children;
