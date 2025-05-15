@@ -47,16 +47,7 @@ function App() {
     }
   }, []);
 
-  const getDefaultTheme = () => {
-    const localStorageTheme = localStorage.getItem("default-theme");
-    return localStorageTheme || "light";
-  };
-
-  const [theme, setTheme] = useState(getDefaultTheme());
-
-  useEffect(() => {
-    localStorage.setItem("default-theme", theme);
-  }, [theme]);
+  const [theme, setTheme] = useState("light");
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
