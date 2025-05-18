@@ -21,5 +21,6 @@
   "podcast_added": "Подкаст добавлен",
   "podcast_removed": "Подкаст удален",
   "video_added": "Видео добавлено",
-  "video_removed": "Видео удалено"
+  "video_removed": "Видео удалено",
+  "number_of_more_options": "еще {{count}}"
 }

@@ -48,8 +48,8 @@ export const Welcome = () => {
       // If there is country in the local storage
       // set it in the url
       const subdomain = window.location.hostname.split(".")[0];
+      const countryLabel = getCountryLabelFromAlpha2(localStorageCountry);
       if (subdomain === "usupport") {
-        const countryLabel = getCountryLabelFromAlpha2(localStorageCountry);
         window.location.href = window.location.href.replace(
           subdomain,
           `${countryLabel}.usupport`
@@ -175,7 +175,7 @@ export const Welcome = () => {
           <h2 className="welcome__grid__logo-item__heading">{t("admin")}</h2>
         </GridItem>
         <GridItem md={8} lg={12} classes="welcome__grid__content-item">
-          {!languagesQuery.isFetching ? (
+          {!languagesQuery.isFetching && countries ? (
             <>
               <DropdownWithLabel
                 options={

@@ -10,5 +10,7 @@
   "note": "<0>Note*</0> If the checkbox in the \"Published\" column is marked as selected it means that the Article is visible to the users of the platform",
   "search": "Search",
   "no_data_found": "No data found",
-  "created_at": "Created At"
+  "created_at": "Created At",
+  "likes": "Likes",
+  "dislikes": "Dislikes"
 }
