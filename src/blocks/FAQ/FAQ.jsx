@@ -38,6 +38,7 @@ export const FAQ = () => {
   const [error, setError] = useState();
   const [searchValue, setSearchValue] = useState("");
   const [faqData, setFaqData] = useState([]);
+  const [faqIds, setFaqIds] = useState([]);
 
   //--------------------- Tabs ----------------------//
   const [options, setOptions] = useState([
@@ -57,14 +58,15 @@ export const FAQ = () => {
 
     // Request faq ids from the master DB based on selected interface
     const faqIds = await adminSvc.getFAQs(chosenInterface);
-
+    setFaqIds(faqIds);
     let { data } = await cmsSvc.getFAQs({
       locale: i18n.language,
       ids: faqIds,
       isForAdmin: true,
+      populate: true,
     });
 
-    const filteredData = filterAdminData(data.data, data.meta.localizedIds);
+    const filteredData = filterAdminData(data?.data, data.meta.localizedIds);
 
     return filteredData.map((faq) => {
       return {
@@ -104,13 +106,30 @@ export const FAQ = () => {
     setOptions(optionsCopy);
   };
 
-  const handleSelectFAQ = async (id, newValue) => {
+  const handleSelectFAQ = async (id, newValue, index) => {
     let newData = JSON.parse(JSON.stringify(FAQsData));
     const platform = options.find((x) => x.isSelected).value;
     newData.find((x) => x.id === id).isSelected = newValue;
 
+    let idToUse = id;
+    if (newValue === false) {
+      // If the podcast is being removed, we need to get the id of the localized version
+      if (!faqIds.includes(id)) {
+        const currentData = FAQsData[index];
+        const dataLocalizations = currentData.localizations.data;
+
+        const faqIdToUse = dataLocalizations.find((x) =>
+          faqIds.includes(x.id.toString())
+        );
+        console.log(faqIdToUse, "faqIdToUse");
+        if (faqIdToUse) {
+          idToUse = faqIdToUse.id;
+        }
+      }
+    }
+
     updateFAQsMutation.mutate({
-      id: id.toString(),
+      id: idToUse.toString(),
       newValue,
       platform,
       faqData: newData,
@@ -179,12 +198,12 @@ export const FAQ = () => {
   const getTableRows = () => {
     const data = getFilteredQuestions();
 
-    return data?.map((faq) => {
+    return data?.map((faq, index) => {
       return [
         <div>
           <CheckBox
             isChecked={faq.isSelected}
-            setIsChecked={() => handleSelectFAQ(faq.id, !faq.isSelected)}
+            setIsChecked={() => handleSelectFAQ(faq.id, !faq.isSelected, index)}
           />
         </div>,
         <div className="faq__row-text-container">

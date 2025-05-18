@@ -31,6 +31,7 @@ export const SOSCenter = () => {
 
   const [dataToDisplay, setDataToDisplay] = useState();
   const [searchValue, setSearchValue] = useState("");
+  const [sosCenterIds, setSOSCenterIds] = useState([]);
 
   const rows = useMemo(() => {
     return [
@@ -69,6 +70,7 @@ export const SOSCenter = () => {
   const getSOSCenters = async () => {
     // Request SOS centers ids from the master DB
     const sosCentersIds = await adminSvc.getSOSCenters();
+    setSOSCenterIds(sosCentersIds);
 
     let { data } = await cmsSvc.getSOSCenters({
       locale: i18n.language,
@@ -96,8 +98,23 @@ export const SOSCenter = () => {
     let newData = JSON.parse(JSON.stringify(dataToDisplay));
     newData[index].isSelected = newValue;
 
+    let idToUse = id;
+    if (newValue === false) {
+      // If the SOS center is being deselected, we need to get the id which is stored in the database
+      if (!sosCenterIds.includes(id)) {
+        const currentData = dataToDisplay[index];
+        const dataLocalizations = currentData.localizations.data;
+
+        const sosCenterIdToUse = dataLocalizations.find((x) =>
+          sosCenterIds.includes(x.id.toString())
+        );
+        if (sosCenterIdToUse) {
+          idToUse = sosCenterIdToUse.id;
+        }
+      }
+    }
     updateSOSCentersMutation.mutate({
-      id: id.toString(),
+      id: idToUse.toString(),
       newValue,
       sosCenterData: newData,
     });
@@ -114,9 +131,7 @@ export const SOSCenter = () => {
         sosCenterAvailableLocales[currentLang].toString()
       );
     } else {
-      await adminSvc.deleteSOSCenters(
-        sosCenterAvailableLocales[currentLang].toString()
-      );
+      await adminSvc.deleteSOSCenters(data.id.toString());
     }
     return data.newValue;
   };

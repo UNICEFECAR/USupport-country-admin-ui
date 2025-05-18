@@ -78,6 +78,7 @@ export const ContentManagement = () => {
               }))}
               handleSelect={handleTabSelect}
               classes="page__content-management__tabs"
+              t={t}
             />
           </GridItem>
 
