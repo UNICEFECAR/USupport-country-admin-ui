@@ -52,7 +52,13 @@ export const ArticleInformation = () => {
     <Page
       classes="page__article-information"
       heading={t("heading")}
-      handleGoBack={() => navigate("/articles")}
+      handleGoBack={() =>
+        navigate(
+          `/country-admin/${localStorage.getItem(
+            "language"
+          )}/content-management?tab=articles`
+        )
+      }
     >
       {articleData && <ArticleView articleData={articleData} t={t} />}
       {!articleData && isArticleDataLoading && <Loading />}

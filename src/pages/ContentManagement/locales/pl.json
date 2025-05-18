@@ -21,5 +21,6 @@
   "podcast_added": "Podcast dodany",
   "podcast_removed": "Podcast usunięty",
   "video_added": "Wideo dodane",
-  "video_removed": "Wideo usunięte"
+  "video_removed": "Wideo usunięte",
+  "number_of_more_options": "jeszcze {{count}}"
 }
