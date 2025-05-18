@@ -29,6 +29,7 @@ import "./podcasts.scss";
 export const Podcasts = ({ t, i18n }) => {
   const [dataToDisplay, setDataToDisplay] = useState();
   const [searchValue, setSearchValue] = useState("");
+  const [podcastIds, setPodcastIds] = useState([]);
 
   const rows = useMemo(() => {
     return [
@@ -81,7 +82,7 @@ export const Podcasts = ({ t, i18n }) => {
   const getPodcasts = async () => {
     // Request podcast ids from the master DB
     const podcastIds = await adminSvc.getPodcasts();
-
+    setPodcastIds(podcastIds);
     let { data } = await cmsSvc.getPodcasts({
       locale: i18n.language,
       ids: podcastIds,
@@ -110,8 +111,24 @@ export const Podcasts = ({ t, i18n }) => {
     let newData = JSON.parse(JSON.stringify(dataToDisplay));
     newData[index].isSelected = newValue;
 
+    let idToUse = id;
+    if (newValue === false) {
+      // If the podcast is being removed, we need to get the id of the localized version
+      if (!podcastIds.includes(id)) {
+        const currentData = dataToDisplay[index];
+        const dataLocalizations = currentData.localizations.data;
+
+        const podcastIdToUse = dataLocalizations.find((x) =>
+          podcastIds.includes(x.id.toString())
+        );
+        if (podcastIdToUse) {
+          idToUse = podcastIdToUse.id;
+        }
+      }
+    }
+
     updatePodcastsMutation.mutate({
-      id: id.toString(),
+      id: idToUse.toString(),
       newValue,
       podcastData: newData,
     });

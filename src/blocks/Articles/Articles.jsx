@@ -119,8 +119,23 @@ export const Articles = () => {
     newData[index].isSelected = newValue;
     setDataToDisplay(newData);
 
+    let idToUse = id;
+
+    if (newValue === false) {
+      if (!articleIds.includes(id)) {
+        const currentData = dataToDisplay[index];
+        const dataLocalizations = currentData.localizations.data;
+        const articleIdToUse = dataLocalizations.find((x) =>
+          articleIds.includes(x.id.toString())
+        );
+        if (articleIdToUse) {
+          idToUse = articleIdToUse.id;
+        }
+      }
+    }
+
     updateArticlesMutation.mutate({
-      id: id.toString(),
+      id: idToUse.toString(),
       newValue,
       articleData: newData,
     });
@@ -133,7 +148,7 @@ export const Articles = () => {
     if (data.newValue === true) {
       await adminSvc.putArticle(articleLocales[currentLang].toString());
     } else {
-      await adminSvc.deleteArticle(articleLocales[currentLang].toString());
+      await adminSvc.deleteArticle(data.id.toString());
     }
 
     return data.newValue;
@@ -197,7 +212,7 @@ export const Articles = () => {
         isCentered: true,
       },
     ];
-  }, []);
+  }, [i18n.language, t]);
 
   const [searchValue, setSearchValue] = useState("");
   const rowsData = useCallback(() => {
