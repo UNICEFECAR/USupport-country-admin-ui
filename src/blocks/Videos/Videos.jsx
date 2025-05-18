@@ -29,6 +29,7 @@ import "./videos.scss";
 export const Videos = ({ t, i18n }) => {
   const [dataToDisplay, setDataToDisplay] = useState();
   const [searchValue, setSearchValue] = useState("");
+  const [videoIds, setVideoIds] = useState([]);
 
   const rows = useMemo(() => {
     return [
@@ -81,7 +82,7 @@ export const Videos = ({ t, i18n }) => {
   const getVideos = async () => {
     // Request video ids from the master DB
     const videoIds = await adminSvc.getVideos();
-
+    setVideoIds(videoIds);
     let { data } = await cmsSvc.getVideos({
       locale: i18n.language,
       ids: videoIds,
@@ -110,8 +111,23 @@ export const Videos = ({ t, i18n }) => {
     let newData = JSON.parse(JSON.stringify(dataToDisplay));
     newData[index].isSelected = newValue;
 
+    let idToUse = id;
+    if (newValue === false) {
+      if (!videoIds.includes(id)) {
+        const currentData = dataToDisplay[index];
+        const dataLocalizations = currentData.localizations.data;
+
+        const videoIdToUse = dataLocalizations.find((x) =>
+          videoIds.includes(x.id.toString())
+        );
+        if (videoIdToUse) {
+          idToUse = videoIdToUse.id;
+        }
+      }
+    }
+
     updateVideosMutation.mutate({
-      id: id.toString(),
+      id: idToUse.toString(),
       newValue,
       videoData: newData,
     });
@@ -125,9 +141,7 @@ export const Videos = ({ t, i18n }) => {
       if (data.newValue === true) {
         await adminSvc.putVideo(videoAvailableLocales[currentLang].toString());
       } else {
-        await adminSvc.deleteVideo(
-          videoAvailableLocales[currentLang].toString()
-        );
+        await adminSvc.deleteVideo(data.id.toString());
       }
       return data.newValue;
     } catch (error) {
