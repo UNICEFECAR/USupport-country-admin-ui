@@ -64,6 +64,7 @@ export const Page = ({
     // { name: t("page_3"), url: "/articles" },
     // { name: t("page_4"), url: "/sos-center" },
     // { name: t("page_5"), url: "/faq" },
+    { name: t("page_4"), url: "/analytics" },
     { name: t("page_6"), url: "/reports" },
     { name: t("page_7"), url: "/campaigns" },
     { name: t("page_8"), url: "/my-qa" },
