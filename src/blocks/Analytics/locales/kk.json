@@ -1,0 +1,19 @@
+{
+  "content_tab_label": "Контент метрикалары",
+  "general_tab_label": "Жалпы метрикалар",
+
+  "category_name": "Санат атауы",
+  "views": "Көрулер",
+  "downloads": "Жүктеулер",
+  "avg_rating": "Орташа баға",
+  "share_count": "Бөлісу саны",
+  "engagement_score": "Аудитория белсенділігі",
+
+  "total_users": "Жалпы пайдаланушылар",
+  "active_users": "Белсенді пайдаланушылар",
+  "new_users": "Жаңа пайдаланушылар",
+  "user_retention": "Пайдаланушыларды ұстап қалу",
+
+  "search": "Іздеу",
+  "export_label": "CSV ретінде экспорттау"
+}

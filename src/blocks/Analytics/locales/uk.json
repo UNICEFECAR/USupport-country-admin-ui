@@ -1,0 +1,19 @@
+{
+  "content_tab_label": "Метрики контенту",
+  "general_tab_label": "Загальні метрики",
+
+  "category_name": "Назва категорії",
+  "views": "Перегляди",
+  "downloads": "Завантаження",
+  "avg_rating": "Середня оцінка",
+  "share_count": "Кількість поширень",
+  "engagement_score": "Оцінка залученості",
+
+  "total_users": "Усього користувачів",
+  "active_users": "Активні користувачі",
+  "new_users": "Нові користувачі",
+  "user_retention": "Утримання користувачів",
+
+  "search": "Пошук",
+  "export_label": "Експортувати у CSV"
+}

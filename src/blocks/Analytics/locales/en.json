@@ -1,0 +1,19 @@
+{
+  "content_tab_label": "Content Metrics",
+  "general_tab_label": "General Metrics",
+
+  "category_name": "Category Name",
+  "views": "Views",
+  "downloads": "Downloads",
+  "avg_rating": "Average Rating",
+  "share_count": "Share Count",
+  "engagement_score": "Engagement Score",
+
+  "total_users": "Total Users",
+  "active_users": "Active Users",
+  "new_users": "New Users",
+  "user_retention": "User Retention",
+
+  "search": "Search",
+  "export_label": "Export Data as CSV"
+}

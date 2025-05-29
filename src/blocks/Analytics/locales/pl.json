@@ -1,0 +1,19 @@
+{
+  "content_tab_label": "Metryki treści",
+  "general_tab_label": "Metryki ogólne",
+
+  "category_name": "Nazwa kategorii",
+  "views": "Wyświetlenia",
+  "downloads": "Pobrane",
+  "avg_rating": "Średnia ocena",
+  "share_count": "Liczba udostępnień",
+  "engagement_score": "Wskaźnik zaangażowania",
+
+  "total_users": "Łączna liczba użytkowników",
+  "active_users": "Aktywni użytkownicy",
+  "new_users": "Nowi użytkownicy",
+  "user_retention": "Retencja użytkowników",
+
+  "search": "Szukaj",
+  "export_label": "Eksportuj dane jako CSV"
+}

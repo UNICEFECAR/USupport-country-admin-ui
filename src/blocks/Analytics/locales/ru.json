@@ -1,0 +1,19 @@
+{
+  "content_tab_label": "Метрики контента",
+  "general_tab_label": "Общие метрики",
+
+  "category_name": "Название категории",
+  "views": "Просмотры",
+  "downloads": "Загрузки",
+  "avg_rating": "Средняя оценка",
+  "share_count": "Количество поделившихся",
+  "engagement_score": "Индекс вовлечённости",
+
+  "total_users": "Всего пользователей",
+  "active_users": "Активные пользователи",
+  "new_users": "Новые пользователи",
+  "user_retention": "Удержание пользователей",
+
+  "search": "Поиск",
+  "export_label": "Экспортировать данные в CSV"
+}
