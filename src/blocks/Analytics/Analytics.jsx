@@ -11,6 +11,7 @@ import {
 } from "@USupport-components-library/src";
 import { useWindowDimensions } from "@USupport-components-library/src/utils";
 import { downloadCSVFile } from "@USupport-components-library/utils";
+import { useGetContentStatistics } from "#hooks";
 
 import "./analytics.scss";
 
@@ -138,6 +139,11 @@ const generalMatrics = {
 export const Analytics = () => {
   const { t, i18n } = useTranslation("analytics");
   const { width } = useWindowDimensions();
+
+  const { data: categoriesData, isLoading: isCategoriesLoading } =
+    useGetContentStatistics();
+
+  console.log("categoriesData", categoriesData);
 
   const [options, setOptions] = useState([
     { label: t("content"), value: "content", isSelected: true },
