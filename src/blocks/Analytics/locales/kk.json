@@ -9,11 +9,22 @@
   "share_count": "Бөлісу саны",
   "engagement_score": "Аудитория белсенділігі",
 
-  "total_users": "Жалпы пайдаланушылар",
-  "active_users": "Белсенді пайдаланушылар",
-  "new_users": "Жаңа пайдаланушылар",
-  "user_retention": "Пайдаланушыларды ұстап қалу",
-
   "search": "Іздеу",
-  "export_label": "CSV ретінде экспорттау"
+  "export_label": "CSV ретінде экспорттау",
+  "no_data_found": "Ақпарат табылмады",
+
+  "totalConsultations": "Жалпы кеңес беру",
+  "uniqueClientsConsultations": "Бірегей клиенттер кеңес беру",
+  "activeClients": "Белсенді клиенттер",
+  "activeProviders": "Белсенді провайдерлер",
+  "totalWebsiteAccess": "Жалпы веб-сайтқа кіру",
+  "totalClientAccess": "Жалпы клиенттерге кіру",
+  "totalProviderAccess": "Жалпы провайдерлерге кіру",
+  "uniqueWebsiteAccess": "Бірегей веб-сайтқа кіру",
+  "uniqueClientAccess": "Бірегей клиенттерге кіру",
+  "uniqueProviderAccess": "Бірегей провайдерлерге кіру",
+  "uniqueClientsThatUsedCoupon": "Бірегей купон пайдаланған клиенттер",
+  "totalCouponConsultations": "Жалпы купон бойынша кеңес беру",
+  "positiveClientRatings": "Позитивті клиент бағалаулары",
+  "positiveProviderRatings": "Позитивті провайдер бағалаулары"
 }

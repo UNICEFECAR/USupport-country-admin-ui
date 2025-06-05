@@ -8,10 +8,11 @@ import {
   Grid,
   GridItem,
   Statistic,
+  Loading,
 } from "@USupport-components-library/src";
 import { useWindowDimensions } from "@USupport-components-library/src/utils";
 import { downloadCSVFile } from "@USupport-components-library/utils";
-import { useGetContentStatistics } from "#hooks";
+import { useGetContentStatistics, useGetPlatformMetrics } from "#hooks";
 
 import "./analytics.scss";
 
@@ -122,13 +123,6 @@ const initialData = [
   },
 ];
 
-const generalMatrics = {
-  totalUsers: 123456,
-  activeUsers: 78901,
-  newUsers: 12345,
-  userRetention: 65,
-};
-
 /**
  * Analytics
  *
@@ -140,15 +134,22 @@ export const Analytics = () => {
   const { t, i18n } = useTranslation("analytics");
   const { width } = useWindowDimensions();
 
-  const { data: categoriesData, isLoading: isCategoriesLoading } =
-    useGetContentStatistics();
-
-  console.log("categoriesData", categoriesData);
-
   const [options, setOptions] = useState([
     { label: t("content"), value: "content", isSelected: true },
     { label: t("general"), value: "general", isSelected: false },
   ]);
+
+  const { data: categoriesData, isLoading: isCategoriesLoading } =
+    useGetContentStatistics();
+
+  const shouldFetchPlatformMetrics =
+    options.find((opt) => opt.value === "general")?.isSelected || false;
+
+  const {
+    data: generalPlatformMetrics,
+    isLoading: isGeneralPlatformMetricsLoading,
+    isError: isGeneralPlatfromMetricsError,
+  } = useGetPlatformMetrics(shouldFetchPlatformMetrics);
 
   const [dataToDisplay, setDataToDisplay] = useState(initialData);
 
@@ -247,43 +248,52 @@ export const Analytics = () => {
   });
 
   const renderStatistic = () => {
-    const statistics = [
-      {
-        type: "total_users",
-        value: generalMatrics.totalUsers.toLocaleString(),
-        iconName: "community",
-      },
-      {
-        type: "active_users",
-        value: generalMatrics.activeUsers.toLocaleString(),
-        iconName: "community",
-      },
-      {
-        type: "new_users",
-        value: generalMatrics.newUsers.toLocaleString(),
-        iconName: "community",
-      },
-      {
-        type: "user_retention",
-        value: `${generalMatrics.userRetention}%`,
-        iconName: "community",
-      },
-    ];
+    if (isGeneralPlatformMetricsLoading) {
+      return (
+        <Grid md={8} lg={12} classes="analytics__statistics-grid">
+          <GridItem md={8} lg={12}>
+            <Loading />
+          </GridItem>
+        </Grid>
+      );
+    }
+
+    if (isGeneralPlatfromMetricsError || !generalPlatformMetrics) {
+      return (
+        <Grid md={8} lg={12} classes="analytics__statistics-grid">
+          <GridItem md={8} lg={12}>
+            <p>{t("no_data_found")}</p>
+          </GridItem>
+        </Grid>
+      );
+    }
+
+    const statistics = Object.entries(generalPlatformMetrics).map(
+      ([key, value]) => ({
+        type: key,
+        value:
+          typeof value === "string" && !isNaN(Number(value))
+            ? Number(value).toLocaleString()
+            : typeof value === "number"
+            ? value.toLocaleString()
+            : String(value),
+      })
+    );
 
     return (
       <Grid md={8} lg={12} classes="analytics__statistics-grid">
         {statistics.map((statistic, index) => (
           <GridItem
             md={4}
-            lg={3}
+            lg={4}
             key={index}
             classes="analytics__statistics-item"
           >
             <Statistic
               textBold={statistic.value}
               text={t(statistic.type)}
-              iconName={statistic.iconName}
-              orientation={width > 768 ? "portrait" : "landscape"}
+              orientation={"landscape"}
+              hasIcon={false}
             />
           </GridItem>
         ))}

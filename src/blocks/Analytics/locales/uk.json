@@ -9,11 +9,22 @@
   "share_count": "Кількість поширень",
   "engagement_score": "Оцінка залученості",
 
-  "total_users": "Усього користувачів",
-  "active_users": "Активні користувачі",
-  "new_users": "Нові користувачі",
-  "user_retention": "Утримання користувачів",
-
   "search": "Пошук",
-  "export_label": "Експортувати у CSV"
+  "export_label": "Експортувати у CSV",
+  "no_data_found": "Дані не знайдено",
+
+  "totalConsultations": "Загальна кількість консультацій",
+  "uniqueClientsConsultations": "Унікальні консультації клієнтів",
+  "activeClients": "Активні клієнти",
+  "activeProviders": "Активні провайдери",
+  "totalWebsiteAccess": "Загальний доступ до веб-сайту",
+  "totalClientAccess": "Загальний доступ клієнтів",
+  "totalProviderAccess": "Загальний доступ провайдерів",
+  "uniqueWebsiteAccess": "Унікальний доступ до веб-сайту",
+  "uniqueClientAccess": "Унікальний доступ клієнтів",
+  "uniqueProviderAccess": "Унікальний доступ провайдерів",
+  "uniqueClientsThatUsedCoupon": "Унікальні клієнти, які використовували купон",
+  "totalCouponConsultations": "Загальна кількість консультацій з купоном",
+  "positiveClientRatings": "Позитивні оцінки клієнтів",
+  "positiveProviderRatings": "Позитивні оцінки провайдерів"
 }

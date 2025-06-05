@@ -9,11 +9,22 @@
   "share_count": "Share Count",
   "engagement_score": "Engagement Score",
 
-  "total_users": "Total Users",
-  "active_users": "Active Users",
-  "new_users": "New Users",
-  "user_retention": "User Retention",
-
   "search": "Search",
-  "export_label": "Export Data as CSV"
+  "export_label": "Export Data as CSV",
+  "no_data_found": "No data found",
+
+  "totalConsultations": "Total Consultations",
+  "uniqueClientsConsultations": "Unique Clients Consultations",
+  "activeClients": "Active Clients",
+  "activeProviders": "Active Providers",
+  "totalWebsiteAccess": "Total Website Access",
+  "totalClientAccess": "Total Client Access",
+  "totalProviderAccess": "Total Provider Access",
+  "uniqueWebsiteAccess": "Unique Website Access",
+  "uniqueClientAccess": "Unique Client Access",
+  "uniqueProviderAccess": "Unique Provider Access",
+  "uniqueClientsThatUsedCoupon": "Unique Clients That Used Coupon",
+  "totalCouponConsultations": "Total Coupon Consultations",
+  "positiveClientRatings": "Positive Client Ratings",
+  "positiveProviderRatings": "Positive Provider Ratings"
 }

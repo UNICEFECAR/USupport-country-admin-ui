@@ -9,11 +9,22 @@
   "share_count": "Количество поделившихся",
   "engagement_score": "Индекс вовлечённости",
 
-  "total_users": "Всего пользователей",
-  "active_users": "Активные пользователи",
-  "new_users": "Новые пользователи",
-  "user_retention": "Удержание пользователей",
-
   "search": "Поиск",
-  "export_label": "Экспортировать данные в CSV"
+  "export_label": "Экспортировать данные в CSV",
+  "no_data_found": "Данные не найдены",
+
+  "totalConsultations": "Всего консультаций",
+  "uniqueClientsConsultations": "Уникальные консультации клиентов",
+  "activeClients": "Активные клиенты",
+  "activeProviders": "Активные провайдеры",
+  "totalWebsiteAccess": "Общий доступ к сайту",
+  "totalClientAccess": "Общий доступ клиентов",
+  "totalProviderAccess": "Общий доступ провайдеров",
+  "uniqueWebsiteAccess": "Уникальный доступ к сайту",
+  "uniqueClientAccess": "Уникальный доступ клиентов",
+  "uniqueProviderAccess": "Уникальный доступ провайдеров",
+  "uniqueClientsThatUsedCoupon": "Уникальные клиенты, использовавшие купон",
+  "totalCouponConsultations": "Всего консультаций с купоном",
+  "positiveClientRatings": "Положительные оценки клиентов",
+  "positiveProviderRatings": "Положительные оценки провайдеров"
 }
