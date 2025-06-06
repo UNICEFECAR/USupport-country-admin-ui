@@ -8,6 +8,8 @@
   "avg_rating": "Середня оцінка",
   "share_count": "Кількість поширень",
   "engagement_score": "Оцінка залученості",
+  "likes": "Лайки",
+  "dislikes": "Дизлайки",
 
   "search": "Пошук",
   "export_label": "Експортувати у CSV",

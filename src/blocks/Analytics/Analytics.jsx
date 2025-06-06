@@ -16,113 +16,6 @@ import { useGetContentStatistics, useGetPlatformMetrics } from "#hooks";
 
 import "./analytics.scss";
 
-const initialData = [
-  {
-    categoryName: "Category 1",
-    views: 12345,
-    downloads: 5678,
-    avgRating: 4.5,
-    shareCount: 2345,
-    engagementScore: 85,
-  },
-  {
-    categoryName: "Category 2",
-    views: 10234,
-    downloads: 4567,
-    avgRating: 4.2,
-    shareCount: 1890,
-    engagementScore: 78,
-  },
-  {
-    categoryName: "Category 3",
-    views: 8765,
-    downloads: 4321,
-    avgRating: 4.8,
-    shareCount: 3456,
-    engagementScore: 90,
-  },
-  {
-    categoryName: "Category 4",
-    views: 6543,
-    downloads: 3210,
-    avgRating: 4.1,
-    shareCount: 2109,
-    engagementScore: 82,
-  },
-  {
-    categoryName: "Category 5",
-    views: 5432,
-    downloads: 2109,
-    avgRating: 4.6,
-    shareCount: 1234,
-    engagementScore: 88,
-  },
-  {
-    categoryName: "Category 6",
-    views: 4321,
-    downloads: 1098,
-    avgRating: 4.3,
-    shareCount: 987,
-    engagementScore: 80,
-  },
-  {
-    categoryName: "Category 7",
-    views: 3210,
-    downloads: 876,
-    avgRating: 4.7,
-    shareCount: 654,
-    engagementScore: 92,
-  },
-  {
-    categoryName: "Category 8",
-    views: 2109,
-    downloads: 765,
-    avgRating: 4.4,
-    shareCount: 543,
-    engagementScore: 84,
-  },
-  {
-    categoryName: "Category 9",
-    views: 1098,
-    downloads: 654,
-    avgRating: 4.9,
-    shareCount: 432,
-    engagementScore: 95,
-  },
-  {
-    categoryName: "Category 10",
-    views: 876,
-    downloads: 543,
-    avgRating: 4.0,
-    shareCount: 321,
-    engagementScore: 76,
-  },
-  {
-    categoryName: "Category 11",
-    views: 765,
-    downloads: 432,
-    avgRating: 4.5,
-    shareCount: 210,
-    engagementScore: 89,
-  },
-  {
-    categoryName: "Category 12",
-    views: 654,
-    downloads: 321,
-    avgRating: 4.2,
-    shareCount: 109,
-    engagementScore: 81,
-  },
-  {
-    categoryName: "Category 13",
-    views: 543,
-    downloads: 210,
-    avgRating: 4.6,
-    shareCount: 98,
-    engagementScore: 87,
-  },
-];
-
 /**
  * Analytics
  *
@@ -151,7 +44,13 @@ export const Analytics = () => {
     isError: isGeneralPlatfromMetricsError,
   } = useGetPlatformMetrics(shouldFetchPlatformMetrics);
 
-  const [dataToDisplay, setDataToDisplay] = useState(initialData);
+  const [dataToDisplay, setDataToDisplay] = useState([]);
+
+  useEffect(() => {
+    if (categoriesData) {
+      setDataToDisplay(categoriesData);
+    }
+  }, [categoriesData]);
 
   const handleTabSelect = (index) => {
     const optionsCopy = [...options];
@@ -173,14 +72,8 @@ export const Analytics = () => {
     return [
       { label: t("category_name"), sortingKey: "categoryName" },
       {
-        label: t("views"),
-        sortingKey: "views",
-        isNumbered: true,
-        isCentered: true,
-      },
-      {
-        label: t("downloads"),
-        sortingKey: "downloads",
+        label: t("engagement_score"),
+        sortingKey: "engagementScore",
         isNumbered: true,
         isCentered: true,
       },
@@ -191,14 +84,33 @@ export const Analytics = () => {
         isCentered: true,
       },
       {
-        label: t("share_count"),
-        sortingKey: "shareCount",
+        label: t("views"),
+        sortingKey: "totalViews",
         isNumbered: true,
         isCentered: true,
       },
       {
-        label: t("engagement_score"),
-        sortingKey: "engagementScore",
+        label: t("likes"),
+        sortingKey: "likes",
+        isNumbered: true,
+        isCentered: true,
+      },
+      {
+        label: t("dislikes"),
+        sortingKey: "dislikes",
+        isNumbered: true,
+        isCentered: true,
+      },
+      {
+        label: t("downloads"),
+        sortingKey: "totalDownloads",
+        isNumbered: true,
+        isCentered: true,
+      },
+
+      {
+        label: t("share_count"),
+        sortingKey: "totalShares",
         isNumbered: true,
         isCentered: true,
       },
@@ -212,11 +124,13 @@ export const Analytics = () => {
     dataToDisplay.forEach((row) => {
       csv += "\n";
       csv += `"${row.categoryName}",`;
+      csv += `${row.engagementScore.toFixed(2)},`;
+      csv += `${row.avgRating?.toFixed(1)},`;
       csv += `${row.views},`;
+      csv += `${row.likes},`;
+      csv += `${row.dislikes},`;
       csv += `${row.downloads},`;
-      csv += `${row.avgRating.toFixed(1)},`;
-      csv += `${row.shareCount},`;
-      csv += `${row.engagementScore}`;
+      csv += `${row.shares}`;
     });
 
     const reportDate = new Date().toISOString().split("T")[0];
@@ -229,20 +143,26 @@ export const Analytics = () => {
       <p key={`categoryName-${index}`} className="text">
         {item.categoryName}
       </p>,
+      <p key={`engagementScore-${index}`} className="text centered">
+        {item.engagementScore.toFixed(2)}
+      </p>,
+      <p key={`avgRating-${index}`} className="text centered">
+        {item.avgRating?.toFixed(1)}
+      </p>,
       <p key={`views-${index}`} className="text centered">
         {item.views.toLocaleString()}
+      </p>,
+      <p key={`likes-${index}`} className="text centered">
+        {item.likes.toLocaleString()}
+      </p>,
+      <p key={`dislikes-${index}`} className="text centered">
+        {item.dislikes.toLocaleString()}
       </p>,
       <p key={`downloads-${index}`} className="text centered">
         {item.downloads.toLocaleString()}
       </p>,
-      <p key={`avgRating-${index}`} className="text centered">
-        {item.avgRating.toFixed(1)}
-      </p>,
       <p key={`shareCount-${index}`} className="text centered">
-        {item.shareCount.toLocaleString()}
-      </p>,
-      <p key={`engagementScore-${index}`} className="text centered">
-        {item.engagementScore}
+        {item.shares.toLocaleString()}
       </p>,
     ];
   });
@@ -302,7 +222,7 @@ export const Analytics = () => {
   };
 
   const handleSearch = (searchTerm) => {
-    const filteredData = initialData.filter((item) =>
+    const filteredData = dataToDisplay.filter((item) =>
       item.categoryName.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setDataToDisplay(filteredData);

@@ -1,7 +1,9 @@
+import { useTranslation } from "react-i18next";
 import { useQuery } from "@tanstack/react-query";
 import { cmsSvc } from "@USupport-components-library/services";
 
 export const useGetContentStatistics = () => {
+  const { i18n } = useTranslation();
   const getAllCategoriesStatistics = async () => {
     try {
       const response = await cmsSvc.getAllCategoriesStatistics();
@@ -12,5 +14,8 @@ export const useGetContentStatistics = () => {
     }
   };
 
-  return useQuery(["all-categories-statistics"], getAllCategoriesStatistics);
+  return useQuery(
+    ["all-categories-statistics", i18n.language],
+    getAllCategoriesStatistics
+  );
 };

@@ -8,6 +8,8 @@
   "avg_rating": "Орташа баға",
   "share_count": "Бөлісу саны",
   "engagement_score": "Аудитория белсенділігі",
+  "likes": "Ұнады",
+  "dislikes": "Ұнамады",
 
   "search": "Іздеу",
   "export_label": "CSV ретінде экспорттау",

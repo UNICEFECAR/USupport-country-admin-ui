@@ -8,6 +8,8 @@
   "avg_rating": "Średnia ocena",
   "share_count": "Liczba udostępnień",
   "engagement_score": "Wskaźnik zaangażowania",
+  "likes": "Sympatie",
+  "dislikes": "Antypatie",
 
   "search": "Szukaj",
   "export_label": "Eksportuj dane jako CSV",

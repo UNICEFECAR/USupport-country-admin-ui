@@ -8,6 +8,8 @@
   "avg_rating": "Average Rating",
   "share_count": "Share Count",
   "engagement_score": "Engagement Score",
+  "likes": "Likes",
+  "dislikes": "Dislikes",
 
   "search": "Search",
   "export_label": "Export Data as CSV",
