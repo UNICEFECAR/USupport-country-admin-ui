@@ -27,5 +27,6 @@
   "password_placeholder": "Құпия сөз",
   "password": "Сайтқа кіру үшін құпия сөзіңізді енгізіңіз",
   "wrong_password": "Құпия сөз дұрыс емес",
-  "submit": "Жіберу"
+  "submit": "Жіберу",
+  "statistics": "Статистика"
 }

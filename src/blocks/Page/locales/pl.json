@@ -27,5 +27,6 @@
   "password_placeholder": "Hasło",
   "password": "Proszę wprowadź hasło dla",
   "wrong_password": "Nieprawidłowe hasło",
-  "submit": "Wprowadź"
+  "submit": "Wprowadź",
+  "statistics": "Statystyka"
 }
