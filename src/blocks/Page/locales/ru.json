@@ -27,5 +27,6 @@
   "password_placeholder": "Пароль",
   "password": "Пожалуйста, введите пароль для доступа к сайту",
   "wrong_password": "Неверный пароль",
-  "submit": "Отправить"
+  "submit": "Отправить",
+  "statistics": "Статистика"
 }

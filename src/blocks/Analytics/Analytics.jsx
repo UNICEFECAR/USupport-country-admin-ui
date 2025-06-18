@@ -124,7 +124,7 @@ export const Analytics = () => {
     dataToDisplay.forEach((row) => {
       csv += "\n";
       csv += `"${row.categoryName}",`;
-      csv += `${row.engagementScore.toFixed(2)},`;
+      csv += `${row.engagementScore?.toFixed(2)},`;
       csv += `${row.avgRating?.toFixed(1)},`;
       csv += `${row.views},`;
       csv += `${row.likes},`;
@@ -144,25 +144,25 @@ export const Analytics = () => {
         {item.categoryName}
       </p>,
       <p key={`engagementScore-${index}`} className="text centered">
-        {item.engagementScore.toFixed(2)}
+        {item.engagementScore?.toFixed(2)}
       </p>,
       <p key={`avgRating-${index}`} className="text centered">
         {item.avgRating?.toFixed(1)}
       </p>,
       <p key={`views-${index}`} className="text centered">
-        {item.views.toLocaleString()}
+        {item.views?.toLocaleString()}
       </p>,
       <p key={`likes-${index}`} className="text centered">
-        {item.likes.toLocaleString()}
+        {item.likes?.toLocaleString()}
       </p>,
       <p key={`dislikes-${index}`} className="text centered">
-        {item.dislikes.toLocaleString()}
+        {item.dislikes?.toLocaleString()}
       </p>,
       <p key={`downloads-${index}`} className="text centered">
-        {item.downloads.toLocaleString()}
+        {item.downloads?.toLocaleString()}
       </p>,
       <p key={`shareCount-${index}`} className="text centered">
-        {item.shares.toLocaleString()}
+        {item.shares?.toLocaleString()}
       </p>,
     ];
   });
