@@ -33,24 +33,33 @@ function App() {
     once: false,
   });
 
+  const [isInWelcome, setIsInWelcome] = useState(false);
   useEffect(() => {
-    if (!IS_DEV) {
-      window.addEventListener("beforeunload", (e) => {
-        if (
-          !(performance.getEntriesByType("navigation")[0].type === "reload")
-        ) {
-          // If the page is being refreshed, do nothing
+    const handleBeforeUnload = (e) => {
+      const token = localStorage.getItem("token");
+      // If the page is being refreshed, do nothing
+      if (!(performance.getEntriesByType("navigation")[0].type === "reload")) {
+        if (!IS_DEV && token && !isInWelcome) {
           e.preventDefault();
+          e.returnValue = "";
           adminSvc.logout();
         }
-      });
-    }
-  }, []);
+      }
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [isInWelcome]);
 
   const [theme, setTheme] = useState("light");
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <ThemeContext.Provider
+      value={{ theme, setTheme, isInWelcome, setIsInWelcome }}
+    >
       <div className={`theme-${theme}`}>
         <QueryClientProvider client={queryClient}>
           <Root />

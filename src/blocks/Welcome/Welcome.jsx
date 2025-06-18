@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useCustomNavigate as useNavigate } from "#hooks";
@@ -17,6 +17,7 @@ import {
   replaceLanguageInUrl,
   getLanguageFromUrl,
   getCountryLabelFromAlpha2,
+  ThemeContext,
 } from "@USupport-components-library/utils";
 
 import "./welcome.scss";
@@ -32,6 +33,8 @@ export const Welcome = () => {
   const { t, i18n } = useTranslation("welcome");
   const queryClient = useQueryClient();
   const navigate = useNavigate();
+  const { setIsInWelcome } = useContext(ThemeContext);
+
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [selectedLanguage, setSelectedLanguage] = useState(null);
 
@@ -39,6 +42,14 @@ export const Welcome = () => {
 
   const countriesQueryData = queryClient.getQueryData(["countries"]);
   const [countries, setCountries] = useState(countriesQueryData);
+
+  useEffect(() => {
+    setIsInWelcome(true);
+
+    return () => {
+      setIsInWelcome(false);
+    };
+  }, []);
 
   useEffect(() => {
     const localStorageCountry = localStorage.getItem("country");
