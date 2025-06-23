@@ -1,0 +1,32 @@
+{
+  "content_tab_label": "Content Metrics",
+  "general_tab_label": "General Metrics",
+
+  "category_name": "Category Name",
+  "views": "Views",
+  "downloads": "Downloads",
+  "avg_rating": "Average Rating",
+  "share_count": "Share Count",
+  "engagement_score": "Engagement Score",
+  "likes": "Likes",
+  "dislikes": "Dislikes",
+
+  "search": "Search",
+  "export_label": "Export Data as CSV",
+  "no_data_found": "No data found",
+
+  "totalConsultations": "Total Consultations",
+  "uniqueClientsConsultations": "Unique Clients Consultations",
+  "activeClients": "Active Clients",
+  "activeProviders": "Active Providers",
+  "totalWebsiteAccess": "Total Website Access",
+  "totalClientAccess": "Total Client Access",
+  "totalProviderAccess": "Total Provider Access",
+  "uniqueWebsiteAccess": "Unique Website Access",
+  "uniqueClientAccess": "Unique Client Access",
+  "uniqueProviderAccess": "Unique Provider Access",
+  "uniqueClientsThatUsedCoupon": "Unique Clients That Used Coupon",
+  "totalCouponConsultations": "Total Coupon Consultations",
+  "positiveClientRatings": "Positive Client Ratings",
+  "positiveProviderRatings": "Positive Provider Ratings"
+}

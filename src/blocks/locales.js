@@ -26,3 +26,4 @@ export * as MyQAReports from "./MyQAReports/locales.js";
 export * as MyQA from "./MyQA/locales.js";
 export * as Organizations from "./Organizations/locales.js";
 export * as Videos from "./Videos/locales.js";
+export * as Analytics from "./Analytics/locales.js";
