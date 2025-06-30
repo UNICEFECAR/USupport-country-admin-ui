@@ -37,6 +37,9 @@ export const useGetOrganizationsWithDetails = () => {
         workWith: x?.work_with || [],
         providers: x?.providers || [],
         specialisations: x?.specialisations || [],
+        totalConsultations: x?.totalConsultations || 0,
+        uniqueProviders: x?.uniqueProviders || 0,
+        uniqueClients: x?.uniqueClients || 0,
       }));
     },
   });
