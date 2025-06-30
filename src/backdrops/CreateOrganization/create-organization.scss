@@ -1,0 +1,29 @@
+@import "@USupport-components-library/styles";
+
+.create-organizations {
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-block: $spacing_1_2;
+    gap: $spacing_1_2;
+    text-align: left;
+
+    &__select {
+      z-index: 101;
+
+      &--second {
+        z-index: 100;
+      }
+    }
+  }
+
+  & .select-container {
+    z-index: 101;
+  }
+
+  &__select--second {
+    z-index: 100;
+  }
+}

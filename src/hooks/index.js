@@ -43,3 +43,4 @@ export * from "./useGetLanguages";
 export * from "./useCustomNavigate";
 export * from "./useGetContentStatistics";
 export * from "./useGetPlatformMetrics.js";
+export * from "./useGetOrganizationMetadata.js";
