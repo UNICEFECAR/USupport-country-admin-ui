@@ -2,7 +2,7 @@
   "page_1": "Pulpit nawigacyjny",
   "page_2": "Konsultanci",
   "page_3": "Zarządzanie treścią",
-  "page_4": "Centrum SOS",
+  "page_4": "Analityka",
   "page_5": "FAQ",
   "page_6": "Raporty",
   "page_7": "Kupony",
@@ -27,5 +27,6 @@
   "password_placeholder": "Hasło",
   "password": "Proszę wprowadź hasło dla",
   "wrong_password": "Nieprawidłowe hasło",
-  "submit": "Wprowadź"
+  "submit": "Wprowadź",
+  "statistics": "Statystyka"
 }

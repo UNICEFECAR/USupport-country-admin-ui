@@ -1,0 +1,32 @@
+{
+  "content_tab_label": "Metryki treści",
+  "general_tab_label": "Metryki ogólne",
+
+  "category_name": "Nazwa kategorii",
+  "views": "Wyświetlenia",
+  "downloads": "Pobrane",
+  "avg_rating": "Średnia ocena",
+  "share_count": "Liczba udostępnień",
+  "engagement_score": "Wskaźnik zaangażowania",
+  "likes": "Sympatie",
+  "dislikes": "Antypatie",
+
+  "search": "Szukaj",
+  "export_label": "Eksportuj dane jako CSV",
+  "no_data_found": "Nie znaleziono danych",
+
+  "totalConsultations": "Łączne konsultacje",
+  "uniqueClientsConsultations": "Unikalne konsultacje klientów",
+  "activeClients": "Aktywni klienci",
+  "activeProviders": "Aktywni dostawcy",
+  "totalWebsiteAccess": "Łączny dostęp do strony internetowej",
+  "totalClientAccess": "Łączny dostęp klientów",
+  "totalProviderAccess": "Łączny dostęp dostawców",
+  "uniqueWebsiteAccess": "Unikalny dostęp do strony internetowej",
+  "uniqueClientAccess": "Unikalny dostęp klientów",
+  "uniqueProviderAccess": "Unikalny dostęp dostawców",
+  "uniqueClientsThatUsedCoupon": "Unikalni klienci, którzy użyli kuponu",
+  "totalCouponConsultations": "Łączne konsultacje z kuponem",
+  "positiveClientRatings": "Pozytywne oceny klientów",
+  "positiveProviderRatings": "Pozytywne oceny dostawców"
+}

@@ -42,6 +42,7 @@ import {
   Organizations,
   OrganizationDetails,
   ContentManagement,
+  Analytics,
 } from "#pages";
 
 import { CountryValidationRoute, ProtectedRoute } from "../../routes";
@@ -271,6 +272,14 @@ const LanguageLayout = () => {
         element={
           <ProtectedRoute>
             <ContentManagement />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="analytics"
+        element={
+          <ProtectedRoute>
+            <Analytics />
           </ProtectedRoute>
         }
       />

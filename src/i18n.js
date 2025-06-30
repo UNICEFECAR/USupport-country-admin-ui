@@ -29,6 +29,7 @@ import {
   MyQAReports,
   MyQA,
   Organizations,
+  Analytics,
 } from "#blocks/locales.js";
 
 import {
@@ -56,6 +57,7 @@ import {
   Organizations as OrganizationsPage,
   OrganizationDetails as OrganizationDetailsPage,
   ContentManagement as ContentManagementPage,
+  Analytics as AnalyticsPage,
 } from "#pages/locales.js";
 
 import {
@@ -100,6 +102,7 @@ const resources = {
     "my-qa-reports": MyQAReports.en,
     "my-qa": MyQA.en,
     organizations: Organizations.en,
+    analytics: Analytics.en,
 
     // Pages
     "not-found-page": NotFoundPage.en,
@@ -126,6 +129,8 @@ const resources = {
     "organizations-page": OrganizationsPage.en,
     "organization-details-page": OrganizationDetailsPage.en,
     "content-management-page": ContentManagementPage.en,
+    "analytics-page": AnalyticsPage.en,
+
     // Backdrops
     "upload-picture": UploadPicture.en,
     "delete-profile-picture": DeleteProfilePicture.en,
@@ -168,6 +173,7 @@ const resources = {
     "my-qa-reports": MyQAReports.kk,
     "my-qa": MyQA.kk,
     Organizations: Organizations.kk,
+    analytics: Analytics.kk,
 
     // Pages
     "not-found-page": NotFoundPage.kk,
@@ -194,6 +200,8 @@ const resources = {
     "organizations-page": OrganizationsPage.kk,
     "organization-details-page": OrganizationDetailsPage.kk,
     "content-management-page": ContentManagementPage.kk,
+    "analytics-page": AnalyticsPage.kk,
+
     // Backdrops
     "upload-picture": UploadPicture.kk,
     "delete-profile-picture": DeleteProfilePicture.kk,
@@ -236,6 +244,7 @@ const resources = {
     "my-qa-reports": MyQAReports.ru,
     "my-qa": MyQA.ru,
     organizations: Organizations.ru,
+    analytics: Analytics.ru,
 
     // Pages
     "not-found-page": NotFoundPage.ru,
@@ -270,6 +279,7 @@ const resources = {
     "question-details": QuestionDetails.ru,
     "filter-questions": FilterQuestions.ru,
     "change-password-backdrop": ChangePassword.ru,
+    "analytics-page": AnalyticsPage.ru,
 
     // Routes
     root: Root.ru,
@@ -304,6 +314,7 @@ const resources = {
     "my-qa-reports": MyQAReports.uk,
     "my-qa": MyQA.uk,
     organizations: Organizations.uk,
+    analytics: Analytics.uk,
 
     // Pages
     "not-found-page": NotFoundPage.uk,
@@ -330,6 +341,8 @@ const resources = {
     "organizations-page": Organizations.uk,
     "organization-details-page": OrganizationDetailsPage.uk,
     "content-management-page": ContentManagementPage.uk,
+    "analytics-page": AnalyticsPage.uk,
+
     // Backdrops
     "upload-picture": UploadPicture.uk,
     "delete-profile-picture": DeleteProfilePicture.uk,
@@ -372,6 +385,7 @@ const resources = {
     "my-qa-reports": MyQAReports.pl,
     "my-qa": MyQA.pl,
     organizations: Organizations.pl,
+    analytics: Analytics.pl,
 
     // Pages
     "not-found-page": NotFoundPage.pl,
@@ -398,6 +412,8 @@ const resources = {
     "organizations-page": OrganizationsPage.pl,
     "organization-details-page": OrganizationDetailsPage.pl,
     "content-management-page": ContentManagementPage.pl,
+    "analytics-page": AnalyticsPage.pl,
+
     // Backdrops
     "upload-picture": UploadPicture.pl,
     "delete-profile-picture": DeleteProfilePicture.pl,
