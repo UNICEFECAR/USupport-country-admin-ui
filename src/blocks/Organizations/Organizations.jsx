@@ -95,7 +95,9 @@ export const Organizations = () => {
           {item.paymentMethod?.name ? t(item.paymentMethod.name) : "-"}
         </p>,
         <p className="text">
-          {item.userInteraction?.name ? t(item.userInteraction.name) : "-"}
+          {item.userInteraction?.name
+            ? t(item.userInteraction.name + "_interaction")
+            : "-"}
         </p>,
         <p className="text">
           {item.workWith && item.workWith.length > 0
