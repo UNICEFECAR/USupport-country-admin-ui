@@ -14,6 +14,7 @@ import { CreateOrganization } from "#backdrops";
  * @return {jsx}
  */
 export const Organizations = () => {
+  const country = localStorage.getItem("country");
   const { t, i18n } = useTranslation("organizations");
   const navigate = useNavigate();
 
@@ -23,14 +24,15 @@ export const Organizations = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [organizationToEdit, setOrganizationToEdit] = useState(null);
 
-  useEffect(() => {
-    if (data) {
-      setDataToDisplay(data);
-    }
-  }, [data]);
+  let countryRows = [
+    { label: t("name"), sortingKey: "name" },
+    { label: t("unique_providers"), sortingKey: "uniqueProviders" },
+    { label: t("unique_clients"), sortingKey: "uniqueClients" },
+    { label: t("total_consultations"), sortingKey: "totalConsultations" },
+  ];
 
-  const rows = useMemo(() => {
-    return [
+  if (country === "RO") {
+    countryRows = [
       { label: t("name"), sortingKey: "name" },
       { label: t("unit_name"), sortingKey: "unitName" },
       { label: t("website"), sortingKey: "websiteUrl" },
@@ -47,9 +49,29 @@ export const Organizations = () => {
       { label: t("unique_clients"), sortingKey: "uniqueClients" },
       { label: t("total_consultations"), sortingKey: "totalConsultations" },
     ];
+  }
+
+  useEffect(() => {
+    if (data) {
+      setDataToDisplay(data);
+    }
+  }, [data]);
+
+  const rows = useMemo(() => {
+    return countryRows;
   }, [i18n.language]);
 
   const rowsData = useMemo(() => {
+    if (country !== "RO") {
+      return dataToDisplay?.map((item) => {
+        return [
+          <p className="text">{item.name}</p>,
+          <p className="text centered">{item.providers?.length || 0}</p>,
+          <p className="text centered">{item.uniqueClients || 0}</p>,
+          <p className="text centered">{item.totalConsultations || 0}</p>,
+        ];
+      });
+    }
     return dataToDisplay?.map((item) => {
       return [
         <p className="text">{item.name}</p>,

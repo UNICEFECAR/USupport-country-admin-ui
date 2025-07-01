@@ -19,22 +19,6 @@ import {
 
 import "./create-organization.scss";
 
-const DEFAULT_ORGANIZATION = {
-  name: "",
-  unitName: "",
-  websiteUrl: "",
-  address: "",
-  location: { latitude: null, longitude: null },
-  phone: "",
-  email: "",
-  description: "",
-  workWith: [],
-  district: null,
-  paymentMethod: null,
-  userInteraction: null,
-  specialisations: [],
-};
-
 const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
 /**
@@ -52,40 +36,70 @@ export const CreateOrganization = ({
 }) => {
   const { t } = useTranslation("organizations");
   const queryClient = useQueryClient();
+  const country = localStorage.getItem("country");
+
+  let DEFAULT_ORGANIZATION = {
+    name: "",
+  };
+
+  if (country === "RO") {
+    DEFAULT_ORGANIZATION = {
+      name: "",
+      unitName: "",
+      websiteUrl: "",
+      address: "",
+      location: { latitude: null, longitude: null },
+      phone: "",
+      email: "",
+      description: "",
+      workWith: [],
+      district: null,
+      paymentMethod: null,
+      userInteraction: null,
+      specialisations: [],
+    };
+  }
 
   const [data, setData] = useState(DEFAULT_ORGANIZATION);
 
   const { data: metadata, isLoading: isMetadataLoading } =
-    useGetOrganizationMetadata();
+    useGetOrganizationMetadata(country);
 
   useEffect(() => {
     if (organizationToEdit) {
-      setData({
-        name: organizationToEdit.name || "",
-        unitName: organizationToEdit.unitName || "",
-        websiteUrl: organizationToEdit.websiteUrl || "",
-        address: organizationToEdit.address || "",
-        location: {
-          latitude: organizationToEdit.location?.latitude || null,
-          longitude: organizationToEdit.location?.longitude || null,
-        },
-        phone: organizationToEdit.phone || "",
-        email: organizationToEdit.email || "",
-        description: organizationToEdit.description || "",
-        workWith: Array.isArray(organizationToEdit.workWith)
-          ? organizationToEdit.workWith.map((w) => w.id)
-          : [],
-        district: organizationToEdit.district?.id || "",
-        paymentMethod: organizationToEdit.paymentMethod?.id || "",
-        userInteraction: organizationToEdit.userInteraction?.id || "",
-        specialisations: Array.isArray(organizationToEdit.specialisations)
-          ? organizationToEdit.specialisations.map((s) => s.id)
-          : [],
-      });
+      if (country === "RO") {
+        setData({
+          name: organizationToEdit.name || "",
+          unitName: organizationToEdit.unitName || "",
+          websiteUrl: organizationToEdit.websiteUrl || "",
+          address: organizationToEdit.address || "",
+          location: {
+            latitude: organizationToEdit.location?.latitude || null,
+            longitude: organizationToEdit.location?.longitude || null,
+          },
+          phone: organizationToEdit.phone || "",
+          email: organizationToEdit.email || "",
+          description: organizationToEdit.description || "",
+          workWith: Array.isArray(organizationToEdit.workWith)
+            ? organizationToEdit.workWith.map((w) => w.id)
+            : [],
+          district: organizationToEdit.district?.id || "",
+          paymentMethod: organizationToEdit.paymentMethod?.id || "",
+          userInteraction: organizationToEdit.userInteraction?.id || "",
+          specialisations: Array.isArray(organizationToEdit.specialisations)
+            ? organizationToEdit.specialisations.map((s) => s.id)
+            : [],
+        });
+      } else {
+        // For non-RO countries, only set the name field
+        setData({
+          name: organizationToEdit.name || "",
+        });
+      }
     } else {
       setData(DEFAULT_ORGANIZATION);
     }
-  }, [organizationToEdit]);
+  }, [organizationToEdit, country]);
 
   useEffect(() => {
     if (!isOpen) {
@@ -150,21 +164,31 @@ export const CreateOrganization = ({
   const handleSave = (e) => {
     e.preventDefault();
 
-    const organizationData = {
-      name: data.name,
-      unitName: data.unitName,
-      websiteUrl: data.websiteUrl,
-      address: data.address,
-      location: data.location,
-      phone: data.phone,
-      email: data.email,
-      description: data.description,
-      workWith: data.workWith,
-      district: data.district,
-      paymentMethod: data.paymentMethod,
-      userInteraction: data.userInteraction,
-      specialisations: data.specialisations,
-    };
+    let organizationData;
+
+    if (country === "RO") {
+      // For RO country, include all fields
+      organizationData = {
+        name: data.name,
+        unitName: data.unitName,
+        websiteUrl: data.websiteUrl,
+        address: data.address,
+        location: data.location,
+        phone: data.phone,
+        email: data.email,
+        description: data.description,
+        workWith: data.workWith,
+        district: data.district,
+        paymentMethod: data.paymentMethod,
+        userInteraction: data.userInteraction,
+        specialisations: data.specialisations,
+      };
+    } else {
+      // For non-RO countries, only include the name field
+      organizationData = {
+        name: data.name,
+      };
+    }
 
     const mutation = organizationToEdit
       ? editOrganizationMutation
@@ -191,10 +215,24 @@ export const CreateOrganization = ({
     editOrganizationMutation.isLoading || createOrganizationMutation.isLoading;
 
   const renderForm = () => {
-    if (isMetadataLoading) {
+    if (country === "RO" && isMetadataLoading) {
       return <Loading />;
     }
 
+    // For non-RO countries, only show the name field
+    if (country !== "RO") {
+      return (
+        <Input
+          label={t("name")}
+          value={data.name}
+          onChange={(e) => handleChange("name", e.target.value)}
+          placeholder={t("name_placeholder")}
+          required
+        />
+      );
+    }
+
+    // For RO country, show all fields
     return (
       <>
         <Input
