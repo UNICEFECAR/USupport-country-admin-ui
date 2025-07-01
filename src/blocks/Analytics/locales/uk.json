@@ -1,0 +1,32 @@
+{
+  "content_tab_label": "Метрики контенту",
+  "general_tab_label": "Загальні метрики",
+
+  "category_name": "Назва категорії",
+  "views": "Перегляди",
+  "downloads": "Завантаження",
+  "avg_rating": "Середня оцінка",
+  "share_count": "Кількість поширень",
+  "engagement_score": "Оцінка залученості",
+  "likes": "Лайки",
+  "dislikes": "Дизлайки",
+
+  "search": "Пошук",
+  "export_label": "Експортувати у CSV",
+  "no_data_found": "Дані не знайдено",
+
+  "totalConsultations": "Загальна кількість консультацій",
+  "uniqueClientsConsultations": "Унікальні консультації клієнтів",
+  "activeClients": "Активні клієнти",
+  "activeProviders": "Активні провайдери",
+  "totalWebsiteAccess": "Загальний доступ до веб-сайту",
+  "totalClientAccess": "Загальний доступ клієнтів",
+  "totalProviderAccess": "Загальний доступ провайдерів",
+  "uniqueWebsiteAccess": "Унікальний доступ до веб-сайту",
+  "uniqueClientAccess": "Унікальний доступ клієнтів",
+  "uniqueProviderAccess": "Унікальний доступ провайдерів",
+  "uniqueClientsThatUsedCoupon": "Унікальні клієнти, які використовували купон",
+  "totalCouponConsultations": "Загальна кількість консультацій з купоном",
+  "positiveClientRatings": "Позитивні оцінки клієнтів",
+  "positiveProviderRatings": "Позитивні оцінки провайдерів"
+}

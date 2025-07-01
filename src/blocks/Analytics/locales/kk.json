@@ -1,0 +1,32 @@
+{
+  "content_tab_label": "Контент метрикалары",
+  "general_tab_label": "Жалпы метрикалар",
+
+  "category_name": "Санат атауы",
+  "views": "Көрулер",
+  "downloads": "Жүктеулер",
+  "avg_rating": "Орташа баға",
+  "share_count": "Бөлісу саны",
+  "engagement_score": "Аудитория белсенділігі",
+  "likes": "Ұнады",
+  "dislikes": "Ұнамады",
+
+  "search": "Іздеу",
+  "export_label": "CSV ретінде экспорттау",
+  "no_data_found": "Ақпарат табылмады",
+
+  "totalConsultations": "Жалпы кеңес беру",
+  "uniqueClientsConsultations": "Бірегей клиенттер кеңес беру",
+  "activeClients": "Белсенді клиенттер",
+  "activeProviders": "Белсенді провайдерлер",
+  "totalWebsiteAccess": "Жалпы веб-сайтқа кіру",
+  "totalClientAccess": "Жалпы клиенттерге кіру",
+  "totalProviderAccess": "Жалпы провайдерлерге кіру",
+  "uniqueWebsiteAccess": "Бірегей веб-сайтқа кіру",
+  "uniqueClientAccess": "Бірегей клиенттерге кіру",
+  "uniqueProviderAccess": "Бірегей провайдерлерге кіру",
+  "uniqueClientsThatUsedCoupon": "Бірегей купон пайдаланған клиенттер",
+  "totalCouponConsultations": "Жалпы купон бойынша кеңес беру",
+  "positiveClientRatings": "Позитивті клиент бағалаулары",
+  "positiveProviderRatings": "Позитивті провайдер бағалаулары"
+}

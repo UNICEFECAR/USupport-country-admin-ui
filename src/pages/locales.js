@@ -27,3 +27,4 @@ export * as Dashboard from "./Dashboard/locales.js";
 export * as Organizations from "./Organizations/locales.js";
 export * as OrganizationDetails from "./OrganizationDetails/locales.js";
 export * as ContentManagement from './ContentManagement/locales.js';
+export * as Analytics from './Analytics/locales.js';

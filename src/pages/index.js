@@ -27,3 +27,4 @@ export * from "./MyQA";
 export * from "./Organizations";
 export * from "./OrganizationDetails";
 export * from "./ContentManagement";
+export * from "./Analytics";

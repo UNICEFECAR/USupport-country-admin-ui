@@ -2,7 +2,7 @@
   "page_1": "Dashboard",
   "page_2": "Providers",
   "page_3": "Content Management",
-  "page_4": "SOS center",
+  "page_4": "Analytics",
   "page_5": "FAQ",
   "page_6": "Reports",
   "page_7": "Coupons",
@@ -27,5 +27,6 @@
   "password_placeholder": "Password",
   "password": "Please enter your password to access the site",
   "wrong_password": "Wrong password",
-  "submit": "Submit"
+  "submit": "Submit",
+  "statistics": "Statistics"
 }

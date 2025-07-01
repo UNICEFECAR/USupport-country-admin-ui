@@ -19,15 +19,15 @@ export const ContentManagement = () => {
   const tab = searchParams.get("tab");
 
   const [contentTabs, setContentTabs] = useState([
-    { label: "articles", value: "articles", isSelected: tab === "articles" },
-    { label: "videos", value: "videos", isSelected: tab === "videos" },
-    { label: "podcasts", value: "podcasts", isSelected: tab === "podcasts" },
+    { label: "faqs", value: "faqs", isSelected: tab === "faqs" },
     {
       label: "sos_centers",
       value: "sos_centers",
       isSelected: tab === "sos_centers",
     },
-    { label: "faqs", value: "faqs", isSelected: tab === "faqs" },
+    { label: "articles", value: "articles", isSelected: tab === "articles" },
+    { label: "videos", value: "videos", isSelected: tab === "videos" },
+    { label: "podcasts", value: "podcasts", isSelected: tab === "podcasts" },
   ]);
 
   const handleTabSelect = (index) => {
@@ -72,6 +72,7 @@ export const ContentManagement = () => {
             classes="page__content-management__tabs-container"
           >
             <Tabs
+              numberOfOptionsToRender={5}
               options={contentTabs.map((x) => ({
                 ...x,
                 label: t(x.label),
