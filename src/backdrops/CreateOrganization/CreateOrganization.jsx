@@ -301,7 +301,7 @@ export const CreateOrganization = ({
         <Textarea
           label={t("description")}
           value={data.description}
-          onChange={(e) => handleChange("description", e.target.value)}
+          onChange={(text) => handleChange("description", text)}
           placeholder={t("description_placeholder")}
         />
 
@@ -358,7 +358,7 @@ export const CreateOrganization = ({
             setSelected={(value) => handleChange("userInteraction", value)}
             placeholder={t("user_interaction_placeholder")}
             options={metadata.userInteractions.map((interaction) => ({
-              label: t(interaction.name),
+              label: t(interaction.name + "_interaction"),
               value: interaction.userInteractionId,
             }))}
           />
