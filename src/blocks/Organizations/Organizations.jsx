@@ -1,33 +1,20 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { toast } from "react-toastify";
-import { useQueryClient } from "@tanstack/react-query";
 import { useCustomNavigate as useNavigate } from "#hooks";
 
-import {
-  Block,
-  BaseTable,
-  Loading,
-  Modal,
-  Input,
-} from "@USupport-components-library/src";
-import {
-  useGetOrganizationsWithDetails,
-  useEditOrganization,
-  useCreateOrganization,
-} from "#hooks";
-
-import "./organizations.scss";
+import { Block, BaseTable, Loading } from "@USupport-components-library/src";
+import { useGetOrganizationsWithDetails } from "#hooks";
+import { CreateOrganization } from "#backdrops";
 
 /**
  * Organizations
  *
- * Organizations
+ * Organizations component - with complete organization details in table
  *
  * @return {jsx}
  */
 export const Organizations = () => {
-  const queryClient = useQueryClient();
+  const country = localStorage.getItem("country");
   const { t, i18n } = useTranslation("organizations");
   const navigate = useNavigate();
 
@@ -35,8 +22,34 @@ export const Organizations = () => {
 
   const [dataToDisplay, setDataToDisplay] = useState();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [organizationToEdit, setOrganizationToEdit] = useState();
-  const [newOrganizationName, setNewOrganizationName] = useState("");
+  const [organizationToEdit, setOrganizationToEdit] = useState(null);
+
+  let countryRows = [
+    { label: t("name"), sortingKey: "name" },
+    { label: t("unique_providers"), sortingKey: "uniqueProviders" },
+    { label: t("unique_clients"), sortingKey: "uniqueClients" },
+    { label: t("total_consultations"), sortingKey: "totalConsultations" },
+  ];
+
+  if (country === "RO") {
+    countryRows = [
+      { label: t("name"), sortingKey: "name" },
+      { label: t("unit_name"), sortingKey: "unitName" },
+      { label: t("website"), sortingKey: "websiteUrl" },
+      { label: t("address"), sortingKey: "address" },
+      { label: t("phone"), sortingKey: "phone" },
+      { label: t("email"), sortingKey: "email" },
+      { label: t("district"), sortingKey: "district" },
+      { label: t("payment_method"), sortingKey: "paymentMethod" },
+      { label: t("user_interaction"), sortingKey: "userInteraction" },
+      { label: t("work_with"), sortingKey: "workWith" },
+      { label: t("specialisations"), sortingKey: "specialisations" },
+      { label: t("description"), sortingKey: "description" },
+      { label: t("unique_providers"), sortingKey: "uniqueProviders" },
+      { label: t("unique_clients"), sortingKey: "uniqueClients" },
+      { label: t("total_consultations"), sortingKey: "totalConsultations" },
+    ];
+  }
 
   useEffect(() => {
     if (data) {
@@ -45,24 +58,68 @@ export const Organizations = () => {
   }, [data]);
 
   const rows = useMemo(() => {
-    return [
-      { label: t("name"), sortingKey: "name" },
-      { label: t("unique_providers"), sortingKey: "uniqueProviders" },
-      { label: t("unique_clients"), sortingKey: "uniqueClients" },
-      { label: t("total_consultations"), sortingKey: "totalConsultations" },
-    ];
+    return countryRows;
   }, [i18n.language]);
 
   const rowsData = useMemo(() => {
+    if (country !== "RO") {
+      return dataToDisplay?.map((item) => {
+        return [
+          <p className="text">{item.name}</p>,
+          <p className="text centered">{item.providers?.length || 0}</p>,
+          <p className="text centered">{item.uniqueClients || 0}</p>,
+          <p className="text centered">{item.totalConsultations || 0}</p>,
+        ];
+      });
+    }
     return dataToDisplay?.map((item) => {
       return [
         <p className="text">{item.name}</p>,
-        <p className="text centered">{item.uniqueProviders}</p>,
-        <p className="text centered">{item.uniqueClients}</p>,
-        <p className="text centered">{item.totalConsultations}</p>,
+        <p className="text">{item.unitName || "-"}</p>,
+        <p className="text">
+          {item.websiteUrl ? (
+            <a href={item.websiteUrl} target="_blank" rel="noopener noreferrer">
+              {item.websiteUrl}
+            </a>
+          ) : (
+            "-"
+          )}
+        </p>,
+        <p className="text">{item.address || "-"}</p>,
+        <p className="text">{item.phone || "-"}</p>,
+        <p className="text">
+          {item.email ? <a href={`mailto:${item.email}`}>{item.email}</a> : "-"}
+        </p>,
+        <p className="text">{t(item.district?.name) || "-"}</p>,
+        <p className="text">
+          {item.paymentMethod?.name ? t(item.paymentMethod.name) : "-"}
+        </p>,
+        <p className="text">
+          {item.userInteraction?.name ? t(item.userInteraction.name) : "-"}
+        </p>,
+        <p className="text">
+          {item.workWith && item.workWith.length > 0
+            ? item.workWith.map((w) => t(w.topic)).join(", ")
+            : "-"}
+        </p>,
+        <p className="text">
+          {item.specialisations && item.specialisations.length > 0
+            ? item.specialisations.map((s) => t(s.name)).join(", ")
+            : "-"}
+        </p>,
+        <p className="text" title={item.description}>
+          {item.description
+            ? item.description.length > 50
+              ? `${item.description.substring(0, 50)}...`
+              : item.description
+            : "-"}
+        </p>,
+        <p className="text centered">{item.providers?.length || 0}</p>,
+        <p className="text centered">{item.uniqueClients || 0}</p>,
+        <p className="text centered">{item.totalConsultations || 0}</p>,
       ];
     });
-  }, [dataToDisplay]);
+  }, [dataToDisplay, t]);
 
   const menuOptions = [
     {
@@ -75,87 +132,30 @@ export const Organizations = () => {
       icon: "edit",
       text: t("edit"),
       handleClick: (id) => {
-        console.log(id, "id");
-        setOrganizationToEdit(data.find((item) => item.organizationId === id));
+        const organization = data.find((item) => item.organizationId === id);
+        setOrganizationToEdit(organization);
         setIsModalOpen(true);
       },
     },
   ];
 
-  const onEditSuccess = () => {
-    toast.success(t("organization_edited"));
+  const handleModalClose = () => {
     setIsModalOpen(false);
     setOrganizationToEdit(null);
-    queryClient.invalidateQueries({
-      queryKey: ["GetOrganizationsWithDetails"],
-    });
-  };
-  const onEditError = () => {};
-  const editOrganizationMutation = useEditOrganization(
-    onEditSuccess,
-    onEditError
-  );
-
-  const onCreateSuccess = () => {
-    toast.success(t("organization_added"));
-    setIsModalOpen(false);
-    setNewOrganizationName("");
-    queryClient.invalidateQueries({
-      queryKey: ["GetOrganizationsWithDetails"],
-    });
   };
 
-  const onCreateError = () => {};
-  const createOrganizationMutation = useCreateOrganization(
-    onCreateSuccess,
-    onCreateError
-  );
-
-  const addOrganization = () => {
-    createOrganizationMutation.mutate({ name: newOrganizationName });
-  };
-  const editOrganization = () => {
-    editOrganizationMutation.mutate({
-      name: organizationToEdit.name,
-      organizationId: organizationToEdit.organizationId,
-    });
+  const handleAddOrganization = () => {
+    setOrganizationToEdit(null);
+    setIsModalOpen(true);
   };
 
   return (
     <React.Fragment>
-      <Modal
+      <CreateOrganization
         isOpen={isModalOpen}
-        heading={t(
-          organizationToEdit ? "edit_organization" : "create_organization"
-        )}
-        closeModal={() => setIsModalOpen(false)}
-        classes="organizations"
-        ctaLabel={organizationToEdit ? t("save") : t("add")}
-        ctaHandleClick={organizationToEdit ? editOrganization : addOrganization}
-        isCtaLoading={
-          editOrganizationMutation.isLoading ||
-          createOrganizationMutation.isLoading
-        }
-      >
-        <div className="organizations__modal">
-          <Input
-            label={t("name")}
-            value={
-              organizationToEdit ? organizationToEdit.name : newOrganizationName
-            }
-            onChange={(e) => {
-              if (organizationToEdit) {
-                setOrganizationToEdit((prev) => ({
-                  ...prev,
-                  name: e.target.value,
-                }));
-              } else {
-                setNewOrganizationName(e.target.value);
-              }
-            }}
-          />
-        </div>
-      </Modal>
+        onClose={handleModalClose}
+        organizationToEdit={organizationToEdit}
+      />
 
       <Block classes="organizations">
         {isLoading ? (
@@ -169,8 +169,7 @@ export const Organizations = () => {
             updateData={setDataToDisplay}
             menuOptions={menuOptions}
             buttonLabel={t("add_button")}
-            buttonAction={() => setIsModalOpen(true)}
-            // secondaryButtonLabel={t("filter_button")}
+            buttonAction={handleAddOrganization}
             t={t}
           />
         )}
