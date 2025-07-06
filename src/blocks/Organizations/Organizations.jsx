@@ -2,9 +2,13 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useCustomNavigate as useNavigate } from "#hooks";
 
-import { Block, BaseTable, Loading } from "@USupport-components-library/src";
+import {
+  InputSearch,
+  Block,
+  BaseTable,
+  Loading,
+} from "@USupport-components-library/src";
 import { useGetOrganizationsWithDetails } from "#hooks";
-import { CreateOrganization } from "#backdrops";
 
 /**
  * Organizations
@@ -13,16 +17,15 @@ import { CreateOrganization } from "#backdrops";
  *
  * @return {jsx}
  */
-export const Organizations = () => {
+export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
   const country = localStorage.getItem("country");
   const { t, i18n } = useTranslation("organizations");
   const navigate = useNavigate();
 
-  const { data, isLoading } = useGetOrganizationsWithDetails();
-
+  const [search, setSearch] = useState("");
   const [dataToDisplay, setDataToDisplay] = useState();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [organizationToEdit, setOrganizationToEdit] = useState(null);
+
+  const { data, isLoading } = useGetOrganizationsWithDetails({ search });
 
   let countryRows = [
     { label: t("name"), sortingKey: "name" },
@@ -141,25 +144,14 @@ export const Organizations = () => {
     },
   ];
 
-  const handleModalClose = () => {
-    setIsModalOpen(false);
-    setOrganizationToEdit(null);
-  };
-
-  const handleAddOrganization = () => {
-    setOrganizationToEdit(null);
-    setIsModalOpen(true);
-  };
-
   return (
     <React.Fragment>
-      <CreateOrganization
-        isOpen={isModalOpen}
-        onClose={handleModalClose}
-        organizationToEdit={organizationToEdit}
-      />
-
       <Block classes="organizations">
+        <InputSearch
+          value={search}
+          onChange={(val) => setSearch(val)}
+          placeholder={t("search")}
+        />
         {isLoading ? (
           <Loading />
         ) : (
@@ -170,8 +162,6 @@ export const Organizations = () => {
             handleClickPropName="organizationId"
             updateData={setDataToDisplay}
             menuOptions={menuOptions}
-            buttonLabel={t("add_button")}
-            buttonAction={handleAddOrganization}
             t={t}
           />
         )}
