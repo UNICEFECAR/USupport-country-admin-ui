@@ -77,5 +77,12 @@
   "child_helpline": "Telefon zaufania dla dzieci",
   "child_psychiatry": "Psychiatria dziecięca",
   "art_recreational_activities": "Zajęcia rekreacyjne artystyczne (teatr, muzyka, poezja, malarstwo, opowiadanie)",
-  "sport_recreational_activities": "Zajęcia rekreacyjne sportowe (sport, gry, taniec)"
+  "sport_recreational_activities": "Zajęcia rekreacyjne sportowe (sport, gry, taniec)",
+
+  "delete_label": "Usuń",
+  "delete_heading": "Czy na pewno chcesz usunąć organizację: {{name}}",
+  "delete_subheading": "Tej operacji nie można cofnąć.",
+  "delete_providers_heading": "Organizacja {{name}} ma powiązanych dostawców",
+  "delete_providers_subheading": "Usuń wszystkich dostawców przed usunięciem organizacji. Lista dostawców",
+  "delete_success": "Organizacja {{name}} została pomyślnie usunięta"
 }

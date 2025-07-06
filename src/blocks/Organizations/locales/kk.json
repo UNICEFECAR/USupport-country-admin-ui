@@ -77,5 +77,12 @@
   "child_helpline": "Детская горячая линия",
   "child_psychiatry": "Детская психиатрия",
   "art_recreational_activities": "Творческая досуговая деятельность (театр, музыка, поэзия, живопись, рассказы)",
-  "sport_recreational_activities": "Спортивная досуговая деятельность (спорт, игры, танцы)"
+  "sport_recreational_activities": "Спортивная досуговая деятельность (спорт, игры, танцы)",
+
+  "delete_label": "Жою",
+  "delete_heading": "Ұйымды жоюға сенімдісіз бе: {{name}}",
+  "delete_subheading": "Бұл әрекет қайтымсыз.",
+  "delete_providers_heading": "{{name}} ұйымында байланысқан провайдерлер бар",
+  "delete_providers_subheading": "Ұйымды жоймас бұрын барлық провайдерлерді жойыңыз. Провайдерлер тізімі",
+  "delete_success": "{{name}} ұйымы сәтті жойылды"
 }
