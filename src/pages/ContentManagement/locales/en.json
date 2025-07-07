@@ -22,5 +22,8 @@
   "podcast_removed": "Podcast removed",
   "video_added": "Video added",
   "video_removed": "Video removed",
-  "number_of_more_options": "{{count}} more"
+  "number_of_more_options": "{{count}} more",
+  "videos_active": "Video module activation",
+  "podcasts_active": "Podcast module activation",
+  "save_success": "Saved successfully"
 }

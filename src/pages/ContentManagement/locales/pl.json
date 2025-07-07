@@ -22,5 +22,8 @@
   "podcast_removed": "Podcast usunięty",
   "video_added": "Wideo dodane",
   "video_removed": "Wideo usunięte",
-  "number_of_more_options": "jeszcze {{count}}"
+  "number_of_more_options": "jeszcze {{count}}",
+  "videos_active": "Aktywacja modułu wideo",
+  "podcasts_active": "Aktywacja modułu podcastów",
+  "save_success": "Zapisano pomyślnie"
 }
