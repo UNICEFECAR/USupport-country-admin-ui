@@ -1,4 +1,12 @@
 @import "@USupport-components-library/styles";
 
 .videos {
+  &__toggle-container {
+    display: flex;
+    margin-bottom: $spacing_2_4;
+  }
+
+  &__toggle-label {
+    margin-right: 16px;
+  }
 }
