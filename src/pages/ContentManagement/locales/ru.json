@@ -22,5 +22,8 @@
   "podcast_removed": "Подкаст удален",
   "video_added": "Видео добавлено",
   "video_removed": "Видео удалено",
-  "number_of_more_options": "еще {{count}}"
+  "number_of_more_options": "еще {{count}}",
+  "videos_active": "Активация модуля видео",
+  "podcasts_active": "Активация модуля подкастов",
+  "save_success": "Сохранено успешно"
 }

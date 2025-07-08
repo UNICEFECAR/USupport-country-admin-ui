@@ -1,11 +1,12 @@
-import React, { useState, useMemo } from "react";
-import { useQuery, useMutation } from "@tanstack/react-query";
+import React, { useState, useMemo, useEffect } from "react";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import {
   Block,
   BaseTable,
   CheckBox,
   InputSearch,
+  Toggle,
 } from "@USupport-components-library/src";
 
 import { cmsSvc, adminSvc } from "@USupport-components-library/services";
@@ -15,7 +16,7 @@ import {
 } from "@USupport-components-library/utils";
 import { noImagePlaceholder } from "@USupport-components-library/assets";
 
-import { useError } from "#hooks";
+import { useError, useUpdateContentActiveStatus } from "#hooks";
 
 import "./videos.scss";
 
@@ -30,6 +31,65 @@ export const Videos = ({ t, i18n }) => {
   const [dataToDisplay, setDataToDisplay] = useState();
   const [searchValue, setSearchValue] = useState("");
   const [videoIds, setVideoIds] = useState([]);
+  const [isVideosActive, setIsVideosActive] = useState(false);
+  const [hasCheckedVideosActive, setHasCheckedVideosActive] = useState(false);
+
+  const queryClient = useQueryClient();
+
+  const currentCountry = localStorage.getItem("country");
+  const countriesData = queryClient.getQueryData(["countries"]);
+
+  useEffect(() => {
+    if (countriesData && !hasCheckedVideosActive) {
+      const currentCountryData = countriesData.find(
+        (x) => x.value === currentCountry
+      );
+      setIsVideosActive(currentCountryData?.videosActive);
+      setHasCheckedVideosActive(true);
+    }
+  }, [countriesData]);
+
+  const onUpdateContentActiveStatusSuccess = () => {
+    toast(t("save_success"));
+    queryClient.invalidateQueries(["countries"]);
+  };
+
+  const onUpdateContentActiveStatusError = (errorMessage, _, rollback) => {
+    toast(errorMessage, { type: "error" });
+    // Rollback the optimistic update
+    if (rollback) {
+      rollback();
+    }
+  };
+
+  const onUpdateContentActiveStatusMutate = (data) => {
+    // Store the current state for rollback
+    const currentState = isVideosActive;
+    // Perform optimistic update
+    const newActiveState = data.status === "enabled";
+
+    setIsVideosActive(newActiveState);
+
+    // Return rollback function
+    return () => {
+      console.log("Rolling back");
+      setIsVideosActive(currentState);
+    };
+  };
+
+  const updateContentActiveStatusMutation = useUpdateContentActiveStatus(
+    onUpdateContentActiveStatusSuccess,
+    onUpdateContentActiveStatusError,
+    onUpdateContentActiveStatusMutate
+  );
+
+  const handleToggleVideosActive = (newValue) => {
+    const status = newValue ? "enabled" : "disabled";
+    updateContentActiveStatusMutation.mutate({
+      contentType: "videos",
+      status,
+    });
+  };
 
   const rows = useMemo(() => {
     return [
@@ -235,6 +295,15 @@ export const Videos = ({ t, i18n }) => {
 
   return (
     <Block classes="videos">
+      <div className="videos__toggle-container">
+        <Toggle
+          isToggled={isVideosActive}
+          setParentState={handleToggleVideosActive}
+          shouldChangeState={false}
+          label={t("videos_active")}
+          labelClasses="videos__toggle-label"
+        />
+      </div>
       <InputSearch
         placeholder={t("search")}
         value={searchValue}

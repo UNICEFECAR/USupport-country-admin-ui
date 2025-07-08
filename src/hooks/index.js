@@ -44,3 +44,4 @@ export * from "./useCustomNavigate";
 export * from "./useGetContentStatistics";
 export * from "./useGetPlatformMetrics.js";
 export * from "./useGetOrganizationMetadata.js";
+export * from "./useUpdateContentActiveStatus.js";

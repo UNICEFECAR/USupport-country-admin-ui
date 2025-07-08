@@ -1,5 +1,5 @@
-import React, { useState, useMemo } from "react";
-import { useQuery, useMutation } from "@tanstack/react-query";
+import React, { useState, useMemo, useEffect } from "react";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 
 import {
@@ -7,6 +7,7 @@ import {
   BaseTable,
   CheckBox,
   InputSearch,
+  Toggle,
 } from "@USupport-components-library/src";
 import { cmsSvc, adminSvc } from "@USupport-components-library/services";
 import {
@@ -15,7 +16,7 @@ import {
 } from "@USupport-components-library/utils";
 import { noImagePlaceholder } from "@USupport-components-library/assets";
 
-import { useError } from "#hooks";
+import { useError, useUpdateContentActiveStatus } from "#hooks";
 
 import "./podcasts.scss";
 
@@ -30,6 +31,65 @@ export const Podcasts = ({ t, i18n }) => {
   const [dataToDisplay, setDataToDisplay] = useState();
   const [searchValue, setSearchValue] = useState("");
   const [podcastIds, setPodcastIds] = useState([]);
+  const [isPodcastsActive, setIsPodcastsActive] = useState(false);
+  const [hasCheckedPodcastsActive, setHasCheckedPodcastsActive] =
+    useState(false);
+
+  const queryClient = useQueryClient();
+
+  const currentCountry = localStorage.getItem("country");
+  const countriesData = queryClient.getQueryData(["countries"]);
+
+  useEffect(() => {
+    if (countriesData && !hasCheckedPodcastsActive) {
+      const currentCountryData = countriesData.find(
+        (x) => x.value === currentCountry
+      );
+      setIsPodcastsActive(currentCountryData?.podcastsActive);
+      setHasCheckedPodcastsActive(true);
+    }
+  }, [countriesData]);
+
+  const onUpdateContentActiveStatusSuccess = () => {
+    toast(t("save_success"));
+    queryClient.invalidateQueries(["countries"]);
+  };
+
+  const onUpdateContentActiveStatusError = (errorMessage, _, rollback) => {
+    toast(errorMessage, { type: "error" });
+    // Rollback the optimistic update
+    if (rollback) {
+      rollback();
+    }
+  };
+
+  const onUpdateContentActiveStatusMutate = (data) => {
+    // Store the current state for rollback
+    const currentState = isPodcastsActive;
+
+    // Perform optimistic update
+    const newActiveState = data.status === "enabled";
+    setIsPodcastsActive(newActiveState);
+
+    // Return rollback function
+    return () => {
+      setIsPodcastsActive(currentState);
+    };
+  };
+
+  const updateContentActiveStatusMutation = useUpdateContentActiveStatus(
+    onUpdateContentActiveStatusSuccess,
+    onUpdateContentActiveStatusError,
+    onUpdateContentActiveStatusMutate
+  );
+
+  const handleTogglePodcastsActive = (newValue) => {
+    const status = newValue ? "enabled" : "disabled";
+    updateContentActiveStatusMutation.mutate({
+      contentType: "podcasts",
+      status,
+    });
+  };
 
   const rows = useMemo(() => {
     return [
@@ -248,6 +308,15 @@ export const Podcasts = ({ t, i18n }) => {
 
   return (
     <Block classes="podcasts">
+      <div className="podcasts__toggle-container">
+        <Toggle
+          isToggled={isPodcastsActive}
+          setParentState={handleTogglePodcastsActive}
+          shouldChangeState={false}
+          label={t("podcasts_active")}
+          labelClasses="podcasts__toggle-label"
+        />
+      </div>
       <InputSearch
         placeholder={t("search")}
         value={searchValue}
