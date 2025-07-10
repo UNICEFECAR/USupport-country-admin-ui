@@ -4,12 +4,20 @@
   "nickname": "Nick",
   "time": "Czas sugestii",
   "content_heading": "Sugestie",
-  "heading": "Sugestie portalu informacyjnego",
+  "heading": "Sugestie platformy",
   "filters": "Filtry",
   "starting_date": "Data rozpoczęcia",
   "ending_date": "Data zakończenia",
   "submit": "Zastosuj filtry",
   "reset": "Zresetuj filtry",
   "no_results": "Nie znaleziono żadnych ocen",
-  "search": "Wyszukiwanie"
+  "search": "Wyszukiwanie",
+  "suggestion_type": "Typ sugestii",
+  "all": "Wszystkie",
+  "information_portal": "Portal informacyjny",
+  "my_qa": "My Q&A",
+  "consultations": "Konsultacje",
+  "organizations": "Organizacje",
+  "mood_tracker": "Mood tracker",
+  "type": "Typ"
 }

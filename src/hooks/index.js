@@ -11,6 +11,7 @@ export * from "./useCreateProvider.js";
 export * from "./useGetStatistics.js";
 export * from "./useGetSecurityChecks.js";
 export * from "./useGetInformationPortalSuggestions.js";
+export * from "./useGetPlatformSuggestions.js";
 export * from "./useGetClientRatings.js";
 export * from "./useGetContactForms.js";
 export * from "./useGetProviderActivitiesById.js";
