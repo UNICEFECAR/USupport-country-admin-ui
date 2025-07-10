@@ -29,13 +29,16 @@ import "./client-ratings.scss";
  *
  * @return {jsx}
  */
-export const ClientRatings = ({ Heading, userType = "client" }) => {
+export const ClientRatings = ({ Heading }) => {
   const { t } = useTranslation("client-ratings");
-  const { isLoading, data } = useGetClientRatings(userType);
 
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const [filters, setFilters] = useState({});
+  const [filters, setFilters] = useState({
+    userType: "client",
+  });
   const [searchValue, setSearchValue] = useState("");
+
+  const { isLoading, data } = useGetClientRatings(filters.userType);
 
   const handleFilterSave = (filterData) => {
     setFilters(filterData);
@@ -82,10 +85,19 @@ export const ClientRatings = ({ Heading, userType = "client" }) => {
         return new Date(b.createdAt) - new Date(a.createdAt);
       })
       .map((suggestion, index) => {
+        console.log(suggestion.userType);
         return (
           <ReportCollapsible
             key={index}
             headingItems={[
+              <p>
+                {t(
+                  suggestion.userType === "client"
+                    ? "from_client"
+                    : "from_provider"
+                )}
+              </p>,
+
               <div className="client-ratings__rating-container">
                 <p className="client-ratings__rating-container__label">
                   {t("rating")}
@@ -112,7 +124,13 @@ export const ClientRatings = ({ Heading, userType = "client" }) => {
   return (
     <Block classes="client-ratings">
       <Heading
-        headingLabel={t(userType === "client" ? "heading" : "heading_provider")}
+        headingLabel={t(
+          filters.userType === "all"
+            ? "all"
+            : filters.userType === "client"
+            ? "client_ratings"
+            : "provider_ratings"
+        )}
         handleButtonClick={() => setIsFilterOpen(true)}
       />
       <InputSearch
@@ -134,12 +152,20 @@ export const ClientRatings = ({ Heading, userType = "client" }) => {
 };
 
 const Filters = ({ isOpen, handleClose, handleSave, filters, t }) => {
+  const userTypeOptions = [
+    { value: "all", label: t("all") },
+    { value: "client", label: t("client") },
+    { value: "provider", label: t("provider") },
+  ];
+
   const initialFilters = {
+    userType: "client",
     rating: "all",
     startingDate: "",
     endingDate: "",
   };
   const [data, setData] = useState({
+    userType: "client",
     rating: "all",
     startingDate: filters.startingDate,
     endingDate: filters.endingDate,
@@ -172,6 +198,12 @@ const Filters = ({ isOpen, handleClose, handleSave, filters, t }) => {
     >
       <>
         <div>
+          <DropdownWithLabel
+            label={t("user_type")}
+            selected={data.userType}
+            setSelected={(value) => handleChange("userType", value)}
+            options={userTypeOptions}
+          />
           <DropdownWithLabel
             label={t("minimum_rating")}
             selected={data.rating}
