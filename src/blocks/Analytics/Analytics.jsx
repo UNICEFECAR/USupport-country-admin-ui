@@ -9,6 +9,7 @@ import {
   GridItem,
   Statistic,
   Loading,
+  DropdownWithLabel,
 } from "@USupport-components-library/src";
 import { useWindowDimensions } from "@USupport-components-library/src/utils";
 import { downloadCSVFile } from "@USupport-components-library/utils";
@@ -27,13 +28,21 @@ export const Analytics = () => {
   const { t, i18n } = useTranslation("analytics");
   const { width } = useWindowDimensions();
 
+  const [selectedContentType, setSelectedContentType] = useState("all");
   const [options, setOptions] = useState([
     { label: t("content"), value: "content", isSelected: true },
     { label: t("general"), value: "general", isSelected: false },
   ]);
 
+  const contentTypeOptions = [
+    { label: t("all"), value: "all" },
+    { label: t("articles"), value: "articles" },
+    { label: t("videos"), value: "videos" },
+    { label: t("podcasts"), value: "podcasts" },
+  ];
+
   const { data: categoriesData, isLoading: isCategoriesLoading } =
-    useGetContentStatistics();
+    useGetContentStatistics(selectedContentType);
 
   const shouldFetchPlatformMetrics =
     options.find((opt) => opt.value === "general")?.isSelected || false;
@@ -228,22 +237,37 @@ export const Analytics = () => {
     setDataToDisplay(filteredData);
   };
 
+  const handleContentTypeSelect = (value) => {
+    console.log(value);
+    setSelectedContentType(value);
+  };
+
   return (
     <Block classes="analytics">
       <TabsUnderlined options={options} handleSelect={handleTabSelect} t={t} />
       {options[0].isSelected ? (
-        <BaseTable
-          data={dataToDisplay}
-          rows={columns}
-          rowsData={rowsData}
-          updateData={updateData}
-          t={t}
-          hasMenu={false}
-          hasSearch
-          customSearch={handleSearch}
-          buttonLabel={t("export_label")}
-          buttonAction={handleExport}
-        />
+        <React.Fragment>
+          <DropdownWithLabel
+            classes="analytics__dropdown"
+            options={contentTypeOptions}
+            selected={selectedContentType}
+            setSelected={handleContentTypeSelect}
+            t={t}
+            label={t("content_type")}
+          />
+          <BaseTable
+            data={dataToDisplay}
+            rows={columns}
+            rowsData={rowsData}
+            updateData={updateData}
+            t={t}
+            hasMenu={false}
+            hasSearch
+            customSearch={handleSearch}
+            buttonLabel={t("export_label")}
+            buttonAction={handleExport}
+          />
+        </React.Fragment>
       ) : (
         renderStatistic()
       )}

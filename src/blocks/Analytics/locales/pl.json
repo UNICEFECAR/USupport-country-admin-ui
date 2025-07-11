@@ -28,5 +28,11 @@
   "uniqueClientsThatUsedCoupon": "Unikalni klienci, którzy użyli kuponu",
   "totalCouponConsultations": "Łączne konsultacje z kuponem",
   "positiveClientRatings": "Pozytywne oceny klientów",
-  "positiveProviderRatings": "Pozytywne oceny dostawców"
+  "positiveProviderRatings": "Pozytywne oceny dostawców",
+
+  "content_type": "Typ treści",
+  "all": "Wszystkie",
+  "articles": "Artykuły",
+  "videos": "Filmy",
+  "podcasts": "Podcasty"
 }
