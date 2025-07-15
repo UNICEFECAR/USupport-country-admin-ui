@@ -15,13 +15,17 @@ export default function useGetAllOrganizations() {
       email: x.email,
       description: x.description,
       workWith: x.work_with,
+      specialisations: x.specialisations,
+      paymentMethods: x.payment_methods || [],
+      userInteractions: x.user_interactions || [],
+      propertyTypes: x.property_types || [],
       location: {
         longitude: x?.longitude,
         latitude: x?.latitude,
       },
       district: x.district_id,
-      specialisations: x.specialisations,
     }));
   });
 }
+
 export { useGetAllOrganizations };
