@@ -215,8 +215,6 @@ export const CreateOrganization = ({
     onClose();
   };
 
-  console.log(data);
-
   const isLoading =
     editOrganizationMutation.isLoading || createOrganizationMutation.isLoading;
 

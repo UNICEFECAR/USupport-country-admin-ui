@@ -62,5 +62,12 @@
   "view_organization_details": "Ұйым туралы ақпаратты көру",
   "address": "Мекенжай",
   "phone": "Телефон",
-  "email": "Электрондық пошта"
+  "email": "Электрондық пошта",
+
+  "delete_label": "Жою",
+  "delete_heading": "Ұйымды жоюға сенімдісіз бе: {{name}}",
+  "delete_subheading": "Бұл әрекет қайтымсыз.",
+  "delete_providers_heading": "{{name}} ұйымында байланысқан провайдерлер бар",
+  "delete_providers_subheading": "Ұйымды жоймас бұрын барлық провайдерлерді жойыңыз. Провайдерлер тізімі",
+  "delete_success": "{{name}} ұйымы сәтті жойылды"
 }

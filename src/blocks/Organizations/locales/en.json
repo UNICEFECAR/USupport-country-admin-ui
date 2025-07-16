@@ -91,5 +91,22 @@
   "public": "Public",
   "private": "Private",
   "ong": "NGO",
-  "public_private": "Public-private"
+  "public_private": "Public-private",
+  "social_information_counseling": "Social information and counseling",
+  "rehab_autism_children": "Rehabilitation and recovery services for children with autism",
+  "rehab_psycho_neuro_children": "Rehabilitation and recovery services for children with psycho-neuro-motor disorders",
+  "suicide_prevention_helpline": "Suicide prevention helpline",
+  "addiction_helpline": "Addiction helpline",
+  "violence_victim_helpline": "Violence victims helpline",
+  "child_helpline": "Child helpline",
+  "child_psychiatry": "Child psychiatry",
+  "art_recreational_activities": "Artistic recreational activities (theatre, music, poetry, painting, storytelling)",
+  "sport_recreational_activities": "Sports recreational activities (sports, games, dance)",
+
+  "delete_label": "Delete",
+  "delete_heading": "Are you sure you want to delete organization: {{name}}",
+  "delete_subheading": "This action is irreversible.",
+  "delete_providers_heading": "Organization {{name}} has associated providers",
+  "delete_providers_subheading": "Please remove all providers before deleting the organization. List of providers",
+  "delete_success": "Organization {{name}} was deletet successfully"
 }

@@ -4,7 +4,7 @@ import { useCustomNavigate as useNavigate } from "#hooks";
 
 import { Block, BaseTable, Loading } from "@USupport-components-library/src";
 import { useGetOrganizationsWithDetails } from "#hooks";
-import { CreateOrganization } from "#backdrops";
+import { DeleteOrganization, CreateOrganization } from "#backdrops";
 
 /**
  * Organizations
@@ -23,6 +23,8 @@ export const Organizations = () => {
   const [dataToDisplay, setDataToDisplay] = useState();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [organizationToEdit, setOrganizationToEdit] = useState(null);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [organizationToDelete, setOrganizationToDelete] = useState(null);
 
   let countryRows = [
     { label: t("name"), sortingKey: "name" },
@@ -147,6 +149,16 @@ export const Organizations = () => {
         setIsModalOpen(true);
       },
     },
+    {
+      icon: "delete",
+      text: t("delete_label"),
+      handleClick: (id) => {
+        const organization = data.find((item) => item.organizationId === id);
+        setOrganizationToDelete(organization);
+        setIsDeleteModalOpen(true);
+      },
+      iconColor: "#FF0000",
+    },
   ];
 
   const handleModalClose = () => {
@@ -166,6 +178,13 @@ export const Organizations = () => {
         onClose={handleModalClose}
         organizationToEdit={organizationToEdit}
       />
+      {organizationToDelete && (
+        <DeleteOrganization
+          isOpen={isDeleteModalOpen}
+          onClose={() => setIsDeleteModalOpen(false)}
+          organization={organizationToDelete}
+        />
+      )}
 
       <Block classes="organizations">
         {isLoading ? (
