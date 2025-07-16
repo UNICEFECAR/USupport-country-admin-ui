@@ -28,5 +28,11 @@
   "uniqueClientsThatUsedCoupon": "Уникальные клиенты, использовавшие купон",
   "totalCouponConsultations": "Всего консультаций с купоном",
   "positiveClientRatings": "Положительные оценки клиентов",
-  "positiveProviderRatings": "Положительные оценки провайдеров"
+  "positiveProviderRatings": "Положительные оценки провайдеров",
+
+  "content_type": "Тип контента",
+  "all": "Все",
+  "articles": "Статьи",
+  "videos": "Видео",
+  "podcasts": "Подкасты"
 }

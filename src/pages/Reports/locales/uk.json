@@ -1,8 +1,7 @@
 {
   "consultations_tab_label": "Запитання щодо консультацій",
-  "suggestions_tab_label": "Пропозиції щодо інформаційного порталу",
-  "ratings_tab_label": "Рейтинги клієнтів(ток)",
-  "provider_ratings_tab_label": "Рейтинг консультанта/ки",
+  "suggestions_tab_label": "Пропозиції щодо платформи",
+  "ratings_tab_label": "Рейтинги",
   "contact_form_tab_label": "Контактні форми",
   "filter": "Фільтр",
   "heading": "Звіти",

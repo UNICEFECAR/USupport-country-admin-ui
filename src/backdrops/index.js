@@ -6,3 +6,4 @@ export * from "./QuestionDetails";
 export * from "./FilterQuestions";
 export * from "./ChangePassword";
 export * from "./CreateOrganization";
+export * from "./DeleteOrganization";

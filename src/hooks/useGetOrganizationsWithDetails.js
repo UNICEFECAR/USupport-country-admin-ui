@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { organizationSvc } from "@USupport-components-library/services";
 
-export const useGetOrganizationsWithDetails = () => {
+export const useGetOrganizationsWithDetails = ({ search }) => {
   return useQuery({
-    queryKey: ["GetOrganizationsWithDetails"],
+    queryKey: ["GetOrganizationsWithDetails", search],
     queryFn: async () => {
-      const data = await organizationSvc.getOrganizationsWithDetails();
+      const data = await organizationSvc.getOrganizationsWithDetails(search);
 
       return data.map((x) => ({
         organizationId: x.organization_id,
@@ -26,14 +26,9 @@ export const useGetOrganizationsWithDetails = () => {
           id: x?.district_id,
           name: x?.district,
         },
-        paymentMethod: {
-          id: x?.payment_method_id,
-          name: x?.payment_method,
-        },
-        userInteraction: {
-          id: x?.user_interaction_id,
-          name: x?.user_interaction,
-        },
+        paymentMethods: x?.payment_methods || [],
+        userInteractions: x?.user_interactions || [],
+        propertyTypes: x?.property_types || [],
         workWith: x?.work_with || [],
         providers: x?.providers || [],
         specialisations: x?.specialisations || [],

@@ -12,10 +12,14 @@
   "filter": "Filtr",
   "minimum_rating": "Minimalna ocena",
   "all": "Wszystkie oceny",
+  "client_ratings": "Oceny klientów",
+  "provider_ratings": "Ocena konsultanta",
   "starting_date": "Data rozpoczęcia",
   "ending_date": "Data zakończenia",
   "submit": "Zastosuj filtry",
   "reset_filters": "Zresetuj filtry",
   "no_results": "Nie znaleziono żadnych ocen",
-  "search": "Wyszukiwanie"
+  "search": "Wyszukiwanie",
+  "from_client": "Od klienta",
+  "from_provider": "Od konsultanta"
 }

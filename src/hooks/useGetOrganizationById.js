@@ -47,10 +47,17 @@ export const useGetOrganizationById = (organizationId, filters) => {
           consultations_count: x.consultations_count || 0,
           consultations: x.consultations || [],
           clients: x.clients_count || 0,
-          futureConsultations: Number(x.future_consultations),
+          futureConsultations: Number(x.future_consultations || 0),
         })),
+        workWith: data.work_with || [],
+        specialisations: data.specialisations || [],
+        paymentMethods: data.payment_methods || [],
+        userInteractions: data.user_interactions || [],
+        propertyTypes: data.property_types || [],
       };
     },
+    enabled: !!organizationId,
   });
 };
+
 export default useGetOrganizationById;

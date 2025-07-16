@@ -11,10 +11,14 @@
   "filter": "Filter",
   "minimum_rating": "Минимальный рейтинг",
   "all": "Все рейтинги",
+  "client_ratings": "Рейтинги клиентов",
+  "provider_ratings": "Рейтинги консультантов",
   "starting_date": "Дата начала",
   "ending_date": "Дата окончания",
   "submit": "Примените фильтры",
   "reset_filters": "Сбросить фильтры",
   "no_results": "Рейтинги не найдены",
-  "search": "Поиск"
+  "search": "Поиск",
+  "from_client": "От клиента",
+  "from_provider": "От консультанта"
 }

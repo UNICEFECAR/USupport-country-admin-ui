@@ -27,6 +27,10 @@ export const useGetOrganizationMetadata = (country) => {
           organizationSpecialisationId: item.organization_specialisation_id,
           name: item.name,
         })),
+        propertyTypes: data.property_types?.map((item) => ({
+          organizationPropertyTypeId: item.organization_property_type_id,
+          name: item.name,
+        })),
       };
     },
     {

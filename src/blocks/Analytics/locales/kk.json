@@ -28,5 +28,11 @@
   "uniqueClientsThatUsedCoupon": "Бірегей купон пайдаланған клиенттер",
   "totalCouponConsultations": "Жалпы купон бойынша кеңес беру",
   "positiveClientRatings": "Позитивті клиент бағалаулары",
-  "positiveProviderRatings": "Позитивті провайдер бағалаулары"
+  "positiveProviderRatings": "Позитивті провайдер бағалаулары",
+
+  "content_type": "Контент түрі",
+  "all": "Барлығы",
+  "articles": "Материалдар",
+  "videos": "Видео",
+  "podcasts": "Подасты"
 }

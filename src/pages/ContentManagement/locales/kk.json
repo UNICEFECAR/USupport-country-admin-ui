@@ -22,5 +22,8 @@
   "podcast_removed": "Подкаст өшірілді",
   "video_added": "Видео қосылды",
   "video_removed": "Видео өшірілді",
-  "number_of_more_options": "тағы {{count}}"
+  "number_of_more_options": "тағы {{count}}",
+  "videos_active": "Видео модулінің активтелуі",
+  "podcasts_active": "Подкаст модулінің активтелуі",
+  "save_success": "Сақталды"
 }

@@ -4,12 +4,20 @@
   "nickname": "Nickname",
   "time": "Time of suggestion",
   "content_heading": "Suggestions",
-  "heading": "Information portal suggestions",
+  "heading": "Platform suggestions",
   "filters": "Filters",
   "starting_date": "Start date",
   "ending_date": "End date",
   "submit": "Apply filters",
   "reset": "Reset filters",
   "no_results": "There are no suggestions found",
-  "search": "Search"
+  "search": "Search",
+  "suggestion_type": "Suggestion type",
+  "all": "All",
+  "information_portal": "Information portal",
+  "my_qa": "My Q&A",
+  "consultations": "Consultations",
+  "organizations": "Organizations",
+  "mood_tracker": "Mood tracker",
+  "type": "Type"
 }
