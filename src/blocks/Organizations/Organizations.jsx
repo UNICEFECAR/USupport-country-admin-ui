@@ -25,8 +25,6 @@ export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
 
   const [search, setSearch] = useState("");
   const [dataToDisplay, setDataToDisplay] = useState();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [organizationToEdit, setOrganizationToEdit] = useState(null);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [organizationToDelete, setOrganizationToDelete] = useState(null);
 
