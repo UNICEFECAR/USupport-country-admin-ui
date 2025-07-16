@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { organizationSvc } from "@USupport-components-library/services";
 
-export const useGetOrganizationsWithDetails = () => {
+export const useGetOrganizationsWithDetails = ({ search }) => {
   return useQuery({
-    queryKey: ["GetOrganizationsWithDetails"],
+    queryKey: ["GetOrganizationsWithDetails", search],
     queryFn: async () => {
-      const data = await organizationSvc.getOrganizationsWithDetails();
+      const data = await organizationSvc.getOrganizationsWithDetails(search);
 
       return data.map((x) => ({
         organizationId: x.organization_id,
