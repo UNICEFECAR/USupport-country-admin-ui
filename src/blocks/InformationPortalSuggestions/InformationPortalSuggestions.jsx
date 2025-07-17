@@ -28,7 +28,7 @@ import "./information-portal-suggestions.scss";
  * @return {jsx}
  */
 export const InformationPortalSuggestions = ({ Heading }) => {
-  const { t } = useTranslation("information-portal-suggestions");
+  const { t, i18n } = useTranslation("information-portal-suggestions");
 
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [filters, setFilters] = useState({
@@ -120,7 +120,7 @@ export const InformationPortalSuggestions = ({ Heading }) => {
           />
         );
       });
-  }, [data, filters, searchValue]);
+  }, [data, filters, searchValue, i18n.language]);
 
   return (
     <Block classes="information-portal-suggestions">
