@@ -9,7 +9,7 @@ import {
   Loading,
 } from "@USupport-components-library/src";
 import { useGetOrganizationsWithDetails } from "#hooks";
-import { DeleteOrganization, CreateOrganization } from "#backdrops";
+import { DeleteOrganization } from "#backdrops";
 
 /**
  * Organizations
@@ -167,11 +167,6 @@ export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
 
   return (
     <React.Fragment>
-      <CreateOrganization
-        isOpen={isModalOpen}
-        onClose={handleModalClose}
-        organizationToEdit={organizationToEdit}
-      />
       {organizationToDelete && (
         <DeleteOrganization
           isOpen={isDeleteModalOpen}
