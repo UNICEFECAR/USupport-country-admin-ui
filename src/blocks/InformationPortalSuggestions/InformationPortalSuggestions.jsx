@@ -7,6 +7,7 @@ import {
   Modal,
   ReportCollapsible,
   InputSearch,
+  DropdownWithLabel,
 } from "@USupport-components-library/src";
 
 import {
@@ -15,7 +16,7 @@ import {
 } from "@USupport-components-library/utils";
 import { useTranslation } from "react-i18next";
 
-import { useGetInformationPortalSuggestions } from "#hooks";
+import { useGetPlatformSuggestions } from "#hooks";
 
 import "./information-portal-suggestions.scss";
 
@@ -28,11 +29,14 @@ import "./information-portal-suggestions.scss";
  */
 export const InformationPortalSuggestions = ({ Heading }) => {
   const { t } = useTranslation("information-portal-suggestions");
-  const { isLoading, data } = useGetInformationPortalSuggestions();
 
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const [filters, setFilters] = useState({});
+  const [filters, setFilters] = useState({
+    type: "all",
+  });
   const [searchValue, setSearchValue] = useState("");
+
+  const { isLoading, data } = useGetPlatformSuggestions("all");
 
   const handleFilterSave = (filterData) => {
     setFilters(filterData);
@@ -57,9 +61,13 @@ export const InformationPortalSuggestions = ({ Heading }) => {
         suggestion.clientNickname?.toLowerCase().includes(search) ||
         suggestion.suggestion?.toLowerCase().includes(search);
 
+    const isTypeMatching =
+      filters.type === "all" ? true : suggestion.type === filters.type;
+
     return isStartingDateMatching &&
       isSearchValueMatching &&
-      isStartDateMatching
+      isStartDateMatching &&
+      isTypeMatching
       ? suggestion
       : false;
   };
@@ -79,6 +87,9 @@ export const InformationPortalSuggestions = ({ Heading }) => {
           <ReportCollapsible
             key={index}
             headingItems={[
+              <p>
+                {t("type")}: {t(suggestion.type.replace("-", "_"))}
+              </p>,
               <p>
                 {t(
                   suggestion.clientEmail
@@ -114,14 +125,16 @@ export const InformationPortalSuggestions = ({ Heading }) => {
   return (
     <Block classes="information-portal-suggestions">
       <Heading
-        headingLabel={t("heading")}
+        headingLabel={`${t("heading")} - ${t(filters.type?.replace("-", "_"))}`}
         handleButtonClick={() => setIsFilterOpen(true)}
       />
-      <InputSearch
-        placeholder={t("search")}
-        value={searchValue}
-        onChange={setSearchValue}
-      />
+      <div className="information-portal-suggestions__controls">
+        <InputSearch
+          placeholder={t("search")}
+          value={searchValue}
+          onChange={setSearchValue}
+        />
+      </div>
       {isLoading ? <Loading /> : renderSuggestions}
       <Filters
         filters={filters}
@@ -142,7 +155,17 @@ const Filters = ({ isOpen, handleClose, handleSave, filters, t }) => {
   const [data, setData] = useState({
     startingDate: filters.startingDate,
     endingDate: filters.endingDate,
+    type: "all",
   });
+
+  const suggestionTypeOptions = [
+    { label: t("all"), value: "all" },
+    { label: t("information_portal"), value: "information-portal" },
+    { label: t("my_qa"), value: "my-qa" },
+    { label: t("consultations"), value: "consultations" },
+    { label: t("organizations"), value: "organizations" },
+    { label: t("mood_tracker"), value: "mood-tracker" },
+  ];
 
   const handleChange = (field, value) => {
     setData({
@@ -170,6 +193,14 @@ const Filters = ({ isOpen, handleClose, handleSave, filters, t }) => {
     >
       <>
         <div>
+          <DropdownWithLabel
+            options={suggestionTypeOptions}
+            selected={data.type}
+            setSelected={(val) => handleChange("type", val)}
+            label={t("suggestion_type")}
+            placeholder={t("select_type")}
+            classes="information-portal-suggestions__type-dropdown"
+          />
           <DateInput
             label={t("starting_date")}
             onChange={(e) => handleChange("startingDate", e.target.value)}

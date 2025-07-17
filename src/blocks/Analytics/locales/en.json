@@ -28,5 +28,11 @@
   "uniqueClientsThatUsedCoupon": "Unique Clients That Used Coupon",
   "totalCouponConsultations": "Total Coupon Consultations",
   "positiveClientRatings": "Positive Client Ratings",
-  "positiveProviderRatings": "Positive Provider Ratings"
+  "positiveProviderRatings": "Positive Provider Ratings",
+
+  "content_type": "Content Type",
+  "all": "All",
+  "articles": "Articles",
+  "videos": "Videos",
+  "podcasts": "Podcasts"
 }

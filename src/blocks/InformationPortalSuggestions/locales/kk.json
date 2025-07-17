@@ -4,12 +4,20 @@
   "nickname": "Лақап аты",
   "time": "Ұсыныс уақыты",
   "content_heading": "Ұсыныстар",
-  "heading": "Ақпараттық порталдың ұсыныстары",
+  "heading": "Платформа ұсыныстары",
   "filters": "Сүзгілер",
   "starting_date": "Басталу күні",
   "ending_date": "Аяқталу күні",
   "submit": "Сүзгілерді қолданыңыз",
   "reset_filter": "Сүзгілерді қалпына келтіру",
   "no_results": "Рейтингтер табылған жоқ",
-  "search": "Іздеу"
+  "search": "Іздеу",
+  "suggestion_type": "Ұсыныс түрі",
+  "all": "Барлығы",
+  "information_portal": "Ақпараттық портал",
+  "my_qa": "Менің Q&A",
+  "consultations": "Консультациялар",
+  "organizations": "Организациялар",
+  "mood_tracker": "Менің назарға қараймын",
+  "type": "Түрі"
 }

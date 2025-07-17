@@ -2,9 +2,14 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useCustomNavigate as useNavigate } from "#hooks";
 
-import { Block, BaseTable, Loading } from "@USupport-components-library/src";
+import {
+  InputSearch,
+  Block,
+  BaseTable,
+  Loading,
+} from "@USupport-components-library/src";
 import { useGetOrganizationsWithDetails } from "#hooks";
-import { CreateOrganization } from "#backdrops";
+import { DeleteOrganization } from "#backdrops";
 
 /**
  * Organizations
@@ -13,16 +18,17 @@ import { CreateOrganization } from "#backdrops";
  *
  * @return {jsx}
  */
-export const Organizations = () => {
+export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
   const country = localStorage.getItem("country");
   const { t, i18n } = useTranslation("organizations");
   const navigate = useNavigate();
 
-  const { data, isLoading } = useGetOrganizationsWithDetails();
-
+  const [search, setSearch] = useState("");
   const [dataToDisplay, setDataToDisplay] = useState();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [organizationToEdit, setOrganizationToEdit] = useState(null);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [organizationToDelete, setOrganizationToDelete] = useState(null);
+
+  const { data, isLoading } = useGetOrganizationsWithDetails({ search });
 
   let countryRows = [
     { label: t("name"), sortingKey: "name" },
@@ -34,14 +40,14 @@ export const Organizations = () => {
   if (country === "RO") {
     countryRows = [
       { label: t("name"), sortingKey: "name" },
-      { label: t("unit_name"), sortingKey: "unitName" },
       { label: t("website"), sortingKey: "websiteUrl" },
       { label: t("address"), sortingKey: "address" },
       { label: t("phone"), sortingKey: "phone" },
       { label: t("email"), sortingKey: "email" },
       { label: t("district"), sortingKey: "district" },
-      { label: t("payment_method"), sortingKey: "paymentMethod" },
-      { label: t("user_interaction"), sortingKey: "userInteraction" },
+      { label: t("payment_methods"), sortingKey: "paymentMethods" },
+      { label: t("user_interactions"), sortingKey: "userInteractions" },
+      { label: t("property_types"), sortingKey: "propertyTypes" },
       { label: t("work_with"), sortingKey: "workWith" },
       { label: t("specialisations"), sortingKey: "specialisations" },
       { label: t("description"), sortingKey: "description" },
@@ -75,7 +81,6 @@ export const Organizations = () => {
     return dataToDisplay?.map((item) => {
       return [
         <p className="text">{item.name}</p>,
-        <p className="text">{item.unitName || "-"}</p>,
         <p className="text">
           {item.websiteUrl ? (
             <a href={item.websiteUrl} target="_blank" rel="noopener noreferrer">
@@ -92,11 +97,20 @@ export const Organizations = () => {
         </p>,
         <p className="text">{t(item.district?.name) || "-"}</p>,
         <p className="text">
-          {item.paymentMethod?.name ? t(item.paymentMethod.name) : "-"}
+          {item.paymentMethods && item.paymentMethods.length > 0
+            ? item.paymentMethods.map((pm) => t(pm.name)).join(", ")
+            : "-"}
         </p>,
         <p className="text">
-          {item.userInteraction?.name
-            ? t(item.userInteraction.name + "_interaction")
+          {item.userInteractions && item.userInteractions.length > 0
+            ? item.userInteractions
+                .map((ui) => t(ui.name + "_interaction"))
+                .join(", ")
+            : "-"}
+        </p>,
+        <p className="text">
+          {item.propertyTypes && item.propertyTypes.length > 0
+            ? item.propertyTypes.map((pt) => t(pt.name)).join(", ")
             : "-"}
         </p>,
         <p className="text">
@@ -139,27 +153,34 @@ export const Organizations = () => {
         setIsModalOpen(true);
       },
     },
+    {
+      icon: "delete",
+      text: t("delete_label"),
+      handleClick: (id) => {
+        const organization = data.find((item) => item.organizationId === id);
+        setOrganizationToDelete(organization);
+        setIsDeleteModalOpen(true);
+      },
+      iconColor: "#FF0000",
+    },
   ];
-
-  const handleModalClose = () => {
-    setIsModalOpen(false);
-    setOrganizationToEdit(null);
-  };
-
-  const handleAddOrganization = () => {
-    setOrganizationToEdit(null);
-    setIsModalOpen(true);
-  };
 
   return (
     <React.Fragment>
-      <CreateOrganization
-        isOpen={isModalOpen}
-        onClose={handleModalClose}
-        organizationToEdit={organizationToEdit}
-      />
+      {organizationToDelete && (
+        <DeleteOrganization
+          isOpen={isDeleteModalOpen}
+          onClose={() => setIsDeleteModalOpen(false)}
+          organization={organizationToDelete}
+        />
+      )}
 
       <Block classes="organizations">
+        <InputSearch
+          value={search}
+          onChange={(val) => setSearch(val)}
+          placeholder={t("search")}
+        />
         {isLoading ? (
           <Loading />
         ) : (
@@ -170,8 +191,6 @@ export const Organizations = () => {
             handleClickPropName="organizationId"
             updateData={setDataToDisplay}
             menuOptions={menuOptions}
-            buttonLabel={t("add_button")}
-            buttonAction={handleAddOrganization}
             t={t}
           />
         )}

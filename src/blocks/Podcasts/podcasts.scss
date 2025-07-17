@@ -1,4 +1,15 @@
+@import "@USupport-components-library/styles";
+
 .podcasts {
+  &__toggle-container {
+    display: flex;
+    margin-bottom: $spacing_2_4;
+  }
+
+  &__toggle-label {
+    margin-right: 16px;
+  }
+
   &__thumbnail {
     width: 5rem;
     height: 5rem;

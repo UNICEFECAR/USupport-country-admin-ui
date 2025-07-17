@@ -16,7 +16,6 @@ import {
   useWindowDimensions,
   replaceLanguageInUrl,
   getLanguageFromUrl,
-  redirectToLocalStorageCountry,
 } from "@USupport-components-library/utils";
 import { useIsLoggedIn, useError, useEventListener } from "#hooks";
 
@@ -146,6 +145,8 @@ export const Page = ({
         maxAge: x["max_client_age"],
         currencySymbol: x["symbol"],
         localName: x.local_name,
+        videosActive: x.videos_active,
+        podcastsActive: x.podcasts_active,
       };
       return countryObject;
     });

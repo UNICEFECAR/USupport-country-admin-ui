@@ -45,7 +45,6 @@ export const CreateOrganization = ({
   if (country === "RO") {
     DEFAULT_ORGANIZATION = {
       name: "",
-      unitName: "",
       websiteUrl: "",
       address: "",
       location: { latitude: null, longitude: null },
@@ -54,8 +53,9 @@ export const CreateOrganization = ({
       description: "",
       workWith: [],
       district: null,
-      paymentMethod: null,
-      userInteraction: null,
+      paymentMethods: [],
+      userInteractions: [],
+      propertyType: [],
       specialisations: [],
     };
   }
@@ -70,7 +70,6 @@ export const CreateOrganization = ({
       if (country === "RO") {
         setData({
           name: organizationToEdit.name || "",
-          unitName: organizationToEdit.unitName || "",
           websiteUrl: organizationToEdit.websiteUrl || "",
           address: organizationToEdit.address || "",
           location: {
@@ -84,8 +83,15 @@ export const CreateOrganization = ({
             ? organizationToEdit.workWith.map((w) => w.id)
             : [],
           district: organizationToEdit.district?.id || "",
-          paymentMethod: organizationToEdit.paymentMethod?.id || "",
-          userInteraction: organizationToEdit.userInteraction?.id || "",
+          paymentMethods: Array.isArray(organizationToEdit.paymentMethods)
+            ? organizationToEdit.paymentMethods.map((pm) => pm.id)
+            : [],
+          userInteractions: Array.isArray(organizationToEdit.userInteractions)
+            ? organizationToEdit.userInteractions.map((ui) => ui.id)
+            : [],
+          propertyType: Array.isArray(organizationToEdit.propertyTypes)
+            ? organizationToEdit.propertyTypes.map((pt) => pt.id)
+            : [],
           specialisations: Array.isArray(organizationToEdit.specialisations)
             ? organizationToEdit.specialisations.map((s) => s.id)
             : [],
@@ -170,7 +176,6 @@ export const CreateOrganization = ({
       // For RO country, include all fields
       organizationData = {
         name: data.name,
-        unitName: data.unitName,
         websiteUrl: data.websiteUrl,
         address: data.address,
         location: data.location,
@@ -179,8 +184,9 @@ export const CreateOrganization = ({
         description: data.description,
         workWith: data.workWith,
         district: data.district,
-        paymentMethod: data.paymentMethod,
-        userInteraction: data.userInteraction,
+        paymentMethods: data.paymentMethods,
+        userInteractions: data.userInteractions,
+        propertyType: data.propertyType,
         specialisations: data.specialisations,
       };
     } else {
@@ -208,8 +214,6 @@ export const CreateOrganization = ({
     setData(DEFAULT_ORGANIZATION);
     onClose();
   };
-
-  console.log(data);
 
   const isLoading =
     editOrganizationMutation.isLoading || createOrganizationMutation.isLoading;
@@ -241,13 +245,6 @@ export const CreateOrganization = ({
           onChange={(e) => handleChange("name", e.target.value)}
           placeholder={t("name_placeholder")}
           required
-        />
-
-        <Input
-          label={t("unit_name")}
-          value={data.unitName}
-          onChange={(e) => handleChange("unitName", e.target.value)}
-          placeholder={t("unit_name_placeholder")}
         />
 
         <Input
@@ -298,13 +295,6 @@ export const CreateOrganization = ({
           placeholder={t("email_placeholder")}
         />
 
-        <Textarea
-          label={t("description")}
-          value={data.description}
-          onChange={(text) => handleChange("description", text)}
-          placeholder={t("description_placeholder")}
-        />
-
         {metadata?.specialisations && metadata.specialisations.length > 0 && (
           <Select
             label={t("specialisations")}
@@ -321,6 +311,13 @@ export const CreateOrganization = ({
             }
           />
         )}
+
+        <Textarea
+          label={t("description")}
+          value={data.description}
+          onChange={(text) => handleChange("description", text)}
+          placeholder={t("description_placeholder")}
+        />
 
         {metadata?.workWith && metadata.workWith.length > 0 && (
           <Select
@@ -339,28 +336,54 @@ export const CreateOrganization = ({
         )}
 
         {metadata?.paymentMethods && metadata.paymentMethods.length > 0 && (
-          <DropdownWithLabel
-            label={t("payment_method")}
-            selected={data.paymentMethod}
-            setSelected={(value) => handleChange("paymentMethod", value)}
-            placeholder={t("payment_method_placeholder")}
+          <Select
+            label={t("payment_methods")}
+            placeholder={t("payment_methods_placeholder")}
             options={metadata.paymentMethods.map((method) => ({
               label: t(method.name),
               value: method.paymentMethodId,
+              selected: data.paymentMethods.includes(method.paymentMethodId),
             }))}
+            handleChange={(options) =>
+              handleDropdownMultipleSelect("paymentMethods", options)
+            }
+            classes="create-organizations__select--third"
           />
         )}
 
         {metadata?.userInteractions && metadata.userInteractions.length > 0 && (
-          <DropdownWithLabel
-            label={t("user_interaction")}
-            selected={data.userInteraction}
-            setSelected={(value) => handleChange("userInteraction", value)}
-            placeholder={t("user_interaction_placeholder")}
+          <Select
+            label={t("user_interactions")}
+            placeholder={t("user_interactions_placeholder")}
             options={metadata.userInteractions.map((interaction) => ({
               label: t(interaction.name + "_interaction"),
               value: interaction.userInteractionId,
+              selected: data.userInteractions.includes(
+                interaction.userInteractionId
+              ),
             }))}
+            handleChange={(options) =>
+              handleDropdownMultipleSelect("userInteractions", options)
+            }
+            classes="create-organizations__select--fourth"
+          />
+        )}
+
+        {metadata?.propertyTypes && metadata.propertyTypes.length > 0 && (
+          <Select
+            label={t("property_types")}
+            placeholder={t("property_types_placeholder")}
+            options={metadata.propertyTypes.map((propertyType) => ({
+              label: t(propertyType.name),
+              value: propertyType.organizationPropertyTypeId,
+              selected: data.propertyType.includes(
+                propertyType.organizationPropertyTypeId
+              ),
+            }))}
+            handleChange={(options) =>
+              handleDropdownMultipleSelect("propertyType", options)
+            }
+            classes="create-organizations__select--fifth"
           />
         )}
       </>

@@ -7,4 +7,19 @@
     gap: $spacing_2_4;
     padding-bottom: $spacing_2_4;
   }
+
+  &__dropdown {
+    margin-inline: auto;
+    margin-top: $spacing_4_8;
+    text-align: left;
+    width: fit-content;
+
+    @media screen and (min-width: $screen_md) {
+      margin-inline: unset;
+    }
+  }
+
+  & .table__container {
+    padding-top: $spacing_0_8;
+  }
 }
