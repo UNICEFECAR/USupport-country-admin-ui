@@ -113,11 +113,7 @@ export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
             ? item.propertyTypes.map((pt) => t(pt.name)).join(", ")
             : "-"}
         </p>,
-        <p className="text">
-          {item.workWith && item.workWith.length > 0
-            ? item.workWith.map((w) => t(w.topic)).join(", ")
-            : "-"}
-        </p>,
+        <p className="text">{item?.workWith || "-"}</p>,
         <p className="text">
           {item.specialisations && item.specialisations.length > 0
             ? item.specialisations.map((s) => t(s.name)).join(", ")
