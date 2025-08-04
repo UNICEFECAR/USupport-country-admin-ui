@@ -65,7 +65,7 @@ export const CampaignDetails = ({
     clientPlaceOfLiving: "",
   };
   const currencySymbol = localStorage.getItem("currency_symbol");
-  const { t } = useTranslation("campaign-details");
+  const { t } = useTranslation("blocks", { keyPrefix: "campaign-details" });
   const queryClient = useQueryClient();
 
   const [data, setData] = useState(campaignData || {});

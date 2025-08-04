@@ -21,7 +21,7 @@ import "./statistics.scss";
  */
 export const Statistics = () => {
   const countryId = localStorage.getItem("country_id");
-  const { t } = useTranslation("statistics");
+  const { t } = useTranslation("blocks", { keyPrefix: "statistics" });
   const { width } = useWindowDimensions();
   const { isLoading, data: statistics } = useGetStatistics(countryId);
 

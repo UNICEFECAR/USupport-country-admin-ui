@@ -57,7 +57,7 @@ export const EditProvider = ({
   providerImageUrl,
 }) => {
   const currencySymbol = localStorage.getItem("currency_symbol");
-  const { t } = useTranslation("edit-provider");
+  const { t } = useTranslation("blocks", { keyPrefix: "edit-provider" });
   const [providersQuery, providerData, setProviderData] =
     useGetProviderData(providerId);
   const [canSaveChanges, setCanSaveChanges] = useState(false);

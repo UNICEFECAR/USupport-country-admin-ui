@@ -27,7 +27,7 @@ export const UploadPicture = ({
   setTargetImageUrl,
   providerId,
 }) => {
-  const { t } = useTranslation("upload-picture");
+  const { t } = useTranslation("modals", { keyPrefix: "upload-picture" });
 
   const [image, setImage] = useState(
     AMAZON_S3_BUCKET + "/" + (targetImage || "default")

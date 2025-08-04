@@ -12,7 +12,7 @@ import { NotFound as NotFoundBlock } from "@USupport-components-library/src";
  * @returns {JSX.Element}
  */
 export const NotFound = () => {
-  const { t } = useTranslation("not-found-page");
+  const { t } = useTranslation("pages", { keyPrefix: "not-found-page" });
   const navigate = useNavigate();
   const language = localStorage.getItem("language") || "en";
 

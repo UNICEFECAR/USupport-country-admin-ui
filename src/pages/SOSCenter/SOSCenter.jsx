@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
  * @returns {JSX.Element}
  */
 export const SOSCenter = () => {
-  const { t } = useTranslation("sos-center-page");
+  const { t } = useTranslation("pages", { keyPrefix: "sos-center-page" });
   return (
     <Page
       classes="page__soscenter"

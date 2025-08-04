@@ -31,7 +31,7 @@ import "./my-qa-reports.scss";
  * @return {jsx}
  */
 export const MyQAReports = ({ Heading }) => {
-  const { t } = useTranslation("my-qa-reports");
+  const { t } = useTranslation("blocks", { keyPrefix: "my-qa-reports" });
 
   const queryClient = useQueryClient();
 

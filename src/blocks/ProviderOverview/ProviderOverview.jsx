@@ -22,7 +22,7 @@ import "./provider-overview.scss";
  * @return {jsx}
  */
 export const ProviderOverview = ({ handleEditRedirect, providerId }) => {
-  const { t } = useTranslation("provider-overview");
+  const { t } = useTranslation("blocks", { keyPrefix: "provider-overview" });
 
   const [providerDataQuery] = useGetProviderData(providerId);
   const provider = providerDataQuery.data;

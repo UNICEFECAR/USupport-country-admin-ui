@@ -45,7 +45,7 @@ export const AddCampaign = ({
 }) => {
   const navigate = useNavigate();
   const currencySymbol = localStorage.getItem("currency_symbol");
-  const { t } = useTranslation("add-campaign");
+  const { t } = useTranslation("blocks", { keyPrefix: "add-campaign" });
 
   const schema = Joi.object({
     name: Joi.string().required().label(t("required_field")),

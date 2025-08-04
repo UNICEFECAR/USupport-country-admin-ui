@@ -28,7 +28,9 @@ import "./information-portal-suggestions.scss";
  * @return {jsx}
  */
 export const InformationPortalSuggestions = ({ Heading }) => {
-  const { t, i18n } = useTranslation("information-portal-suggestions");
+  const { t, i18n } = useTranslation("blocks", {
+    keyPrefix: "information-portal-suggestions",
+  });
 
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [filters, setFilters] = useState({

@@ -13,7 +13,7 @@ import "./analytics.scss";
  * @returns {JSX.Element}
  */
 export const Analytics = () => {
-  const { t } = useTranslation("analytics-page");
+  const { t } = useTranslation("pages", { keyPrefix: "analytics-page" });
 
   return (
     <Page

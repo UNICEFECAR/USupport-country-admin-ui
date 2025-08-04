@@ -23,7 +23,7 @@ import "./question-details.scss";
  * @return {jsx}
  */
 export const QuestionDetails = ({ question, handleLike, isOpen, onClose }) => {
-  const { t } = useTranslation("question-details");
+  const { t } = useTranslation("modals", { keyPrefix: "question-details" });
 
   const providerInfo = question.providerData;
 

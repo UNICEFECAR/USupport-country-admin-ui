@@ -30,7 +30,7 @@ import "./welcome.scss";
  * @return {jsx}
  */
 export const Welcome = () => {
-  const { t, i18n } = useTranslation("welcome");
+  const { t, i18n } = useTranslation("blocks", { keyPrefix: "welcome" });
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   const { setIsInWelcome } = useContext(ThemeContext);

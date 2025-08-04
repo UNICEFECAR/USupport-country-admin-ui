@@ -22,7 +22,7 @@ import { useMemo } from "react";
  */
 export const SecurityCheck = ({ Heading }) => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const { t } = useTranslation("security-check");
+  const { t } = useTranslation("blocks", { keyPrefix: "security-check" });
   const { data: securityChecks, isLoading } = useGetSecurityChecks();
   const [filters, setFilters] = useState({});
   const [searchValue, setSearchValue] = useState("");

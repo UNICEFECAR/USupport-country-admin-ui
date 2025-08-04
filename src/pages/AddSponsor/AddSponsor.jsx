@@ -17,7 +17,7 @@ import { useCustomNavigate as useNavigate } from "#hooks";
  */
 export const AddSponsor = () => {
   const navigate = useNavigate();
-  const { t } = useTranslation("add-sponsor-page");
+  const { t } = useTranslation("pages", { keyPrefix: "add-sponsor-page" });
   const [isUploadPictureBackdropOpen, setIsUploadPictureBackdropOpen] =
     useState(false);
 

@@ -33,7 +33,7 @@ import "./faq.scss";
  */
 export const FAQ = () => {
   const queryClient = useQueryClient();
-  const { i18n, t } = useTranslation("faq");
+  const { i18n, t } = useTranslation("blocks", { keyPrefix: "faq" });
 
   const [error, setError] = useState();
   const [searchValue, setSearchValue] = useState("");

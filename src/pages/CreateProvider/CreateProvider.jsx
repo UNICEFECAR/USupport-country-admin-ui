@@ -15,7 +15,7 @@ import "./create-provider.scss";
  */
 export const CreateProvider = () => {
   const navigate = useNavigate();
-  const { t } = useTranslation("create-provider-page");
+  const { t } = useTranslation("pages", { keyPrefix: "create-provider-page" });
 
   const [providerImage, setProviderImage] = useState();
   const [providerImageUrl, setProviderImageUrl] = useState();

@@ -35,7 +35,7 @@ import "./articles.scss";
  */
 export const Articles = () => {
   const queryClient = useQueryClient();
-  const { i18n, t } = useTranslation("articles");
+  const { i18n, t } = useTranslation("blocks", { keyPrefix: "articles" });
   const navigate = useNavigate();
 
   const [languageOfData, setLanguageOfData] = useState(i18n.language);

@@ -19,7 +19,7 @@ import "./forgot-password.scss";
  */
 export const ForgotPassword = () => {
   const navigate = useNavigate();
-  const { t } = useTranslation("forgot-password-page");
+  const { t } = useTranslation("pages", { keyPrefix: "forgot-password-page" });
   const { width } = useWindowDimensions();
 
   const isLoggedIn = useIsLoggedIn();

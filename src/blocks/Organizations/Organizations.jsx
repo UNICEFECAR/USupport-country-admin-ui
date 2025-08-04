@@ -20,7 +20,7 @@ import { DeleteOrganization } from "#backdrops";
  */
 export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
   const country = localStorage.getItem("country");
-  const { t, i18n } = useTranslation("organizations");
+  const { t, i18n } = useTranslation("blocks", { keyPrefix: "organizations" });
   const navigate = useNavigate();
 
   const [search, setSearch] = useState("");

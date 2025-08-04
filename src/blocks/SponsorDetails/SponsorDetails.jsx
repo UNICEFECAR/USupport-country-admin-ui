@@ -38,7 +38,9 @@ import "./sponsor-details.scss";
  */
 export const SponsorDetails = ({ data }) => {
   const navigate = useNavigate();
-  const { t, i18n } = useTranslation("sponsor-details");
+  const { t, i18n } = useTranslation("blocks", {
+    keyPrefix: "sponsor-details",
+  });
   const currencySymbol = localStorage.getItem("currency_symbol");
 
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);

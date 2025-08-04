@@ -29,7 +29,7 @@ import "./contact-forms.scss";
  * @return {jsx}
  */
 export const ContactForms = ({ Heading }) => {
-  const { t } = useTranslation("contact-forms");
+  const { t } = useTranslation("blocks", { keyPrefix: "contact-forms" });
   const { isLoading, data } = useGetContactForms();
 
   const [isFilterOpen, setIsFilterOpen] = useState(false);

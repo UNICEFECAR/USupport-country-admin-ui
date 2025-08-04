@@ -41,7 +41,7 @@ export const AddSponsor = ({
 }) => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
-  const { t } = useTranslation("add-sponsor");
+  const { t } = useTranslation("blocks", { keyPrefix: "add-sponsor" });
 
   const sponsorDataQuery = useGetSponsorData(sponsorId);
   const sponsorData = sponsorDataQuery.data;
