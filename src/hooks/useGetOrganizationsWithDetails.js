@@ -29,7 +29,6 @@ export const useGetOrganizationsWithDetails = ({ search }) => {
         paymentMethods: x?.payment_methods || [],
         userInteractions: x?.user_interactions || [],
         propertyTypes: x?.property_types || [],
-        workWith: x?.work_with || [],
         providers: x?.providers || [],
         specialisations: x?.specialisations || [],
         totalConsultations: x?.totalConsultations || 0,

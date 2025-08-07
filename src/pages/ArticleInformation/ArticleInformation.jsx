@@ -21,7 +21,9 @@ export const ArticleInformation = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const { i18n, t } = useTranslation("article-information-page");
+  const { i18n, t } = useTranslation("pages", {
+    keyPrefix: "article-information-page",
+  });
 
   const getArticleData = async () => {
     let articleIdToFetch = id;

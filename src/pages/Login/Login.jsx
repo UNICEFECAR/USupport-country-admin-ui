@@ -29,7 +29,7 @@ import "./login.scss";
  */
 export const Login = () => {
   const navigate = useNavigate();
-  const { t } = useTranslation("login-page");
+  const { t } = useTranslation("pages", { keyPrefix: "login-page" });
   const { width } = useWindowDimensions();
   const queryClient = useQueryClient();
 

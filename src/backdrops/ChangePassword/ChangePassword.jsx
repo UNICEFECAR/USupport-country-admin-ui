@@ -24,7 +24,9 @@ import "./change-password.scss";
  * @return {jsx}
  */
 export const ChangePassword = ({ isOpen, onClose }) => {
-  const { t } = useTranslation("change-password-backdrop");
+  const { t } = useTranslation("modals", {
+    keyPrefix: "change-password-backdrop",
+  });
 
   const schema = Joi.object({
     oldPassword: Joi.string()

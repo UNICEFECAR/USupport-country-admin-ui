@@ -14,7 +14,9 @@ import "./content-management.scss";
  * @returns {JSX.Element}
  */
 export const ContentManagement = () => {
-  const { t, i18n } = useTranslation("content-management-page");
+  const { t, i18n } = useTranslation("pages", {
+    keyPrefix: "content-management-page",
+  });
   const [searchParams, setSearchParams] = useSearchParams();
   const tab = searchParams.get("tab");
 

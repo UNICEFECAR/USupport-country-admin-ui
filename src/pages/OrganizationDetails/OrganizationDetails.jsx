@@ -58,7 +58,9 @@ import "./organization-details.scss";
  */
 export const OrganizationDetails = () => {
   const queryClient = useQueryClient();
-  const { t, i18n } = useTranslation("organization-details-page");
+  const { t, i18n } = useTranslation("pages", {
+    keyPrefix: "organization-details-page",
+  });
   const navigate = useNavigate();
 
   const organizationId = new URLSearchParams(window.location.search).get(

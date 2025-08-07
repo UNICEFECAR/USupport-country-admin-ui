@@ -26,7 +26,9 @@ import "./provider-activities.scss";
  * @return {jsx}
  */
 export const ProviderActivities = ({ isLoading, data, providerName }) => {
-  const { t, i18n } = useTranslation("provider-activities");
+  const { t, i18n } = useTranslation("blocks", {
+    keyPrefi: "provider-activities",
+  });
   const currencySymbol = localStorage.getItem("currency_symbol");
 
   const [dataToDisplay, setDataToDisplay] = useState(data);

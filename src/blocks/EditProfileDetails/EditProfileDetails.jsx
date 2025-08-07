@@ -26,7 +26,7 @@ import "./edit-profile-details.scss";
  * @return {jsx}
  */
 export const EditProfileDetails = ({ openChangePassword }) => {
-  const { t } = useTranslation("edit-profile-details");
+  const { t } = useTranslation("blocks", { keyPrefix: "edit-profile-details" });
   const [adminQuery, adminData, setAdminData] = useGetAdminData();
 
   const [canSaveChanges, setCanSaveChanges] = useState(false);

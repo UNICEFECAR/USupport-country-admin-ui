@@ -30,7 +30,7 @@ import "./client-ratings.scss";
  * @return {jsx}
  */
 export const ClientRatings = ({ Heading }) => {
-  const { t } = useTranslation("client-ratings");
+  const { t } = useTranslation("blocks", { keyPrefix: "client-ratings" });
 
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [filters, setFilters] = useState({

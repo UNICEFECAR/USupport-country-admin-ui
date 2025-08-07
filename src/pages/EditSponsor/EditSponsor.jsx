@@ -17,7 +17,7 @@ import "./edit-sponsor.scss";
  */
 export const EditSponsor = () => {
   const navigate = useNavigate();
-  const { t } = useTranslation("edit-sponsor-page");
+  const { t } = useTranslation("pages", { keyPrefix: "edit-sponsor-page" });
 
   const [isUploadPictureBackdropOpen, setIsUploadPictureBackdropOpen] =
     useState(false);

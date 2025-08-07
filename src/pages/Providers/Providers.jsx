@@ -16,7 +16,7 @@ import "./providers.scss";
  * @returns {JSX.Element}
  */
 export const Providers = () => {
-  const { t } = useTranslation("providers-page");
+  const { t } = useTranslation("pages", { keyPrefix: "providers-page" });
   const navigate = useNavigate();
   const { width } = useWindowDimensions();
 

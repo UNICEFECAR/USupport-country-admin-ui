@@ -49,7 +49,7 @@ export const Providers = ({
     organization: "",
   };
   const navigate = useNavigate();
-  const { t, i18n } = useTranslation("providers");
+  const { t, i18n } = useTranslation("blocks", { keyPrefix: "providers" });
   const queryClient = useQueryClient();
   const currencySymbol = localStorage.getItem("currency_symbol");
 

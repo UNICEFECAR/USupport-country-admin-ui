@@ -28,7 +28,7 @@ export const MyQA = ({
   isFilterButtonShown,
   setIsFilterButtonShown,
 }) => {
-  const { t } = useTranslation("my-qa");
+  const { t } = useTranslation("blocks", { keyPrefix: "my-qa" });
 
   const [tabs, setTabs] = useState([
     { value: "unanswered", isSelected: true },

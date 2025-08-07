@@ -22,7 +22,7 @@ const GIT_BOOK_URL = `${import.meta.env.VITE_GIT_BOOK_URL}`;
  */
 export const AdminProfile = () => {
   const navigate = useNavigate();
-  const { t } = useTranslation("admin-profile");
+  const { t } = useTranslation("blocks", { keyPrefix: "admin-profile" });
 
   const [displayName, setDisplayName] = useState("");
 

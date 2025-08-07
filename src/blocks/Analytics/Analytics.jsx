@@ -25,7 +25,7 @@ import "./analytics.scss";
  * @return {jsx}
  */
 export const Analytics = () => {
-  const { t, i18n } = useTranslation("analytics");
+  const { t, i18n } = useTranslation("blocks", { keyPrefix: "analytics" });
   const { width } = useWindowDimensions();
 
   const [selectedContentType, setSelectedContentType] = useState("all");
