@@ -48,7 +48,6 @@ export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
       { label: t("payment_methods"), sortingKey: "paymentMethods" },
       { label: t("user_interactions"), sortingKey: "userInteractions" },
       { label: t("property_types"), sortingKey: "propertyTypes" },
-      { label: t("work_with"), sortingKey: "workWith" },
       { label: t("specialisations"), sortingKey: "specialisations" },
       { label: t("description"), sortingKey: "description" },
       { label: t("unique_providers"), sortingKey: "uniqueProviders" },
@@ -113,7 +112,6 @@ export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
             ? item.propertyTypes.map((pt) => t(pt.name)).join(", ")
             : "-"}
         </p>,
-        <p className="text">{item?.workWith || "-"}</p>,
         <p className="text">
           {item.specialisations && item.specialisations.length > 0
             ? item.specialisations.map((s) => t(s.name)).join(", ")
