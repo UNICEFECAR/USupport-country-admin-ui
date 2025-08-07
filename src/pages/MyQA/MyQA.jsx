@@ -17,7 +17,7 @@ export const MyQA = () => {
   const [isFilterButtonShown, setIsFilterButtonShown] = useState(false);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
-  const { t } = useTranslation("my-qa-page");
+  const { t } = useTranslation("pages", { keyPrefix: "my-qa-page" });
   return (
     <Page classes="page__my-qa" showGoBackArrow={false} heading={t("heading")}>
       <MyQABlock

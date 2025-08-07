@@ -20,7 +20,7 @@ import { DeleteOrganization } from "#backdrops";
  */
 export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
   const country = localStorage.getItem("country");
-  const { t, i18n } = useTranslation("organizations");
+  const { t, i18n } = useTranslation("blocks", { keyPrefix: "organizations" });
   const navigate = useNavigate();
 
   const [search, setSearch] = useState("");
@@ -48,7 +48,6 @@ export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
       { label: t("payment_methods"), sortingKey: "paymentMethods" },
       { label: t("user_interactions"), sortingKey: "userInteractions" },
       { label: t("property_types"), sortingKey: "propertyTypes" },
-      { label: t("work_with"), sortingKey: "workWith" },
       { label: t("specialisations"), sortingKey: "specialisations" },
       { label: t("description"), sortingKey: "description" },
       { label: t("unique_providers"), sortingKey: "uniqueProviders" },
@@ -111,11 +110,6 @@ export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
         <p className="text">
           {item.propertyTypes && item.propertyTypes.length > 0
             ? item.propertyTypes.map((pt) => t(pt.name)).join(", ")
-            : "-"}
-        </p>,
-        <p className="text">
-          {item.workWith && item.workWith.length > 0
-            ? item.workWith.map((w) => t(w.topic)).join(", ")
             : "-"}
         </p>,
         <p className="text">

@@ -25,7 +25,9 @@ export const FilterSecurityCheckReports = ({
   data,
   filters,
 }) => {
-  const { t } = useTranslation("filter-security-check-reports");
+  const { t } = useTranslation("modals", {
+    keyPrefix: "filter-security-check-reports",
+  });
 
   const initialFiltersData = {
     provider: "",

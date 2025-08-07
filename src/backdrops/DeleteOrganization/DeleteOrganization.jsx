@@ -14,7 +14,7 @@ import { useDeleteOrganization } from "#hooks";
  * @return {jsx}
  */
 export const DeleteOrganization = ({ isOpen, onClose, organization }) => {
-  const { t } = useTranslation("organizations");
+  const { t } = useTranslation("blocks", { keyPrefix: "organizations" });
 
   const queryClient = useQueryClient();
 

@@ -26,7 +26,7 @@ export const FilterQuestions = ({
   reasonOptions,
   filters,
 }) => {
-  const { t } = useTranslation("filter-questions");
+  const { t } = useTranslation("modals", { keyPrefix: "filter-questions" });
 
   const [currFilter, setCurrFilter] = useState({
     reason: "",

@@ -16,7 +16,7 @@ import "./admin-profile.scss";
  */
 export const AdminProfile = () => {
   const navigate = useNavigate();
-  const { t } = useTranslation("admin-profile-page");
+  const { t } = useTranslation("pages", { keyPrefix: "admin-profile-page" });
   const { width } = useWindowDimensions();
 
   const handleLogout = () => {

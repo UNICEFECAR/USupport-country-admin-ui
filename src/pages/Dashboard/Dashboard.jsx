@@ -14,7 +14,7 @@ import "./dashboard.scss";
  * @returns {JSX.Element}
  */
 export const Dashboard = () => {
-  const { t } = useTranslation("dashboard-page");
+  const { t } = useTranslation("pages", { keyPrefix: "dashboard-page" });
   const { width } = useWindowDimensions();
 
   return (

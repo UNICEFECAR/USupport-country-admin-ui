@@ -34,7 +34,7 @@ export const CreateOrganization = ({
   organizationToEdit,
   onSuccess,
 }) => {
-  const { t } = useTranslation("organizations");
+  const { t } = useTranslation("blocks", { keyPrefix: "organizations" });
   const queryClient = useQueryClient();
   const country = localStorage.getItem("country");
 
@@ -51,7 +51,6 @@ export const CreateOrganization = ({
       phone: "",
       email: "",
       description: "",
-      workWith: [],
       district: null,
       paymentMethods: [],
       userInteractions: [],
@@ -79,9 +78,6 @@ export const CreateOrganization = ({
           phone: organizationToEdit.phone || "",
           email: organizationToEdit.email || "",
           description: organizationToEdit.description || "",
-          workWith: Array.isArray(organizationToEdit.workWith)
-            ? organizationToEdit.workWith.map((w) => w.id)
-            : [],
           district: organizationToEdit.district?.id || "",
           paymentMethods: Array.isArray(organizationToEdit.paymentMethods)
             ? organizationToEdit.paymentMethods.map((pm) => pm.id)
@@ -182,7 +178,6 @@ export const CreateOrganization = ({
         phone: data.phone,
         email: data.email,
         description: data.description,
-        workWith: data.workWith,
         district: data.district,
         paymentMethods: data.paymentMethods,
         userInteractions: data.userInteractions,
@@ -318,22 +313,6 @@ export const CreateOrganization = ({
           onChange={(text) => handleChange("description", text)}
           placeholder={t("description_placeholder")}
         />
-
-        {metadata?.workWith && metadata.workWith.length > 0 && (
-          <Select
-            label={t("work_with")}
-            placeholder={t("work_with_placeholder")}
-            options={metadata.workWith.map((item) => ({
-              label: t(item.topic),
-              value: item.organizationWorkWithId,
-              selected: data.workWith.includes(item.organizationWorkWithId),
-            }))}
-            handleChange={(options) =>
-              handleDropdownMultipleSelect("workWith", options)
-            }
-            classes="create-organizations__select--second"
-          />
-        )}
 
         {metadata?.paymentMethods && metadata.paymentMethods.length > 0 && (
           <Select

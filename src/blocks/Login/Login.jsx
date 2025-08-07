@@ -22,7 +22,7 @@ import "./login.scss";
  * @return {jsx}
  */
 export const Login = ({ data, setData, handleLogin, errors, isLoading }) => {
-  const { t } = useTranslation("login");
+  const { t } = useTranslation("blocks", { keyPrefix: "login" });
   const navigate = useNavigate();
 
   const handleChange = (field, value) => {

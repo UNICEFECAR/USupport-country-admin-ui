@@ -290,7 +290,7 @@ const LanguageLayout = () => {
 };
 
 export default function Root() {
-  const { t } = useTranslation("root");
+  const { t } = useTranslation("routes", { keyPrefix: "root" });
 
   const token = localStorage.getItem("token");
   const language = localStorage.getItem("language");

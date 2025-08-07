@@ -16,7 +16,7 @@ import "./edit-campaign.scss";
 export const EditCampaign = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { t } = useTranslation("edit-campaign-page");
+  const { t } = useTranslation("pages", { keyPrefix: "edit-campaign-page" });
 
   // const sponsorId = new URLSearchParams(window.location.search).get(
   //   "sponsorId"

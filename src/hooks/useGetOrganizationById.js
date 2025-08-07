@@ -49,7 +49,6 @@ export const useGetOrganizationById = (organizationId, filters) => {
           clients: x.clients_count || 0,
           futureConsultations: Number(x.future_consultations || 0),
         })),
-        workWith: data.work_with || [],
         specialisations: data.specialisations || [],
         paymentMethods: data.payment_methods || [],
         userInteractions: data.user_interactions || [],

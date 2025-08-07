@@ -15,7 +15,7 @@ import "./add-campaign.scss";
  */
 export const AddCampaign = () => {
   const navigate = useNavigate();
-  const { t } = useTranslation("add-campaign-page");
+  const { t } = useTranslation("pages", { keyPrefix: "add-campaign-page" });
   const sponsorId = new URLSearchParams(window.location.search).get(
     "sponsorId"
   );

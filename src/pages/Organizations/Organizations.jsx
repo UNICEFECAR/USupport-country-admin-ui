@@ -15,7 +15,7 @@ import "./organizations.scss";
  * @returns {JSX.Element}
  */
 export const Organizations = () => {
-  const { t } = useTranslation("organizations-page");
+  const { t } = useTranslation("pages", { keyPrefix: "organizations-page" });
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [organizationToEdit, setOrganizationToEdit] = useState(null);
