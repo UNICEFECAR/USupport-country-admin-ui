@@ -72,7 +72,7 @@ export const CreateProvider = ({
   setProviderImageUrl,
 }) => {
   const navigate = useNavigate();
-  const { t } = useTranslation("edit-provider");
+  const { t } = useTranslation("blocks", { keyPrefix: "edit-provider" });
   const currencySymbol = localStorage.getItem("currency_symbol");
 
   const [providerData, setProviderData] = useState(initialData);
