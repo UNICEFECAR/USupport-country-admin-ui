@@ -828,6 +828,14 @@
       "articles": "Статьи",
       "videos": "Видео",
       "podcasts": "Подкасты"
+    },
+    "sos-center-clicks": {
+      "sos_center": "Центры SOS",
+      "click_count": "Всего кликов",
+      "history": "История",
+      "web": "Веб",
+      "client": "Клиент",
+      "clicked_at": "Кликнуто {{time}} с платформы {{platform}}"
     }
   },
 
@@ -882,7 +890,8 @@
       "contact_form_tab_label": "Контактные формы",
       "filter": "Фильтр",
       "heading": "Отчеты",
-      "my_qa_tab_label": "Мой архив Q&A (Вопрос/Ответ)"
+      "my_qa_tab_label": "Мой архив Q&A (Вопрос/Ответ)",
+      "sos_center_clicks_tab_label": "Центры SOS"
     },
     "campaigns-page": {
       "heading": "Список спонсоров"

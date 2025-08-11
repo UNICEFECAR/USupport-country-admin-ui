@@ -828,6 +828,14 @@
       "articles": "Материалдар",
       "videos": "Видео",
       "podcasts": "Подасты"
+    },
+    "sos-center-clicks": {
+      "sos_center": "SOS орталығы",
+      "click_count": "Жалпы басулар саны",
+      "history": "Тарих",
+      "web": "Веб",
+      "client": "Клиент",
+      "clicked_at": "{{platform}} платформасынан {{time}} кезінде басылды"
     }
   },
 
@@ -882,7 +890,8 @@
       "contact_form_tab_label": "Байланыс формалары",
       "filter": "Сүзгі",
       "heading": "Есептер",
-      "my_qa_tab_label": "Менің Q&A (Сұрақ/Жауап) мұрағатым"
+      "my_qa_tab_label": "Менің Q&A (Сұрақ/Жауап) мұрағатым",
+      "sos_center_clicks_tab_label": "SOS Орталық"
     },
     "campaigns-page": {
       "heading": "Демеушілер тізімі"
