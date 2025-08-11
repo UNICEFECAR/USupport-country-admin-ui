@@ -7,6 +7,7 @@ import {
   ClientRatings,
   ContactForms,
   MyQAReports,
+  SosCenterClicks,
 } from "#blocks";
 
 import {
@@ -25,10 +26,10 @@ import "./reports.scss";
  * @returns {JSX.Element}
  */
 export const Reports = () => {
-  const { t } = useTranslation("pages", { keyPrefix: "reports-page" });
+  const { t } = useTranslation("reports-page");
 
   const [options, setOptions] = useState([
-    { label: t("consultations"), value: "consultations", isSelected: true },
+    { label: t("consultations"), value: "consultations", isSelected: false },
     {
       label: t("suggestions"),
       value: "suggestions",
@@ -37,6 +38,11 @@ export const Reports = () => {
     { label: t("ratings"), value: "ratings", isSelected: false },
     { label: t("contact_form"), value: "contact_form", isSelected: false },
     { label: t("my_qa"), value: "my_qa", isSelected: false },
+    {
+      label: t("sos_center_clicks"),
+      value: "sos_center_clicks",
+      isSelected: true,
+    },
   ]);
 
   const handleTabSelect = (index) => {
@@ -64,6 +70,8 @@ export const Reports = () => {
         return <ContactForms Heading={ReportBlockHeading} />;
       case "my_qa":
         return <MyQAReports Heading={ReportBlockHeading} />;
+      case "sos_center_clicks":
+        return <SosCenterClicks Heading={ReportBlockHeading} />;
     }
   };
 

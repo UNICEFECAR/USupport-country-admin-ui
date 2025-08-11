@@ -827,6 +827,14 @@
       "articles": "Artykuły",
       "videos": "Filmy",
       "podcasts": "Podcasty"
+    },
+    "sos-center-clicks": {
+      "sos_center": "Centrum SOS",
+      "click_count": "Łączna liczba kliknięć",
+      "history": "Historia",
+      "web": "Sieć",
+      "client": "Klient",
+      "clicked_at": "Kliknięto o {{time}} z platformy {{platform}}"
     }
   },
 
@@ -881,7 +889,8 @@
       "contact_form_tab_label": "Formularze kontaktowe",
       "filter": "Filtr",
       "heading": "Raporty",
-      "my_qa_tab_label": "Moje archiwum pytań i odpowiedzi"
+      "my_qa_tab_label": "Moje archiwum pytań i odpowiedzi",
+      "sos_center_clicks_tab_label": "Centrum SOS"
     },
     "campaigns-page": {
       "heading": "Lista sponsorów"
