@@ -827,6 +827,14 @@
       "articles": "Articles",
       "videos": "Videos",
       "podcasts": "Podcasts"
+    },
+    "sos-center-clicks": {
+      "sos_center": "SOS Center",
+      "click_count": "Total clicks",
+      "history": "History",
+      "web": "Web",
+      "client": "Client",
+      "clicked_at": "Clicked at {{time}} from {{platform}} platform"
     }
   },
 
@@ -881,7 +889,8 @@
       "contact_form_tab_label": "Contact Forms",
       "filter": "Filter",
       "heading": "Reports",
-      "my_qa_tab_label": "My Q&A Archive"
+      "my_qa_tab_label": "My Q&A Archive",
+      "sos_center_clicks_tab_label": "SOS Center"
     },
     "campaigns-page": {
       "heading": "List of Sponsors"
