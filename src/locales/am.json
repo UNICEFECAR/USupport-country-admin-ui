@@ -10,16 +10,23 @@
       "page_7": "Կտրոններ",
       "page_8": "Իմ հարցուպատասխանը",
       "page_9": "Կազմակերպություններ",
-
       "button_text": "Դուրս գալ համակարգից",
       "contact_us": "Կապվել մեզ հետ",
       "your_profile_text": "Ձեր պրոֆիլը",
-
       "password_placeholder": "Գաղտնաբառը",
       "password": "Խնդրում ենք մուտքագրել ձեր գաղտնաբառը՝ այս կայքէջ մուտք գործելու համար",
       "wrong_password": "Սխալ գաղտնաբառ",
       "submit": "Ուղարկել",
-      "statistics": "Վիճակագրություն"
+      "statistics": "Վիճակագրություն",
+      "country_1": "",
+      "country_2": "",
+      "country_3": "",
+      "language_1": "",
+      "language_2": "",
+      "language_3": "",
+      "language_4": "",
+      "language_5": "",
+      "language_6": ""
     },
     "statistics": {
       "statistics": "Վիճակագրություն",
@@ -40,7 +47,9 @@
       "note": "<0>Հուշում*</0> Եթե «Ստեղծված է․․․» սյունակի համապատասխան վանդակը նշված է որպես ընտրված, դա նշանակում է, որ հաճախակի տրվող հարցերը տեսանելի են հարթակի այլ օգտագործողների համար։",
       "search": "Որոնում",
       "no_data_found": "Տվյալ չի գտնվել",
-      "created_at": "Ստեղծված է ․․․"
+      "created_at": "Ստեղծված է ․․․",
+      "likes": "Likes",
+      "dislikes": "Dislikes"
     },
     "faq": {
       "no_results": "Արդյունքներ չեն գտնվել, խնդրում ենք փորձել այլ լեզվով",
@@ -123,24 +132,19 @@
       "surname_label": "Ազգանունը",
       "email_label": "Էլեկտրոնային փոստի հասցեն",
       "phone_label": "Հեռախոսահամարը",
-
       "name_placeholder": "Մուտքագրեք ձեր անունը",
       "surname_placeholder": "Մուտքագրեք ձեր ազգանունը",
       "email_placeholder": "user@mail.com",
       "phone_prefix_placeholder": "Հեռախոսահամարի եռանիշ սկզբնաթվերը",
       "phone_placeholder": "Հեռախոսահամարը",
-
       "name_error": "Պահանջվում է նշել անունը",
       "surname_error": "Պահանջվում է նշել ազգանունը",
       "email_error": "Պահանջվում է նշել էլեկտրոնային փոստի հասցեն",
       "phone_prefix_error": "Պահանջվում է նշել հեռախոսի եռանիշ սկզբնաթվերը",
       "phone_error": "Պահանջվում է նշել հեռախոսահամարը",
-
       "button_text": "Պահպանել փոփոխությունները",
       "button_secondary_text": "Չեղարկել փոփոխությունները",
-
       "edit_success": "Պրոֆիլը բարեհաջող թարմացվել է",
-
       "search": "Որոնում",
       "no_data_found": "Տվյալ չի գտնվել",
       "button_change_password": "Փոխել գաղտնաբառը"
@@ -165,7 +169,6 @@
       "deactivate": "Ապակտիվացնել",
       "provider_activated": "Խորհրդատուն բարեհաջող ակտիվացված է",
       "provider_deactivated": "Խորհրդատուն բարեհաջող ապակտիվացված է",
-
       "filter_providers": "Ֆիլտրել խորհրդատուներին",
       "min_price": "Նվազագույն արժեքը",
       "status": "Կարգավիճակը",
@@ -176,7 +179,6 @@
       "all": "Բոլորը",
       "apply_filter": "Կիրառել ֆիլտրեր",
       "reset_filter": "Վերագործարկել ֆիլտրերը",
-
       "name": "Անունը",
       "email": "Էլեկտրոնային փոստի հասցեն",
       "price": "Արժեքը",
@@ -205,7 +207,6 @@
       "change_photo": "Փոխել լուսանկարը",
       "work_with_label": "Աշխատանք տվյալ կատեգորիայի հետ",
       "video_link_label": "Տեսաներկայացում",
-
       "name_placeholder": "Մուտքագրեք անունը",
       "patronym_placeholder": "Մուտքագրեք ձեր հայրանունը",
       "surname_placeholder": "Մուտքագրեք ազգանունը",
@@ -219,16 +220,13 @@
       "consultation_price_placeholder": "Խորհրդատվության արժեքը",
       "description_placeholder": "Մուտքագրել նկարագրություն",
       "video_link_placeholder": "https://video.link",
-
       "sex_male": "Արական",
       "sex_female": "Իգական",
       "sex_unspecified": "Նշված չէ",
       "sex_none": "Նախընտրում եմ չասել",
-
       "psychologist": "Հոգեբան",
       "psychiatrist": "Հոգեբույժ",
       "psychotherapist": "Հոգեթերապևտ",
-
       "name_error": "Պահանջվում է նշել անունը",
       "surname_error": "Պահանջվում է նշել ազգանունը",
       "nickname_error": "Պահանջվում է նշել ծածկանունը",
@@ -241,23 +239,19 @@
       "consultation_price_error": "Խորհրդատվության արժեքը պետք է լինի ոչ բացասական թիվ",
       "min_price_error": "Խորհրդատվության նվազագույն արժեքը կազմում է {{minPrice}}{{currencySymbol}}",
       "consultation_price_disabled": "Վճարովի խորհրդատվությունները Ձեր երկրում հասանելի չեն։",
-
       "specializations_error": "Ընտրել առնվազն մեկ մասնագիտացում",
       "work_with_error": "Ընտրել առնվազն մեկ կատեգորիա",
       "languages_error": "Ընտրել առավելագույնը մեկ լեզու",
       "education_error": "Անհրաժեշտ է մուտքագրել կրթությունը",
       "description_error": "Անհրաժեշտ է նշել նկարագրությունը",
       "sex_error": "Ընտրել սեռը",
-
       "add_more_languages": "Ավելացնել այլ լեզուներ",
       "add_more_work_with": "Ավելացնել այլ կատեգորիաներ",
       "add_more_education": "Ավելացնել այլ",
       "add_more_specializations": "Ավելացնել լրացուցիչ մասնագիտացումներ",
-
       "button_text": "Պահպանել փոփոխությունները",
       "button_secondary_text": "Չեղարկել փոփոխությունները",
       "create_button_text": "Ստեղծել խորհրդատվություն տրամադրողի դաշտ",
-
       "addiction": "Կախվածություն և նյութերի չարաշահում",
       "stress": "Սթրեսի կառավարում",
       "burnout": "Այրում և ուսման հետ կապված սթրես",
@@ -289,15 +283,12 @@
       "love": "Սեր և ռոմանտիկ հարաբերություններ",
       "social_skills": "Սոցիալական հմտություններ և ընկերություն",
       "body_image": "Մարմնակազմություն և ինքնագնահատական",
-
       "edit_success": "Պրոֆիլը բարեհաջող թարմացվել է",
       "create_success": "Խորհրդատուի դաշտը բարեհաջող ստեղծված է",
-
       "search": "Որոնում",
       "no_data_found": "Տվյալ չի գտնվել",
       "select": "Ընտրել",
       "remove": "Հեռացնել",
-
       "organizations_label": "Կազմակերպություններ",
       "organizations_error": "Ընտրել առնվազն մեկ կազմակերպություն"
     },
@@ -315,11 +306,9 @@
       "city_label": "Քաղաքը",
       "street_label": "Փողոցը",
       "postcode_label": "Փոստային ինդեքսը",
-
       "psychologist": "Հոգեբան",
       "psychiatrist": "Հոգեբույժ",
       "psychotherapist": "Հոգեթերապևտ",
-
       "addiction": "Կախվածություն և նյութերի չարաշահում",
       "stress": "Սթրեսի կառավարում",
       "burnout": "Այրում և ուսման հետ կապված սթրես",
@@ -351,7 +340,6 @@
       "love": "Սեր և ռոմանտիկ հարաբերություններ",
       "social_skills": "Սոցիալական հմտություններ և ընկերություն",
       "body_image": "Մարմնակազմություն և ինքնագնահատական",
-
       "hour_consultation": "1 ժամ խորհրդատվության համար",
       "organizations_label": "Կազմակերպություններ",
       "free": "Անվճար"
@@ -380,7 +368,6 @@
       "no": "Ոչ",
       "no_results": "Անվտանգության ստուգման հաշվետվություններ չեն գտնվել",
       "search": "Որոնում",
-
       "very_satisfied": "Շատ գոհ եմ",
       "satisfied": "Գոհ եմ",
       "neutral": "Ոչ գոհ եմ, ոչ՝ դժգոհ",
@@ -400,7 +387,15 @@
       "submit": "Կիրառել ֆիլտրեր",
       "reset": "Վերագործարկել ֆիլտրերը",
       "no_results": "Առաջարկություններ չեն գտնվել",
-      "search": "Որոնում"
+      "search": "Որոնում",
+      "suggestion_type": "Suggestion type",
+      "all": "All",
+      "information_portal": "Information portal",
+      "my_qa": "My Q&A",
+      "consultations": "Consultations",
+      "organizations": "Organizations",
+      "mood_tracker": "Mood tracker",
+      "type": "Type"
     },
     "client-ratings": {
       "heading": "Հաճախորդների գնահատականները",
@@ -411,7 +406,6 @@
       "rating": "Գնահատականը",
       "time": "Ժամանակը",
       "content_heading": "Հետադարձ կապ",
-
       "filters": "Ֆիլտրեր",
       "filter": "Ֆիլտրել",
       "minimum_rating": "Նվազագույն գնահատականը",
@@ -421,7 +415,14 @@
       "submit": "Կիրառել ֆիլտրեր",
       "reset_filters": "Վերագործարկել ֆիլտրերը",
       "no_results": "Գնահատականներ չեն գտնվել",
-      "search": "Որոնում"
+      "search": "Որոնում",
+      "client_ratings": "Client Ratings",
+      "provider_ratings": "Provider Ratings",
+      "from_client": "From client",
+      "from_provider": "From provider",
+      "user_type": "User type",
+      "client": "Client",
+      "provider": "Provider"
     },
     "contact-forms": {
       "email": "Էլեկտրոնային փոստի հասցե",
@@ -471,7 +472,8 @@
       "late-canceled": "Ուշացումով չեղարկված",
       "scheduled": "Պլանավորված",
       "active": "Գործող",
-      "organization": "Կազմակերպություն"
+      "organization": "Կազմակերպություն",
+      "dates_placeholder": "DD.MM.YYYY"
     },
     "campaigns": {
       "filter_button": "Ֆիլտր",
@@ -502,18 +504,15 @@
       "phone_placeholder": "Մուտքագրեք հեռախոսահամարը",
       "phone_prefix_placeholder": "Դիմելաձևը",
       "create_sponsor": "Ստեղծել Հովանավորի դաշտ",
-
       "sponsor_error": "Անհրաժեշտ է նշել հովանավորի անունը",
       "email_error": "Անհրաժեշտ է նշել էլեկտրոնային փոստի հասցեն",
       "phone_prefix_error": "Անհրաժեշտ է նշել հեռախոսահամարի եռանիշ սկզբնաթվերը",
       "phone_error": "Անհրաժեշտ է նշել հեռախոսահամարը",
-
       "save_changes": "Պահպանել փոփոխությունները",
       "discard_changes": "Չեղարկել փոփոխությունները",
       "delete_sponsor": "Հեռացնել հովանավորին",
       "edit_success": "Փոփոխությունները բարեհաջող պահպանված են",
       "success": "Հովանավորի դաշտը բարեհաջող ստեղծված է",
-
       "search": "Որոնում",
       "no_data_found": "Տվյալ չի գտնվել"
     },
@@ -559,7 +558,6 @@
       "end_date_label": "Ավարտի ամսաթիվը",
       "max_coupons_per_client_label": "Մեկ հաճախորդին հասանելիք կտրոնների առավելագույն թիվը",
       "terms_label": "Օգտվելու պայմանները",
-
       "name_placeholder": "Արշավի անվանումը",
       "budget_placeholder": "Մուտքագրեք ընդհանուր բյուջեն",
       "coupon_code_placeholder": "Մուտքագրեք կոդը կտրոնի համար",
@@ -568,13 +566,11 @@
       "max_coupons_per_client_placeholder": "Մեկ հաճախորդին հասանելիք կտրոնների առավելագույն թիվը",
       "terms_placeholder": "Գրի առեք օգտվելու պայմանները",
       "budget_info": "Մեկ խորհրդատվության արժեքը կկազմի",
-
       "required_field": "Պարտադիր լրացման դաշտ",
       "budget_error": "Բյուջեն պետք է լինի դրական թիվ",
       "start_date_error": "Արշավի մեկնարկի ամսաթիվը պետք է լինի ապագայում",
       "end_date_error": "Արշավի ավարտի ամսաթիվը պետք է լինի ապագայում",
       "period_error": "Ավարտի ամսաթիվը պետք է լինի մեկնարկի ամսաթվից հետո",
-
       "create_campaign": "Ստեղծել արշավ",
       "save_changes": "Պահպանել փոփոխությունները",
       "discard_changes": "Չեղարկել փոփոխությունները",
@@ -649,7 +645,9 @@
       "all": "Բոլոր լեզուները",
       "read_more": "Կարդալ ավելին",
       "Today": "Այսօր",
-      "language": "Լեզու"
+      "language": "Լեզու",
+      "all_languages": "All languages",
+      "filter": "Filter"
     },
     "organizations": {
       "name": "Անունը",
@@ -666,12 +664,100 @@
       "create_organization": "Ստեղծել կազմակերպության դաշտ",
       "organization_added": "Կազմակերպության դաշտն ստեղծված է",
       "organization_updated": "Կազմակերպության տվյալները թարմացված են",
-      "no_data_found": "Տվյալ չի գտնվել"
+      "no_data_found": "Տվյալ չի գտնվել",
+      "search": "Search",
+      "name_placeholder": "Enter organization name",
+      "website": "Website URL",
+      "website_placeholder": "Enter website URL",
+      "address": "Address",
+      "address_placeholder": "Enter address",
+      "phone": "Phone number",
+      "phone_placeholder": "Enter phone number",
+      "city_area": "Sector",
+      "city_area_placeholder": "Enter sector",
+      "sector_1": "Sector 1",
+      "sector_2": "Sector 2",
+      "sector_3": "Sector 3",
+      "sector_4": "Sector 4",
+      "sector_5": "Sector 5",
+      "sector_6": "Sector 6",
+      "organization_edited": "Organization updated successfully",
+      "description": "Other services",
+      "description_placeholder": "Enter other services",
+      "email": "Email address",
+      "email_placeholder": "Enter email address",
+      "cancel": "Cancel",
+      "work_with": "Work with",
+      "work_with_placeholder": "Select work with categories",
+      "district": "Sector",
+      "district_placeholder": "Select sector",
+      "payment_methods": "Payment methods",
+      "payment_methods_placeholder": "Select payment methods",
+      "user_interactions": "Interaction mode",
+      "user_interactions_placeholder": "Select interaction modes",
+      "specialisations": "Offered services",
+      "specialisations_placeholder": "Select offered services",
+      "property_types": "Property type",
+      "property_types_placeholder": "Select property types",
+      "in_person_interaction": "In person",
+      "online_interaction": "Online",
+      "phone_interaction": "Phone",
+      "hybrid_interaction": "Hybrid",
+      "free_services": "Free services",
+      "paid_services": "Paid services",
+      "co_payment_services": "Co-payment services",
+      "cnas_reimbursed_services": "CNAS reimbursed services",
+      "emergency_situations": "Emergency situations",
+      "pediatric_psychiatry": "Pediatric psychiatry",
+      "psychological_evaluation": "Psychological evaluation",
+      "psychological_counseling": "Psychological counseling",
+      "individual_psychotherapy": "Individual psychotherapy",
+      "group_psychotherapy": "Group psychotherapy",
+      "support_groups": "Support groups",
+      "social_assistance_and_counseling": "Social assistance and counseling",
+      "personal_development": "Personal development",
+      "vocational_counseling_and_career_guidance": "Vocational counseling and career guidance",
+      "speech_therapy": "Speech therapy",
+      "occupational_therapy_ergotherapy": "Occupational therapy/Ergotherapy",
+      "physiotherapy_physical_recovery": "Physiotherapy/Physical recovery",
+      "autism_spectrum_disorder_therapies": "Autism spectrum disorder therapies",
+      "disability_assessment": "Disability assessment",
+      "pediatric_neurology": "Pediatric neurology",
+      "special_psychopedagogy": "Special psychopedagogy",
+      "neuropsychomotor_recovery": "Neuropsychomotor recovery",
+      "aggression_violence_victim_or_aggressor": "Aggression/violence - victim or aggressor",
+      "learning_difficulties_special_educational_needs": "Learning difficulties/Special educational needs",
+      "behavioral_disorder": "Behavioral disorder",
+      "eating_disorder": "Eating disorder",
+      "suicide_self_harm": "Suicide/Self-harm",
+      "addiction": "Addiction",
+      "identity_issues": "Identity issues",
+      "illness_oncological_treatment_chronic_diseases": "Illness (oncological treatment, chronic diseases)",
+      "other_situations": "Other situations",
+      "public": "Public",
+      "private": "Private",
+      "ong": "NGO",
+      "public_private": "Public-private",
+      "social_information_counseling": "Social information and counseling",
+      "rehab_autism_children": "Rehabilitation and recovery services for children with autism",
+      "rehab_psycho_neuro_children": "Rehabilitation and recovery services for children with psycho-neuro-motor disorders",
+      "suicide_prevention_helpline": "Suicide prevention helpline",
+      "addiction_helpline": "Addiction helpline",
+      "violence_victim_helpline": "Violence victims helpline",
+      "child_helpline": "Child helpline",
+      "child_psychiatry": "Child psychiatry",
+      "art_recreational_activities": "Artistic recreational activities (theatre, music, poetry, painting, storytelling)",
+      "sport_recreational_activities": "Sports recreational activities (sports, games, dance)",
+      "delete_label": "Delete",
+      "delete_heading": "Are you sure you want to delete organization: {{name}}",
+      "delete_subheading": "This action is irreversible.",
+      "delete_providers_heading": "Organization {{name}} has associated providers",
+      "delete_providers_subheading": "Please remove all providers before deleting the organization. List of providers",
+      "delete_success": "Organization {{name}} was deletet successfully"
     },
     "analytics": {
       "content_tab_label": "Բովանդակության ցուցանիշներ",
       "general_tab_label": "Ընդհանուր Ցուցանիշներ",
-
       "category_name": "Կատեգորիայի Անվանում",
       "views": "Դիտումներ",
       "downloads": "Ներբեռնումներ",
@@ -680,11 +766,9 @@
       "engagement_score": "Ներգրավվածության միավոր",
       "likes": "Հավանումներ",
       "dislikes": "Չհավանածներ",
-
       "search": "Որոնում",
       "export_label": "Արտահանել տվյալները CSV ձևաչափով",
       "no_data_found": "Տվյալներ չեն հայտնաբերվել",
-
       "totalConsultations": "Ընդհանուր խորհրդատվություններ",
       "uniqueClientsConsultations": "Հաճախորդների հատուկ խորհրդատվություններ",
       "activeClients": "Ակտիվ հաճախորդներ",
@@ -698,10 +782,22 @@
       "uniqueClientsThatUsedCoupon": "Կտրոն օգտագործած հատուկ հաճախորդներ",
       "totalCouponConsultations": "Կտրոնով խորհրդատվությունների ընդհանուր քանակը",
       "positiveClientRatings": "Դրական գնահատականներ հաճախորդներից",
-      "positiveProviderRatings": "Դրական գնահատականներ ծառայություն մատուցողներից"
+      "positiveProviderRatings": "Դրական գնահատականներ ծառայություն մատուցողներից",
+      "content_type": "Content Type",
+      "all": "All",
+      "articles": "Articles",
+      "videos": "Videos",
+      "podcasts": "Podcasts"
+    },
+    "sos-center-clicks": {
+      "sos_center": "SOS Center",
+      "click_count": "Total clicks",
+      "history": "History",
+      "web": "Web",
+      "client": "Client",
+      "clicked_at": "Clicked at {{time}} from {{platform}} platform"
     }
   },
-
   "pages": {
     "not-found-page": {
       "heading": "Ooops! Մենք չենք կարողանում գտնել այն էջը, որը դուք որոնում եք․․․",
@@ -754,7 +850,8 @@
       "contact_form_tab_label": "Կոնտակտների ձևերը",
       "filter": "Ֆիլտր",
       "heading": "Հաշվետվություններ",
-      "my_qa_tab_label": "Իմ Հարցուպատասխանի արխիվը"
+      "my_qa_tab_label": "Իմ Հարցուպատասխանի արխիվը",
+      "sos_center_clicks_tab_label": "SOS Center"
     },
     "campaigns-page": {
       "heading": "Հովանավորների ցանկ"
@@ -784,11 +881,11 @@
       "filter_providers": "Ֆիլտրել խորհրդատուներին"
     },
     "organizations-page": {
-      "heading": "Կազմակերպություններ"
+      "heading": "Կազմակերպություններ",
+      "add_button": "Add organization"
     },
     "organization-details-page": {
       "heading": "Կազմակերպություն {{name}}",
-
       "providers": "Նշված ծառայություն մատուցողներ՝ {{count}}",
       "consultations_number": "Բոլոր սեսիաները՝ {{count}}",
       "clients_number": "Բոլոր հաճախորդները՝ {{count}}",
@@ -827,13 +924,42 @@
       "no": "Ոչ",
       "has_future_consultations": "Ծառայություն մատուցողը ունի {{count}} նախատեսված առաջիկա խորհրդատվություն",
       "reset_filters": "Վերագործարկել ֆիլտրերը",
-      "no_data_found": "Տվյալներ չեն գտնվել"
+      "no_data_found": "Տվյալներ չեն գտնվել",
+      "search": "Search"
     },
     "analytics-page": {
       "heading": "Վերլուծություն"
+    },
+    "content-management-page": {
+      "title": "Content Management",
+      "articles": "Articles",
+      "videos": "Videos",
+      "sos_centers": "SOS Center",
+      "faqs": "FAQs",
+      "podcasts": "Podcasts",
+      "published": "Published",
+      "thumbnail": "Thumbnail",
+      "table_title": "Title",
+      "description": "Description",
+      "url": "URL",
+      "category": "Category",
+      "likes": "Likes",
+      "dislikes": "Dislikes",
+      "created_at": "Created at",
+      "search": "Search",
+      "note": "<0>Note*</0> If the checkbox in the \"Published\" column is marked as selected it means that the Video is visible to the users of the platform",
+      "note_podcasts": "<0>Note*</0> If the checkbox in the \"Published\" column is marked as selected it means that the Podcast is visible to the users of the platform",
+      "no_data_found": "No data found",
+      "podcast_added": "Podcast added",
+      "podcast_removed": "Podcast removed",
+      "video_added": "Video added",
+      "video_removed": "Video removed",
+      "number_of_more_options": "{{count}} more",
+      "videos_active": "Video module activation",
+      "podcasts_active": "Podcast module activation",
+      "save_success": "Saved successfully"
     }
   },
-
   "modals": {
     "upload-picture": {
       "heading": "Փոխել պրոֆիլի նկարը",
@@ -901,7 +1027,6 @@
       "password_match_error": "<Նոր գաղտնաբառ> և <Հաստատել գաղտնաբառը> դաշտերը չեն համընկնում"
     }
   },
-
   "routes": {
     "root": {
       "heading": "Դեռևս այստե՞ղ եք։",
