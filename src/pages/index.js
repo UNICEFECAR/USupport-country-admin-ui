@@ -28,3 +28,4 @@ export * from "./Organizations";
 export * from "./OrganizationDetails";
 export * from "./ContentManagement";
 export * from "./Analytics";
+export * from "./BaselineAssessment";

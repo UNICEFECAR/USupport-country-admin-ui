@@ -16,6 +16,7 @@ import {
   AdminProfile,
   ArticleInformation,
   Articles,
+  BaselineAssessment,
   CreateProvider,
   Dashboard,
   EditProfileDetails,
@@ -280,6 +281,14 @@ const LanguageLayout = () => {
         element={
           <ProtectedRoute>
             <Analytics />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="baseline-assessment"
+        element={
+          <ProtectedRoute>
+            <BaselineAssessment />
           </ProtectedRoute>
         }
       />
