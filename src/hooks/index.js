@@ -47,3 +47,4 @@ export * from "./useGetPlatformMetrics.js";
 export * from "./useGetOrganizationMetadata.js";
 export * from "./useUpdateContentActiveStatus.js";
 export * from "./useDeleteOrganization.js";
+export * from "./useGetSOSCenterClicks.js";
