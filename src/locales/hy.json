@@ -187,7 +187,8 @@
       "view": "Դիտել",
       "edit": "Փոփոխել",
       "search": "Որոնում",
-      "organizations": "Կազմակերպություններ"
+      "organizations": "Կազմակերպություններ",
+      "modal_heading": ""
     },
     "edit-provider": {
       "name_label": "Անունը",
@@ -393,7 +394,7 @@
       "information_portal": "Information portal",
       "my_qa": "My Q&A",
       "consultations": "Consultations",
-      "organizations": "Organizations",
+      "organizations": "Կազմակերպություններ",
       "mood_tracker": "Mood tracker",
       "type": "Type"
     },
@@ -646,7 +647,7 @@
       "read_more": "Կարդալ ավելին",
       "Today": "Այսօր",
       "language": "Լեզու",
-      "all_languages": "All languages",
+      "all_languages": "Բոլոր լեզուները",
       "filter": "Filter"
     },
     "organizations": {
@@ -665,7 +666,7 @@
       "organization_added": "Կազմակերպության դաշտն ստեղծված է",
       "organization_updated": "Կազմակերպության տվյալները թարմացված են",
       "no_data_found": "Տվյալ չի գտնվել",
-      "search": "Search",
+      "search": "Որոնում",
       "name_placeholder": "Enter organization name",
       "website": "Website URL",
       "website_placeholder": "Enter website URL",

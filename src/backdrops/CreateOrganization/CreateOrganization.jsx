@@ -128,15 +128,15 @@ export const CreateOrganization = ({
   };
 
   const onEditError = (error) => {
-    toast.error(t("organization_edit_error") || "Failed to edit organization");
-    console.error("Edit organization error:", error);
+    toast.error(
+      error || t("organization_edit_error") || "Failed to edit organization"
+    );
   };
 
   const onCreateError = (error) => {
     toast.error(
-      t("organization_create_error") || "Failed to create organization"
+      error || t("organization_create_error") || "Failed to create organization"
     );
-    console.error("Create organization error:", error);
   };
 
   const editOrganizationMutation = useEditOrganization(
