@@ -10,7 +10,7 @@ export default function useGetBaselineAssessmentThresholds() {
 
     return data.map((x) => ({
       ...x,
-      baselineAssesmentThresholdId: x.baseline_assesment_threshold_id,
+      baselineAssesmentThresholdId: x.baseline_assessment_threshold_id,
     }));
   };
 
