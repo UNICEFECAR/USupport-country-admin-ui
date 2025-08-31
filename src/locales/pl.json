@@ -828,6 +828,33 @@
       "videos": "Filmy",
       "podcasts": "Podcasty"
     },
+    "baseline-assessment-thresholds": {
+      "title": "Progi oceny bazowej",
+      "description": "Zarządzaj wartościami progowymi dla czynników oceny bazowej. Edytuj wartości poniżej i powyżej, aby dostosować granice poziomu ryzyka.",
+      "factor_label": "Czynnik",
+      "below_label": "Poniżej progu",
+      "above_label": "Powyżej progu",
+      "social": "Społeczny",
+      "biological": "Biologiczny",
+      "psychological": "Psychologiczny",
+      "edit": "Edytuj wartości",
+      "save": "Zapisz",
+      "cancel": "Anuluj",
+      "update_success": "Wartości progowe zostały pomyślnie zaktualizowane",
+      "validation_error": "Próg dolny musi być mniejszy niż próg górny",
+      "update_error": "Wystąpił błąd. Spróbuj ponownie.",
+      "analysis_title": "Analiza danych oceny",
+      "analysis_description": "Analiza statystyczna ukończonych ocen bazowych z wartościami mediany dla każdego czynnika.",
+      "total_assessments": "Łączne oceny",
+      "total_questions": "Łączne pytania",
+      "median_value": "Wartość mediany",
+      "data_split_info": "Dane zostały podzielone na dwie grupy do analizy:",
+      "first_half": "Pierwsza połowa",
+      "second_half": "Druga połowa",
+      "no_data": "Nie znaleziono ukończonych ocen",
+      "loading_analysis": "Ładowanie danych analizy...",
+      "error_loading_analysis": "Błąd ładowania danych analizy"
+    },
     "sos-center-clicks": {
       "sos_center": "Centrum SOS",
       "click_count": "Łączna liczba kliknięć",
@@ -997,6 +1024,9 @@
     },
     "analytics-page": {
       "heading": "Analityka"
+    },
+    "baseline-assessment-page": {
+      "heading": "Ocena bazowa"
     }
   },
 

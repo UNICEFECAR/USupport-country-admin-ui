@@ -1,0 +1,11 @@
+.page__baseline-assessment {
+  .baseline-assessment-thresholds {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  // Responsive adjustments
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+}
