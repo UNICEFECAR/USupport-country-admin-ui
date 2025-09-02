@@ -141,7 +141,7 @@
       "surname_placeholder": "Тегіңізді енгізіңіз",
       "email_placeholder": "user@mail.com",
       "phone_prefix_placeholder": "Префикс",
-      "phone_placeholder": "Телефон нөмірі",
+      "phone_placeholder": "Телефон нөірі",
 
       "name_error": "Атыңызды көрсету қажет",
       "surname_error": "Тегіңізді көрсету қажет",
@@ -830,6 +830,33 @@
       "videos": "Видео",
       "podcasts": "Подасты"
     },
+    "baseline-assessment-thresholds": {
+      "title": "Бастапқы бағалау шектеулері",
+      "description": "Бастапқы бағалау факторларының шектік мәндерін басқарыңыз. Қауіп деңгейінің шекараларын реттеу үшін төмен және жоғары мәндерді өңдеңіз.",
+      "factor_label": "Фактор",
+      "below_label": "Төмен шекара",
+      "above_label": "Жоғары шекара",
+      "social": "Әлеуметтік",
+      "biological": "Биологиялық",
+      "psychological": "Психологиялық",
+      "edit": "Мәндерді өңдеу",
+      "save": "Сақтау",
+      "cancel": "Болдырмау",
+      "update_success": "Шектік мәндер сәтті жаңартылды",
+      "validation_error": "Төмен шекара жоғары шекарадан аз болуы керек",
+      "update_error": "Қате орын алды. Қайталап көріңіз.",
+      "analysis_title": "Бағалау деректерінің талдауы",
+      "analysis_description": "Әр фактор үшін медиана мәндерімен аяқталған бастапқы бағалаулардың статистикалық талдауы.",
+      "total_assessments": "Жалпы бағалаулар",
+      "total_questions": "Жалпы сұрақтар",
+      "median_value": "Медиана мәні",
+      "data_split_info": "Деректер талдау үшін екі топқа бөлінді:",
+      "first_half": "Бірінші жартысы",
+      "second_half": "Екінші жартысы",
+      "no_data": "Аяқталған бағалаулар табылмады",
+      "loading_analysis": "Талдау деректерін жүктеу...",
+      "error_loading_analysis": "Талдау деректерін жүктеу қатесі"
+    },
     "sos-center-clicks": {
       "sos_center": "SOS орталығы",
       "click_count": "Жалпы басулар саны",
@@ -999,6 +1026,9 @@
     },
     "analytics-page": {
       "heading": "Аналитика"
+    },
+    "baseline-assessment-page": {
+      "heading": "Бастапқы бағалау"
     }
   },
 
