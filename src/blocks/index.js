@@ -30,4 +30,5 @@ export * from "./Organizations";
 export * from "./Videos";
 export * from "./Podcasts";
 export * from "./Analytics";
+export * from "./BaselineAssessmentThresholds";
 export * from "./SosCenterClicks";
