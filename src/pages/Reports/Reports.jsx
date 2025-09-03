@@ -26,7 +26,7 @@ import "./reports.scss";
  * @returns {JSX.Element}
  */
 export const Reports = () => {
-  const { t } = useTranslation("reports-page");
+  const { t } = useTranslation("pages", { keyPrefix: "reports-page" });
 
   const [options, setOptions] = useState([
     { label: t("consultations"), value: "consultations", isSelected: false },
