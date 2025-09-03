@@ -835,7 +835,8 @@
       "history": "History",
       "web": "Web",
       "client": "Client",
-      "clicked_at": "Clicked at {{time}} from {{platform}} platform"
+      "clicked_at": "Clicked at {{time}} from {{platform}} platform",
+      "floating_button": "Main button"
     },
     "baseline-assessment-thresholds": {
       "title": "Baseline Assessment Thresholds",
