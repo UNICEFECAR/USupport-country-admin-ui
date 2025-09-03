@@ -861,7 +861,8 @@
       "history": "Історія",
       "web": "Веб",
       "client": "Клієнт",
-      "clicked_at": "Клікнуто {{time}} з платформи {{platform}}"
+      "clicked_at": "Клікнуто {{time}} з платформи {{platform}}",
+      "floating_button": "Головна кнопка"
     }
   },
 
