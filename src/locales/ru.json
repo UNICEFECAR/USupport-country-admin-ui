@@ -863,7 +863,8 @@
       "history": "История",
       "web": "Веб",
       "client": "Клиент",
-      "clicked_at": "Кликнуто {{time}} с платформы {{platform}}"
+      "clicked_at": "Кликнуто {{time}} с платформы {{platform}}",
+      "floating_button": "Главная кнопка"
     }
   },
 

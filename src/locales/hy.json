@@ -796,7 +796,8 @@
       "history": "History",
       "web": "Web",
       "client": "Client",
-      "clicked_at": "Clicked at {{time}} from {{platform}} platform"
+      "clicked_at": "Clicked at {{time}} from {{platform}} platform",
+      "floating_button": "Գլխավոր կոճակ"
     }
   },
   "pages": {

@@ -862,7 +862,8 @@
       "history": "Historia",
       "web": "Sieć",
       "client": "Klient",
-      "clicked_at": "Kliknięto o {{time}} z platformy {{platform}}"
+      "clicked_at": "Kliknięto o {{time}} z platformy {{platform}}",
+      "floating_button": "Główny przycisk"
     }
   },
 

@@ -863,7 +863,8 @@
       "history": "Тарих",
       "web": "Веб",
       "client": "Клиент",
-      "clicked_at": "{{platform}} платформасынан {{time}} кезінде басылды"
+      "clicked_at": "{{platform}} платформасынан {{time}} кезінде басылды",
+      "floating_button": "Негізгі батырма"
     }
   },
 
