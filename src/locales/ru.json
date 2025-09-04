@@ -790,7 +790,8 @@
       "delete_subheading": "Это действие необратимо.",
       "delete_providers_heading": "У организации {{name}} есть связанные провайдеры",
       "delete_providers_subheading": "Пожалуйста, удалите всех провайдеров перед удалением организации. Список провайдеров",
-      "delete_success": "Организация {{name}} была успешно удалена"
+      "delete_success": "Организация {{name}} была успешно удалена",
+      "website_link": "Перейти на веб-сайт"
     },
     "analytics": {
       "content_tab_label": "Метрики контента",

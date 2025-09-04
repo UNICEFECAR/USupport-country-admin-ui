@@ -789,7 +789,8 @@
       "delete_subheading": "Ta operacja jest nieodwracalna.",
       "delete_providers_heading": "Organizacja {{name}} posiada powiązanych usługodawców",
       "delete_providers_subheading": "Usuń wszystkich usługodawców przed usunięciem organizacji. Lista usługodawców",
-      "delete_success": "Organizacja {{name}} została pomyślnie usunięta"
+      "delete_success": "Organizacja {{name}} została pomyślnie usunięta",
+      "website_link": "Odwiedź stronę internetową"
     },
     "analytics": {
       "content_tab_label": "Metryki treści",

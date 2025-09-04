@@ -788,7 +788,8 @@
       "delete_subheading": "Ця дія незворотна.",
       "delete_providers_heading": "Організація {{name}} має пов’язаних провайдерів",
       "delete_providers_subheading": "Будь ласка, видаліть усіх провайдерів перед видаленням організації. Список провайдерів",
-      "delete_success": "Організацію {{name}} успішно видалено"
+      "delete_success": "Організацію {{name}} успішно видалено",
+      "website_link": "Вебсайт"
     },
     "analytics": {
       "content_tab_label": "Метрики контенту",
