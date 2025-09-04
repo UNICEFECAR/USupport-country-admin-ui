@@ -2,13 +2,8 @@
 
 .articles {
   &__search {
-    padding-top: $spacing_2_4;
+    padding-top: $spacing_0_8;
     padding-bottom: $spacing_2_4;
-  }
-  &__rows {
-    & .table__container {
-      padding-top: 0;
-    }
   }
   &__image {
     width: 11.7rem;

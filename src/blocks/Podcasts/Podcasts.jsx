@@ -332,6 +332,7 @@ export const Podcasts = ({ t, i18n }) => {
         isLoading={isLoading}
         noteText={t("note_podcasts")}
         t={t}
+        maxHeightInVH={50}
       />
     </Block>
   );

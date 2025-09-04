@@ -2,11 +2,10 @@
 
 .providers {
   @include full-height-page-navbar;
-  padding-top: $spacing_4_8;
-  padding-bottom: $spacing_10_0;
+  padding-bottom: $spacing_2_0;
 
   &__infinite-scroll {
-    padding-bottom: $spacing_10_0;
+    padding-bottom: $spacing_4_0;
   }
 
   &__grid {
