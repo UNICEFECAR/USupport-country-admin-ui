@@ -54,10 +54,12 @@ export const Analytics = () => {
   } = useGetPlatformMetrics(shouldFetchPlatformMetrics);
 
   const [dataToDisplay, setDataToDisplay] = useState([]);
+  const [originalData, setOriginalData] = useState([]); // Add original data reference
 
   useEffect(() => {
     if (categoriesData) {
       setDataToDisplay(categoriesData);
+      setOriginalData(categoriesData); // Store original data
     }
   }, [categoriesData]);
 
@@ -75,6 +77,8 @@ export const Analytics = () => {
 
   const updateData = (sortedData) => {
     setDataToDisplay(sortedData);
+    // When data is sorted, update the original data reference as well
+    setOriginalData(sortedData);
   };
 
   const columns = useMemo(() => {
@@ -231,10 +235,14 @@ export const Analytics = () => {
   };
 
   const handleSearch = (searchTerm) => {
-    const filteredData = dataToDisplay.filter((item) =>
-      item.categoryName.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setDataToDisplay(filteredData);
+    if (!searchTerm || searchTerm.trim() === "") {
+      setDataToDisplay(originalData);
+    } else {
+      const filteredData = originalData.filter((item) =>
+        item.categoryName.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setDataToDisplay(filteredData);
+    }
   };
 
   const handleContentTypeSelect = (value) => {
