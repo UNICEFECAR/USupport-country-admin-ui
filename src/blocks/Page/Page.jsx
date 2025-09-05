@@ -57,21 +57,25 @@ export const Page = ({
   const { width } = useWindowDimensions();
 
   const pages = [
-    { name: t("page_1"), url: "/dashboard" },
-    { name: t("page_2"), url: "/providers" },
-    { name: t("page_3"), url: "/content-management?tab=articles" },
+    { name: t("page_1"), url: "/dashboard", icon: "home" },
+    { name: t("page_2"), url: "/providers", icon: "two-people" },
+    {
+      name: t("page_3"),
+      url: "/content-management?tab=articles",
+      icon: "activities",
+    },
     {
       name: t("statistics"),
       url: "#",
       isDropdown: true,
       dropdownItems: [
-        { name: t("page_4"), url: "/analytics" },
-        { name: t("page_6"), url: "/reports" },
+        { name: t("page_4"), url: "/analytics", icon: "list-view" },
+        { name: t("page_6"), url: "/reports", icon: "document" },
       ],
     },
-    { name: t("page_7"), url: "/campaigns" },
-    { name: t("page_8"), url: "/my-qa" },
-    { name: t("page_9"), url: "/organizations" },
+    { name: t("page_7"), url: "/campaigns", icon: "bag" },
+    { name: t("page_8"), url: "/my-qa", icon: "info" },
+    { name: t("page_9"), url: "/organizations", icon: "three-people" },
   ];
 
   let localStorageCountry = localStorage.getItem("country");
