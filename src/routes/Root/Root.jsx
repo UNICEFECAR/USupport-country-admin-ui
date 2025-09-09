@@ -9,7 +9,10 @@ import {
 import { useTranslation } from "react-i18next";
 
 import { IdleTimer } from "@USupport-components-library/src";
-import { getCountryDefaultLanguage } from "@USupport-components-library/utils";
+import {
+  getCountryDefaultLanguage,
+  getLanguageFromUrl,
+} from "@USupport-components-library/utils";
 
 import { useEventListener } from "#hooks";
 
@@ -51,14 +54,14 @@ import { CountryValidationRoute, ProtectedRoute } from "../../routes";
 
 const RootContext = React.createContext();
 
+const allLangs = ["en", "ru", "kk", "pl", "uk", "hy"];
+
 const LanguageLayout = () => {
   let { language } = useParams();
 
   if (!language) {
     language = getCountryDefaultLanguage();
   }
-
-  const allLangs = ["en", "ru", "kk", "pl", "uk", "hy"];
 
   if (!allLangs.includes(language) || !language) {
     return <Navigate to="/country-admin/en" />;
@@ -310,7 +313,12 @@ export default function Root() {
   let language = localStorage.getItem("language");
 
   if (!language) {
-    language = getCountryDefaultLanguage();
+    const languageFromUrl = getLanguageFromUrl();
+    if (allLangs.includes(languageFromUrl)) {
+      language = languageFromUrl;
+    } else {
+      language = getCountryDefaultLanguage();
+    }
   }
 
   const [loggedIn, setLoggedIn] = useState(!!token);
