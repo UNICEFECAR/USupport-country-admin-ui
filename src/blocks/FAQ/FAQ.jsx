@@ -247,6 +247,7 @@ export const FAQ = () => {
               hasMenu={false}
               updateData={setFaqData}
               noteText={t("note")}
+              maxHeightInVH={50}
             />
           )}
           {error ? <ErrorComponent message={error} /> : null}

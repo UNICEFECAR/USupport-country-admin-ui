@@ -1,0 +1,341 @@
+@import "@USupport-components-library/styles";
+
+.baseline-assessment-thresholds {
+  padding-bottom: 16rem;
+
+  &__notification {
+    margin-bottom: 1rem;
+  }
+
+  &__container {
+    width: 100%;
+    margin-top: 4rem;
+  }
+
+  &__header {
+    margin-bottom: 2rem;
+
+    h2 {
+      margin-bottom: 0.5rem;
+      color: #20809e;
+    }
+
+    p {
+      color: #666;
+      margin: 0;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    // Tablet and above: row layout with flex-wrap
+    @media (min-width: 768px) {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+  }
+
+  &__row {
+    border-radius: 8px;
+    padding: 1rem;
+    flex: 1;
+    min-width: 0; // Prevent flex items from overflowing
+    width: 100%;
+
+    &:hover {
+      box-shadow: $shadow_2;
+    }
+
+    @media (min-width: 768px) {
+      flex: 1 1 calc(50% - 0.75rem); // 2 columns on tablet
+      max-width: calc(50% - 0.75rem);
+    }
+
+    @media (min-width: 1024px) {
+      flex: 1 1 30%;
+      max-width: 30%;
+    }
+
+    & .input-container {
+      width: auto;
+    }
+  }
+
+  &__row-content {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing_1_0;
+  }
+
+  &__thresholds-row {
+    display: flex;
+    gap: $spacing_1_0;
+    align-items: flex-end;
+
+    // Mobile: stack threshold inputs vertically
+    @media (max-width: 767px) {
+      flex-direction: column;
+      gap: $spacing_1_0;
+    }
+  }
+
+  &__factor-display,
+  &__value-display {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  &__factor-label,
+  &__value-label {
+    // font-size: 0.875rem;
+    font-weight: 500;
+    color: #666;
+  }
+
+  &__factor-value {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #20809e;
+    text-transform: capitalize;
+    padding: $spacing_1_2;
+    background: $color_green_e6f1f4;
+    border-radius: 8px;
+    border: 1px solid #e0e7ff;
+    display: inline-block;
+  }
+
+  &__value-number {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #333;
+  }
+
+  &__factor {
+    width: 100%;
+    text-align: center;
+  }
+
+  &__below,
+  &__above {
+    flex: 1;
+    min-width: 0;
+
+    // Mobile: full width
+    @media (max-width: 767px) {
+      width: 100%;
+      flex: none;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: $spacing_1_2;
+    width: 100%;
+  }
+
+  &__edit-actions {
+    display: flex;
+    gap: $spacing_1_2;
+    justify-content: center;
+  }
+
+  // Loading state
+  .loading {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  // Form validation styles
+  .input--error {
+    border-color: $color_red_eb5757;
+  }
+
+  .validation-message {
+    color: #e74c3c;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+  }
+
+  // Analysis section styles
+  &__analysis {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid #e0e0e0;
+  }
+
+  &__analysis-header {
+    margin-bottom: 2rem;
+    text-align: center;
+
+    h3 {
+      color: #20809e;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      color: #666;
+      margin: 0;
+    }
+  }
+
+  &__analysis-loading,
+  &__analysis-error,
+  &__analysis-no-data {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+
+    p {
+      margin-top: 1rem;
+      margin-bottom: 0;
+    }
+  }
+
+  &__analysis-error p {
+    color: #e74c3c;
+  }
+
+  &__analysis-content {
+    background: $gradient_primary;
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid #e9ecef;
+  }
+
+  &__analysis-summary {
+    text-align: center;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__total-assessments {
+    align-items: center;
+    gap: 0.5rem;
+    margin-right: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  &__total-label {
+    font-weight: 500;
+    color: #666;
+  }
+
+  &__total-value {
+    font-weight: 700;
+    color: $color_primary_20809e !important;
+  }
+
+  &__groups {
+    display: grid;
+    gap: 2rem;
+
+    @media (min-width: 768px) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  &__analysis-group {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1.25rem;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  &__group-title {
+    color: #20809e;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  &__group-date {
+    color: #666;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 0.5rem;
+  }
+
+  &__analysis-factors {
+    display: grid;
+    gap: 1rem;
+
+    @media (min-width: 576px) {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+  }
+
+  &__analysis-factor {
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: $shadow_2;
+    }
+  }
+
+  &__analysis-factor-header {
+    margin-bottom: 0.75rem;
+  }
+
+  &__factor-name {
+    font-weight: 600;
+    color: #20809e;
+    text-transform: capitalize;
+  }
+
+  &__analysis-factor-data {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__median-display,
+  &__count-display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__median-label,
+  &__count-label {
+    color: #666;
+    font-weight: 500;
+  }
+
+  &__median-value {
+    font-weight: 700;
+    color: $color_primary_20809e !important;
+  }
+
+  &__count-value {
+    font-weight: 600;
+    color: #6c757d;
+  }
+
+  &__single-analysis {
+    .baseline-assessment-thresholds__analysis-factors {
+      @media (min-width: 768px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
+}

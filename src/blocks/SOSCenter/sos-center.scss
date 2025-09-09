@@ -9,14 +9,11 @@
   }
 
   & .table__container {
-    padding-top: $spacing_2_4;
+    padding-top: $spacing_2_0;
   }
 
   &__search {
-    padding-top: $spacing_3_0;
+    padding-top: $spacing_1_6;
     place-self: start;
-    @media screen and (min-width: $screen-md) {
-      padding-top: $spacing_4_0;
-    }
   }
 }

@@ -321,6 +321,7 @@
       "work_with_label": "Specialties",
       "specializations_label": "Specializations",
       "done_consultations_label": "Overall done consultations",
+      "consultations": "Consultations",
       "description_label": "About me",
       "edit_details": "Edit details",
       "no_available_slot": "There is no available slot",
@@ -788,7 +789,8 @@
       "delete_subheading": "This action is irreversible.",
       "delete_providers_heading": "Organization {{name}} has associated providers",
       "delete_providers_subheading": "Please remove all providers before deleting the organization. List of providers",
-      "delete_success": "Organization {{name}} was deletet successfully"
+      "delete_success": "Organization {{name}} was deletet successfully",
+      "website_link": "Go to website"
     },
     "analytics": {
       "content_tab_label": "Content Metrics",
@@ -834,7 +836,35 @@
       "history": "History",
       "web": "Web",
       "client": "Client",
-      "clicked_at": "Clicked at {{time}} from {{platform}} platform"
+      "clicked_at": "Clicked at {{time}} from {{platform}} platform",
+      "floating_button": "Main button"
+    },
+    "baseline-assessment-thresholds": {
+      "title": "Baseline Assessment Thresholds",
+      "description": "Manage threshold values for baseline assessment factors. Edit the below and above values to adjust risk level boundaries.",
+      "factor_label": "Factor",
+      "below_label": "Below Threshold",
+      "above_label": "Above Threshold",
+      "social": "Social",
+      "biological": "Biological",
+      "psychological": "Psychological",
+      "edit": "Edit Values",
+      "save": "Save",
+      "cancel": "Cancel",
+      "update_success": "Threshold values updated successfully",
+      "validation_error": "Below threshold must be less than above threshold",
+      "update_error": "An error occured. Please try again.",
+      "analysis_title": "Assessment Data Analysis",
+      "analysis_description": "Statistical analysis of completed baseline assessments with median values for each factor.",
+      "total_assessments": "Total Assessments",
+      "total_questions": "Total Questions",
+      "median_value": "Median Value",
+      "data_split_info": "Data has been split into two groups for analysis:",
+      "first_half": "First Half",
+      "second_half": "Second Half",
+      "no_data": "No completed assessments found",
+      "loading_analysis": "Loading analysis data...",
+      "error_loading_analysis": "Error loading analysis data"
     }
   },
 
@@ -998,6 +1028,9 @@
     },
     "analytics-page": {
       "heading": "Analytics"
+    },
+    "baseline-assessment-page": {
+      "heading": "Baseline Assessment"
     }
   },
 

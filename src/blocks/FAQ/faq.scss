@@ -1,21 +1,12 @@
 @import "@USupport-components-library/styles";
 .faq {
-  &__tabs {
-    padding-top: $spacing_1_6;
-    @media screen and (min-width: $screen-md) {
-      padding-top: $spacing_3_0;
-    }
-  }
-  & .table__container {
-    padding-top: 0;
-  }
   &__search {
     margin: $spacing_1_6;
 
     @media screen and (min-width: $screen-md) {
       margin: 0;
-      padding-top: $spacing_3_6;
-      padding-bottom: $spacing_2_4;
+      padding-top: $spacing_0_8;
+      padding-bottom: $spacing_1_6;
     }
   }
 

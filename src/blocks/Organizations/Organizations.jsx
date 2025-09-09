@@ -11,6 +11,8 @@ import {
 import { useGetOrganizationsWithDetails } from "#hooks";
 import { DeleteOrganization } from "#backdrops";
 
+import "./organizations.scss";
+
 /**
  * Organizations
  *
@@ -82,8 +84,13 @@ export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
         <p className="text">{item.name}</p>,
         <p className="text">
           {item.websiteUrl ? (
-            <a href={item.websiteUrl} target="_blank" rel="noopener noreferrer">
-              {item.websiteUrl}
+            <a
+              href={item.websiteUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={item.websiteUrl} // Add full URL as title for tooltip
+            >
+              {t("website_link")}
             </a>
           ) : (
             "-"
@@ -92,7 +99,16 @@ export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
         <p className="text">{item.address || "-"}</p>,
         <p className="text">{item.phone || "-"}</p>,
         <p className="text">
-          {item.email ? <a href={`mailto:${item.email}`}>{item.email}</a> : "-"}
+          {item.email ? (
+            <a
+              href={`mailto:${item.email}`}
+              title={item.email} // Add email as title for tooltip
+            >
+              {item.email}
+            </a>
+          ) : (
+            "-"
+          )}
         </p>,
         <p className="text">{t(item.district?.name) || "-"}</p>,
         <p className="text">
@@ -117,13 +133,7 @@ export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
             ? item.specialisations.map((s) => t(s.name)).join(", ")
             : "-"}
         </p>,
-        <p className="text" title={item.description}>
-          {item.description
-            ? item.description.length > 50
-              ? `${item.description.substring(0, 50)}...`
-              : item.description
-            : "-"}
-        </p>,
+        <p className="text">{item.description || "-"}</p>,
         <p className="text centered">{item.providers?.length || 0}</p>,
         <p className="text centered">{item.uniqueClients || 0}</p>,
         <p className="text centered">{item.totalConsultations || 0}</p>,
@@ -174,6 +184,7 @@ export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
           value={search}
           onChange={(val) => setSearch(val)}
           placeholder={t("search")}
+          classes="organizations__search-input"
         />
         {isLoading ? (
           <Loading />
@@ -186,6 +197,9 @@ export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
             updateData={setDataToDisplay}
             menuOptions={menuOptions}
             t={t}
+            maxHeightInVH={75}
+            truncateLength={50}
+            enableTooltips={true}
           />
         )}
       </Block>

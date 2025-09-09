@@ -16,6 +16,7 @@ import {
   AdminProfile,
   ArticleInformation,
   Articles,
+  BaselineAssessment,
   CreateProvider,
   Dashboard,
   EditProfileDetails,
@@ -52,7 +53,7 @@ const RootContext = React.createContext();
 const LanguageLayout = () => {
   const { language } = useParams();
 
-  const allLangs = ["en", "ru", "kk", "pl", "uk"];
+  const allLangs = ["en", "ru", "kk", "pl", "uk", "hy"];
 
   if (!allLangs.includes(language) || !language) {
     return <Navigate to="/country-admin/en" />;
@@ -280,6 +281,14 @@ const LanguageLayout = () => {
         element={
           <ProtectedRoute>
             <Analytics />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="baseline-assessment"
+        element={
+          <ProtectedRoute>
+            <BaselineAssessment />
           </ProtectedRoute>
         }
       />
