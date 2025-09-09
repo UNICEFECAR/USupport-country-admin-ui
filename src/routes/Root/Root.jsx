@@ -9,6 +9,7 @@ import {
 import { useTranslation } from "react-i18next";
 
 import { IdleTimer } from "@USupport-components-library/src";
+import { getCountryDefaultLanguage } from "@USupport-components-library/utils";
 
 import { useEventListener } from "#hooks";
 
@@ -51,7 +52,11 @@ import { CountryValidationRoute, ProtectedRoute } from "../../routes";
 const RootContext = React.createContext();
 
 const LanguageLayout = () => {
-  const { language } = useParams();
+  let { language } = useParams();
+
+  if (!language) {
+    language = getCountryDefaultLanguage();
+  }
 
   const allLangs = ["en", "ru", "kk", "pl", "uk", "hy"];
 
@@ -302,7 +307,12 @@ export default function Root() {
   const { t } = useTranslation("routes", { keyPrefix: "root" });
 
   const token = localStorage.getItem("token");
-  const language = localStorage.getItem("language");
+  let language = localStorage.getItem("language");
+
+  if (!language) {
+    language = getCountryDefaultLanguage();
+  }
+
   const [loggedIn, setLoggedIn] = useState(!!token);
 
   const logoutHandler = useCallback(() => {
@@ -330,9 +340,7 @@ export default function Root() {
       <Routes>
         <Route
           path="/country-admin"
-          element={
-            <Navigate to={`/country-admin/${language || "en"}`} replace />
-          }
+          element={<Navigate to={`/country-admin/${language}`} replace />}
         />
         <Route path="/country-admin/:language/*" element={<LanguageLayout />} />
         <Route path="*" element={<NotFound />} />
