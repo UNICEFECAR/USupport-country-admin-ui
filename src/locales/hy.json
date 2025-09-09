@@ -754,7 +754,8 @@
       "delete_subheading": "This action is irreversible.",
       "delete_providers_heading": "Organization {{name}} has associated providers",
       "delete_providers_subheading": "Please remove all providers before deleting the organization. List of providers",
-      "delete_success": "Organization {{name}} was deletet successfully"
+      "delete_success": "Organization {{name}} was deleted successfully",
+      "website_link": "Go to website"
     },
     "analytics": {
       "content_tab_label": "Բովանդակության ցուցանիշներ",

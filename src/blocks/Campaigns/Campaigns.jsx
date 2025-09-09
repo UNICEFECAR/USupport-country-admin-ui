@@ -176,6 +176,7 @@ export const Campaigns = () => {
           secondaryButtonLabel={t("filter_button")}
           secondaryButtonAction={() => setIsFilterModalOpen(true)}
           t={t}
+          maxHeightInVH={50}
         />
       )}
 

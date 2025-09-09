@@ -790,7 +790,8 @@
       "delete_subheading": "Бұл әрекетті кері қайтару мүмкін емес.",
       "delete_providers_heading": "«{{name}}» ұйымына байланысты провайдерлер бар",
       "delete_providers_subheading": "Ұйымды жоймас бұрын барлық провайдерлерді жойыңыз. Провайдерлер тізімі",
-      "delete_success": "«{{name}}» ұйымы сәтті жойылды"
+      "delete_success": "«{{name}}» ұйымы сәтті жойылды",
+      "website_link": "Веб-сайт"
     },
     "analytics": {
       "content_tab_label": "Контент метрикалары",
