@@ -111,6 +111,8 @@ export const Login = () => {
   };
   const loginMutation = useMutation(login, {
     onSuccess: (response) => {
+      window.dispatchEvent(new Event("login"));
+
       const { token: tokenData } = response.data;
       const { token, expiresIn, refreshToken } = tokenData;
 
