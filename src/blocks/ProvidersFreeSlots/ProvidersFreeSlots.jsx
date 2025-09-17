@@ -68,7 +68,7 @@ export const ProvidersFreeSlots = () => {
           onClick={handleGenerateReport}
           color="purple"
           size="md"
-          loading={generateReportMutation.isPending}
+          loading={generateReportMutation.isLoading}
         >
           {t("generate_report")}
         </Button>
