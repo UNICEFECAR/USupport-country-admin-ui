@@ -27,7 +27,7 @@ import "./provider-activities.scss";
  */
 export const ProviderActivities = ({ isLoading, data, providerName }) => {
   const { t, i18n } = useTranslation("blocks", {
-    keyPrefi: "provider-activities",
+    keyPrefix: "provider-activities",
   });
   const currencySymbol = localStorage.getItem("currency_symbol");
 
@@ -66,7 +66,7 @@ export const ProviderActivities = ({ isLoading, data, providerName }) => {
         isCentered: true,
       },
     ];
-  }, [i18n.language]);
+  }, [i18n.language, t]);
 
   const handleExport = () => {
     let csv = "";
