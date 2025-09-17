@@ -799,6 +799,16 @@
       "client": "Client",
       "clicked_at": "Clicked at {{time}} from {{platform}} platform",
       "floating_button": "Գլխավոր կոճակ"
+    },
+    "providers-free-slots": {
+      "heading": "Խորհրդատուների ազատ ժամանակաշրջանների հաշվետվություն ստեղծել",
+      "description": "Ստեղծեք խորհրդատուների ազատ ժամանակաշրջանների հաշվետվություն երկու ամսաթվերի միջև: Հաշվետվությունը կստեղծվի CSV ֆորմատով և կկուղարկվի ձեր էլեկտրոնային հասցեին:",
+      "start_date": "Սկսման ամսաթիվ",
+      "end_date": "Ավարտի ամսաթիվ",
+      "start_date_error": "Սկսման ամսաթիվը պարտադիր է",
+      "end_date_error": "Ավարտի ամսաթիվը պարտադիր է",
+      "end_date_before_start_error": "Ավարտի ամսաթիվը պետք է լինի սկսման ամսաթվից հետո",
+      "generate_report": "Հաշվետվություն ստեղծել"
     }
   },
   "pages": {
@@ -854,7 +864,8 @@
       "filter": "Ֆիլտր",
       "heading": "Հաշվետվություններ",
       "my_qa_tab_label": "Իմ Հարցուպատասխանի արխիվը",
-      "sos_center_clicks_tab_label": "SOS Center"
+      "sos_center_clicks_tab_label": "SOS Center",
+      "providers_free_slots_tab_label": "Խորհրդատուների ազատ ժամանակաշրջաններ"
     },
     "campaigns-page": {
       "heading": "Հովանավորների ցանկ"

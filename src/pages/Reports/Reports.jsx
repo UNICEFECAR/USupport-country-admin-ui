@@ -8,6 +8,7 @@ import {
   ContactForms,
   MyQAReports,
   SosCenterClicks,
+  ProvidersFreeSlots,
 } from "#blocks";
 
 import {
@@ -43,6 +44,11 @@ export const Reports = () => {
       value: "sos_center_clicks",
       isSelected: true,
     },
+    {
+      label: t("providers_free_slots"),
+      value: "providers_free_slots",
+      isSelected: false,
+    },
   ]);
 
   const handleTabSelect = (index) => {
@@ -72,6 +78,8 @@ export const Reports = () => {
         return <MyQAReports Heading={ReportBlockHeading} />;
       case "sos_center_clicks":
         return <SosCenterClicks Heading={ReportBlockHeading} />;
+      case "providers_free_slots":
+        return <ProvidersFreeSlots />;
     }
   };
 
@@ -83,17 +91,19 @@ export const Reports = () => {
     return (
       <div className="page__reports__report-block-heading">
         <h4>{headingLabel}</h4>
-        <ButtonWithIcon
-          type="primary"
-          label={t("filter")}
-          iconName="filter"
-          iconColor="#ffffff"
-          iconSize="sm"
-          color="purple"
-          size="xs"
-          onClick={handleButtonClick}
-          disabled={isButtonDisabled}
-        />
+        {handleButtonClick && (
+          <ButtonWithIcon
+            type="primary"
+            label={t("filter")}
+            iconName="filter"
+            iconColor="#ffffff"
+            iconSize="sm"
+            color="purple"
+            size="xs"
+            onClick={handleButtonClick}
+            disabled={isButtonDisabled}
+          />
+        )}
       </div>
     );
   };

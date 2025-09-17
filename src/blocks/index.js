@@ -32,3 +32,4 @@ export * from "./Podcasts";
 export * from "./Analytics";
 export * from "./BaselineAssessmentThresholds";
 export * from "./SosCenterClicks";
+export * from "./ProvidersFreeSlots";
