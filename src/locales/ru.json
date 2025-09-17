@@ -866,6 +866,16 @@
       "client": "Клиент",
       "clicked_at": "Кликнуто {{time}} с платформы {{platform}}",
       "floating_button": "Главная кнопка"
+    },
+    "providers-free-slots": {
+      "heading": "Генерировать отчет о свободных слотах консультантов",
+      "description": "Сгенерируйте отчет о свободных слотах консультантов между двумя датами. Отчет будет создан в формате CSV и отправлен на ваш адрес электронной почты.",
+      "start_date": "Дата начала",
+      "end_date": "Дата окончания",
+      "start_date_error": "Дата начала обязательна",
+      "end_date_error": "Дата окончания обязательна",
+      "end_date_before_start_error": "Дата окончания должна быть позже даты начала",
+      "generate_report": "Создать отчет"
     }
   },
 
@@ -921,7 +931,8 @@
       "filter": "Фильтр",
       "heading": "Отчеты",
       "my_qa_tab_label": "Мой архив Q&A (Вопрос/Ответ)",
-      "sos_center_clicks_tab_label": "Центры SOS"
+      "sos_center_clicks_tab_label": "Центры SOS",
+      "providers_free_slots_tab_label": "Свободные слоты консультантов"
     },
     "campaigns-page": {
       "heading": "Список спонсоров"
