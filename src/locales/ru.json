@@ -840,12 +840,34 @@
       "totalCouponConsultations": "Всего консультаций с купоном",
       "positiveClientRatings": "Положительные оценки клиентов",
       "positiveProviderRatings": "Положительные оценки провайдеров",
+      "totalMobileAccess": "Общий доступ в мобильном приложении",
+      "uniqueMobileAccess": "Уникальный доступ в мобильном приложении",
+
+      "totalConsultations_unique_count": "Уникальные клиенты",
+      "totalCouponConsultations_unique_count": "Уникальные клиенты",
 
       "content_type": "Тип контента",
       "all": "Все",
       "articles": "Статьи",
       "videos": "Видео",
-      "podcasts": "Подкасты"
+      "podcasts": "Подкасты",
+      "start_date": "Дата начала",
+      "end_date": "Дата окончания",
+      "reset": "Сбросить фильтры",
+      "select_start_date": "Выберите дату начала",
+      "select_end_date": "Выберите дату окончания",
+
+      "year_of_birth": "Год рождения",
+      "urban_rural": "Город/село",
+      "sex": "Пол",
+      "demographics_breakdown": "Демографический анализ",
+      "parent": "Родитель",
+      "male": "Мужчина",
+      "female": "Женщина",
+      "unspecified": "Не указан",
+      "not_mentioned": "Не указан",
+      "rural": "Село",
+      "urban": "Город"
     },
     "baseline-assessment-thresholds": {
       "title": "Пороги базовой оценки",

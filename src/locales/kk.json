@@ -840,12 +840,35 @@
       "totalCouponConsultations": "Жалпы купон бойынша кеңес беру",
       "positiveClientRatings": "Позитивті клиент бағалаулары",
       "positiveProviderRatings": "Позитивті провайдер бағалаулары",
+      "totalMobileAccess": "Жалпы мобильдік кіру",
+      "uniqueMobileAccess": "Бірегей мобильдік кіру",
+
+      "totalConsultations_unique_count": "Бірегей клиенттер",
+      "totalCouponConsultations_unique_count": "Бірегей клиенттер",
 
       "content_type": "Контент түрі",
       "all": "Барлығы",
       "articles": "Материалдар",
       "videos": "Видео",
-      "podcasts": "Подасты"
+      "podcasts": "Подасты",
+
+      "start_date": "Басталу күні",
+      "end_date": "Аяқталу күні",
+      "reset": "Сүзгілерді тастау",
+      "select_start_date": "Басталу күнін таңдаңыз",
+      "select_end_date": "Аяқталу күнін таңдаңыз",
+
+      "year_of_birth": "Жасы",
+      "urban_rural": "Қала/қаласыз",
+      "sex": "Жыныс",
+      "demographics_breakdown": "Демографиялық талдау",
+      "parent": "Ата-ана",
+      "male": "Еркек",
+      "female": "Әйел",
+      "unspecified": "белгісіз",
+      "not_mentioned": "белгісіз",
+      "rural": "Қаласыз",
+      "urban": "Қала"
     },
     "baseline-assessment-thresholds": {
       "title": "Бастапқы бағалау шектеулері",
