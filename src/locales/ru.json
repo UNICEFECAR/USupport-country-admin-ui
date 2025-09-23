@@ -791,7 +791,23 @@
       "delete_providers_heading": "У организации {{name}} есть связанные провайдеры",
       "delete_providers_subheading": "Пожалуйста, удалите всех провайдеров перед удалением организации. Список провайдеров",
       "delete_success": "Организация {{name}} была успешно удалена",
-      "website_link": "Перейти на веб-сайт"
+      "website_link": "Перейти на веб-сайт",
+      "month": "Месяц",
+      "year": "Год",
+      "all_months": "Все месяцы",
+      "all_years": "Все годы",
+      "january": "Январь",
+      "february": "Февраль",
+      "march": "Март",
+      "april": "Апрель",
+      "may": "Май",
+      "june": "Июнь",
+      "july": "Июль",
+      "august": "Август",
+      "september": "Сентябрь",
+      "october": "Октябрь",
+      "november": "Ноябрь",
+      "december": "Декабрь"
     },
     "analytics": {
       "content_tab_label": "Метрики контента",
@@ -1038,7 +1054,12 @@
       "save_success": "Сохранено успешно"
     },
     "analytics-page": {
-      "heading": "Аналитика"
+      "heading": "Аналитика",
+      "ro": "Румыния",
+      "kz": "Казахстан",
+      "ua": "Украина",
+      "pl": "Польша",
+      "am": "Армения"
     },
     "baseline-assessment-page": {
       "heading": "Базовая оценка"
