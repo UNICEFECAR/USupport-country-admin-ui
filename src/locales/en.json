@@ -823,12 +823,34 @@
       "totalCouponConsultations": "Total Coupon Consultations",
       "positiveClientRatings": "Positive Client Ratings",
       "positiveProviderRatings": "Positive Provider Ratings",
+      "totalMobileAccess": "Total Mobile Access",
+      "uniqueMobileAccess": "Unique Mobile Access",
+
+      "totalConsultations_unique_count": "Unique Clients",
+      "totalCouponConsultations_unique_count": "Unique Clients",
 
       "content_type": "Content Type",
       "all": "All",
       "articles": "Articles",
       "videos": "Videos",
-      "podcasts": "Podcasts"
+      "podcasts": "Podcasts",
+      "start_date": "Start Date",
+      "end_date": "End Date",
+      "reset": "Reset filters",
+      "select_start_date": "Select start date",
+      "select_end_date": "Select end date",
+
+      "year_of_birth": "Year of birth",
+      "urban_rural": "Urban/Rural",
+      "sex": "Sex",
+      "demographics_breakdown": "Demographic breakdown",
+      "parent": "Parent",
+      "male": "Male",
+      "female": "Female",
+      "unspecified": "Unspecified",
+      "not_mentioned": "Not mentioned",
+      "rural": "Rural",
+      "urban": "Urban"
     },
     "sos-center-clicks": {
       "sos_center": "SOS Center",
@@ -1038,7 +1060,12 @@
       "save_success": "Saved successfully"
     },
     "analytics-page": {
-      "heading": "Analytics"
+      "heading": "Analytics",
+      "ro": "Romania",
+      "kz": "Kazakhstan",
+      "ua": "Ukraine",
+      "pl": "Poland",
+      "am": "Armenia"
     },
     "baseline-assessment-page": {
       "heading": "Baseline Assessment"

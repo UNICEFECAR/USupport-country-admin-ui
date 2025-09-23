@@ -791,7 +791,23 @@
       "delete_providers_heading": "«{{name}}» ұйымына байланысты провайдерлер бар",
       "delete_providers_subheading": "Ұйымды жоймас бұрын барлық провайдерлерді жойыңыз. Провайдерлер тізімі",
       "delete_success": "«{{name}}» ұйымы сәтті жойылды",
-      "website_link": "Веб-сайт"
+      "website_link": "Веб-сайт",
+      "month": "Ай",
+      "year": "Жыл",
+      "all_months": "Барлық айлар",
+      "all_years": "Барлық жылдар",
+      "january": "Қаңтар",
+      "february": "Ақпан",
+      "march": "Наурыз",
+      "april": "Сәуір",
+      "may": "Мамыр",
+      "june": "Маусым",
+      "july": "Шілде",
+      "august": "Тамыз",
+      "september": "Қыркүйек",
+      "october": "Қазан",
+      "november": "Қараша",
+      "december": "Желтоқсан"
     },
     "analytics": {
       "content_tab_label": "Контент метрикалары",
@@ -1038,7 +1054,12 @@
       "save_success": "Сақталды"
     },
     "analytics-page": {
-      "heading": "Аналитика"
+      "heading": "Аналитика",
+      "ro": "Румыния",
+      "kz": "Казахстан",
+      "ua": "Украина",
+      "pl": "Польша",
+      "am": "Армения"
     },
     "baseline-assessment-page": {
       "heading": "Бастапқы бағалау"

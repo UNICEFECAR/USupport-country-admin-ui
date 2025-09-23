@@ -942,7 +942,12 @@
       "search": "Search"
     },
     "analytics-page": {
-      "heading": "Վերլուծություն"
+      "heading": "Վերլուծություն",
+      "ro": "Ռումինիա",
+      "kz": "Կազանստան",
+      "ua": "Ուկայներիա",
+      "pl": "Պոլանդիա",
+      "am": "Հայաստան"
     },
     "content-management-page": {
       "title": "Content Management",

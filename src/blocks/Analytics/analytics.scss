@@ -2,10 +2,41 @@
 
 .analytics {
   &__statistics-grid {
-    margin-top: $spacing_1_6;
-    place-items: center;
-    gap: $spacing_2_4;
+    margin-top: $spacing_3_2;
     padding-bottom: $spacing_2_4;
+    width: 100%;
+  }
+
+  &__statistics-collapsible {
+    width: 100%;
+  }
+
+  &__statistics-content {
+    width: 100%;
+
+    &__heading {
+      padding-top: $spacing_1_6;
+    }
+
+    &__type {
+      border-bottom: 1px solid $color_gray_ea;
+      padding-bottom: $spacing_1_6;
+      padding-top: $spacing_1_6;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: 100%;
+      gap: 10px;
+
+      &__item {
+        width: 15%;
+      }
+    }
+  }
+
+  &__reset-button {
+    margin-top: $spacing_2_4;
+    margin-inline: auto;
   }
 
   &__dropdown {
@@ -21,5 +52,13 @@
 
   & .table__container {
     padding-top: $spacing_0_8;
+  }
+
+  &__dropdown-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: $spacing_2_4;
+    margin-top: $spacing_2_4;
   }
 }

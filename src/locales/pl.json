@@ -790,7 +790,23 @@
       "delete_providers_heading": "Organizacja {{name}} posiada powiązanych usługodawców",
       "delete_providers_subheading": "Usuń wszystkich usługodawców przed usunięciem organizacji. Lista usługodawców",
       "delete_success": "Organizacja {{name}} została pomyślnie usunięta",
-      "website_link": "Odwiedź stronę internetową"
+      "website_link": "Odwiedź stronę internetową",
+      "month": "Miesiąc",
+      "year": "Rok",
+      "all_months": "Wszystkie miesiące",
+      "all_years": "Wszystkie lata",
+      "january": "Styczeń",
+      "february": "Luty",
+      "march": "Marzec",
+      "april": "Kwiecień",
+      "may": "Maj",
+      "june": "Czerwiec",
+      "july": "Lipiec",
+      "august": "Sierpień",
+      "september": "Wrzesień",
+      "october": "Październik",
+      "november": "Listopad",
+      "december": "Grudzień"
     },
     "analytics": {
       "content_tab_label": "Metryki treści",
@@ -1037,7 +1053,12 @@
       "save_success": "Zapisano pomyślnie"
     },
     "analytics-page": {
-      "heading": "Analityka"
+      "heading": "Analityka",
+      "ro": "Rumunia",
+      "kz": "Kazachstan",
+      "ua": "Ukraina",
+      "pl": "Polska",
+      "am": "Armenia"
     },
     "baseline-assessment-page": {
       "heading": "Ocena bazowa"
