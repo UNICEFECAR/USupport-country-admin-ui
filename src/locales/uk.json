@@ -838,12 +838,34 @@
       "totalCouponConsultations": "Загальна кількість консультацій з купоном",
       "positiveClientRatings": "Позитивні оцінки клієнтів",
       "positiveProviderRatings": "Позитивні оцінки спеціалістів",
+      "totalMobileAccess": "Загальна кількість входів в мобільному додатку",
+      "uniqueMobileAccess": "Кількість входів в мобільному додатку окремими користувачами",
+
+      "totalConsultations_unique_count": "Унікальні клієнти",
+      "totalCouponConsultations_unique_count": "Унікальні клієнти",
 
       "content_type": "Тип контенту",
       "all": "Всі",
       "articles": "Статті",
       "videos": "Відео",
-      "podcasts": "Подкасти"
+      "podcasts": "Подкасти",
+      "start_date": "Дата початку",
+      "end_date": "Дата закінчення",
+      "reset": "Скинути фільтри",
+      "select_start_date": "Виберіть дату початку",
+      "select_end_date": "Виберіть дату закінчення",
+
+      "year_of_birth": "Рік народження",
+      "urban_rural": "Місто/сільська місцевість",
+      "sex": "Стать",
+      "demographics_breakdown": "Розподіл демографічних даних",
+      "parent": "Батько/мати",
+      "male": "Чоловік",
+      "female": "Жінка",
+      "unspecified": "Не вказано",
+      "not_mentioned": "Не вказано",
+      "rural": "Сільська місцевість",
+      "urban": "Місто"
     },
     "baseline-assessment-thresholds": {
       "title": "Пороги базової оцінки",
