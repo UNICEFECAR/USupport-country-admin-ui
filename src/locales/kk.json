@@ -882,6 +882,16 @@
       "client": "Клиент",
       "clicked_at": "{{platform}} платформасынан {{time}} кезінде басылды",
       "floating_button": "Негізгі батырма"
+    },
+    "providers-free-slots": {
+      "heading": "Консультанттардың бос орындары туралы есеп құру",
+      "description": "Екі күн аралығындағы консультанттардың бос орындары туралы есеп құрыңыз. Есеп CSV форматында құрылып, сіздің электрондық пошта мекенжайыңызға жіберіледі.",
+      "start_date": "Басталу күні",
+      "end_date": "Аяқталу күні",
+      "start_date_error": "Басталу күні міндетті",
+      "end_date_error": "Аяқталу күні міндетті",
+      "end_date_before_start_error": "Аяқталу күні басталу күнінен кейін болуы керек",
+      "generate_report": "Есеп құру"
     }
   },
 
@@ -937,7 +947,8 @@
       "filter": "Сүзгі",
       "heading": "Есептер",
       "my_qa_tab_label": "Менің Q&A (Сұрақ/Жауап) мұрағатым",
-      "sos_center_clicks_tab_label": "SOS Орталық"
+      "sos_center_clicks_tab_label": "SOS Орталық",
+      "providers_free_slots_tab_label": "Консультанттардың бос орындары"
     },
     "campaigns-page": {
       "heading": "Демеушілер тізімі"

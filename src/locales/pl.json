@@ -881,6 +881,16 @@
       "client": "Klient",
       "clicked_at": "Kliknięto o {{time}} z platformy {{platform}}",
       "floating_button": "Główny przycisk"
+    },
+    "providers-free-slots": {
+      "heading": "Generuj raport wolnych terminów konsultantów",
+      "description": "Wygeneruj raport wolnych terminów konsultantów między dwoma datami. Raport zostanie wygenerowany w formacie CSV i wysłany na Twój adres e-mail.",
+      "start_date": "Data rozpoczęcia",
+      "end_date": "Data zakończenia",
+      "start_date_error": "Data rozpoczęcia jest wymagana",
+      "end_date_error": "Data zakończenia jest wymagana",
+      "end_date_before_start_error": "Data zakończenia musi być po dacie rozpoczęcia",
+      "generate_report": "Generuj raport"
     }
   },
 
@@ -936,7 +946,8 @@
       "filter": "Filtr",
       "heading": "Raporty",
       "my_qa_tab_label": "Moje archiwum pytań i odpowiedzi",
-      "sos_center_clicks_tab_label": "Centrum SOS"
+      "sos_center_clicks_tab_label": "Centrum SOS",
+      "providers_free_slots_tab_label": "Wolne terminy konsultantów"
     },
     "campaigns-page": {
       "heading": "Lista sponsorów"

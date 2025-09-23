@@ -887,6 +887,16 @@
       "no_data": "No completed assessments found",
       "loading_analysis": "Loading analysis data...",
       "error_loading_analysis": "Error loading analysis data"
+    },
+    "providers-free-slots": {
+      "heading": "Generate Provider Free Slots Report",
+      "description": "Generate a report of provider free slots between two dates. The report will be generated in CSV format and will be sent to your email address.",
+      "start_date": "Start Date",
+      "end_date": "End Date",
+      "start_date_error": "Start date is required",
+      "end_date_error": "End date is required",
+      "end_date_before_start_error": "End date must be after start date",
+      "generate_report": "Generate report"
     }
   },
 
@@ -942,7 +952,8 @@
       "filter": "Filter",
       "heading": "Reports",
       "my_qa_tab_label": "My Q&A Archive",
-      "sos_center_clicks_tab_label": "SOS Center"
+      "sos_center_clicks_tab_label": "SOS Center",
+      "providers_free_slots_tab_label": "Providers Free Slots"
     },
     "campaigns-page": {
       "heading": "List of Sponsors"

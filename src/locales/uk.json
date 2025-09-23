@@ -880,6 +880,16 @@
       "client": "Клієнт",
       "clicked_at": "Клікнуто {{time}} з платформи {{platform}}",
       "floating_button": "Головна кнопка"
+    },
+    "providers-free-slots": {
+      "heading": "Створити звіт про вільні слоти консультантів",
+      "description": "Створіть звіт про вільні слоти консультантів між двома датами. Звіт буде створено у форматі CSV і надіслано на вашу електронну адресу.",
+      "start_date": "Дата початку",
+      "end_date": "Дата закінчення",
+      "start_date_error": "Дата початку є обов'язковою",
+      "end_date_error": "Дата закінчення є обов'язковою",
+      "end_date_before_start_error": "Дата закінчення має бути після дати початку",
+      "generate_report": "Створити звіт"
     }
   },
 
@@ -935,7 +945,8 @@
       "filter": "Фільтр",
       "heading": "Звіти",
       "my_qa_tab_label": "Мій архів запитань і відповідей",
-      "sos_center_clicks_tab_label": "Центры SOS"
+      "sos_center_clicks_tab_label": "Центри SOS",
+      "providers_free_slots_tab_label": "Вільні слоти консультантів"
     },
     "campaigns-page": {
       "heading": "Список спонсорів"
