@@ -789,7 +789,23 @@
       "delete_providers_heading": "Організація {{name}} має пов’язаних провайдерів",
       "delete_providers_subheading": "Будь ласка, видаліть усіх провайдерів перед видаленням організації. Список провайдерів",
       "delete_success": "Організацію {{name}} успішно видалено",
-      "website_link": "Вебсайт"
+      "website_link": "Вебсайт",
+      "month": "Місяць",
+      "year": "Рік",
+      "all_months": "Усі місяці",
+      "all_years": "Усі роки",
+      "january": "Січень",
+      "february": "Лютий",
+      "march": "Березень",
+      "april": "Квітень",
+      "may": "Травень",
+      "june": "Червень",
+      "july": "Липень",
+      "august": "Серпень",
+      "september": "Вересень",
+      "october": "Жовтень",
+      "november": "Листопад",
+      "december": "Грудень"
     },
     "analytics": {
       "content_tab_label": "Метрики контенту",
@@ -1025,7 +1041,12 @@
       "save_success": "Збережено успішно"
     },
     "analytics-page": {
-      "heading": "Аналітика"
+      "heading": "Аналітика",
+      "ro": "Румунія",
+      "kz": "Казахстан",
+      "ua": "Україна",
+      "pl": "Польща",
+      "am": "Вірменія"
     },
     "baseline-assessment-page": {
       "heading": "Базисний аналіз"

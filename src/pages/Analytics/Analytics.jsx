@@ -15,10 +15,12 @@ import "./analytics.scss";
 export const Analytics = () => {
   const { t } = useTranslation("pages", { keyPrefix: "analytics-page" });
 
+  const country = localStorage.getItem("country").toLocaleLowerCase();
+
   return (
     <Page
       classes="page__analytics"
-      heading={t("heading")}
+      heading={`${t("heading")} - ${t(country)}`}
       showGoBackArrow={false}
     >
       <AnalyticsBlock />

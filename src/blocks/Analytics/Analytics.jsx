@@ -3,15 +3,16 @@ import { useTranslation } from "react-i18next";
 
 import {
   BaseTable,
+  Button,
   TabsUnderlined,
   Block,
   Grid,
   GridItem,
-  Statistic,
   Loading,
   DropdownWithLabel,
+  DateInput,
+  ReportCollapsible,
 } from "@USupport-components-library/src";
-import { useWindowDimensions } from "@USupport-components-library/src/utils";
 import { downloadCSVFile } from "@USupport-components-library/utils";
 import { useGetContentStatistics, useGetPlatformMetrics } from "#hooks";
 
@@ -26,9 +27,10 @@ import "./analytics.scss";
  */
 export const Analytics = () => {
   const { t, i18n } = useTranslation("blocks", { keyPrefix: "analytics" });
-  const { width } = useWindowDimensions();
 
   const [selectedContentType, setSelectedContentType] = useState("all");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
   const [options, setOptions] = useState([
     { label: t("content"), value: "content", isSelected: true },
     { label: t("general"), value: "general", isSelected: false },
@@ -51,7 +53,11 @@ export const Analytics = () => {
     data: generalPlatformMetrics,
     isLoading: isGeneralPlatformMetricsLoading,
     isError: isGeneralPlatfromMetricsError,
-  } = useGetPlatformMetrics(shouldFetchPlatformMetrics);
+  } = useGetPlatformMetrics({
+    startDate: startDate || null,
+    endDate: endDate || null,
+    enabled: shouldFetchPlatformMetrics,
+  });
 
   const [dataToDisplay, setDataToDisplay] = useState([]);
   const [originalData, setOriginalData] = useState([]); // Add original data reference
@@ -210,27 +216,80 @@ export const Analytics = () => {
             : typeof value === "number"
             ? value.toLocaleString()
             : String(value),
+        ...value,
       })
     );
 
+    console.log(statistics);
     return (
-      <Grid md={8} lg={12} classes="analytics__statistics-grid">
+      <div md={8} lg={12} className="analytics__statistics-grid">
         {statistics.map((statistic, index) => (
-          <GridItem
-            md={4}
-            lg={4}
-            key={index}
-            classes="analytics__statistics-item"
-          >
-            <Statistic
+          <div md={8} lg={12} key={index} classes="analytics__statistics-item">
+            <ReportCollapsible
+              canCollapse={!!statistic.demographics}
+              headingItems={[
+                <p>
+                  {t(statistic.type)}
+                  {"  "}
+                  <strong>
+                    {isNaN(statistic.count) ? statistic.value : statistic.count}
+                  </strong>
+                </p>,
+                statistic.uniqueCount ? (
+                  <p>
+                    {t(`${statistic.type}_unique_count`)}
+                    {"  "}
+                    <strong>{statistic.uniqueCount}</strong>
+                  </p>
+                ) : (
+                  <div />
+                ), // empty div to add the collapsible arrow icon
+              ]}
+              contentHeading={
+                statistic.demographics ? (
+                  <h4>{t("demographics_breakdown")}</h4>
+                ) : null
+              }
+              classes="analytics__statistics-collapsible"
+            >
+              <div className="analytics__statistics-content">
+                {Object.entries(statistic?.demographics || {}).map(([key]) => {
+                  return (
+                    <div>
+                      <h4 className="analytics__statistics-content__heading">
+                        {t(key)}
+                      </h4>
+                      <div className="analytics__statistics-content__type">
+                        {Object.entries(statistic?.demographics[key] || {}).map(
+                          ([key, value]) => {
+                            return (
+                              <div
+                                className="analytics__statistics-content__type__item"
+                                key={key}
+                              >
+                                <p>
+                                  {isNaN(key) ? t(key) : key}:{" "}
+                                  <strong>{value}</strong>
+                                </p>
+                              </div>
+                            );
+                          }
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </ReportCollapsible>
+            {/* <Statistic
               textBold={statistic.value}
               text={t(statistic.type)}
               orientation={"landscape"}
               hasIcon={false}
-            />
-          </GridItem>
+            /> */}
+          </div>
         ))}
-      </Grid>
+      </div>
     );
   };
 
@@ -250,19 +309,36 @@ export const Analytics = () => {
     setSelectedContentType(value);
   };
 
+  const handleStartDateChange = (e) => {
+    setStartDate(e.target.value);
+  };
+
+  const handleEndDateChange = (e) => {
+    setEndDate(e.target.value);
+  };
+
+  const handleResetFilters = () => {
+    setStartDate("");
+    setEndDate("");
+  };
+
   return (
     <Block classes="analytics">
       <TabsUnderlined options={options} handleSelect={handleTabSelect} t={t} />
       {options[0].isSelected ? (
         <React.Fragment>
-          <DropdownWithLabel
-            classes="analytics__dropdown"
-            options={contentTypeOptions}
-            selected={selectedContentType}
-            setSelected={handleContentTypeSelect}
-            t={t}
-            label={t("content_type")}
-          />
+          <Grid md={8} lg={12} classes="analytics__filters-grid">
+            <GridItem md={2} lg={3}>
+              <DropdownWithLabel
+                classes="analytics__dropdown"
+                options={contentTypeOptions}
+                selected={selectedContentType}
+                setSelected={handleContentTypeSelect}
+                t={t}
+                label={t("content_type")}
+              />
+            </GridItem>
+          </Grid>
           <BaseTable
             data={dataToDisplay}
             rows={columns}
@@ -277,7 +353,32 @@ export const Analytics = () => {
           />
         </React.Fragment>
       ) : (
-        renderStatistic()
+        <React.Fragment>
+          <div className="analytics__dropdown-container">
+            <DateInput
+              classes={["analytics__date-input"]}
+              label={t("start_date")}
+              value={startDate}
+              onChange={handleStartDateChange}
+              placeholder={t("select_start_date")}
+            />
+            <DateInput
+              classes={["analytics__date-input"]}
+              label={t("end_date")}
+              value={endDate}
+              onChange={handleEndDateChange}
+              placeholder={t("select_end_date")}
+            />
+          </div>
+          <Button
+            classes={"analytics__reset-button"}
+            color="purple"
+            onClick={handleResetFilters}
+          >
+            {t("reset")}
+          </Button>
+          {renderStatistic()}
+        </React.Fragment>
       )}
     </Block>
   );
