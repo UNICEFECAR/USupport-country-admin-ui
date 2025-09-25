@@ -174,7 +174,6 @@ export const BaselineAssessmentThresholds = () => {
           {isAnalysisLoading ? (
             <div className="baseline-assessment-thresholds__analysis-loading">
               <Loading size="md" />
-              <p>{t("loading_analysis")}</p>
             </div>
           ) : analysisError ? (
             <div className="baseline-assessment-thresholds__analysis-error">
