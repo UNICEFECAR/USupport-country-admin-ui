@@ -171,21 +171,58 @@
     margin-top: 3rem;
     padding-top: 2rem;
     border-top: 2px solid #e0e0e0;
-  }
 
-  &__analysis-header {
-    margin-bottom: 2rem;
-    text-align: center;
+    &-header {
+      margin-bottom: 2rem;
+      text-align: center;
 
-    h3 {
-      color: #20809e;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
+      h3 {
+        color: #20809e;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        color: #666;
+        margin: 0;
+      }
     }
 
-    p {
-      color: #666;
-      margin: 0;
+    &-content {
+      background: $gradient_primary;
+      border-radius: 12px;
+      padding: 1.5rem;
+      border: 1px solid #e9ecef;
+      margin-top: 2.4rem;
+    }
+
+    &-filters {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+
+      &-fields {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-top: 1.2rem;
+        gap: 1rem;
+
+        @media screen and (min-width: $screen-md) {
+          flex-direction: row;
+        }
+      }
+
+      &-actions {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+      }
     }
   }
 
@@ -204,13 +241,6 @@
 
   &__analysis-error p {
     color: #e74c3c;
-  }
-
-  &__analysis-content {
-    background: $gradient_primary;
-    border-radius: 12px;
-    padding: 1.5rem;
-    border: 1px solid #e9ecef;
   }
 
   &__analysis-summary {

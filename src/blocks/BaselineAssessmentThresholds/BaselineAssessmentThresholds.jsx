@@ -12,6 +12,7 @@ import {
   Block,
   Box,
   Input,
+  DateInput,
   Button,
   Loading,
 } from "@USupport-components-library/src";
@@ -33,13 +34,24 @@ export const BaselineAssessmentThresholds = () => {
   });
 
   const [editingId, setEditingId] = useState(null);
+  const [filterData, setFilterData] = useState({
+    startDate: "",
+    endDate: "",
+  });
+  const [appliedFilters, setAppliedFilters] = useState({
+    startDate: null,
+    endDate: null,
+  });
 
   const { data: thresholds, isLoading } = useGetBaselineAssessmentThresholds();
   const {
     data: analysisData,
     isLoading: isAnalysisLoading,
     error: analysisError,
-  } = useGetBaselineAssessmentAnalysis();
+  } = useGetBaselineAssessmentAnalysis({
+    startDate: appliedFilters.startDate,
+    endDate: appliedFilters.endDate,
+  });
 
   const onUpdateSuccess = () => {
     toast.success(t("update_success"));
@@ -73,6 +85,22 @@ export const BaselineAssessmentThresholds = () => {
     };
 
     updateMutation.mutate(payload);
+  };
+
+  const handleFilterChange = (field, value) => {
+    setAppliedFilters((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+    setFilterData((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
+
+  const handleResetFilters = () => {
+    setFilterData({ startDate: "", endDate: "" });
+    setAppliedFilters({ startDate: null, endDate: null });
   };
 
   if (isLoading) {
@@ -110,6 +138,37 @@ export const BaselineAssessmentThresholds = () => {
           <div className="baseline-assessment-thresholds__analysis-header">
             <h3>{t("analysis_title")}</h3>
             <p>{t("analysis_description")}</p>
+          </div>
+
+          <div className="baseline-assessment-thresholds__analysis-filters">
+            <div className="baseline-assessment-thresholds__analysis-filters-fields">
+              <DateInput
+                type="date"
+                label={t("start_date")}
+                value={filterData.startDate}
+                onChange={(e) =>
+                  handleFilterChange("startDate", e.currentTarget.value)
+                }
+                classes="baseline-assessment-thresholds__analysis-filter-input"
+              />
+              <DateInput
+                type="date"
+                label={t("end_date")}
+                value={filterData.endDate}
+                onChange={(e) =>
+                  handleFilterChange("endDate", e.currentTarget.value)
+                }
+                classes="baseline-assessment-thresholds__analysis-filter-input"
+              />
+            </div>
+            <div className="baseline-assessment-thresholds__analysis-filters-actions">
+              <Button
+                label={t("reset_filters")}
+                size="sm"
+                color="purple"
+                onClick={handleResetFilters}
+              />
+            </div>
           </div>
 
           {isAnalysisLoading ? (

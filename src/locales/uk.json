@@ -10,6 +10,7 @@
       "page_7": "Купони",
       "page_8": "Мої Q&A",
       "page_9": "Організації",
+      "page_10": "Базова оцінка",
 
       "country_1": "",
       "country_2": "",
@@ -892,7 +893,10 @@
       "second_half": "Друга половина",
       "no_data": "Завершені оцінки не знайдено",
       "loading_analysis": "Завантаження даних аналізу...",
-      "error_loading_analysis": "Помилка завантаження даних аналізу"
+      "error_loading_analysis": "Помилка завантаження даних аналізу",
+      "start_date": "Дата початку",
+      "end_date": "Дата завершення",
+      "reset_filters": "Скинути фільтри"
     },
     "sos-center-clicks": {
       "sos_center": "Центри SOS",

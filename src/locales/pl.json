@@ -10,6 +10,7 @@
       "page_7": "Kupony",
       "page_8": "Moje Q&A",
       "page_9": "Organizacje",
+      "page_10": "Ocena bazowa",
 
       "country_1": "",
       "country_2": "",
@@ -892,7 +893,10 @@
       "second_half": "Druga połowa",
       "no_data": "Nie znaleziono ukończonych ocen",
       "loading_analysis": "Ładowanie danych analizy...",
-      "error_loading_analysis": "Błąd ładowania danych analizy"
+      "error_loading_analysis": "Błąd ładowania danych analizy",
+      "start_date": "Data rozpoczęcia",
+      "end_date": "Data zakończenia",
+      "reset_filters": "Zresetuj filtry"
     },
     "sos-center-clicks": {
       "sos_center": "Centrum SOS",

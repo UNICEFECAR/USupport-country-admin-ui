@@ -895,7 +895,10 @@
       "second_half": "Екінші жартысы",
       "no_data": "Аяқталған бағалаулар табылмады",
       "loading_analysis": "Талдау деректерін жүктеу...",
-      "error_loading_analysis": "Талдау деректерін жүктеу қатесі"
+      "error_loading_analysis": "Талдау деректерін жүктеу қатесі",
+      "start_date": "Басталу күні",
+      "end_date": "Аяқталу күні",
+      "reset_filters": "Сүзгілерді қалпына келтіру"
     },
     "sos-center-clicks": {
       "sos_center": "SOS орталығы",

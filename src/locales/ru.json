@@ -10,6 +10,7 @@
       "page_7": "Купоны",
       "page_8": "Мой Q&A",
       "page_9": "Организации",
+      "page_10": "Базовая оценка",
 
       "country_1": "",
       "country_2": "",
@@ -894,7 +895,10 @@
       "second_half": "Вторая половина",
       "no_data": "Завершенные оценки не найдены",
       "loading_analysis": "Загрузка данных анализа...",
-      "error_loading_analysis": "Ошибка загрузки данных анализа"
+      "error_loading_analysis": "Ошибка загрузки данных анализа",
+      "start_date": "Дата начала",
+      "end_date": "Дата окончания",
+      "reset_filters": "Сбросить фильтры"
     },
     "sos-center-clicks": {
       "sos_center": "Центры SOS",

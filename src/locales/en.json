@@ -10,6 +10,7 @@
       "page_7": "Coupons",
       "page_8": "My Q&A",
       "page_9": "Organizations",
+      "page_10": "Baseline Assessment",
 
       "country_1": "",
       "country_2": "",
@@ -886,7 +887,10 @@
       "second_half": "Second Half",
       "no_data": "No completed assessments found",
       "loading_analysis": "Loading analysis data...",
-      "error_loading_analysis": "Error loading analysis data"
+      "error_loading_analysis": "Error loading analysis data",
+      "start_date": "Start Date",
+      "end_date": "End Date",
+      "reset_filters": "Reset filters"
     },
     "providers-free-slots": {
       "heading": "Generate Provider Free Slots Report",
