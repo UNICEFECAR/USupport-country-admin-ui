@@ -916,6 +916,23 @@
       "end_date_error": "Data zakończenia jest wymagana",
       "end_date_before_start_error": "Data zakończenia musi być po dacie rozpoczęcia",
       "generate_report": "Generuj raport"
+    },
+    "mood-tracker-report": {
+      "total_entries": "Łączna liczba wpisów",
+      "unique_clients": "Unikalni klienci",
+      "no_data": "Brak wpisów w rejestrze nastroju dla wybranego okresu",
+      "mood": "Nastrój",
+      "count": "Liczba razy zarejestrowano",
+      "start_date": "Data początkowa",
+      "end_date": "Data końcowa",
+      "select_start_date": "Wybierz datę początkową",
+      "select_end_date": "Wybierz datę końcową",
+      "happy": "Szczęśliwy/a",
+      "good": "Zadowolony/a",
+      "sad": "Smutny/a",
+      "depressed": "Przygnębiony/a",
+      "worried": "Zmartwiony/a",
+      "reset_filters": "Zresetuj filtry"
     }
   },
 
@@ -973,6 +990,10 @@
       "my_qa_tab_label": "Moje archiwum pytań i odpowiedzi",
       "sos_center_clicks_tab_label": "Centrum SOS",
       "providers_free_slots_tab_label": "Wolne terminy konsultantów"
+    },
+    "mood-tracker-report-page": {
+      "heading": "Raport rejestru nastroju",
+      "description": "Filtruj według zakresu dat, aby sprawdzić użycie rejestru nastroju w Twoim kraju."
     },
     "campaigns-page": {
       "heading": "Lista sponsorów"

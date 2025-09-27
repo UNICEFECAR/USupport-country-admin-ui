@@ -52,3 +52,4 @@ export * from "./useUpdateBaselineAssessmentThreshold.js";
 export * from "./useGetBaselineAssessmentAnalysis.js";
 export * from "./useGetSOSCenterClicks.js";
 export * from "./useGenerateProvidersFreeSlotsReport.js";
+export * from "./useGetMoodTrackerReport.js";

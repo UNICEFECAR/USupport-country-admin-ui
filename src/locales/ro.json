@@ -906,6 +906,25 @@
       "end_date_error": "End date is required",
       "end_date_before_start_error": "End date must be after start date",
       "generate_report": "Generate report"
+    },
+    "mood-tracker-report": {
+      "total_entries": "Total înregistrări",
+      "unique_clients": "Clienți unici",
+      "no_data": "Nu au fost găsite înregistrări de urmărire a dispoziției pentru perioada selectată",
+      "mood": "Stare de spirit",
+      "count": "De câte ori a fost înregistrat",
+      "start_date": "Data de început",
+      "end_date": "Data de sfârșit",
+      "select_start_date": "Selectează data de început",
+      "select_end_date": "Selectează data de sfârșit",
+      "happy": "Fericit",
+      "good": "Bun",
+      "sad": "Trist",
+      "depressed": "Depresiv",
+      "worried": "Îngrijorat",
+      "reset_filters": "Resetare filtre",
+      "critical_count": "Număr de înregistrări critice",
+      "critical_entries": "Înregistrări critice"
     }
   },
 
@@ -964,6 +983,10 @@
       "my_qa_tab_label": "Arhiva mea Q&A",
       "sos_center_clicks_tab_label": "SOS Center",
       "providers_free_slots_tab_label": "Providers Free Slots"
+    },
+    "mood-tracker-report-page": {
+      "heading": "Raport urmărire dispoziție",
+      "description": "Filtrează după interval de date pentru a explora utilizarea urmăririi dispoziției în țara ta."
     },
     "campaigns-page": {
       "heading": "Lista de sponsori"

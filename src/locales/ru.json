@@ -918,6 +918,23 @@
       "end_date_error": "Дата окончания обязательна",
       "end_date_before_start_error": "Дата окончания должна быть позже даты начала",
       "generate_report": "Создать отчет"
+    },
+    "mood-tracker-report": {
+      "total_entries": "Всего записей",
+      "unique_clients": "Уникальные клиенты",
+      "no_data": "Записей трекера настроения за выбранный период не найдено",
+      "mood": "Настроение",
+      "count": "Количество записей",
+      "start_date": "Дата начала",
+      "end_date": "Дата окончания",
+      "select_start_date": "Выберите дату начала",
+      "select_end_date": "Выберите дату окончания",
+      "happy": "Счастливый",
+      "good": "Хороший",
+      "sad": "Грустный",
+      "depressed": "В депрессии",
+      "worried": "Взволнованный",
+      "reset_filters": "Сбросить фильтры"
     }
   },
 
@@ -975,6 +992,10 @@
       "my_qa_tab_label": "Мой архив Q&A (Вопрос/Ответ)",
       "sos_center_clicks_tab_label": "Центры SOS",
       "providers_free_slots_tab_label": "Свободные слоты консультантов"
+    },
+    "mood-tracker-report-page": {
+      "heading": "Отчет трекера настроения",
+      "description": "Отфильтруйте по диапазону дат, чтобы изучить использование трекера настроения в вашей стране."
     },
     "campaigns-page": {
       "heading": "Список спонсоров"
