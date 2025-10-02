@@ -48,6 +48,7 @@ import {
   OrganizationDetails,
   ContentManagement,
   Analytics,
+  MoodTrackerReport,
 } from "#pages";
 
 import { CountryValidationRoute, ProtectedRoute } from "../../routes";
@@ -185,6 +186,14 @@ const LanguageLayout = () => {
         element={
           <ProtectedRoute>
             <Reports />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="mood-tracker-report"
+        element={
+          <ProtectedRoute>
+            <MoodTrackerReport />
           </ProtectedRoute>
         }
       />

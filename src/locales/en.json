@@ -10,6 +10,8 @@
       "page_7": "Coupons",
       "page_8": "My Q&A",
       "page_9": "Organizations",
+      "page_10": "Baseline Assessment",
+      "page_11": "Mood Tracker",
 
       "country_1": "",
       "country_2": "",
@@ -886,7 +888,14 @@
       "second_half": "Second Half",
       "no_data": "No completed assessments found",
       "loading_analysis": "Loading analysis data...",
-      "error_loading_analysis": "Error loading analysis data"
+      "error_loading_analysis": "Error loading analysis data",
+      "start_date": "Start Date",
+      "end_date": "End Date",
+      "reset_filters": "Reset filters",
+      "above_count": "Clients above high",
+      "below_count": "Clients below low",
+      "select_start_date": "Select start date",
+      "select_end_date": "Select end date"
     },
     "providers-free-slots": {
       "heading": "Generate Provider Free Slots Report",
@@ -897,6 +906,25 @@
       "end_date_error": "End date is required",
       "end_date_before_start_error": "End date must be after start date",
       "generate_report": "Generate report"
+    },
+    "mood-tracker-report": {
+      "total_entries": "Total entries",
+      "unique_clients": "Unique clients",
+      "no_data": "No mood tracker entries found for the selected period",
+      "mood": "Mood",
+      "count": "Times recorded",
+      "start_date": "Start date",
+      "end_date": "End date",
+      "select_start_date": "Select start date",
+      "select_end_date": "Select end date",
+      "happy": "Happy",
+      "good": "Good",
+      "sad": "Sad",
+      "depressed": "Depressed",
+      "worried": "Worried",
+      "reset_filters": "Reset Filters",
+      "critical_entries": "Critical entries",
+      "critical_count": "Critical count"
     }
   },
 
@@ -954,6 +982,10 @@
       "my_qa_tab_label": "My Q&A Archive",
       "sos_center_clicks_tab_label": "SOS Center",
       "providers_free_slots_tab_label": "Providers Free Slots"
+    },
+    "mood-tracker-report-page": {
+      "heading": "Mood tracker report",
+      "description": "Filter by date range to explore mood tracker usage in your country."
     },
     "campaigns-page": {
       "heading": "List of Sponsors"

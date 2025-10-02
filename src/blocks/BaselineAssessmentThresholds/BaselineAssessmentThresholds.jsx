@@ -12,6 +12,7 @@ import {
   Block,
   Box,
   Input,
+  DateInput,
   Button,
   Loading,
 } from "@USupport-components-library/src";
@@ -33,13 +34,24 @@ export const BaselineAssessmentThresholds = () => {
   });
 
   const [editingId, setEditingId] = useState(null);
+  const [filterData, setFilterData] = useState({
+    startDate: "",
+    endDate: "",
+  });
+  const [appliedFilters, setAppliedFilters] = useState({
+    startDate: null,
+    endDate: null,
+  });
 
   const { data: thresholds, isLoading } = useGetBaselineAssessmentThresholds();
   const {
     data: analysisData,
     isLoading: isAnalysisLoading,
     error: analysisError,
-  } = useGetBaselineAssessmentAnalysis();
+  } = useGetBaselineAssessmentAnalysis({
+    startDate: appliedFilters.startDate,
+    endDate: appliedFilters.endDate,
+  });
 
   const onUpdateSuccess = () => {
     toast.success(t("update_success"));
@@ -73,6 +85,22 @@ export const BaselineAssessmentThresholds = () => {
     };
 
     updateMutation.mutate(payload);
+  };
+
+  const handleFilterChange = (field, value) => {
+    setAppliedFilters((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+    setFilterData((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
+
+  const handleResetFilters = () => {
+    setFilterData({ startDate: "", endDate: "" });
+    setAppliedFilters({ startDate: null, endDate: null });
   };
 
   if (isLoading) {
@@ -112,10 +140,42 @@ export const BaselineAssessmentThresholds = () => {
             <p>{t("analysis_description")}</p>
           </div>
 
+          <div className="baseline-assessment-thresholds__analysis-filters">
+            <div className="baseline-assessment-thresholds__analysis-filters-fields">
+              <DateInput
+                placeholder={t("select_start_date")}
+                type="date"
+                label={t("start_date")}
+                value={filterData.startDate}
+                onChange={(e) =>
+                  handleFilterChange("startDate", e.currentTarget.value)
+                }
+                classes="baseline-assessment-thresholds__analysis-filter-input"
+              />
+              <DateInput
+                placeholder={t("select_end_date")}
+                type="date"
+                label={t("end_date")}
+                value={filterData.endDate}
+                onChange={(e) =>
+                  handleFilterChange("endDate", e.currentTarget.value)
+                }
+                classes="baseline-assessment-thresholds__analysis-filter-input"
+              />
+            </div>
+            <div className="baseline-assessment-thresholds__analysis-filters-actions">
+              <Button
+                label={t("reset_filters")}
+                size="sm"
+                color="purple"
+                onClick={handleResetFilters}
+              />
+            </div>
+          </div>
+
           {isAnalysisLoading ? (
             <div className="baseline-assessment-thresholds__analysis-loading">
               <Loading size="md" />
-              <p>{t("loading_analysis")}</p>
             </div>
           ) : analysisError ? (
             <div className="baseline-assessment-thresholds__analysis-error">
@@ -287,6 +347,37 @@ const AnalysisDisplay = ({ analysisData, t }) => {
             {factorData.median?.toFixed(1) || "N/A"}
           </p>
         </div>
+
+        <div className="baseline-assessment-thresholds__median-display">
+          <p className="baseline-assessment-thresholds__median-label">
+            {t("below_count")}:
+          </p>
+          <p
+            className={`baseline-assessment-thresholds__median-value ${
+              factorData.belowCount > 0
+                ? "baseline-assessment-thresholds__median-value--risk"
+                : ""
+            }`}
+          >
+            {factorData.belowCount}
+          </p>
+        </div>
+
+        <div className="baseline-assessment-thresholds__median-display">
+          <p className="baseline-assessment-thresholds__median-label">
+            {t("above_count")}:
+          </p>
+          <p
+            className={`baseline-assessment-thresholds__median-value ${
+              factorData.aboveCount > 0
+                ? "baseline-assessment-thresholds__median-value--risk"
+                : ""
+            }`}
+          >
+            {factorData.aboveCount}
+          </p>
+        </div>
+
         <div className="baseline-assessment-thresholds__count-display">
           <span className="baseline-assessment-thresholds__count-label">
             {t("total_questions")}:

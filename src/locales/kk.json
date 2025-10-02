@@ -895,7 +895,10 @@
       "second_half": "Екінші жартысы",
       "no_data": "Аяқталған бағалаулар табылмады",
       "loading_analysis": "Талдау деректерін жүктеу...",
-      "error_loading_analysis": "Талдау деректерін жүктеу қатесі"
+      "error_loading_analysis": "Талдау деректерін жүктеу қатесі",
+      "start_date": "Басталу күні",
+      "end_date": "Аяқталу күні",
+      "reset_filters": "Сүзгілерді қалпына келтіру"
     },
     "sos-center-clicks": {
       "sos_center": "SOS орталығы",
@@ -915,6 +918,25 @@
       "end_date_error": "Аяқталу күні міндетті",
       "end_date_before_start_error": "Аяқталу күні басталу күнінен кейін болуы керек",
       "generate_report": "Есеп құру"
+    },
+    "mood-tracker-report": {
+      "total_entries": "Жалпы жазбалар",
+      "unique_clients": "Бірегей клиенттер",
+      "no_data": "Таңдалған кезең үшін көңіл күй трекері жазбалары табылмады",
+      "mood": "Көңіл күй",
+      "count": "Жазылған реті",
+      "start_date": "Басталу күні",
+      "end_date": "Аяқталу күні",
+      "select_start_date": "Басталу күнін таңдаңыз",
+      "select_end_date": "Аяқталу күнін таңдаңыз",
+      "happy": "Бақытты",
+      "good": "Жақсы",
+      "sad": "Қайғылы",
+      "depressed": "Депрессияда",
+      "worried": "Қобалжыған",
+      "reset_filters": "Сүзгілерді қалпына келтіру",
+      "critical_entries": "Күрделі жазбалар",
+      "critical_count": "Күрделі жазбалар саны"
     }
   },
 
@@ -972,6 +994,10 @@
       "my_qa_tab_label": "Менің Q&A (Сұрақ/Жауап) мұрағатым",
       "sos_center_clicks_tab_label": "SOS Орталық",
       "providers_free_slots_tab_label": "Консультанттардың бос орындары"
+    },
+    "mood-tracker-report-page": {
+      "heading": "Көңіл күй трекері есебі",
+      "description": "Еліңіздегі көңіл күй трекерін пайдалануын зерттеу үшін күн диапазоны бойынша сүзгілеңіз."
     },
     "campaigns-page": {
       "heading": "Демеушілер тізімі"

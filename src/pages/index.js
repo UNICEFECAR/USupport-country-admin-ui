@@ -29,3 +29,4 @@ export * from "./OrganizationDetails";
 export * from "./ContentManagement";
 export * from "./Analytics";
 export * from "./BaselineAssessment";
+export * from "./MoodTrackerReport";

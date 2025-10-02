@@ -21,12 +21,6 @@ import { useIsLoggedIn, useError, useEventListener } from "#hooks";
 
 import "./page.scss";
 
-const kazakhstanCountry = {
-  value: "KZ",
-  label: "Kazakhstan",
-  iconName: "KZ",
-};
-
 /**
  * Page
  *
@@ -52,7 +46,9 @@ export const Page = ({
 
   const isLoggedIn = useIsLoggedIn();
   const isNavbarShown = showNavbar !== null ? showNavbar : isLoggedIn;
+  // eslint-disable-next-line no-undef
   const IS_DEV = process.env.NODE_ENV === "development";
+  let localStorageCountry = localStorage.getItem("country");
 
   const { width } = useWindowDimensions();
 
@@ -71,6 +67,17 @@ export const Page = ({
       dropdownItems: [
         { name: t("page_4"), url: "/analytics", icon: "list-view" },
         { name: t("page_6"), url: "/reports", icon: "document" },
+        { name: t("page_11"), url: "/mood-tracker-report", icon: "document" },
+        // add for RO only
+        ...(localStorageCountry === "RO"
+          ? [
+              {
+                name: t("page_10"),
+                url: "/baseline-assessment",
+                icon: "document",
+              },
+            ]
+          : []),
       ],
     },
     { name: t("page_7"), url: "/campaigns", icon: "bag" },
@@ -78,7 +85,6 @@ export const Page = ({
     { name: t("page_9"), url: "/organizations", icon: "three-people" },
   ];
 
-  let localStorageCountry = localStorage.getItem("country");
   const localStorageLanguage = localStorage.getItem("language");
   const [selectedLanguage, setSelectedLanguage] = useState(
     localStorageLanguage
@@ -93,7 +99,7 @@ export const Page = ({
     }
   });
   const handleCountrySelection = (countries) => {
-    let hasSetDefaultCountry = false;
+    // let hasSetDefaultCountry = false;
 
     const usersCountry = getCountryFromTimezone();
     const validCountry = countries.find((x) => x.value === usersCountry);
@@ -108,7 +114,7 @@ export const Page = ({
         setSelectedCountry(country);
       } else if (!localStorageCountry || localStorageCountry === "undefined") {
         if (validCountry?.value === country.value) {
-          hasSetDefaultCountry = true;
+          // hasSetDefaultCountry = true;
 
           localStorage.setItem("country", country.value);
           localStorage.setItem("country_id", country.countryID);
