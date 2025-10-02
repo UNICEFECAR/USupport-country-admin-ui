@@ -143,6 +143,7 @@ export const BaselineAssessmentThresholds = () => {
           <div className="baseline-assessment-thresholds__analysis-filters">
             <div className="baseline-assessment-thresholds__analysis-filters-fields">
               <DateInput
+                placeholder={t("select_start_date")}
                 type="date"
                 label={t("start_date")}
                 value={filterData.startDate}
@@ -152,6 +153,7 @@ export const BaselineAssessmentThresholds = () => {
                 classes="baseline-assessment-thresholds__analysis-filter-input"
               />
               <DateInput
+                placeholder={t("select_end_date")}
                 type="date"
                 label={t("end_date")}
                 value={filterData.endDate}
@@ -345,6 +347,37 @@ const AnalysisDisplay = ({ analysisData, t }) => {
             {factorData.median?.toFixed(1) || "N/A"}
           </p>
         </div>
+
+        <div className="baseline-assessment-thresholds__median-display">
+          <p className="baseline-assessment-thresholds__median-label">
+            {t("below_count")}:
+          </p>
+          <p
+            className={`baseline-assessment-thresholds__median-value ${
+              factorData.belowCount > 0
+                ? "baseline-assessment-thresholds__median-value--risk"
+                : ""
+            }`}
+          >
+            {factorData.belowCount}
+          </p>
+        </div>
+
+        <div className="baseline-assessment-thresholds__median-display">
+          <p className="baseline-assessment-thresholds__median-label">
+            {t("above_count")}:
+          </p>
+          <p
+            className={`baseline-assessment-thresholds__median-value ${
+              factorData.aboveCount > 0
+                ? "baseline-assessment-thresholds__median-value--risk"
+                : ""
+            }`}
+          >
+            {factorData.aboveCount}
+          </p>
+        </div>
+
         <div className="baseline-assessment-thresholds__count-display">
           <span className="baseline-assessment-thresholds__count-label">
             {t("total_questions")}:

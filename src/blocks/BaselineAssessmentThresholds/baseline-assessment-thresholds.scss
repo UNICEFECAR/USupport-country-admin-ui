@@ -354,6 +354,9 @@
   &__median-value {
     font-weight: 700;
     color: $color_primary_20809e !important;
+    &--risk {
+      color: $color_red_eb5757 !important;
+    }
   }
 
   &__count-value {
