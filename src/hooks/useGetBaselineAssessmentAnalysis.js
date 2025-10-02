@@ -4,14 +4,20 @@ import { adminSvc } from "@USupport-components-library/services";
 /**
  * Hook to get baseline assessment analysis data with median calculations
  */
-export default function useGetBaselineAssessmentAnalysis() {
+export default function useGetBaselineAssessmentAnalysis({
+  startDate,
+  endDate,
+}) {
   const fetchAnalysis = async () => {
-    const { data } = await adminSvc.getBaselineAssessmentAnalysis();
+    const { data } = await adminSvc.getBaselineAssessmentAnalysis({
+      startDate,
+      endDate,
+    });
     return data;
   };
 
   const analysisQuery = useQuery(
-    ["baseline-assessment-analysis"],
+    ["baseline-assessment-analysis", startDate, endDate],
     fetchAnalysis,
     {
       // Refetch every 5 minutes since this is aggregated data that changes over time

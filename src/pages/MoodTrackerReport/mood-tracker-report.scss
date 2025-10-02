@@ -1,0 +1,192 @@
+@import "@USupport-components-library/styles";
+
+.page__mood-tracker-report {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing_2_4;
+
+  .mood-tracker-report__filters {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: $spacing_1_2;
+
+    &__description {
+      margin: 0;
+      color: $color_gray_66768d;
+    }
+
+    &__inputs {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-top: 1.2rem;
+      gap: 1rem;
+
+      @media screen and (min-width: $screen-md) {
+        flex-direction: row;
+      }
+    }
+
+    &__reset-button {
+      margin-top: $spacing_2_4;
+      margin-inline: auto;
+    }
+  }
+
+  // Main analysis content container - matching BaselineAssessmentThresholds design
+  .mood-tracker-report__analysis-content {
+    background: $gradient_primary;
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid #e9ecef;
+  }
+
+  .mood-tracker-report__summary {
+    text-align: center;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    &-list {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    &-card {
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem;
+      border-radius: 8px;
+      background: white;
+      border: 1px solid #dee2e6;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      min-width: 180px;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: $shadow_2;
+      }
+    }
+
+    &-card-label {
+      margin: 0 0 $spacing_0_8 0;
+      color: $color_gray_66768d;
+      font-weight: 500;
+    }
+
+    &-card-value {
+      margin: 0;
+      font-weight: 700;
+      color: $color_primary_20809e !important;
+    }
+  }
+
+  .mood-tracker-report__list {
+    &-items {
+      display: grid;
+      gap: 1rem;
+
+      @media (min-width: 576px) {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+
+      @media (min-width: $screen-md) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    &-item {
+      background: white;
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border: 1px solid #dee2e6;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: $shadow_2;
+      }
+    }
+
+    &-item-mood {
+      margin: 0 0 0.75rem 0;
+      color: #20809e;
+      text-transform: capitalize;
+    }
+
+    &-item-data {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    &-item-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0;
+
+      .mood-tracker-report__meta-label {
+        color: #666;
+        font-weight: 500;
+      }
+
+      .mood-tracker-report__meta-value {
+        font-weight: 700;
+        color: $color_primary_20809e !important;
+      }
+    }
+  }
+
+  // No data state
+  .mood-tracker-report__no-data {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+
+    p {
+      margin: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .page__mood-tracker-report {
+    .mood-tracker-report__summary {
+      flex-direction: column;
+
+      &-list {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      &-card {
+        min-width: auto;
+        width: 100%;
+      }
+    }
+
+    .mood-tracker-report__filters {
+      &__inputs {
+        padding-top: 0;
+      }
+
+      &__actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+  }
+}
