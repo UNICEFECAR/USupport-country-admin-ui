@@ -812,24 +812,49 @@
       "no_data_found": "No data found",
 
       "totalConsultations": "Total Consultations",
-      "uniqueClientsConsultations": "Unique Clients Consultations",
-      "activeClients": "Active Clients",
-      "activeProviders": "Active Providers",
-      "totalWebsiteAccess": "Total Website Access",
-      "totalClientAccess": "Total Client Access",
-      "totalProviderAccess": "Total Provider Access",
-      "uniqueWebsiteAccess": "Unique Website Access",
-      "uniqueClientAccess": "Unique Client Access",
-      "uniqueProviderAccess": "Unique Provider Access",
-      "uniqueClientsThatUsedCoupon": "Unique Clients That Used Coupon",
+      "totalConsultations_unique_count": "Unique Clients",
+      "cancelledConsultations": "Cancelled Consultations",
+      "scheduledConsultations": "Scheduled Consultations - Web",
+      "mobileScheduledConsultations": "Scheduled Consultations - Mobile",
+
+      "scheduleButtonClick": "Schedule consultation click - Web",
+      "mobileScheduleButtonClick": "Schedule consultation click - Mobile",
+      "clientsAttendedConsultations": "Clients Attended Consultations",
+
       "totalCouponConsultations": "Total Coupon Consultations",
+      "totalCouponConsultations_unique_count": "Unique Clients",
+      "totalProviders": "All Registered Providers",
+      "activeProviders": "Active Providers",
+
+      "allClients": "All Registered Clients",
+      "activeClients": "Active Clients",
+
+      "totalWebsiteAccess": "Total Website Visits",
+      "uniqueWebsiteAccess": "Unique Website Visits",
+
+      "totalClientAccess": "Total Client Portal Visits",
+      "uniqueClientAccess": "Unique Client Portal Visits",
+
+      "totalProviderAccess": "Total Provider Portal Visits",
+      "uniqueProviderAccess": "Unique Provider Portal Visits",
+
+      "totalMobileAccess": "Total Mobile App Visits",
+      "uniqueMobileAccess": "Unique Mobile App Visits",
+
+      "emailRegisterClick": "Register with email click - Web",
+      "mobileEmailRegisterClick": "Register with email click - Mobile",
+
+      "anonymousRegisterClick": "Register anonymously click - Web",
+      "mobileAnonymousRegisterClick": "Register anonymously click - Mobile",
+
+      "guestRegisterClick": "Guest register click - Web",
+      "mobileGuestRegisterClick": "Guest register click - Mobile",
+
+      "joinConsultationClick": "Join consultation click - Web",
+      "mobileJoinConsultationClick": "Join consultation click - Mobile",
+
       "positiveClientRatings": "Positive Client Ratings",
       "positiveProviderRatings": "Positive Provider Ratings",
-      "totalMobileAccess": "Total Mobile Access",
-      "uniqueMobileAccess": "Unique Mobile Access",
-
-      "totalConsultations_unique_count": "Unique Clients",
-      "totalCouponConsultations_unique_count": "Unique Clients",
 
       "content_type": "Content Type",
       "all": "All",
@@ -852,7 +877,8 @@
       "unspecified": "Unspecified",
       "not_mentioned": "Not mentioned",
       "rural": "Rural",
-      "urban": "Urban"
+      "urban": "Urban",
+      "missing": "N/A"
     },
     "sos-center-clicks": {
       "sos_center": "SOS Center",
@@ -881,7 +907,7 @@
       "analysis_title": "Assessment Data Analysis",
       "analysis_description": "Statistical analysis of completed baseline assessments with median values for each factor.",
       "total_assessments": "Total Assessments",
-      "total_questions": "Total Questions",
+      "total_answers": "Total Answers",
       "median_value": "Median Value",
       "data_split_info": "Data has been split into two groups for analysis:",
       "first_half": "First Half",

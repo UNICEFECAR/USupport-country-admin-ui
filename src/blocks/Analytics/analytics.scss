@@ -4,11 +4,20 @@
   &__statistics-grid {
     margin-top: $spacing_3_2;
     padding-bottom: $spacing_2_4;
+    // display: flex;
+    // flex-direction: column;
     width: 100%;
+
+    @media screen and (min-width: $screen_md) {
+      // flex-direction: row;
+      // flex-wrap: wrap;
+      // justify-content: space-between;
+    }
   }
 
   &__statistics-collapsible {
-    width: 100%;
+    width: 50%;
+    flex: 1;
   }
 
   &__statistics-content {

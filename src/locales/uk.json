@@ -824,26 +824,47 @@
       "search": "Пошук",
       "export_label": "Експортувати дані як CSV",
       "no_data_found": "Дані не знайдені",
-
-      "totalConsultations": "Загальна кількість консультацій",
-      "uniqueClientsConsultations": "Консультації окремих клієнтів",
-      "activeClients": "Активні клієнти",
-      "activeProviders": "Активні спеціалісти",
-      "totalWebsiteAccess": "Загальна кількість відвідувань сайту",
-      "totalClientAccess": "Загальна кількість входів клієнтів",
-      "totalProviderAccess": "Загальна кількість входів спеціалістів",
-      "uniqueWebsiteAccess": "Кількість відвідувань сайту окремими користувачами",
-      "uniqueClientAccess": "Кількість входів окремих клієнтів",
-      "uniqueProviderAccess": "Кількість входів окремих спеціалістів",
-      "uniqueClientsThatUsedCoupon": "Клієнти, які використали купон",
-      "totalCouponConsultations": "Загальна кількість консультацій з купоном",
-      "positiveClientRatings": "Позитивні оцінки клієнтів",
-      "positiveProviderRatings": "Позитивні оцінки спеціалістів",
-      "totalMobileAccess": "Загальна кількість входів в мобільному додатку",
-      "uniqueMobileAccess": "Кількість входів в мобільному додатку окремими користувачами",
-
+      "totalConsultations": "Усього консультацій",
       "totalConsultations_unique_count": "Унікальні клієнти",
+      "cancelledConsultations": "Скасовані консультації",
+      "scheduledConsultations": "Заплановані консультації - Веб",
+      "mobileScheduledConsultations": "Заплановані консультації - Мобільні",
+
+      "scheduleButtonClick": "Натискання 'Записатися' - Веб",
+      "mobileScheduleButtonClick": "Натискання 'Записатися' - Мобільні",
+      "clientsAttendedConsultations": "Клієнти, що відвідали",
+
+      "totalCouponConsultations": "Консультації за купоном",
       "totalCouponConsultations_unique_count": "Унікальні клієнти",
+      "totalProviders": "Усі провайдери",
+      "activeProviders": "Активні провайдери",
+
+      "allClients": "Усі клієнти",
+      "activeClients": "Активні клієнти",
+
+      "totalWebsiteAccess": "Відвідування сайту",
+      "uniqueWebsiteAccess": "Унікальні відвідування сайту",
+
+      "totalClientAccess": "Відвідування порталу клієнтів",
+      "uniqueClientAccess": "Унікальні відвідування клієнтів",
+
+      "totalProviderAccess": "Відвідування порталу провайдерів",
+      "uniqueProviderAccess": "Унікальні відвідування провайдерів",
+
+      "totalMobileAccess": "Відвідування мобільного додатка",
+      "uniqueMobileAccess": "Унікальні відвідування мобільного",
+
+      "emailRegisterClick": "Клік реєстрації email - Веб",
+      "mobileEmailRegisterClick": "Клік реєстрації email - Мобільні",
+
+      "anonymousRegisterClick": "Клік анонімної реєстрації - Веб",
+      "mobileAnonymousRegisterClick": "Клік анонімної реєстрації - Мобільні",
+
+      "guestRegisterClick": "Клік гостьової реєстрації - Веб",
+      "mobileGuestRegisterClick": "Клік гостьової реєстрації - Мобільні",
+
+      "joinConsultationClick": "Клік приєднання - Веб",
+      "mobileJoinConsultationClick": "Клік приєднання - Мобільні",
 
       "content_type": "Тип контенту",
       "all": "Всі",
@@ -886,7 +907,7 @@
       "analysis_title": "Аналіз даних оцінки",
       "analysis_description": "Статистичний аналіз завершених базових оцінок зі значеннями медіани для кожного фактора.",
       "total_assessments": "Всього оцінок",
-      "total_questions": "Всього питань",
+      "total_answers": "Всього відповідей",
       "median_value": "Значення медіани",
       "data_split_info": "Дані було розділено на дві групи для аналізу:",
       "first_half": "Перша половина",

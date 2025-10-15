@@ -814,27 +814,47 @@
       "search": "Căutare",
       "export_label": "Export date ca CSV",
       "no_data_found": "Nu s-au găsit date",
-
       "totalConsultations": "Total consultații",
-      "uniqueClientsConsultations": "Consultații clienți unici",
-      "activeClients": "Clienți activi",
+      "totalConsultations_unique_count": "Clienți unici",
+      "cancelledConsultations": "Consultații anulate",
+      "scheduledConsultations": "Consultații programate - Web",
+      "mobileScheduledConsultations": "Consultații programate - Mobil",
+
+      "scheduleButtonClick": "Click programare - Web",
+      "mobileScheduleButtonClick": "Click programare - Mobil",
+      "clientsAttendedConsultations": "Clienți prezenți",
+
+      "totalCouponConsultations": "Consultații cu cupon",
+      "totalCouponConsultations_unique_count": "Clienți unici",
+      "totalProviders": "Toți furnizorii",
       "activeProviders": "Furnizori activi",
-      "totalWebsiteAccess": "Acces total la site",
-      "totalClientAccess": "Acces total client",
-      "totalProviderAccess": "Total acces furnizor",
-      "uniqueWebsiteAccess": "Acces unic la site",
-      "uniqueClientAccess": "Acces client unic",
-      "uniqueProviderAccess": "Acces furnizor unic",
-      "uniqueClientsThatUsedCoupon": "Clienți unici care au utilizat cupon",
-      "totalCouponConsultations": "Total consultații cu cupon",
-      "positiveClientRatings": "Evaluări pozitive ale clienților",
-      "positiveProviderRatings": "Evaluări pozitive ale furnizorilor",
-      "totalMobileAccess": "Total Mobile Access",
-      "uniqueMobileAccess": "Unique Mobile Access",
 
-      "totalConsultations_unique_count": "Unique Clients",
-      "totalCouponConsultations_unique_count": "Unique Clients",
+      "allClients": "Toți clienții",
+      "activeClients": "Clienți activi",
 
+      "totalWebsiteAccess": "Vizite site",
+      "uniqueWebsiteAccess": "Vizite unice site",
+
+      "totalClientAccess": "Acces portal clienți",
+      "uniqueClientAccess": "Acces unic portal clienți",
+
+      "totalProviderAccess": "Acces portal furnizori",
+      "uniqueProviderAccess": "Acces unic portal furnizori",
+
+      "totalMobileAccess": "Vizite aplicație mobilă",
+      "uniqueMobileAccess": "Vizite unice aplicație",
+
+      "emailRegisterClick": "Click înregistrare email - Web",
+      "mobileEmailRegisterClick": "Click înregistrare email - Mobil",
+
+      "anonymousRegisterClick": "Click anonim - Web",
+      "mobileAnonymousRegisterClick": "Click anonim - Mobil",
+
+      "guestRegisterClick": "Click oaspete - Web",
+      "mobileGuestRegisterClick": "Click oaspete - Mobil",
+
+      "joinConsultationClick": "Click participare - Web",
+      "mobileJoinConsultationClick": "Click participare - Mobil",
       "content_type": "Content Type",
       "all": "All",
       "articles": "Articles",
@@ -885,7 +905,7 @@
       "analysis_title": "Assessment Data Analysis",
       "analysis_description": "Statistical analysis of completed baseline assessments with median values for each factor.",
       "total_assessments": "Total Assessments",
-      "total_questions": "Total Questions",
+      "total_answers": "Total Answers",
       "median_value": "Median Value",
       "data_split_info": "Data has been split into two groups for analysis:",
       "first_half": "First Half",
