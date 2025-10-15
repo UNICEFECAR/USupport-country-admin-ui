@@ -868,6 +868,10 @@
 
       "joinConsultationClick": "Клик присоединения - Веб",
       "mobileJoinConsultationClick": "Клик присоединения - Мобайл",
+
+      "positiveProviderRatings": "Положительные оценки консультантов",
+      "positiveClientRatings": "Положительные оценки клиентов",
+
       "content_type": "Тип контента",
       "all": "Все",
       "articles": "Статьи",
