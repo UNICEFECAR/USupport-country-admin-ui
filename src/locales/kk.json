@@ -826,26 +826,47 @@
       "export_label": "CSV ретінде экспорттау",
       "no_data_found": "Ақпарат табылмады",
 
-      "totalConsultations": "Жалпы кеңес беру",
-      "uniqueClientsConsultations": "Бірегей клиенттер кеңес беру",
-      "activeClients": "Белсенді клиенттер",
-      "activeProviders": "Белсенді провайдерлер",
-      "totalWebsiteAccess": "Жалпы веб-сайтқа кіру",
-      "totalClientAccess": "Жалпы клиенттерге кіру",
-      "totalProviderAccess": "Жалпы провайдерлерге кіру",
-      "uniqueWebsiteAccess": "Бірегей веб-сайтқа кіру",
-      "uniqueClientAccess": "Бірегей клиенттерге кіру",
-      "uniqueProviderAccess": "Бірегей провайдерлерге кіру",
-      "uniqueClientsThatUsedCoupon": "Бірегей купон пайдаланған клиенттер",
-      "totalCouponConsultations": "Жалпы купон бойынша кеңес беру",
-      "positiveClientRatings": "Позитивті клиент бағалаулары",
-      "positiveProviderRatings": "Позитивті провайдер бағалаулары",
-      "totalMobileAccess": "Жалпы мобильдік кіру",
-      "uniqueMobileAccess": "Бірегей мобильдік кіру",
-
+      "totalConsultations": "Барлық консультациялар",
       "totalConsultations_unique_count": "Бірегей клиенттер",
-      "totalCouponConsultations_unique_count": "Бірегей клиенттер",
+      "cancelledConsultations": "Бас тартылған консультациялар",
+      "scheduledConsultations": "Жоспарланған консультациялар - Веб",
+      "mobileScheduledConsultations": "Жоспарланған консультациялар - Мобильді",
 
+      "scheduleButtonClick": "Жазылу батырмасы - Веб",
+      "mobileScheduleButtonClick": "Жазылу батырмасы - Мобильді",
+      "clientsAttendedConsultations": "Қатысқан клиенттер",
+
+      "totalCouponConsultations": "Купонмен консультациялар",
+      "totalCouponConsultations_unique_count": "Бірегей клиенттер",
+      "totalProviders": "Барлық провайдерлер",
+      "activeProviders": "Белсенді провайдерлер",
+
+      "allClients": "Барлық клиенттер",
+      "activeClients": "Белсенді клиенттер",
+
+      "totalWebsiteAccess": "Сайтқа кірулер",
+      "uniqueWebsiteAccess": "Бірегей кірулер",
+
+      "totalClientAccess": "Клиент порталына кірулер",
+      "uniqueClientAccess": "Бірегей кірулер (клиент)",
+
+      "totalProviderAccess": "Провайдер порталына кірулер",
+      "uniqueProviderAccess": "Бірегей кірулер (провайдер)",
+
+      "totalMobileAccess": "Мобильді қосымша кірулер",
+      "uniqueMobileAccess": "Бірегей мобильді кірулер",
+
+      "emailRegisterClick": "Email тіркелу батырмасы - Веб",
+      "mobileEmailRegisterClick": "Email тіркелу батырмасы - Мобильді",
+
+      "anonymousRegisterClick": "Анонимді тіркелу - Веб",
+      "mobileAnonymousRegisterClick": "Анонимді тіркелу - Мобильді",
+
+      "guestRegisterClick": "Қонақ тіркелу - Веб",
+      "mobileGuestRegisterClick": "Қонақ тіркелу - Мобильді",
+
+      "joinConsultationClick": "Қатысу батырмасы - Веб",
+      "mobileJoinConsultationClick": "Қатысу батырмасы - Мобильді",
       "content_type": "Контент түрі",
       "all": "Барлығы",
       "articles": "Материалдар",
@@ -888,7 +909,7 @@
       "analysis_title": "Бағалау деректерінің талдауы",
       "analysis_description": "Әр фактор үшін медиана мәндерімен аяқталған бастапқы бағалаулардың статистикалық талдауы.",
       "total_assessments": "Жалпы бағалаулар",
-      "total_questions": "Жалпы сұрақтар",
+      "total_answers": "Жалпы жауаптар",
       "median_value": "Медиана мәні",
       "data_split_info": "Деректер талдау үшін екі топқа бөлінді:",
       "first_half": "Бірінші жартысы",

@@ -826,25 +826,47 @@
       "export_label": "Eksportuj dane jako CSV",
       "no_data_found": "Nie znaleziono danych",
 
-      "totalConsultations": "Łączna liczba konsultacji",
-      "uniqueClientsConsultations": "Konsultacje poszczególnych klientów",
-      "activeClients": "Aktywni klienci",
-      "activeProviders": "Aktywni specjaliści",
-      "totalWebsiteAccess": "Łączna liczba wejść na stronę",
-      "totalClientAccess": "Łączna liczba logowań klientów",
-      "totalProviderAccess": "Łączna liczba logowań specjalistów",
-      "uniqueWebsiteAccess": "Liczba wejść na stronę poszczególnych użytkowników",
-      "uniqueClientAccess": "Liczba logowań poszczególnych klientów",
-      "uniqueProviderAccess": "Liczba logowań poszczególnych specjalistów",
-      "uniqueClientsThatUsedCoupon": "Klienci którzy użyli kuponu",
-      "totalCouponConsultations": "Łączna liczba konsultacji z kuponem",
-      "positiveClientRatings": "Pozytywne oceny klientów",
-      "positiveProviderRatings": "Pozytywne oceny specjalistów",
-      "totalMobileAccess": "Łączna liczba logowań mobilnych",
-      "uniqueMobileAccess": "Liczba logowań mobilnych poszczególnych użytkowników",
-
+      "totalConsultations": "Wszystkie konsultacje",
       "totalConsultations_unique_count": "Unikalni klienci",
+      "cancelledConsultations": "Anulowane konsultacje",
+      "scheduledConsultations": "Zaplanowane konsultacje - Web",
+      "mobileScheduledConsultations": "Zaplanowane konsultacje - Mobile",
+
+      "scheduleButtonClick": "Klik planowania - Web",
+      "mobileScheduleButtonClick": "Klik planowania - Mobile",
+      "clientsAttendedConsultations": "Klienci uczestniczący",
+
+      "totalCouponConsultations": "Konsultacje z kuponem",
       "totalCouponConsultations_unique_count": "Unikalni klienci",
+      "totalProviders": "Wszyscy dostawcy",
+      "activeProviders": "Aktywni dostawcy",
+
+      "allClients": "Wszyscy klienci",
+      "activeClients": "Aktywni klienci",
+
+      "totalWebsiteAccess": "Odwiedziny strony",
+      "uniqueWebsiteAccess": "Unikalne odwiedziny strony",
+
+      "totalClientAccess": "Wejścia do portalu klientów",
+      "uniqueClientAccess": "Unikalne wejścia klientów",
+
+      "totalProviderAccess": "Wejścia do portalu dostawców",
+      "uniqueProviderAccess": "Unikalne wejścia dostawców",
+
+      "totalMobileAccess": "Wejścia w aplikacji mobilnej",
+      "uniqueMobileAccess": "Unikalne wejścia w aplikacji",
+
+      "emailRegisterClick": "Klik rejestracji e-mail - Web",
+      "mobileEmailRegisterClick": "Klik rejestracji e-mail - Mobile",
+
+      "anonymousRegisterClick": "Klik anonimowej rejestracji - Web",
+      "mobileAnonymousRegisterClick": "Klik anonimowej rejestracji - Mobile",
+
+      "guestRegisterClick": "Klik rejestracji gościa - Web",
+      "mobileGuestRegisterClick": "Klik rejestracji gościa - Mobile",
+
+      "joinConsultationClick": "Klik dołączenia - Web",
+      "mobileJoinConsultationClick": "Klik dołączenia - Mobile",
 
       "content_type": "Typ treści",
       "all": "Wszystkie",
@@ -886,7 +908,7 @@
       "analysis_title": "Analiza danych oceny",
       "analysis_description": "Analiza statystyczna ukończonych ocen bazowych z wartościami mediany dla każdego czynnika.",
       "total_assessments": "Łączne oceny",
-      "total_questions": "Łączne pytania",
+      "total_answers": "Łączne odpowiedzi",
       "median_value": "Wartość mediany",
       "data_split_info": "Dane zostały podzielone na dwie grupy do analizy:",
       "first_half": "Pierwsza połowa",

@@ -380,7 +380,7 @@ const AnalysisDisplay = ({ analysisData, t }) => {
 
         <div className="baseline-assessment-thresholds__count-display">
           <span className="baseline-assessment-thresholds__count-label">
-            {t("total_questions")}:
+            {t("total_answers")}:
           </span>
           <span className="baseline-assessment-thresholds__count-value">
             {factorData.count}
@@ -430,7 +430,7 @@ const AnalysisDisplay = ({ analysisData, t }) => {
         >
           <p className="baseline-assessment-thresholds__total-value">
             <span className="baseline-assessment-thresholds__total-label">
-              {t("total_questions")}:{" "}
+              {t("total_answers")}:{" "}
             </span>
             {totalAssessments * 27}
           </p>
