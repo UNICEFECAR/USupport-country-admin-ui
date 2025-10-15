@@ -855,6 +855,10 @@
 
       "joinConsultationClick": "Click participare - Web",
       "mobileJoinConsultationClick": "Click participare - Mobil",
+
+      "positiveClientRatings": "Aprecieri pozitive clienți",
+      "positiveProviderRatings": "Aprecieri pozitive furnizori",
+
       "content_type": "Content Type",
       "all": "All",
       "articles": "Articles",

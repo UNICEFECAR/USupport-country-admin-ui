@@ -815,6 +815,10 @@
 
       "joinConsultationClick": "Միացման սեղմում - Վեբ",
       "mobileJoinConsultationClick": "Միացման սեղմում - Բջջային",
+
+      "positiveClientRatings": "Ակտիվ հաճախորդների գնահատականներ",
+      "positiveProviderRatings": "Ակտիվ մատակարարների գնահատականներ",
+
       "content_type": "Պարունակության տեսակ",
       "all": "Բոլորը",
       "articles": "Հոդվածներ",
