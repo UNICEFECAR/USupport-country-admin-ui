@@ -867,6 +867,10 @@
 
       "joinConsultationClick": "Қатысу батырмасы - Веб",
       "mobileJoinConsultationClick": "Қатысу батырмасы - Мобильді",
+
+      "positiveClientRatings": "Оң бағалаулар клиенттері",
+      "positiveProviderRatings": "Оң бағалаулар консультанттары",
+
       "content_type": "Контент түрі",
       "all": "Барлығы",
       "articles": "Материалдар",

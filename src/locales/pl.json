@@ -868,6 +868,9 @@
       "joinConsultationClick": "Klik dołączenia - Web",
       "mobileJoinConsultationClick": "Klik dołączenia - Mobile",
 
+      "positiveClientRatings": "Pozytywne oceny klientów",
+      "positiveProviderRatings": "Pozytywne oceny konsultantów",
+
       "content_type": "Typ treści",
       "all": "Wszystkie",
       "articles": "Artykuły",
