@@ -32,8 +32,8 @@ export const Analytics = () => {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [options, setOptions] = useState([
-    { label: t("content"), value: "content", isSelected: true },
-    { label: t("general"), value: "general", isSelected: false },
+    { label: t("general"), value: "general", isSelected: true },
+    { label: t("content"), value: "content", isSelected: false },
   ]);
 
   const contentTypeOptions = [
@@ -189,7 +189,7 @@ export const Analytics = () => {
   const renderStatistic = () => {
     if (isGeneralPlatformMetricsLoading) {
       return (
-        <Grid md={8} lg={12} classes="analytics__statistics-grid">
+        <Grid classes="analytics__statistics-grid">
           <GridItem md={8} lg={12}>
             <Loading />
           </GridItem>
@@ -199,7 +199,7 @@ export const Analytics = () => {
 
     if (isGeneralPlatfromMetricsError || !generalPlatformMetrics) {
       return (
-        <Grid md={8} lg={12} classes="analytics__statistics-grid">
+        <Grid classes="analytics__statistics-grid">
           <GridItem md={8} lg={12}>
             <p>{t("no_data_found")}</p>
           </GridItem>
@@ -220,30 +220,37 @@ export const Analytics = () => {
       })
     );
 
-    console.log(statistics);
     return (
-      <div md={8} lg={12} className="analytics__statistics-grid">
+      <Grid classes="analytics__statistics-grid">
         {statistics.map((statistic, index) => (
-          <div md={8} lg={12} key={index} classes="analytics__statistics-item">
+          <GridItem
+            md={8}
+            lg={6}
+            key={index}
+            classes="analytics__statistics-item"
+          >
             <ReportCollapsible
               canCollapse={!!statistic.demographics}
               headingItems={[
-                <p>
-                  {t(statistic.type)}
-                  {"  "}
-                  <strong>
-                    {isNaN(statistic.count) ? statistic.value : statistic.count}
-                  </strong>
-                </p>,
-                statistic.uniqueCount ? (
+                <>
                   <p>
-                    {t(`${statistic.type}_unique_count`)}
+                    {t(statistic.type)}
                     {"  "}
-                    <strong>{statistic.uniqueCount}</strong>
+                    <strong>
+                      {isNaN(statistic.count)
+                        ? statistic.value
+                        : statistic.count}
+                    </strong>
+                    {statistic.uniqueCount ? (
+                      <span>
+                        {" / "}
+                        {t(`${statistic.type}_unique_count`)}
+                        {"  "}
+                        <strong>{statistic.uniqueCount}</strong>
+                      </span>
+                    ) : null}
                   </p>
-                ) : (
-                  <div />
-                ), // empty div to add the collapsible arrow icon
+                </>,
               ]}
               contentHeading={
                 statistic.demographics ? (
@@ -287,9 +294,9 @@ export const Analytics = () => {
               orientation={"landscape"}
               hasIcon={false}
             /> */}
-          </div>
+          </GridItem>
         ))}
-      </div>
+      </Grid>
     );
   };
 
@@ -325,7 +332,7 @@ export const Analytics = () => {
   return (
     <Block classes="analytics">
       <TabsUnderlined options={options} handleSelect={handleTabSelect} t={t} />
-      {options[0].isSelected ? (
+      {options[1].isSelected ? (
         <React.Fragment>
           <Grid md={8} lg={12} classes="analytics__filters-grid">
             <GridItem md={2} lg={3}>

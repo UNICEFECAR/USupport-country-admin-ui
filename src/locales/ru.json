@@ -828,25 +828,46 @@
       "no_data_found": "Данные не найдены",
 
       "totalConsultations": "Всего консультаций",
-      "uniqueClientsConsultations": "Уникальные консультации клиентов",
-      "activeClients": "Активные клиенты",
-      "activeProviders": "Активные провайдеры",
-      "totalWebsiteAccess": "Общий доступ к сайту",
-      "totalClientAccess": "Общий доступ клиентов",
-      "totalProviderAccess": "Общий доступ провайдеров",
-      "uniqueWebsiteAccess": "Уникальный доступ к сайту",
-      "uniqueClientAccess": "Уникальный доступ клиентов",
-      "uniqueProviderAccess": "Уникальный доступ провайдеров",
-      "uniqueClientsThatUsedCoupon": "Уникальные клиенты, использовавшие купон",
-      "totalCouponConsultations": "Всего консультаций с купоном",
-      "positiveClientRatings": "Положительные оценки клиентов",
-      "positiveProviderRatings": "Положительные оценки провайдеров",
-      "totalMobileAccess": "Общий доступ в мобильном приложении",
-      "uniqueMobileAccess": "Уникальный доступ в мобильном приложении",
-
       "totalConsultations_unique_count": "Уникальные клиенты",
-      "totalCouponConsultations_unique_count": "Уникальные клиенты",
+      "cancelledConsultations": "Отменённые консультации",
+      "scheduledConsultations": "Запланированные консультации - Веб",
+      "mobileScheduledConsultations": "Запланированные консультации - Мобайл",
 
+      "scheduleButtonClick": "Клик записи - Веб",
+      "mobileScheduleButtonClick": "Клик записи - Мобайл",
+      "clientsAttendedConsultations": "Клиенты участвовали",
+
+      "totalCouponConsultations": "Консультации по купону",
+      "totalCouponConsultations_unique_count": "Уникальные клиенты",
+      "totalProviders": "Все провайдеры",
+      "activeProviders": "Активные провайдеры",
+
+      "allClients": "Все клиенты",
+      "activeClients": "Активные клиенты",
+
+      "totalWebsiteAccess": "Посещения сайта",
+      "uniqueWebsiteAccess": "Уникальные посещения сайта",
+
+      "totalClientAccess": "Посещения портала клиентов",
+      "uniqueClientAccess": "Уникальные посещения клиентов",
+
+      "totalProviderAccess": "Посещения портала провайдеров",
+      "uniqueProviderAccess": "Уникальные посещения провайдеров",
+
+      "totalMobileAccess": "Посещения приложения",
+      "uniqueMobileAccess": "Уникальные посещения приложения",
+
+      "emailRegisterClick": "Клик регистрации email - Веб",
+      "mobileEmailRegisterClick": "Клик регистрации email - Мобайл",
+
+      "anonymousRegisterClick": "Клик анонимной регистрации - Веб",
+      "mobileAnonymousRegisterClick": "Клик анонимной регистрации - Мобайл",
+
+      "guestRegisterClick": "Клик гостевой регистрации - Веб",
+      "mobileGuestRegisterClick": "Клик гостевой регистрации - Мобайл",
+
+      "joinConsultationClick": "Клик присоединения - Веб",
+      "mobileJoinConsultationClick": "Клик присоединения - Мобайл",
       "content_type": "Тип контента",
       "all": "Все",
       "articles": "Статьи",
@@ -888,7 +909,7 @@
       "analysis_title": "Анализ данных оценки",
       "analysis_description": "Статистический анализ завершенных базовых оценок со значениями медианы для каждого фактора.",
       "total_assessments": "Всего оценок",
-      "total_questions": "Всего вопросов",
+      "total_answers": "Всего ответов",
       "median_value": "Значение медианы",
       "data_split_info": "Данные были разделены на две группы для анализа:",
       "first_half": "Первая половина",

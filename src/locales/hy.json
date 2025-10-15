@@ -773,26 +773,48 @@
       "search": "Որոնում",
       "export_label": "Արտահանել տվյալները CSV ձևաչափով",
       "no_data_found": "Տվյալներ չեն հայտնաբերվել",
+
       "totalConsultations": "Ընդհանուր խորհրդատվություններ",
-      "uniqueClientsConsultations": "Հաճախորդների հատուկ խորհրդատվություններ",
+      "totalConsultations_unique_count": "Եզակի հաճախորդներ",
+      "cancelledConsultations": "Չեղարկված խորհրդատվություններ",
+      "scheduledConsultations": "Նախատեսված խորհրդատվություններ - Վեբ",
+      "mobileScheduledConsultations": "Նախատեսված խորհրդատվություններ - Բջջային",
+
+      "scheduleButtonClick": "Ժամանակավորում սեղմում - Վեբ",
+      "mobileScheduleButtonClick": "Ժամանակավորում սեղմում - Բջջային",
+      "clientsAttendedConsultations": "Մասնակցած հաճախորդներ",
+
+      "totalCouponConsultations": "Կտրոնով խորհրդատվություններ",
+      "totalCouponConsultations_unique_count": "Եզակի հաճախորդներ",
+      "totalProviders": "Բոլոր մատակարարները",
+      "activeProviders": "Ակտիվ մատակարարներ",
+
+      "allClients": "Բոլոր հաճախորդները",
       "activeClients": "Ակտիվ հաճախորդներ",
-      "activeProviders": "Ակտիվ ծառայություն մատուցողներ",
-      "totalWebsiteAccess": "Կայքի ընդհանուր մուտքեր",
-      "totalClientAccess": "Հաճախորդների ընդհանուր մուտքեր",
-      "totalProviderAccess": "Ծառայություն մատուցողների ընդհանուր մուտքեր",
-      "uniqueWebsiteAccess": "Կայքի հատուկ մուտքեր",
-      "uniqueClientAccess": "Հաճախորդների հատուկ մուտքեր",
-      "uniqueProviderAccess": "Ծառայություն մատուցողների հատուկ մուտքեր",
-      "uniqueClientsThatUsedCoupon": "Կտրոն օգտագործած հատուկ հաճախորդներ",
-      "totalCouponConsultations": "Կտրոնով խորհրդատվությունների ընդհանուր քանակը",
-      "positiveClientRatings": "Դրական գնահատականներ հաճախորդներից",
-      "positiveProviderRatings": "Դրական գնահատականներ ծառայություն մատուցողներից",
-      "totalMobileAccess": "Բջջային մուտքերի ընդհանուր քանակը",
-      "uniqueMobileAccess": "Յուրահատուկ բջջային մուտքեր",
 
-      "totalConsultations_unique_count": "Յուրահատուկ հաճախորդներ",
-      "totalCouponConsultations_unique_count": "Յուրահատուկ հաճախորդներ",
+      "totalWebsiteAccess": "Կայքի այցելություններ",
+      "uniqueWebsiteAccess": "Եզակի այցելություններ",
 
+      "totalClientAccess": "Հաճախորդների պորտալի մուտքեր",
+      "uniqueClientAccess": "Եզակի մուտքեր (հաճախորդ)",
+
+      "totalProviderAccess": "Մատակարարների պորտալի մուտքեր",
+      "uniqueProviderAccess": "Եզակի մուտքեր (մատակարար)",
+
+      "totalMobileAccess": "Բջջային հավելվածի մուտքեր",
+      "uniqueMobileAccess": "Եզակի մուտքեր (բջջային)",
+
+      "emailRegisterClick": "Էլ. փոստ գրանցում - Վեբ",
+      "mobileEmailRegisterClick": "Էլ. փոստ գրանցում - Բջջային",
+
+      "anonymousRegisterClick": "Անանուն գրանցում - Վեբ",
+      "mobileAnonymousRegisterClick": "Անանուն գրանցում - Բջջային",
+
+      "guestRegisterClick": "Հյուր գրանցում - Վեբ",
+      "mobileGuestRegisterClick": "Հյուր գրանցում - Բջջային",
+
+      "joinConsultationClick": "Միացման սեղմում - Վեբ",
+      "mobileJoinConsultationClick": "Միացման սեղմում - Բջջային",
       "content_type": "Պարունակության տեսակ",
       "all": "Բոլորը",
       "articles": "Հոդվածներ",
