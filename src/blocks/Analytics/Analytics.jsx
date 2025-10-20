@@ -43,8 +43,7 @@ export const Analytics = () => {
     { label: t("podcasts"), value: "podcasts" },
   ];
 
-  const { data: categoriesData, isLoading: isCategoriesLoading } =
-    useGetContentStatistics(selectedContentType);
+  const { data: categoriesData } = useGetContentStatistics(selectedContentType);
 
   const shouldFetchPlatformMetrics =
     options.find((opt) => opt.value === "general")?.isSelected || false;
@@ -258,6 +257,7 @@ export const Analytics = () => {
                 ) : null
               }
               classes="analytics__statistics-collapsible"
+              headingText={t(`${statistic.type}_info`)}
             >
               <div className="analytics__statistics-content">
                 {Object.entries(statistic?.demographics || {}).map(([key]) => {
