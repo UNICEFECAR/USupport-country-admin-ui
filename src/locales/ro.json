@@ -814,6 +814,10 @@
       "search": "Căutare",
       "export_label": "Export date ca CSV",
       "no_data_found": "Nu s-au găsit date",
+
+      "globalWebsiteVisits": "Vizite globale site",
+      "globalWebsiteVisits_unique_count": "Vizite unice site",
+
       "totalConsultations": "Total consultații",
       "totalConsultations_unique_count": "Clienți unici",
       "cancelledConsultations": "Consultații anulate",

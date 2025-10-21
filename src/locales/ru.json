@@ -827,6 +827,9 @@
       "export_label": "Экспортировать данные в CSV",
       "no_data_found": "Данные не найдены",
 
+      "globalWebsiteVisits": "Всего посещений сайта",
+      "globalWebsiteVisits_unique_count": "Уникальные посещения сайта",
+
       "totalConsultations": "Всего консультаций",
       "totalConsultations_unique_count": "Уникальные клиенты",
       "cancelledConsultations": "Отменённые консультации",
