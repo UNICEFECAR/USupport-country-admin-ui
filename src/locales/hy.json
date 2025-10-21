@@ -774,6 +774,9 @@
       "export_label": "Արտահանել տվյալները CSV ձևաչափով",
       "no_data_found": "Տվյալներ չեն հայտնաբերվել",
 
+      "globalWebsiteVisits": "Ընդհանուր կայքի այցելություններ",
+      "globalWebsiteVisits_unique_count": "Եզակի այցելություններ",
+
       "totalConsultations": "Ընդհանուր խորհրդատվություններ",
       "totalConsultations_unique_count": "Եզակի հաճախորդներ",
       "cancelledConsultations": "Չեղարկված խորհրդատվություններ",

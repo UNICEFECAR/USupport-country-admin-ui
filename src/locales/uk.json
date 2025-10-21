@@ -824,6 +824,10 @@
       "search": "Пошук",
       "export_label": "Експортувати дані як CSV",
       "no_data_found": "Дані не знайдені",
+
+      "globalWebsiteVisits": "Globalne відвідування сайту",
+      "globalWebsiteVisits_unique_count": "Унікальні відвідувачі",
+
       "totalConsultations": "Усього консультацій",
       "totalConsultations_unique_count": "Унікальні клієнти",
       "cancelledConsultations": "Скасовані консультації",

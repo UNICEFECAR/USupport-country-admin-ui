@@ -826,6 +826,9 @@
       "export_label": "Eksportuj dane jako CSV",
       "no_data_found": "Nie znaleziono danych",
 
+      "globalWebsiteVisits": "Globalne odwiedziny strony",
+      "globalWebsiteVisits_unique_count": "Unikalni odwiedzający",
+
       "totalConsultations": "Wszystkie konsultacje",
       "totalConsultations_unique_count": "Unikalni klienci",
       "cancelledConsultations": "Anulowane konsultacje",

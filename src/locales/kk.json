@@ -826,6 +826,9 @@
       "export_label": "CSV ретінде экспорттау",
       "no_data_found": "Ақпарат табылмады",
 
+      "globalWebsiteVisits": "Жалпы сайттағы кірулер",
+      "globalWebsiteVisits_unique_count": "Бірегей кірулер",
+
       "totalConsultations": "Барлық консультациялар",
       "totalConsultations_unique_count": "Бірегей клиенттер",
       "cancelledConsultations": "Бас тартылған консультациялар",
