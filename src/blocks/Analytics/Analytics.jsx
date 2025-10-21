@@ -225,7 +225,7 @@ export const Analytics = () => {
         {statistics.map((statistic, index) => (
           <GridItem
             md={8}
-            lg={6}
+            lg={statistic.type === "globalWebsiteVisits" ? 12 : 6}
             key={index}
             classes="analytics__statistics-item"
           >
