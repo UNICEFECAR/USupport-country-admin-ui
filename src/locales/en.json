@@ -808,6 +808,7 @@
       "avg_rating": "Average Rating",
       "share_count": "Share Count",
       "engagement_score": "Engagement Score",
+      "engagement_score_tooltip": "The engagement score is a weighted score based on the downloads, shared, likes and views of the articles, videos and podcasts in the category.",
       "likes": "Likes",
       "dislikes": "Dislikes",
 

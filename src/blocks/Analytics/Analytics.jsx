@@ -161,7 +161,11 @@ export const Analytics = () => {
       <p key={`categoryName-${index}`} className="text">
         {item.categoryName}
       </p>,
-      <p key={`engagementScore-${index}`} className="text centered">
+      <p
+        key={`engagementScore-${index}`}
+        className="text centered"
+        title={t("engagement_score_tooltip")}
+      >
         {item.engagementScore?.toFixed(2)}
       </p>,
       <p key={`avgRating-${index}`} className="text centered">
@@ -357,6 +361,7 @@ export const Analytics = () => {
             customSearch={handleSearch}
             buttonLabel={t("export_label")}
             buttonAction={handleExport}
+            enableTooltips={true}
           />
         </React.Fragment>
       ) : (
