@@ -60,6 +60,10 @@
     }
   },
   "pages": {
+    "login-page": {
+      "heading_1": "Hoş geldin, seni tekrar görmek güzel",
+      "heading_2": "Hoş geldiniz"
+    },
     "content-management-page": {
       "title": "İçerik Yönetimi",
       "articles": "Makaleler",
