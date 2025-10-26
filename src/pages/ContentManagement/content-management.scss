@@ -2,6 +2,15 @@
 @import "@USupport-components-library/styles";
 
 .page__content-management {
+  &--rtl {
+    & .page__header {
+      justify-content: flex-end;
+      &-heading {
+        text-align: right;
+      }
+    }
+  }
+
   & .tabs {
     justify-content: center;
     margin-top: $spacing_1_6;
@@ -13,5 +22,25 @@
 
   &__grid {
     padding-bottom: $spacing_3_2;
+    &--rtl {
+      place-items: flex-end;
+
+      & .tabs-container {
+        flex-direction: row-reverse;
+      }
+    }
+  }
+
+  &__content--rtl {
+    direction: rtl;
+
+    & .pre-input-wrapper {
+      margin-left: 0;
+      margin-right: 1.2rem;
+    }
+
+    & .table__container__note {
+      text-align: right;
+    }
   }
 }

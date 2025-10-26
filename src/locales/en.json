@@ -34,6 +34,7 @@
       "submit": "Submit",
       "statistics": "Statistics"
     },
+
     "statistics": {
       "statistics": "Statistics",
       "clients": "Clients",
@@ -55,7 +56,8 @@
       "no_data_found": "No data found",
       "created_at": "Created At",
       "likes": "Likes",
-      "dislikes": "Dislikes"
+      "dislikes": "Dislikes",
+      "views": "Views"
     },
     "faq": {
       "no_results": "No results found, please try a different language.",
@@ -954,6 +956,12 @@
       "reset_filters": "Reset Filters",
       "critical_entries": "Critical entries",
       "critical_count": "Critical count"
+    },
+    "pl-statistics-page": {
+      "heading": "Statistics",
+      "web_visits": "Total visits",
+      "qr_visits": "QR visits",
+      "no_data": "No data found"
     }
   },
 

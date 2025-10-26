@@ -20,17 +20,26 @@ export const ContentManagement = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const tab = searchParams.get("tab");
 
-  const [contentTabs, setContentTabs] = useState([
-    { label: "faqs", value: "faqs", isSelected: tab === "faqs" },
-    {
-      label: "sos_centers",
-      value: "sos_centers",
-      isSelected: tab === "sos_centers",
-    },
-    { label: "articles", value: "articles", isSelected: tab === "articles" },
-    { label: "videos", value: "videos", isSelected: tab === "videos" },
-    { label: "podcasts", value: "podcasts", isSelected: tab === "podcasts" },
-  ]);
+  const IS_PS = localStorage.getItem("country") === "PS";
+  const IS_RTL = localStorage.getItem("language") === "ar";
+
+  const [contentTabs, setContentTabs] = useState(
+    [
+      !IS_PS && { label: "faqs", value: "faqs", isSelected: tab === "faqs" },
+      !IS_PS && {
+        label: "sos_centers",
+        value: "sos_centers",
+        isSelected: tab === "sos_centers",
+      },
+      { label: "articles", value: "articles", isSelected: tab === "articles" },
+      { label: "videos", value: "videos", isSelected: tab === "videos" },
+      !IS_PS && {
+        label: "podcasts",
+        value: "podcasts",
+        isSelected: tab === "podcasts",
+      },
+    ].filter(Boolean)
+  );
 
   const handleTabSelect = (index) => {
     const tabsCopy = [...contentTabs];
@@ -64,10 +73,17 @@ export const ContentManagement = () => {
     <Page
       heading={t("title")}
       showGoBackArrow={false}
-      classes="page__content-management"
+      classes={`page__content-management
+        ${IS_RTL ? "page__content-management--rtl" : ""}
+        `}
     >
       <Block classes="page__content-management">
-        <Grid classes="page__content-management__grid">
+        <Grid
+          classes={`
+          page__content-management__grid
+          ${IS_RTL ? "page__content-management__grid--rtl" : ""}
+          `}
+        >
           <GridItem
             md={8}
             lg={12}
@@ -85,7 +101,13 @@ export const ContentManagement = () => {
             />
           </GridItem>
 
-          <GridItem md={8} lg={12} classes="page__content-management__content">
+          <GridItem
+            md={8}
+            lg={12}
+            classes={`page__content-management__content ${
+              IS_RTL ? "page__content-management__content--rtl" : ""
+            }`}
+          >
             {renderContentBlock()}
           </GridItem>
         </Grid>
