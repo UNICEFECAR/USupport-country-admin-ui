@@ -2,7 +2,44 @@
   "blocks": {
     "page": {
       "statistics": "İstatistikler",
-      "page_3": "İçerik Yönetimi"
+      "page_3": "İçerik Yönetimi",
+      "your_profile_text": "Profiliniz"
+    },
+    "login": {
+      "email_label": "E-posta",
+      "email_placeholder": "E-postanızı girin",
+      "password_label": "Parola",
+      "password_placeholder": "Parolanızı girin",
+      "forgot_password_label": "Parolamı unuttum",
+      "login_label": "Giriş yap",
+      "try_again": "Tekrar deneyin",
+      "seconds": "saniye içinde",
+      "heading": "Hoş geldiniz",
+      "admin": "Ülke yöneticisi"
+    },
+    "welcome": {
+      "heading": "Hoş geldiniz",
+      "country": "Ülke",
+      "language": "Dil",
+      "placeholder": "Seçiniz",
+      "button": "Devam et",
+      "admin": "Ülke yöneticisi"
+    },
+    "forgot-password": {
+      "error_email_message": "Lütfen e-posta adresinizi girin",
+      "input_email_label": "E-posta",
+      "reset_password_button_label": "Şifreyi sıfırla",
+      "register_redirect_button_label": "Hesabım yok",
+      "modal_heading": "E-postanızı kontrol edin",
+      "modal_text": "Platforma kayıtlıysanız, şifrenizi sıfırlamak için bir bağlantı alacaksınız.",
+      "heading": "Hoş geldiniz",
+      "admin": "Ülke yöneticisi"
+    },
+    "reset-password": {
+      "label": "Yeni şifre",
+      "placeholder": "Yeni şifrenizi girin",
+      "submit": "Gönder",
+      "password_error": "Şifre en az 8 karakter, 1 büyük harf, 1 küçük harf ve 1 rakam içermelidir"
     },
     "articles": {
       "no_results": "Sonuç bulunamadı, lütfen farklı bir dil deneyin.",

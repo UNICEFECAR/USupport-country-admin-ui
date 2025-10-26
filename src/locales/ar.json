@@ -2,7 +2,44 @@
   "blocks": {
     "page": {
       "statistics": "الإحصائيات",
-      "page_3": "إدارة المحتوى"
+      "page_3": "إدارة المحتوى",
+      "your_profile_text": "ملفك الشخصي"
+    },
+    "login": {
+      "email_label": "البريد الإلكتروني",
+      "email_placeholder": "أدخل بريدك الإلكتروني",
+      "password_label": "كلمة المرور",
+      "password_placeholder": "أدخل كلمة المرور الخاصة بك",
+      "forgot_password_label": "نسيت كلمة المرور",
+      "login_label": "تسجيل الدخول",
+      "try_again": "حاول مرة أخرى خلال",
+      "seconds": "ثوانٍ",
+      "heading": "مرحبًا بك في",
+      "admin": "مسؤول الدولة"
+    },
+    "welcome": {
+      "heading": "مرحبًا بك في",
+      "country": "البلد",
+      "language": "اللغة",
+      "placeholder": "اختر",
+      "button": "متابعة",
+      "admin": "مسؤول الدولة"
+    },
+    "forgot-password": {
+      "error_email_message": "يرجى إدخال بريدك الإلكتروني",
+      "input_email_label": "البريد الإلكتروني",
+      "reset_password_button_label": "إعادة تعيين كلمة المرور",
+      "register_redirect_button_label": "ليس لدي حساب",
+      "modal_heading": "تحقق من بريدك الإلكتروني",
+      "modal_text": "إذا كنت مسجلاً في المنصة، فستتلقى رابطًا لإعادة تعيين كلمة المرور الخاصة بك.",
+      "heading": "مرحبًا بك في",
+      "admin": "مسؤول الدولة"
+    },
+    "reset-password": {
+      "label": "كلمة المرور الجديدة",
+      "placeholder": "أدخل كلمة المرور الجديدة",
+      "submit": "إرسال",
+      "password_error": "يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل، وحرف كبير واحد، وحرف صغير واحد، ورقم واحد"
     },
     "articles": {
       "no_results": "لم يتم العثور على نتائج، يرجى تجربة لغة أخرى.",
