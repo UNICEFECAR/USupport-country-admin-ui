@@ -5,6 +5,7 @@ import { useWindowDimensions } from "@USupport-components-library/src/utils";
 import { RadialCircle } from "@USupport-components-library/src";
 
 import "./dashboard.scss";
+import { Navigate } from "react-router-dom";
 
 /**
  * Dashboard
@@ -16,6 +17,20 @@ import "./dashboard.scss";
 export const Dashboard = () => {
   const { t } = useTranslation("pages", { keyPrefix: "dashboard-page" });
   const { width } = useWindowDimensions();
+
+  const country = localStorage.getItem("country");
+
+  const IS_PS = country === "PS";
+
+  if (IS_PS) {
+    return (
+      <Navigate
+        to={`/country-admin/${localStorage.getItem(
+          "language"
+        )}/content-management?tab=articles`}
+      />
+    );
+  }
 
   return (
     <Page

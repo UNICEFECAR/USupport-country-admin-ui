@@ -1,0 +1,62 @@
+{
+  "blocks": {
+    "page": {
+      "statistics": "İstatistikler",
+      "page_3": "İçerik Yönetimi"
+    },
+    "articles": {
+      "no_results": "Sonuç bulunamadı, lütfen farklı bir dil deneyin.",
+      "view_button": "görüntüle",
+      "article_added": "Makale başarıyla eklendi",
+      "article_removed": "Makale başarıyla kaldırıldı",
+      "published": "Yayında",
+      "image": "Görsel",
+      "content": "İçerik",
+      "view": "Görüntüle",
+      "note": "<0>Not*</0> \"Yayında\" sütunundaki onay kutusu işaretliyse, makale platform kullanıcıları tarafından görülebilir anlamına gelir.",
+      "search": "Ara",
+      "no_data_found": "Veri bulunamadı",
+      "created_at": "Oluşturulma Tarihi",
+      "likes": "Beğeniler",
+      "dislikes": "Beğenilmeyenler",
+      "views": "Görüntüleme Sayısı"
+    }
+  },
+  "pages": {
+    "content-management-page": {
+      "title": "İçerik Yönetimi",
+      "articles": "Makaleler",
+      "videos": "Videolar",
+      "sos_centers": "SOS Merkezi",
+      "faqs": "SSS",
+      "podcasts": "Podcastler",
+      "published": "Yayında",
+      "thumbnail": "Küçük Resim",
+      "table_title": "Başlık",
+      "description": "Açıklama",
+      "url": "URL",
+      "category": "Kategori",
+      "likes": "Beğeniler",
+      "dislikes": "Beğenilmeyenler",
+      "created_at": "Oluşturulma Tarihi",
+      "search": "Ara",
+      "note": "<0>Not*</0> \"Yayında\" sütunundaki onay kutusu işaretliyse, video platform kullanıcıları tarafından görülebilir anlamına gelir.",
+      "note_podcasts": "<0>Not*</0> \"Yayında\" sütunundaki onay kutusu işaretliyse, podcast platform kullanıcıları tarafından görülebilir anlamına gelir.",
+      "no_data_found": "Veri bulunamadı",
+      "podcast_added": "Podcast eklendi",
+      "podcast_removed": "Podcast kaldırıldı",
+      "video_added": "Video eklendi",
+      "video_removed": "Video kaldırıldı",
+      "number_of_more_options": "{{count}} daha fazla",
+      "videos_active": "Video modülü etkinleştirme",
+      "podcasts_active": "Podcast modülü etkinleştirme",
+      "save_success": "Başarıyla kaydedildi"
+    },
+    "pl-statistics-page": {
+      "heading": "İstatistikler",
+      "web_visits": "Toplam ziyaretler",
+      "qr_visits": "QR ziyaretleri",
+      "no_data": "Veri bulunamadı"
+    }
+  }
+}
