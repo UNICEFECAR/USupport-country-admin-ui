@@ -60,6 +60,10 @@
     }
   },
   "pages": {
+    "login-page": {
+      "heading_1": "مرحبا بك مرة أخرى، يسعدني رؤيتك مرة أخرى",
+      "heading_2": "مرحبًا بك"
+    },
     "content-management-page": {
       "title": "إدارة المحتوى",
       "articles": "المقالات",
