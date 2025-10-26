@@ -51,8 +51,9 @@ export const Page = ({
   let localStorageCountry = localStorage.getItem("country");
 
   const { width } = useWindowDimensions();
+  const IS_PS = localStorageCountry === "PS";
 
-  const pages = [
+  let pages = [
     { name: t("page_1"), url: "/dashboard", icon: "home" },
     { name: t("page_2"), url: "/providers", icon: "two-people" },
     {
@@ -68,6 +69,7 @@ export const Page = ({
         { name: t("page_4"), url: "/analytics", icon: "list-view" },
         { name: t("page_6"), url: "/reports", icon: "document" },
         { name: t("page_11"), url: "/mood-tracker-report", icon: "document" },
+
         // add for RO only
         ...(localStorageCountry === "RO"
           ? [
@@ -84,6 +86,25 @@ export const Page = ({
     { name: t("page_8"), url: "/my-qa", icon: "info" },
     { name: t("page_9"), url: "/organizations", icon: "three-people" },
   ];
+
+  if (IS_PS) {
+    pages = [
+      {
+        name: t("page_3"),
+        url: "/content-management?tab=articles",
+        icon: "activities",
+      },
+      ...(localStorageCountry === "PS"
+        ? [
+            {
+              name: t("statistics"),
+              url: "/ps-statistics",
+              icon: "document",
+            },
+          ]
+        : []),
+    ];
+  }
 
   const localStorageLanguage = localStorage.getItem("language");
   const [selectedLanguage, setSelectedLanguage] = useState(
@@ -202,7 +223,7 @@ export const Page = ({
   const { data: countries } = useQuery(["countries"], fetchCountries, {
     staleTime: Infinity,
   });
-  const { data: languages } = useQuery(
+  const { data: languages, isFetched } = useQuery(
     ["languages", selectedCountry],
     fetchLanguages,
     {
@@ -253,6 +274,8 @@ export const Page = ({
     textarea.innerHTML = text;
     return textarea.value;
   };
+
+  if (!isFetched) return null;
 
   return (
     <>

@@ -49,13 +49,14 @@ import {
   ContentManagement,
   Analytics,
   MoodTrackerReport,
+  PlayAndHealStatistics,
 } from "#pages";
 
 import { CountryValidationRoute, ProtectedRoute } from "../../routes";
 
 const RootContext = React.createContext();
 
-const allLangs = ["en", "ru", "kk", "pl", "uk", "hy", "ro"];
+const allLangs = ["en", "ru", "kk", "pl", "uk", "hy", "ro", "tr", "ar"];
 
 const LanguageLayout = () => {
   let { language } = useParams();
@@ -298,6 +299,14 @@ const LanguageLayout = () => {
         element={
           <ProtectedRoute>
             <Analytics />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="ps-statistics"
+        element={
+          <ProtectedRoute>
+            <PlayAndHealStatistics />
           </ProtectedRoute>
         }
       />

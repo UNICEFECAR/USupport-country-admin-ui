@@ -49,6 +49,7 @@ export const Articles = () => {
 
   useEffect(() => {
     if (i18n.language !== languageOfData) {
+      console.log(i18n.language, languageOfData);
       setLanguageOfData(i18n.language);
       setDataToDisplay([]);
       setStartFrom(0);
@@ -191,6 +192,12 @@ export const Articles = () => {
         sortingKey: "title",
       },
       {
+        label: t("views"),
+        sortingKey: "read_count",
+        isCentered: true,
+        isNumbered: true,
+      },
+      {
         label: t("likes"),
         sortingKey: "likes",
         isCentered: true,
@@ -215,6 +222,7 @@ export const Articles = () => {
   }, [i18n.language, t]);
 
   const [searchValue, setSearchValue] = useState("");
+  console.log(dataToDisplay);
   const rowsData = useCallback(() => {
     return dataToDisplay?.map((article) => {
       if (searchValue) {
@@ -259,6 +267,7 @@ export const Articles = () => {
           <p className="articles__heading">{article.title}</p>
           <p className="text">{article.description}</p>
         </div>,
+        <p className="text centered">{article.read_count || 0}</p>,
         <p className="text centered">{article.likes || 0}</p>,
         <p className="text centered">{article.dislikes || 0}</p>,
         <div>{getDateView(new Date(article.createdAt))}</div>,

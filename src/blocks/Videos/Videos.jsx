@@ -164,7 +164,7 @@ export const Videos = ({ t, i18n }) => {
 
     return filteredData;
   };
-
+  console.log(i18n.language);
   const { isLoading } = useQuery(["videos", i18n.language], getVideos);
 
   const handleSelectVideo = async (id, newValue, index) => {
