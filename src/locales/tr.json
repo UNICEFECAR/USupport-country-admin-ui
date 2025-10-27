@@ -91,7 +91,8 @@
       "number_of_more_options": "{{count}} daha fazla",
       "videos_active": "Video modülü etkinleştirme",
       "podcasts_active": "Podcast modülü etkinleştirme",
-      "save_success": "Başarıyla kaydedildi"
+      "save_success": "Başarıyla kaydedildi",
+      "views": "Görüntüleme Sayısı"
     },
     "pl-statistics-page": {
       "heading": "İstatistikler",
