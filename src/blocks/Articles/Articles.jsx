@@ -38,6 +38,8 @@ export const Articles = () => {
   const { i18n, t } = useTranslation("blocks", { keyPrefix: "articles" });
   const navigate = useNavigate();
 
+  const IS_PS = localStorage.getItem("country") === "PS";
+
   const [languageOfData, setLanguageOfData] = useState(i18n.language);
   const [error, setError] = useState();
   const [dataToDisplay, setDataToDisplay] = useState([]);
@@ -177,7 +179,7 @@ export const Articles = () => {
   });
 
   const rows = useMemo(() => {
-    return [
+    let columns = [
       {
         label: t("published"),
         sortingKey: "isSelected",
@@ -219,10 +221,18 @@ export const Articles = () => {
         isCentered: true,
       },
     ];
-  }, [i18n.language, t]);
+
+    if (IS_PS) {
+      columns = columns.filter(
+        (x) => x.sortingKey !== "likes" && x.sortingKey !== "dislikes"
+      );
+    }
+
+    return columns;
+  }, [i18n.language, t, IS_PS]);
 
   const [searchValue, setSearchValue] = useState("");
-  console.log(dataToDisplay);
+
   const rowsData = useCallback(() => {
     return dataToDisplay?.map((article) => {
       if (searchValue) {
@@ -268,8 +278,8 @@ export const Articles = () => {
           <p className="text">{article.description}</p>
         </div>,
         <p className="text centered">{article.read_count || 0}</p>,
-        <p className="text centered">{article.likes || 0}</p>,
-        <p className="text centered">{article.dislikes || 0}</p>,
+        IS_PS ? null : <p className="text centered">{article.likes || 0}</p>,
+        IS_PS ? null : <p className="text centered">{article.dislikes || 0}</p>,
         <div>{getDateView(new Date(article.createdAt))}</div>,
         <Button
           label={t("view_button")}
@@ -278,9 +288,9 @@ export const Articles = () => {
             navigate(`/article/${article.id}`);
           }}
         />,
-      ];
+      ].filter((x) => x !== null);
     });
-  }, [dataToDisplay, searchValue]);
+  }, [dataToDisplay, searchValue, IS_PS]);
 
   return (
     <Block classes="articles">

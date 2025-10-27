@@ -91,7 +91,8 @@
       "number_of_more_options": "{{count}} المزيد",
       "videos_active": "تفعيل وحدة الفيديو",
       "podcasts_active": "تفعيل وحدة البودكاست",
-      "save_success": "تم الحفظ بنجاح"
+      "save_success": "تم الحفظ بنجاح",
+      "views": "عدد المشاهدات"
     },
     "pl-statistics-page": {
       "heading": "الإحصائيات",
