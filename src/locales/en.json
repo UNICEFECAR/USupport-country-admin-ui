@@ -930,12 +930,17 @@
     },
     "providers-free-slots": {
       "heading": "Generate Provider Free Slots Report",
-      "description": "Generate a report of provider free slots between two dates. The report will be generated in CSV format and will be sent to your email address.",
+      "description": "Generate a report that includes all consultations whose start time falls between the selected start date and end date (UTC time zone). The report will include numerical data and be generated in CSV format.",
       "start_date": "Start Date",
       "end_date": "End Date",
+      "start_time": "From (UTC)",
+      "end_time": "To (UTC)",
       "start_date_error": "Start date is required",
       "end_date_error": "End date is required",
+      "start_time_error": "Start time is required",
+      "end_time_error": "End time is required",
       "end_date_before_start_error": "End date must be after start date",
+      "end_time_before_start_error": "End time must be after start time",
       "generate_report": "Generate report"
     },
     "mood-tracker-report": {
