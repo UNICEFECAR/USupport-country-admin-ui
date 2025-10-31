@@ -1,10 +1,9 @@
 .play-and-heal-statistics {
   &--rtl {
     direction: rtl;
-  }
-
-  & .page__header-heading {
-    text-align: right;
+    & .page__header-heading {
+      text-align: right;
+    }
   }
 
   &__item {
