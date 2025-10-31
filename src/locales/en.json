@@ -961,16 +961,16 @@
       "reset_filters": "Reset Filters",
       "critical_entries": "Critical entries",
       "critical_count": "Critical count"
-    },
+    }
+  },
+
+  "pages": {
     "pl-statistics-page": {
       "heading": "Statistics",
       "web_visits": "Total visits",
       "qr_visits": "QR visits",
       "no_data": "No data found"
-    }
-  },
-
-  "pages": {
+    },
     "not-found-page": {
       "heading": "Oops! We can't find the page you are looking for...",
       "subheading": "It seems this page is missing or is not available at the moment.",
