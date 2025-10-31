@@ -200,13 +200,12 @@ export const Podcasts = ({ t, i18n }) => {
 
       const currentLang = i18n.language;
       if (data.newValue === true) {
-        await adminSvc.putPodcast(
-          podcastAvailableLocales[currentLang].toString()
-        );
+        const newDataId = podcastAvailableLocales[currentLang].toString();
+        await adminSvc.putPodcast(newDataId);
+        setPodcastIds([...podcastIds, newDataId]);
       } else {
-        await adminSvc.deletePodcast(
-          podcastAvailableLocales[currentLang].toString()
-        );
+        await adminSvc.deletePodcast(data.id.toString());
+        setPodcastIds(podcastIds.filter((x) => x !== data.id));
       }
       return data.newValue;
     } catch (error) {
