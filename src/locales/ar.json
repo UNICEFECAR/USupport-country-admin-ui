@@ -1,0 +1,104 @@
+{
+  "blocks": {
+    "page": {
+      "statistics": "الإحصائيات",
+      "page_3": "إدارة المحتوى",
+      "your_profile_text": "ملفك الشخصي"
+    },
+    "login": {
+      "email_label": "البريد الإلكتروني",
+      "email_placeholder": "أدخل بريدك الإلكتروني",
+      "password_label": "كلمة المرور",
+      "password_placeholder": "أدخل كلمة المرور الخاصة بك",
+      "forgot_password_label": "نسيت كلمة المرور",
+      "login_label": "تسجيل الدخول",
+      "try_again": "حاول مرة أخرى خلال",
+      "seconds": "ثوانٍ",
+      "heading": "مرحبًا بك في",
+      "admin": "مسؤول الدولة"
+    },
+    "welcome": {
+      "heading": "مرحبًا بك في",
+      "country": "البلد",
+      "language": "اللغة",
+      "placeholder": "اختر",
+      "button": "متابعة",
+      "admin": "مسؤول الدولة"
+    },
+    "forgot-password": {
+      "error_email_message": "يرجى إدخال بريدك الإلكتروني",
+      "input_email_label": "البريد الإلكتروني",
+      "reset_password_button_label": "إعادة تعيين كلمة المرور",
+      "register_redirect_button_label": "ليس لدي حساب",
+      "modal_heading": "تحقق من بريدك الإلكتروني",
+      "modal_text": "إذا كنت مسجلاً في المنصة، فستتلقى رابطًا لإعادة تعيين كلمة المرور الخاصة بك.",
+      "heading": "مرحبًا بك في",
+      "admin": "مسؤول الدولة"
+    },
+    "reset-password": {
+      "label": "كلمة المرور الجديدة",
+      "placeholder": "أدخل كلمة المرور الجديدة",
+      "submit": "إرسال",
+      "password_error": "يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل، وحرف كبير واحد، وحرف صغير واحد، ورقم واحد"
+    },
+    "articles": {
+      "no_results": "لم يتم العثور على نتائج، يرجى تجربة لغة أخرى.",
+      "view_button": "عرض",
+      "article_added": "تمت إضافة المقالة بنجاح",
+      "article_removed": "تمت إزالة المقالة بنجاح",
+      "published": "منشور",
+      "image": "الصورة",
+      "content": "المحتوى",
+      "view": "عرض",
+      "note": "<0>ملاحظة*</0> إذا تم تحديد مربع الاختيار في عمود \"منشور\"، فهذا يعني أن المقالة مرئية لمستخدمي المنصة.",
+      "search": "بحث",
+      "no_data_found": "لم يتم العثور على بيانات",
+      "created_at": "تاريخ الإنشاء",
+      "likes": "الإعجابات",
+      "dislikes": "عدم الإعجاب",
+      "views": "المشاهدات"
+    }
+  },
+  "pages": {
+    "login-page": {
+      "heading_1": "مرحبا بك مرة أخرى، يسعدني رؤيتك مرة أخرى",
+      "heading_2": "مرحبًا بك"
+    },
+    "content-management-page": {
+      "title": "إدارة المحتوى",
+      "articles": "المقالات",
+      "videos": "الفيديوهات",
+      "sos_centers": "مركز الطوارئ SOS",
+      "faqs": "الأسئلة الشائعة",
+      "podcasts": "البودكاست",
+      "published": "منشور",
+      "thumbnail": "الصورة المصغّرة",
+      "table_title": "العنوان",
+      "description": "الوصف",
+      "url": "الرابط",
+      "category": "الفئة",
+      "likes": "الإعجابات",
+      "dislikes": "عدم الإعجاب",
+      "created_at": "تاريخ الإنشاء",
+      "search": "بحث",
+      "note": "<0>ملاحظة*</0> إذا تم تحديد مربع الاختيار في عمود \"منشور\"، فهذا يعني أن الفيديو مرئي لمستخدمي المنصة.",
+      "note_podcasts": "<0>ملاحظة*</0> إذا تم تحديد مربع الاختيار في عمود \"منشور\"، فهذا يعني أن البودكاست مرئي لمستخدمي المنصة.",
+      "no_data_found": "لم يتم العثور على بيانات",
+      "podcast_added": "تمت إضافة البودكاست",
+      "podcast_removed": "تمت إزالة البودكاست",
+      "video_added": "تمت إضافة الفيديو",
+      "video_removed": "تمت إزالة الفيديو",
+      "number_of_more_options": "{{count}} المزيد",
+      "videos_active": "تفعيل وحدة الفيديو",
+      "podcasts_active": "تفعيل وحدة البودكاست",
+      "save_success": "تم الحفظ بنجاح",
+      "views": "عدد المشاهدات"
+    },
+    "pl-statistics-page": {
+      "heading": "الإحصائيات",
+      "web_visits": "إجمالي الزيارات",
+      "qr_visits": "زيارات QR",
+      "no_data": "لم يتم العثور على بيانات"
+    }
+  }
+}

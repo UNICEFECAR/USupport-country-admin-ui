@@ -829,6 +829,10 @@
       "search": "Пошук",
       "export_label": "Експортувати дані як CSV",
       "no_data_found": "Дані не знайдені",
+
+      "globalWebsiteVisits": "Globalne відвідування сайту",
+      "globalWebsiteVisits_unique_count": "Унікальні відвідувачі",
+
       "totalConsultations": "Усього консультацій",
       "totalConsultations_unique_count": "Унікальні клієнти",
       "cancelledConsultations": "Скасовані консультації",
@@ -976,12 +980,17 @@
     },
     "providers-free-slots": {
       "heading": "Створити звіт про вільні слоти консультантів",
-      "description": "Створіть звіт про вільні слоти консультантів між двома датами. Звіт буде створено у форматі CSV і надіслано на вашу електронну адресу.",
+      "description": "Створіть звіт, який включає всі консультації, час початку яких знаходиться між вибраною датою початку та датою закінчення (часовий пояс UTC). Звіт міститиме числові дані та буде створено у форматі CSV.",
       "start_date": "Дата початку",
       "end_date": "Дата закінчення",
+      "start_time": "З (UTC)",
+      "end_time": "До (UTC)",
       "start_date_error": "Дата початку є обов'язковою",
       "end_date_error": "Дата закінчення є обов'язковою",
+      "start_time_error": "Час початку є обов'язковим",
+      "end_time_error": "Час закінчення є обов'язковим",
       "end_date_before_start_error": "Дата закінчення має бути після дати початку",
+      "end_time_before_start_error": "Час закінчення має бути після часу початку",
       "generate_report": "Створити звіт"
     },
     "mood-tracker-report": {

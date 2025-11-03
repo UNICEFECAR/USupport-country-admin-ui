@@ -1,0 +1,104 @@
+{
+  "blocks": {
+    "page": {
+      "statistics": "İstatistikler",
+      "page_3": "İçerik Yönetimi",
+      "your_profile_text": "Profiliniz"
+    },
+    "login": {
+      "email_label": "E-posta",
+      "email_placeholder": "E-postanızı girin",
+      "password_label": "Parola",
+      "password_placeholder": "Parolanızı girin",
+      "forgot_password_label": "Parolamı unuttum",
+      "login_label": "Giriş yap",
+      "try_again": "Tekrar deneyin",
+      "seconds": "saniye içinde",
+      "heading": "Hoş geldiniz",
+      "admin": "Ülke yöneticisi"
+    },
+    "welcome": {
+      "heading": "Hoş geldiniz",
+      "country": "Ülke",
+      "language": "Dil",
+      "placeholder": "Seçiniz",
+      "button": "Devam et",
+      "admin": "Ülke yöneticisi"
+    },
+    "forgot-password": {
+      "error_email_message": "Lütfen e-posta adresinizi girin",
+      "input_email_label": "E-posta",
+      "reset_password_button_label": "Şifreyi sıfırla",
+      "register_redirect_button_label": "Hesabım yok",
+      "modal_heading": "E-postanızı kontrol edin",
+      "modal_text": "Platforma kayıtlıysanız, şifrenizi sıfırlamak için bir bağlantı alacaksınız.",
+      "heading": "Hoş geldiniz",
+      "admin": "Ülke yöneticisi"
+    },
+    "reset-password": {
+      "label": "Yeni şifre",
+      "placeholder": "Yeni şifrenizi girin",
+      "submit": "Gönder",
+      "password_error": "Şifre en az 8 karakter, 1 büyük harf, 1 küçük harf ve 1 rakam içermelidir"
+    },
+    "articles": {
+      "no_results": "Sonuç bulunamadı, lütfen farklı bir dil deneyin.",
+      "view_button": "görüntüle",
+      "article_added": "Makale başarıyla eklendi",
+      "article_removed": "Makale başarıyla kaldırıldı",
+      "published": "Yayında",
+      "image": "Görsel",
+      "content": "İçerik",
+      "view": "Görüntüle",
+      "note": "<0>Not*</0> \"Yayında\" sütunundaki onay kutusu işaretliyse, makale platform kullanıcıları tarafından görülebilir anlamına gelir.",
+      "search": "Ara",
+      "no_data_found": "Veri bulunamadı",
+      "created_at": "Oluşturulma Tarihi",
+      "likes": "Beğeniler",
+      "dislikes": "Beğenilmeyenler",
+      "views": "Görüntüleme Sayısı"
+    }
+  },
+  "pages": {
+    "login-page": {
+      "heading_1": "Hoş geldin, seni tekrar görmek güzel",
+      "heading_2": "Hoş geldiniz"
+    },
+    "content-management-page": {
+      "title": "İçerik Yönetimi",
+      "articles": "Makaleler",
+      "videos": "Videolar",
+      "sos_centers": "SOS Merkezi",
+      "faqs": "SSS",
+      "podcasts": "Podcastler",
+      "published": "Yayında",
+      "thumbnail": "Küçük Resim",
+      "table_title": "Başlık",
+      "description": "Açıklama",
+      "url": "URL",
+      "category": "Kategori",
+      "likes": "Beğeniler",
+      "dislikes": "Beğenilmeyenler",
+      "created_at": "Oluşturulma Tarihi",
+      "search": "Ara",
+      "note": "<0>Not*</0> \"Yayında\" sütunundaki onay kutusu işaretliyse, video platform kullanıcıları tarafından görülebilir anlamına gelir.",
+      "note_podcasts": "<0>Not*</0> \"Yayında\" sütunundaki onay kutusu işaretliyse, podcast platform kullanıcıları tarafından görülebilir anlamına gelir.",
+      "no_data_found": "Veri bulunamadı",
+      "podcast_added": "Podcast eklendi",
+      "podcast_removed": "Podcast kaldırıldı",
+      "video_added": "Video eklendi",
+      "video_removed": "Video kaldırıldı",
+      "number_of_more_options": "{{count}} daha fazla",
+      "videos_active": "Video modülü etkinleştirme",
+      "podcasts_active": "Podcast modülü etkinleştirme",
+      "save_success": "Başarıyla kaydedildi",
+      "views": "Görüntüleme Sayısı"
+    },
+    "pl-statistics-page": {
+      "heading": "İstatistikler",
+      "web_visits": "Toplam ziyaretler",
+      "qr_visits": "QR ziyaretleri",
+      "no_data": "Veri bulunamadı"
+    }
+  }
+}

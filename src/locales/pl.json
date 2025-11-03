@@ -831,6 +831,9 @@
       "export_label": "Eksportuj dane jako CSV",
       "no_data_found": "Nie znaleziono danych",
 
+      "globalWebsiteVisits": "Globalne odwiedziny strony",
+      "globalWebsiteVisits_unique_count": "Unikalni odwiedzający",
+
       "totalConsultations": "Wszystkie konsultacje",
       "totalConsultations_unique_count": "Unikalni klienci",
       "cancelledConsultations": "Anulowane konsultacje",
@@ -977,12 +980,17 @@
     },
     "providers-free-slots": {
       "heading": "Generuj raport wolnych terminów konsultantów",
-      "description": "Wygeneruj raport wolnych terminów konsultantów między dwoma datami. Raport zostanie wygenerowany w formacie CSV i wysłany na Twój adres e-mail.",
+      "description": "Wygeneruj raport zawierający wszystkie konsultacje, których godzina rozpoczęcia przypada między wybraną datą początkową a końcową (strefa czasowa UTC). Raport będzie zawierał dane liczbowe i zostanie wygenerowany w formacie CSV.",
       "start_date": "Data rozpoczęcia",
       "end_date": "Data zakończenia",
+      "start_time": "Od (UTC)",
+      "end_time": "Do (UTC)",
       "start_date_error": "Data rozpoczęcia jest wymagana",
       "end_date_error": "Data zakończenia jest wymagana",
+      "start_time_error": "Godzina rozpoczęcia jest wymagana",
+      "end_time_error": "Godzina zakończenia jest wymagana",
       "end_date_before_start_error": "Data zakończenia musi być po dacie rozpoczęcia",
+      "end_time_before_start_error": "Godzina zakończenia musi być po godzinie rozpoczęcia",
       "generate_report": "Generuj raport"
     },
     "mood-tracker-report": {

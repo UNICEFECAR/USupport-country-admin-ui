@@ -779,6 +779,9 @@
       "export_label": "Արտահանել տվյալները CSV ձևաչափով",
       "no_data_found": "Տվյալներ չեն հայտնաբերվել",
 
+      "globalWebsiteVisits": "Ընդհանուր կայքի այցելություններ",
+      "globalWebsiteVisits_unique_count": "Եզակի այցելություններ",
+
       "totalConsultations": "Ընդհանուր խորհրդատվություններ",
       "totalConsultations_unique_count": "Եզակի հաճախորդներ",
       "cancelledConsultations": "Չեղարկված խորհրդատվություններ",
@@ -899,9 +902,14 @@
       "description": "Ստեղծեք խորհրդատուների ազատ ժամանակաշրջանների հաշվետվություն երկու ամսաթվերի միջև: Հաշվետվությունը կստեղծվի CSV ֆորմատով և կկուղարկվի ձեր էլեկտրոնային հասցեին:",
       "start_date": "Սկսման ամսաթիվ",
       "end_date": "Ավարտի ամսաթիվ",
+      "start_time": "Սկսման ժամ",
+      "end_time": "Ավարտի ժամ",
       "start_date_error": "Սկսման ամսաթիվը պարտադիր է",
       "end_date_error": "Ավարտի ամսաթիվը պարտադիր է",
+      "start_time_error": "Սկսման ժամը պարտադիր է",
+      "end_time_error": "Ավարտի ժամը պարտադիր է",
       "end_date_before_start_error": "Ավարտի ամսաթիվը պետք է լինի սկսման ամսաթվից հետո",
+      "end_time_before_start_error": "Ավարտի ժամը պետք է լինի սկսման ժամից հետո",
       "generate_report": "Հաշվետվություն ստեղծել"
     },
     "mood-tracker-report": {

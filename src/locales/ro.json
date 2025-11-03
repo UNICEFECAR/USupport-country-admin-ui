@@ -819,6 +819,10 @@
       "search": "Căutare",
       "export_label": "Export date ca CSV",
       "no_data_found": "Nu s-au găsit date",
+
+      "globalWebsiteVisits": "Vizite globale site",
+      "globalWebsiteVisits_unique_count": "Vizite unice site",
+
       "totalConsultations": "Total consultații",
       "totalConsultations_unique_count": "Clienți unici",
       "cancelledConsultations": "Consultații anulate",
@@ -966,12 +970,17 @@
     },
     "providers-free-slots": {
       "heading": "Generate Provider Free Slots Report",
-      "description": "Generate a report of provider free slots between two dates. The report will be generated in CSV format and will be sent to your email address.",
+      "description": "Generați un raport care include toate consultațiile a căror oră de începere se situează între data de început și data de final selectate (fusul orar UTC). Raportul va include date numerice și va fi generat în format CSV.",
       "start_date": "Start Date",
       "end_date": "End Date",
+      "start_time": "De la (UTC)",
+      "end_time": "Până la (UTC)",
       "start_date_error": "Start date is required",
       "end_date_error": "End date is required",
+      "start_time_error": "Start time is required",
+      "end_time_error": "End time is required",
       "end_date_before_start_error": "End date must be after start date",
+      "end_time_before_start_error": "End time must be after start time",
       "generate_report": "Generate report"
     },
     "mood-tracker-report": {

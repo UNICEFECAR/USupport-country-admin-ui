@@ -28,6 +28,8 @@ import "./videos.scss";
  * @return {jsx}
  */
 export const Videos = ({ t, i18n }) => {
+  const IS_PS = localStorage.getItem("country") === "PS";
+
   const [dataToDisplay, setDataToDisplay] = useState();
   const [searchValue, setSearchValue] = useState("");
   const [videoIds, setVideoIds] = useState([]);
@@ -92,7 +94,7 @@ export const Videos = ({ t, i18n }) => {
   };
 
   const rows = useMemo(() => {
-    return [
+    let columns = [
       {
         label: t("published"),
         sortingKey: "isSelected",
@@ -121,6 +123,11 @@ export const Videos = ({ t, i18n }) => {
         isCentered: true,
       },
       {
+        label: t("views"),
+        sortingKey: "view_count",
+        isCentered: true,
+      },
+      {
         label: t("likes"),
         sortingKey: "likes",
         isCentered: true,
@@ -136,7 +143,19 @@ export const Videos = ({ t, i18n }) => {
         isCentered: true,
       },
     ];
-  }, [i18n.language]);
+
+    if (IS_PS) {
+      columns = columns.filter(
+        (x) =>
+          x.sortingKey !== "likes" &&
+          x.sortingKey !== "dislikes" &&
+          x.sortingKey !== "description" &&
+          x.sortingKey !== "url"
+      );
+    }
+
+    return columns;
+  }, [i18n.language, t, IS_PS]);
 
   //--------------------- Videos ----------------------//
   const getVideos = async () => {
@@ -199,9 +218,12 @@ export const Videos = ({ t, i18n }) => {
 
       const currentLang = i18n.language;
       if (data.newValue === true) {
-        await adminSvc.putVideo(videoAvailableLocales[currentLang].toString());
+        const newDataId = videoAvailableLocales[currentLang].toString();
+        await adminSvc.putVideo(newDataId);
+        setVideoIds([...videoIds, newDataId]);
       } else {
         await adminSvc.deleteVideo(data.id.toString());
+        setVideoIds(videoIds.filter((x) => x !== data.id));
       }
       return data.newValue;
     } catch (error) {
@@ -268,29 +290,34 @@ export const Videos = ({ t, i18n }) => {
       <div>
         <p className="text heading videos-row__heading">{video.title}</p>
       </div>,
-      <div>
-        <p className="small-text">{video.description}</p>
-      </div>,
-      <div>
-        {video.url ? (
-          <a href={video.url} target="_blank" rel="noreferrer">
-            <p className="text videos-row__heading centered">
-              {video.url.length > 30
-                ? video.url.substring(0, 30) + "..."
-                : video.url}
-            </p>
-          </a>
-        ) : (
-          <p className="centered">-</p>
-        )}
-      </div>,
+      IS_PS ? null : (
+        <div>
+          <p className="small-text">{video.description}</p>
+        </div>
+      ),
+      IS_PS ? null : (
+        <div>
+          {video.url ? (
+            <a href={video.url} target="_blank" rel="noreferrer">
+              <p className="text videos-row__heading centered">
+                {video.url.length > 30
+                  ? video.url.substring(0, 30) + "..."
+                  : video.url}
+              </p>
+            </a>
+          ) : (
+            <p className="centered">-</p>
+          )}
+        </div>
+      ),
       <div>
         <p className="text centered">{category || "-"}</p>
       </div>,
-      <p className="text centered">{video.likes}</p>,
-      <p className="text centered">{video.dislikes}</p>,
+      <p className="text centered">{video.view_count}</p>,
+      IS_PS ? null : <p className="text centered">{video.likes}</p>,
+      IS_PS ? null : <p className="text centered">{video.dislikes}</p>,
       <p className="text centered">{getDateView(new Date(video.createdAt))}</p>,
-    ];
+    ].filter((x) => x !== null);
   });
 
   return (

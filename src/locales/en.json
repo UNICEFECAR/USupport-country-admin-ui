@@ -34,6 +34,7 @@
       "submit": "Submit",
       "statistics": "Statistics"
     },
+
     "statistics": {
       "statistics": "Statistics",
       "clients": "Clients",
@@ -59,7 +60,8 @@
       "no_data_found": "No data found",
       "created_at": "Created At",
       "likes": "Likes",
-      "dislikes": "Dislikes"
+      "dislikes": "Dislikes",
+      "views": "Views"
     },
     "faq": {
       "no_results": "No results found, please try a different language.",
@@ -816,6 +818,9 @@
       "export_label": "Export Data as CSV",
       "no_data_found": "No data found",
 
+      "globalWebsiteVisits": "Global Website Visits",
+      "globalWebsiteVisits_unique_count": "Unique Visitors",
+
       "totalConsultations": "Total Consultations",
       "totalConsultations_unique_count": "Unique Clients",
       "cancelledConsultations": "Cancelled Consultations",
@@ -967,12 +972,17 @@
     },
     "providers-free-slots": {
       "heading": "Generate Provider Free Slots Report",
-      "description": "Generate a report of provider free slots between two dates. The report will be generated in CSV format and will be sent to your email address.",
+      "description": "Generate a report that includes all consultations whose start time falls between the selected start date and end date (UTC time zone). The report will include numerical data and be generated in CSV format.",
       "start_date": "Start Date",
       "end_date": "End Date",
+      "start_time": "From (UTC)",
+      "end_time": "To (UTC)",
       "start_date_error": "Start date is required",
       "end_date_error": "End date is required",
+      "start_time_error": "Start time is required",
+      "end_time_error": "End time is required",
       "end_date_before_start_error": "End date must be after start date",
+      "end_time_before_start_error": "End time must be after start time",
       "generate_report": "Generate report"
     },
     "mood-tracker-report": {
@@ -997,6 +1007,12 @@
   },
 
   "pages": {
+    "pl-statistics-page": {
+      "heading": "Statistics",
+      "web_visits": "Total visits",
+      "qr_visits": "QR visits",
+      "no_data": "No data found"
+    },
     "not-found-page": {
       "heading": "Oops! We can't find the page you are looking for...",
       "subheading": "It seems this page is missing or is not available at the moment.",
