@@ -94,6 +94,7 @@ export const Analytics = () => {
         sortingKey: "engagementScore",
         isNumbered: true,
         isCentered: true,
+        headerTooltip: t("engagement_score_tooltip"),
       },
       {
         label: t("avg_rating"),

@@ -823,7 +823,7 @@
       "avg_rating": "Średnia ocena",
       "share_count": "Liczba udostępnień",
       "engagement_score": "Wskaźnik zaangażowania",
-      "engagement_score_tooltip": "Obliczona metryka oparta na wyświetleniach, polubieniach, pobraniach, udostępnieniach i średniej ocenie do pomiaru ogólnego zaangażowania w treść",
+      "engagement_score_tooltip": "Wynik zaangażowania to wynik ważony oparty na algorytmie, który uwzględnia pobrania, udostępnienia, polubienia i wyświetlenia artykułów, filmów i podcastów w danej kategorii.",
       "likes": "Polubienia",
       "dislikes": "Niepolubienia",
 

@@ -812,7 +812,7 @@
       "avg_rating": "Rating mediu",
       "share_count": "Număr de distribuiri",
       "engagement_score": "Punctaj implicare",
-      "engagement_score_tooltip": "Punctajul de implicare este un scor ponderat bazat pe descărcările, distribuirile, aprecierile și vizualizările articolelor, videoclipurilor și podcasturilor din categorie.",
+      "engagement_score_tooltip": "Scorul de implicare este un scor ponderat bazat pe un algoritm care ia în considerare descărcările, distribuțiile, aprecierile și vizualizările articolelor, videoclipurilor și podcasturilor din categorie.",
       "likes": "Aprecieri pozitive",
       "dislikes": "Aprecieri negative",
 
