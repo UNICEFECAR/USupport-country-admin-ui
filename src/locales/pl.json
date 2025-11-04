@@ -38,7 +38,11 @@
       "clients": "Klienci",
       "providers": "Konsultanci",
       "articles": "Artykuły",
-      "consultations": "Konsultacje"
+      "consultations": "Konsultacje",
+      "tooltip_clients": "Łączna liczba klientów zarejestrowanych na platformie",
+      "tooltip_providers": "Łączna liczba aktywowanych specjalistów",
+      "tooltip_articles": "Łączna liczba opublikowanych artykułów",
+      "tooltip_consultations": "Łączna liczba konsultacji przeprowadzonych na platformie"
     },
     "articles": {
       "no_results": "Nie znaleziono wyników, spróbuj użyć innego języka.",
@@ -819,6 +823,7 @@
       "avg_rating": "Średnia ocena",
       "share_count": "Liczba udostępnień",
       "engagement_score": "Wskaźnik zaangażowania",
+      "engagement_score_tooltip": "Wynik zaangażowania to wynik ważony oparty na algorytmie, który uwzględnia pobrania, udostępnienia, polubienia i wyświetlenia artykułów, filmów i podcastów w danej kategorii.",
       "likes": "Polubienia",
       "dislikes": "Niepolubienia",
 
@@ -894,7 +899,40 @@
       "unspecified": "Nieokreślona",
       "not_mentioned": "Nie wspomniano",
       "rural": "Wieś",
-      "urban": "Miasto"
+      "urban": "Miasto",
+      "missing": "N/A",
+
+      "globalWebsiteVisits_info": "Łączna liczba wizyt na globalnej stronie („usupport.online”)",
+      "cancelledConsultations_info": "Konsultacje anulowane przed ich przeprowadzeniem",
+      "totalConsultations_info": "Łączna liczba zaplanowanych konsultacji na platformie",
+      "mobileScheduledConsultations_info": "Konsultacje zaplanowane w aplikacji mobilnej",
+      "clientsAttendedConsultations_info": "Klienci, którzy uczestniczyli w konsultacjach",
+      "scheduledConsultations_info": "Konsultacje zaplanowane w portalu internetowym",
+      "scheduleButtonClick_info": "Kliknięcia przycisku „Zaplanuj konsultację” w portalu internetowym",
+      "mobileScheduleButtonClick_info": "Kliknięcia przycisku „Zaplanuj konsultację” w aplikacji mobilnej",
+      "totalCouponConsultations_info": "Konsultacje zaplanowane z użyciem kuponu",
+      "totalProviders_info": "Łączna liczba zarejestrowanych dostawców na platformie",
+      "activeProviders_info": "Dostawcy zalogowani w ciągu ostatnich 15 dni",
+      "allClients_info": "Łączna liczba zarejestrowanych klientów na platformie",
+      "activeClients_info": "Klienci zalogowani w ciągu ostatnich 15 dni",
+      "totalWebsiteAccess_info": "Łączna liczba wizyt na stronie danego kraju",
+      "uniqueWebsiteAccess_info": "Unikalni odwiedzający stronę danego kraju",
+      "totalClientAccess_info": "Łączna liczba wizyt w portalu klienta",
+      "uniqueClientAccess_info": "Unikalni odwiedzający portal klienta",
+      "totalProviderAccess_info": "Łączna liczba wizyt w portalu dostawcy",
+      "uniqueProviderAccess_info": "Unikalni odwiedzający portal dostawcy",
+      "totalMobileAccess_info": "Łączna liczba wizyt w aplikacji mobilnej",
+      "uniqueMobileAccess_info": "Unikalni użytkownicy aplikacji mobilnej",
+      "emailRegisterClick_info": "Łączna liczba kliknięć przycisku „Zarejestruj się e-mailem” w portalu internetowym",
+      "mobileEmailRegisterClick_info": "Łączna liczba kliknięć przycisku „Zarejestruj się e-mailem” w aplikacji mobilnej",
+      "anonymousRegisterClick_info": "Łączna liczba kliknięć przycisku „Zarejestruj się anonimowo” w portalu internetowym",
+      "mobileAnonymousRegisterClick_info": "Łączna liczba kliknięć przycisku „Zarejestruj się anonimowo” w aplikacji mobilnej",
+      "guestRegisterClick_info": "Łączna liczba kliknięć przycisku „Rejestracja gościa” w portalu internetowym",
+      "mobileGuestRegisterClick_info": "Łączna liczba kliknięć przycisku „Rejestracja gościa” w aplikacji mobilnej",
+      "joinConsultationClick_info": "Łączna liczba kliknięć przycisku „Dołącz do konsultacji” w portalu internetowym",
+      "mobileJoinConsultationClick_info": "Łączna liczba kliknięć przycisku „Dołącz do konsultacji” w aplikacji mobilnej",
+      "positiveClientRatings_info": "Łączna liczba pozytywnych ocen od klientów",
+      "positiveProviderRatings_info": "Łączna liczba pozytywnych ocen od dostawców"
     },
     "baseline-assessment-thresholds": {
       "title": "Progi oceny bazowej",
@@ -924,7 +962,9 @@
       "error_loading_analysis": "Błąd ładowania danych analizy",
       "start_date": "Data rozpoczęcia",
       "end_date": "Data zakończenia",
-      "reset_filters": "Zresetuj filtry"
+      "reset_filters": "Zresetuj filtry",
+      "recommended_below": "25% – dolny próg:",
+      "recommended_above": "25% – górny próg:"
     },
     "sos-center-clicks": {
       "sos_center": "Centrum SOS",
