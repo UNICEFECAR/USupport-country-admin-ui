@@ -973,7 +973,9 @@
       "web": "Веб",
       "client": "Клиент",
       "clicked_at": "Кликнуто {{time}} с платформы {{platform}}",
-      "floating_button": "Главная кнопка"
+      "floating_button": "Главная кнопка",
+      "recommended_below": "Рекомендовано ниже порога для 25%:",
+      "recommended_above": "Рекомендовано выше порога для 25%:"
     },
     "providers-free-slots": {
       "heading": "Генерировать отчет о свободных слотах консультантов",

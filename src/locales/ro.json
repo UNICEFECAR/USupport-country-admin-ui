@@ -961,7 +961,9 @@
       "error_loading_analysis": "Error loading analysis data",
       "start_date": "Start Date",
       "end_date": "End Date",
-      "reset_filters": "Reset filters"
+      "reset_filters": "Reset filters",
+      "recommended_below": "Recomandat sub pragul de 25%:",
+      "recommended_above": "Recomandat peste pragul de 25%:"
     },
     "providers-free-slots": {
       "heading": "Generate Provider Free Slots Report",

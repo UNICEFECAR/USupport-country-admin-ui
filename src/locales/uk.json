@@ -971,7 +971,9 @@
       "web": "Веб",
       "client": "Клієнт",
       "clicked_at": "Клікнуто {{time}} з платформи {{platform}}",
-      "floating_button": "Головна кнопка"
+      "floating_button": "Головна кнопка",
+      "recommended_below": "Рекомендовано нижче порогу для 25%:",
+      "recommended_above": "Рекомендовано вище порогу для 25%:"
     },
     "providers-free-slots": {
       "heading": "Створити звіт про вільні слоти консультантів",

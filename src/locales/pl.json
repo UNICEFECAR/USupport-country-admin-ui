@@ -962,7 +962,9 @@
       "error_loading_analysis": "Błąd ładowania danych analizy",
       "start_date": "Data rozpoczęcia",
       "end_date": "Data zakończenia",
-      "reset_filters": "Zresetuj filtry"
+      "reset_filters": "Zresetuj filtry",
+      "recommended_below": "25% – dolny próg:",
+      "recommended_above": "25% – górny próg:"
     },
     "sos-center-clicks": {
       "sos_center": "Centrum SOS",

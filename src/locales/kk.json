@@ -964,7 +964,9 @@
       "error_loading_analysis": "Талдау деректерін жүктеу қатесі",
       "start_date": "Басталу күні",
       "end_date": "Аяқталу күні",
-      "reset_filters": "Сүзгілерді қалпына келтіру"
+      "reset_filters": "Сүзгілерді қалпына келтіру",
+      "recommended_below": "25% үшін төмен шекара ұсынылады:",
+      "recommended_above": "25% үшін жоғары шекара ұсынылады:"
     },
     "sos-center-clicks": {
       "sos_center": "SOS орталығы",

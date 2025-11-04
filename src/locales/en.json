@@ -963,7 +963,9 @@
       "above_count": "Clients above high",
       "below_count": "Clients below low",
       "select_start_date": "Select start date",
-      "select_end_date": "Select end date"
+      "select_end_date": "Select end date",
+      "recommended_below": "Recommended below threshold for 25%:",
+      "recommended_above": "Recommended above threshold for 25%:"
     },
     "providers-free-slots": {
       "heading": "Generate Provider Free Slots Report",

@@ -343,12 +343,22 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    &--recommended {
+      padding-top: $spacing_1_2;
+    }
   }
 
   &__median-label,
   &__count-label {
     color: #666;
     font-weight: 500;
+    text-align: left;
+    flex: 0.8;
+
+    &--recommended {
+      font-size: 16px;
+    }
   }
 
   &__median-value {
