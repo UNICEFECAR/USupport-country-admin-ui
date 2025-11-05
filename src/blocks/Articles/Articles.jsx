@@ -51,7 +51,6 @@ export const Articles = () => {
 
   useEffect(() => {
     if (i18n.language !== languageOfData) {
-      console.log(i18n.language, languageOfData);
       setLanguageOfData(i18n.language);
       setDataToDisplay([]);
       setStartFrom(0);
@@ -149,9 +148,12 @@ export const Articles = () => {
     const currentLang = i18n.language;
 
     if (data.newValue === true) {
-      await adminSvc.putArticle(articleLocales[currentLang].toString());
+      const newDataId = articleLocales[currentLang].toString();
+      await adminSvc.putArticle(newDataId);
+      setArticleIds([...articleIds, newDataId]);
     } else {
       await adminSvc.deleteArticle(data.id.toString());
+      setArticleIds(articleIds.filter((x) => x !== data.id));
     }
 
     return data.newValue;

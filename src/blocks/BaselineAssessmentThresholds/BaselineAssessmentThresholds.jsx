@@ -323,72 +323,90 @@ const ThresholdRow = ({
  * AnalysisDisplay component for showing assessment analysis data
  */
 const AnalysisDisplay = ({ analysisData, t }) => {
-  const { totalAssessments, isSplit, analysis } = analysisData;
-
-  const renderFactorAnalysis = (factorData, factorName) => (
-    <Box
-      borderSize="sm"
-      boxShadow="1"
-      padding="md"
-      key={factorName}
-      classes="baseline-assessment-thresholds__analysis-factor"
-    >
-      <div className="baseline-assessment-thresholds__analysis-factor-header">
-        <span className="baseline-assessment-thresholds__factor-name">
-          {t(factorName)}
-        </span>
-      </div>
-      <div className="baseline-assessment-thresholds__analysis-factor-data">
-        <div className="baseline-assessment-thresholds__median-display">
-          <p className="baseline-assessment-thresholds__median-label">
-            {t("median_value")}:
-          </p>
-          <p className="baseline-assessment-thresholds__median-value">
-            {factorData.median?.toFixed(1) || "N/A"}
-          </p>
-        </div>
-
-        <div className="baseline-assessment-thresholds__median-display">
-          <p className="baseline-assessment-thresholds__median-label">
-            {t("below_count")}:
-          </p>
-          <p
-            className={`baseline-assessment-thresholds__median-value ${
-              factorData.belowCount > 0
-                ? "baseline-assessment-thresholds__median-value--risk"
-                : ""
-            }`}
-          >
-            {factorData.belowCount}
-          </p>
-        </div>
-
-        <div className="baseline-assessment-thresholds__median-display">
-          <p className="baseline-assessment-thresholds__median-label">
-            {t("above_count")}:
-          </p>
-          <p
-            className={`baseline-assessment-thresholds__median-value ${
-              factorData.aboveCount > 0
-                ? "baseline-assessment-thresholds__median-value--risk"
-                : ""
-            }`}
-          >
-            {factorData.aboveCount}
-          </p>
-        </div>
-
-        <div className="baseline-assessment-thresholds__count-display">
-          <span className="baseline-assessment-thresholds__count-label">
-            {t("total_answers")}:
-          </span>
-          <span className="baseline-assessment-thresholds__count-value">
-            {factorData.count}
+  const { totalAssessments, isSplit, analysis, recommendedThresholds } =
+    analysisData;
+  const renderFactorAnalysis = (factorData, factorName) => {
+    return (
+      <Box
+        borderSize="sm"
+        boxShadow="1"
+        padding="md"
+        key={factorName}
+        classes="baseline-assessment-thresholds__analysis-factor"
+      >
+        <div className="baseline-assessment-thresholds__analysis-factor-header">
+          <span className="baseline-assessment-thresholds__factor-name">
+            {t(factorName)}
           </span>
         </div>
-      </div>
-    </Box>
-  );
+        <div className="baseline-assessment-thresholds__analysis-factor-data">
+          <div className="baseline-assessment-thresholds__median-display">
+            <p className="baseline-assessment-thresholds__median-label">
+              {t("median_value")}:
+            </p>
+            <p className="baseline-assessment-thresholds__median-value">
+              {factorData.median?.toFixed(1) || "N/A"}
+            </p>
+          </div>
+
+          <div className="baseline-assessment-thresholds__median-display">
+            <p className="baseline-assessment-thresholds__median-label">
+              {t("below_count")}:
+            </p>
+            <p
+              className={`baseline-assessment-thresholds__median-value ${
+                factorData.belowPercentage > 0
+                  ? "baseline-assessment-thresholds__median-value--risk"
+                  : ""
+              }`}
+            >
+              {factorData.belowPercentage}%
+            </p>
+          </div>
+
+          <div className="baseline-assessment-thresholds__median-display">
+            <p className="baseline-assessment-thresholds__median-label">
+              {t("above_count")}:
+            </p>
+            <p
+              className={`baseline-assessment-thresholds__median-value ${
+                factorData.abovePercentage > 0
+                  ? "baseline-assessment-thresholds__median-value--risk"
+                  : ""
+              }`}
+            >
+              {factorData.abovePercentage}%
+            </p>
+          </div>
+          <div className="baseline-assessment-thresholds__count-display">
+            <span className="baseline-assessment-thresholds__count-label">
+              {t("total_answers")}:
+            </span>
+            <span className="baseline-assessment-thresholds__count-value">
+              {factorData.count}
+            </span>
+          </div>
+
+          <div className="baseline-assessment-thresholds__median-display baseline-assessment-thresholds__median-display--recommended">
+            <p className="baseline-assessment-thresholds__median-label baseline-assessment-thresholds__median-label--recommended">
+              {t("recommended_below")}
+            </p>
+            <p className={"baseline-assessment-thresholds__median-value"}>
+              {recommendedThresholds[factorName].below}
+            </p>
+          </div>
+          <div className="baseline-assessment-thresholds__median-display">
+            <p className="baseline-assessment-thresholds__median-label baseline-assessment-thresholds__median-label--recommended">
+              {t("recommended_above")}
+            </p>
+            <p className={"baseline-assessment-thresholds__median-value"}>
+              {recommendedThresholds[factorName].above}
+            </p>
+          </div>
+        </div>
+      </Box>
+    );
+  };
 
   const renderGroupAnalysis = (groupData, groupName) => (
     <div className="baseline-assessment-thresholds__analysis-group">

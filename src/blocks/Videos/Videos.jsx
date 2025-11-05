@@ -218,9 +218,12 @@ export const Videos = ({ t, i18n }) => {
 
       const currentLang = i18n.language;
       if (data.newValue === true) {
-        await adminSvc.putVideo(videoAvailableLocales[currentLang].toString());
+        const newDataId = videoAvailableLocales[currentLang].toString();
+        await adminSvc.putVideo(newDataId);
+        setVideoIds([...videoIds, newDataId]);
       } else {
         await adminSvc.deleteVideo(data.id.toString());
+        setVideoIds(videoIds.filter((x) => x !== data.id));
       }
       return data.newValue;
     } catch (error) {
