@@ -25,11 +25,14 @@ export const Statistics = () => {
   const { width } = useWindowDimensions();
   const { isLoading, data: statistics } = useGetStatistics(countryId);
 
-  const icons = {
-    clients: "community",
-    providers: "therapy",
-    articles: "article",
-    consultations: "live-consultation",
+  const data = {
+    clients: { iconName: "community", tooltip: t("tooltip_clients") },
+    providers: { iconName: "therapy", tooltip: t("tooltip_providers") },
+    articles: { iconName: "article", tooltip: t("tooltip_articles") },
+    consultations: {
+      iconName: "live-consultation",
+      tooltip: t("tooltip_consultations"),
+    },
   };
 
   const renderAllStatistics = () => {
@@ -44,8 +47,9 @@ export const Statistics = () => {
           <Statistic
             textBold={statistic.value}
             text={t(statistic.type)}
-            iconName={icons[statistic.type]}
+            iconName={data[statistic.type].iconName}
             orientation={width > 768 ? "portrait" : "landscape"}
+            tooltip={data[statistic.type].tooltip}
           />
         </GridItem>
       );

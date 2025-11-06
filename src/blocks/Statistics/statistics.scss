@@ -9,6 +9,7 @@
 
   &__statistics-grid {
     margin-top: $spacing_1_6;
+    padding-bottom: $spacing_2_4;
 
     @media screen and (max-width: $screen-md) {
       place-items: center;
