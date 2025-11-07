@@ -238,6 +238,7 @@
       "consultation_price_placeholder": "Стоимость консультации",
       "description_placeholder": "Введите описание",
       "video_link_placeholder": "https://video.link",
+      "video_link_error": "Пожалуйста, введите корректный URL",
 
       "sex_male": "Мужчина",
       "sex_female": "Женщина",
@@ -837,6 +838,7 @@
 
       "totalConsultations": "Всего консультаций",
       "totalConsultations_unique_count": "Уникальные клиенты",
+      "lateCancelledConsultations": "Поздно отменённые консультации",
       "cancelledConsultations": "Отменённые консультации",
       "scheduledConsultations": "Запланированные консультации - Веб",
       "mobileScheduledConsultations": "Запланированные консультации - Мобайл",
@@ -906,10 +908,11 @@
 
       "globalWebsiteVisits_info": "Общее количество посещений глобального сайта («usupport.online»)",
       "cancelledConsultations_info": "Консультации, отменённые до проведения",
-      "totalConsultations_info": "Общее количество запланированных консультаций на платформе",
-      "mobileScheduledConsultations_info": "Консультации, запланированные в мобильном приложении",
-      "clientsAttendedConsultations_info": "Клиенты, присоединившиеся к консультациям",
-      "scheduledConsultations_info": "Консультации, запланированные на веб-портале",
+      "lateCancelledConsultations_info": "Консультации, отменённые менее чем за 24 часа до времени начала",
+      "totalConsultations_info": "Общее количество запланированных консультаций на платформе. Этот показатель включает отменённые и поздно отменённые консультации",
+      "mobileScheduledConsultations_info": "Консультации, запланированные в мобильном приложении. Этот показатель НЕ включает отменённые или поздно отменённые консультации",
+      "clientsAttendedConsultations_info": "Клиенты, которые присоединились к консультациям",
+      "scheduledConsultations_info": "Консультации, запланированные на веб-портале. Этот показатель НЕ включает отменённые или поздно отменённые консультации",
       "scheduleButtonClick_info": "Количество нажатий кнопки «Запланировать консультацию» на веб-портале",
       "mobileScheduleButtonClick_info": "Количество нажатий кнопки «Запланировать консультацию» в мобильном приложении",
       "totalCouponConsultations_info": "Консультации, запланированные с использованием купона",

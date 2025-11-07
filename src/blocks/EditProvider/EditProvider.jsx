@@ -134,7 +134,7 @@ export const EditProvider = ({
     description: Joi.string().label(t("description_error")),
     totalConsultations: Joi.any(),
     earliestAvailableSlot: Joi.any(),
-    videoLink: Joi.string().uri().allow("", null),
+    videoLink: Joi.string().uri().allow("", null).label(t("video_link_error")),
     organizations: Joi.array().min(1).label(t("organizations_error")),
   });
 
@@ -350,8 +350,10 @@ export const EditProvider = ({
             <Input
               value={providerData.videoLink}
               onChange={(e) => handleChange("videoLink", e.currentTarget.value)}
+              errorMessage={errors.videoLink}
               label={t("video_link_label")}
               placeholder={t("video_link_placeholder")}
+              onBlur={() => handleBlur("videoLink")}
             />
           </GridItem>
 

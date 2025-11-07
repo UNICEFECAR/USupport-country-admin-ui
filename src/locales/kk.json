@@ -236,6 +236,7 @@
       "consultation_price_placeholder": "Консультация бағасы",
       "description_placeholder": "Сипаттаманы енгізіңіз",
       "video_link_placeholder": "https://video.link",
+      "video_link_error": "Жарамды URL енгізіңіз",
 
       "sex_male": "Ер",
       "sex_female": "Әйел",
@@ -836,6 +837,7 @@
 
       "totalConsultations": "Барлық консультациялар",
       "totalConsultations_unique_count": "Бірегей клиенттер",
+      "lateCancelledConsultations": "Кеш жойылған консультациялар",
       "cancelledConsultations": "Бас тартылған консультациялар",
       "scheduledConsultations": "Жоспарланған консультациялар - Веб",
       "mobileScheduledConsultations": "Жоспарланған консультациялар - Мобильді",
@@ -906,10 +908,11 @@
 
       "globalWebsiteVisits_info": "Жалпы (\"usupport.online\") веб-сайтына жалпы кірулер саны",
       "cancelledConsultations_info": "Өткізілмей тұрып жойылған консультациялар",
-      "totalConsultations_info": "Платформада жоспарланған консультациялардың жалпы саны",
-      "mobileScheduledConsultations_info": "Мобильді қосымшада жоспарланған консультациялар",
+      "lateCancelledConsultations_info": "Консультациялар, жоспарланған басталу уақытына дейін 24 сағаттан аз уақыт қалғанда жойылған",
+      "totalConsultations_info": "Платформада жоспарланған консультациялардың жалпы саны. Бұл көрсеткішке жойылған және кеш жойылған консультациялар кіреді",
+      "mobileScheduledConsultations_info": "Мобильді қосымшада жоспарланған консультациялар. Бұл көрсеткішке жойылған немесе кеш жойылған консультациялар кірмейді",
       "clientsAttendedConsultations_info": "Консультацияларға қатысқан клиенттер",
-      "scheduledConsultations_info": "Веб-порталда жоспарланған консультациялар",
+      "scheduledConsultations_info": "Веб-порталда жоспарланған консультациялар. Бұл көрсеткішке жойылған немесе кеш жойылған консультациялар кірмейді",
       "scheduleButtonClick_info": "\"Консультацияны жоспарлау\" батырмасын веб-порталда басу саны",
       "mobileScheduleButtonClick_info": "\"Консультацияны жоспарлау\" батырмасын мобильді қосымшада басу саны",
       "totalCouponConsultations_info": "Купон арқылы жоспарланған консультациялар",

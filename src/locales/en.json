@@ -240,6 +240,7 @@
       "consultation_price_placeholder": "Consultation price",
       "description_placeholder": "Enter description",
       "video_link_placeholder": "https://video.link",
+      "video_link_error": "Please enter a valid URL",
 
       "sex_male": "Male",
       "sex_female": "Female",
@@ -824,6 +825,7 @@
       "totalConsultations": "Total Consultations",
       "totalConsultations_unique_count": "Unique Clients",
       "cancelledConsultations": "Cancelled Consultations",
+      "lateCancelledConsultations": "Late Cancelled Consultations",
       "scheduledConsultations": "Scheduled Consultations - Web",
       "mobileScheduledConsultations": "Scheduled Consultations - Mobile",
 
@@ -892,10 +894,11 @@
 
       "globalWebsiteVisits_info": "Total visits the the global (\"usupport.online\") website",
       "cancelledConsultations_info": "Consultations which were cancelled before being conducted",
-      "totalConsultations_info": "Total scheduled consultations on the platform",
-      "mobileScheduledConsultations_info": "Consultation scheduled through the mobile app",
-      "clientsAttendedConsultations_info": "Clients who joined consultations",
-      "scheduledConsultations_info": "Consultation scheduled on the web portal",
+      "lateCancelledConsultations_info": "Consultations which were cancelled less than 24 hours before the consultation start time",
+      "totalConsultations_info": "Total scheduled consultations on the platform. This metric includes canceled and late-canceled consultations",
+      "mobileScheduledConsultations_info": "Consultation scheduled on the mobile app. This metric does NOT include canceled or late-canceled consultations",
+      "clientsAttendedConsultations_info": "Clients which joined consultations",
+      "scheduledConsultations_info": "Consultation scheduled on the web portal. This metric does NOT include canceled or late-canceled consultations",
       "scheduleButtonClick_info": "Clicks of the \"Schedule consultation\" button on the web portal",
       "mobileScheduleButtonClick_info": "Clicks of the \"Schedule consultation\" button on the mobile app",
       "totalCouponConsultations_info": "Consultations scheduled with a coupon",
