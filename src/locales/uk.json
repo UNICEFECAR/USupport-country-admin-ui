@@ -836,6 +836,7 @@
 
       "totalConsultations": "Усього консультацій",
       "totalConsultations_unique_count": "Унікальні клієнти",
+      "lateCancelledConsultations": "Пізно скасовані консультації",
       "cancelledConsultations": "Скасовані консультації",
       "scheduledConsultations": "Заплановані консультації - Веб",
       "mobileScheduledConsultations": "Заплановані консультації - Мобільні",
@@ -905,10 +906,11 @@
 
       "globalWebsiteVisits_info": "Загальна кількість відвідувань глобального сайту («usupport.online»)",
       "cancelledConsultations_info": "Консультації, скасовані до проведення",
-      "totalConsultations_info": "Загальна кількість запланованих консультацій на платформі",
-      "mobileScheduledConsultations_info": "Консультації, заплановані в мобільному застосунку",
+      "lateCancelledConsultations_info": "Консультації, скасовані менш ніж за 24 години до запланованого часу початку",
+      "totalConsultations_info": "Загальна кількість запланованих консультацій на платформі. Цей показник включає скасовані та пізно скасовані консультації",
+      "mobileScheduledConsultations_info": "Консультації, заплановані в мобільному застосунку. Цей показник НЕ включає скасовані або пізно скасовані консультації",
       "clientsAttendedConsultations_info": "Клієнти, які приєдналися до консультацій",
-      "scheduledConsultations_info": "Консультації, заплановані на вебпорталі",
+      "scheduledConsultations_info": "Консультації, заплановані на вебпорталі. Цей показник НЕ включає скасовані або пізно скасовані консультації",
       "scheduleButtonClick_info": "Кількість натискань кнопки «Запланувати консультацію» на вебпорталі",
       "mobileScheduleButtonClick_info": "Кількість натискань кнопки «Запланувати консультацію» у мобільному застосунку",
       "totalCouponConsultations_info": "Консультації, заплановані з купоном",
