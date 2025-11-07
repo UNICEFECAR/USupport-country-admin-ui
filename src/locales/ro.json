@@ -237,6 +237,7 @@
       "consultation_price_placeholder": "Prețul consultației",
       "description_placeholder": "Introduceți descrierea",
       "video_link_placeholder": "https://video.link",
+      "video_link_error": "Vă rugăm să introduceți un URL valid",
 
       "sex_male": "Masculin",
       "sex_female": "Feminin",

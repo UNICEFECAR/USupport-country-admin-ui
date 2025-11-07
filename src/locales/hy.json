@@ -227,6 +227,7 @@
       "consultation_price_placeholder": "Խորհրդատվության արժեքը",
       "description_placeholder": "Մուտքագրել նկարագրություն",
       "video_link_placeholder": "https://video.link",
+      "video_link_error": "Խնդրում ենք մուտքագրել ճիշտ URL",
       "sex_male": "Արական",
       "sex_female": "Իգական",
       "sex_unspecified": "Նշված չէ",

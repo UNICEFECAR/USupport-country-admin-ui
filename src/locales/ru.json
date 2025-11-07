@@ -238,6 +238,7 @@
       "consultation_price_placeholder": "Стоимость консультации",
       "description_placeholder": "Введите описание",
       "video_link_placeholder": "https://video.link",
+      "video_link_error": "Пожалуйста, введите корректный URL",
 
       "sex_male": "Мужчина",
       "sex_female": "Женщина",

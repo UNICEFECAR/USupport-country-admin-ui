@@ -237,6 +237,7 @@
       "consultation_price_placeholder": "Cena konsultacji",
       "description_placeholder": "Wprowadź opis",
       "video_link_placeholder": "https://video.link",
+      "video_link_error": "Proszę wprowadzić prawidłowy adres URL",
 
       "sex_male": "Mężczyzna",
       "sex_female": "Kobieta",

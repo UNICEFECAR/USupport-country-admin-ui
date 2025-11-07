@@ -236,6 +236,7 @@
       "consultation_price_placeholder": "Консультация бағасы",
       "description_placeholder": "Сипаттаманы енгізіңіз",
       "video_link_placeholder": "https://video.link",
+      "video_link_error": "Жарамды URL енгізіңіз",
 
       "sex_male": "Ер",
       "sex_female": "Әйел",
