@@ -58,6 +58,10 @@
       "dislikes": "Beğenilmeyenler",
       "views": "Görüntüleme Sayısı"
     }
+  ,
+    "edit-provider": {
+      "video_link_error": "Lütfen geçerli bir URL girin"
+    }
   },
   "pages": {
     "login-page": {

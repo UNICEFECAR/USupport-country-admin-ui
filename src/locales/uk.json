@@ -237,6 +237,7 @@
       "consultation_price_placeholder": "Ціна консультації",
       "description_placeholder": "Введи опис",
       "video_link_placeholder": "https://video.link",
+      "video_link_error": "Будь ласка, введіть коректний URL",
 
       "sex_male": "Чоловік",
       "sex_female": "Жінка",

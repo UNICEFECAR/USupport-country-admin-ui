@@ -240,6 +240,7 @@
       "consultation_price_placeholder": "Consultation price",
       "description_placeholder": "Enter description",
       "video_link_placeholder": "https://video.link",
+      "video_link_error": "Please enter a valid URL",
 
       "sex_male": "Male",
       "sex_female": "Female",
