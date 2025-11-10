@@ -1,6 +1,27 @@
 @import "@USupport-components-library/styles";
 
 .analytics {
+  &-content {
+    margin-top: $spacing_2_4;
+  }
+
+  &__statistics-box {
+    padding: $spacing_2_4;
+    margin-bottom: $spacing_3_2;
+
+    &__disclaimer {
+      display: flex;
+      align-items: center;
+      margin-top: $spacing_1_6;
+      & .icon {
+        margin-right: $spacing_1_2;
+      }
+      & p {
+        color: $color_red_eb5757 !important;
+      }
+    }
+  }
+
   &__statistics-grid {
     margin-top: $spacing_3_2;
     padding-bottom: $spacing_2_4;
@@ -48,15 +69,58 @@
     margin-inline: auto;
   }
 
-  &__dropdown {
+  &__filter-button {
+    // margin-top: $spacing_2_4;
     margin-inline: auto;
-    margin-top: $spacing_4_8;
-    text-align: left;
-    width: fit-content;
 
     @media screen and (min-width: $screen_md) {
+      margin-left: auto;
       margin-inline: unset;
     }
+  }
+
+  &__filters-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: $spacing_1_2;
+    margin-top: $spacing_4_8;
+
+    @media screen and (min-width: $screen_md) {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &__active-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing_1_2;
+    margin-top: $spacing_1_6;
+    justify-content: flex-start;
+
+    @media screen and (min-width: $screen_md) {
+      margin-top: unset;
+    }
+  }
+
+  &__filters-grid {
+    margin-top: $spacing_2_4;
+
+    & .date-input__container {
+      margin-top: $spacing_2_4;
+      margin-inline: auto;
+
+      @media screen and (min-width: $screen_lg) {
+        margin-inline: unset;
+        margin-top: $spacing_4_8;
+      }
+    }
+  }
+
+  &__dropdown {
+    margin-inline: auto;
+    text-align: left;
+    width: fit-content;
   }
 
   & .table__container {
