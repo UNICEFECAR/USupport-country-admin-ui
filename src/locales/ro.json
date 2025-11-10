@@ -925,7 +925,26 @@
       "joinConsultationClick_info": "Numărul total de clicuri pe butonul „Alătură-te consultației” pe portalul web",
       "mobileJoinConsultationClick_info": "Numărul total de clicuri pe butonul „Alătură-te consultației” în aplicația mobilă",
       "positiveClientRatings_info": "Numărul total de evaluări pozitive oferite de clienți",
-      "positiveProviderRatings_info": "Numărul total de evaluări pozitive oferite de furnizori"
+      "positiveProviderRatings_info": "Numărul total de evaluări pozitive oferite de furnizori",
+
+      "filters": "Filtre",
+      "apply_filters": "Aplicați filtrele",
+      "sex_label": "Sex",
+      "sex_placeholder": "Selectați sexul",
+      "sex_male": "Masculin",
+      "sex_female": "Feminin",
+      "sex_unspecified": "Nespecificat",
+      "place_of_living_label": "Locul de trai",
+      "place_of_living_placeholder": "Selectați locul de trai",
+      "place_of_living_urban": "Urban",
+      "place_of_living_rural": "Rural",
+      "year_of_birth_label": "Anul nașterii",
+      "year_of_birth_placeholder": "Selectați anul nașterii",
+      "consultations": "Consultații",
+      "visits": "Vizite",
+      "button_clicks": "Clicuri butoane",
+      "users": "Utilizatori",
+      "data_cannot_be_filtered": "Aceste date nu pot fi filtrate demografic. Sunt generate pe baza datelor anonime"
     },
     "sos-center-clicks": {
       "sos_center": "SOS Center",
