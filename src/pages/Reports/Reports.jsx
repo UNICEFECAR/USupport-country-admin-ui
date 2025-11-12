@@ -29,6 +29,7 @@ import "./reports.scss";
 export const Reports = () => {
   const { t } = useTranslation("pages", { keyPrefix: "reports-page" });
 
+  const localStorageCountry = localStorage.getItem("country");
   const [options, setOptions] = useState([
     { label: t("consultations"), value: "consultations", isSelected: false },
     {
@@ -44,11 +45,15 @@ export const Reports = () => {
       value: "sos_center_clicks",
       isSelected: true,
     },
-    {
-      label: t("providers_free_slots"),
-      value: "providers_free_slots",
-      isSelected: false,
-    },
+    ...(localStorageCountry === "RO"
+      ? []
+      : [
+          {
+            label: t("providers_free_slots"),
+            value: "providers_free_slots",
+            isSelected: false,
+          },
+        ]),
   ]);
 
   const handleTabSelect = (index) => {
