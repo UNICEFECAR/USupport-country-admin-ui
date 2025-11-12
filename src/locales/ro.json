@@ -826,6 +826,7 @@
 
       "totalConsultations": "Total consultații",
       "totalConsultations_unique_count": "Clienți unici",
+      "lateCancelledConsultations": "Consultații anulate târziu",
       "cancelledConsultations": "Consultații anulate",
       "scheduledConsultations": "Consultații programate - Web",
       "mobileScheduledConsultations": "Consultații programate - Mobil",
@@ -895,10 +896,11 @@
 
       "globalWebsiteVisits_info": "Numărul total de vizite pe site-ul global („usupport.online”)",
       "cancelledConsultations_info": "Consultații anulate înainte de a fi efectuate",
-      "totalConsultations_info": "Numărul total de consultații programate pe platformă",
-      "mobileScheduledConsultations_info": "Consultații programate în aplicația mobilă",
+      "lateCancelledConsultations_info": "Consultații anulate cu mai puțin de 24 de ore înainte de ora programată",
+      "totalConsultations_info": "Numărul total de consultații programate pe platformă. Acest indicator include consultațiile anulate și cele anulate târziu",
+      "mobileScheduledConsultations_info": "Consultații programate în aplicația mobilă. Acest indicator NU include consultațiile anulate sau anulate târziu",
       "clientsAttendedConsultations_info": "Clienți care au participat la consultații",
-      "scheduledConsultations_info": "Consultații programate pe portalul web",
+      "scheduledConsultations_info": "Consultații programate pe portalul web. Acest indicator NU include consultațiile anulate sau anulate târziu",
       "scheduleButtonClick_info": "Numărul de clicuri pe butonul „Programează consultația” pe portalul web",
       "mobileScheduleButtonClick_info": "Numărul de clicuri pe butonul „Programează consultația” în aplicația mobilă",
       "totalCouponConsultations_info": "Consultații programate folosind un cupon",

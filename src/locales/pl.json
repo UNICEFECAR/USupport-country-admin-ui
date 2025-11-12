@@ -837,6 +837,7 @@
 
       "totalConsultations": "Wszystkie konsultacje",
       "totalConsultations_unique_count": "Unikalni klienci",
+      "lateCancelledConsultations": "Późno anulowane konsultacje",
       "cancelledConsultations": "Anulowane konsultacje",
       "scheduledConsultations": "Zaplanowane konsultacje - Web",
       "mobileScheduledConsultations": "Zaplanowane konsultacje - Mobile",
@@ -905,10 +906,11 @@
 
       "globalWebsiteVisits_info": "Łączna liczba wizyt na globalnej stronie („usupport.online”)",
       "cancelledConsultations_info": "Konsultacje anulowane przed ich przeprowadzeniem",
-      "totalConsultations_info": "Łączna liczba zaplanowanych konsultacji na platformie",
-      "mobileScheduledConsultations_info": "Konsultacje zaplanowane w aplikacji mobilnej",
-      "clientsAttendedConsultations_info": "Klienci, którzy uczestniczyli w konsultacjach",
-      "scheduledConsultations_info": "Konsultacje zaplanowane w portalu internetowym",
+      "lateCancelledConsultations_info": "Konsultacje, które zostały anulowane mniej niż 24 godziny przed planowanym rozpoczęciem",
+      "totalConsultations_info": "Łączna liczba zaplanowanych konsultacji na platformie. Ten wskaźnik obejmuje anulowane i późno anulowane konsultacje",
+      "mobileScheduledConsultations_info": "Konsultacje zaplanowane w aplikacji mobilnej. Ten wskaźnik NIE obejmuje anulowanych ani późno anulowanych konsultacji",
+      "clientsAttendedConsultations_info": "Klienci, którzy dołączyli do konsultacji",
+      "scheduledConsultations_info": "Konsultacje zaplanowane w portalu internetowym. Ten wskaźnik NIE obejmuje anulowanych ani późno anulowanych konsultacji",
       "scheduleButtonClick_info": "Kliknięcia przycisku „Zaplanuj konsultację” w portalu internetowym",
       "mobileScheduleButtonClick_info": "Kliknięcia przycisku „Zaplanuj konsultację” w aplikacji mobilnej",
       "totalCouponConsultations_info": "Konsultacje zaplanowane z użyciem kuponu",
