@@ -46,7 +46,7 @@
     },
     "articles": {
       "no_results": "Не знайдено результатів, спробуй вибрати іншу мову.",
-      "view_button": "User@mail.com",
+      "view_button": "Переглянути",
       "article_added": "Статтю додано",
       "article_removed": "Статтю видалено",
       "published": "Опубліковано",
@@ -58,7 +58,8 @@
       "no_data_found": "Даних не знайдено",
       "created_at": "Створено в",
       "likes": "Лайки",
-      "dislikes": "Дизлайки"
+      "dislikes": "Дизлайки",
+      "views": "Перегляди"
     },
     "faq": {
       "no_results": "Не знайдено результатів, спробуй вибрати іншу мову.",
@@ -965,7 +966,13 @@
       "error_loading_analysis": "Помилка завантаження даних аналізу",
       "start_date": "Дата початку",
       "end_date": "Дата завершення",
-      "reset_filters": "Скинути фільтри"
+      "reset_filters": "Скинути фільтри",
+      "select_start_date": "Виберіть дату початку",
+      "select_end_date": "Виберіть дату завершення",
+      "above_count": "Клієнтів вище високого порогу",
+      "below_count": "Клієнтів нижче низького порогу",
+      "recommended_below": "Рекомендовано нижче порогу для 25%:",
+      "recommended_above": "Рекомендовано вище порогу для 25%:"
     },
     "sos-center-clicks": {
       "sos_center": "Центри SOS",
@@ -974,9 +981,7 @@
       "web": "Веб",
       "client": "Клієнт",
       "clicked_at": "Клікнуто {{time}} з платформи {{platform}}",
-      "floating_button": "Головна кнопка",
-      "recommended_below": "Рекомендовано нижче порогу для 25%:",
-      "recommended_above": "Рекомендовано вище порогу для 25%:"
+      "floating_button": "Головна кнопка"
     },
     "providers-free-slots": {
       "heading": "Створити звіт про вільні слоти консультантів",
@@ -1013,6 +1018,12 @@
   },
 
   "pages": {
+    "pl-statistics-page": {
+      "heading": "Статистика",
+      "web_visits": "Загальна кількість відвідувань",
+      "qr_visits": "Відвідування за QR",
+      "no_data": "Даних не знайдено"
+    },
     "not-found-page": {
       "heading": "Ой! Ми не можемо знайти сторінку, яку ти шукаєш...",
       "subheading": "Здається, ця сторінка відсутня або наразі недоступна.",
