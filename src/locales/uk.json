@@ -10,28 +10,25 @@
       "page_7": "Купони",
       "page_8": "Мої Q&A",
       "page_9": "Організації",
-      "page_10": "Базова оцінка",
-
+      "button_text": "Вийди з системи",
+      "contact_us": "Зв'яжися з нами",
+      "your_profile_text": "Твій профіль",
+      "password_placeholder": "Пароль",
+      "password": "Введи пароль",
+      "wrong_password": "Пароль є невірним",
+      "submit": "Надішли",
+      "statistics": "Статистика",
       "country_1": "",
       "country_2": "",
       "country_3": "",
-
       "language_1": "",
       "language_2": "",
       "language_3": "",
       "language_4": "",
       "language_5": "",
       "language_6": "",
-
-      "button_text": "Вийди з системи",
-      "contact_us": "Зв'яжися з нами",
-      "your_profile_text": "Твій профіль",
-
-      "password_placeholder": "Пароль",
-      "password": "Введи пароль",
-      "wrong_password": "Пароль є невірним",
-      "submit": "Надішли",
-      "statistics": "Статистика"
+      "page_10": "Базова оцінка",
+      "page_11": "Mood Tracker"
     },
     "statistics": {
       "statistics": "Статистика",
@@ -54,7 +51,8 @@
       "no_data_found": "Даних не знайдено",
       "created_at": "Створено в",
       "likes": "Лайки",
-      "dislikes": "Дизлайки"
+      "dislikes": "Дизлайки",
+      "views": "Views"
     },
     "faq": {
       "no_results": "Не знайдено результатів, спробуй вибрати іншу мову.",
@@ -137,24 +135,19 @@
       "surname_label": "Прізвище",
       "email_label": "Електронна пошта",
       "phone_label": "Телефон",
-
       "name_placeholder": "Введи своє ім'я",
       "surname_placeholder": "Введи своє прізвище",
       "email_placeholder": "user@mail.com",
       "phone_prefix_placeholder": "Код країни",
       "phone_placeholder": "Номер телефону",
-
       "name_error": "Ім'я є обов'язковим",
       "surname_error": "Прізвище є обов'язковим",
       "email_error": "Електронна пошта є обов'язковою",
       "phone_prefix_error": "Телефонний код є обов'язковою",
       "phone_error": "Номер телефону є обов'язковим",
-
       "button_text": "Збережи зміни",
       "button_secondary_text": "Скасуй зміни",
-
       "edit_success": "Профіль оновлено",
-
       "search": "Пошук",
       "no_data_found": "Даних не знайдено",
       "button_change_password": "Зміни пароль"
@@ -179,7 +172,6 @@
       "deactivate": "Деактивуй",
       "provider_activated": "Консультанта/ку активовано",
       "provider_deactivated": "Консультанта/ку деактивовано",
-
       "filter_providers": "Фільтруй консультантів",
       "min_price": "Мінімальна ціна",
       "status": "Статус",
@@ -190,7 +182,6 @@
       "all": "Усі",
       "apply_filter": "Застосуй фільтри",
       "reset_filter": "Скинь фільтрів",
-
       "name": "Ім'я",
       "email": "Електронна пошта",
       "price": "Ціна",
@@ -199,7 +190,8 @@
       "view": "Перегляд",
       "edit": "Редагуй",
       "search": "Пошук",
-      "organizations": "Організації"
+      "organizations": "Організації",
+      "modal_heading": ""
     },
     "edit-provider": {
       "name_label": "Ім'я",
@@ -219,7 +211,6 @@
       "change_photo": "Змінити фото",
       "work_with_label": "Робота з категорією",
       "video_link_label": "Відеопрезентація",
-
       "name_placeholder": "Введи ім'я",
       "patronym_placeholder": "Введи по батькові",
       "surname_placeholder": "Введи прізвище",
@@ -233,16 +224,13 @@
       "consultation_price_placeholder": "Ціна консультації",
       "description_placeholder": "Введи опис",
       "video_link_placeholder": "https://video.link",
-
       "sex_male": "Чоловік",
       "sex_female": "Жінка",
       "sex_unspecified": "Не визначено",
       "sex_none": "Не хочу вказувати",
-
       "psychologist": "Психолог/иня",
       "psychiatrist": "Психіатр/иня",
       "psychotherapist": "Психотерапевт/ка",
-
       "name_error": "Ім'я є обов'язковим",
       "surname_error": "Прізвище є обов'язковим",
       "nickname_error": "Нікнейм є обов'язковим",
@@ -255,23 +243,19 @@
       "consultation_price_error": "Ціна консультації має бути невід'ємним числом",
       "min_price_error": "Мінімальна ціна консультації становить {{minPrice}}{{currencySymbol}}",
       "consultation_price_disabled": "Проведення платних консультацій для твоєї країни неможливе",
-
       "specializations_error": "Вибери хоча б одну спеціалізацію",
       "work_with_error": "Вибери хоча б одну категорію",
       "languages_error": "Вибери хоча б одну мову",
       "education_error": "Освіта є обов'язковою",
       "description_error": "Опис є обов'язковим",
       "sex_error": "Вибери свою стать",
-
       "add_more_languages": "Додай більше мов",
       "add_more_work_with": "Додай більше категорій",
       "add_more_education": "Додай більше",
       "add_more_specializations": "Додай більше спеціалізацій",
-
       "button_text": "Збережи зміни",
       "button_secondary_text": "Скасуй зміни",
       "create_button_text": "Створи консультанта/ку",
-
       "addiction": "Залежність",
       "stress": "Стрес",
       "burnout": "Вигорання і стрес пов'язаний з навчанням",
@@ -303,10 +287,8 @@
       "love": "Кохання та романтичні стосунки",
       "social_skills": "Соціальні навички та дружба",
       "body_image": "Образ тіла та самооцінка",
-
       "edit_success": "Профіль оновлено",
       "create_success": "Консультанта/ку створено",
-
       "search": "Пошук",
       "no_data_found": "Даних не знайдено",
       "select": "Вибери",
@@ -321,7 +303,6 @@
       "work_with_label": "Спеціальності",
       "specializations_label": "Спеціалізації",
       "done_consultations_label": "Проведені консультації",
-      "consultations": "Консультації",
       "description_label": "Про мене",
       "edit_details": "Редагуй дані",
       "no_available_slot": "Немає вільного часового слоту",
@@ -329,11 +310,9 @@
       "city_label": "Населений пункт",
       "street_label": "Вулиця",
       "postcode_label": "Поштовий індекс",
-
       "psychologist": "Психолог/иня",
       "psychiatrist": "Психіатр/иня",
       "psychotherapist": "Психотерапевт/ка",
-
       "addiction": "Залежність",
       "stress": "Управління стресом",
       "burnout": "Вигорання і стрес пов'язаний з навчанням",
@@ -365,10 +344,10 @@
       "love": "Кохання та романтичні стосунки",
       "social_skills": "Соціальні навички та дружба",
       "body_image": "Образ тіла та самооцінка",
-
       "hour_consultation": "за 1 годину консультації",
       "organizations_label": "Організації",
-      "free": "безкоштовно"
+      "free": "безкоштовно",
+      "consultations": "Консультації"
     },
     "security-check": {
       "heading": "Звіти з питань консультацій",
@@ -394,7 +373,6 @@
       "no": "Ні",
       "no_results": "Звіти про перевірку безпеки відсутні",
       "search": "Пошук",
-
       "very_satisfied": "Дуже задоволений/а",
       "satisfied": "Задоволений/а",
       "neutral": "Нейтрально",
@@ -417,7 +395,7 @@
       "search": "Пошук",
       "suggestion_type": "Тип пропозиції",
       "all": "Всі",
-      "information_portal": "Інформаційний портал",
+      "information_portal": "Знання",
       "my_qa": "Мій Q&A",
       "consultations": "Консультації",
       "organizations": "Організації",
@@ -433,19 +411,18 @@
       "rating": "Оцінка",
       "time": "Час",
       "content_heading": "Зворотний зв'язок",
-
       "filters": "Фільтри",
       "filter": "Фільтр",
       "minimum_rating": "Мінімальна оцінка",
       "all": "Всі оцінки",
-      "client_ratings": "Рейтинги клієнтів",
-      "provider_ratings": "Рейтинги консультантів",
       "starting_date": "Дата початку",
       "ending_date": "Дата закінчення",
       "submit": "Застосуй фільтри",
       "reset_filters": "Скинь фільтри",
       "no_results": "Не знайдено жодної оцінки",
       "search": "Пошук",
+      "client_ratings": "Рейтинги клієнтів",
+      "provider_ratings": "Рейтинги консультантів",
       "from_client": "Від клієнта",
       "from_provider": "Від консультанта",
       "user_type": "Тип користувача",
@@ -495,6 +472,11 @@
       "reset_filter": "Скинь фільтрів",
       "search": "Пошук",
       "no_data_found": "Даних не знайдено",
+      "status": "",
+      "finished": "",
+      "late-canceled": "",
+      "scheduled": "",
+      "active": "",
       "organization": "Організація",
       "dates_placeholder": "ДД.ММ.РРРР"
     },
@@ -527,18 +509,15 @@
       "phone_placeholder": "Введи номер телефону",
       "phone_prefix_placeholder": "Код країни",
       "create_sponsor": "Створи спонсора",
-
       "sponsor_error": "Назва спонсора є обов'язковою",
       "email_error": "Електронна пошта є обов'язковою",
       "phone_prefix_error": "Код країни є обов'язковим",
       "phone_error": "Номер телефону є обов'язковим",
-
       "save_changes": "Збережи зміни",
       "discard_changes": "Скасуй зміни",
       "delete_sponsor": "Видали спонсора",
       "edit_success": "Зміни збережено",
       "success": "Спонсора створено",
-
       "search": "Пошук",
       "no_data_found": "Даних не знайдено"
     },
@@ -584,7 +563,6 @@
       "end_date_label": "Дата закінчення",
       "max_coupons_per_client_label": "Максимум купонів на одного/у клієнта/ку",
       "terms_label": "Умови використання",
-
       "name_placeholder": "Назва кампанії",
       "budget_placeholder": "Введи загальний бюджет",
       "coupon_code_placeholder": "Введи код купона",
@@ -593,13 +571,11 @@
       "max_coupons_per_client_placeholder": "Максимум купонів на одного/у клієнта/ку",
       "terms_placeholder": "Напиши умови й положення використання",
       "budget_info": "Вартість за одну консультації становить",
-
       "required_field": "Поле для заповнення є обов'язковим",
       "budget_error": "Бюджет повинен бути додатним числом",
       "start_date_error": "Дата початку кампанії має бути датою в майбутнього",
       "end_date_error": "Дата завершення кампанії має бути датою з майбутнього",
       "period_error": "Дата закінчення має бути після дати початку",
-
       "create_campaign": "Створи кампанію",
       "save_changes": "Збережи зміни",
       "discard_changes": "Скасуй зміни",
@@ -672,10 +648,10 @@
       "answer_by": "Відповів/ла",
       "no_data_found": "Даних не знайдено",
       "all": "Усі мови",
-      "all_languages": "Усі мови",
       "read_more": "Читай далі",
       "Today": "Сьогодні",
       "language": "Мова",
+      "all_languages": "Усі мови",
       "filter": "Фільтр"
     },
     "organizations": {
@@ -684,7 +660,6 @@
       "unique_providers": "Всього консультантів",
       "unique_clients": "Всього клієнтів",
       "add_button": "Додай організацію",
-      "search": "Пошук",
       "filter_button": "Фільтруй",
       "view": "Переглянь",
       "edit": "Редагуй",
@@ -695,6 +670,7 @@
       "organization_added": "Організацію створено",
       "organization_updated": "Організацію оновлено",
       "no_data_found": "Даних не знайдено",
+      "search": "Пошук",
       "name_placeholder": "Введіть назву організації",
       "website": "URL веб-сайту",
       "website_placeholder": "Введіть URL веб-сайту",
@@ -716,7 +692,6 @@
       "email": "Електронна пошта",
       "email_placeholder": "Введіть електронну пошту",
       "cancel": "Скасувати",
-
       "work_with": "Працювати з",
       "work_with_placeholder": "Виберіть категорії співпраці",
       "district": "Сектор",
@@ -729,17 +704,14 @@
       "specialisations_placeholder": "Виберіть надані послуги",
       "property_types": "Тип власності",
       "property_types_placeholder": "Виберіть типи власності",
-
       "in_person_interaction": "Особисто",
       "online_interaction": "Онлайн",
       "phone_interaction": "Телефон",
       "hybrid_interaction": "Гібридний",
-
       "free_services": "Безкоштовні послуги",
       "paid_services": "Платні послуги",
       "co_payment_services": "Послуги зі співоплатою",
       "cnas_reimbursed_services": "Послуги, відшкодовані CNAS",
-
       "emergency_situations": "Надзвичайні ситуації",
       "pediatric_psychiatry": "Дитяча психіатрія",
       "psychological_evaluation": "Психологічна оцінка",
@@ -758,7 +730,6 @@
       "pediatric_neurology": "Дитяча неврологія",
       "special_psychopedagogy": "Спеціальна психопедагогіка",
       "neuropsychomotor_recovery": "Нейропсихомоторна реабілітація",
-
       "aggression_violence_victim_or_aggressor": "Агресія/насильство – жертва або агресор",
       "learning_difficulties_special_educational_needs": "Труднощі в навчанні/спеціальні освітні потреби",
       "behavioral_disorder": "Поведінкові розлади",
@@ -768,7 +739,6 @@
       "identity_issues": "Проблеми ідентичності",
       "illness_oncological_treatment_chronic_diseases": "Хвороби (онкологічне лікування, хронічні захворювання)",
       "other_situations": "Інші ситуації",
-
       "public": "Державний",
       "private": "Приватний",
       "ong": "НУО",
@@ -783,7 +753,6 @@
       "child_psychiatry": "Дитяча психіатрія",
       "art_recreational_activities": "Мистецькі дозвіллєві заняття (театр, музика, поезія, живопис, оповідання)",
       "sport_recreational_activities": "Спортивні дозвіллєві заняття (спортивні ігри, танці)",
-
       "delete_label": "Видалити",
       "delete_heading": "Ви впевнені, що хочете видалити організацію: {{name}}?",
       "delete_subheading": "Ця дія незворотна.",
@@ -811,7 +780,6 @@
     "analytics": {
       "content_tab_label": "Метрики контенту",
       "general_tab_label": "Загальні метрики",
-
       "category_name": "Назва категорії",
       "views": "Перегляди",
       "downloads": "Завантаження",
@@ -820,70 +788,37 @@
       "engagement_score": "Оцінка залученості",
       "likes": "Вподобання",
       "dislikes": "Невподобання",
-
       "search": "Пошук",
       "export_label": "Експортувати дані як CSV",
       "no_data_found": "Дані не знайдені",
-
-      "globalWebsiteVisits": "Globalne відвідування сайту",
-      "globalWebsiteVisits_unique_count": "Унікальні відвідувачі",
-
       "totalConsultations": "Усього консультацій",
-      "totalConsultations_unique_count": "Унікальні клієнти",
-      "cancelledConsultations": "Скасовані консультації",
-      "scheduledConsultations": "Заплановані консультації - Веб",
-      "mobileScheduledConsultations": "Заплановані консультації - Мобільні",
-
-      "scheduleButtonClick": "Натискання 'Записатися' - Веб",
-      "mobileScheduleButtonClick": "Натискання 'Записатися' - Мобільні",
-      "clientsAttendedConsultations": "Клієнти, що відвідали",
-
-      "totalCouponConsultations": "Консультації за купоном",
-      "totalCouponConsultations_unique_count": "Унікальні клієнти",
-      "totalProviders": "Усі провайдери",
-      "activeProviders": "Активні провайдери",
-
-      "allClients": "Усі клієнти",
+      "uniqueClientsConsultations": "Консультації окремих клієнтів",
       "activeClients": "Активні клієнти",
-
+      "activeProviders": "Активні провайдери",
       "totalWebsiteAccess": "Відвідування сайту",
-      "uniqueWebsiteAccess": "Унікальні відвідування сайту",
-
       "totalClientAccess": "Відвідування порталу клієнтів",
-      "uniqueClientAccess": "Унікальні відвідування клієнтів",
-
       "totalProviderAccess": "Відвідування порталу провайдерів",
+      "uniqueWebsiteAccess": "Унікальні відвідування сайту",
+      "uniqueClientAccess": "Унікальні відвідування клієнтів",
       "uniqueProviderAccess": "Унікальні відвідування провайдерів",
-
-      "totalMobileAccess": "Відвідування мобільного додатка",
-      "uniqueMobileAccess": "Унікальні відвідування мобільного",
-
-      "emailRegisterClick": "Клік реєстрації email - Веб",
-      "mobileEmailRegisterClick": "Клік реєстрації email - Мобільні",
-
-      "anonymousRegisterClick": "Клік анонімної реєстрації - Веб",
-      "mobileAnonymousRegisterClick": "Клік анонімної реєстрації - Мобільні",
-
-      "guestRegisterClick": "Клік гостьової реєстрації - Веб",
-      "mobileGuestRegisterClick": "Клік гостьової реєстрації - Мобільні",
-
-      "joinConsultationClick": "Клік приєднання - Веб",
-      "mobileJoinConsultationClick": "Клік приєднання - Мобільні",
-
+      "uniqueClientsThatUsedCoupon": "Клієнти, які використали купон",
+      "totalCouponConsultations": "Консультації за купоном",
       "positiveClientRatings": "Додатні оцінки клієнтів",
       "positiveProviderRatings": "Додатні оцінки консультантів",
-
       "content_type": "Тип контенту",
       "all": "Всі",
       "articles": "Статті",
       "videos": "Відео",
       "podcasts": "Подкасти",
+      "totalMobileAccess": "Відвідування мобільного додатка",
+      "uniqueMobileAccess": "Унікальні відвідування мобільного",
+      "totalConsultations_unique_count": "Унікальні клієнти",
+      "totalCouponConsultations_unique_count": "Унікальні клієнти",
       "start_date": "Дата початку",
       "end_date": "Дата закінчення",
       "reset": "Скинути фільтри",
       "select_start_date": "Виберіть дату початку",
       "select_end_date": "Виберіть дату закінчення",
-
       "year_of_birth": "Рік народження",
       "urban_rural": "Місто/сільська місцевість",
       "sex": "Стать",
@@ -894,7 +829,35 @@
       "unspecified": "Не вказано",
       "not_mentioned": "Не вказано",
       "rural": "Сільська місцевість",
-      "urban": "Місто"
+      "urban": "Місто",
+      "globalWebsiteVisits": "Globalne відвідування сайту",
+      "globalWebsiteVisits_unique_count": "Унікальні відвідувачі",
+      "cancelledConsultations": "Скасовані консультації",
+      "scheduledConsultations": "Заплановані консультації - Веб",
+      "mobileScheduledConsultations": "Заплановані консультації - Мобільні",
+      "scheduleButtonClick": "Натискання 'Записатися' - Веб",
+      "mobileScheduleButtonClick": "Натискання 'Записатися' - Мобільні",
+      "clientsAttendedConsultations": "Клієнти, що відвідали",
+      "totalProviders": "Усі провайдери",
+      "allClients": "Усі клієнти",
+      "emailRegisterClick": "Клік реєстрації email - Веб",
+      "mobileEmailRegisterClick": "Клік реєстрації email - Мобільні",
+      "anonymousRegisterClick": "Клік анонімної реєстрації - Веб",
+      "mobileAnonymousRegisterClick": "Клік анонімної реєстрації - Мобільні",
+      "guestRegisterClick": "Клік гостьової реєстрації - Веб",
+      "mobileGuestRegisterClick": "Клік гостьової реєстрації - Мобільні",
+      "joinConsultationClick": "Клік приєднання - Веб",
+      "mobileJoinConsultationClick": "Клік приєднання - Мобільні",
+      "missing": "N/A"
+    },
+    "sos-center-clicks": {
+      "sos_center": "Центри SOS",
+      "click_count": "Всього кліків",
+      "history": "Історія",
+      "web": "Веб",
+      "client": "Клієнт",
+      "clicked_at": "Клікнуто {{time}} з платформи {{platform}}",
+      "floating_button": "Головна кнопка"
     },
     "baseline-assessment-thresholds": {
       "title": "Пороги базової оцінки",
@@ -914,7 +877,7 @@
       "analysis_title": "Аналіз даних оцінки",
       "analysis_description": "Статистичний аналіз завершених базових оцінок зі значеннями медіани для кожного фактора.",
       "total_assessments": "Всього оцінок",
-      "total_answers": "Всього відповідей",
+      "total_questions": "Всього питань",
       "median_value": "Значення медіани",
       "data_split_info": "Дані було розділено на дві групи для аналізу:",
       "first_half": "Перша половина",
@@ -924,16 +887,12 @@
       "error_loading_analysis": "Помилка завантаження даних аналізу",
       "start_date": "Дата початку",
       "end_date": "Дата завершення",
-      "reset_filters": "Скинути фільтри"
-    },
-    "sos-center-clicks": {
-      "sos_center": "Центри SOS",
-      "click_count": "Всього кліків",
-      "history": "Історія",
-      "web": "Веб",
-      "client": "Клієнт",
-      "clicked_at": "Клікнуто {{time}} з платформи {{platform}}",
-      "floating_button": "Головна кнопка"
+      "reset_filters": "Скинути фільтри",
+      "above_count": "Clients above high",
+      "below_count": "Clients below low",
+      "select_start_date": "Select start date",
+      "select_end_date": "Select end date",
+      "total_answers": "Всього відповідей"
     },
     "providers-free-slots": {
       "heading": "Створити звіт про вільні слоти консультантів",
@@ -960,10 +919,17 @@
       "sad": "Засмученим/ою",
       "depressed": "Пригніченим/ою",
       "worried": "Схвильованим/ою",
-      "reset_filters": "Скинути фільтри"
+      "reset_filters": "Скинути фільтри",
+      "critical_entries": "Critical entries",
+      "critical_count": "Critical count"
+    },
+    "pl-statistics-page": {
+      "heading": "Statistics",
+      "web_visits": "Total visits",
+      "qr_visits": "QR visits",
+      "no_data": "No data found"
     }
   },
-
   "pages": {
     "not-found-page": {
       "heading": "Ой! Ми не можемо знайти сторінку, яку ти шукаєш...",
@@ -1012,16 +978,13 @@
       "consultations_tab_label": "Запитання щодо консультацій",
       "suggestions_tab_label": "Пропозиції щодо платформи",
       "ratings_tab_label": "Оцінки клієнтів",
+      "provider_ratings_tab_label": "",
       "contact_form_tab_label": "Оціна консультанта/ки",
       "filter": "Фільтр",
       "heading": "Звіти",
       "my_qa_tab_label": "Мій архів запитань і відповідей",
       "sos_center_clicks_tab_label": "Центри SOS",
       "providers_free_slots_tab_label": "Вільні слоти консультантів"
-    },
-    "mood-tracker-report-page": {
-      "heading": "Звіт трекера настрою",
-      "description": "Відфільтруйте за діапазоном дат, щоб дослідити використання трекера настрою у вашій країні."
     },
     "campaigns-page": {
       "heading": "Список спонсорів"
@@ -1097,6 +1060,14 @@
       "no_data_found": "Даних не знайдено",
       "search": "Пошук"
     },
+    "analytics-page": {
+      "heading": "Аналітика",
+      "ro": "Румунія",
+      "kz": "Казахстан",
+      "ua": "Україна",
+      "pl": "Польща",
+      "am": "Вірменія"
+    },
     "content-management-page": {
       "title": "Управління контентом",
       "articles": "Статті",
@@ -1126,19 +1097,14 @@
       "podcasts_active": "Активація модуля підкастів",
       "save_success": "Збережено успішно"
     },
-    "analytics-page": {
-      "heading": "Аналітика",
-      "ro": "Румунія",
-      "kz": "Казахстан",
-      "ua": "Україна",
-      "pl": "Польща",
-      "am": "Вірменія"
-    },
     "baseline-assessment-page": {
       "heading": "Базисний аналіз"
+    },
+    "mood-tracker-report-page": {
+      "heading": "Звіт трекера настрою",
+      "description": "Відфільтруйте за діапазоном дат, щоб дослідити використання трекера настрою у вашій країні."
     }
   },
-
   "modals": {
     "upload-picture": {
       "heading": "Зміни фото профілю",
@@ -1206,7 +1172,6 @@
       "password_match_error": "Поля \"Новий пароль\" і \"Підтвердь пароль\" не збігаються"
     }
   },
-
   "routes": {
     "root": {
       "heading": "Ти ще тут?",
