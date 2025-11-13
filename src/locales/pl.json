@@ -10,28 +10,25 @@
       "page_7": "Kupony",
       "page_8": "Moje Q&A",
       "page_9": "Organizacje",
-      "page_10": "Ocena bazowa",
-
+      "button_text": "Wyloguj",
+      "contact_us": "Skontaktuj się z nami",
+      "your_profile_text": "Twój profil",
+      "password_placeholder": "Hasło",
+      "password": "Proszę wprowadź hasło",
+      "wrong_password": "Nieprawidłowe hasło",
+      "submit": "Wyślij",
+      "statistics": "Statystyka",
       "country_1": "",
       "country_2": "",
       "country_3": "",
-
       "language_1": "",
       "language_2": "",
       "language_3": "",
       "language_4": "",
       "language_5": "",
       "language_6": "",
-
-      "button_text": "Wyloguj",
-      "contact_us": "Skontaktuj się z nami",
-      "your_profile_text": "Twój profil",
-
-      "password_placeholder": "Hasło",
-      "password": "Proszę wprowadź hasło",
-      "wrong_password": "Nieprawidłowe hasło",
-      "submit": "Wyślij",
-      "statistics": "Statystyka"
+      "page_10": "Ocena bazowa",
+      "page_11": "Mood Tracker"
     },
     "statistics": {
       "statistics": "Statystyki",
@@ -54,7 +51,8 @@
       "no_data_found": "Nie znaleziono danych",
       "created_at": "Utworzono w",
       "likes": "Sympatie",
-      "dislikes": "Antypatie"
+      "dislikes": "Antypatie",
+      "views": "Views"
     },
     "faq": {
       "no_results": "Nie znaleziono wyników, spróbuj użyć innego języka.",
@@ -137,24 +135,19 @@
       "surname_label": "-",
       "email_label": "Email",
       "phone_label": "Telefon",
-
       "name_placeholder": "Wpisz swoje imię",
       "surname_placeholder": "Wpisz swoje nazwisko",
       "email_placeholder": "user@mail.com",
       "phone_prefix_placeholder": "Prefiks",
       "phone_placeholder": "Numer telefonu",
-
       "name_error": "Imię jest wymagane",
       "surname_error": "Nazwisko jest wymagane",
       "email_error": "Adres email jest wymagany",
       "phone_prefix_error": "Prefiks telefonu jest wymagany",
       "phone_error": "Numer telefonu jest wymagany",
-
       "button_text": "Zapisz zmiany",
       "button_secondary_text": "Odrzuć zmiany",
-
       "edit_success": "Profil został pomyślnie zaktualizowany",
-
       "search": "Wyszukiwanie",
       "no_data_found": "Nie znaleziono danych",
       "button_change_password": "Zmień hasło"
@@ -179,7 +172,6 @@
       "deactivate": "Dezaktywuj",
       "provider_activated": "Konsultant/ka został pomyślnie aktywowany/a",
       "provider_deactivated": "Konsultant został pomyślnie dezaktywowany/a",
-
       "filter_providers": "Filtruj konsultantów",
       "min_price": "Cena minimalna",
       "status": "Status",
@@ -190,7 +182,6 @@
       "all": "Wszystkie",
       "apply_filter": "Zastosuj filtry",
       "reset_filter": "Zresetuj filtry",
-
       "name": "Imię",
       "email": "Email",
       "price": "Cena",
@@ -199,11 +190,12 @@
       "view": "Podgląd",
       "edit": "Edytuj",
       "search": "Wyszukiwanie",
-      "organizations": "Organizacje"
+      "organizations": "Organizacje",
+      "modal_heading": ""
     },
     "edit-provider": {
       "name_label": "Imię",
-      "patronym_label": "",
+      "patronym_label": "Patronym",
       "surname_label": "Nazwisko",
       "sex_label": "Płeć",
       "email_label": "Email",
@@ -219,7 +211,6 @@
       "change_photo": "Zmień zdjęcie",
       "work_with_label": "Praca z kategorią",
       "video_link_label": "Prezentacja wideo",
-
       "name_placeholder": "Wprowadź imię",
       "patronym_placeholder": "Wprowadź swoje drugie imię",
       "surname_placeholder": "Wpisz nazwisko",
@@ -233,16 +224,13 @@
       "consultation_price_placeholder": "Cena konsultacji",
       "description_placeholder": "Wprowadź opis",
       "video_link_placeholder": "https://video.link",
-
       "sex_male": "Mężczyzna",
       "sex_female": "Kobieta",
       "sex_unspecified": "Nieokreślony",
       "sex_none": "Wolę nie mówić",
-
       "psychologist": "Psycholog",
       "psychiatrist": "Psychiatra",
       "psychotherapist": "Psychoterapeuta",
-
       "name_error": "Imie jest wymagane",
       "surname_error": "Nazwisko jest wymagane",
       "nickname_error": "Nick jest wymagany",
@@ -255,23 +243,19 @@
       "consultation_price_error": "Cena konsultacji musi być liczbą dodatnią",
       "min_price_error": "Minimalna cena konsultacji wynosi {{minPrice}}{{currencySymbol}}",
       "consultation_price_disabled": "Płatne konsultacje nie są dostępne w twoim kraju",
-
       "specializations_error": "Wybrać co najmniej jedną specjalizację",
       "work_with_error": "Wybierz co najmniej jedną kategorię",
       "languages_error": "Wybierz co najmniej jeden język",
       "education_error": "Wykształcenie jest wymagane",
       "description_error": "Opis jest wymagany",
       "sex_error": "Wybierz płeć",
-
       "add_more_languages": "Dodaj więcej języków",
       "add_more_work_with": "Dodaj więcej kategorii",
       "add_more_education": "Dodaj więcej",
       "add_more_specializations": "Dodaj więcej specjalizacji",
-
       "button_text": "Zapisz zmiany",
       "button_secondary_text": "Odrzuć zmiany",
       "create_button_text": "Utwórz konsultanta",
-
       "addiction": "Uzależnienie",
       "stress": "Stres",
       "burnout": "Wypalenie i stres akademicki",
@@ -303,15 +287,12 @@
       "love": "Miłość i relacje romantyczne",
       "social_skills": "Umiejętności społeczne i przyjaźń",
       "body_image": "Obraz ciała i poczucie własnej wartości",
-
       "edit_success": "Profil został pomyślnie zaktualizowany",
       "create_success": "Konsultant/ka został/a pomyślnie utworzony/a",
-
       "search": "Wyszukiwanie",
       "no_data_found": "Nie znaleziono danych",
       "select": "Wybierz",
       "remove": "Usuń",
-
       "organizations_label": "Organizacje",
       "organizations_error": "Wybierz co najmniej jedną organizację"
     },
@@ -322,7 +303,6 @@
       "work_with_label": "Specjalności",
       "specializations_label": "Specjalizacje",
       "done_consultations_label": "Ogólnie przeprowadzone konsultacje",
-      "consultations": "Konsultacje",
       "description_label": "O mnie",
       "edit_details": "Edytuj szczegóły",
       "no_available_slot": "Brak dostępnych terminów",
@@ -330,11 +310,9 @@
       "city_label": "Miejscowość",
       "street_label": "Ulica",
       "postcode_label": "Kod pocztowy",
-
       "psychologist": "Psycholog/żka",
       "psychiatrist": "Psychiatra",
       "psychotherapist": "Psychoterapeuta/ka",
-
       "addiction": "Uzależnienie",
       "stress": "Zarządzanie stresem",
       "burnout": "Wypalenie i stres akademicki",
@@ -366,10 +344,10 @@
       "love": "Miłość i relacje romantyczne",
       "social_skills": "Umiejętności społeczne i przyjaźń",
       "body_image": "Obraz ciała i poczucie własnej wartości",
-
       "hour_consultation": "za 1 godzinę konsultacji",
       "organizations_label": "Organizacje",
-      "free": "bezpłatnie"
+      "free": "bezpłatnie",
+      "consultations": "Konsultacje"
     },
     "security-check": {
       "heading": "Raporty dotyczące problemów z konsultacjami",
@@ -395,7 +373,6 @@
       "no": "Nie",
       "no_results": "Brak raportów z kontroli bezpieczeństwa",
       "search": "Wyszukiwanie",
-
       "very_satisfied": "Bardzo zadowolony/a",
       "satisfied": "Zadowolony/a",
       "neutral": "Nie mam zdania",
@@ -418,7 +395,7 @@
       "search": "Wyszukiwanie",
       "suggestion_type": "Typ sugestii",
       "all": "Wszystkie",
-      "information_portal": "Portal informacyjny",
+      "information_portal": "Wiedza",
       "my_qa": "My Q&A",
       "consultations": "Konsultacje",
       "organizations": "Organizacje",
@@ -434,19 +411,18 @@
       "rating": "Ocena",
       "time": "Czas",
       "content_heading": "Informacje zwrotne",
-
       "filters": "Filtry",
       "filter": "Filtr",
       "minimum_rating": "Minimalna ocena",
       "all": "Wszystkie oceny",
-      "client_ratings": "Oceny klientów",
-      "provider_ratings": "Ocena konsultanta",
       "starting_date": "Data rozpoczęcia",
       "ending_date": "Data zakończenia",
       "submit": "Zastosuj filtry",
       "reset_filters": "Zresetuj filtry",
       "no_results": "Nie znaleziono żadnych ocen",
       "search": "Wyszukiwanie",
+      "client_ratings": "Oceny klientów",
+      "provider_ratings": "Ocena konsultanta",
       "from_client": "Od klienta",
       "from_provider": "Od konsultanta",
       "user_type": "Typ użytkownika",
@@ -496,6 +472,11 @@
       "reset_filter": "Zresetuj filtry",
       "search": "Wyszukiwanie",
       "no_data_found": "Nie znaleziono danych",
+      "status": "",
+      "finished": "",
+      "late-canceled": "",
+      "scheduled": "",
+      "active": "",
       "organization": "Organizacja",
       "dates_placeholder": "DD.MM.RRRR"
     },
@@ -528,18 +509,15 @@
       "phone_placeholder": "Wprowadź numer telefonu",
       "phone_prefix_placeholder": "Prefiks",
       "create_sponsor": "Utwórz sponsora",
-
       "sponsor_error": "Nazwa sponsora jest wymagana",
       "email_error": "Adres email jest wymagany",
       "phone_prefix_error": "Prefiks telefonu jest wymagany",
       "phone_error": "Numer telefonu jest wymagany",
-
       "save_changes": "Zapisz zmiany",
       "discard_changes": "Odrzuć zmiany",
       "delete_sponsor": "Usuń sponsora",
       "edit_success": "Zmiany zostały pomyślnie zapisane",
       "success": "Sponsor został pomyślnie utworzony",
-
       "search": "Wyszukiwanie",
       "no_data_found": "Nie znaleziono danych"
     },
@@ -585,7 +563,6 @@
       "end_date_label": "Data zakończenia",
       "max_coupons_per_client_label": "Maksymalna liczba kuponów na klienta",
       "terms_label": "Warunki",
-
       "name_placeholder": "Nazwa kampanii",
       "budget_placeholder": "Wprowadź całkowity budżet",
       "coupon_code_placeholder": "Wprowadź kod kuponu",
@@ -594,13 +571,11 @@
       "max_coupons_per_client_placeholder": "Maksymalna liczba kuponów na klienta",
       "terms_placeholder": "Napisz warunki użytkowania",
       "budget_info": "Cena za pojedynczą konsultację wynosi",
-
       "required_field": "Pole jest wymagane",
       "budget_error": "Budżet powinien być liczbą dodatnią",
       "start_date_error": "Data rozpoczęcia kampanii musi być datą z przyszłości",
       "end_date_error": "Data zakończenia kampanii musi być datą z przyszłości",
       "period_error": "Data końcowa powinna przypadać po dacie początkowej",
-
       "create_campaign": "Utwórz kampanię",
       "save_changes": "Zapisz zmiany",
       "discard_changes": "Odrzuć zmiany",
@@ -673,10 +648,10 @@
       "answer_by": "Odpowiedź udzielona przez:",
       "no_data_found": "Nie znaleziono danych",
       "all": "Wszystkie",
-      "all_languages": "Wszystkie języki",
       "read_more": "Czytaj więcej",
       "Today": "Dzisiaj",
       "language": "Język",
+      "all_languages": "Wszystkie języki",
       "filter": "Filtr"
     },
     "organizations": {
@@ -685,7 +660,6 @@
       "unique_providers": "Łączna liczba konsultantów",
       "unique_clients": "Łączna liczba klientów",
       "add_button": "Dodaj organizację",
-      "search": "Szukaj",
       "filter_button": "Filtruj",
       "view": "Wyświetl",
       "edit": "Edytuj",
@@ -696,6 +670,7 @@
       "organization_added": "Organizacja została utworzona",
       "organization_updated": "Organizacja została zaktualizowana",
       "no_data_found": "Brak danych",
+      "search": "Szukaj",
       "name_placeholder": "Wprowadź nazwę organizacji",
       "website": "Adres URL strony internetowej",
       "website_placeholder": "Wprowadź adres URL strony internetowej",
@@ -717,7 +692,6 @@
       "email": "Adres e-mail",
       "email_placeholder": "Wprowadź adres e-mail",
       "cancel": "Anuluj",
-
       "work_with": "Współpraca z",
       "work_with_placeholder": "Wybierz kategorie współpracy",
       "district": "Sektor",
@@ -730,17 +704,14 @@
       "specialisations_placeholder": "Wybierz oferowane usługi",
       "property_types": "Typ nieruchomości",
       "property_types_placeholder": "Wybierz typy nieruchomości",
-
       "in_person_interaction": "Osobiście",
       "online_interaction": "Online",
       "phone_interaction": "Telefon",
       "hybrid_interaction": "Hybrydowo",
-
       "free_services": "Bezpłatne usługi",
       "paid_services": "Płatne usługi",
       "co_payment_services": "Usługi ze współpłatnością",
       "cnas_reimbursed_services": "Usługi refundowane przez CNAS",
-
       "emergency_situations": "Stany nagłe",
       "pediatric_psychiatry": "Psychiatria dziecięca",
       "psychological_evaluation": "Ocena psychologiczna",
@@ -759,7 +730,6 @@
       "pediatric_neurology": "Neurologia dziecięca",
       "special_psychopedagogy": "Psychopedagogika specjalna",
       "neuropsychomotor_recovery": "Rehabilitacja neuropsychomotoryczna",
-
       "aggression_violence_victim_or_aggressor": "Agresja/przemoc – ofiara lub agresor",
       "learning_difficulties_special_educational_needs": "Trudności w nauce/specjalne potrzeby edukacyjne",
       "behavioral_disorder": "Zaburzenia zachowania",
@@ -769,7 +739,6 @@
       "identity_issues": "Problemy z tożsamością",
       "illness_oncological_treatment_chronic_diseases": "Choroby (leczenie onkologiczne, choroby przewlekłe)",
       "other_situations": "Inne sytuacje",
-
       "public": "Publiczny",
       "private": "Prywatny",
       "ong": "Organizacja pozarządowa",
@@ -784,7 +753,6 @@
       "child_psychiatry": "Psychiatria dziecięca",
       "art_recreational_activities": "Artystyczne zajęcia rekreacyjne (teatr, muzyka, poezja, malarstwo, opowiadanie)",
       "sport_recreational_activities": "Sportowe zajęcia rekreacyjne (sporty, gry, taniec)",
-
       "delete_label": "Usuń",
       "delete_heading": "Czy na pewno chcesz usunąć organizację: {{name}}?",
       "delete_subheading": "Ta operacja jest nieodwracalna.",
@@ -812,7 +780,6 @@
     "analytics": {
       "content_tab_label": "Metryki treści",
       "general_tab_label": "Metryki ogólne",
-
       "category_name": "Nazwa kategorii",
       "views": "Wyświetlenia",
       "downloads": "Pobrane",
@@ -821,64 +788,32 @@
       "engagement_score": "Wskaźnik zaangażowania",
       "likes": "Polubienia",
       "dislikes": "Niepolubienia",
-
       "search": "Wyszukiwanie",
       "export_label": "Eksportuj dane jako CSV",
       "no_data_found": "Nie znaleziono danych",
-
-      "globalWebsiteVisits": "Globalne odwiedziny strony",
-      "globalWebsiteVisits_unique_count": "Unikalni odwiedzający",
-
       "totalConsultations": "Wszystkie konsultacje",
-      "totalConsultations_unique_count": "Unikalni klienci",
-      "cancelledConsultations": "Anulowane konsultacje",
-      "scheduledConsultations": "Zaplanowane konsultacje - Web",
-      "mobileScheduledConsultations": "Zaplanowane konsultacje - Mobile",
-
-      "scheduleButtonClick": "Klik planowania - Web",
-      "mobileScheduleButtonClick": "Klik planowania - Mobile",
-      "clientsAttendedConsultations": "Klienci uczestniczący",
-
-      "totalCouponConsultations": "Konsultacje z kuponem",
-      "totalCouponConsultations_unique_count": "Unikalni klienci",
-      "totalProviders": "Wszyscy dostawcy",
-      "activeProviders": "Aktywni dostawcy",
-
-      "allClients": "Wszyscy klienci",
+      "uniqueClientsConsultations": "Konsultacje poszczególnych klientów",
       "activeClients": "Aktywni klienci",
-
+      "activeProviders": "Aktywni dostawcy",
       "totalWebsiteAccess": "Odwiedziny strony",
-      "uniqueWebsiteAccess": "Unikalne odwiedziny strony",
-
       "totalClientAccess": "Wejścia do portalu klientów",
-      "uniqueClientAccess": "Unikalne wejścia klientów",
-
       "totalProviderAccess": "Wejścia do portalu dostawców",
+      "uniqueWebsiteAccess": "Unikalne odwiedziny strony",
+      "uniqueClientAccess": "Unikalne wejścia klientów",
       "uniqueProviderAccess": "Unikalne wejścia dostawców",
-
-      "totalMobileAccess": "Wejścia w aplikacji mobilnej",
-      "uniqueMobileAccess": "Unikalne wejścia w aplikacji",
-
-      "emailRegisterClick": "Klik rejestracji e-mail - Web",
-      "mobileEmailRegisterClick": "Klik rejestracji e-mail - Mobile",
-
-      "anonymousRegisterClick": "Klik anonimowej rejestracji - Web",
-      "mobileAnonymousRegisterClick": "Klik anonimowej rejestracji - Mobile",
-
-      "guestRegisterClick": "Klik rejestracji gościa - Web",
-      "mobileGuestRegisterClick": "Klik rejestracji gościa - Mobile",
-
-      "joinConsultationClick": "Klik dołączenia - Web",
-      "mobileJoinConsultationClick": "Klik dołączenia - Mobile",
-
+      "uniqueClientsThatUsedCoupon": "Klienci którzy użyli kuponu",
+      "totalCouponConsultations": "Konsultacje z kuponem",
       "positiveClientRatings": "Pozytywne oceny klientów",
       "positiveProviderRatings": "Pozytywne oceny konsultantów",
-
       "content_type": "Typ treści",
       "all": "Wszystkie",
       "articles": "Artykuły",
       "videos": "Filmy",
       "podcasts": "Podcasty",
+      "totalMobileAccess": "Wejścia w aplikacji mobilnej",
+      "uniqueMobileAccess": "Unikalne wejścia w aplikacji",
+      "totalConsultations_unique_count": "Unikalni klienci",
+      "totalCouponConsultations_unique_count": "Unikalni klienci",
       "start_date": "Data rozpoczęcia",
       "end_date": "Data zakończenia",
       "reset": "Zresetuj filtry",
@@ -894,7 +829,35 @@
       "unspecified": "Nieokreślona",
       "not_mentioned": "Nie wspomniano",
       "rural": "Wieś",
-      "urban": "Miasto"
+      "urban": "Miasto",
+      "globalWebsiteVisits": "Globalne odwiedziny strony",
+      "globalWebsiteVisits_unique_count": "Unikalni odwiedzający",
+      "cancelledConsultations": "Anulowane konsultacje",
+      "scheduledConsultations": "Zaplanowane konsultacje - Web",
+      "mobileScheduledConsultations": "Zaplanowane konsultacje - Mobile",
+      "scheduleButtonClick": "Klik planowania - Web",
+      "mobileScheduleButtonClick": "Klik planowania - Mobile",
+      "clientsAttendedConsultations": "Klienci uczestniczący",
+      "totalProviders": "Wszyscy dostawcy",
+      "allClients": "Wszyscy klienci",
+      "emailRegisterClick": "Klik rejestracji e-mail - Web",
+      "mobileEmailRegisterClick": "Klik rejestracji e-mail - Mobile",
+      "anonymousRegisterClick": "Klik anonimowej rejestracji - Web",
+      "mobileAnonymousRegisterClick": "Klik anonimowej rejestracji - Mobile",
+      "guestRegisterClick": "Klik rejestracji gościa - Web",
+      "mobileGuestRegisterClick": "Klik rejestracji gościa - Mobile",
+      "joinConsultationClick": "Klik dołączenia - Web",
+      "mobileJoinConsultationClick": "Klik dołączenia - Mobile",
+      "missing": "N/A"
+    },
+    "sos-center-clicks": {
+      "sos_center": "Centrum SOS",
+      "click_count": "Łączna liczba kliknięć",
+      "history": "Historia",
+      "web": "Sieć",
+      "client": "Klient",
+      "clicked_at": "Kliknięto o {{time}} z platformy {{platform}}",
+      "floating_button": "Główny przycisk"
     },
     "baseline-assessment-thresholds": {
       "title": "Progi oceny bazowej",
@@ -914,7 +877,7 @@
       "analysis_title": "Analiza danych oceny",
       "analysis_description": "Analiza statystyczna ukończonych ocen bazowych z wartościami mediany dla każdego czynnika.",
       "total_assessments": "Łączne oceny",
-      "total_answers": "Łączne odpowiedzi",
+      "total_questions": "Łączne pytania",
       "median_value": "Wartość mediany",
       "data_split_info": "Dane zostały podzielone na dwie grupy do analizy:",
       "first_half": "Pierwsza połowa",
@@ -924,16 +887,12 @@
       "error_loading_analysis": "Błąd ładowania danych analizy",
       "start_date": "Data rozpoczęcia",
       "end_date": "Data zakończenia",
-      "reset_filters": "Zresetuj filtry"
-    },
-    "sos-center-clicks": {
-      "sos_center": "Centrum SOS",
-      "click_count": "Łączna liczba kliknięć",
-      "history": "Historia",
-      "web": "Sieć",
-      "client": "Klient",
-      "clicked_at": "Kliknięto o {{time}} z platformy {{platform}}",
-      "floating_button": "Główny przycisk"
+      "reset_filters": "Zresetuj filtry",
+      "above_count": "Clients above high",
+      "below_count": "Clients below low",
+      "select_start_date": "Select start date",
+      "select_end_date": "Select end date",
+      "total_answers": "Łączne odpowiedzi"
     },
     "providers-free-slots": {
       "heading": "Generuj raport wolnych terminów konsultantów",
@@ -960,10 +919,17 @@
       "sad": "Smutny/a",
       "depressed": "Przygnębiony/a",
       "worried": "Zmartwiony/a",
-      "reset_filters": "Zresetuj filtry"
+      "reset_filters": "Zresetuj filtry",
+      "critical_entries": "Critical entries",
+      "critical_count": "Critical count"
+    },
+    "pl-statistics-page": {
+      "heading": "Statistics",
+      "web_visits": "Total visits",
+      "qr_visits": "QR visits",
+      "no_data": "No data found"
     }
   },
-
   "pages": {
     "not-found-page": {
       "heading": "Ups! Nie możemy znaleźć strony, której szukasz...",
@@ -1012,16 +978,13 @@
       "consultations_tab_label": "Zagadnienia dot. konsultacji",
       "suggestions_tab_label": "Sugestie platformy",
       "ratings_tab_label": "Oceny",
+      "provider_ratings_tab_label": "",
       "contact_form_tab_label": "Formularze kontaktowe",
       "filter": "Filtr",
       "heading": "Raporty",
       "my_qa_tab_label": "Moje archiwum pytań i odpowiedzi",
       "sos_center_clicks_tab_label": "Centrum SOS",
       "providers_free_slots_tab_label": "Wolne terminy konsultantów"
-    },
-    "mood-tracker-report-page": {
-      "heading": "Raport rejestru nastroju",
-      "description": "Filtruj według zakresu dat, aby sprawdzić użycie rejestru nastroju w Twoim kraju."
     },
     "campaigns-page": {
       "heading": "Lista sponsorów"
@@ -1097,6 +1060,14 @@
       "no_data_found": "Nie znaleziono danych",
       "search": "Szukaj"
     },
+    "analytics-page": {
+      "heading": "Analityka",
+      "ro": "Rumunia",
+      "kz": "Kazachstan",
+      "ua": "Ukraina",
+      "pl": "Polska",
+      "am": "Armenia"
+    },
     "content-management-page": {
       "title": "Zarządzanie treścią",
       "articles": "Artykuły",
@@ -1126,19 +1097,14 @@
       "podcasts_active": "Aktywacja modułu podcastów",
       "save_success": "Zapisano pomyślnie"
     },
-    "analytics-page": {
-      "heading": "Analityka",
-      "ro": "Rumunia",
-      "kz": "Kazachstan",
-      "ua": "Ukraina",
-      "pl": "Polska",
-      "am": "Armenia"
-    },
     "baseline-assessment-page": {
       "heading": "Ocena bazowa"
+    },
+    "mood-tracker-report-page": {
+      "heading": "Raport rejestru nastroju",
+      "description": "Filtruj według zakresu dat, aby sprawdzić użycie rejestru nastroju w Twoim kraju."
     }
   },
-
   "modals": {
     "upload-picture": {
       "heading": "Zmień zdjęcie profilowe",
@@ -1206,7 +1172,6 @@
       "password_match_error": "Pola \"Nowe hasło\" i \"Potwierdź hasło\" nie są zgodne"
     }
   },
-
   "routes": {
     "root": {
       "heading": "Nadal tu jesteś?",
