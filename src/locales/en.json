@@ -10,31 +10,26 @@
       "page_7": "Coupons",
       "page_8": "My Q&A",
       "page_9": "Organizations",
-      "page_10": "Baseline Assessment",
-      "page_11": "Mood Tracker",
-
+      "button_text": "Logout",
+      "contact_us": "Contact us",
+      "your_profile_text": "Your profile",
+      "password_placeholder": "Password",
+      "password": "Please enter your password to access the site",
+      "wrong_password": "Wrong password",
+      "submit": "Submit",
+      "statistics": "Statistics",
       "country_1": "",
       "country_2": "",
       "country_3": "",
-
       "language_1": "",
       "language_2": "",
       "language_3": "",
       "language_4": "",
       "language_5": "",
       "language_6": "",
-
-      "button_text": "Logout",
-      "contact_us": "Contact us",
-      "your_profile_text": "Your profile",
-
-      "password_placeholder": "Password",
-      "password": "Please enter your password to access the site",
-      "wrong_password": "Wrong password",
-      "submit": "Submit",
-      "statistics": "Statistics"
+      "page_10": "Baseline Assessment",
+      "page_11": "Mood Tracker"
     },
-
     "statistics": {
       "statistics": "Statistics",
       "clients": "Clients",
@@ -140,24 +135,19 @@
       "surname_label": "Surname",
       "email_label": "Email",
       "phone_label": "Phone",
-
       "name_placeholder": "Enter your name",
       "surname_placeholder": "Enter your surname",
       "email_placeholder": "user@mail.com",
       "phone_prefix_placeholder": "Prefix",
       "phone_placeholder": "Phone number",
-
       "name_error": "Name is required",
       "surname_error": "Surname is required",
       "email_error": "Email is required",
       "phone_prefix_error": "Phone prefix is required",
       "phone_error": "Phone number is required",
-
       "button_text": "Save changes",
       "button_secondary_text": "Discard changes",
-
       "edit_success": "Profile updated successfully",
-
       "search": "Search",
       "no_data_found": "No data found",
       "button_change_password": "Change password"
@@ -182,7 +172,6 @@
       "deactivate": "Deactivate",
       "provider_activated": "Provider successfully activated",
       "provider_deactivated": "Provider successfully deactivated",
-
       "filter_providers": "Filter providers",
       "min_price": "Min price",
       "status": "Status",
@@ -193,7 +182,6 @@
       "all": "All",
       "apply_filter": "Apply filters",
       "reset_filter": "Reset filter",
-
       "name": "Name",
       "email": "Email",
       "price": "Price",
@@ -202,7 +190,8 @@
       "view": "View",
       "edit": "Edit",
       "search": "Search",
-      "organizations": "Organizations"
+      "organizations": "Organizations",
+      "modal_heading": ""
     },
     "edit-provider": {
       "name_label": "Name",
@@ -222,7 +211,6 @@
       "change_photo": "Change photo",
       "work_with_label": "Work with Category",
       "video_link_label": "Video representation",
-
       "name_placeholder": "Enter name",
       "patronym_placeholder": "Enter you patronym",
       "surname_placeholder": "Enter surname",
@@ -236,16 +224,13 @@
       "consultation_price_placeholder": "Consultation price",
       "description_placeholder": "Enter description",
       "video_link_placeholder": "https://video.link",
-
       "sex_male": "Male",
       "sex_female": "Female",
       "sex_unspecified": "Unspecified",
       "sex_none": "Prefer not to say",
-
       "psychologist": "Psychologist",
       "psychiatrist": "Psychiatrist",
       "psychotherapist": "Psychotherapist",
-
       "name_error": "Name is required",
       "surname_error": "Surname is required",
       "nickname_error": "Nickname is required",
@@ -258,23 +243,19 @@
       "consultation_price_error": "Consultation price must be a non-negative number",
       "min_price_error": "The minimum consultation price is {{minPrice}}{{currencySymbol}}",
       "consultation_price_disabled": "Paid consultations are not available in your country",
-
       "specializations_error": "Select at least one specialization",
       "work_with_error": "Select at least one category",
       "languages_error": "Select at least one language",
       "education_error": "Education is required",
       "description_error": "Description is required",
       "sex_error": "Select sex",
-
       "add_more_languages": "Add more languages",
       "add_more_work_with": "Add more categories",
       "add_more_education": "Add more",
       "add_more_specializations": "Add more specializations",
-
       "button_text": "Save changes",
       "button_secondary_text": "Discard changes",
       "create_button_text": "Create provider",
-
       "addiction": "Addiction and Substance Abuse ",
       "stress": "Stress Management",
       "burnout": "Burnout and Academic Stress",
@@ -306,15 +287,12 @@
       "love": "Love and Romantic Relationships",
       "social_skills": "Social Skills and Friendship",
       "body_image": "Body Image and Self-Esteem",
-
       "edit_success": "Profile updated successfully",
       "create_success": "Provider created successfully",
-
       "search": "Search",
       "no_data_found": "No data found",
       "select": "Select",
       "remove": "Remove",
-
       "organizations_label": "Organizations",
       "organizations_error": "Select at least one organization"
     },
@@ -325,7 +303,6 @@
       "work_with_label": "Specialties",
       "specializations_label": "Specializations",
       "done_consultations_label": "Overall done consultations",
-      "consultations": "Consultations",
       "description_label": "About me",
       "edit_details": "Edit details",
       "no_available_slot": "There is no available slot",
@@ -333,11 +310,9 @@
       "city_label": "City",
       "street_label": "Street",
       "postcode_label": "Postcode",
-
       "psychologist": "Psychologist",
       "psychiatrist": "Psychiatrist",
       "psychotherapist": "Psychotherapist",
-
       "addiction": "Addiction and Substance Abuse ",
       "stress": "Stress Management",
       "burnout": "Burnout and Academic Stress",
@@ -369,10 +344,10 @@
       "love": "Love and Romantic Relationships",
       "social_skills": "Social Skills and Friendship",
       "body_image": "Body Image and Self-Esteem",
-
       "hour_consultation": "for 1 hour consultation",
       "organizations_label": "Organizations",
-      "free": "free of charge"
+      "free": "free of charge",
+      "consultations": "Consultations"
     },
     "security-check": {
       "heading": "Consultation issue reports",
@@ -398,7 +373,6 @@
       "no": "No",
       "no_results": "There are no security check reports found",
       "search": "Search",
-
       "very_satisfied": "Very Satisfied",
       "satisfied": "Satisfied",
       "neutral": "Neutral",
@@ -437,19 +411,18 @@
       "rating": "Rating",
       "time": "Time",
       "content_heading": "Feedback",
-
       "filters": "Filters",
       "filter": "Filter",
       "minimum_rating": "Minimum rating",
       "all": "All ratings",
-      "client_ratings": "Client Ratings",
-      "provider_ratings": "Provider Ratings",
       "starting_date": "Start date",
       "ending_date": "End date",
       "submit": "Apply filters",
       "reset_filters": "Reset filters",
       "no_results": "There are no ratings found",
       "search": "Search",
+      "client_ratings": "Client Ratings",
+      "provider_ratings": "Provider Ratings",
       "from_client": "From client",
       "from_provider": "From provider",
       "user_type": "User type",
@@ -499,6 +472,11 @@
       "reset_filter": "Reset filters",
       "search": "Search",
       "no_data_found": "No data found",
+      "status": "",
+      "finished": "",
+      "late-canceled": "",
+      "scheduled": "",
+      "active": "",
       "organization": "Organization",
       "dates_placeholder": "DD.MM.YYYY"
     },
@@ -531,18 +509,15 @@
       "phone_placeholder": "Enter phone number",
       "phone_prefix_placeholder": "Prefix",
       "create_sponsor": "Create sponsor",
-
       "sponsor_error": "Sponsor name is required",
       "email_error": "Email is required",
       "phone_prefix_error": "Phone prefix is required",
       "phone_error": "Phone number is required",
-
       "save_changes": "Save changes",
       "discard_changes": "Discard changes",
       "delete_sponsor": "Delete sponsor",
       "edit_success": "Changes saved successfully",
       "success": "Sponsor created successfully",
-
       "search": "Search",
       "no_data_found": "No data found"
     },
@@ -588,7 +563,6 @@
       "end_date_label": "End date",
       "max_coupons_per_client_label": "Max coupons per client",
       "terms_label": "Terms of Use",
-
       "name_placeholder": "Name of the campaign",
       "budget_placeholder": "Enter the total budget",
       "coupon_code_placeholder": "Enter the code for the coupon",
@@ -597,13 +571,11 @@
       "max_coupons_per_client_placeholder": "Max coupons per client",
       "terms_placeholder": "Write the Terms of Use",
       "budget_info": "The price for a single consultation will be",
-
       "required_field": "The field is required",
       "budget_error": "The budget should be a positive number",
       "start_date_error": "The start date of the campaign should be in the future",
       "end_date_error": "The end date of the campaign should be in the future",
       "period_error": "The end date should be after the start date",
-
       "create_campaign": "Create campaign",
       "save_changes": "Save changes",
       "discard_changes": "Discard changes",
@@ -676,10 +648,10 @@
       "answer_by": "Answered by:",
       "no_data_found": "No data found",
       "all": "All",
-      "all_languages": "All languages",
       "read_more": "Read more",
       "Today": "Today",
       "language": "Language",
+      "all_languages": "All languages",
       "filter": "Filter"
     },
     "organizations": {
@@ -688,7 +660,6 @@
       "unique_providers": "Total providers",
       "unique_clients": "Total clients",
       "add_button": "Add organization",
-      "search": "Search",
       "filter_button": "Filter",
       "view": "View",
       "edit": "Edit",
@@ -699,6 +670,7 @@
       "organization_added": "Organization created",
       "organization_updated": "Organization updated",
       "no_data_found": "No data found",
+      "search": "Search",
       "name_placeholder": "Enter organization name",
       "website": "Website URL",
       "website_placeholder": "Enter website URL",
@@ -720,7 +692,6 @@
       "email": "Email address",
       "email_placeholder": "Enter email address",
       "cancel": "Cancel",
-
       "work_with": "Work with",
       "work_with_placeholder": "Select work with categories",
       "district": "Sector",
@@ -733,17 +704,14 @@
       "specialisations_placeholder": "Select offered services",
       "property_types": "Property type",
       "property_types_placeholder": "Select property types",
-
       "in_person_interaction": "In person",
       "online_interaction": "Online",
       "phone_interaction": "Phone",
       "hybrid_interaction": "Hybrid",
-
       "free_services": "Free services",
       "paid_services": "Paid services",
       "co_payment_services": "Co-payment services",
       "cnas_reimbursed_services": "CNAS reimbursed services",
-
       "emergency_situations": "Emergency situations",
       "pediatric_psychiatry": "Pediatric psychiatry",
       "psychological_evaluation": "Psychological evaluation",
@@ -762,7 +730,6 @@
       "pediatric_neurology": "Pediatric neurology",
       "special_psychopedagogy": "Special psychopedagogy",
       "neuropsychomotor_recovery": "Neuropsychomotor recovery",
-
       "aggression_violence_victim_or_aggressor": "Aggression/violence - victim or aggressor",
       "learning_difficulties_special_educational_needs": "Learning difficulties/Special educational needs",
       "behavioral_disorder": "Behavioral disorder",
@@ -772,7 +739,6 @@
       "identity_issues": "Identity issues",
       "illness_oncological_treatment_chronic_diseases": "Illness (oncological treatment, chronic diseases)",
       "other_situations": "Other situations",
-
       "public": "Public",
       "private": "Private",
       "ong": "NGO",
@@ -787,19 +753,33 @@
       "child_psychiatry": "Child psychiatry",
       "art_recreational_activities": "Artistic recreational activities (theatre, music, poetry, painting, storytelling)",
       "sport_recreational_activities": "Sports recreational activities (sports, games, dance)",
-
       "delete_label": "Delete",
       "delete_heading": "Are you sure you want to delete organization: {{name}}",
       "delete_subheading": "This action is irreversible.",
       "delete_providers_heading": "Organization {{name}} has associated providers",
       "delete_providers_subheading": "Please remove all providers before deleting the organization. List of providers",
       "delete_success": "Organization {{name}} was deletet successfully",
-      "website_link": "Go to website"
+      "website_link": "Go to website",
+      "month": "",
+      "year": "",
+      "all_months": "",
+      "all_years": "",
+      "january": "",
+      "february": "",
+      "march": "",
+      "april": "",
+      "may": "",
+      "june": "",
+      "july": "",
+      "august": "",
+      "september": "",
+      "october": "",
+      "november": "",
+      "december": ""
     },
     "analytics": {
       "content_tab_label": "Content Metrics",
       "general_tab_label": "General Metrics",
-
       "category_name": "Category Name",
       "views": "Views",
       "downloads": "Downloads",
@@ -808,70 +788,37 @@
       "engagement_score": "Engagement Score",
       "likes": "Likes",
       "dislikes": "Dislikes",
-
       "search": "Search",
       "export_label": "Export Data as CSV",
       "no_data_found": "No data found",
-
-      "globalWebsiteVisits": "Global Website Visits",
-      "globalWebsiteVisits_unique_count": "Unique Visitors",
-
       "totalConsultations": "Total Consultations",
-      "totalConsultations_unique_count": "Unique Clients",
-      "cancelledConsultations": "Cancelled Consultations",
-      "scheduledConsultations": "Scheduled Consultations - Web",
-      "mobileScheduledConsultations": "Scheduled Consultations - Mobile",
-
-      "scheduleButtonClick": "Schedule consultation click - Web",
-      "mobileScheduleButtonClick": "Schedule consultation click - Mobile",
-      "clientsAttendedConsultations": "Clients Attended Consultations",
-
-      "totalCouponConsultations": "Total Coupon Consultations",
-      "totalCouponConsultations_unique_count": "Unique Clients",
-      "totalProviders": "All Registered Providers",
-      "activeProviders": "Active Providers",
-
-      "allClients": "All Registered Clients",
+      "uniqueClientsConsultations": "Unique Clients Consultations",
       "activeClients": "Active Clients",
-
+      "activeProviders": "Active Providers",
       "totalWebsiteAccess": "Total Website Visits",
-      "uniqueWebsiteAccess": "Unique Website Visits",
-
       "totalClientAccess": "Total Client Portal Visits",
-      "uniqueClientAccess": "Unique Client Portal Visits",
-
       "totalProviderAccess": "Total Provider Portal Visits",
+      "uniqueWebsiteAccess": "Unique Website Visits",
+      "uniqueClientAccess": "Unique Client Portal Visits",
       "uniqueProviderAccess": "Unique Provider Portal Visits",
-
-      "totalMobileAccess": "Total Mobile App Visits",
-      "uniqueMobileAccess": "Unique Mobile App Visits",
-
-      "emailRegisterClick": "Register with email click - Web",
-      "mobileEmailRegisterClick": "Register with email click - Mobile",
-
-      "anonymousRegisterClick": "Register anonymously click - Web",
-      "mobileAnonymousRegisterClick": "Register anonymously click - Mobile",
-
-      "guestRegisterClick": "Guest register click - Web",
-      "mobileGuestRegisterClick": "Guest register click - Mobile",
-
-      "joinConsultationClick": "Join consultation click - Web",
-      "mobileJoinConsultationClick": "Join consultation click - Mobile",
-
+      "uniqueClientsThatUsedCoupon": "Unique Clients That Used Coupon",
+      "totalCouponConsultations": "Total Coupon Consultations",
       "positiveClientRatings": "Positive Client Ratings",
       "positiveProviderRatings": "Positive Provider Ratings",
-
       "content_type": "Content Type",
       "all": "All",
       "articles": "Articles",
       "videos": "Videos",
       "podcasts": "Podcasts",
+      "totalMobileAccess": "Total Mobile App Visits",
+      "uniqueMobileAccess": "Unique Mobile App Visits",
+      "totalConsultations_unique_count": "Unique Clients",
+      "totalCouponConsultations_unique_count": "Unique Clients",
       "start_date": "Start Date",
       "end_date": "End Date",
       "reset": "Reset filters",
       "select_start_date": "Select start date",
       "select_end_date": "Select end date",
-
       "year_of_birth": "Year of birth",
       "urban_rural": "Urban/Rural",
       "sex": "Sex",
@@ -883,6 +830,24 @@
       "not_mentioned": "Not mentioned",
       "rural": "Rural",
       "urban": "Urban",
+      "globalWebsiteVisits": "Global Website Visits",
+      "globalWebsiteVisits_unique_count": "Unique Visitors",
+      "cancelledConsultations": "Cancelled Consultations",
+      "scheduledConsultations": "Scheduled Consultations - Web",
+      "mobileScheduledConsultations": "Scheduled Consultations - Mobile",
+      "scheduleButtonClick": "Schedule consultation click - Web",
+      "mobileScheduleButtonClick": "Schedule consultation click - Mobile",
+      "clientsAttendedConsultations": "Clients Attended Consultations",
+      "totalProviders": "All Registered Providers",
+      "allClients": "All Registered Clients",
+      "emailRegisterClick": "Register with email click - Web",
+      "mobileEmailRegisterClick": "Register with email click - Mobile",
+      "anonymousRegisterClick": "Register anonymously click - Web",
+      "mobileAnonymousRegisterClick": "Register anonymously click - Mobile",
+      "guestRegisterClick": "Guest register click - Web",
+      "mobileGuestRegisterClick": "Guest register click - Mobile",
+      "joinConsultationClick": "Join consultation click - Web",
+      "mobileJoinConsultationClick": "Join consultation click - Mobile",
       "missing": "N/A"
     },
     "sos-center-clicks": {
@@ -912,7 +877,7 @@
       "analysis_title": "Assessment Data Analysis",
       "analysis_description": "Statistical analysis of completed baseline assessments with median values for each factor.",
       "total_assessments": "Total Assessments",
-      "total_answers": "Total Answers",
+      "total_questions": "Total Questions",
       "median_value": "Median Value",
       "data_split_info": "Data has been split into two groups for analysis:",
       "first_half": "First Half",
@@ -926,7 +891,8 @@
       "above_count": "Clients above high",
       "below_count": "Clients below low",
       "select_start_date": "Select start date",
-      "select_end_date": "Select end date"
+      "select_end_date": "Select end date",
+      "total_answers": "Total Answers"
     },
     "providers-free-slots": {
       "heading": "Generate Provider Free Slots Report",
@@ -964,7 +930,6 @@
       "no_data": "No data found"
     }
   },
-
   "pages": {
     "not-found-page": {
       "heading": "Oops! We can't find the page you are looking for...",
@@ -1013,16 +978,13 @@
       "consultations_tab_label": "Consultation Issues",
       "suggestions_tab_label": "Platform Suggestions",
       "ratings_tab_label": "Ratings",
+      "provider_ratings_tab_label": "",
       "contact_form_tab_label": "Contact Forms",
       "filter": "Filter",
       "heading": "Reports",
       "my_qa_tab_label": "My Q&A Archive",
       "sos_center_clicks_tab_label": "SOS Center",
       "providers_free_slots_tab_label": "Providers Free Slots"
-    },
-    "mood-tracker-report-page": {
-      "heading": "Mood tracker report",
-      "description": "Filter by date range to explore mood tracker usage in your country."
     },
     "campaigns-page": {
       "heading": "List of Sponsors"
@@ -1057,7 +1019,6 @@
     },
     "organization-details-page": {
       "heading": "Organization {{name}}",
-
       "providers": "Assigned Providers: {{count}}",
       "consultations_number": "Total Sessions : {{count}}",
       "clients_number": "Total Clients : {{count}}",
@@ -1099,6 +1060,14 @@
       "no_data_found": "No data found",
       "search": "Search"
     },
+    "analytics-page": {
+      "heading": "Analytics",
+      "ro": "Romania",
+      "kz": "Kazakhstan",
+      "ua": "Ukraine",
+      "pl": "Poland",
+      "am": "Armenia"
+    },
     "content-management-page": {
       "title": "Content Management",
       "articles": "Articles",
@@ -1128,19 +1097,14 @@
       "podcasts_active": "Podcast module activation",
       "save_success": "Saved successfully"
     },
-    "analytics-page": {
-      "heading": "Analytics",
-      "ro": "Romania",
-      "kz": "Kazakhstan",
-      "ua": "Ukraine",
-      "pl": "Poland",
-      "am": "Armenia"
-    },
     "baseline-assessment-page": {
       "heading": "Baseline Assessment"
+    },
+    "mood-tracker-report-page": {
+      "heading": "Mood tracker report",
+      "description": "Filter by date range to explore mood tracker usage in your country."
     }
   },
-
   "modals": {
     "upload-picture": {
       "heading": "Change profile picture",
@@ -1208,7 +1172,6 @@
       "password_match_error": "The New password and Confirm Password fields do not match"
     }
   },
-
   "routes": {
     "root": {
       "heading": "Are you still here?",
