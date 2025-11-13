@@ -10,28 +10,25 @@
       "page_7": "Купоны",
       "page_8": "Мой Q&A",
       "page_9": "Организации",
-      "page_10": "Базовая оценка",
-
+      "button_text": "Выйти",
+      "contact_us": "Свяжитесь с нами",
+      "your_profile_text": "Профиль",
+      "password_placeholder": "Пароль",
+      "password": "Пожалуйста, введите пароль для доступа к сайту",
+      "wrong_password": "Неверный пароль",
+      "submit": "Отправить",
+      "statistics": "Статистика",
       "country_1": "",
       "country_2": "",
       "country_3": "",
-
       "language_1": "",
       "language_2": "",
       "language_3": "",
       "language_4": "",
       "language_5": "",
       "language_6": "",
-
-      "button_text": "Выйти",
-      "contact_us": "Свяжитесь с нами",
-      "your_profile_text": "Профиль",
-
-      "password_placeholder": "Пароль",
-      "password": "Пожалуйста, введите пароль для доступа к сайту",
-      "wrong_password": "Неверный пароль",
-      "submit": "Отправить",
-      "statistics": "Статистика"
+      "page_10": "Базовая оценка",
+      "page_11": "Mood Tracker"
     },
     "statistics": {
       "statistics": "Статистика",
@@ -54,7 +51,8 @@
       "no_data_found": "Данные не найдены",
       "created_at": "Опубликовано",
       "likes": "Нравится",
-      "dislikes": "Не нравится"
+      "dislikes": "Не нравится",
+      "views": "Views"
     },
     "faq": {
       "no_results": "Ничего не нашлось, попробуйте другой язык.",
@@ -137,24 +135,19 @@
       "surname_label": "Фамилия",
       "email_label": "Электронная почта",
       "phone_label": "Телефон",
-
       "name_placeholder": "Введите свое имя",
       "surname_placeholder": "Введите свою фамилию",
       "email_placeholder": "user@mail.com",
       "phone_prefix_placeholder": "Префикс",
       "phone_placeholder": "Номер телефона",
-
       "name_error": "Необходимо указать имя",
       "surname_error": "Необходимо указать фамилию",
       "email_error": "Необходимо указать электронную почту",
       "phone_prefix_error": "Необходимо указать префикс телефона",
       "phone_error": "Необходимо указать номер телефона",
-
       "button_text": "Сохранить изменения",
       "button_secondary_text": "Отменить изменения",
-
       "edit_success": "Профиль успешно обновлен",
-
       "search": "Поиск",
       "no_data_found": "Данные не найдены",
       "button_change_password": "Изменить пароль"
@@ -165,7 +158,6 @@
       "psychologist": "Психолог",
       "psychiatrist": "Психиатр",
       "psychotherapist": "Психотерапевт",
-      "modal_heading": "Вы уверены, что хотите деактивировать аккаунт этого консультанта?",
       "modal_heading_deactivate": "Вы уверены, что хотите деактивировать учетную запись этого провайдера?",
       "modal_text_deactivate": "Консультант больше не сможет настраивать свою доступность, участвовать в кампаниях, предлагать консультации клиентам или появляться в результатах поиска клиентов. \n\nПримечание: Консультант по-прежнему сможет получать доступ к своему аккаунту, просматривать свои прошлые консультации и проводить запланированные консультации.",
       "modal_heading_activate": "Вы уверены, что хотите активировать аккаунт этого консультанта?",
@@ -180,7 +172,6 @@
       "deactivate": "Деактивирован",
       "provider_activated": "Консультант успешно активирован",
       "provider_deactivated": "Консультант успешно деактивирован",
-
       "filter_providers": "Отфильтровать консультантов",
       "min_price": "Мин цена",
       "status": "Статус",
@@ -191,7 +182,6 @@
       "all": "Все",
       "apply_filter": "Примените фильтры",
       "reset_filter": "Сбросить фильтр",
-
       "name": "Имя",
       "email": "Электронная почта",
       "price": "Цена",
@@ -200,7 +190,8 @@
       "view": "Просмотр",
       "edit": "Редактировать",
       "search": "Поиск",
-      "organizations": "Организации"
+      "organizations": "Организации",
+      "modal_heading": "Вы уверены, что хотите деактивировать аккаунт этого консультанта?"
     },
     "edit-provider": {
       "name_label": "Имя",
@@ -220,7 +211,6 @@
       "change_photo": "Изменить фотографию",
       "work_with_label": "Работа с категорией",
       "video_link_label": "Видео-представление",
-
       "name_placeholder": "Введите имя",
       "patronym_placeholder": "Введите отчество",
       "surname_placeholder": "Введите фамилию",
@@ -234,16 +224,13 @@
       "consultation_price_placeholder": "Стоимость консультации",
       "description_placeholder": "Введите описание",
       "video_link_placeholder": "https://video.link",
-
       "sex_male": "Мужчина",
       "sex_female": "Женщина",
       "sex_unspecified": "Не указан",
       "sex_none": "Предпочитаю не говорить",
-
       "psychologist": "Психолог",
       "psychiatrist": "Психиатр",
       "psychotherapist": "Психотерапевт",
-
       "name_error": "Необходимо указать имя",
       "surname_error": "Необходимо указать фамилию",
       "nickname_error": "Необходимо указать псевдоним",
@@ -256,23 +243,19 @@
       "consultation_price_error": "Цена консультации не может быть отрицательным числом",
       "min_price_error": "Минимальная стоимость консультации  {{minPrice}}{{currencySymbol}}",
       "consultation_price_disabled": "Платные консультации в вашей стране не доступны.",
-
       "specializations_error": "Выберите хотя бы одну специализацию",
       "work_with_error": "Выберите хотя бы одну категорию",
       "languages_error": "Выберите хотя бы один язык",
       "education_error": "Необходимо указать образование",
       "description_error": "Необходимо указать описание",
       "sex_error": "Выберите пол",
-
       "add_more_languages": "Добавить больше языков",
       "add_more_work_with": "Добавить больше категорий",
       "add_more_education": "Добавить больше",
       "add_more_specializations": "Добавить больше специализаций",
-
       "button_text": "Сохранить изменения",
       "button_secondary_text": "Отменить изменения",
       "create_button_text": "Создать Консультанта",
-
       "addiction": "Зависимости и токсикомании",
       "stress": "Управление стрессом",
       "burnout": "Выгорание и академический стресс",
@@ -304,10 +287,8 @@
       "love": "Любовь и романтические отношения",
       "social_skills": "Социальные навыки и дружба",
       "body_image": "Самооценка и образ тела",
-
       "edit_success": "Профиль успешно обновлен",
       "create_success": "Консультант успешно создан",
-
       "search": "Поиск",
       "no_data_found": "Данные не найдены",
       "select": "Выбрать",
@@ -322,7 +303,6 @@
       "work_with_label": "Специальности",
       "specializations_label": "Специализации",
       "done_consultations_label": "Всего проведено консультаций",
-      "consultations": "Консультации",
       "description_label": "Обо мне",
       "edit_details": "Редактировать детали",
       "no_available_slot": "Нет свободного времени",
@@ -330,11 +310,9 @@
       "city_label": "Город",
       "street_label": "Улица",
       "postcode_label": "Почтовый индекс",
-
       "psychologist": "Психолог",
       "psychiatrist": "Психиатр",
       "psychotherapist": "Психотерапевт",
-
       "addiction": "Зависимости и токсикомании",
       "stress": "Управление стрессом",
       "burnout": "Выгорание и академический стресс",
@@ -366,10 +344,10 @@
       "love": "Любовь и романтические отношения",
       "social_skills": "Социальные навыки и дружба",
       "body_image": "Самооценка и образ тела",
-
       "hour_consultation": "за 1 часовую консультацию",
       "organizations_label": "Организации",
-      "free": "бесплатно"
+      "free": "бесплатно",
+      "consultations": "Консультации"
     },
     "security-check": {
       "heading": "Отчеты о консультационных проблемах",
@@ -395,7 +373,6 @@
       "no": "Нет",
       "no_results": "Нет отчетов о проверке безопасности",
       "search": "Поиск",
-
       "very_satisfied": "Очень доволен(а)",
       "satisfied": "Доволен(а)",
       "neutral": "Нейтрален(а)",
@@ -434,19 +411,18 @@
       "rating": "Рейтинг",
       "time": "Раз",
       "content_heading": "Обратная связь",
-
       "filters": "Фильтры",
       "filter": "Filter",
       "minimum_rating": "Минимальный рейтинг",
       "all": "Все рейтинги",
-      "client_ratings": "Рейтинги клиентов",
-      "provider_ratings": "Рейтинги консультантов",
       "starting_date": "Дата начала",
       "ending_date": "Дата окончания",
       "submit": "Примените фильтры",
       "reset_filters": "Сбросить фильтры",
       "no_results": "Рейтинги не найдены",
       "search": "Поиск",
+      "client_ratings": "Рейтинги клиентов",
+      "provider_ratings": "Рейтинги консультантов",
       "from_client": "От клиента",
       "from_provider": "От консультанта",
       "user_type": "Тип пользователя",
@@ -496,6 +472,11 @@
       "reset_filter": "Сбросить фильтр",
       "search": "Поиск",
       "no_data_found": "Данные не найдены",
+      "status": "",
+      "finished": "",
+      "late-canceled": "",
+      "scheduled": "",
+      "active": "",
       "organization": "Организация",
       "dates_placeholder": "ДД.ММ.ГГГГ"
     },
@@ -528,18 +509,15 @@
       "phone_placeholder": "Введите номер телефона",
       "phone_prefix_placeholder": "Префикс",
       "create_sponsor": "Создать спонсора",
-
       "sponsor_error": "Имя спонсора обязательно",
       "email_error": "Требуется электронная почта",
       "phone_prefix_error": "Необходимо указать префикс телефона",
       "phone_error": "Необходимо указать номер телефона",
-
       "save_changes": "Сохранить изменения",
       "discard_changes": "Отменить изменения",
       "delete_sponsor": "Удалить спонсора",
       "edit_success": "Изменения успешно сохранены",
       "success": "Спонсор создан успешно",
-
       "search": "Поиск",
       "no_data_found": "Данные не найдены"
     },
@@ -585,7 +563,6 @@
       "end_date_label": "Дата окончания",
       "max_coupons_per_client_label": "Максимальное количество купонов на одного клиента",
       "terms_label": "Условия и положения",
-
       "name_placeholder": "Название кампании",
       "budget_placeholder": "Введите общий бюджет",
       "coupon_code_placeholder": "Введите код для получения купона",
@@ -594,13 +571,11 @@
       "max_coupons_per_client_placeholder": "Максимальное количество купонов на одного клиента",
       "terms_placeholder": "Напишите правила и условия",
       "budget_info": "Стоимость разовой консультации составит",
-
       "required_field": "Поле обязательно для заполнения",
       "budget_error": "Бюджет должен быть положительным числом",
       "start_date_error": "Дата начала кампании должна быть в будущем",
       "end_date_error": "Дата окончания кампании должна быть в будущем.",
       "period_error": "Дата окончания должна быть позже даты начала",
-
       "create_campaign": "Создать кампанию",
       "save_changes": "Сохранить изменения",
       "discard_changes": "Отменить изменения",
@@ -629,7 +604,6 @@
       "no_data_found": "Данные не найдены",
       "apply_filter": "Примените фильтры",
       "reset_filter": "Сбросить фильтр",
-
       "client": "Клиент",
       "client_sex": "Пол клиента",
       "client_yob": "Год рождения клиента",
@@ -638,8 +612,8 @@
       "female": "Женщина",
       "unspecified": "Не указан",
       "not_mentioned": "Не указан",
-      "urban": "Город",
       "rural": "Село",
+      "urban": "Город",
       "all": "Все",
       "search": "Поиск"
     },
@@ -674,10 +648,10 @@
       "answer_by": "Ответил:",
       "no_data_found": "Данные не найдены",
       "all": "Все",
-      "all_languages": "Все языки",
       "read_more": "Узнать больше",
       "Today": "Сегодня",
       "language": "Язык",
+      "all_languages": "Все языки",
       "filter": "Фильтр"
     },
     "organizations": {
@@ -686,7 +660,6 @@
       "unique_providers": "Всего провайдеров",
       "unique_clients": "Всего клиентов",
       "add_button": "Добавить организацию",
-      "search": "Поиск",
       "filter_button": "Фильтр",
       "view": "Просмотр",
       "edit": "Редактировать",
@@ -697,6 +670,7 @@
       "organization_added": "Организация создана",
       "organization_updated": "Организация обновлена",
       "no_data_found": "Данные не найдены",
+      "search": "Поиск",
       "name_placeholder": "Введите название организации",
       "website": "URL веб-сайта",
       "website_placeholder": "Введите URL веб-сайта",
@@ -718,7 +692,6 @@
       "email": "Адрес электронной почты",
       "email_placeholder": "Введите адрес электронной почты",
       "cancel": "Отмена",
-
       "work_with": "Работать с",
       "work_with_placeholder": "Выберите категории работы",
       "district": "Сектор",
@@ -731,17 +704,14 @@
       "specialisations_placeholder": "Выберите предоставляемые услуги",
       "property_types": "Тип недвижимости",
       "property_types_placeholder": "Выберите типы недвижимости",
-
       "in_person_interaction": "Лично",
       "online_interaction": "Онлайн",
       "phone_interaction": "Телефон",
       "hybrid_interaction": "Гибридный",
-
       "free_services": "Бесплатные услуги",
       "paid_services": "Платные услуги",
       "co_payment_services": "Услуги с сооплатой",
       "cnas_reimbursed_services": "Услуги, возмещаемые CNAS",
-
       "emergency_situations": "Чрезвычайные ситуации",
       "pediatric_psychiatry": "Детская психиатрия",
       "psychological_evaluation": "Психологическая оценка",
@@ -760,7 +730,6 @@
       "pediatric_neurology": "Детская неврология",
       "special_psychopedagogy": "Специальная психопедагогика",
       "neuropsychomotor_recovery": "Нейропсихомоторная реабилитация",
-
       "aggression_violence_victim_or_aggressor": "Агрессия/насилие – жертва или агрессор",
       "learning_difficulties_special_educational_needs": "Трудности в обучении/специальные образовательные потребности",
       "behavioral_disorder": "Нарушения поведения",
@@ -770,7 +739,6 @@
       "identity_issues": "Проблемы идентичности",
       "illness_oncological_treatment_chronic_diseases": "Заболевания (онкологическое лечение, хронические болезни)",
       "other_situations": "Другие ситуации",
-
       "public": "Государственный",
       "private": "Частный",
       "ong": "НПО",
@@ -785,7 +753,6 @@
       "child_psychiatry": "Детская психиатрия",
       "art_recreational_activities": "Творческие досуговые занятия (театр, музыка, поэзия, живопись, рассказы)",
       "sport_recreational_activities": "Спортивные досуговые занятия (спорт, игры, танцы)",
-
       "delete_label": "Удалить",
       "delete_heading": "Вы уверены, что хотите удалить организацию: {{name}}?",
       "delete_subheading": "Это действие необратимо.",
@@ -813,7 +780,6 @@
     "analytics": {
       "content_tab_label": "Метрики контента",
       "general_tab_label": "Общие метрики",
-
       "category_name": "Название категории",
       "views": "Просмотры",
       "downloads": "Загрузки",
@@ -822,70 +788,37 @@
       "engagement_score": "Индекс вовлечённости",
       "likes": "Нравится",
       "dislikes": "Не нравится",
-
       "search": "Поиск",
       "export_label": "Экспортировать данные в CSV",
       "no_data_found": "Данные не найдены",
-
-      "globalWebsiteVisits": "Всего посещений сайта",
-      "globalWebsiteVisits_unique_count": "Уникальные посещения сайта",
-
       "totalConsultations": "Всего консультаций",
-      "totalConsultations_unique_count": "Уникальные клиенты",
-      "cancelledConsultations": "Отменённые консультации",
-      "scheduledConsultations": "Запланированные консультации - Веб",
-      "mobileScheduledConsultations": "Запланированные консультации - Мобайл",
-
-      "scheduleButtonClick": "Клик записи - Веб",
-      "mobileScheduleButtonClick": "Клик записи - Мобайл",
-      "clientsAttendedConsultations": "Клиенты участвовали",
-
-      "totalCouponConsultations": "Консультации по купону",
-      "totalCouponConsultations_unique_count": "Уникальные клиенты",
-      "totalProviders": "Все провайдеры",
-      "activeProviders": "Активные провайдеры",
-
-      "allClients": "Все клиенты",
+      "uniqueClientsConsultations": "Уникальные консультации клиентов",
       "activeClients": "Активные клиенты",
-
+      "activeProviders": "Активные провайдеры",
       "totalWebsiteAccess": "Посещения сайта",
-      "uniqueWebsiteAccess": "Уникальные посещения сайта",
-
       "totalClientAccess": "Посещения портала клиентов",
-      "uniqueClientAccess": "Уникальные посещения клиентов",
-
       "totalProviderAccess": "Посещения портала провайдеров",
+      "uniqueWebsiteAccess": "Уникальные посещения сайта",
+      "uniqueClientAccess": "Уникальные посещения клиентов",
       "uniqueProviderAccess": "Уникальные посещения провайдеров",
-
-      "totalMobileAccess": "Посещения приложения",
-      "uniqueMobileAccess": "Уникальные посещения приложения",
-
-      "emailRegisterClick": "Клик регистрации email - Веб",
-      "mobileEmailRegisterClick": "Клик регистрации email - Мобайл",
-
-      "anonymousRegisterClick": "Клик анонимной регистрации - Веб",
-      "mobileAnonymousRegisterClick": "Клик анонимной регистрации - Мобайл",
-
-      "guestRegisterClick": "Клик гостевой регистрации - Веб",
-      "mobileGuestRegisterClick": "Клик гостевой регистрации - Мобайл",
-
-      "joinConsultationClick": "Клик присоединения - Веб",
-      "mobileJoinConsultationClick": "Клик присоединения - Мобайл",
-
-      "positiveProviderRatings": "Положительные оценки консультантов",
+      "uniqueClientsThatUsedCoupon": "Уникальные клиенты, использовавшие купон",
+      "totalCouponConsultations": "Консультации по купону",
       "positiveClientRatings": "Положительные оценки клиентов",
-
+      "positiveProviderRatings": "Положительные оценки консультантов",
       "content_type": "Тип контента",
       "all": "Все",
       "articles": "Статьи",
       "videos": "Видео",
       "podcasts": "Подкасты",
+      "totalMobileAccess": "Посещения приложения",
+      "uniqueMobileAccess": "Уникальные посещения приложения",
+      "totalConsultations_unique_count": "Уникальные клиенты",
+      "totalCouponConsultations_unique_count": "Уникальные клиенты",
       "start_date": "Дата начала",
       "end_date": "Дата окончания",
       "reset": "Сбросить фильтры",
       "select_start_date": "Выберите дату начала",
       "select_end_date": "Выберите дату окончания",
-
       "year_of_birth": "Год рождения",
       "urban_rural": "Город/село",
       "sex": "Пол",
@@ -896,7 +829,35 @@
       "unspecified": "Не указан",
       "not_mentioned": "Не указан",
       "rural": "Село",
-      "urban": "Город"
+      "urban": "Город",
+      "globalWebsiteVisits": "Всего посещений сайта",
+      "globalWebsiteVisits_unique_count": "Уникальные посещения сайта",
+      "cancelledConsultations": "Отменённые консультации",
+      "scheduledConsultations": "Запланированные консультации - Веб",
+      "mobileScheduledConsultations": "Запланированные консультации - Мобайл",
+      "scheduleButtonClick": "Клик записи - Веб",
+      "mobileScheduleButtonClick": "Клик записи - Мобайл",
+      "clientsAttendedConsultations": "Клиенты участвовали",
+      "totalProviders": "Все провайдеры",
+      "allClients": "Все клиенты",
+      "emailRegisterClick": "Клик регистрации email - Веб",
+      "mobileEmailRegisterClick": "Клик регистрации email - Мобайл",
+      "anonymousRegisterClick": "Клик анонимной регистрации - Веб",
+      "mobileAnonymousRegisterClick": "Клик анонимной регистрации - Мобайл",
+      "guestRegisterClick": "Клик гостевой регистрации - Веб",
+      "mobileGuestRegisterClick": "Клик гостевой регистрации - Мобайл",
+      "joinConsultationClick": "Клик присоединения - Веб",
+      "mobileJoinConsultationClick": "Клик присоединения - Мобайл",
+      "missing": "N/A"
+    },
+    "sos-center-clicks": {
+      "sos_center": "Центры SOS",
+      "click_count": "Всего кликов",
+      "history": "История",
+      "web": "Веб",
+      "client": "Клиент",
+      "clicked_at": "Кликнуто {{time}} с платформы {{platform}}",
+      "floating_button": "Главная кнопка"
     },
     "baseline-assessment-thresholds": {
       "title": "Пороги базовой оценки",
@@ -916,7 +877,7 @@
       "analysis_title": "Анализ данных оценки",
       "analysis_description": "Статистический анализ завершенных базовых оценок со значениями медианы для каждого фактора.",
       "total_assessments": "Всего оценок",
-      "total_answers": "Всего ответов",
+      "total_questions": "Всего вопросов",
       "median_value": "Значение медианы",
       "data_split_info": "Данные были разделены на две группы для анализа:",
       "first_half": "Первая половина",
@@ -926,16 +887,12 @@
       "error_loading_analysis": "Ошибка загрузки данных анализа",
       "start_date": "Дата начала",
       "end_date": "Дата окончания",
-      "reset_filters": "Сбросить фильтры"
-    },
-    "sos-center-clicks": {
-      "sos_center": "Центры SOS",
-      "click_count": "Всего кликов",
-      "history": "История",
-      "web": "Веб",
-      "client": "Клиент",
-      "clicked_at": "Кликнуто {{time}} с платформы {{platform}}",
-      "floating_button": "Главная кнопка"
+      "reset_filters": "Сбросить фильтры",
+      "above_count": "Clients above high",
+      "below_count": "Clients below low",
+      "select_start_date": "Select start date",
+      "select_end_date": "Select end date",
+      "total_answers": "Всего ответов"
     },
     "providers-free-slots": {
       "heading": "Генерировать отчет о свободных слотах консультантов",
@@ -962,10 +919,17 @@
       "sad": "Грустный",
       "depressed": "В депрессии",
       "worried": "Взволнованный",
-      "reset_filters": "Сбросить фильтры"
+      "reset_filters": "Сбросить фильтры",
+      "critical_entries": "Critical entries",
+      "critical_count": "Critical count"
+    },
+    "pl-statistics-page": {
+      "heading": "Statistics",
+      "web_visits": "Total visits",
+      "qr_visits": "QR visits",
+      "no_data": "No data found"
     }
   },
-
   "pages": {
     "not-found-page": {
       "heading": "Ой! Мы не можем найти страницу, которую Вы ищете...",
@@ -1014,16 +978,13 @@
       "consultations_tab_label": "Вопросы консультаций",
       "suggestions_tab_label": "Предложения платформы",
       "ratings_tab_label": "Рейтинги",
+      "provider_ratings_tab_label": "",
       "contact_form_tab_label": "Контактные формы",
       "filter": "Фильтр",
       "heading": "Отчеты",
       "my_qa_tab_label": "Мой архив Q&A (Вопрос/Ответ)",
       "sos_center_clicks_tab_label": "Центры SOS",
       "providers_free_slots_tab_label": "Свободные слоты консультантов"
-    },
-    "mood-tracker-report-page": {
-      "heading": "Отчет трекера настроения",
-      "description": "Отфильтруйте по диапазону дат, чтобы изучить использование трекера настроения в вашей стране."
     },
     "campaigns-page": {
       "heading": "Список спонсоров"
@@ -1099,6 +1060,14 @@
       "no_data_found": "Данные не найдены",
       "search": "Поиск"
     },
+    "analytics-page": {
+      "heading": "Аналитика",
+      "ro": "Румыния",
+      "kz": "Казахстан",
+      "ua": "Украина",
+      "pl": "Польша",
+      "am": "Армения"
+    },
     "content-management-page": {
       "title": "Управление контентом",
       "articles": "Статьи",
@@ -1128,19 +1097,14 @@
       "podcasts_active": "Активация модуля подкастов",
       "save_success": "Сохранено успешно"
     },
-    "analytics-page": {
-      "heading": "Аналитика",
-      "ro": "Румыния",
-      "kz": "Казахстан",
-      "ua": "Украина",
-      "pl": "Польша",
-      "am": "Армения"
-    },
     "baseline-assessment-page": {
       "heading": "Базовая оценка"
+    },
+    "mood-tracker-report-page": {
+      "heading": "Отчет трекера настроения",
+      "description": "Отфильтруйте по диапазону дат, чтобы изучить использование трекера настроения в вашей стране."
     }
   },
-
   "modals": {
     "upload-picture": {
       "heading": "Изменить фото профиля",
@@ -1208,7 +1172,6 @@
       "password_match_error": "Поля Новый пароль и Подтвердите пароль не совпадают"
     }
   },
-
   "routes": {
     "root": {
       "heading": "Вы ещё здесь?",
