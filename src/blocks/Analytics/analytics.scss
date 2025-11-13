@@ -54,6 +54,13 @@
     text-align: left;
     width: fit-content;
 
+    position: relative;
+    z-index: 1003;
+
+    .dropdown--expanded {
+      z-index: 1003;
+    }
+
     @media screen and (min-width: $screen_md) {
       margin-inline: unset;
     }

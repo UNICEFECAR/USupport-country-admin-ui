@@ -1,6 +1,8 @@
 @import "@USupport-components-library/styles";
 
 .providers-free-slots {
+  padding-bottom: $spacing_15_6;
+
   &__heading {
     margin-bottom: $spacing_0_8;
   }
@@ -22,6 +24,26 @@
       flex-direction: row;
       align-items: flex-start;
       justify-content: center;
+    }
+  }
+
+  &__time-inputs-container {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing_1_2;
+    padding-bottom: $spacing_2_4;
+    align-items: center;
+
+    @media screen and (min-width: $screen-md) {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    & .dropdown-with-label {
+      &__label {
+        text-align: left;
+      }
     }
   }
 

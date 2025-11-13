@@ -58,6 +58,10 @@
       "dislikes": "عدم الإعجاب",
       "views": "المشاهدات"
     }
+  ,
+    "edit-provider": {
+      "video_link_error": "يرجى إدخال رابط URL صالح"
+    }
   },
   "pages": {
     "login-page": {

@@ -43,8 +43,7 @@ export const Analytics = () => {
     { label: t("podcasts"), value: "podcasts" },
   ];
 
-  const { data: categoriesData, isLoading: isCategoriesLoading } =
-    useGetContentStatistics(selectedContentType);
+  const { data: categoriesData } = useGetContentStatistics(selectedContentType);
 
   const shouldFetchPlatformMetrics =
     options.find((opt) => opt.value === "general")?.isSelected || false;
@@ -95,6 +94,7 @@ export const Analytics = () => {
         sortingKey: "engagementScore",
         isNumbered: true,
         isCentered: true,
+        headerTooltip: t("engagement_score_tooltip"),
       },
       {
         label: t("avg_rating"),
@@ -162,7 +162,11 @@ export const Analytics = () => {
       <p key={`categoryName-${index}`} className="text">
         {item.categoryName}
       </p>,
-      <p key={`engagementScore-${index}`} className="text centered">
+      <p
+        key={`engagementScore-${index}`}
+        className="text centered"
+        title={t("engagement_score_tooltip")}
+      >
         {item.engagementScore?.toFixed(2)}
       </p>,
       <p key={`avgRating-${index}`} className="text centered">
@@ -225,7 +229,12 @@ export const Analytics = () => {
         {statistics.map((statistic, index) => (
           <GridItem
             md={8}
-            lg={statistic.type === "globalWebsiteVisits" ? 12 : 6}
+            lg={
+              statistic.type === "globalWebsiteVisits" ||
+              statistic.type === "totalConsultations"
+                ? 12
+                : 6
+            }
             key={index}
             classes="analytics__statistics-item"
           >
@@ -258,6 +267,7 @@ export const Analytics = () => {
                 ) : null
               }
               classes="analytics__statistics-collapsible"
+              headingText={t(`${statistic.type}_info`)}
             >
               <div className="analytics__statistics-content">
                 {Object.entries(statistic?.demographics || {}).map(([key]) => {
@@ -357,6 +367,7 @@ export const Analytics = () => {
             customSearch={handleSearch}
             buttonLabel={t("export_label")}
             buttonAction={handleExport}
+            enableTooltips={true}
           />
         </React.Fragment>
       ) : (
