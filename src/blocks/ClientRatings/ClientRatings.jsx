@@ -151,6 +151,8 @@ export const ClientRatings = ({ Heading }) => {
 };
 
 const Filters = ({ isOpen, handleClose, handleSave, filters, t }) => {
+  const IS_RO = localStorage.getItem("country") === "RO";
+
   const userTypeOptions = [
     { value: "all", label: t("all") },
     { value: "client", label: t("client") },
@@ -202,6 +204,7 @@ const Filters = ({ isOpen, handleClose, handleSave, filters, t }) => {
             selected={data.userType}
             setSelected={(value) => handleChange("userType", value)}
             options={userTypeOptions}
+            disabled={IS_RO}
           />
           <DropdownWithLabel
             label={t("minimum_rating")}
