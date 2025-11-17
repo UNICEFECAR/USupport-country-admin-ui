@@ -30,7 +30,7 @@ import "./client-ratings.scss";
  * @return {jsx}
  */
 export const ClientRatings = ({ Heading }) => {
-  const { t } = useTranslation("blocks", { keyPrefix: "client-ratings" });
+  const { t, i18n } = useTranslation("blocks", { keyPrefix: "client-ratings" });
 
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [filters, setFilters] = useState({
@@ -85,7 +85,6 @@ export const ClientRatings = ({ Heading }) => {
         return new Date(b.createdAt) - new Date(a.createdAt);
       })
       .map((suggestion, index) => {
-        console.log(suggestion.userType);
         return (
           <ReportCollapsible
             key={index}
@@ -119,7 +118,7 @@ export const ClientRatings = ({ Heading }) => {
           />
         );
       });
-  }, [data, filters, searchValue]);
+  }, [data, filters, searchValue, i18n.language]);
 
   return (
     <Block classes="client-ratings">
@@ -152,6 +151,8 @@ export const ClientRatings = ({ Heading }) => {
 };
 
 const Filters = ({ isOpen, handleClose, handleSave, filters, t }) => {
+  const IS_RO = localStorage.getItem("country") === "RO";
+
   const userTypeOptions = [
     { value: "all", label: t("all") },
     { value: "client", label: t("client") },
@@ -203,6 +204,7 @@ const Filters = ({ isOpen, handleClose, handleSave, filters, t }) => {
             selected={data.userType}
             setSelected={(value) => handleChange("userType", value)}
             options={userTypeOptions}
+            disabled={IS_RO}
           />
           <DropdownWithLabel
             label={t("minimum_rating")}

@@ -10,28 +10,25 @@
       "page_7": "Cupoane",
       "page_8": "My Q&A",
       "page_9": "Organizații",
-      "page_10": "Baseline Assessment",
-
+      "button_text": "Deconectare",
+      "contact_us": "Contactați-ne",
+      "your_profile_text": "Profilul dvs.",
+      "password_placeholder": "Parolă",
+      "password": "Vă rugăm să introduceți parola pentru a accesa site-ul",
+      "wrong_password": "Parolă greșită",
+      "submit": "Trimite",
+      "statistics": "Statistici",
       "country_1": "",
       "country_2": "",
       "country_3": "",
-
       "language_1": "",
       "language_2": "",
       "language_3": "",
       "language_4": "",
       "language_5": "",
       "language_6": "",
-
-      "button_text": "Deconectare",
-      "contact_us": "Contactați-ne",
-      "your_profile_text": "Profilul dvs.",
-
-      "password_placeholder": "Parolă",
-      "password": "Vă rugăm să introduceți parola pentru a accesa site-ul",
-      "wrong_password": "Parolă greșită",
-      "submit": "Trimite",
-      "statistics": "Statistici"
+      "page_10": "Baseline Assessment",
+      "page_11": "Mood Tracker"
     },
     "statistics": {
       "statistics": "Statistici",
@@ -142,24 +139,19 @@
       "surname_label": "Numele",
       "email_label": "Email",
       "phone_label": "Telefon",
-
       "name_placeholder": "Introduceți prenumele dvs.",
       "surname_placeholder": "Introduceți numele",
       "email_placeholder": "user@mail.com",
       "phone_prefix_placeholder": "Prefix ",
       "phone_placeholder": "Numărul de telefon",
-
       "name_error": "Numele este obligatoriu",
       "surname_error": "Numele este obligatoriu",
       "email_error": "Email este obligatoriu",
       "phone_prefix_error": "Prefixul telefonului este obligatoriu",
       "phone_error": "Numărul de telefon este obligatoriu",
-
       "button_text": "Salvați modificările",
       "button_secondary_text": "Renunțați la modificări",
-
       "edit_success": "Profil actualizat ",
-
       "search": "Căutare",
       "no_data_found": "Nu s-au găsit date",
       "button_change_password": "Schimbați parola"
@@ -184,7 +176,6 @@
       "deactivate": "Dezactivare",
       "provider_activated": "Furnizor activat ",
       "provider_deactivated": "Furnizor dezactivat ",
-
       "filter_providers": "Filtrare furnizori",
       "min_price": "Preț minim",
       "status": "Stare",
@@ -195,7 +186,6 @@
       "all": "Toate",
       "apply_filter": "Aplicați filtre",
       "reset_filter": "Resetare filtru",
-
       "name": "Nume",
       "email": "Email",
       "price": "Preț",
@@ -204,7 +194,8 @@
       "view": "Vizualizare",
       "edit": "Editare",
       "search": "Căutare",
-      "organizations": "Organizații"
+      "organizations": "Organizații",
+      "modal_heading": ""
     },
     "edit-provider": {
       "name_label": "Nume",
@@ -224,7 +215,6 @@
       "change_photo": "Schimbați fotografia",
       "work_with_label": "Lucrează cu categoria",
       "video_link_label": "Reprezentare video",
-
       "name_placeholder": "Introduceți prenumele",
       "patronym_placeholder": "Introduceți prenumele dvs.",
       "surname_placeholder": "Introduceți numele",
@@ -244,11 +234,9 @@
       "sex_female": "Feminin",
       "sex_unspecified": "Nespecificat",
       "sex_none": "Prefer să nu spun",
-
       "psychologist": "Psiholog",
       "psychiatrist": "Psihiatru",
       "psychotherapist": "Psihoterapeut",
-
       "name_error": "Numele este obligatoriu",
       "surname_error": "Numele este obligatoriu",
       "nickname_error": "Pseudonim obligatoriu",
@@ -261,23 +249,19 @@
       "consultation_price_error": "Prețul consultației trebuie să fie un număr pozitiv",
       "min_price_error": "Prețul minim al consultației este {{minPrice}}{{{currencySymbol}}",
       "consultation_price_disabled": "Consultațiile plătite nu sunt disponibile în țara dumneavoastră",
-
       "specializations_error": "Selectați cel puțin o specializare",
       "work_with_error": "Selectați cel puțin o categorie",
       "languages_error": "Selectați cel puțin o limbă",
       "education_error": "Educația este necesară",
       "description_error": "Descrierea este necesară",
       "sex_error": "Selectați sexul",
-
       "add_more_languages": "Adăugare limbi",
       "add_more_work_with": "Adăugare categorii",
       "add_more_education": "Adăugare mai multe",
       "add_more_specializations": "Adăugare specializări",
-
       "button_text": "Salvați modificările",
       "button_secondary_text": "Renunțați la modificări",
       "create_button_text": "Creare furnizor",
-
       "addiction": "Dependența și abuzul de substanțe ",
       "stress": "Managementul stresului",
       "burnout": "Burnout și stres școlar",
@@ -309,15 +293,12 @@
       "love": "Dragoste și relații romantice",
       "social_skills": "Abilități sociale și prietenie",
       "body_image": "Imaginea corporală și stima de sine",
-
       "edit_success": "Profil actualizat ",
       "create_success": "Furnizor creat ",
-
       "search": "Căutare",
       "no_data_found": "Nu s-au găsit date",
       "select": "Selectare",
       "remove": "Eliminare",
-
       "organizations_label": "Organizații",
       "organizations_error": "Selectați cel puțin o organizație"
     },
@@ -336,11 +317,9 @@
       "city_label": "Oraș",
       "street_label": "Strada",
       "postcode_label": "Cod poștal",
-
       "psychologist": "Psiholog",
       "psychiatrist": "Psihiatru",
       "psychotherapist": "Psihoterapeut",
-
       "addiction": "Dependența și abuzul de substanțe ",
       "stress": "Managementul stresului",
       "burnout": "Burnout și stres școlar",
@@ -372,7 +351,6 @@
       "love": "Dragoste și relații romantice",
       "social_skills": "Abilități sociale și prietenie",
       "body_image": "Imaginea corporală și stima de sine",
-
       "hour_consultation": "pentru o consultație de 1 oră",
       "organizations_label": "Organizații",
       "free": "Gratuit"
@@ -401,7 +379,6 @@
       "no": "Nu",
       "no_results": "Nu s-au găsit rapoarte de verificare a securității",
       "search": "Căutare",
-
       "very_satisfied": "Foarte mulțumit",
       "satisfied": "Mulțumit",
       "neutral": "Neutru",
@@ -440,7 +417,6 @@
       "rating": "Evaluare",
       "time": "Ora",
       "content_heading": "Feedback",
-
       "filters": "Filtre",
       "filter": "Filtrare",
       "minimum_rating": "Rating minim",
@@ -474,6 +450,7 @@
       "contact_reason_1": "Informații despre uSupport",
       "contact_reason_2": "Problemă tehnică",
       "contact_reason_3": "Alăturați-vă rețelei de furnizori",
+      "contact_reason_3_ro": "Alăturați-vă rețelei de organizații",
       "contact_reason_4": "Parteneriate",
       "contact_reason_5": "Altele",
       "contact_reason_6": "Informații despre servicii",
@@ -539,18 +516,15 @@
       "phone_placeholder": "Introduceți numărul de telefon",
       "phone_prefix_placeholder": "Prefix",
       "create_sponsor": "Creare sponsor",
-
       "sponsor_error": "Numele sponsorului este obligatoriu",
       "email_error": "Email este obligatoriu",
       "phone_prefix_error": "Prefixul telefonului este obligatoriu",
       "phone_error": "Numărul de telefon este obligatoriu",
-
       "save_changes": "Salvați modificările",
       "discard_changes": "Renunțați la modificări",
       "delete_sponsor": "Ștergere sponsor",
       "edit_success": "Modificări salvate ",
       "success": "Sponsor creat  ",
-
       "search": "Căutare",
       "no_data_found": "Nu s-au găsit date"
     },
@@ -596,7 +570,6 @@
       "end_date_label": "Data de sfârșit",
       "max_coupons_per_client_label": "Număr maxim de cupoane per client",
       "terms_label": "Condiții de utilizare",
-
       "name_placeholder": "Numele campaniei",
       "budget_placeholder": "Introduceți bugetul total",
       "coupon_code_placeholder": "Introduceți codul pentru cupon",
@@ -605,13 +578,11 @@
       "max_coupons_per_client_placeholder": "Număr maxim de cupoane per client",
       "terms_placeholder": "Scrieți condițiile de utilizare",
       "budget_info": "Prețul pentru o singură consultație va fi",
-
       "required_field": "Câmpul este obligatoriu",
       "budget_error": "Bugetul trebuie să fie un număr pozitiv",
       "start_date_error": "Data de începere a campaniei trebuie să fie în viitor",
       "end_date_error": "Data de încheiere a campaniei trebuie să fie în viitor",
       "period_error": "Data de încheiere trebuie să fie ulterioară datei de începere",
-
       "create_campaign": "Creare campanie",
       "save_changes": "Salvați modificările",
       "discard_changes": "Renunțați la modificări",
@@ -696,7 +667,6 @@
       "unique_providers": "Total furnizori",
       "unique_clients": "Total clienți",
       "add_button": "Adăugare organizație",
-      "search": "Search",
       "filter_button": "Filtrare",
       "view": "Vizualizare",
       "edit": "Editare",
@@ -807,7 +777,6 @@
     "analytics": {
       "content_tab_label": "Date privind conținutul",
       "general_tab_label": "Metrică generală",
-
       "category_name": "Numele categoriei",
       "views": "Vizualizări",
       "downloads": "Descărcări",
@@ -817,14 +786,9 @@
       "engagement_score_tooltip": "Scorul de implicare este un scor ponderat bazat pe un algoritm care ia în considerare descărcările, distribuțiile, aprecierile și vizualizările articolelor, videoclipurilor și podcasturilor din categorie.",
       "likes": "Aprecieri pozitive",
       "dislikes": "Aprecieri negative",
-
       "search": "Căutare",
       "export_label": "Export date ca CSV",
       "no_data_found": "Nu s-au găsit date",
-
-      "globalWebsiteVisits": "Vizite globale site",
-      "globalWebsiteVisits_unique_count": "Vizite unice site",
-
       "totalConsultations": "Total consultații",
       "totalConsultations_unique_count": "Clienți unici",
       "lateCancelledConsultations": "Consultații anulate târziu",
@@ -836,38 +800,20 @@
       "mobileScheduleButtonClick": "Click programare - Mobil",
       "clientsAttendedConsultations": "Clienți prezenți",
 
-      "totalCouponConsultations": "Consultații cu cupon",
       "totalCouponConsultations_unique_count": "Clienți unici",
       "totalProviders": "Toți furnizorii",
       "activeProviders": "Furnizori activi",
 
       "allClients": "Toți clienții",
       "activeClients": "Clienți activi",
-
       "totalWebsiteAccess": "Vizite site",
-      "uniqueWebsiteAccess": "Vizite unice site",
-
       "totalClientAccess": "Acces portal clienți",
-      "uniqueClientAccess": "Acces unic portal clienți",
-
       "totalProviderAccess": "Acces portal furnizori",
+      "uniqueWebsiteAccess": "Vizite unice site",
+      "uniqueClientAccess": "Acces unic portal clienți",
       "uniqueProviderAccess": "Acces unic portal furnizori",
-
-      "totalMobileAccess": "Vizite aplicație mobilă",
-      "uniqueMobileAccess": "Vizite unice aplicație",
-
-      "emailRegisterClick": "Click înregistrare email - Web",
-      "mobileEmailRegisterClick": "Click înregistrare email - Mobil",
-
-      "anonymousRegisterClick": "Click anonim - Web",
-      "mobileAnonymousRegisterClick": "Click anonim - Mobil",
-
-      "guestRegisterClick": "Click oaspete - Web",
-      "mobileGuestRegisterClick": "Click oaspete - Mobil",
-
-      "joinConsultationClick": "Click participare - Web",
-      "mobileJoinConsultationClick": "Click participare - Mobil",
-
+      "uniqueClientsThatUsedCoupon": "Clienți unici care au utilizat cupon",
+      "totalCouponConsultations": "Consultații cu cupon",
       "positiveClientRatings": "Aprecieri pozitive clienți",
       "positiveProviderRatings": "Aprecieri pozitive furnizori",
 
@@ -926,7 +872,26 @@
       "joinConsultationClick_info": "Numărul total de clicuri pe butonul „Alătură-te consultației” pe portalul web",
       "mobileJoinConsultationClick_info": "Numărul total de clicuri pe butonul „Alătură-te consultației” în aplicația mobilă",
       "positiveClientRatings_info": "Numărul total de evaluări pozitive oferite de clienți",
-      "positiveProviderRatings_info": "Numărul total de evaluări pozitive oferite de furnizori"
+      "positiveProviderRatings_info": "Numărul total de evaluări pozitive oferite de furnizori",
+
+      "filters": "Filtre",
+      "apply_filters": "Aplicați filtrele",
+      "sex_label": "Sex",
+      "sex_placeholder": "Selectați sexul",
+      "sex_male": "Masculin",
+      "sex_female": "Feminin",
+      "sex_unspecified": "Nespecificat",
+      "place_of_living_label": "Locul de trai",
+      "place_of_living_placeholder": "Selectați locul de trai",
+      "place_of_living_urban": "Urban",
+      "place_of_living_rural": "Rural",
+      "year_of_birth_label": "Anul nașterii",
+      "year_of_birth_placeholder": "Selectați anul nașterii",
+      "consultations": "Consultații",
+      "visits": "Vizite",
+      "button_clicks": "Clicuri butoane",
+      "users": "Utilizatori",
+      "data_cannot_be_filtered": "Aceste date nu pot fi filtrate demografic. Sunt generate pe baza datelor anonime"
     },
     "sos-center-clicks": {
       "sos_center": "Centrul SOS",
@@ -1004,11 +969,16 @@
       "depressed": "Depresiv",
       "worried": "Îngrijorat",
       "reset_filters": "Resetare filtre",
-      "critical_count": "Număr de înregistrări critice",
-      "critical_entries": "Înregistrări critice"
+      "critical_entries": "Înregistrări critice",
+      "critical_count": "Număr de înregistrări critice"
+    },
+    "pl-statistics-page": {
+      "heading": "Statistics",
+      "web_visits": "Total visits",
+      "qr_visits": "QR visits",
+      "no_data": "No data found"
     }
   },
-
   "pages": {
     "pl-statistics-page": {
       "heading": "Statistici",
@@ -1071,10 +1041,6 @@
       "sos_center_clicks_tab_label": "Centrul SOS",
       "providers_free_slots_tab_label": "Sloturi libere furnizori"
     },
-    "mood-tracker-report-page": {
-      "heading": "Raport urmărire dispoziție",
-      "description": "Filtrează după interval de date pentru a explora utilizarea urmăririi dispoziției în țara ta."
-    },
     "campaigns-page": {
       "heading": "Lista de sponsori"
     },
@@ -1108,7 +1074,6 @@
     },
     "organization-details-page": {
       "heading": "Organizația {{nume}}",
-
       "providers": "Furnizori atribuiți: {{count}}",
       "consultations_number": "Total sesiuni : {{count}}",
       "clients_number": "Total clienți : {{count}}",
@@ -1150,6 +1115,14 @@
       "no_data_found": "Nu s-au găsit date",
       "search": "Search"
     },
+    "analytics-page": {
+      "heading": "Analiză",
+      "ro": "Romania",
+      "kz": "Kazakhstan",
+      "ua": "Ukraine",
+      "pl": "Poland",
+      "am": "Armenia"
+    },
     "content-management-page": {
       "title": "Administrare conținut",
       "articles": "Articole",
@@ -1179,19 +1152,14 @@
       "podcasts_active": "Activarea modulului podcast",
       "save_success": "Salvat cu succes"
     },
-    "analytics-page": {
-      "heading": "Analiză",
-      "ro": "Romania",
-      "kz": "Kazakhstan",
-      "ua": "Ukraine",
-      "pl": "Poland",
-      "am": "Armenia"
-    },
     "baseline-assessment-page": {
       "heading": "Baseline Assessment"
+    },
+    "mood-tracker-report-page": {
+      "heading": "Raport urmărire dispoziție",
+      "description": "Filtrează după interval de date pentru a explora utilizarea urmăririi dispoziției în țara ta."
     }
   },
-
   "modals": {
     "upload-picture": {
       "heading": "Modificarea imaginii de profil",
@@ -1259,7 +1227,6 @@
       "password_match_error": "Câmpurile Parolă nouă și Confirmare parolă nu corespund"
     }
   },
-
   "routes": {
     "root": {
       "heading": "Sunteți încă aici?",

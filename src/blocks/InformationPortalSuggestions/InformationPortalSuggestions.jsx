@@ -154,6 +154,8 @@ const Filters = ({ isOpen, handleClose, handleSave, filters, t }) => {
     startingDate: "",
     endingDate: "",
   };
+  const IS_RO = localStorage.getItem("country") === "RO";
+
   const [data, setData] = useState({
     startingDate: filters.startingDate,
     endingDate: filters.endingDate,
@@ -163,8 +165,8 @@ const Filters = ({ isOpen, handleClose, handleSave, filters, t }) => {
   const suggestionTypeOptions = [
     { label: t("all"), value: "all" },
     { label: t("information_portal"), value: "information-portal" },
-    { label: t("my_qa"), value: "my-qa" },
-    { label: t("consultations"), value: "consultations" },
+    ...(IS_RO ? [] : [{ label: t("my_qa"), value: "my-qa" }]),
+    ...(IS_RO ? [] : [{ label: t("consultations"), value: "consultations" }]),
     { label: t("organizations"), value: "organizations" },
     { label: t("mood_tracker"), value: "mood-tracker" },
   ];

@@ -58,8 +58,7 @@
       "no_data_found": "Даних не знайдено",
       "created_at": "Створено в",
       "likes": "Лайки",
-      "dislikes": "Дизлайки",
-      "views": "Перегляди"
+      "dislikes": "Дизлайки"
     },
     "faq": {
       "no_results": "Не знайдено результатів, спробуй вибрати іншу мову.",
@@ -473,6 +472,7 @@
       "contact_reason_1": "Інформація про uSupport",
       "contact_reason_2": "Технічна проблема",
       "contact_reason_3": "Приєднуйся до мережі консультантів",
+      "contact_reason_3_ro": "Приєднуйся до мережі організацій",
       "contact_reason_4": "Партнерства",
       "contact_reason_5": "Інше",
       "contact_reason_6": "Інформація про послуги",
@@ -854,6 +854,8 @@
       "allClients": "Усі клієнти",
       "activeClients": "Активні клієнти",
 
+      "uniqueClientsThatUsedCoupon": "Клієнти, які використали купон",
+
       "totalWebsiteAccess": "Відвідування сайту",
       "uniqueWebsiteAccess": "Унікальні відвідування сайту",
 
@@ -862,9 +864,6 @@
 
       "totalProviderAccess": "Відвідування порталу провайдерів",
       "uniqueProviderAccess": "Унікальні відвідування провайдерів",
-
-      "totalMobileAccess": "Відвідування мобільного додатка",
-      "uniqueMobileAccess": "Унікальні відвідування мобільного",
 
       "emailRegisterClick": "Клік реєстрації email - Веб",
       "mobileEmailRegisterClick": "Клік реєстрації email - Мобільні",
@@ -886,6 +885,8 @@
       "articles": "Статті",
       "videos": "Відео",
       "podcasts": "Подкасти",
+      "totalMobileAccess": "Відвідування мобільного додатка",
+      "uniqueMobileAccess": "Унікальні відвідування мобільного",
       "start_date": "Дата початку",
       "end_date": "Дата закінчення",
       "reset": "Скинути фільтри",
@@ -936,7 +937,26 @@
       "joinConsultationClick_info": "Кількість натискань кнопки «Приєднатися до консультації» на вебпорталі",
       "mobileJoinConsultationClick_info": "Кількість натискань кнопки «Приєднатися до консультації» у мобільному застосунку",
       "positiveClientRatings_info": "Загальна кількість позитивних оцінок від клієнтів",
-      "positiveProviderRatings_info": "Загальна кількість позитивних оцінок від провайдерів"
+      "positiveProviderRatings_info": "Загальна кількість позитивних оцінок від провайдерів",
+
+      "filters": "Фільтри",
+      "apply_filters": "Застосувати фільтри",
+      "sex_label": "Стать",
+      "sex_placeholder": "Виберіть стать",
+      "sex_male": "Чоловіча",
+      "sex_female": "Жіноча",
+      "sex_unspecified": "Не вказано",
+      "place_of_living_label": "Місце проживання",
+      "place_of_living_placeholder": "Виберіть місце проживання",
+      "place_of_living_urban": "Місто",
+      "place_of_living_rural": "Село",
+      "year_of_birth_label": "Рік народження",
+      "year_of_birth_placeholder": "Виберіть рік народження",
+      "consultations": "Консультації",
+      "visits": "Відвідування",
+      "button_clicks": "Кліки кнопок",
+      "users": "Користувачі",
+      "data_cannot_be_filtered": "Ці дані не фільтруються за демографією. Вони генеруються на основі анонімних даних"
     },
     "baseline-assessment-thresholds": {
       "title": "Пороги базової оцінки",
