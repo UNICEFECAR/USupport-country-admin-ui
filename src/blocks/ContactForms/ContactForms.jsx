@@ -31,6 +31,7 @@ import "./contact-forms.scss";
 export const ContactForms = ({ Heading }) => {
   const { t } = useTranslation("blocks", { keyPrefix: "contact-forms" });
   const { isLoading, data } = useGetContactForms();
+  const IS_RO = localStorage.getItem("country") === "RO";
 
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [filters, setFilters] = useState({});
@@ -60,7 +61,10 @@ export const ContactForms = ({ Heading }) => {
     { value: "all", label: t("all") },
     { value: "information", label: t("contact_reason_1") },
     { value: "technical-problem", label: t("contact_reason_2") },
-    { value: "join-as-provider", label: t("contact_reason_3") },
+    {
+      value: "join-as-provider",
+      label: t(IS_RO ? "contact_reason_3_ro" : "contact_reason_3"),
+    },
     { value: "partnerships", label: t("contact_reason_4") },
     { value: "other", label: t("contact_reason_5") },
     { value: "services-information", label: t("contact_reason_6") },
