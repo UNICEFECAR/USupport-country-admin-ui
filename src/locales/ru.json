@@ -881,7 +881,26 @@
       "joinConsultationClick_info": "Количество нажатий кнопки «Присоединиться к консультации» на веб-портале",
       "mobileJoinConsultationClick_info": "Количество нажатий кнопки «Присоединиться к консультации» в мобильном приложении",
       "positiveClientRatings_info": "Общее количество положительных оценок от клиентов",
-      "positiveProviderRatings_info": "Общее количество положительных оценок от провайдеров"
+      "positiveProviderRatings_info": "Общее количество положительных оценок от провайдеров",
+
+      "filters": "Фильтры",
+      "apply_filters": "Применить фильтры",
+      "sex_label": "Пол",
+      "sex_placeholder": "Выберите пол",
+      "sex_male": "Мужской",
+      "sex_female": "Женский",
+      "sex_unspecified": "Не указано",
+      "place_of_living_label": "Место проживания",
+      "place_of_living_placeholder": "Выберите место проживания",
+      "place_of_living_urban": "Город",
+      "place_of_living_rural": "Село",
+      "year_of_birth_label": "Год рождения",
+      "year_of_birth_placeholder": "Выберите год рождения",
+      "consultations": "Консультации",
+      "visits": "Посещения",
+      "button_clicks": "Клики по кнопкам",
+      "users": "Пользователи",
+      "data_cannot_be_filtered": "Эти данные не фильтруются по демографии. Они генерируются на основе анонимных данных"
     },
     "baseline-assessment-thresholds": {
       "title": "Пороги базовой оценки",

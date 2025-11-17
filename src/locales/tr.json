@@ -61,6 +61,26 @@
   ,
     "edit-provider": {
       "video_link_error": "Lütfen geçerli bir URL girin"
+    },
+    "analytics": {
+      "filters": "Filtreler",
+      "apply_filters": "Filtreleri Uygula",
+      "sex_label": "Cinsiyet",
+      "sex_placeholder": "Cinsiyet seçin",
+      "sex_male": "Erkek",
+      "sex_female": "Kadın",
+      "sex_unspecified": "Belirtilmemiş",
+      "place_of_living_label": "Yaşam yeri",
+      "place_of_living_placeholder": "Yaşam yeri seçin",
+      "place_of_living_urban": "Kentsel",
+      "place_of_living_rural": "Kırsal",
+      "year_of_birth_label": "Doğum yılı",
+      "year_of_birth_placeholder": "Doğum yılını seçin",
+      "consultations": "Danışmanlıklar",
+      "visits": "Ziyaretler",
+      "button_clicks": "Düğme tıklamaları",
+      "users": "Kullanıcılar",
+      "data_cannot_be_filtered": "Bu veriler demografik olarak filtrelenemiyor. Anonim verilere dayanarak oluşturulmuştur"
     }
   },
   "pages": {

@@ -891,7 +891,26 @@
       "joinConsultationClick_info": "Total clicks on the \"Join consultation\" button on the web portal",
       "mobileJoinConsultationClick_info": "Total clicks on the \"Join consultation\" button on the mobile app",
       "positiveClientRatings_info": "Total positive ratings given by clients",
-      "positiveProviderRatings_info": "Total positive ratings given by providers"
+      "positiveProviderRatings_info": "Total positive ratings given by providers",
+
+      "filters": "Filters",
+      "apply_filters": "Apply Filters",
+      "sex_label": "Sex",
+      "sex_placeholder": "Select sex",
+      "sex_male": "Male",
+      "sex_female": "Female",
+      "sex_unspecified": "Unspecified",
+      "place_of_living_label": "Place of living",
+      "place_of_living_placeholder": "Select place of living",
+      "place_of_living_urban": "Urban",
+      "place_of_living_rural": "Rural",
+      "year_of_birth_label": "Year of birth",
+      "year_of_birth_placeholder": "Select year of birth",
+      "consultations": "Consultations",
+      "visits": "Visits",
+      "button_clicks": "Button clicks",
+      "users": "Users",
+      "data_cannot_be_filtered": "This data is not filtered by demographics. It is generated based on anonymous data"
     },
     "sos-center-clicks": {
       "sos_center": "SOS Center",

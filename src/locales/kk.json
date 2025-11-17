@@ -901,7 +901,26 @@
       "joinConsultationClick_info": "\"Консультацияға қосылу\" батырмасын веб-порталда басу саны",
       "mobileJoinConsultationClick_info": "\"Консультацияға қосылу\" батырмасын мобильді қосымшада басу саны",
       "positiveClientRatings_info": "Клиенттер берген оң бағалар саны",
-      "positiveProviderRatings_info": "Провайдерлер берген оң бағалар саны"
+      "positiveProviderRatings_info": "Провайдерлер берген оң бағалар саны",
+
+      "filters": "Сүзгілер",
+      "apply_filters": "Сүзгілерді қолдану",
+      "sex_label": "Жынысы",
+      "sex_placeholder": "Жынысын таңдаңыз",
+      "sex_male": "Еркек",
+      "sex_female": "Әйел",
+      "sex_unspecified": "Көрсетілмеген",
+      "place_of_living_label": "Тұрғылықты жері",
+      "place_of_living_placeholder": "Тұрғылықты жерін таңдаңыз",
+      "place_of_living_urban": "Қала",
+      "place_of_living_rural": "Ауыл",
+      "year_of_birth_label": "Туған жылы",
+      "year_of_birth_placeholder": "Туған жылын таңдаңыз",
+      "consultations": "Консультациялар",
+      "visits": "Келулер",
+      "button_clicks": "Батырма басулары",
+      "users": "Қолданушылар",
+      "data_cannot_be_filtered": "Бұл деректерді демографиялық бойынша сүзуге болмайды. Олар анонимді деректер негізінде жасалады"
     },
     "baseline-assessment-thresholds": {
       "title": "Бастапқы бағалау шектеулері",

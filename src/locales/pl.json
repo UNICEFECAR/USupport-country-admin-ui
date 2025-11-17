@@ -881,7 +881,26 @@
       "joinConsultationClick_info": "Łączna liczba kliknięć przycisku „Dołącz do konsultacji” w portalu internetowym",
       "mobileJoinConsultationClick_info": "Łączna liczba kliknięć przycisku „Dołącz do konsultacji” w aplikacji mobilnej",
       "positiveClientRatings_info": "Łączna liczba pozytywnych ocen od klientów",
-      "positiveProviderRatings_info": "Łączna liczba pozytywnych ocen od dostawców"
+      "positiveProviderRatings_info": "Łączna liczba pozytywnych ocen od dostawców",
+
+      "filters": "Filtry",
+      "apply_filters": "Zastosuj filtry",
+      "sex_label": "Płeć",
+      "sex_placeholder": "Wybierz płeć",
+      "sex_male": "Mężczyzna",
+      "sex_female": "Kobieta",
+      "sex_unspecified": "Nieokreślona",
+      "place_of_living_label": "Miejsce zamieszkania",
+      "place_of_living_placeholder": "Wybierz miejsce zamieszkania",
+      "place_of_living_urban": "Miasto",
+      "place_of_living_rural": "Wieś",
+      "year_of_birth_label": "Rok urodzenia",
+      "year_of_birth_placeholder": "Wybierz rok urodzenia",
+      "consultations": "Konsultacje",
+      "visits": "Wizyty",
+      "button_clicks": "Kliknięcia przycisków",
+      "users": "Użytkownicy",
+      "data_cannot_be_filtered": "Te dane nie mogą być filtrowane demograficznie. Są generowane na podstawie danych anonimowych"
     },
     "baseline-assessment-thresholds": {
       "title": "Progi oceny bazowej",

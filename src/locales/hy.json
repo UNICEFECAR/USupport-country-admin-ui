@@ -889,7 +889,26 @@
       "joinConsultationClick_info": "«Միանալ խորհրդատվությանը» կոճակի սեղմումների քանակը վեբ պորտալում",
       "mobileJoinConsultationClick_info": "«Միանալ խորհրդատվությանը» կոճակի սեղմումների քանակը բջջային հավելվածում",
       "positiveClientRatings_info": "Հաճախորդների տված դրական գնահատականների ընդհանուր քանակը",
-      "positiveProviderRatings_info": "Մատակարարների տված դրական գնահատականների ընդհանուր քանակը"
+      "positiveProviderRatings_info": "Մատակարարների տված դրական գնահատականների ընդհանուր քանակը",
+
+      "filters": "Ֆիլտրներ",
+      "apply_filters": "Կիրառել ֆիլտրները",
+      "sex_label": "Սեռ",
+      "sex_placeholder": "Ընտրեք սեռը",
+      "sex_male": "Արական",
+      "sex_female": "Իգական",
+      "sex_unspecified": "Նշված չէ",
+      "place_of_living_label": "Բնակության վայր",
+      "place_of_living_placeholder": "Ընտրեք բնակության վայրը",
+      "place_of_living_urban": "Քաղաքային",
+      "place_of_living_rural": "Գյուղական",
+      "year_of_birth_label": "Ծննդյան տարի",
+      "year_of_birth_placeholder": "Ընտրեք ծննդյան տարին",
+      "consultations": "Խորհրդատվություններ",
+      "visits": "Այցելություններ",
+      "button_clicks": "Կոճակների սեղմումներ",
+      "users": "Օգտատերեր",
+      "data_cannot_be_filtered": "Այս տվյալները չեն ֆիլտրվում ըստ դեմոգրաֆիկ տվյալների։ Դրանք ստեղծվում են անանուն տվյալների հիման վրա"
     },
     "sos-center-clicks": {
       "sos_center": "SOS Center",
