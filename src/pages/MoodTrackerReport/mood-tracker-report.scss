@@ -23,8 +23,12 @@
       padding-top: 1.2rem;
       gap: 1rem;
 
-      @media screen and (min-width: $screen-md) {
+      @media screen and (min-width: $screen-lg) {
         flex-direction: row;
+
+        & .date-input {
+          width: 100%;
+        }
       }
     }
 
