@@ -41,8 +41,8 @@ export const Analytics = () => {
     yearOfBirth: "",
   });
   const [options, setOptions] = useState([
-    { label: t("general"), value: "general", isSelected: true },
-    { label: t("content"), value: "content", isSelected: false },
+    { label: t("general"), value: "general", isSelected: false },
+    { label: t("content"), value: "content", isSelected: true },
   ]);
 
   const contentTypeOptions = [
@@ -52,7 +52,15 @@ export const Analytics = () => {
     { label: t("podcasts"), value: "podcasts" },
   ];
 
-  const { data: categoriesData } = useGetContentStatistics(selectedContentType);
+  const filtersToTranslaate = ["sex", "urbanRural", "yearOfBirth"];
+
+  const { data: categoriesData, isFetching: isCategoriesDataFetching } =
+    useGetContentStatistics({
+      contentType: selectedContentType,
+      sex: filters.sex || null,
+      yearOfBirth: filters.yearOfBirth || null,
+      urbanRural: filters.urbanRural || null,
+    });
 
   const shouldFetchPlatformMetrics =
     options.find((opt) => opt.value === "general")?.isSelected || false;
@@ -88,6 +96,14 @@ export const Analytics = () => {
     });
 
     optionsCopy[index].isSelected = !optionsCopy[index].isSelected;
+
+    setFilters({
+      startDate: "",
+      endDate: "",
+      sex: "",
+      urbanRural: "",
+      yearOfBirth: "",
+    });
 
     setOptions(optionsCopy);
   };
@@ -462,6 +478,13 @@ export const Analytics = () => {
 
   return (
     <Block classes="analytics">
+      <FilterAnalytics
+        isOpen={isFilterModalOpen}
+        handleClose={handleCloseFilterModal}
+        filters={filters}
+        handleApplyFilters={handleApplyFilters}
+        handleResetFilters={handleResetFilters}
+      />
       <TabsUnderlined options={options} handleSelect={handleTabSelect} t={t} />
       {options[1].isSelected ? (
         <React.Fragment>
@@ -478,6 +501,7 @@ export const Analytics = () => {
             </GridItem>
           </Grid>
           <BaseTable
+            isLoading={isCategoriesDataFetching}
             data={dataToDisplay}
             rows={columns}
             rowsData={rowsData}
@@ -488,6 +512,16 @@ export const Analytics = () => {
             customSearch={handleSearch}
             buttonLabel={t("export_label")}
             buttonAction={handleExport}
+            secondaryButtonLabel={t("filter")}
+            secondaryButtonAction={handleOpenFilterModal}
+            filters={Object.keys(filters).reduce((acc, key) => {
+              if (!filters[key]) return acc;
+              acc[key] = filtersToTranslaate.includes(key)
+                ? t(filters[key])
+                : filters[key];
+              return acc;
+            }, {})}
+            handleRemoveFilter={handleRemoveFilter}
             enableTooltips={true}
           />
         </React.Fragment>
@@ -500,13 +534,7 @@ export const Analytics = () => {
           >
             {t("filters")}
           </Button> */}
-          <FilterAnalytics
-            isOpen={isFilterModalOpen}
-            handleClose={handleCloseFilterModal}
-            filters={filters}
-            handleApplyFilters={handleApplyFilters}
-            handleResetFilters={handleResetFilters}
-          />
+
           {
             <div className="analytics__filters-container">
               <div>
