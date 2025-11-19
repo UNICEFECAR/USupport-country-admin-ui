@@ -200,7 +200,7 @@ export const OrganizationDetails = () => {
   );
 
   const handleCsvExport = () => {
-    let csv = "";
+    let csv = "\uFEFF";
     const headers = [
       t("provider_name"),
       t("client_name"),
