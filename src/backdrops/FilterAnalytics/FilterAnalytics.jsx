@@ -24,6 +24,8 @@ export const FilterAnalytics = ({
   handleResetFilters,
 }) => {
   const { t } = useTranslation("blocks", { keyPrefix: "analytics" });
+  const country = localStorage.getItem("country");
+  const IS_PL = country === "PL";
 
   const [currFilter, setCurrFilter] = useState({
     startDate: "",
@@ -55,6 +57,9 @@ export const FilterAnalytics = ({
     const years = [];
     for (let year = currentYear - 100; year <= currentYear - 10; year++) {
       years.push({ label: year.toString(), value: year.toString() });
+    }
+    if (!IS_PL) {
+      years.push({ label: t("parent"), value: "parent" });
     }
     years.push({ label: t("all"), value: "" });
     return years.reverse();
