@@ -512,7 +512,7 @@ export const Analytics = () => {
             customSearch={handleSearch}
             buttonLabel={t("export_label")}
             buttonAction={handleExport}
-            secondaryButtonLabel={t("filter")}
+            secondaryButtonLabel={t("filters")}
             secondaryButtonAction={handleOpenFilterModal}
             filters={Object.keys(filters).reduce((acc, key) => {
               if (!filters[key]) return acc;
