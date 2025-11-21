@@ -1070,7 +1070,7 @@
     },
     "organizations-page": {
       "heading": "Organizații",
-      "add_button": "Add organization"
+      "add_button": "Adăugare organizație"
     },
     "organization-details-page": {
       "heading": "Organizația {{nume}}",
