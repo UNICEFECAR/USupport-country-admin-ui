@@ -28,7 +28,9 @@ export const QuestionDetails = ({ question, handleLike, isOpen, onClose }) => {
   const providerInfo = question.providerData;
 
   const getDateText = () => {
-    const date = new Date(question.questionCreatedAt);
+    const date = new Date(
+      question.answerCreatedAt || question.questionCreatedAt
+    );
 
     if (isDateToday(date)) {
       return t("today");
