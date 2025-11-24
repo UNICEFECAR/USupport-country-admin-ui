@@ -2,8 +2,16 @@ import { useQuery } from "@tanstack/react-query";
 import { organizationSvc } from "@USupport-components-library/services";
 
 export const useGetOrganizationById = (organizationId, filters) => {
-  const { startDate, endDate, startTime, endTime, weekdays, weekends, search } =
-    filters;
+  const {
+    startDate,
+    endDate,
+    startTime,
+    endTime,
+    weekdays,
+    weekends,
+    search,
+    timeZone,
+  } = filters;
 
   return useQuery({
     queryKey: [
@@ -16,6 +24,7 @@ export const useGetOrganizationById = (organizationId, filters) => {
       weekdays,
       weekends,
       search,
+      timeZone,
     ],
     queryFn: async () => {
       const data = await organizationSvc.getOrganizationById(

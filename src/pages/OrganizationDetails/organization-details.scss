@@ -30,11 +30,15 @@
   }
 
   &__filters-modal {
+    &__content {
+      padding-bottom: 16rem;
+    }
+
     & .base-modal__body {
-      min-height: 50rem;
       justify-content: center;
       align-items: center;
     }
+
     & .input-container,
     & .date-input__container,
     & .dropdown-with-label {
