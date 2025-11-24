@@ -44,6 +44,7 @@ const initialFilters = {
   endTime: "17:00",
   weekdays: true,
   weekends: false,
+  timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
 };
 const hoursOptions = hours.map((hour) => ({ label: hour, value: hour }));
 
