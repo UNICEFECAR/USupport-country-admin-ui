@@ -44,6 +44,7 @@ const initialFilters = {
   endTime: "17:00",
   weekdays: true,
   weekends: false,
+  timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
 };
 const hoursOptions = hours.map((hour) => ({ label: hour, value: hour }));
 
@@ -200,7 +201,7 @@ export const OrganizationDetails = () => {
   );
 
   const handleCsvExport = () => {
-    let csv = "";
+    let csv = "\uFEFF";
     const headers = [
       t("provider_name"),
       t("client_name"),
@@ -273,51 +274,57 @@ export const OrganizationDetails = () => {
         secondaryCtaType="secondary"
         classes="page__organization-details__filters-modal"
       >
-        <InputSearch
-          value={filters.search}
-          placeholder={t("search")}
-          onChange={(val) => setFilters({ ...filters, search: val })}
-        />
-        <DateInput
-          value={filters.startDate}
-          label={t("start_date")}
-          onChange={(e) =>
-            setFilters({ ...filters, startDate: e.target.value })
-          }
-        />
+        <div className="page__organization-details__filters-modal__content">
+          <InputSearch
+            value={filters.search}
+            placeholder={t("search")}
+            onChange={(val) => setFilters({ ...filters, search: val })}
+          />
+          <DateInput
+            value={filters.startDate}
+            label={t("start_date")}
+            onChange={(e) =>
+              setFilters({ ...filters, startDate: e.target.value })
+            }
+          />
 
-        <DateInput
-          value={filters.endDate}
-          label={t("end_date")}
-          onChange={(e) => setFilters({ ...filters, endDate: e.target.value })}
-        />
-        <DropdownWithLabel
-          label={t("start_time")}
-          options={hoursOptions}
-          selected={filters.startTime}
-          setSelected={(value) => setFilters({ ...filters, startTime: value })}
-        />
-        <DropdownWithLabel
-          label={t("end_time")}
-          options={hoursOptions}
-          selected={filters.endTime}
-          setSelected={(value) => setFilters({ ...filters, endTime: value })}
-        />
-        <div className="page__organization-details__filters-modal__checkbox-container">
-          <CheckBox
-            label={t("weekdays")}
-            isChecked={filters.weekdays}
-            setIsChecked={() => {
-              setFilters({ ...filters, weekdays: !filters.weekdays });
-            }}
+          <DateInput
+            value={filters.endDate}
+            label={t("end_date")}
+            onChange={(e) =>
+              setFilters({ ...filters, endDate: e.target.value })
+            }
           />
-          <CheckBox
-            label={t("weekends")}
-            isChecked={filters.weekends}
-            setIsChecked={() => {
-              setFilters({ ...filters, weekends: !filters.weekends });
-            }}
+          <DropdownWithLabel
+            label={t("start_time")}
+            options={hoursOptions}
+            selected={filters.startTime}
+            setSelected={(value) =>
+              setFilters({ ...filters, startTime: value })
+            }
           />
+          <DropdownWithLabel
+            label={t("end_time")}
+            options={hoursOptions}
+            selected={filters.endTime}
+            setSelected={(value) => setFilters({ ...filters, endTime: value })}
+          />
+          <div className="page__organization-details__filters-modal__checkbox-container">
+            <CheckBox
+              label={t("weekdays")}
+              isChecked={filters.weekdays}
+              setIsChecked={() => {
+                setFilters({ ...filters, weekdays: !filters.weekdays });
+              }}
+            />
+            <CheckBox
+              label={t("weekends")}
+              isChecked={filters.weekends}
+              setIsChecked={() => {
+                setFilters({ ...filters, weekends: !filters.weekends });
+              }}
+            />
+          </div>
         </div>
       </Modal>
 
@@ -331,6 +338,7 @@ export const OrganizationDetails = () => {
         })}
         ctaLabel={t("remove")}
         ctaColor="red"
+        overlayClasses="page__organization-details__modal-overlay"
         ctaHandleClick={() => {
           removeProviderMutation.mutate({
             organizationId,
@@ -359,6 +367,7 @@ export const OrganizationDetails = () => {
           });
         }}
         isCtaLoading={assignProvidersMutation.isLoading}
+        overlayClasses="page__organization-details__modal-overlay"
         classes="page__organization-details__modal"
       >
         <Select

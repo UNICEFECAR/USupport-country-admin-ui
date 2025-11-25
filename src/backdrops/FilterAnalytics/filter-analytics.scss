@@ -1,0 +1,23 @@
+@import "@USupport-components-library/styles";
+
+.filter-analytics-modal {
+  &__content-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  & .date-input__container,
+  &__dropdown {
+    margin-top: $spacing_2_0;
+    margin-inline: auto;
+    width: fit-content;
+
+    &:first-of-type {
+      margin-top: $spacing_3_0;
+    }
+
+    &:last-of-type {
+      margin-bottom: $spacing_3_0;
+    }
+  }
+}

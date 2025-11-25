@@ -10,11 +10,14 @@ import {
   GridItem,
   Loading,
   DropdownWithLabel,
-  DateInput,
   ReportCollapsible,
+  Box,
+  Label,
+  Icon,
 } from "@USupport-components-library/src";
 import { downloadCSVFile } from "@USupport-components-library/utils";
 import { useGetContentStatistics, useGetPlatformMetrics } from "#hooks";
+import { FilterAnalytics } from "#backdrops";
 
 import "./analytics.scss";
 
@@ -29,11 +32,17 @@ export const Analytics = () => {
   const { t, i18n } = useTranslation("blocks", { keyPrefix: "analytics" });
 
   const [selectedContentType, setSelectedContentType] = useState("all");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
+  const [filters, setFilters] = useState({
+    startDate: "",
+    endDate: "",
+    sex: "",
+    urbanRural: "",
+    yearOfBirth: "",
+  });
   const [options, setOptions] = useState([
-    { label: t("general"), value: "general", isSelected: true },
-    { label: t("content"), value: "content", isSelected: false },
+    { label: t("general"), value: "general", isSelected: false },
+    { label: t("content"), value: "content", isSelected: true },
   ]);
 
   const contentTypeOptions = [
@@ -43,7 +52,15 @@ export const Analytics = () => {
     { label: t("podcasts"), value: "podcasts" },
   ];
 
-  const { data: categoriesData } = useGetContentStatistics(selectedContentType);
+  const filtersToTranslaate = ["sex", "urbanRural", "yearOfBirth"];
+
+  const { data: categoriesData, isFetching: isCategoriesDataFetching } =
+    useGetContentStatistics({
+      contentType: selectedContentType,
+      sex: filters.sex || null,
+      yearOfBirth: filters.yearOfBirth || null,
+      urbanRural: filters.urbanRural || null,
+    });
 
   const shouldFetchPlatformMetrics =
     options.find((opt) => opt.value === "general")?.isSelected || false;
@@ -53,8 +70,11 @@ export const Analytics = () => {
     isLoading: isGeneralPlatformMetricsLoading,
     isError: isGeneralPlatfromMetricsError,
   } = useGetPlatformMetrics({
-    startDate: startDate || null,
-    endDate: endDate || null,
+    startDate: filters.startDate || null,
+    endDate: filters.endDate || null,
+    sex: filters.sex || null,
+    urbanRural: filters.urbanRural || null,
+    yearOfBirth: filters.yearOfBirth || null,
     enabled: shouldFetchPlatformMetrics,
   });
 
@@ -76,6 +96,14 @@ export const Analytics = () => {
     });
 
     optionsCopy[index].isSelected = !optionsCopy[index].isSelected;
+
+    setFilters({
+      startDate: "",
+      endDate: "",
+      sex: "",
+      urbanRural: "",
+      yearOfBirth: "",
+    });
 
     setOptions(optionsCopy);
   };
@@ -190,6 +218,50 @@ export const Analytics = () => {
     ];
   });
 
+  const consultationKeys = [
+    "totalConsultations",
+    "cancelledConsultations",
+    "lateCancelledConsultations",
+    "scheduledConsultations",
+    "mobileScheduledConsultations",
+    "joinConsultationClick",
+    "mobileJoinConsultationClick",
+    "scheduleButtonClick",
+    "mobileScheduleButtonClick",
+    "clientsAttendedConsultations",
+    "totalCouponConsultations",
+  ];
+
+  const visitKeys = [
+    "globalWebsiteVisits",
+    "uniqueWebsiteAccess",
+    "totalWebsiteAccess",
+    "uniqueWebsiteAccess",
+    "totalClientAccess",
+    "uniqueClientAccess",
+    "totalProviderAccess",
+    "uniqueProviderAccess",
+    "totalMobileAccess",
+    "uniqueMobileAccess",
+  ];
+
+  const clicksKeys = [
+    "emailRegisterClick",
+    "mobileEmailRegisterClick",
+    "anonymousRegisterClick",
+    "mobileAnonymousRegisterClick",
+    "guestRegisterClick",
+    "mobileGuestRegisterClick",
+  ];
+
+  const userKeys = [
+    "totalProviders",
+    "activeProviders",
+    "allClients",
+    "activeClients",
+    "positiveClientRatings",
+    "positiveProviderRatings",
+  ];
   const renderStatistic = () => {
     if (isGeneralPlatformMetricsLoading) {
       return (
@@ -224,84 +296,138 @@ export const Analytics = () => {
       })
     );
 
-    return (
-      <Grid classes="analytics__statistics-grid">
-        {statistics.map((statistic, index) => (
-          <GridItem
-            md={8}
-            lg={statistic.type === "globalWebsiteVisits" ? 12 : 6}
-            key={index}
-            classes="analytics__statistics-item"
+    const consultationStatistics = statistics.filter((statistic) =>
+      consultationKeys.includes(statistic.type)
+    );
+
+    const visitStatistics = statistics.filter((statistic) =>
+      visitKeys.includes(statistic.type)
+    );
+
+    const clicksStatistics = statistics.filter((statistic) =>
+      clicksKeys.includes(statistic.type)
+    );
+
+    const userStatistics = statistics.filter((statistic) =>
+      userKeys.includes(statistic.type)
+    );
+
+    const renderStatistic = (statistic, index) => {
+      return (
+        <GridItem
+          md={8}
+          lg={
+            statistic.type === "globalWebsiteVisits" ||
+            statistic.type === "totalConsultations"
+              ? 12
+              : 6
+          }
+          key={index}
+          classes="analytics__statistics-item"
+        >
+          <ReportCollapsible
+            canCollapse={!!statistic.demographics}
+            headingItems={[
+              <>
+                <p>
+                  {t(statistic.type)}
+                  {"  "}
+                  <strong>
+                    {isNaN(statistic.count) ? statistic.value : statistic.count}
+                  </strong>
+                  {statistic.uniqueCount ? (
+                    <span>
+                      {" / "}
+                      {t(`${statistic.type}_unique_count`)}
+                      {"  "}
+                      <strong>{statistic.uniqueCount}</strong>
+                    </span>
+                  ) : null}
+                </p>
+              </>,
+            ]}
+            contentHeading={
+              statistic.demographics ? (
+                <h4>{t("demographics_breakdown")}</h4>
+              ) : null
+            }
+            classes="analytics__statistics-collapsible"
+            headingText={t(`${statistic.type}_info`)}
           >
-            <ReportCollapsible
-              canCollapse={!!statistic.demographics}
-              headingItems={[
-                <>
-                  <p>
-                    {t(statistic.type)}
-                    {"  "}
-                    <strong>
-                      {isNaN(statistic.count)
-                        ? statistic.value
-                        : statistic.count}
-                    </strong>
-                    {statistic.uniqueCount ? (
-                      <span>
-                        {" / "}
-                        {t(`${statistic.type}_unique_count`)}
-                        {"  "}
-                        <strong>{statistic.uniqueCount}</strong>
-                      </span>
-                    ) : null}
-                  </p>
-                </>,
-              ]}
-              contentHeading={
-                statistic.demographics ? (
-                  <h4>{t("demographics_breakdown")}</h4>
-                ) : null
-              }
-              classes="analytics__statistics-collapsible"
-              headingText={t(`${statistic.type}_info`)}
-            >
-              <div className="analytics__statistics-content">
-                {Object.entries(statistic?.demographics || {}).map(([key]) => {
-                  return (
-                    <div>
-                      <h4 className="analytics__statistics-content__heading">
-                        {t(key)}
-                      </h4>
-                      <div className="analytics__statistics-content__type">
-                        {Object.entries(statistic?.demographics[key] || {}).map(
-                          ([key, value]) => {
-                            return (
-                              <div
-                                className="analytics__statistics-content__type__item"
-                                key={key}
-                              >
-                                <p>
-                                  {isNaN(key) ? t(key) : key}:{" "}
-                                  <strong>{value}</strong>
-                                </p>
-                              </div>
-                            );
-                          }
-                        )}
-                      </div>
+            <div className="analytics__statistics-content">
+              {Object.entries(statistic?.demographics || {}).map(([key]) => {
+                return (
+                  <div>
+                    <h4 className="analytics__statistics-content__heading">
+                      {t(key)}
+                    </h4>
+                    <div className="analytics__statistics-content__type">
+                      {Object.entries(statistic?.demographics[key] || {}).map(
+                        ([key, value]) => {
+                          return (
+                            <div
+                              className="analytics__statistics-content__type__item"
+                              key={key}
+                            >
+                              <p>
+                                {isNaN(key) ? t(key) : key}:{" "}
+                                <strong>{value}</strong>
+                              </p>
+                            </div>
+                          );
+                        }
+                      )}
                     </div>
-                  );
-                })}
-              </div>
-            </ReportCollapsible>
-            {/* <Statistic
-              textBold={statistic.value}
-              text={t(statistic.type)}
-              orientation={"landscape"}
-              hasIcon={false}
-            /> */}
-          </GridItem>
-        ))}
-      </Grid>
+                  </div>
+                );
+              })}
+            </div>
+          </ReportCollapsible>
+        </GridItem>
+      );
+    };
+
+    return (
+      <div className="analytics-content">
+        <Box classes="analytics__statistics-box">
+          <h3>{t("consultations")}</h3>
+          <Grid classes="analytics__statistics-grid">
+            {consultationStatistics.map((statistic, index) =>
+              renderStatistic(statistic, index)
+            )}
+          </Grid>
+        </Box>
+        <Box classes="analytics__statistics-box">
+          <h3>{t("visits")}</h3>
+          <Grid classes="analytics__statistics-grid">
+            {visitStatistics.map((statistic, index) =>
+              renderStatistic(statistic, index)
+            )}
+          </Grid>
+        </Box>
+        <Box classes="analytics__statistics-box">
+          <h3>{t("button_clicks")}</h3>
+          {filters.sex || filters.urbanRural || filters.yearOfBirth ? (
+            <div className="analytics__statistics-box__disclaimer">
+              <Icon color="#eb5757" name="exclamation-mark" />
+              <p>{t("data_cannot_be_filtered")}</p>
+            </div>
+          ) : null}
+          <Grid classes="analytics__statistics-grid">
+            {clicksStatistics.map((statistic, index) =>
+              renderStatistic(statistic, index)
+            )}
+          </Grid>
+        </Box>
+        <Box classes="analytics__statistics-box">
+          <h3>{t("users")}</h3>
+          <Grid classes="analytics__statistics-grid">
+            {userStatistics.map((statistic, index) =>
+              renderStatistic(statistic, index)
+            )}
+          </Grid>
+        </Box>
+      </div>
     );
   };
 
@@ -317,25 +443,48 @@ export const Analytics = () => {
   };
 
   const handleContentTypeSelect = (value) => {
-    console.log(value);
     setSelectedContentType(value);
   };
 
-  const handleStartDateChange = (e) => {
-    setStartDate(e.target.value);
+  const handleOpenFilterModal = () => {
+    setIsFilterModalOpen(true);
   };
 
-  const handleEndDateChange = (e) => {
-    setEndDate(e.target.value);
+  const handleCloseFilterModal = () => {
+    setIsFilterModalOpen(false);
+  };
+
+  const handleApplyFilters = (newFilters) => {
+    setFilters(newFilters);
   };
 
   const handleResetFilters = () => {
-    setStartDate("");
-    setEndDate("");
+    setFilters({
+      startDate: "",
+      endDate: "",
+      sex: "",
+      urbanRural: "",
+      yearOfBirth: "",
+    });
+  };
+
+  const handleRemoveFilter = (filter) => {
+    setFilters((prevFilters) => {
+      const newFilters = { ...prevFilters };
+      delete newFilters[filter];
+      return newFilters;
+    });
   };
 
   return (
     <Block classes="analytics">
+      <FilterAnalytics
+        isOpen={isFilterModalOpen}
+        handleClose={handleCloseFilterModal}
+        filters={filters}
+        handleApplyFilters={handleApplyFilters}
+        handleResetFilters={handleResetFilters}
+      />
       <TabsUnderlined options={options} handleSelect={handleTabSelect} t={t} />
       {options[1].isSelected ? (
         <React.Fragment>
@@ -352,6 +501,7 @@ export const Analytics = () => {
             </GridItem>
           </Grid>
           <BaseTable
+            isLoading={isCategoriesDataFetching}
             data={dataToDisplay}
             rows={columns}
             rowsData={rowsData}
@@ -362,34 +512,81 @@ export const Analytics = () => {
             customSearch={handleSearch}
             buttonLabel={t("export_label")}
             buttonAction={handleExport}
+            secondaryButtonLabel={t("filters")}
+            secondaryButtonAction={handleOpenFilterModal}
+            filters={Object.keys(filters).reduce((acc, key) => {
+              if (!filters[key]) return acc;
+              acc[key] = filtersToTranslaate.includes(key)
+                ? t(filters[key])
+                : filters[key];
+              return acc;
+            }, {})}
+            handleRemoveFilter={handleRemoveFilter}
             enableTooltips={true}
           />
         </React.Fragment>
       ) : (
         <React.Fragment>
-          <div className="analytics__dropdown-container">
-            <DateInput
-              classes={["analytics__date-input"]}
-              label={t("start_date")}
-              value={startDate}
-              onChange={handleStartDateChange}
-              placeholder={t("select_start_date")}
-            />
-            <DateInput
-              classes={["analytics__date-input"]}
-              label={t("end_date")}
-              value={endDate}
-              onChange={handleEndDateChange}
-              placeholder={t("select_end_date")}
-            />
-          </div>
-          <Button
-            classes={"analytics__reset-button"}
+          {/* <Button
+            classes="analytics__filter-button"
             color="purple"
-            onClick={handleResetFilters}
+            onClick={handleOpenFilterModal}
           >
-            {t("reset")}
-          </Button>
+            {t("filters")}
+          </Button> */}
+
+          {
+            <div className="analytics__filters-container">
+              <div>
+                <Button
+                  classes="analytics__filter-button"
+                  color="purple"
+                  onClick={handleOpenFilterModal}
+                >
+                  {t("filters")}
+                </Button>
+              </div>
+              <div className="analytics__active-filters">
+                {filters.startDate && (
+                  <Label
+                    showRemove
+                    text={`${t("start_date")}: ${filters.startDate}`}
+                    onRemove={() => handleRemoveFilter("startDate")}
+                  />
+                )}
+                {filters.endDate && (
+                  <Label
+                    showRemove
+                    text={`${t("end_date")}: ${filters.endDate}`}
+                    onRemove={() => handleRemoveFilter("endDate")}
+                  />
+                )}
+                {filters.sex && (
+                  <Label
+                    showRemove
+                    text={`${t("sex_label")}: ${t(`sex_${filters.sex}`)}`}
+                    onRemove={() => handleRemoveFilter("sex")}
+                  />
+                )}
+                {filters.urbanRural && (
+                  <Label
+                    showRemove
+                    text={`${t("place_of_living_label")}: ${t(
+                      `place_of_living_${filters.urbanRural}`
+                    )}`}
+                    onRemove={() => handleRemoveFilter("urbanRural")}
+                  />
+                )}
+                {filters.yearOfBirth && (
+                  <Label
+                    showRemove
+                    text={`${t("year_of_birth_label")}: ${filters.yearOfBirth}`}
+                    onRemove={() => handleRemoveFilter("yearOfBirth")}
+                  />
+                )}
+              </div>
+            </div>
+          }
           {renderStatistic()}
         </React.Fragment>
       )}

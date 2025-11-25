@@ -57,6 +57,29 @@
       "likes": "الإعجابات",
       "dislikes": "عدم الإعجاب",
       "views": "المشاهدات"
+    },
+    "edit-provider": {
+      "video_link_error": "يرجى إدخال رابط URL صالح"
+    },
+    "analytics": {
+      "filters": "الفلاتر",
+      "apply_filters": "تطبيق الفلاتر",
+      "sex_label": "الجنس",
+      "sex_placeholder": "اختر الجنس",
+      "sex_male": "ذكر",
+      "sex_female": "أنثى",
+      "sex_unspecified": "غير محدد",
+      "place_of_living_label": "مكان الإقامة",
+      "place_of_living_placeholder": "اختر مكان الإقامة",
+      "place_of_living_urban": "حضري",
+      "place_of_living_rural": "ريفي",
+      "year_of_birth_label": "سنة الميلاد",
+      "year_of_birth_placeholder": "اختر سنة الميلاد",
+      "consultations": "الاستشارات",
+      "visits": "الزيارات",
+      "button_clicks": "نقرات الأزرار",
+      "users": "المستخدمون",
+      "data_cannot_be_filtered": "لا يمكن تصفية هذه البيانات حسب التركيبة السكانية. يتم إنشاؤها بناءً على بيانات مجهولة"
     }
   },
   "pages": {

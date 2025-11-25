@@ -10,27 +10,25 @@
       "page_7": "Купондар",
       "page_8": "Менің Q&A",
       "page_9": "Ұйымдар",
-
+      "button_text": "Шығу",
+      "contact_us": "Бізге хабарласыңыз",
+      "your_profile_text": "Профиль",
+      "password_placeholder": "Құпия сөз",
+      "password": "Сайтқа кіру үшін құпия сөзіңізді енгізіңіз",
+      "wrong_password": "Құпия сөз дұрыс емес",
+      "submit": "Жіберу",
+      "statistics": "Статистика",
       "country_1": "",
       "country_2": "",
       "country_3": "",
-
       "language_1": "",
       "language_2": "",
       "language_3": "",
       "language_4": "",
       "language_5": "",
       "language_6": "",
-
-      "button_text": "Шығу",
-      "contact_us": "Бізге хабарласыңыз",
-      "your_profile_text": "Профиль",
-
-      "password_placeholder": "Құпия сөз",
-      "password": "Сайтқа кіру үшін құпия сөзіңізді енгізіңіз",
-      "wrong_password": "Құпия сөз дұрыс емес",
-      "submit": "Жіберу",
-      "statistics": "Статистика"
+      "page_10": "Baseline Assessment",
+      "page_11": "Mood Tracker"
     },
     "statistics": {
       "statistics": "Статистика",
@@ -57,7 +55,8 @@
       "no_data_found": "Ақпарат табылмады",
       "created_at": "Жарияланды",
       "likes": "Ұнады",
-      "dislikes": "Ұнамады"
+      "dislikes": "Ұнамады",
+      "views": "Views"
     },
     "faq": {
       "no_results": "Ештеңе табылмады, басқа тілді байқап көріңіз",
@@ -140,24 +139,19 @@
       "surname_label": "Тегі",
       "email_label": "Электронды пошта",
       "phone_label": "Телефон",
-
       "name_placeholder": "Атыңызды енгізіңіз",
       "surname_placeholder": "Тегіңізді енгізіңіз",
       "email_placeholder": "user@mail.com",
       "phone_prefix_placeholder": "Префикс",
       "phone_placeholder": "Телефон нөірі",
-
       "name_error": "Атыңызды көрсету қажет",
       "surname_error": "Тегіңізді көрсету қажет",
       "email_error": "Электронды поштаңызды көрсету қажет",
       "phone_prefix_error": "Телефон префиксін көрсету қажет",
       "phone_error": "Телефон нөмірін көрсету қажет",
-
       "button_text": "Өзгерістерді сақтау",
       "button_secondary_text": "Өзгерістерді болдырмау",
-
       "edit_success": "Парақша сәтті жаңартылды",
-
       "search": "Іздеу",
       "no_data_found": "Ақпарат табылмады",
       "button_change_password": "Құпия сөзді өзгерту"
@@ -182,7 +176,6 @@
       "deactivate": "Өшірілді",
       "provider_activated": "Консультант табысты белсендірілді",
       "provider_deactivated": "Консультант белсенді өшірілді",
-
       "filter_providers": "Консультанттарды сүзгілеу",
       "min_price": "Төменгі баға",
       "status": "Статусы",
@@ -193,7 +186,6 @@
       "all": "Барлығы",
       "apply_filter": "Сүзгілерді қолданыңыз",
       "reset_filter": "Сүзгілерді қалпына келтіру",
-
       "name": "Аты",
       "email": "Электрондық пошта",
       "price": "Бағасы",
@@ -202,7 +194,8 @@
       "view": "Көріп шығу",
       "edit": "Өңдеу",
       "search": "Іздеу",
-      "organizations": "Ұйымдар"
+      "organizations": "Ұйымдар",
+      "modal_heading": ""
     },
     "edit-provider": {
       "name_label": "Аты",
@@ -222,7 +215,6 @@
       "change_photo": "Фотосуретті өзгерту",
       "work_with_label": "Категориямен жұмыс істеу",
       "video_link_label": "Бейне-таныстырылым",
-
       "name_placeholder": "Атыңызды енгізіңіз",
       "patronym_placeholder": "Әкеңіздің атын енгізіңіз",
       "surname_placeholder": "Тегіңізді енгізіңіз",
@@ -236,16 +228,15 @@
       "consultation_price_placeholder": "Консультация бағасы",
       "description_placeholder": "Сипаттаманы енгізіңіз",
       "video_link_placeholder": "https://video.link",
+      "video_link_error": "Жарамды URL енгізіңіз",
 
       "sex_male": "Ер",
       "sex_female": "Әйел",
       "sex_unspecified": "Көрсетілмеген",
       "sex_none": "Айтпауды жөн көремін",
-
       "psychologist": "Психолог",
       "psychiatrist": "Психиатр",
       "psychotherapist": "Психотерапевт",
-
       "name_error": "Есіміңізді көрсету қажет",
       "surname_error": "Тегіңізді көрсету қажет",
       "nickname_error": "Лақап атыңызды көрсету қажет",
@@ -258,23 +249,19 @@
       "consultation_price_error": "Консультация бағасы теріс сан болмауы керек",
       "min_price_error": "Консультацияның ең аз бағасы  {{minPrice}}{{currencySymbol}}",
       "consultation_price_disabled": "Төленген кеңестер сіздің елде қолжетімді емес",
-
       "specializations_error": "Кемінде бір мамандықты таңдаңыз",
       "work_with_error": "Кемінде бір категорияны таңдаңыз",
       "languages_error": "Кемінде бір тілді таңдаңыз",
       "education_error": "Білім деңгейін көрсету қажет",
       "description_error": "Сипаттаманы көрсету қажет",
       "sex_error": "Жынысыңызды таңдаңыз",
-
       "add_more_languages": "Көбірек тілдер қосу",
       "add_more_work_with": "Категорияларды көбірек қосу",
       "add_more_education": "Көбірек қосу",
       "add_more_specializations": "Көбірек мамандықтар қосу",
-
       "button_text": "Өзгерістерді сақтау",
       "button_secondary_text": "Өзгерістерді болдырмау",
       "create_button_text": "Консультантты тіркеу",
-
       "addiction": "Тәуелділік пен токсикомания",
       "stress": "Стрессті басқару",
       "burnout": "Эмоционалды жану, академиялық стресс",
@@ -306,15 +293,12 @@
       "love": "Махаббат және романтикалық қатынастар",
       "social_skills": "Әлеуметтік дағдылар және достық",
       "body_image": "Өзін-өзі бағалау және келбет бейнесі",
-
       "edit_success": "Парақша сәтті жаңартылды",
       "create_success": "Консультант сәтті тіркелді",
-
       "search": "Іздеу",
       "no_data_found": "Ақпарат табылмады",
       "select": "Таңдау",
       "remove": "Жою",
-
       "organizations_label": "Ұйымдар",
       "organizations_error": "Кемінде бір ұйымды таңдау қажет"
     },
@@ -325,7 +309,6 @@
       "work_with_label": "Мамандықтар",
       "specializations_label": "Мамандану салалары",
       "done_consultations_label": "Барлығы өткізілген консультациялар саны",
-      "consultations": "Консультациялар",
       "description_label": "Мен туралы",
       "edit_details": "Мәліметтерді өзгерту",
       "no_available_slot": "Бос уақыт жоқ",
@@ -333,11 +316,9 @@
       "city_label": "Қала",
       "street_label": "Көше",
       "postcode_label": "Пошта индексі",
-
       "psychologist": "Психолог",
       "psychiatrist": "Психиатр",
       "psychotherapist": "Психотерапевт",
-
       "addiction": "Тәуелділік пен токсикомания",
       "stress": "Стрессті басқару",
       "burnout": "Эмоционалды жану, академиялық стресс",
@@ -369,10 +350,10 @@
       "love": "Махаббат және романтикалық қатынастар",
       "social_skills": "Әлеуметтік дағдылар және достық",
       "body_image": "Өзін-өзі бағалау және келбет бейнесі",
-
       "hour_consultation": "1 сағаттық консультация үшін",
       "organizations_label": "Ұйымдар",
-      "free": "тегін"
+      "free": "тегін",
+      "consultations": "Консультациялар"
     },
     "security-check": {
       "heading": "Консультация мәселелері туралы есептер",
@@ -398,7 +379,6 @@
       "no": "Жоқ",
       "no_results": "Қауіпсіздікті тексеру есептері жоқ",
       "search": "Іздеу",
-
       "very_satisfied": "Өте көңілім толды",
       "satisfied": "Көңілім толды",
       "neutral": "Бейтарап",
@@ -437,19 +417,18 @@
       "rating": "Рейтинг",
       "time": "Рет",
       "content_heading": "Кері байланыс",
-
       "filters": "Сүзгі",
       "filter": "Filter",
       "minimum_rating": "Минималды рейтинг",
       "all": "Барлық рейтингтер",
-      "client_ratings": "Клиенттің рейтингі",
-      "provider_ratings": "Қызмет көрсетушінің рейтингі",
       "starting_date": "Басталу күні",
       "ending_date": "Аяқталу күні",
       "submit": "Сүзгілерді қолданыңыз",
       "reset_filters": "Сүзгілерді қайта орнату",
       "no_results": "Рейтингтер табылған жоқ",
       "search": "Іздеу",
+      "client_ratings": "Клиенттің рейтингі",
+      "provider_ratings": "Қызмет көрсетушінің рейтингі",
       "from_client": "Клиенттен",
       "from_provider": "Қызмет көрсетушіден",
       "user_type": "Пайдаланушы түрі",
@@ -499,6 +478,11 @@
       "reset_filter": "Сүзгілерді қалпына келтіру",
       "search": "Іздеу",
       "no_data_found": "Ақпарат табылмады",
+      "status": "",
+      "finished": "",
+      "late-canceled": "",
+      "scheduled": "",
+      "active": "",
       "organization": "Ұйым",
       "dates_placeholder": "КК.АА.ЖЖЖЖ"
     },
@@ -531,18 +515,15 @@
       "phone_placeholder": "Телефон нөмірін енгізіңіз",
       "phone_prefix_placeholder": "Префикс",
       "create_sponsor": "Демеушіні тіркеу",
-
       "sponsor_error": "Демеушінің аты міндетті",
       "email_error": "Электрондық пошта қажет",
       "phone_prefix_error": "Телефон префиксін көрсету қажет",
       "phone_error": "Телефон нөмірін көрсету қажет",
-
       "save_changes": "Өзгерістерді сақтау",
       "discard_changes": "Өзгерістерді болдырмау",
       "delete_sponsor": "Демеушіні жою",
       "edit_success": "Өзгерістер сәтті сақталды",
       "success": "Демеуші сәтті тіркерілді",
-
       "search": "Іздеу",
       "no_data_found": "Ақпарат табылмады"
     },
@@ -588,7 +569,6 @@
       "end_date_label": "Аяқталу күні",
       "max_coupons_per_client_label": "Бір клиентке арналған купондардың ең көп саны",
       "terms_label": "Шарттар мен ережелер",
-
       "name_placeholder": "Науқан атауы",
       "budget_placeholder": "Жалпы бюджетті енгізіңіз",
       "coupon_code_placeholder": "Купонды алу үшін кодты енгізіңіз",
@@ -597,13 +577,11 @@
       "max_coupons_per_client_placeholder": "Бір клиентке арналған купондардың ең көп саны",
       "terms_placeholder": "Ережелер мен шарттарды жазыңыз",
       "budget_info": "Бір реттік консультацияның бағасы",
-
       "required_field": "Өріс міндетті түрде толтырылады",
       "budget_error": "Бюджет оң сан болуы керек",
       "start_date_error": "Науқанның басталу күні болашақта болуы тиіс",
       "end_date_error": "Науқанның аяқталуы болашақта болуы тиіс",
       "period_error": "Науқанның аяқталуы басталуынан кейін болуы тиіс",
-
       "create_campaign": "Науқан құру",
       "save_changes": "Өзгерістерді сақтау",
       "discard_changes": "Өзгерістерді болдырмау",
@@ -632,7 +610,6 @@
       "no_data_found": "Ақпарат табылмады",
       "apply_filter": "Сүзгілерді қолданыңыз",
       "reset_filter": "Сүзгілерді қалпына келтіру",
-
       "client": "Клиент",
       "client_sex": "Клиенттің жынысы",
       "client_yob": "Клиенттің туған жылы",
@@ -641,8 +618,8 @@
       "female": "Әйел",
       "unspecified": "Көрсетілмеген",
       "not_mentioned": "Көрсетілмеген",
-      "urban": "Қала",
       "rural": "Ауыл",
+      "urban": "Қала",
       "all": "Барлығы",
       "search": "Іздеу"
     },
@@ -653,6 +630,7 @@
       "other": "Басқа",
       "save": "Сүзгілерді қолданыңыз",
       "reset": "Сүзгілерді қалпына келтіру",
+      "no_data_found": "Ақпарат табылмады",
       "provider": "Консультанттар",
       "email": "Электронды пошта",
       "archiving_reason_label": "Мұрағат деп белгілеу себеб",
@@ -665,7 +643,6 @@
       "delete_success": "Сұрақ табысты жойылды",
       "all": "Барлығы",
       "filters": "Сүзгілер",
-      "no_data_found": "Ақпарат табылмады",
       "dropdown_label": "Себебі бойынша сүзгілеу",
       "search": "Іздеу"
     },
@@ -677,11 +654,12 @@
       "answer_by": "Жауап берді:",
       "no_data_found": "Ақпарат табылмады",
       "all": "Барлығы",
-      "all_languages": "Барлық тілдер",
       "read_more": "Ары қарай оқу",
-      "Today": "Бүгін",
+      "today": "Бүгін",
       "language": "Тіл",
-      "filter": "Сүзгі"
+      "all_languages": "Барлық тілдер",
+      "filter": "Сүзгі",
+      "date_answered": "{{date}} күні"
     },
     "organizations": {
       "name": "Атауы",
@@ -689,7 +667,6 @@
       "unique_providers": "Барлық провайдерлер",
       "unique_clients": "Барлық клиенттер",
       "add_button": "Ұйым қосу",
-      "search": "Іздеу",
       "filter_button": "Сүзгі",
       "view": "Көру",
       "edit": "Өңдеу",
@@ -700,6 +677,7 @@
       "organization_added": "Ұйым құрылды",
       "organization_updated": "Ұйым жаңартылды",
       "no_data_found": "Деректер табылмады",
+      "search": "Іздеу",
       "name_placeholder": "Ұйым атауын енгізіңіз",
       "website": "Веб-сайттың URL",
       "website_placeholder": "Веб-сайттың URL мекенжайын енгізіңіз",
@@ -721,7 +699,6 @@
       "email": "Электрондық пошта",
       "email_placeholder": "Электрондық пошта мекенжайын енгізіңіз",
       "cancel": "Болдырмау",
-
       "work_with": "Жұмыс бағыттары",
       "work_with_placeholder": "Жұмыс бағыттарын таңдаңыз",
       "district": "Аудан",
@@ -734,17 +711,14 @@
       "specialisations_placeholder": "Ұсынылатын қызметтерді таңдаңыз",
       "property_types": "Жылжымайтын мүлік түрі",
       "property_types_placeholder": "Жылжымайтын мүлік түрлерін таңдаңыз",
-
       "in_person_interaction": "Жеке",
       "online_interaction": "Онлайн",
       "phone_interaction": "Телефон",
       "hybrid_interaction": "Аралас",
-
       "free_services": "Тегін қызметтер",
       "paid_services": "Төленетін қызметтер",
       "co_payment_services": "Ортақ төлем қызметтері",
       "cnas_reimbursed_services": "CNAS өтейтін қызметтер",
-
       "emergency_situations": "Шұғыл жағдайлар",
       "pediatric_psychiatry": "Балалар психиатриясы",
       "psychological_evaluation": "Психологиялық бағалау",
@@ -763,7 +737,6 @@
       "pediatric_neurology": "Балалар неврологиясы",
       "special_psychopedagogy": "Арнайы психопедагогика",
       "neuropsychomotor_recovery": "Нейропсихомоторлық реабилитация",
-
       "aggression_violence_victim_or_aggressor": "Агрессия/зорлық – құрбан немесе агрессор",
       "learning_difficulties_special_educational_needs": "Оқыудағы қиындықтар/арнайы білім қажеттіліктері",
       "behavioral_disorder": "Мінез-құлық бұзылыстары",
@@ -773,7 +746,6 @@
       "identity_issues": "Тұлға мәселелері",
       "illness_oncological_treatment_chronic_diseases": "Аурулар (онкологиялық ем, созылмалы аурулар)",
       "other_situations": "Басқа жағдайлар",
-
       "public": "Мемлекеттік",
       "private": "Жеке",
       "ong": "ҮЕҰ",
@@ -788,7 +760,6 @@
       "child_psychiatry": "Балалар психиатриясы",
       "art_recreational_activities": "Өнерлік демалыс іс-шаралары (театр, музыка, поэзия, сурет, әңгімелесу)",
       "sport_recreational_activities": "Спорттық демалыс іс-шаралары (спорт, ойындар, би)",
-
       "delete_label": "Жою",
       "delete_heading": "«{{name}}» ұйымын жоюға сенімдісіз бе?",
       "delete_subheading": "Бұл әрекетті кері қайтару мүмкін емес.",
@@ -816,7 +787,6 @@
     "analytics": {
       "content_tab_label": "Контент метрикалары",
       "general_tab_label": "Жалпы метрикалар",
-
       "category_name": "Санат атауы",
       "views": "Көрулер",
       "downloads": "Жүктеулер",
@@ -826,71 +796,40 @@
       "engagement_score_tooltip": "Қатысу ұпайы — бұл санаттағы мақалалар, бейнелер және подкасттардың жүктеп алынуы, бөлісулері, ұнаулары және қаралымдары ескерілетін алгоритмге негізделген салмақталған ұпай.",
       "likes": "Ұнады",
       "dislikes": "Ұнамады",
-
       "search": "Іздеу",
       "export_label": "CSV ретінде экспорттау",
       "no_data_found": "Ақпарат табылмады",
-
-      "globalWebsiteVisits": "Жалпы сайттағы кірулер",
-      "globalWebsiteVisits_unique_count": "Бірегей кірулер",
-
       "totalConsultations": "Барлық консультациялар",
+      "uniqueClientsConsultations": "Бірегей клиенттер кеңес беру",
       "totalConsultations_unique_count": "Бірегей клиенттер",
-      "cancelledConsultations": "Бас тартылған консультациялар",
-      "scheduledConsultations": "Жоспарланған консультациялар - Веб",
-      "mobileScheduledConsultations": "Жоспарланған консультациялар - Мобильді",
-
-      "scheduleButtonClick": "Жазылу батырмасы - Веб",
-      "mobileScheduleButtonClick": "Жазылу батырмасы - Мобильді",
-      "clientsAttendedConsultations": "Қатысқан клиенттер",
+      "lateCancelledConsultations": "Кеш жойылған консультациялар",
 
       "totalCouponConsultations": "Купонмен консультациялар",
       "totalCouponConsultations_unique_count": "Бірегей клиенттер",
-      "totalProviders": "Барлық провайдерлер",
       "activeProviders": "Белсенді провайдерлер",
 
-      "allClients": "Барлық клиенттер",
       "activeClients": "Белсенді клиенттер",
-
       "totalWebsiteAccess": "Сайтқа кірулер",
-      "uniqueWebsiteAccess": "Бірегей кірулер",
-
       "totalClientAccess": "Клиент порталына кірулер",
-      "uniqueClientAccess": "Бірегей кірулер (клиент)",
-
       "totalProviderAccess": "Провайдер порталына кірулер",
+      "uniqueWebsiteAccess": "Бірегей кірулер",
+      "uniqueClientAccess": "Бірегей кірулер (клиент)",
       "uniqueProviderAccess": "Бірегей кірулер (провайдер)",
-
-      "totalMobileAccess": "Мобильді қосымша кірулер",
-      "uniqueMobileAccess": "Бірегей мобильді кірулер",
-
-      "emailRegisterClick": "Email тіркелу батырмасы - Веб",
-      "mobileEmailRegisterClick": "Email тіркелу батырмасы - Мобильді",
-
-      "anonymousRegisterClick": "Анонимді тіркелу - Веб",
-      "mobileAnonymousRegisterClick": "Анонимді тіркелу - Мобильді",
-
-      "guestRegisterClick": "Қонақ тіркелу - Веб",
-      "mobileGuestRegisterClick": "Қонақ тіркелу - Мобильді",
-
-      "joinConsultationClick": "Қатысу батырмасы - Веб",
-      "mobileJoinConsultationClick": "Қатысу батырмасы - Мобильді",
-
+      "uniqueClientsThatUsedCoupon": "Бірегей купон пайдаланған клиенттер",
       "positiveClientRatings": "Оң бағалаулар клиенттері",
       "positiveProviderRatings": "Оң бағалаулар консультанттары",
-
       "content_type": "Контент түрі",
       "all": "Барлығы",
       "articles": "Материалдар",
       "videos": "Видео",
       "podcasts": "Подасты",
-
+      "totalMobileAccess": "Мобильді қосымша кірулер",
+      "uniqueMobileAccess": "Бірегей мобильді кірулер",
       "start_date": "Басталу күні",
       "end_date": "Аяқталу күні",
       "reset": "Сүзгілерді тастау",
       "select_start_date": "Басталу күнін таңдаңыз",
       "select_end_date": "Аяқталу күнін таңдаңыз",
-
       "year_of_birth": "Жасы",
       "urban_rural": "Қала/қаласыз",
       "sex": "Жыныс",
@@ -902,14 +841,43 @@
       "not_mentioned": "белгісіз",
       "rural": "Қаласыз",
       "urban": "Қала",
+      "globalWebsiteVisits": "Жалпы сайттағы кірулер",
+      "globalWebsiteVisits_unique_count": "Бірегей кірулер",
+      "cancelledConsultations": "Бас тартылған консультациялар",
+      "scheduledConsultations": "Жоспарланған консультациялар - Веб",
+      "mobileScheduledConsultations": "Жоспарланған консультациялар - Мобильді",
+      "scheduleButtonClick": "Жазылу батырмасы - Веб",
+      "mobileScheduleButtonClick": "Жазылу батырмасы - Мобильді",
+      "clientsAttendedConsultations": "Қатысқан клиенттер",
+      "totalProviders": "Барлық провайдерлер",
+      "allClients": "Барлық клиенттер",
+      "emailRegisterClick": "Email тіркелу батырмасы - Веб",
+      "mobileEmailRegisterClick": "Email тіркелу батырмасы - Мобильді",
+      "anonymousRegisterClick": "Анонимді тіркелу - Веб",
+      "mobileAnonymousRegisterClick": "Анонимді тіркелу - Мобильді",
+      "guestRegisterClick": "Қонақ тіркелу - Веб",
+      "mobileGuestRegisterClick": "Қонақ тіркелу - Мобильді",
+      "joinConsultationClick": "Қатысу батырмасы - Веб",
+      "mobileJoinConsultationClick": "Қатысу батырмасы - Мобильді",
+      "missing": "N/A"
+    },
+    "sos-center-clicks": {
+      "sos_center": "SOS орталығы",
+      "click_count": "Жалпы басулар саны",
+      "history": "Тарих",
+      "web": "Веб",
+      "client": "Клиент",
+      "clicked_at": "{{platform}} платформасынан {{time}} кезінде басылды",
+      "floating_button": "Негізгі батырма",
       "missing": "N/A",
 
       "globalWebsiteVisits_info": "Жалпы (\"usupport.online\") веб-сайтына жалпы кірулер саны",
       "cancelledConsultations_info": "Өткізілмей тұрып жойылған консультациялар",
-      "totalConsultations_info": "Платформада жоспарланған консультациялардың жалпы саны",
-      "mobileScheduledConsultations_info": "Мобильді қосымшада жоспарланған консультациялар",
+      "lateCancelledConsultations_info": "Консультациялар, жоспарланған басталу уақытына дейін 24 сағаттан аз уақыт қалғанда жойылған",
+      "totalConsultations_info": "Платформада жоспарланған консультациялардың жалпы саны. Бұл көрсеткішке жойылған және кеш жойылған консультациялар кіреді",
+      "mobileScheduledConsultations_info": "Мобильді қосымшада жоспарланған консультациялар. Бұл көрсеткішке жойылған немесе кеш жойылған консультациялар кірмейді",
       "clientsAttendedConsultations_info": "Консультацияларға қатысқан клиенттер",
-      "scheduledConsultations_info": "Веб-порталда жоспарланған консультациялар",
+      "scheduledConsultations_info": "Веб-порталда жоспарланған консультациялар. Бұл көрсеткішке жойылған немесе кеш жойылған консультациялар кірмейді",
       "scheduleButtonClick_info": "\"Консультацияны жоспарлау\" батырмасын веб-порталда басу саны",
       "mobileScheduleButtonClick_info": "\"Консультацияны жоспарлау\" батырмасын мобильді қосымшада басу саны",
       "totalCouponConsultations_info": "Купон арқылы жоспарланған консультациялар",
@@ -934,7 +902,26 @@
       "joinConsultationClick_info": "\"Консультацияға қосылу\" батырмасын веб-порталда басу саны",
       "mobileJoinConsultationClick_info": "\"Консультацияға қосылу\" батырмасын мобильді қосымшада басу саны",
       "positiveClientRatings_info": "Клиенттер берген оң бағалар саны",
-      "positiveProviderRatings_info": "Провайдерлер берген оң бағалар саны"
+      "positiveProviderRatings_info": "Провайдерлер берген оң бағалар саны",
+
+      "filters": "Сүзгілер",
+      "apply_filters": "Сүзгілерді қолдану",
+      "sex_label": "Жынысы",
+      "sex_placeholder": "Жынысын таңдаңыз",
+      "sex_male": "Еркек",
+      "sex_female": "Әйел",
+      "sex_unspecified": "Көрсетілмеген",
+      "place_of_living_label": "Тұрғылықты жері",
+      "place_of_living_placeholder": "Тұрғылықты жерін таңдаңыз",
+      "place_of_living_urban": "Қала",
+      "place_of_living_rural": "Ауыл",
+      "year_of_birth_label": "Туған жылы",
+      "year_of_birth_placeholder": "Туған жылын таңдаңыз",
+      "consultations": "Консультациялар",
+      "visits": "Келулер",
+      "button_clicks": "Батырма басулары",
+      "users": "Қолданушылар",
+      "data_cannot_be_filtered": "Бұл деректерді демографиялық бойынша сүзуге болмайды. Олар анонимді деректер негізінде жасалады"
     },
     "baseline-assessment-thresholds": {
       "title": "Бастапқы бағалау шектеулері",
@@ -954,7 +941,7 @@
       "analysis_title": "Бағалау деректерінің талдауы",
       "analysis_description": "Әр фактор үшін медиана мәндерімен аяқталған бастапқы бағалаулардың статистикалық талдауы.",
       "total_assessments": "Жалпы бағалаулар",
-      "total_answers": "Жалпы жауаптар",
+      "total_questions": "Жалпы сұрақтар",
       "median_value": "Медиана мәні",
       "data_split_info": "Деректер талдау үшін екі топқа бөлінді:",
       "first_half": "Бірінші жартысы",
@@ -965,17 +952,11 @@
       "start_date": "Басталу күні",
       "end_date": "Аяқталу күні",
       "reset_filters": "Сүзгілерді қалпына келтіру",
-      "recommended_below": "25% үшін төмен шекара ұсынылады:",
-      "recommended_above": "25% үшін жоғары шекара ұсынылады:"
-    },
-    "sos-center-clicks": {
-      "sos_center": "SOS орталығы",
-      "click_count": "Жалпы басулар саны",
-      "history": "Тарих",
-      "web": "Веб",
-      "client": "Клиент",
-      "clicked_at": "{{platform}} платформасынан {{time}} кезінде басылды",
-      "floating_button": "Негізгі батырма"
+      "above_count": "Clients above high",
+      "below_count": "Clients below low",
+      "select_start_date": "Select start date",
+      "select_end_date": "Select end date",
+      "total_answers": "Жалпы жауаптар"
     },
     "providers-free-slots": {
       "heading": "Консультанттардың бос орындары туралы есеп құру",
@@ -1010,9 +991,14 @@
       "reset_filters": "Сүзгілерді қалпына келтіру",
       "critical_entries": "Күрделі жазбалар",
       "critical_count": "Күрделі жазбалар саны"
+    },
+    "pl-statistics-page": {
+      "heading": "Statistics",
+      "web_visits": "Total visits",
+      "qr_visits": "QR visits",
+      "no_data": "No data found"
     }
   },
-
   "pages": {
     "not-found-page": {
       "heading": "Ой! Сіз іздеген бетті таба алмай жатырмыз...",
@@ -1061,16 +1047,13 @@
       "consultations_tab_label": "Консультация мәселелері",
       "suggestions_tab_label": "Платформа ұсыныстары",
       "ratings_tab_label": "Рейтингтер",
+      "provider_ratings_tab_label": "",
       "contact_form_tab_label": "Байланыс формалары",
       "filter": "Сүзгі",
       "heading": "Есептер",
       "my_qa_tab_label": "Менің Q&A (Сұрақ/Жауап) мұрағатым",
       "sos_center_clicks_tab_label": "SOS Орталық",
       "providers_free_slots_tab_label": "Консультанттардың бос орындары"
-    },
-    "mood-tracker-report-page": {
-      "heading": "Көңіл күй трекері есебі",
-      "description": "Еліңіздегі көңіл күй трекерін пайдалануын зерттеу үшін күн диапазоны бойынша сүзгілеңіз."
     },
     "campaigns-page": {
       "heading": "Демеушілер тізімі"
@@ -1125,8 +1108,9 @@
       "filters": "Фильтрлер",
       "start_date": "Басталу күні",
       "end_date": "Аяқталу күні",
-      "start_time": "Басталу уақыты (UTC)",
-      "end_time": "Аяқталу уақыты (UTC)",
+      "start_time": "Басталу уақыты",
+      "end_time": "Аяқталу уақыты",
+      "time_zone": "Уақыт белдеуі",
       "weekdays": "Апта күндері",
       "weekends": "Демалыс күндері",
       "apply": "Қолдану",
@@ -1145,6 +1129,14 @@
       "reset_filters": "Фильтрлерді қалпына келтіру",
       "no_data_found": "Деректер табылмады",
       "search": "Іздеу"
+    },
+    "analytics-page": {
+      "heading": "Аналитика",
+      "ro": "Румыния",
+      "kz": "Казахстан",
+      "ua": "Украина",
+      "pl": "Польша",
+      "am": "Армения"
     },
     "content-management-page": {
       "title": "Мазмұнын басқару",
@@ -1175,19 +1167,14 @@
       "podcasts_active": "Подкаст модулінің активтелуі",
       "save_success": "Сақталды"
     },
-    "analytics-page": {
-      "heading": "Аналитика",
-      "ro": "Румыния",
-      "kz": "Казахстан",
-      "ua": "Украина",
-      "pl": "Польша",
-      "am": "Армения"
-    },
     "baseline-assessment-page": {
       "heading": "Бастапқы бағалау"
+    },
+    "mood-tracker-report-page": {
+      "heading": "Көңіл күй трекері есебі",
+      "description": "Еліңіздегі көңіл күй трекерін пайдалануын зерттеу үшін күн диапазоны бойынша сүзгілеңіз."
     }
   },
-
   "modals": {
     "upload-picture": {
       "heading": "Парақша фотосуретін өзгерту",
@@ -1255,7 +1242,6 @@
       "password_match_error": "Жаңа құпия сөз және Құпия сөзді растаңыз өрістері сәйкес келмейді"
     }
   },
-
   "routes": {
     "root": {
       "heading": "Сіз әлі осындасыз ба?",

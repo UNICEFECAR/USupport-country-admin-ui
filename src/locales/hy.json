@@ -10,8 +10,6 @@
       "page_7": "Կտրոններ",
       "page_8": "Իմ հարցուպատասխանը",
       "page_9": "Կազմակերպություններ",
-      "page_10": "Բազային գնահատում",
-
       "button_text": "Դուրս գալ համակարգից",
       "contact_us": "Կապվել մեզ հետ",
       "your_profile_text": "Ձեր պրոֆիլը",
@@ -28,7 +26,9 @@
       "language_3": "",
       "language_4": "",
       "language_5": "",
-      "language_6": ""
+      "language_6": "",
+      "page_10": "Բազային գնահատում",
+      "page_11": "Mood Tracker"
     },
     "statistics": {
       "statistics": "Վիճակագրություն",
@@ -55,7 +55,8 @@
       "no_data_found": "Տվյալ չի գտնվել",
       "created_at": "Ստեղծված է ․․․",
       "likes": "Likes",
-      "dislikes": "Dislikes"
+      "dislikes": "Dislikes",
+      "views": "Views"
     },
     "faq": {
       "no_results": "Արդյունքներ չեն գտնվել, խնդրում ենք փորձել այլ լեզվով",
@@ -227,6 +228,7 @@
       "consultation_price_placeholder": "Խորհրդատվության արժեքը",
       "description_placeholder": "Մուտքագրել նկարագրություն",
       "video_link_placeholder": "https://video.link",
+      "video_link_error": "Խնդրում ենք մուտքագրել ճիշտ URL",
       "sex_male": "Արական",
       "sex_female": "Իգական",
       "sex_unspecified": "Նշված չէ",
@@ -349,7 +351,8 @@
       "body_image": "Մարմնակազմություն և ինքնագնահատական",
       "hour_consultation": "1 ժամ խորհրդատվության համար",
       "organizations_label": "Կազմակերպություններ",
-      "free": "Անվճար"
+      "free": "Անվճար",
+      "consultations": "Consultations"
     },
     "security-check": {
       "heading": "Խորհրդատվության հետ կապված խնդիրների մասին դիմումներ",
@@ -651,10 +654,11 @@
       "no_data_found": "Տվյալ չի գտնվել",
       "all": "Բոլոր լեզուները",
       "read_more": "Կարդալ ավելին",
-      "Today": "Այսօր",
+      "today": "Այսօր",
       "language": "Լեզու",
       "all_languages": "Բոլոր լեզուները",
-      "filter": "Filter"
+      "filter": "Ֆիլտր",
+      "date_answered": "ըստ {{date}}"
     },
     "organizations": {
       "name": "Անունը",
@@ -761,7 +765,23 @@
       "delete_providers_heading": "Organization {{name}} has associated providers",
       "delete_providers_subheading": "Please remove all providers before deleting the organization. List of providers",
       "delete_success": "Organization {{name}} was deleted successfully",
-      "website_link": "Go to website"
+      "website_link": "Go to website",
+      "month": "",
+      "year": "",
+      "all_months": "",
+      "all_years": "",
+      "january": "",
+      "february": "",
+      "march": "",
+      "april": "",
+      "may": "",
+      "june": "",
+      "july": "",
+      "august": "",
+      "september": "",
+      "october": "",
+      "november": "",
+      "december": ""
     },
     "analytics": {
       "content_tab_label": "Բովանդակության ցուցանիշներ",
@@ -778,66 +798,36 @@
       "search": "Որոնում",
       "export_label": "Արտահանել տվյալները CSV ձևաչափով",
       "no_data_found": "Տվյալներ չեն հայտնաբերվել",
-
-      "globalWebsiteVisits": "Ընդհանուր կայքի այցելություններ",
-      "globalWebsiteVisits_unique_count": "Եզակի այցելություններ",
-
       "totalConsultations": "Ընդհանուր խորհրդատվություններ",
-      "totalConsultations_unique_count": "Եզակի հաճախորդներ",
-      "cancelledConsultations": "Չեղարկված խորհրդատվություններ",
-      "scheduledConsultations": "Նախատեսված խորհրդատվություններ - Վեբ",
-      "mobileScheduledConsultations": "Նախատեսված խորհրդատվություններ - Բջջային",
+      "uniqueClientsConsultations": "Հաճախորդների հատուկ խորհրդատվություններ",
+      "lateCancelledConsultations": "Ուշ չեղարկված խորհրդատվություններ",
 
-      "scheduleButtonClick": "Ժամանակավորում սեղմում - Վեբ",
-      "mobileScheduleButtonClick": "Ժամանակավորում սեղմում - Բջջային",
-      "clientsAttendedConsultations": "Մասնակցած հաճախորդներ",
-
-      "totalCouponConsultations": "Կտրոնով խորհրդատվություններ",
-      "totalCouponConsultations_unique_count": "Եզակի հաճախորդներ",
-      "totalProviders": "Բոլոր մատակարարները",
-      "activeProviders": "Ակտիվ մատակարարներ",
-
-      "allClients": "Բոլոր հաճախորդները",
       "activeClients": "Ակտիվ հաճախորդներ",
-
+      "activeProviders": "Ակտիվ մատակարարներ",
       "totalWebsiteAccess": "Կայքի այցելություններ",
-      "uniqueWebsiteAccess": "Եզակի այցելություններ",
-
       "totalClientAccess": "Հաճախորդների պորտալի մուտքեր",
-      "uniqueClientAccess": "Եզակի մուտքեր (հաճախորդ)",
-
       "totalProviderAccess": "Մատակարարների պորտալի մուտքեր",
+      "uniqueWebsiteAccess": "Եզակի այցելություններ",
+      "uniqueClientAccess": "Եզակի մուտքեր (հաճախորդ)",
       "uniqueProviderAccess": "Եզակի մուտքեր (մատակարար)",
-
-      "totalMobileAccess": "Բջջային հավելվածի մուտքեր",
-      "uniqueMobileAccess": "Եզակի մուտքեր (բջջային)",
-
-      "emailRegisterClick": "Էլ. փոստ գրանցում - Վեբ",
-      "mobileEmailRegisterClick": "Էլ. փոստ գրանցում - Բջջային",
-
-      "anonymousRegisterClick": "Անանուն գրանցում - Վեբ",
-      "mobileAnonymousRegisterClick": "Անանուն գրանցում - Բջջային",
-
-      "guestRegisterClick": "Հյուր գրանցում - Վեբ",
-      "mobileGuestRegisterClick": "Հյուր գրանցում - Բջջային",
-
-      "joinConsultationClick": "Միացման սեղմում - Վեբ",
-      "mobileJoinConsultationClick": "Միացման սեղմում - Բջջային",
-
+      "uniqueClientsThatUsedCoupon": "Կտրոն օգտագործած հատուկ հաճախորդներ",
+      "totalCouponConsultations": "Կտրոնով խորհրդատվություններ",
       "positiveClientRatings": "Ակտիվ հաճախորդների գնահատականներ",
       "positiveProviderRatings": "Ակտիվ մատակարարների գնահատականներ",
-
       "content_type": "Պարունակության տեսակ",
       "all": "Բոլորը",
       "articles": "Հոդվածներ",
       "videos": "Տեսանյութեր",
       "podcasts": "Փոդքաստներ",
+      "totalMobileAccess": "Բջջային հավելվածի մուտքեր",
+      "uniqueMobileAccess": "Եզակի մուտքեր (բջջային)",
+      "totalConsultations_unique_count": "Եզակի հաճախորդներ",
+      "totalCouponConsultations_unique_count": "Եզակի հաճախորդներ",
       "start_date": "Սկզբի ամսաթիվ",
       "end_date": "Ավարտի ամսաթիվ",
       "reset": "Զտիչների վերականգնում",
       "select_start_date": "Ընտրեք սկզբի ամսաթիվը",
       "select_end_date": "Ընտրեք ավարտի ամսաթիվը",
-
       "year_of_birth": "Ծննդյան տարեթիվ",
       "urban_rural": "Քաղաքային/Գյուղական",
       "sex": "Սեռ",
@@ -849,14 +839,33 @@
       "not_mentioned": "Չնշված",
       "rural": "Գյուղական",
       "urban": "Քաղաքային",
+      "globalWebsiteVisits": "Ընդհանուր կայքի այցելություններ",
+      "globalWebsiteVisits_unique_count": "Եզակի այցելություններ",
+      "cancelledConsultations": "Չեղարկված խորհրդատվություններ",
+      "scheduledConsultations": "Նախատեսված խորհրդատվություններ - Վեբ",
+      "mobileScheduledConsultations": "Նախատեսված խորհրդատվություններ - Բջջային",
+      "scheduleButtonClick": "Ժամանակավորում սեղմում - Վեբ",
+      "mobileScheduleButtonClick": "Ժամանակավորում սեղմում - Բջջային",
+      "clientsAttendedConsultations": "Մասնակցած հաճախորդներ",
+      "totalProviders": "Բոլոր մատակարարները",
+      "allClients": "Բոլոր հաճախորդները",
+      "emailRegisterClick": "Էլ. փոստ գրանցում - Վեբ",
+      "mobileEmailRegisterClick": "Էլ. փոստ գրանցում - Բջջային",
+      "anonymousRegisterClick": "Անանուն գրանցում - Վեբ",
+      "mobileAnonymousRegisterClick": "Անանուն գրանցում - Բջջային",
+      "guestRegisterClick": "Հյուր գրանցում - Վեբ",
+      "mobileGuestRegisterClick": "Հյուր գրանցում - Բջջային",
+      "joinConsultationClick": "Միացման սեղմում - Վեբ",
+      "mobileJoinConsultationClick": "Միացման սեղմում - Բջջային",
       "missing": "N/A",
 
       "globalWebsiteVisits_info": "Ընդհանուր այցելությունները գլոբալ («usupport.online») կայքում",
       "cancelledConsultations_info": "Խորհրդատվություններ, որոնք չեղարկվել են մինչև անցկացվելը",
-      "totalConsultations_info": "Ընդհանուր պլանավորված խորհրդատվությունների քանակը հարթակում",
-      "mobileScheduledConsultations_info": "Բջջային հավելվածում պլանավորված խորհրդատվություններ",
+      "lateCancelledConsultations_info": "Խորհրդատվություններ, որոնք չեղարկվել են պլանավորված մեկնարկից պակաս քան 24 ժամ առաջ",
+      "totalConsultations_info": "Ընդհանուր պլանավորված խորհրդատվությունների քանակը հարթակում։ Այս ցուցանիշը ներառում է չեղարկված և ուշ չեղարկված խորհրդատվությունները",
+      "mobileScheduledConsultations_info": "Բջջային հավելվածում պլանավորված խորհրդատվություններ։ Այս ցուցանիշը ՉԻ ներառում չեղարկված կամ ուշ չեղարկված խորհրդատվությունները",
       "clientsAttendedConsultations_info": "Խորհրդատվություններին մասնակցած հաճախորդներ",
-      "scheduledConsultations_info": "Վեբ պորտալում պլանավորված խորհրդատվություններ",
+      "scheduledConsultations_info": "Վեբ պորտալում պլանավորված խորհրդատվություններ։ Այս ցուցանիշը ՉԻ ներառում չեղարկված կամ ուշ չեղարկված խորհրդատվությունները",
       "scheduleButtonClick_info": "«Պլանավորել խորհրդատվություն» կոճակի սեղմումներ վեբ պորտալում",
       "mobileScheduleButtonClick_info": "«Պլանավորել խորհրդատվություն» կոճակի սեղմումներ բջջային հավելվածում",
       "totalCouponConsultations_info": "Կուպոնով պլանավորված խորհրդատվություններ",
@@ -881,7 +890,26 @@
       "joinConsultationClick_info": "«Միանալ խորհրդատվությանը» կոճակի սեղմումների քանակը վեբ պորտալում",
       "mobileJoinConsultationClick_info": "«Միանալ խորհրդատվությանը» կոճակի սեղմումների քանակը բջջային հավելվածում",
       "positiveClientRatings_info": "Հաճախորդների տված դրական գնահատականների ընդհանուր քանակը",
-      "positiveProviderRatings_info": "Մատակարարների տված դրական գնահատականների ընդհանուր քանակը"
+      "positiveProviderRatings_info": "Մատակարարների տված դրական գնահատականների ընդհանուր քանակը",
+
+      "filters": "Ֆիլտրներ",
+      "apply_filters": "Կիրառել ֆիլտրները",
+      "sex_label": "Սեռ",
+      "sex_placeholder": "Ընտրեք սեռը",
+      "sex_male": "Արական",
+      "sex_female": "Իգական",
+      "sex_unspecified": "Նշված չէ",
+      "place_of_living_label": "Բնակության վայր",
+      "place_of_living_placeholder": "Ընտրեք բնակության վայրը",
+      "place_of_living_urban": "Քաղաքային",
+      "place_of_living_rural": "Գյուղական",
+      "year_of_birth_label": "Ծննդյան տարի",
+      "year_of_birth_placeholder": "Ընտրեք ծննդյան տարին",
+      "consultations": "Խորհրդատվություններ",
+      "visits": "Այցելություններ",
+      "button_clicks": "Կոճակների սեղմումներ",
+      "users": "Օգտատերեր",
+      "data_cannot_be_filtered": "Այս տվյալները չեն ֆիլտրվում ըստ դեմոգրաֆիկ տվյալների։ Դրանք ստեղծվում են անանուն տվյալների հիման վրա"
     },
     "sos-center-clicks": {
       "sos_center": "SOS Center",
@@ -891,6 +919,41 @@
       "client": "Client",
       "clicked_at": "Clicked at {{time}} from {{platform}} platform",
       "floating_button": "Գլխավոր կոճակ"
+    },
+    "baseline-assessment-thresholds": {
+      "title": "Baseline Assessment Thresholds",
+      "description": "Manage threshold values for baseline assessment factors. Edit the below and above values to adjust risk level boundaries.",
+      "factor_label": "Factor",
+      "below_label": "Below Threshold",
+      "above_label": "Above Threshold",
+      "social": "Social",
+      "biological": "Biological",
+      "psychological": "Psychological",
+      "edit": "Edit Values",
+      "save": "Save",
+      "cancel": "Cancel",
+      "update_success": "Threshold values updated successfully",
+      "validation_error": "Below threshold must be less than above threshold",
+      "update_error": "An error occured. Please try again.",
+      "analysis_title": "Assessment Data Analysis",
+      "analysis_description": "Statistical analysis of completed baseline assessments with median values for each factor.",
+      "total_assessments": "Total Assessments",
+      "total_questions": "Total Questions",
+      "median_value": "Median Value",
+      "data_split_info": "Data has been split into two groups for analysis:",
+      "first_half": "First Half",
+      "second_half": "Second Half",
+      "no_data": "No completed assessments found",
+      "loading_analysis": "Loading analysis data...",
+      "error_loading_analysis": "Error loading analysis data",
+      "start_date": "Start Date",
+      "end_date": "End Date",
+      "reset_filters": "Reset filters",
+      "above_count": "Clients above high",
+      "below_count": "Clients below low",
+      "select_start_date": "Select start date",
+      "select_end_date": "Select end date",
+      "total_answers": "Total Answers"
     },
     "providers-free-slots": {
       "heading": "Խորհրդատուների ազատ ժամանակաշրջանների հաշվետվություն ստեղծել",
@@ -913,6 +976,8 @@
       "no_data": "Ընտրված ժամանակահատվածում տրամադրության գրառումներ չեն գտնվել",
       "mood": "Տրամադրություն",
       "count": "Գրանցված անգամներ",
+      "start_date": "Start date",
+      "end_date": "End date",
       "select_start_date": "Ընտրեք մեկնարկի ամսաթիվը",
       "select_end_date": "Ընտրեք ավարտի ամսաթիվը",
       "happy": "Ուրախ եմ",
@@ -920,7 +985,15 @@
       "sad": "Տխուր եմ",
       "depressed": "Ընկճված եմ",
       "worried": "Մտահոգ եմ",
-      "reset_filters": "Վերագործարկել ֆիլտրերը"
+      "reset_filters": "Վերագործարկել ֆիլտրերը",
+      "critical_entries": "Critical entries",
+      "critical_count": "Critical count"
+    },
+    "pl-statistics-page": {
+      "heading": "Statistics",
+      "web_visits": "Total visits",
+      "qr_visits": "QR visits",
+      "no_data": "No data found"
     }
   },
   "pages": {
@@ -979,10 +1052,6 @@
       "sos_center_clicks_tab_label": "SOS Center",
       "providers_free_slots_tab_label": "Խորհրդատուների ազատ ժամանակաշրջաններ"
     },
-    "mood-tracker-report-page": {
-      "heading": "Տրամադրության հաշվետվություն",
-      "description": "Ֆիլտրեք ըստ ամսաթվի միջակայքի՝ ձեր երկրում տրամադրության հետևման օգտագործումը ուսումնասիրելու համար։"
-    },
     "campaigns-page": {
       "heading": "Հովանավորների ցանկ"
     },
@@ -1036,8 +1105,9 @@
       "filters": "Զտիչներ",
       "start_date": "Սկսման ամսաթիվ",
       "end_date": "Ավարտի ամսաթիվ",
-      "start_time": "Սկսման ժամ (UTC)",
-      "end_time": "Ավարտի ժամ (UTC)",
+      "start_time": "Սկսման ժամ",
+      "end_time": "Ավարտի ժամ",
+      "time_zone": "Ժամային գոտի",
       "weekdays": "Շաբաթվա աշխատանքային օրեր",
       "weekends": "Շաբաթվա ոչ աշխատանքային օրեր",
       "apply": "Կիրառել",
@@ -1093,6 +1163,13 @@
       "videos_active": "Video module activation",
       "podcasts_active": "Podcast module activation",
       "save_success": "Saved successfully"
+    },
+    "baseline-assessment-page": {
+      "heading": "Baseline Assessment"
+    },
+    "mood-tracker-report-page": {
+      "heading": "Տրամադրության հաշվետվություն",
+      "description": "Ֆիլտրեք ըստ ամսաթվի միջակայքի՝ ձեր երկրում տրամադրության հետևման օգտագործումը ուսումնասիրելու համար։"
     }
   },
   "modals": {

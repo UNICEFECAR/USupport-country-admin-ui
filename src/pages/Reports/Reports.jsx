@@ -29,8 +29,19 @@ import "./reports.scss";
 export const Reports = () => {
   const { t } = useTranslation("pages", { keyPrefix: "reports-page" });
 
+  const IS_RO = localStorage.getItem("country") === "RO";
+
+  const localStorageCountry = localStorage.getItem("country");
   const [options, setOptions] = useState([
-    { label: t("consultations"), value: "consultations", isSelected: false },
+    ...(IS_RO
+      ? []
+      : [
+          {
+            label: t("consultations"),
+            value: "consultations",
+            isSelected: false,
+          },
+        ]),
     {
       label: t("suggestions"),
       value: "suggestions",
@@ -38,17 +49,29 @@ export const Reports = () => {
     },
     { label: t("ratings"), value: "ratings", isSelected: false },
     { label: t("contact_form"), value: "contact_form", isSelected: false },
-    { label: t("my_qa"), value: "my_qa", isSelected: false },
+    ...(IS_RO
+      ? []
+      : [
+          {
+            label: t("my_qa"),
+            value: "my_qa",
+            isSelected: false,
+          },
+        ]),
     {
       label: t("sos_center_clicks"),
       value: "sos_center_clicks",
       isSelected: true,
     },
-    {
-      label: t("providers_free_slots"),
-      value: "providers_free_slots",
-      isSelected: false,
-    },
+    ...(localStorageCountry === "RO"
+      ? []
+      : [
+          {
+            label: t("providers_free_slots"),
+            value: "providers_free_slots",
+            isSelected: false,
+          },
+        ]),
   ]);
 
   const handleTabSelect = (index) => {

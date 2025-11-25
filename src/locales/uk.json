@@ -46,7 +46,7 @@
     },
     "articles": {
       "no_results": "Не знайдено результатів, спробуй вибрати іншу мову.",
-      "view_button": "User@mail.com",
+      "view_button": "Переглянути",
       "article_added": "Статтю додано",
       "article_removed": "Статтю видалено",
       "published": "Опубліковано",
@@ -237,6 +237,7 @@
       "consultation_price_placeholder": "Ціна консультації",
       "description_placeholder": "Введи опис",
       "video_link_placeholder": "https://video.link",
+      "video_link_error": "Будь ласка, введіть коректний URL",
 
       "sex_male": "Чоловік",
       "sex_female": "Жінка",
@@ -471,6 +472,7 @@
       "contact_reason_1": "Інформація про uSupport",
       "contact_reason_2": "Технічна проблема",
       "contact_reason_3": "Приєднуйся до мережі консультантів",
+      "contact_reason_3_ro": "Приєднуйся до мережі організацій",
       "contact_reason_4": "Партнерства",
       "contact_reason_5": "Інше",
       "contact_reason_6": "Інформація про послуги",
@@ -678,9 +680,10 @@
       "all": "Усі мови",
       "all_languages": "Усі мови",
       "read_more": "Читай далі",
-      "Today": "Сьогодні",
+      "today": "Сьогодні",
       "language": "Мова",
-      "filter": "Фільтр"
+      "filter": "Фільтр",
+      "date_answered": "від {{date}}"
     },
     "organizations": {
       "name": "Назва",
@@ -835,6 +838,7 @@
 
       "totalConsultations": "Усього консультацій",
       "totalConsultations_unique_count": "Унікальні клієнти",
+      "lateCancelledConsultations": "Пізно скасовані консультації",
       "cancelledConsultations": "Скасовані консультації",
       "scheduledConsultations": "Заплановані консультації - Веб",
       "mobileScheduledConsultations": "Заплановані консультації - Мобільні",
@@ -851,6 +855,8 @@
       "allClients": "Усі клієнти",
       "activeClients": "Активні клієнти",
 
+      "uniqueClientsThatUsedCoupon": "Клієнти, які використали купон",
+
       "totalWebsiteAccess": "Відвідування сайту",
       "uniqueWebsiteAccess": "Унікальні відвідування сайту",
 
@@ -859,9 +865,6 @@
 
       "totalProviderAccess": "Відвідування порталу провайдерів",
       "uniqueProviderAccess": "Унікальні відвідування провайдерів",
-
-      "totalMobileAccess": "Відвідування мобільного додатка",
-      "uniqueMobileAccess": "Унікальні відвідування мобільного",
 
       "emailRegisterClick": "Клік реєстрації email - Веб",
       "mobileEmailRegisterClick": "Клік реєстрації email - Мобільні",
@@ -883,6 +886,8 @@
       "articles": "Статті",
       "videos": "Відео",
       "podcasts": "Подкасти",
+      "totalMobileAccess": "Відвідування мобільного додатка",
+      "uniqueMobileAccess": "Унікальні відвідування мобільного",
       "start_date": "Дата початку",
       "end_date": "Дата закінчення",
       "reset": "Скинути фільтри",
@@ -904,10 +909,11 @@
 
       "globalWebsiteVisits_info": "Загальна кількість відвідувань глобального сайту («usupport.online»)",
       "cancelledConsultations_info": "Консультації, скасовані до проведення",
-      "totalConsultations_info": "Загальна кількість запланованих консультацій на платформі",
-      "mobileScheduledConsultations_info": "Консультації, заплановані в мобільному застосунку",
+      "lateCancelledConsultations_info": "Консультації, скасовані менш ніж за 24 години до запланованого часу початку",
+      "totalConsultations_info": "Загальна кількість запланованих консультацій на платформі. Цей показник включає скасовані та пізно скасовані консультації",
+      "mobileScheduledConsultations_info": "Консультації, заплановані в мобільному застосунку. Цей показник НЕ включає скасовані або пізно скасовані консультації",
       "clientsAttendedConsultations_info": "Клієнти, які приєдналися до консультацій",
-      "scheduledConsultations_info": "Консультації, заплановані на вебпорталі",
+      "scheduledConsultations_info": "Консультації, заплановані на вебпорталі. Цей показник НЕ включає скасовані або пізно скасовані консультації",
       "scheduleButtonClick_info": "Кількість натискань кнопки «Запланувати консультацію» на вебпорталі",
       "mobileScheduleButtonClick_info": "Кількість натискань кнопки «Запланувати консультацію» у мобільному застосунку",
       "totalCouponConsultations_info": "Консультації, заплановані з купоном",
@@ -932,7 +938,26 @@
       "joinConsultationClick_info": "Кількість натискань кнопки «Приєднатися до консультації» на вебпорталі",
       "mobileJoinConsultationClick_info": "Кількість натискань кнопки «Приєднатися до консультації» у мобільному застосунку",
       "positiveClientRatings_info": "Загальна кількість позитивних оцінок від клієнтів",
-      "positiveProviderRatings_info": "Загальна кількість позитивних оцінок від провайдерів"
+      "positiveProviderRatings_info": "Загальна кількість позитивних оцінок від провайдерів",
+
+      "filters": "Фільтри",
+      "apply_filters": "Застосувати фільтри",
+      "sex_label": "Стать",
+      "sex_placeholder": "Виберіть стать",
+      "sex_male": "Чоловіча",
+      "sex_female": "Жіноча",
+      "sex_unspecified": "Не вказано",
+      "place_of_living_label": "Місце проживання",
+      "place_of_living_placeholder": "Виберіть місце проживання",
+      "place_of_living_urban": "Місто",
+      "place_of_living_rural": "Село",
+      "year_of_birth_label": "Рік народження",
+      "year_of_birth_placeholder": "Виберіть рік народження",
+      "consultations": "Консультації",
+      "visits": "Відвідування",
+      "button_clicks": "Кліки кнопок",
+      "users": "Користувачі",
+      "data_cannot_be_filtered": "Ці дані не фільтруються за демографією. Вони генеруються на основі анонімних даних"
     },
     "baseline-assessment-thresholds": {
       "title": "Пороги базової оцінки",
@@ -962,7 +987,13 @@
       "error_loading_analysis": "Помилка завантаження даних аналізу",
       "start_date": "Дата початку",
       "end_date": "Дата завершення",
-      "reset_filters": "Скинути фільтри"
+      "reset_filters": "Скинути фільтри",
+      "select_start_date": "Виберіть дату початку",
+      "select_end_date": "Виберіть дату завершення",
+      "above_count": "Клієнтів вище високого порогу",
+      "below_count": "Клієнтів нижче низького порогу",
+      "recommended_below": "Рекомендовано нижче порогу для 25%:",
+      "recommended_above": "Рекомендовано вище порогу для 25%:"
     },
     "sos-center-clicks": {
       "sos_center": "Центри SOS",
@@ -971,9 +1002,7 @@
       "web": "Веб",
       "client": "Клієнт",
       "clicked_at": "Клікнуто {{time}} з платформи {{platform}}",
-      "floating_button": "Головна кнопка",
-      "recommended_below": "Рекомендовано нижче порогу для 25%:",
-      "recommended_above": "Рекомендовано вище порогу для 25%:"
+      "floating_button": "Головна кнопка"
     },
     "providers-free-slots": {
       "heading": "Створити звіт про вільні слоти консультантів",
@@ -1010,6 +1039,12 @@
   },
 
   "pages": {
+    "pl-statistics-page": {
+      "heading": "Статистика",
+      "web_visits": "Загальна кількість відвідувань",
+      "qr_visits": "Відвідування за QR",
+      "no_data": "Даних не знайдено"
+    },
     "not-found-page": {
       "heading": "Ой! Ми не можемо знайти сторінку, яку ти шукаєш...",
       "subheading": "Здається, ця сторінка відсутня або наразі недоступна.",
@@ -1121,8 +1156,9 @@
       "filters": "Фільтри",
       "start_date": "Дата початку",
       "end_date": "Дата завершення",
-      "start_time": "Час початку (UTC)",
-      "end_time": "Час завершення (UTC)",
+      "start_time": "Час початку",
+      "end_time": "Час завершення",
+      "time_zone": "Часовий пояс",
       "weekdays": "Будні дні",
       "weekends": "Вихідні",
       "apply": "Застосуй",

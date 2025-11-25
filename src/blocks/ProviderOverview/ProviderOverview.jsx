@@ -37,6 +37,7 @@ export const ProviderOverview = ({ handleEditRedirect, providerId }) => {
           provider={provider}
           t={t}
           image={image}
+          hasCookies={false}
           buttonComponent={
             <GridItem md={8} lg={12}>
               <Button
