@@ -41,8 +41,8 @@ export const Analytics = () => {
     yearOfBirth: "",
   });
   const [options, setOptions] = useState([
-    { label: t("general"), value: "general", isSelected: false },
-    { label: t("content"), value: "content", isSelected: true },
+    { label: t("general"), value: "general", isSelected: true },
+    { label: t("content"), value: "content", isSelected: false },
   ]);
 
   const contentTypeOptions = [
@@ -224,6 +224,7 @@ export const Analytics = () => {
     "lateCancelledConsultations",
     "scheduledConsultations",
     "mobileScheduledConsultations",
+    "consultationsJoinedByClientAndProvider",
     "joinConsultationClick",
     "mobileJoinConsultationClick",
     "scheduleButtonClick",
