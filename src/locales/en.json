@@ -659,7 +659,8 @@
       "today": "Today",
       "language": "Language",
       "all_languages": "All languages",
-      "filter": "Filter"
+      "filter": "Filter",
+      "date_answered": "on {{date}}"
     },
     "organizations": {
       "name": "Name",

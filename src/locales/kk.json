@@ -658,7 +658,8 @@
       "today": "Бүгін",
       "language": "Тіл",
       "all_languages": "Барлық тілдер",
-      "filter": "Сүзгі"
+      "filter": "Сүзгі",
+      "date_answered": "{{date}} күні"
     },
     "organizations": {
       "name": "Атауы",
