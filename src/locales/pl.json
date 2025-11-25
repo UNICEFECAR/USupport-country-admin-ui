@@ -658,7 +658,8 @@
       "today": "Dzisiaj",
       "language": "Język",
       "all_languages": "Wszystkie języki",
-      "filter": "Filtr"
+      "filter": "Filtr",
+      "date_answered": "від {{date}}"
     },
     "organizations": {
       "name": "Nazwa",

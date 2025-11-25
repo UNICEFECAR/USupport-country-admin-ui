@@ -682,7 +682,8 @@
       "read_more": "Читай далі",
       "today": "Сьогодні",
       "language": "Мова",
-      "filter": "Фільтр"
+      "filter": "Фільтр",
+      "date_answered": "від {{date}}"
     },
     "organizations": {
       "name": "Назва",

@@ -657,7 +657,8 @@
       "today": "Այսօր",
       "language": "Լեզու",
       "all_languages": "Բոլոր լեզուները",
-      "filter": "Filter"
+      "filter": "Ֆիլտր",
+      "date_answered": "ըստ {{date}}"
     },
     "organizations": {
       "name": "Անունը",

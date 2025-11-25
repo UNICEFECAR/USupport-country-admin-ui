@@ -658,7 +658,8 @@
       "today": "Сегодня",
       "language": "Язык",
       "all_languages": "Все языки",
-      "filter": "Фильтр"
+      "filter": "Фильтр",
+      "date_answered": "от {{date}}"
     },
     "organizations": {
       "name": "Название",

@@ -659,7 +659,8 @@
       "read_more": "Citește mai mult",
       "today": "Astăzi",
       "language": "Limbă",
-      "filter": "Filtrare"
+      "filter": "Filtrare",
+      "date_answered": "від {{date}}"
     },
     "organizations": {
       "name": "Nume",
