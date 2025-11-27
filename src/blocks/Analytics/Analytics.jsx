@@ -370,7 +370,7 @@ export const Analytics = () => {
                               className="analytics__statistics-content__type__item"
                               key={key}
                             >
-                              <p>
+                              <p className="analytics__statistics-content__type__item__text">
                                 {isNaN(key) ? t(key) : key}:{" "}
                                 <strong>{value}</strong>
                               </p>
