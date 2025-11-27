@@ -59,7 +59,13 @@
       gap: 10px;
 
       &__item {
-        width: 15%;
+        @media screen and (min-width: $screen_lg) {
+          width: 20%;
+        }
+
+        &__text {
+          white-space: nowrap;
+        }
       }
     }
   }

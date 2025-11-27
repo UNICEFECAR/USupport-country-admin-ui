@@ -906,6 +906,8 @@
       "rural": "Сільська місцевість",
       "urban": "Місто",
       "missing": "N/A",
+      "consultationsJoinedByClientAndProvider": "Проведені консультації",
+      "consultationsJoinedByClientAndProvider_info": "Консультації, у яких взяли участь і клієнт, і фахівець",
 
       "globalWebsiteVisits_info": "Загальна кількість відвідувань глобального сайту («usupport.online»)",
       "cancelledConsultations_info": "Консультації, скасовані до проведення",

@@ -841,6 +841,8 @@
       "rural": "Rural",
       "urban": "Urban",
       "missing": "N/A",
+      "consultationsJoinedByClientAndProvider": "Consultații oferite",
+      "consultationsJoinedByClientAndProvider_info": "Consultații la care au participat atât clientul, cât și specialistul",
 
       "globalWebsiteVisits_info": "Numărul total de vizite pe site-ul global („usupport.online”)",
       "cancelledConsultations_info": "Consultații anulate înainte de a fi efectuate",
