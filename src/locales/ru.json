@@ -850,6 +850,8 @@
       "rural": "Село",
       "urban": "Город",
       "missing": "N/A",
+      "consultationsJoinedByClientAndProvider": "Проведённые консультации",
+      "consultationsJoinedByClientAndProvider_info": "Консультации, в которых участвовали и клиент, и специалист",
 
       "globalWebsiteVisits_info": "Общее количество посещений глобального сайта («usupport.online»)",
       "cancelledConsultations_info": "Консультации, отменённые до проведения",

@@ -850,6 +850,8 @@
       "rural": "Wieś",
       "urban": "Miasto",
       "missing": "N/A",
+      "consultationsJoinedByClientAndProvider": "Przeprowadzone konsultacje",
+      "consultationsJoinedByClientAndProvider_info": "Konsultacje, w których uczestniczyli zarówno klient, jak i specjalista",
 
       "globalWebsiteVisits_info": "Łączna liczba wizyt na globalnej stronie („usupport.online”)",
       "cancelledConsultations_info": "Konsultacje anulowane przed ich przeprowadzeniem",

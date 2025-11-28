@@ -858,6 +858,8 @@
       "joinConsultationClick": "Միացման սեղմում - Վեբ",
       "mobileJoinConsultationClick": "Միացման սեղմում - Բջջային",
       "missing": "N/A",
+      "consultationsJoinedByClientAndProvider": "Նախաձեռնված խորհրդատվություններ",
+      "consultationsJoinedByClientAndProvider_info": "Խորհրդատվություններ, որոնցում մասնակցել են և՛ հաճախորդը, և՛ մասնագետը",
 
       "globalWebsiteVisits_info": "Ընդհանուր այցելությունները գլոբալ («usupport.online») կայքում",
       "cancelledConsultations_info": "Խորհրդատվություններ, որոնք չեղարկվել են մինչև անցկացվելը",

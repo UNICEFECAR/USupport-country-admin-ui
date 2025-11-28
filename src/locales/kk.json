@@ -870,6 +870,8 @@
       "clicked_at": "{{platform}} платформасынан {{time}} кезінде басылды",
       "floating_button": "Негізгі батырма",
       "missing": "N/A",
+      "consultationsJoinedByClientAndProvider": "Өткізілген консультациялар",
+      "consultationsJoinedByClientAndProvider_info": "Клиент пен маман екеуі де қосылған консультациялар",
 
       "globalWebsiteVisits_info": "Жалпы (\"usupport.online\") веб-сайтына жалпы кірулер саны",
       "cancelledConsultations_info": "Өткізілмей тұрып жойылған консультациялар",

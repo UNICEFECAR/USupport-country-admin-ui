@@ -861,6 +861,8 @@
       "joinConsultationClick": "Join consultation click - Web",
       "mobileJoinConsultationClick": "Join consultation click - Mobile",
       "missing": "N/A",
+      "consultationsJoinedByClientAndProvider": "Attended consultations",
+      "consultationsJoinedByClientAndProvider_info": "Consultations where both the client and the provider joined",
 
       "globalWebsiteVisits_info": "Total visits the the global (\"usupport.online\") website",
       "cancelledConsultations_info": "Consultations which were cancelled before being conducted",
