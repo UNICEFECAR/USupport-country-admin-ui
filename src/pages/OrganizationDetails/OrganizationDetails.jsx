@@ -179,7 +179,7 @@ export const OrganizationDetails = () => {
     });
   };
   const onProvidersAssignError = (err) => {
-    toast.error(t(err));
+    toast.error(err);
   };
 
   const assignProvidersMutation = useAssignProvidersToOrganization(
