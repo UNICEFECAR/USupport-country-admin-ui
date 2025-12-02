@@ -63,7 +63,12 @@ export default function useUpdateProviderData(onSuccess, onError) {
     },
     onError: (error) => {
       const { message: errorMessage } = useError(error);
-      onError(errorMessage);
+
+      const isFutureConsultationError =
+        error?.response?.data?.error?.name ===
+        "PROVIDER HAS FUTURE CONSULTATIONS";
+
+      onError(errorMessage, isFutureConsultationError || false);
     },
   });
   return updateProviderDataMutation;
