@@ -12,7 +12,10 @@ import {
   Loading,
 } from "@USupport-components-library/src";
 import { languageSvc } from "@USupport-components-library/services";
-import { logoVerticalSvg } from "@USupport-components-library/assets";
+import {
+  logoVerticalSvg,
+  logoVerticalRomaniaPng,
+} from "@USupport-components-library/assets";
 import {
   replaceLanguageInUrl,
   getLanguageFromUrl,
@@ -42,6 +45,8 @@ export const Welcome = () => {
 
   const countriesQueryData = queryClient.getQueryData(["countries"]);
   const [countries, setCountries] = useState(countriesQueryData);
+
+  const IS_RO = localStorage.getItem("country") === "RO";
 
   useEffect(() => {
     setIsInWelcome(true);
@@ -179,7 +184,7 @@ export const Welcome = () => {
         <GridItem md={8} lg={12} classes="welcome__grid__logo-item">
           <h2 className="welcome__grid__logo-item__heading">{t("heading")}</h2>
           <img
-            src={logoVerticalSvg}
+            src={IS_RO ? logoVerticalRomaniaPng : logoVerticalSvg}
             alt="Logo"
             className="welcome__grid__logo-item__logo"
           />
