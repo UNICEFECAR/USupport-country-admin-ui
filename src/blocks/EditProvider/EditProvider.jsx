@@ -264,7 +264,13 @@ export const EditProvider = ({
     toast(t("edit_success"));
   };
 
-  const onUpdateError = (err) => {
+  const onUpdateError = (err, isFutureConsultationError = false) => {
+    if (isFutureConsultationError) {
+      setErrors({
+        organizations: err,
+      });
+      return;
+    }
     setErrors({ submit: err });
   };
   const updateProviderMutation = useUpdateProviderData(
