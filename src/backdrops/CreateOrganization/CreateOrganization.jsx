@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
-import { useQueryClient } from "@tanstack/react-query";
+import { useQueryClient, useQuery } from "@tanstack/react-query";
+
 import {
   Backdrop,
   Input,
@@ -11,6 +12,9 @@ import {
   Loading,
   PlaceInput,
 } from "@USupport-components-library/src";
+
+import { userSvc } from "@USupport-components-library/services";
+
 import {
   useEditOrganization,
   useCreateOrganization,
@@ -18,8 +22,6 @@ import {
 } from "#hooks";
 
 import "./create-organization.scss";
-
-const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
 /**
  * CreateOrganization Modal
@@ -60,6 +62,15 @@ export const CreateOrganization = ({
   }
 
   const [data, setData] = useState(DEFAULT_ORGANIZATION);
+
+  const { data: organizationsKey, isLoading: isOrganizationsKeyLoading } =
+    useQuery({
+      queryKey: ["organizationsKey"],
+      queryFn: async () => {
+        const response = await userSvc.getOrganizationKey("web");
+        return response.data.organizationsKey;
+      },
+    });
 
   const { data: metadata, isLoading: isMetadataLoading } =
     useGetOrganizationMetadata(country);
@@ -264,6 +275,7 @@ export const CreateOrganization = ({
 
         <PlaceInput
           label={t("address")}
+          disabled={isOrganizationsKeyLoading}
           value={data.address}
           onPlaceData={(placeData) => {
             handleChange("address", placeData.formattedAddress);
@@ -273,7 +285,7 @@ export const CreateOrganization = ({
             });
           }}
           placeholder={t("address_placeholder")}
-          apiKey={GOOGLE_MAPS_API_KEY}
+          apiKey={organizationsKey}
         />
 
         <Input
