@@ -36,10 +36,12 @@
       "providers": "Providers",
       "articles": "Articles",
       "consultations": "Consultations",
+      "organizations": "Organizations",
       "tooltip_clients": "Total clients registered on the platform",
       "tooltip_providers": "Total activated providers",
       "tooltip_articles": "Total published articles",
-      "tooltip_consultations": "Total consultations conducted on the platform"
+      "tooltip_consultations": "Total consultations conducted on the platform",
+      "tooltip_organizations": "Total number of active organizations"
     },
     "articles": {
       "no_results": "No results found, please try a different language.",
