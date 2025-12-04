@@ -21,6 +21,7 @@ import "./statistics.scss";
  */
 export const Statistics = () => {
   const countryId = localStorage.getItem("country_id");
+  const IS_RO = localStorage.getItem("country") === "RO";
   const { t } = useTranslation("blocks", { keyPrefix: "statistics" });
   const { width } = useWindowDimensions();
   const { isLoading, data: statistics } = useGetStatistics(countryId);
@@ -36,7 +37,14 @@ export const Statistics = () => {
   };
 
   const renderAllStatistics = () => {
-    return statistics.map((statistic, index) => {
+    const filteredStatistics = IS_RO
+      ? statistics.filter(
+          (statistic) =>
+            statistic.type !== "providers" && statistic.type !== "consultations"
+        )
+      : statistics;
+
+    return filteredStatistics.map((statistic, index) => {
       return (
         <GridItem
           md={4}
