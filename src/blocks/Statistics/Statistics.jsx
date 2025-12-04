@@ -34,6 +34,10 @@ export const Statistics = () => {
       iconName: "live-consultation",
       tooltip: t("tooltip_consultations"),
     },
+    organizations: {
+      iconName: "organization",
+      tooltip: t("tooltip_organizations"),
+    },
   };
 
   const renderAllStatistics = () => {
@@ -42,13 +46,13 @@ export const Statistics = () => {
           (statistic) =>
             statistic.type !== "providers" && statistic.type !== "consultations"
         )
-      : statistics;
+      : statistics.filter((statistic) => statistic.type !== "organizations");
 
     return filteredStatistics.map((statistic, index) => {
       return (
         <GridItem
           md={4}
-          lg={3}
+          lg={IS_RO ? 4 : 3}
           key={index}
           classes="statistics__statistics-item"
         >
