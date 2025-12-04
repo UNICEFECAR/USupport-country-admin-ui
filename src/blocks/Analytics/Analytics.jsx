@@ -1,9 +1,11 @@
 import React, { useState, useMemo, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { useQueryClient } from "@tanstack/react-query";
 
 import {
   BaseTable,
   Button,
+  ButtonWithIcon,
   TabsUnderlined,
   Block,
   Grid,
@@ -30,6 +32,7 @@ import "./analytics.scss";
  */
 export const Analytics = () => {
   const { t, i18n } = useTranslation("blocks", { keyPrefix: "analytics" });
+  const queryClient = useQueryClient();
 
   const [selectedContentType, setSelectedContentType] = useState("all");
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
@@ -68,6 +71,7 @@ export const Analytics = () => {
   const {
     data: generalPlatformMetrics,
     isLoading: isGeneralPlatformMetricsLoading,
+    isFetching: isGeneralPlatformMetricsFetching,
     isError: isGeneralPlatfromMetricsError,
   } = useGetPlatformMetrics({
     startDate: filters.startDate || null,
@@ -477,6 +481,11 @@ export const Analytics = () => {
     });
   };
 
+  const handleRefreshData = () => {
+    queryClient.invalidateQueries({ queryKey: ["all-categories-statistics"] });
+    queryClient.invalidateQueries({ queryKey: ["platform-metrics"] });
+  };
+
   return (
     <Block classes="analytics">
       <FilterAnalytics
@@ -487,10 +496,22 @@ export const Analytics = () => {
         handleResetFilters={handleResetFilters}
       />
       <TabsUnderlined options={options} handleSelect={handleTabSelect} t={t} />
+      <ButtonWithIcon
+        classes="analytics__refresh-button"
+        iconName="refresh"
+        label={t("refresh")}
+        iconColor="#ffffff"
+        iconSize="sm"
+        onClick={handleRefreshData}
+      />
       {options[1].isSelected ? (
         <React.Fragment>
           <Grid md={8} lg={12} classes="analytics__filters-grid">
-            <GridItem md={2} lg={3}>
+            <GridItem
+              md={2}
+              lg={3}
+              classes="analytics__filters-grid__dropdown-container"
+            >
               <DropdownWithLabel
                 classes="analytics__dropdown"
                 options={contentTypeOptions}
@@ -528,14 +549,6 @@ export const Analytics = () => {
         </React.Fragment>
       ) : (
         <React.Fragment>
-          {/* <Button
-            classes="analytics__filter-button"
-            color="purple"
-            onClick={handleOpenFilterModal}
-          >
-            {t("filters")}
-          </Button> */}
-
           {
             <div className="analytics__filters-container">
               <div>
@@ -588,7 +601,15 @@ export const Analytics = () => {
               </div>
             </div>
           }
-          {renderStatistic()}
+          <div className="analytics__statistics-wrapper">
+            {isGeneralPlatformMetricsFetching &&
+              !isGeneralPlatformMetricsLoading && (
+                <div className="analytics__loading-overlay">
+                  <Loading />
+                </div>
+              )}
+            {renderStatistic()}
+          </div>
         </React.Fragment>
       )}
     </Block>
