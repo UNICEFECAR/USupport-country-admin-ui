@@ -107,7 +107,10 @@ export const Page = ({
   }
 
   if (localStorageCountry === "RO") {
-    pages = pages.filter((x) => x.url !== "/providers" && x.url !== "/my-qa");
+    pages = pages.filter(
+      (x) =>
+        x.url !== "/providers" && x.url !== "/my-qa" && x.url !== "/campaigns"
+    );
   }
 
   const localStorageLanguage = localStorage.getItem("language");

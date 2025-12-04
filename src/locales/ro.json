@@ -36,10 +36,12 @@
       "providers": "Furnizori",
       "articles": "Articole",
       "consultations": "Consultații",
+      "organizations": "Organizații",
       "tooltip_clients": "Numărul total de clienți înregistrați pe platformă",
       "tooltip_providers": "Numărul total de furnizori activați",
       "tooltip_articles": "Numărul total de articole publicate",
-      "tooltip_consultations": "Numărul total de consultații efectuate pe platformă"
+      "tooltip_consultations": "Numărul total de consultații efectuate pe platformă",
+      "tooltip_organizations": "Numărul total de organizații active"
     },
     "articles": {
       "no_results": "Nu s-au găsit rezultate, vă rugăm să încercați altă limbă.",
@@ -894,7 +896,8 @@
       "visits": "Vizite",
       "button_clicks": "Clicuri butoane",
       "users": "Utilizatori",
-      "data_cannot_be_filtered": "Aceste date nu pot fi filtrate demografic. Sunt generate pe baza datelor anonime"
+      "data_cannot_be_filtered": "Aceste date nu pot fi filtrate demografic. Sunt generate pe baza datelor anonime",
+      "refresh": "Reîmprospătare date"
     },
     "sos-center-clicks": {
       "sos_center": "Centrul SOS",

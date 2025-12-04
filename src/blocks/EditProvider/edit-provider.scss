@@ -67,6 +67,27 @@
       }
     }
 
+    & .grid-item {
+      > div:not(:first-child),
+      > .input-group:not(:first-child) {
+        margin-top: $spacing_2_4;
+      }
+
+      > div,
+      > .input-group {
+        width: 34.3rem;
+
+        @media screen and (min-width: $screen_md) {
+          width: 36.8rem;
+        }
+      }
+
+      div .select-container,
+      .select-container {
+        margin-top: 0 !important;
+      }
+    }
+
     &__buttons-item {
       justify-self: center;
     }

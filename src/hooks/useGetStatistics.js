@@ -19,6 +19,7 @@ export default function useGetStatistics(countryId) {
       { type: "providers", value: data.providersNo },
       { type: "articles", value: data.publishedArticlesNo },
       { type: "consultations", value: data.scheduledConsultationsNo },
+      { type: "organizations", value: data.organizationsNo },
     ];
     return formattedData;
   };

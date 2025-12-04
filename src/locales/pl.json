@@ -36,10 +36,12 @@
       "providers": "Konsultanci",
       "articles": "Artykuły",
       "consultations": "Konsultacje",
+      "organizations": "Organizacje",
       "tooltip_clients": "Łączna liczba klientów zarejestrowanych na platformie",
       "tooltip_providers": "Łączna liczba aktywowanych specjalistów",
       "tooltip_articles": "Łączna liczba opublikowanych artykułów",
-      "tooltip_consultations": "Łączna liczba konsultacji przeprowadzonych na platformie"
+      "tooltip_consultations": "Łączna liczba konsultacji przeprowadzonych na platformie",
+      "tooltip_organizations": "Łączna liczba aktywnych organizacji"
     },
     "articles": {
       "no_results": "Nie znaleziono wyników, spróbuj użyć innego języka.",
@@ -903,7 +905,8 @@
       "visits": "Wizyty",
       "button_clicks": "Kliknięcia przycisków",
       "users": "Użytkownicy",
-      "data_cannot_be_filtered": "Te dane nie mogą być filtrowane demograficznie. Są generowane na podstawie danych anonimowych"
+      "data_cannot_be_filtered": "Te dane nie mogą być filtrowane demograficznie. Są generowane na podstawie danych anonimowych",
+      "refresh": "Odśwież dane"
     },
     "baseline-assessment-thresholds": {
       "title": "Progi oceny bazowej",

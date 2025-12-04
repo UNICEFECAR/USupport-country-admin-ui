@@ -57,8 +57,7 @@
       "likes": "Beğeniler",
       "dislikes": "Beğenilmeyenler",
       "views": "Görüntüleme Sayısı"
-    }
-  ,
+    },
     "edit-provider": {
       "video_link_error": "Lütfen geçerli bir URL girin"
     },
@@ -80,7 +79,8 @@
       "visits": "Ziyaretler",
       "button_clicks": "Düğme tıklamaları",
       "users": "Kullanıcılar",
-      "data_cannot_be_filtered": "Bu veriler demografik olarak filtrelenemiyor. Anonim verilere dayanarak oluşturulmuştur"
+      "data_cannot_be_filtered": "Bu veriler demografik olarak filtrelenemiyor. Anonim verilere dayanarak oluşturulmuştur",
+      "refresh": "Verileri güncelle"
     }
   },
   "pages": {

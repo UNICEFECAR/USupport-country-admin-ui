@@ -21,6 +21,7 @@ import "./statistics.scss";
  */
 export const Statistics = () => {
   const countryId = localStorage.getItem("country_id");
+  const IS_RO = localStorage.getItem("country") === "RO";
   const { t } = useTranslation("blocks", { keyPrefix: "statistics" });
   const { width } = useWindowDimensions();
   const { isLoading, data: statistics } = useGetStatistics(countryId);
@@ -33,14 +34,25 @@ export const Statistics = () => {
       iconName: "live-consultation",
       tooltip: t("tooltip_consultations"),
     },
+    organizations: {
+      iconName: "organization",
+      tooltip: t("tooltip_organizations"),
+    },
   };
 
   const renderAllStatistics = () => {
-    return statistics.map((statistic, index) => {
+    const filteredStatistics = IS_RO
+      ? statistics.filter(
+          (statistic) =>
+            statistic.type !== "providers" && statistic.type !== "consultations"
+        )
+      : statistics.filter((statistic) => statistic.type !== "organizations");
+
+    return filteredStatistics.map((statistic, index) => {
       return (
         <GridItem
           md={4}
-          lg={3}
+          lg={IS_RO ? 4 : 3}
           key={index}
           classes="statistics__statistics-item"
         >

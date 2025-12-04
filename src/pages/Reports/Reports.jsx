@@ -39,7 +39,7 @@ export const Reports = () => {
           {
             label: t("consultations"),
             value: "consultations",
-            isSelected: false,
+            isSelected: IS_RO ? false : true,
           },
         ]),
     {
@@ -47,7 +47,7 @@ export const Reports = () => {
       value: "suggestions",
       isSelected: false,
     },
-    { label: t("ratings"), value: "ratings", isSelected: false },
+    { label: t("ratings"), value: "ratings", isSelected: IS_RO ? true : false },
     { label: t("contact_form"), value: "contact_form", isSelected: false },
     ...(IS_RO
       ? []
@@ -61,7 +61,7 @@ export const Reports = () => {
     {
       label: t("sos_center_clicks"),
       value: "sos_center_clicks",
-      isSelected: true,
+      isSelected: false,
     },
     ...(localStorageCountry === "RO"
       ? []
