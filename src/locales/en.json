@@ -914,7 +914,8 @@
       "visits": "Visits",
       "button_clicks": "Button clicks",
       "users": "Users",
-      "data_cannot_be_filtered": "This data is not filtered by demographics. It is generated based on anonymous data"
+      "data_cannot_be_filtered": "This data is not filtered by demographics. It is generated based on anonymous data",
+      "refresh": "Refresh data"
     },
     "sos-center-clicks": {
       "sos_center": "SOS Center",

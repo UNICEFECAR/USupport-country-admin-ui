@@ -894,7 +894,8 @@
       "visits": "Vizite",
       "button_clicks": "Clicuri butoane",
       "users": "Utilizatori",
-      "data_cannot_be_filtered": "Aceste date nu pot fi filtrate demografic. Sunt generate pe baza datelor anonime"
+      "data_cannot_be_filtered": "Aceste date nu pot fi filtrate demografic. Sunt generate pe baza datelor anonime",
+      "refresh": "Reîmprospătare date"
     },
     "sos-center-clicks": {
       "sos_center": "Centrul SOS",

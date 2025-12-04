@@ -903,7 +903,8 @@
       "visits": "Wizyty",
       "button_clicks": "Kliknięcia przycisków",
       "users": "Użytkownicy",
-      "data_cannot_be_filtered": "Te dane nie mogą być filtrowane demograficznie. Są generowane na podstawie danych anonimowych"
+      "data_cannot_be_filtered": "Te dane nie mogą być filtrowane demograficznie. Są generowane na podstawie danych anonimowych",
+      "refresh": "Odśwież dane"
     },
     "baseline-assessment-thresholds": {
       "title": "Progi oceny bazowej",
