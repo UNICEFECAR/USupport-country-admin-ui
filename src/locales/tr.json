@@ -124,5 +124,9 @@
       "qr_visits": "QR ziyaretleri",
       "no_data": "Veri bulunamadı"
     }
+  },
+  "meta": {
+    "title": "uSupport Ülke Yöneticisi",
+    "description": "Desteklenen her ülke için yerelleştirilmiş uSupport içeriğini, hizmetlerini ve yapılandırmalarını yönetmek için Ülke Yöneticisi paneli."
   }
 }
