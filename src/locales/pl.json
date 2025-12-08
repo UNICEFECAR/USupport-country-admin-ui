@@ -1239,5 +1239,9 @@
       "text": "Byłeś nieaktywny przez jakiś czas. Dla Twojego bezpieczeństwa automatycznie wylogujemy Cię za {{seconds}} sekund.",
       "cta": "Wciąż tu jestem"
     }
+  },
+  "meta": {
+    "title": "uSupport Administrator Krajowy",
+    "description": "Panel administratora krajowego do zarządzania zlokalizowaną zawartością uSupport, usługami i konfiguracjami dla każdego obsługiwanego kraju."
   }
 }

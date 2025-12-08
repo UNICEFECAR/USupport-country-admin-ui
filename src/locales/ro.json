@@ -1240,5 +1240,9 @@
       "text": "Ați fost inactiv pentru o perioadă. Pentru siguranța dumneavoastră, vă vom deconecta automat în {{seconds}} secunde.",
       "cta": "Sunt încă aici"
     }
+  },
+  "meta": {
+    "title": "uSupport Administrator Țară",
+    "description": "Panoul administratorului țării pentru gestionarea conținutului localizat uSupport, serviciilor și configurațiilor pentru fiecare țară susținută."
   }
 }

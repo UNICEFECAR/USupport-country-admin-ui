@@ -1256,5 +1256,9 @@
       "text": "You've been inactive for a while. For your security, we'll automatically log you out in {{seconds}} seconds.",
       "cta": "I'm still here"
     }
+  },
+  "meta": {
+    "title": "uSupport Country Admin",
+    "description": "Country Admin panel for managing localized uSupport content, services, and configurations for each supported country."
   }
 }
