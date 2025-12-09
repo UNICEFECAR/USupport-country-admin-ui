@@ -10,7 +10,10 @@ import {
   InputPassword,
   Button,
 } from "@USupport-components-library/src";
-import { logoVerticalSvg } from "@USupport-components-library/assets";
+import {
+  logoVerticalSvg,
+  logoVerticalRomaniaPng,
+} from "@USupport-components-library/assets";
 
 import "./login.scss";
 
@@ -24,6 +27,7 @@ import "./login.scss";
 export const Login = ({ data, setData, handleLogin, errors, isLoading }) => {
   const { t } = useTranslation("blocks", { keyPrefix: "login" });
   const navigate = useNavigate();
+  const IS_RO = localStorage.getItem("country") === "RO";
 
   const handleChange = (field, value) => {
     const newData = { ...data };
@@ -46,7 +50,7 @@ export const Login = ({ data, setData, handleLogin, errors, isLoading }) => {
               {t("heading")}
             </h2>
             <img
-              src={logoVerticalSvg}
+              src={IS_RO ? logoVerticalRomaniaPng : logoVerticalSvg}
               alt="Logo"
               className="welcome__grid__logo-item__logo"
             />
