@@ -7,6 +7,8 @@ export const useGetContentStatistics = ({
   sex,
   yearOfBirth,
   urbanRural,
+  startDate,
+  endDate,
 }) => {
   const { i18n } = useTranslation();
   const getAllCategoriesStatistics = async () => {
@@ -16,6 +18,8 @@ export const useGetContentStatistics = ({
         sex,
         yearOfBirth,
         urbanRural,
+        startDate,
+        endDate,
       });
       return response.data;
     } catch (error) {
@@ -32,6 +36,8 @@ export const useGetContentStatistics = ({
       sex,
       yearOfBirth,
       urbanRural,
+      startDate,
+      endDate,
     ],
     getAllCategoriesStatistics
   );
