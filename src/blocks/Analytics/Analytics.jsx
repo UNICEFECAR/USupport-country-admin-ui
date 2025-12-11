@@ -63,6 +63,8 @@ export const Analytics = () => {
       sex: filters.sex || null,
       yearOfBirth: filters.yearOfBirth || null,
       urbanRural: filters.urbanRural || null,
+      startDate: filters.startDate || null,
+      endDate: filters.endDate || null,
     });
 
   const shouldFetchPlatformMetrics =
