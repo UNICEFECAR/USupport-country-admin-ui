@@ -785,7 +785,9 @@
       "september": "",
       "october": "",
       "november": "",
-      "december": ""
+      "december": "",
+      "start_date": "Start date",
+      "end_date": "End date"
     },
     "analytics": {
       "content_tab_label": "Content Metrics",

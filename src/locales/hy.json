@@ -783,7 +783,9 @@
       "september": "",
       "october": "",
       "november": "",
-      "december": ""
+      "december": "",
+      "start_date": "Մեկնարկի ամսաթիվը",
+      "end_date": "Ավարտի ամսաթիվը"
     },
     "analytics": {
       "content_tab_label": "Բովանդակության ցուցանիշներ",
