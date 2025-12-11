@@ -1,7 +1,8 @@
 @import "@USupport-components-library/styles";
 
 .organizations {
-  &__search-input {
-    margin: $spacing_1_6 0;
+  &__filters-grid {
+    padding: $spacing_1_6 0;
+    justify-items: center;
   }
 }

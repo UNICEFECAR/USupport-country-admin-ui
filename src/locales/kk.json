@@ -784,7 +784,9 @@
       "september": "Қыркүйек",
       "october": "Қазан",
       "november": "Қараша",
-      "december": "Желтоқсан"
+      "december": "Желтоқсан",
+      "start_date": "Басталу күні",
+      "end_date": "Аяқталу күні"
     },
     "analytics": {
       "content_tab_label": "Контент метрикалары",

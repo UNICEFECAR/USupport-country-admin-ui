@@ -775,7 +775,9 @@
       "delete_providers_heading": "Organizația {{name}} are furnizori asociați",
       "delete_providers_subheading": "Vă rugăm să eliminați toți furnizorii înainte de a șterge organizația. Lista furnizorilor",
       "delete_success": "Organizația {{name}} a fost ștearsă cu succes",
-      "website_link": "Accesați site-ul"
+      "website_link": "Accesați site-ul",
+      "start_date": "Data de început",
+      "end_date": "Data de sfârșit"
     },
     "analytics": {
       "content_tab_label": "Date privind conținutul",
