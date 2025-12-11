@@ -35,7 +35,6 @@ export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
     timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
   });
 
-  const [search, setSearch] = useState("");
   const [dataToDisplay, setDataToDisplay] = useState();
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [organizationToDelete, setOrganizationToDelete] = useState(null);
@@ -193,8 +192,10 @@ export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
         <Grid classes="organizations__filters-grid">
           <GridItem md={6} lg={4}>
             <InputSearch
-              value={search}
-              onChange={(val) => setSearch(val)}
+              value={filters.search}
+              onChange={(e) =>
+                setFilters({ ...filters, search: e.target.value })
+              }
               placeholder={t("search")}
               classes="organizations__search-input"
             />
