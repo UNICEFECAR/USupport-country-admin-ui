@@ -7,6 +7,9 @@ import {
   Block,
   BaseTable,
   Loading,
+  Grid,
+  GridItem,
+  DateInput,
 } from "@USupport-components-library/src";
 import { useGetOrganizationsWithDetails } from "#hooks";
 import { DeleteOrganization } from "#backdrops";
@@ -25,12 +28,19 @@ export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
   const { t, i18n } = useTranslation("blocks", { keyPrefix: "organizations" });
   const navigate = useNavigate();
 
+  const [filters, setFilters] = useState({
+    search: "",
+    startDate: "",
+    endDate: "",
+    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+  });
+
   const [search, setSearch] = useState("");
   const [dataToDisplay, setDataToDisplay] = useState();
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [organizationToDelete, setOrganizationToDelete] = useState(null);
 
-  const { data, isLoading } = useGetOrganizationsWithDetails({ search });
+  const { data, isLoading } = useGetOrganizationsWithDetails(filters);
 
   let countryRows = [
     { label: t("name"), sortingKey: "name" },
@@ -180,12 +190,34 @@ export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
       )}
 
       <Block classes="organizations">
-        <InputSearch
-          value={search}
-          onChange={(val) => setSearch(val)}
-          placeholder={t("search")}
-          classes="organizations__search-input"
-        />
+        <Grid classes="organizations__filters-grid">
+          <GridItem md={6} lg={4}>
+            <InputSearch
+              value={search}
+              onChange={(val) => setSearch(val)}
+              placeholder={t("search")}
+              classes="organizations__search-input"
+            />
+          </GridItem>
+          <GridItem md={6} lg={4}>
+            <DateInput
+              value={filters.startDate}
+              onChange={(e) =>
+                setFilters({ ...filters, startDate: e.target.value })
+              }
+              placeholder={t("start_date")}
+            />
+          </GridItem>
+          <GridItem md={6} lg={4}>
+            <DateInput
+              value={filters.endDate}
+              onChange={(e) =>
+                setFilters({ ...filters, endDate: e.target.value })
+              }
+              placeholder={t("end_date")}
+            />
+          </GridItem>
+        </Grid>
         {isLoading ? (
           <Loading />
         ) : (

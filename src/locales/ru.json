@@ -782,7 +782,9 @@
       "september": "Сентябрь",
       "october": "Октябрь",
       "november": "Ноябрь",
-      "december": "Декабрь"
+      "december": "Декабрь",
+      "start_date": "Дата начала",
+      "end_date": "Дата окончания"
     },
     "analytics": {
       "content_tab_label": "Метрики контента",
