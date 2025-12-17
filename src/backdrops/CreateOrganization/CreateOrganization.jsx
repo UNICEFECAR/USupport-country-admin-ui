@@ -11,6 +11,7 @@ import {
   DropdownWithLabel,
   Loading,
   PlaceInput,
+  Button, // ADD THIS IMPORT
 } from "@USupport-components-library/src";
 
 import { userSvc } from "@USupport-components-library/services";
@@ -19,6 +20,7 @@ import {
   useEditOrganization,
   useCreateOrganization,
   useGetOrganizationMetadata,
+  useTranslateText,
 } from "#hooks";
 
 import "./create-organization.scss";
@@ -53,6 +55,8 @@ export const CreateOrganization = ({
       phone: "",
       email: "",
       description: "",
+      descriptionRO: "", // ADD THIS
+      descriptionUK: "", // ADD THIS
       district: null,
       paymentMethods: [],
       userInteractions: [],
@@ -75,6 +79,34 @@ export const CreateOrganization = ({
   const { data: metadata, isLoading: isMetadataLoading } =
     useGetOrganizationMetadata(country);
 
+  const translateTextMutation = useTranslateText(
+    (response) => {
+      const translatedText =
+        response?.data?.translatedText || response?.translatedText;
+
+      if (translatedText) {
+        handleChange("description", translatedText);
+      }
+    },
+    (error) => {
+      toast.error(error);
+    }
+  );
+
+  const translateToUkrainianMutation = useTranslateText(
+    (response) => {
+      const translatedText =
+        response?.data?.translatedText || response?.translatedText;
+
+      if (translatedText) {
+        handleChange("descriptionUK", translatedText);
+      }
+    },
+    (error) => {
+      toast.error(error);
+    }
+  );
+
   useEffect(() => {
     if (organizationToEdit) {
       if (country === "RO") {
@@ -89,6 +121,8 @@ export const CreateOrganization = ({
           phone: organizationToEdit.phone || "",
           email: organizationToEdit.email || "",
           description: organizationToEdit.description || "",
+          descriptionRO: organizationToEdit.descriptionRO || "", // ADD THIS
+          descriptionUK: organizationToEdit.descriptionUK || "", // ADD THIS
           district: organizationToEdit.district?.id || "",
           paymentMethods: Array.isArray(organizationToEdit.paymentMethods)
             ? organizationToEdit.paymentMethods.map((pm) => pm.id)
@@ -104,7 +138,6 @@ export const CreateOrganization = ({
             : [],
         });
       } else {
-        // For non-RO countries, only set the name field
         setData({
           name: organizationToEdit.name || "",
         });
@@ -189,6 +222,8 @@ export const CreateOrganization = ({
         phone: data.phone,
         email: data.email,
         description: data.description,
+        descriptionRO: data.descriptionRO, // ADD THIS
+        descriptionUK: data.descriptionUK, // ADD THIS
         district: data.district,
         paymentMethods: data.paymentMethods,
         userInteractions: data.userInteractions,
@@ -241,6 +276,37 @@ export const CreateOrganization = ({
         />
       );
     }
+
+    // FIX THE TRANSLATE FUNCTION
+    const handleTranslate = () => {
+      if (!data.descriptionRO) {
+        toast.error(
+          t("no_text_to_translate") || "Please enter Romanian description first"
+        );
+        return;
+      }
+
+      translateTextMutation.mutate({
+        text: data.descriptionRO,
+        sourceLanguage: "ro",
+        targetLanguage: "en",
+      });
+    };
+
+    const handleTranslateToUkrainian = () => {
+      if (!data.descriptionRO) {
+        toast.error(
+          t("no_text_to_translate") || "Please enter Romanian description first"
+        );
+        return;
+      }
+
+      translateToUkrainianMutation.mutate({
+        text: data.descriptionRO,
+        sourceLanguage: "ro",
+        targetLanguage: "uk",
+      });
+    };
 
     // For RO country, show all fields
     return (
@@ -320,11 +386,47 @@ export const CreateOrganization = ({
         )}
 
         <Textarea
-          label={t("description")}
-          value={data.description}
-          onChange={(text) => handleChange("description", text)}
+          label={t("description_ro")}
+          value={data.descriptionRO}
+          onChange={(text) => handleChange("descriptionRO", text)}
           placeholder={t("description_placeholder")}
         />
+
+        {/* FIXED TRANSLATION BUTTON LOGIC */}
+        {organizationToEdit?.description || data.description ? (
+          <Textarea
+            label={t("description")}
+            value={data.description}
+            onChange={(text) => handleChange("description", text)}
+            placeholder={t("description_placeholder")}
+          />
+        ) : (
+          <Button
+            label={t("translate_to_en")}
+            onClick={handleTranslate}
+            loading={translateTextMutation.isLoading}
+            disabled={!data.descriptionRO || translateTextMutation.isLoading}
+          />
+        )}
+
+        {/* UKRAINIAN TRANSLATION */}
+        {organizationToEdit?.descriptionUK || data.descriptionUK ? (
+          <Textarea
+            label={t("description_uk")}
+            value={data.descriptionUK}
+            onChange={(text) => handleChange("descriptionUK", text)}
+            placeholder={t("description_placeholder")}
+          />
+        ) : (
+          <Button
+            label={t("translate_to_uk")}
+            onClick={handleTranslateToUkrainian}
+            loading={translateToUkrainianMutation.isLoading}
+            disabled={
+              !data.descriptionRO || translateToUkrainianMutation.isLoading
+            }
+          />
+        )}
 
         {metadata?.paymentMethods && metadata.paymentMethods.length > 0 && (
           <Select

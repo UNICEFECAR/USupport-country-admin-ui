@@ -77,6 +77,17 @@ export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
     return countryRows;
   }, [i18n.language]);
 
+  const getDescription = (item) => {
+    const lang = i18n.language;
+    if (lang === "uk" && item.description_uk) {
+      return item.description_uk;
+    }
+    if (lang === "ro" && item.description_ro) {
+      return item.description_ro;
+    }
+    return item.description || "-";
+  };
+
   const rowsData = useMemo(() => {
     if (country !== "RO") {
       return dataToDisplay?.map((item) => {
@@ -142,13 +153,13 @@ export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
             ? item.specialisations.map((s) => t(s.name)).join(", ")
             : "-"}
         </p>,
-        <p className="text">{item.description || "-"}</p>,
+        <p className="text">{getDescription(item)}</p>,
         <p className="text centered">{item.providers?.length || 0}</p>,
         <p className="text centered">{item.uniqueClients || 0}</p>,
         <p className="text centered">{item.totalConsultations || 0}</p>,
       ];
     });
-  }, [dataToDisplay, t]);
+  }, [dataToDisplay, t, i18n.language]);
 
   const menuOptions = [
     {
@@ -193,9 +204,7 @@ export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
           <GridItem md={6} lg={4}>
             <InputSearch
               value={filters.search}
-              onChange={(e) =>
-                setFilters({ ...filters, search: e.target.value })
-              }
+              onChange={(value) => setFilters({ ...filters, search: value })}
               placeholder={t("search")}
               classes="organizations__search-input"
             />

@@ -81,6 +81,14 @@
       "users": "Kullanıcılar",
       "data_cannot_be_filtered": "Bu veriler demografik olarak filtrelenemiyor. Anonim verilere dayanarak oluşturulmuştur",
       "refresh": "Verileri güncelle"
+    },
+    "organizations": {
+      "description": "Diğer hizmetler (EN)",
+      "description_ro": "Diğer hizmetler (RO)",
+      "description_uk": "Diğer hizmetler (UK)",
+      "translate_to_uk": "Ukraynaca'ya çevir",
+      "translate_to_en": "İngilizce'ye çevir",
+      "no_text_to_translate": "Lütfen önce Romence açıklamayı girin"
     }
   },
   "pages": {
