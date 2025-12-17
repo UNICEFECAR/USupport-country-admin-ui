@@ -784,8 +784,8 @@
       "october": "",
       "november": "",
       "december": "",
-      "start_date": "Start date",
-      "end_date": "End date"
+      "start_date": "Ημερομηνία έναρξης",
+      "end_date": "Ημερομηνία λήξης"
     },
     "analytics": {
       "content_tab_label": "Δείκτες περιεχομένου",
