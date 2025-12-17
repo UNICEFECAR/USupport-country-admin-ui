@@ -815,7 +815,9 @@
       "september": "Вересень",
       "october": "Жовтень",
       "november": "Листопад",
-      "december": "Грудень"
+      "december": "Грудень",
+      "start_date": "Дата початку",
+      "end_date": "Дата закінчення"
     },
     "analytics": {
       "content_tab_label": "Метрики контенту",
