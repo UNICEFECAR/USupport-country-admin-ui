@@ -16,6 +16,8 @@ export const useGetOrganizationsWithDetails = (filters) => {
         phone: x.phone,
         email: x.email,
         description: x.description,
+        descriptionRO: x.description_ro,
+        descriptionUK: x.description_uk,
         createdBy: x.created_by,
         createdAt: x.created_at,
         location: {

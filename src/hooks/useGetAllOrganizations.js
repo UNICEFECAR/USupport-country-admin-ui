@@ -14,6 +14,8 @@ export default function useGetAllOrganizations() {
       phone: x.phone,
       email: x.email,
       description: x.description,
+      descriptionRO: x.description_ro,
+      descriptionUK: x.description_uk,
       specialisations: x.specialisations,
       paymentMethods: x.payment_methods || [],
       userInteractions: x.user_interactions || [],
