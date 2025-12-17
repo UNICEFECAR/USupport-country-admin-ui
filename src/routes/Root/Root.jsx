@@ -56,7 +56,7 @@ import { CountryValidationRoute, ProtectedRoute } from "../../routes";
 
 const RootContext = React.createContext();
 
-const allLangs = ["en", "ru", "kk", "pl", "uk", "hy", "ro", "tr", "ar"];
+const allLangs = ["en", "ru", "kk", "pl", "uk", "hy", "ro", "tr", "ar", "el"];
 
 const LanguageLayout = () => {
   let { language } = useParams();
