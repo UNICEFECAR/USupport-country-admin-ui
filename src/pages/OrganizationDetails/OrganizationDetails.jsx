@@ -36,7 +36,7 @@ import {
 
 const { firstDay, lastDay } = getFirstAndLastDayOfPastMonth();
 
-const initialFilters = {
+const defaultFilters = {
   search: "",
   startDate: firstDay,
   endDate: lastDay,
@@ -64,9 +64,21 @@ export const OrganizationDetails = () => {
   });
   const navigate = useNavigate();
 
-  const organizationId = new URLSearchParams(window.location.search).get(
-    "organizationId"
-  );
+  const searchParams = new URLSearchParams(window.location.search);
+  const organizationId = searchParams.get("organizationId");
+  const selectedStartDate = searchParams.get("startDate");
+  const selectedEndDate = searchParams.get("endDate");
+
+  const initialFilters = useMemo(() => {
+    const hasSelectedDates = !!selectedStartDate && !!selectedEndDate;
+    return {
+      ...defaultFilters,
+      startDate: hasSelectedDates
+        ? selectedStartDate
+        : defaultFilters.startDate,
+      endDate: hasSelectedDates ? selectedEndDate : defaultFilters.endDate,
+    };
+  }, [selectedStartDate, selectedEndDate]);
 
   const [dataToDisplay, setDataToDisplay] = useState();
   const [showAddProviderModal, setShowAddProviderModal] = useState(false);

@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useSearchParams } from "react-router-dom";
 import { useCustomNavigate as useNavigate } from "#hooks";
 
 import {
@@ -27,13 +28,22 @@ export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
   const country = localStorage.getItem("country");
   const { t, i18n } = useTranslation("blocks", { keyPrefix: "organizations" });
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const [filters, setFilters] = useState({
-    search: "",
-    startDate: "",
-    endDate: "",
+    search: searchParams.get("search") || "",
+    startDate: searchParams.get("startDate") || "",
+    endDate: searchParams.get("endDate") || "",
     timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
   });
+
+  useEffect(() => {
+    const nextParams = {};
+    if (filters.search) nextParams.search = filters.search;
+    if (filters.startDate) nextParams.startDate = filters.startDate;
+    if (filters.endDate) nextParams.endDate = filters.endDate;
+    setSearchParams(nextParams, { replace: true });
+  }, [filters.search, filters.startDate, filters.endDate, setSearchParams]);
 
   const [dataToDisplay, setDataToDisplay] = useState();
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -165,8 +175,15 @@ export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
     {
       icon: "view",
       text: t("view"),
-      handleClick: (id) =>
-        navigate(`/organization-details?organizationId=${id}`),
+      handleClick: (id) => {
+        const searchParams = new URLSearchParams({ organizationId: id });
+        const hasSelectedDates = !!filters.startDate && !!filters.endDate;
+        if (hasSelectedDates) {
+          searchParams.set("startDate", filters.startDate);
+          searchParams.set("endDate", filters.endDate);
+        }
+        navigate(`/organization-details?${searchParams.toString()}`);
+      },
     },
     {
       icon: "edit",
