@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useSearchParams } from "react-router-dom";
 import { useCustomNavigate as useNavigate } from "#hooks";
 
 import {
@@ -27,13 +28,22 @@ export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
   const country = localStorage.getItem("country");
   const { t, i18n } = useTranslation("blocks", { keyPrefix: "organizations" });
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const [filters, setFilters] = useState({
-    search: "",
-    startDate: "",
-    endDate: "",
+    search: searchParams.get("search") || "",
+    startDate: searchParams.get("startDate") || "",
+    endDate: searchParams.get("endDate") || "",
     timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
   });
+
+  useEffect(() => {
+    const nextParams = {};
+    if (filters.search) nextParams.search = filters.search;
+    if (filters.startDate) nextParams.startDate = filters.startDate;
+    if (filters.endDate) nextParams.endDate = filters.endDate;
+    setSearchParams(nextParams, { replace: true });
+  }, [filters.search, filters.startDate, filters.endDate, setSearchParams]);
 
   const [dataToDisplay, setDataToDisplay] = useState();
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -76,6 +86,17 @@ export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
   const rows = useMemo(() => {
     return countryRows;
   }, [i18n.language]);
+
+  const getDescription = (item) => {
+    const lang = i18n.language;
+    if (lang === "uk" && item.description_uk) {
+      return item.description_uk;
+    }
+    if (lang === "ro" && item.description_ro) {
+      return item.description_ro;
+    }
+    return item.description || "-";
+  };
 
   const rowsData = useMemo(() => {
     if (country !== "RO") {
@@ -142,20 +163,27 @@ export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
             ? item.specialisations.map((s) => t(s.name)).join(", ")
             : "-"}
         </p>,
-        <p className="text">{item.description || "-"}</p>,
+        <p className="text">{getDescription(item)}</p>,
         <p className="text centered">{item.providers?.length || 0}</p>,
         <p className="text centered">{item.uniqueClients || 0}</p>,
         <p className="text centered">{item.totalConsultations || 0}</p>,
       ];
     });
-  }, [dataToDisplay, t]);
+  }, [dataToDisplay, t, i18n.language]);
 
   const menuOptions = [
     {
       icon: "view",
       text: t("view"),
-      handleClick: (id) =>
-        navigate(`/organization-details?organizationId=${id}`),
+      handleClick: (id) => {
+        const searchParams = new URLSearchParams({ organizationId: id });
+        const hasSelectedDates = !!filters.startDate && !!filters.endDate;
+        if (hasSelectedDates) {
+          searchParams.set("startDate", filters.startDate);
+          searchParams.set("endDate", filters.endDate);
+        }
+        navigate(`/organization-details?${searchParams.toString()}`);
+      },
     },
     {
       icon: "edit",
@@ -193,9 +221,7 @@ export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
           <GridItem md={6} lg={4}>
             <InputSearch
               value={filters.search}
-              onChange={(e) =>
-                setFilters({ ...filters, search: e.target.value })
-              }
+              onChange={(value) => setFilters({ ...filters, search: value })}
               placeholder={t("search")}
               classes="organizations__search-input"
             />

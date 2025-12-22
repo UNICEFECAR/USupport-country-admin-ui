@@ -81,6 +81,14 @@
       "users": "المستخدمون",
       "data_cannot_be_filtered": "لا يمكن تصفية هذه البيانات حسب التركيبة السكانية. يتم إنشاؤها بناءً على بيانات مجهولة",
       "refresh": "تحديث البيانات"
+    },
+    "organizations": {
+      "description": "خدمات أخرى (EN)",
+      "description_ro": "خدمات أخرى (RO)",
+      "description_uk": "خدمات أخرى (UK)",
+      "translate_to_uk": "ترجمة إلى الأوكرانية",
+      "translate_to_en": "ترجمة إلى الإنجليزية",
+      "no_text_to_translate": "يرجى إدخال الوصف بالرومانية أولاً"
     }
   },
   "pages": {
