@@ -226,16 +226,13 @@ export const Analytics = () => {
 
   const consultationKeys = [
     "totalConsultations",
-    "cancelledConsultations",
-    "lateCancelledConsultations",
+    "consultationsJoinedByClientAndProvider",
+
+    "clientsAttendedConsultations",
     "scheduledConsultations",
     "mobileScheduledConsultations",
-    "consultationsJoinedByClientAndProvider",
-    "joinConsultationClick",
-    "mobileJoinConsultationClick",
-    "scheduleButtonClick",
-    "mobileScheduleButtonClick",
-    "clientsAttendedConsultations",
+    "cancelledConsultations",
+    "lateCancelledConsultations",
     "totalCouponConsultations",
   ];
 
@@ -259,6 +256,10 @@ export const Analytics = () => {
     "mobileAnonymousRegisterClick",
     "guestRegisterClick",
     "mobileGuestRegisterClick",
+    "joinConsultationClick",
+    "mobileJoinConsultationClick",
+    "scheduleButtonClick",
+    "mobileScheduleButtonClick",
   ];
 
   const userKeys = [
@@ -267,7 +268,6 @@ export const Analytics = () => {
     "allClients",
     "activeClients",
     "positiveClientRatings",
-    "positiveProviderRatings",
   ];
   const renderStatistic = () => {
     if (isGeneralPlatformMetricsLoading) {
@@ -303,9 +303,13 @@ export const Analytics = () => {
       })
     );
 
-    const consultationStatistics = statistics.filter((statistic) =>
-      consultationKeys.includes(statistic.type)
-    );
+    const consultationStatistics = statistics
+      .filter((statistic) => consultationKeys.includes(statistic.type))
+      .sort((a, b) => {
+        const indexA = consultationKeys.indexOf(a.type);
+        const indexB = consultationKeys.indexOf(b.type);
+        return indexA - indexB;
+      });
 
     const visitStatistics = statistics.filter((statistic) =>
       visitKeys.includes(statistic.type)
