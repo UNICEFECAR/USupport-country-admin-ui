@@ -70,13 +70,18 @@ export const OrganizationDetails = () => {
   const selectedEndDate = searchParams.get("endDate");
 
   const initialFilters = useMemo(() => {
-    const hasSelectedDates = !!selectedStartDate && !!selectedEndDate;
     return {
       ...defaultFilters,
-      startDate: hasSelectedDates
-        ? selectedStartDate
+      startDate: selectedStartDate
+        ? selectedStartDate === "null"
+          ? null
+          : selectedStartDate
         : defaultFilters.startDate,
-      endDate: hasSelectedDates ? selectedEndDate : defaultFilters.endDate,
+      endDate: selectedEndDate
+        ? selectedEndDate === "null"
+          ? null
+          : selectedEndDate
+        : defaultFilters.endDate,
     };
   }, [selectedStartDate, selectedEndDate]);
 
