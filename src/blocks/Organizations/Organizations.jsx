@@ -177,9 +177,17 @@ export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
       text: t("view"),
       handleClick: (id) => {
         const searchParams = new URLSearchParams({ organizationId: id });
-        const hasSelectedDates = !!filters.startDate && !!filters.endDate;
-        if (hasSelectedDates) {
+        if (filters.startDate) {
           searchParams.set("startDate", filters.startDate);
+          // If startDate is provided but endDate is not, explicitly set endDate to null
+          if (!filters.endDate) {
+            searchParams.set("endDate", "null");
+          } else {
+            searchParams.set("endDate", filters.endDate);
+          }
+        } else if (filters.endDate) {
+          // If only endDate is provided, set startDate to null
+          searchParams.set("startDate", "null");
           searchParams.set("endDate", filters.endDate);
         }
         navigate(`/organization-details?${searchParams.toString()}`);
