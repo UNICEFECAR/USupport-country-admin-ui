@@ -39,7 +39,7 @@ const fetchCountryMinPrice = async () => {
   return currentCountry?.min_price;
 };
 
-const COUNTRIES_WITH_DISABLED_PRICE = ["KZ", "PL"];
+const COUNTRIES_WITH_DISABLED_PRICE = ["KZ", "PL", "CY"];
 
 /**s
  * EditProvider
