@@ -50,6 +50,7 @@ export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
   const [organizationToDelete, setOrganizationToDelete] = useState(null);
 
   const { data, isLoading } = useGetOrganizationsWithDetails(filters);
+  const organizationsToRender = dataToDisplay || data;
 
   let countryRows = [
     { label: t("name"), sortingKey: "name" },
@@ -197,7 +198,9 @@ export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
       icon: "edit",
       text: t("edit"),
       handleClick: (id) => {
-        const organization = data.find((item) => item.organizationId === id);
+        const organization = (organizationsToRender || []).find(
+          (item) => item.organizationId === id
+        );
         setOrganizationToEdit(organization);
         setIsModalOpen(true);
       },
@@ -206,7 +209,9 @@ export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
       icon: "delete",
       text: t("delete_label"),
       handleClick: (id) => {
-        const organization = data.find((item) => item.organizationId === id);
+        const organization = (organizationsToRender || []).find(
+          (item) => item.organizationId === id
+        );
         setOrganizationToDelete(organization);
         setIsDeleteModalOpen(true);
       },
@@ -257,7 +262,7 @@ export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
           <Loading />
         ) : (
           <BaseTable
-            data={data}
+            data={organizationsToRender}
             rows={rows}
             rowsData={rowsData}
             handleClickPropName="organizationId"
