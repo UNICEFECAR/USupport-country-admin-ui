@@ -22,8 +22,8 @@ import { useMemo } from "react";
  */
 export const SecurityCheck = ({ Heading }) => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const { t } = useTranslation("blocks", { keyPrefix: "security-check" });
-  const { data: securityChecks, isLoading } = useGetSecurityChecks();
+  const { t, i18n } = useTranslation("blocks", { keyPrefix: "security-check" });
+  const { data: securityChecks, isLoading } = useGetSecurityChecks({language: i18n.language});
   const [filters, setFilters] = useState({});
   const [searchValue, setSearchValue] = useState("");
 
