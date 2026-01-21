@@ -45,6 +45,14 @@
       }
     }
 
+    &__filter-button{
+      margin-top: $spacing_1_2;
+
+      @media screen and (min-width: $screen-md) {
+        margin-top: 0;
+      }
+    }
+
     &__search {
       display: flex;
       flex-direction: column;
