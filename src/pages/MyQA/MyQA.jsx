@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { ButtonWithIcon } from "@USupport-components-library/src";
 import { Page, MyQA as MyQABlock } from "#blocks";
 
 import "./my-qa.scss";
