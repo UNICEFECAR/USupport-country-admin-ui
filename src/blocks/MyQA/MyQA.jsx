@@ -83,6 +83,7 @@ export const MyQA = ({
     );
   };
 
+
   const handleReadMore = (question) => {
     setSelectedQuestion(question);
     setIsQuestionDetailsOpen(true);
@@ -112,15 +113,25 @@ export const MyQA = ({
           ? true
           : question.providerDetailId === filters.provider;
 
-      const isStartingDateMatching = filters.startingDate
-        ? new Date(question.createdAt).getTime() >=
-          new Date(new Date(filters?.startingDate).setHours(0, 0, 0)).getTime()
-        : true;
+      const questionTimestamp = new Date(
+        question.questionCreatedAt ?? question.answerCreatedAt ?? question.createdAt
+      ).getTime();
 
-      const isEndDateMatching = filters.endingDate
-        ? new Date(question.createdAt).getTime() <=
-          new Date(new Date(filters?.endingDate).setHours(23, 59, 59)).getTime()
-        : true;
+      const startTimestamp = filters?.startingDate
+        ? new Date(new Date(filters.startingDate).setHours(0, 0, 0, 0)).getTime()
+        : null;
+
+      const endTimestamp = filters?.endingDate
+        ? new Date(
+            new Date(filters.endingDate).setHours(23, 59, 59, 999)
+          ).getTime()
+        : null;
+
+      const isStartingDateMatching =
+        startTimestamp !== null ? questionTimestamp >= startTimestamp : true;
+
+      const isEndDateMatching =
+        endTimestamp !== null ? questionTimestamp <= endTimestamp : true;
 
       const value = searchValue.toLowerCase();
       const isSearchMatching = !value
@@ -192,8 +203,10 @@ export const MyQA = ({
 
   const handleResetFilters = () => {
     setFilters({
-      reason: null,
+      tag: null,
       provider: null,
+      startingDate: "",
+      endingDate: "",
     });
     closeFilterModal();
   };
