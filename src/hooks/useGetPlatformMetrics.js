@@ -7,7 +7,8 @@ export default function useGetPlatformMetrics({
   endDate,
   sex,
   urbanRural,
-  yearOfBirth,
+  yearOfBirthFrom,
+  yearOfBirthTo,
 }) {
   const fetchPlatformMetrics = async () => {
     const { data } = await adminSvc.getPlatformMetrics({
@@ -15,13 +16,22 @@ export default function useGetPlatformMetrics({
       endDate,
       sex,
       urbanRural,
-      yearOfBirth,
+      yearOfBirthFrom,
+      yearOfBirthTo,
     });
     return data;
   };
 
   const query = useQuery(
-    ["platform-metrics", startDate, endDate, sex, urbanRural, yearOfBirth],
+    [
+      "platform-metrics",
+      startDate,
+      endDate,
+      sex,
+      urbanRural,
+      yearOfBirthFrom,
+      yearOfBirthTo,
+    ],
     fetchPlatformMetrics,
     {
       enabled: enabled,
