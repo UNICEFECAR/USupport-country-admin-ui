@@ -924,7 +924,11 @@
       "button_clicks": "Button clicks",
       "users": "Users",
       "data_cannot_be_filtered": "This data is not filtered by demographics. It is generated based on anonymous data",
-      "refresh": "Refresh data"
+      "refresh": "Refresh data",
+      "year_of_birth_from_label": "Year of birth from",
+      "year_of_birth_from_placeholder": "Select year of birth from",
+      "year_of_birth_to_label": "Year of birth to",
+      "year_of_birth_to_placeholder": "Select year of birth to"
     },
     "sos-center-clicks": {
       "sos_center": "SOS Center",

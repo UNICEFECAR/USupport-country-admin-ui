@@ -41,7 +41,8 @@ export const Analytics = () => {
     endDate: "",
     sex: "",
     urbanRural: "",
-    yearOfBirth: "",
+    yearOfBirthFrom: "",
+    yearOfBirthTo: "",
   });
   const [options, setOptions] = useState([
     { label: t("general"), value: "general", isSelected: true },
@@ -55,13 +56,28 @@ export const Analytics = () => {
     { label: t("podcasts"), value: "podcasts" },
   ];
 
-  const filtersToTranslaate = ["sex", "urbanRural", "yearOfBirth"];
+  const filtersToTranslaate = ["sex", "urbanRural"];
+
+  // Helper function to format yearOfBirth range for display
+  const formatYearOfBirthRange = () => {
+    if (filters.yearOfBirthFrom && filters.yearOfBirthTo) {
+      return `${filters.yearOfBirthFrom}-${filters.yearOfBirthTo}`;
+    }
+    if (filters.yearOfBirthFrom) {
+      return filters.yearOfBirthFrom;
+    }
+    if (filters.yearOfBirthTo) {
+      return filters.yearOfBirthTo;
+    }
+    return null;
+  };
 
   const { data: categoriesData, isFetching: isCategoriesDataFetching } =
     useGetContentStatistics({
       contentType: selectedContentType,
       sex: filters.sex || null,
-      yearOfBirth: filters.yearOfBirth || null,
+      yearOfBirthFrom: filters.yearOfBirthFrom || null,
+      yearOfBirthTo: filters.yearOfBirthTo || null,
       urbanRural: filters.urbanRural || null,
       startDate: filters.startDate || null,
       endDate: filters.endDate || null,
@@ -80,7 +96,8 @@ export const Analytics = () => {
     endDate: filters.endDate || null,
     sex: filters.sex || null,
     urbanRural: filters.urbanRural || null,
-    yearOfBirth: filters.yearOfBirth || null,
+    yearOfBirthFrom: filters.yearOfBirthFrom || null,
+    yearOfBirthTo: filters.yearOfBirthTo || null,
     enabled: shouldFetchPlatformMetrics,
   });
 
@@ -108,7 +125,8 @@ export const Analytics = () => {
       endDate: "",
       sex: "",
       urbanRural: "",
-      yearOfBirth: "",
+      yearOfBirthFrom: "",
+      yearOfBirthTo: "",
     });
 
     setOptions(optionsCopy);
@@ -418,7 +436,10 @@ export const Analytics = () => {
         </Box>
         <Box classes="analytics__statistics-box">
           <h3>{t("button_clicks")}</h3>
-          {filters.sex || filters.urbanRural || filters.yearOfBirth ? (
+          {filters.sex ||
+          filters.urbanRural ||
+          filters.yearOfBirthFrom ||
+          filters.yearOfBirthTo ? (
             <div className="analytics__statistics-box__disclaimer">
               <Icon color="#eb5757" name="exclamation-mark" />
               <p>{t("data_cannot_be_filtered")}</p>
@@ -475,14 +496,21 @@ export const Analytics = () => {
       endDate: "",
       sex: "",
       urbanRural: "",
-      yearOfBirth: "",
+      yearOfBirthFrom: "",
+      yearOfBirthTo: "",
     });
   };
 
   const handleRemoveFilter = (filter) => {
     setFilters((prevFilters) => {
       const newFilters = { ...prevFilters };
-      delete newFilters[filter];
+      // Handle yearOfBirth range removal
+      if (filter === "yearOfBirth") {
+        newFilters.yearOfBirthFrom = "";
+        newFilters.yearOfBirthTo = "";
+      } else {
+        delete newFilters[filter];
+      }
       return newFilters;
     });
   };
@@ -544,6 +572,13 @@ export const Analytics = () => {
             secondaryButtonAction={handleOpenFilterModal}
             filters={Object.keys(filters).reduce((acc, key) => {
               if (!filters[key]) return acc;
+              if (key === "yearOfBirthFrom" || key === "yearOfBirthTo") {
+                const range = formatYearOfBirthRange();
+                if (range && !acc.yearOfBirth) {
+                  acc.yearOfBirth = range;
+                }
+                return acc;
+              }
               acc[key] = filtersToTranslaate.includes(key)
                 ? t(filters[key])
                 : filters[key];
@@ -597,11 +632,19 @@ export const Analytics = () => {
                     onRemove={() => handleRemoveFilter("urbanRural")}
                   />
                 )}
-                {filters.yearOfBirth && (
+                {(filters.yearOfBirthFrom || filters.yearOfBirthTo) && (
                   <Label
                     showRemove
-                    text={`${t("year_of_birth_label")}: ${filters.yearOfBirth}`}
-                    onRemove={() => handleRemoveFilter("yearOfBirth")}
+                    text={`${t(
+                      "year_of_birth_label"
+                    )}: ${formatYearOfBirthRange()}`}
+                    onRemove={() => {
+                      setFilters((prevFilters) => ({
+                        ...prevFilters,
+                        yearOfBirthFrom: "",
+                        yearOfBirthTo: "",
+                      }));
+                    }}
                   />
                 )}
               </div>
