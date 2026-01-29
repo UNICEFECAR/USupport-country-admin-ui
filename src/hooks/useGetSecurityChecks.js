@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { adminSvc } from "@USupport-components-library/services";
 
-export const useGetSecurityChecks = () => {
+export const useGetSecurityChecks = ({language}) => {
   const getSecurityChecks = async () => {
     const { data } = await adminSvc.getSecurityChecks();
     const finalData = [];
@@ -33,5 +33,5 @@ export const useGetSecurityChecks = () => {
     return finalData;
   };
 
-  return useQuery(["securityChecks"], getSecurityChecks);
+  return useQuery(["securityChecks", language], getSecurityChecks);
 };

@@ -50,12 +50,13 @@ export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
   const [organizationToDelete, setOrganizationToDelete] = useState(null);
 
   const { data, isLoading } = useGetOrganizationsWithDetails(filters);
+  const organizationsToRender = dataToDisplay || data;
 
   let countryRows = [
     { label: t("name"), sortingKey: "name" },
-    { label: t("unique_providers"), sortingKey: "uniqueProviders" },
-    { label: t("unique_clients"), sortingKey: "uniqueClients" },
-    { label: t("total_consultations"), sortingKey: "totalConsultations" },
+    { label: t("unique_providers"), sortingKey: "uniqueProviders", isNumbered: true },
+    { label: t("unique_clients"), sortingKey: "uniqueClients", isNumbered: true },
+    { label: t("total_consultations"), sortingKey: "totalConsultations", isNumbered: true },
   ];
 
   if (country === "RO") {
@@ -71,9 +72,9 @@ export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
       { label: t("property_types"), sortingKey: "propertyTypes" },
       { label: t("specialisations"), sortingKey: "specialisations" },
       { label: t("description"), sortingKey: "description" },
-      { label: t("unique_providers"), sortingKey: "uniqueProviders" },
-      { label: t("unique_clients"), sortingKey: "uniqueClients" },
-      { label: t("total_consultations"), sortingKey: "totalConsultations" },
+      { label: t("unique_providers"), sortingKey: "uniqueProviders", isNumbered: true, },
+      { label: t("unique_clients"), sortingKey: "uniqueClients", isNumbered: true },
+      { label: t("total_consultations"), sortingKey: "totalConsultations", isNumbered: true },
     ];
   }
 
@@ -103,7 +104,7 @@ export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
       return dataToDisplay?.map((item) => {
         return [
           <p className="text">{item.name}</p>,
-          <p className="text centered">{item.providers?.length || 0}</p>,
+          <p className="text centered">{item.uniqueProviders || 0}</p>,
           <p className="text centered">{item.uniqueClients || 0}</p>,
           <p className="text centered">{item.totalConsultations || 0}</p>,
         ];
@@ -197,7 +198,9 @@ export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
       icon: "edit",
       text: t("edit"),
       handleClick: (id) => {
-        const organization = data.find((item) => item.organizationId === id);
+        const organization = (organizationsToRender || []).find(
+          (item) => item.organizationId === id
+        );
         setOrganizationToEdit(organization);
         setIsModalOpen(true);
       },
@@ -206,7 +209,9 @@ export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
       icon: "delete",
       text: t("delete_label"),
       handleClick: (id) => {
-        const organization = data.find((item) => item.organizationId === id);
+        const organization = (organizationsToRender || []).find(
+          (item) => item.organizationId === id
+        );
         setOrganizationToDelete(organization);
         setIsDeleteModalOpen(true);
       },
@@ -257,7 +262,7 @@ export const Organizations = ({ setIsModalOpen, setOrganizationToEdit }) => {
           <Loading />
         ) : (
           <BaseTable
-            data={data}
+            data={organizationsToRender}
             rows={rows}
             rowsData={rowsData}
             handleClickPropName="organizationId"
