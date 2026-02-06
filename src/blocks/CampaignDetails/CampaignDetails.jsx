@@ -59,10 +59,12 @@ export const CampaignDetails = ({
   const initialFilters = {
     providerName: "",
     usedAfter: "",
-    client: "",
+    clientName: "",
     clientSex: "",
     clientYob: "",
     clientPlaceOfLiving: "",
+    startDate: "",
+    endDate: "",
   };
   const currencySymbol = localStorage.getItem("currency_symbol");
   const { t } = useTranslation("blocks", { keyPrefix: "campaign-details" });
@@ -224,16 +226,16 @@ export const CampaignDetails = ({
         coupon.clientPlaceOfLiving === filters.clientPlaceOfLiving;
 
       // Check if the date of creation of the coupon
-      // is after the date selected by the admin
+      // is within the date range selected by the admin
       const isStartDateMatching =
-        !filters.usedAfter ||
-        new Date(coupon.createdAt) >=
-          new Date(new Date(filters.usedAfter).setHours(0, 0, 0));
+        !filters.startDate ||
+        new Date(new Date(coupon.createdAt).setHours(0, 0, 0, 0)) >=
+          new Date(new Date(filters.startDate).setHours(0, 0, 0, 0));
 
       const isEndDateMatching =
         !filters.endDate ||
-        new Date(new Date(coupon.createdAt).setHours(0, 0, 0)) <=
-          new Date(filters.endDate);
+        new Date(new Date(coupon.createdAt).setHours(0, 0, 0, 0)) <=
+          new Date(new Date(filters.endDate).setHours(23, 59, 59, 999));
 
       return (
         isProviderNameMatching &&
@@ -357,14 +359,14 @@ export const CampaignDetails = ({
           }
         />
         <DateInput
-          value={filters.startDate}
+          value={filters.startDate || ""}
           label={t("start_date")}
           onChange={(e) =>
             setFilters({ ...filters, startDate: e.target.value })
           }
         />
         <DateInput
-          value={filters.endDate}
+          value={filters.endDate || ""}
           label={t("end_date")}
           onChange={(e) => setFilters({ ...filters, endDate: e.target.value })}
         />
