@@ -5,8 +5,8 @@ import {
   BaseTable,
   Block,
   Button,
+  DateInput,
   DropdownWithLabel,
-  Input,
   Modal,
 } from "@USupport-components-library/src";
 import {
@@ -258,24 +258,22 @@ const Filters = ({
               options={organizationOptions}
             />
           )}
-          <div className="provider-activities__filter-modal__date-container">
-            <Input
-              type="date"
-              label={t("start_date")}
-              onChange={(e) => handleChange("startDate", e.currentTarget.value)}
-              value={data.startDate}
-              placeholder={t("dates_placeholder")}
-              classes="provider-activities__filter-modal__date-picker"
-            />
-            <Input
-              type="date"
-              label={t("end_date")}
-              onChange={(e) => handleChange("endDate", e.currentTarget.value)}
-              value={data.endDate}
-              placeholder={t("dates_placeholder")}
-              classes="provider-activities__filter-modal__date-picker"
-            />
-          </div>
+          {/* <div className="provider-activities__filter-modal__date-container"> */}
+          <DateInput
+            label={t("start_date")}
+            onChange={(e) => handleChange("startDate", e.target.value)}
+            value={data.startDate}
+            placeholder={t("dates_placeholder")}
+            classes="provider-activities__filter-modal__date-picker"
+          />
+          <DateInput
+            label={t("end_date")}
+            onChange={(e) => handleChange("endDate", e.target.value)}
+            value={data.endDate}
+            placeholder={t("dates_placeholder")}
+            classes="provider-activities__filter-modal__date-picker"
+          />
+          {/* </div> */}
         </div>
         <div>
           <Button
