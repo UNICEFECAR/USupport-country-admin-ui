@@ -5,6 +5,7 @@ import {
   Route,
   Navigate,
   useParams,
+  useLocation,
 } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -326,7 +327,7 @@ const LanguageLayout = () => {
 
 export default function Root() {
   const { t } = useTranslation("routes", { keyPrefix: "root" });
-
+  const location = useLocation();
   const token = localStorage.getItem("token");
   let language = localStorage.getItem("language");
 
@@ -366,7 +367,12 @@ export default function Root() {
       <Routes>
         <Route
           path="/country-admin"
-          element={<Navigate to={`/country-admin/${language}`} replace />}
+          element={
+            <Navigate
+              to={`/country-admin/${language}${location.search || ""}`}
+              replace
+            />
+          }
         />
         <Route path="/country-admin/:language/*" element={<LanguageLayout />} />
         <Route path="*" element={<NotFound />} />
