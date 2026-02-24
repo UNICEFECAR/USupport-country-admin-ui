@@ -32,14 +32,12 @@ import Joi from "joi";
 
 import "./edit-provider.scss";
 
-const fetchCountryMinPrice = async () => {
+const fetchCountryData = async () => {
   const { data } = await countrySvc.getActiveCountries();
   const currentCountryId = localStorage.getItem("country_id");
   const currentCountry = data.find((x) => x.country_id === currentCountryId);
-  return currentCountry?.min_price;
+  return currentCountry;
 };
-
-const COUNTRIES_WITH_DISABLED_PRICE = ["KZ", "PL", "CY"];
 
 /**s
  * EditProvider
@@ -62,12 +60,11 @@ export const EditProvider = ({
     useGetProviderData(providerId);
   const [canSaveChanges, setCanSaveChanges] = useState(false);
   const [errors, setErrors] = useState({});
-  const [countryAlpha2, setCountryAlpha2] = useState("");
 
-  const { data: countryMinPrice } = useQuery(
-    ["country-min-price"],
-    fetchCountryMinPrice
-  );
+  const { data: countryData } = useQuery(["country-data"], fetchCountryData);
+
+  const countryMinPrice = countryData?.min_price;
+  const hasPayments = countryData?.has_payments;
 
   useEffect(() => {
     if (providerData && !providerImage) {
@@ -84,17 +81,7 @@ export const EditProvider = ({
   const { data: organizations, isLoading: organizationsLoading } =
     useGetAllOrganizations();
 
-  const isPriceDisabled = COUNTRIES_WITH_DISABLED_PRICE.includes(countryAlpha2);
-
-  useEffect(() => {
-    if (localizationQuery.data) {
-      const currentCountryId = localStorage.getItem("country_id");
-      const currentCountry = localizationQuery.data.countries.find(
-        (x) => x.country_id === currentCountryId
-      );
-      setCountryAlpha2(currentCountry.alpha2);
-    }
-  }, [localizationQuery.data]);
+  const isPriceDisabled = !hasPayments;
 
   const specializationOptions = [
     { value: "psychologist", label: t("psychologist"), selected: false },
