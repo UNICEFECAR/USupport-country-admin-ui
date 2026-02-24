@@ -283,7 +283,7 @@ export const Page = ({
     return textarea.value;
   };
 
-  if (!isFetched) return null;
+  if (isNavbarShown && !isFetched) return null;
 
   return (
     <>
