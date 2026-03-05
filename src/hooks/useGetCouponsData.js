@@ -8,7 +8,7 @@ export function useGetCouponsData(campaignId) {
       const providerData = coupon.provider_data;
       const clientData = coupon.client_data;
       return {
-        createdAt: new Date(coupon.created_at),
+        time: new Date(coupon.time),
         providerName: `${providerData.name} ${providerData.patronym} ${providerData.surname}`,
         clientName: clientData.name,
         clientYob: clientData.year_of_birth,
