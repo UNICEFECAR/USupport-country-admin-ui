@@ -168,7 +168,7 @@ export const CampaignDetails = ({
     dataToDisplay.forEach((c) => {
       csv += `${c.providerName},${c.clientName},${t(c.clientSex)},${
         c.clientYob
-      },${c.clientPlaceOfLiving},${getDateView(c.createdAt)}\n`;
+      },${c.clientPlaceOfLiving},${getDateView(c.time)}\n`;
     });
 
     const reportDate = new Date().toISOString().split("T")[0];
@@ -235,12 +235,12 @@ export const CampaignDetails = ({
       // is within the date range selected by the admin
       const isStartDateMatching =
         !filters.startDate ||
-        new Date(new Date(coupon.createdAt).setHours(0, 0, 0, 0)) >=
+        new Date(new Date(coupon.time).setHours(0, 0, 0, 0)) >=
           new Date(new Date(filters.startDate).setHours(0, 0, 0, 0));
 
       const isEndDateMatching =
         !filters.endDate ||
-        new Date(new Date(coupon.createdAt).setHours(0, 0, 0, 0)) <=
+        new Date(new Date(coupon.time).setHours(0, 0, 0, 0)) <=
           new Date(new Date(filters.endDate).setHours(23, 59, 59, 999));
 
       return (
