@@ -115,7 +115,7 @@ export const CampaignDetails = ({
         sortingKey: "clientPlaceOfLiving",
         isCentered: true,
       },
-      { label: t("used_on"), sortingKey: "createdAt", isDate: true },
+      { label: t("used_on"), sortingKey: "time", isDate: true },
     ];
   }, []);
 
@@ -125,10 +125,16 @@ export const CampaignDetails = ({
         <p className="text centered">{index + 1}</p>,
         <p className="text">{coupon.providerName}</p>,
         <p className="text">{coupon.clientName}</p>,
-        <p className="text centered">{t(coupon.clientSex)}</p>,
-        <p className="text centered">{coupon.clientYob}</p>,
-        <p className="text centered">{t(coupon.clientPlaceOfLiving)}</p>,
-        <p className="text">{getDateView(coupon.createdAt)}</p>,
+        <p className="text centered">
+          {coupon.clientSex ? t(coupon.clientSex) : "-"}
+        </p>,
+        <p className="text centered">
+          {coupon.clientYob ? coupon.clientYob : "-"}
+        </p>,
+        <p className="text centered">
+          {coupon.clientPlaceOfLiving ? t(coupon.clientPlaceOfLiving) : "-"}
+        </p>,
+        <p className="text">{getDateView(coupon.time)}</p>,
       ];
     });
   }, [dataToDisplay]);
