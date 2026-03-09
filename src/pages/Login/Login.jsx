@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useSearchParams, useNavigate as useRawNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
@@ -29,8 +29,11 @@ import "./login.scss";
  */
 export const Login = () => {
   const navigate = useNavigate();
+  const rawNavigate = useRawNavigate();
   const { t } = useTranslation("pages", { keyPrefix: "login-page" });
   const { width } = useWindowDimensions();
+  const [searchParams] = useSearchParams();
+  const nextPath = searchParams.get("next");
   const queryClient = useQueryClient();
 
   const ROLE = "country";
@@ -123,7 +126,11 @@ export const Login = () => {
       queryClient.invalidateQueries({ queryKey: ["provider-data"] });
 
       setErrors({});
-      navigate("/dashboard");
+      if (nextPath && nextPath.startsWith("/country-admin/")) {
+        rawNavigate(nextPath);
+      } else {
+        navigate("/dashboard");
+      }
     },
     onError: (err) => {
       const { message: errorMessage } = useError(err);
@@ -132,12 +139,13 @@ export const Login = () => {
   });
 
   if (isLoggedIn === "loading") return <Loading />;
-  if (isLoggedIn === true)
-    return (
-      <Navigate
-        to={`/country-admin/${localStorage.getItem("language")}/dashboard`}
-      />
-    );
+  if (isLoggedIn === true) {
+    const redirectTo =
+      nextPath && nextPath.startsWith("/country-admin/")
+        ? nextPath
+        : `/country-admin/${localStorage.getItem("language")}/dashboard`;
+    return <Navigate to={redirectTo} replace />;
+  }
 
   const openCodeVerification = () => setIsCodeVerificationOpen(true);
 

@@ -83,20 +83,25 @@
         margin-top: $spacing_1_6;
         margin-bottom: $spacing_1_8;
       }
-    }
 
-    &__date-container {
-      display: flex;
-      justify-content: space-between;
-
-      & .input-container {
-        width: 17.5rem;
-
-        &:first-of-type {
-          margin-right: $spacing_1_4;
-        }
+      & .date-input__container {
+        margin-top: $spacing_1_6;
+        margin-bottom: $spacing_1_8;
       }
     }
+
+    // &__date-container {
+    //   display: flex;
+    //   justify-content: space-between;
+
+    //   & .input-container {
+    //     width: 17.5rem;
+
+    //     &:first-of-type {
+    //       margin-right: $spacing_1_4;
+    //     }
+    //   }
+    // }
 
     &__date-picker {
       & input {
