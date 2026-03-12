@@ -76,7 +76,10 @@ export const ArticleView = ({ articleData, t }) => {
         </GridItem>
 
         <GridItem md={8} lg={12} classes="article-view__body-item">
-          <Markdown markDownText={articleData.body} className={"text"} />
+          <Markdown
+            markDownText={articleData.bodyCK || articleData.body}
+            className={"text"}
+          />
         </GridItem>
       </Grid>
     </Block>
