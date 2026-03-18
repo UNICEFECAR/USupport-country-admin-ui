@@ -54,6 +54,10 @@
       "search": "Αναζήτηση",
       "no_data_found": "Δεν βρέθηκαν δεδομένα",
       "created_at": "Δημιουργήθηκε στις",
+      "countries": "Χώρες",
+      "filter_by_country": "Φίλτρο ανά χώρα",
+      "all_countries": "Όλες οι χώρες",
+      "no_articles_for_country": "Δεν υπάρχουν άρθρα στην επιλεγμένη χώρα.",
       "likes": "Μου αρέσει",
       "dislikes": "Δεν μου αρέσει",
       "views": "Προβολές"

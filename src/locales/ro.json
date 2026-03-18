@@ -56,6 +56,10 @@
       "search": "Căutare",
       "no_data_found": "Nu s-au găsit date",
       "created_at": "Creat la",
+      "countries": "Țări",
+      "filter_by_country": "Filtrare după țară",
+      "all_countries": "Toate țările",
+      "no_articles_for_country": "Nu există articole în țara selectată.",
       "likes": "Aprecieri",
       "dislikes": "Aprecieri negative",
       "views": "Vizualizări"

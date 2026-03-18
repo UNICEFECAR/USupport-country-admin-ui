@@ -56,6 +56,10 @@
       "search": "Wyszukiwanie",
       "no_data_found": "Nie znaleziono danych",
       "created_at": "Utworzono w",
+      "countries": "Kraje",
+      "filter_by_country": "Filtruj według kraju",
+      "all_countries": "Wszystkie kraje",
+      "no_articles_for_country": "Brak artykułów w wybranym kraju.",
       "likes": "Sympatie",
       "dislikes": "Antypatie",
       "views": "Views"

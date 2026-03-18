@@ -54,6 +54,10 @@
       "search": "بحث",
       "no_data_found": "لم يتم العثور على بيانات",
       "created_at": "تاريخ الإنشاء",
+      "countries": "الدول",
+      "filter_by_country": "تصفية حسب الدولة",
+      "all_countries": "جميع الدول",
+      "no_articles_for_country": "لا توجد مقالات في الدولة المحددة.",
       "likes": "الإعجابات",
       "dislikes": "عدم الإعجاب",
       "views": "المشاهدات"
