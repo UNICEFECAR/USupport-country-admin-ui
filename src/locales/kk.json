@@ -56,6 +56,10 @@
       "search": "Іздеу",
       "no_data_found": "Ақпарат табылмады",
       "created_at": "Жарияланды",
+      "countries": "Елдер",
+      "filter_by_country": "Ел бойынша сүзгілеу",
+      "all_countries": "Барлық елдер",
+      "no_articles_for_country": "Таңдалған елде мақалалар жоқ.",
       "likes": "Ұнады",
       "dislikes": "Ұнамады",
       "views": "Views"

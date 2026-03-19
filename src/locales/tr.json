@@ -54,6 +54,10 @@
       "search": "Ara",
       "no_data_found": "Veri bulunamadı",
       "created_at": "Oluşturulma Tarihi",
+      "countries": "Ülkeler",
+      "filter_by_country": "Ülkeye göre filtrele",
+      "all_countries": "Tüm ülkeler",
+      "no_articles_for_country": "Seçilen ülkede makale bulunmuyor.",
       "likes": "Beğeniler",
       "dislikes": "Beğenilmeyenler",
       "views": "Görüntüleme Sayısı"

@@ -56,6 +56,10 @@
       "search": "Որոնում",
       "no_data_found": "Տվյալ չի գտնվել",
       "created_at": "Ստեղծված է ․․․",
+      "countries": "Երկրներ",
+      "filter_by_country": "Ըստ երկրի ֆիլտրել",
+      "all_countries": "Բոլոր երկրները",
+      "no_articles_for_country": "Ընտրված երկրում հոդվածներ չկան։",
       "likes": "Հավանումներ",
       "dislikes": "Չհավանածներ",
       "views": "Դիտումներ"
