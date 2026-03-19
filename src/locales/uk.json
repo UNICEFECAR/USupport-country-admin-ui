@@ -56,6 +56,10 @@
       "search": "Пошук",
       "no_data_found": "Даних не знайдено",
       "created_at": "Створено в",
+      "countries": "Країни",
+      "filter_by_country": "Фільтр за країною",
+      "all_countries": "Усі країни",
+      "no_articles_for_country": "У вибраній країні немає статей.",
       "likes": "Лайки",
       "dislikes": "Дизлайки",
       "views": "Views"

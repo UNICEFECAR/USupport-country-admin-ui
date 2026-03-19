@@ -1,9 +1,37 @@
 @import "@USupport-components-library/styles";
 
 .articles {
-  &__search {
+  &__filters {
+    display: flex;
+    flex: 1;
+    flex-wrap: nowrap;
+    gap: $spacing_2_4;
+    align-items: flex-end;
     padding-top: $spacing_0_8;
     padding-bottom: $spacing_2_4;
+    position: relative;
+    z-index: $z_index_modal;
+  }
+
+  &__search {
+    flex: 1;
+    min-width: 12rem;
+    max-width: 24rem;
+  }
+
+  &__description {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  &__country-filter {
+    flex-shrink: 0;
+    min-width: 18rem;
+    position: relative;
+    z-index: $z_index_modal;
+    text-align: left;
   }
   &__image {
     width: 11.7rem;
@@ -15,5 +43,11 @@
     color: $color_blue_3d527b;
     font-weight: $font_bold;
     margin-bottom: $spacing_0_4;
+  }
+
+  &__countries {
+    max-width: 12rem;
+    font-size: $font_size_1_2;
+    color: $color_gray_66768d;
   }
 }

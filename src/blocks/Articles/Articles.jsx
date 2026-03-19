@@ -1,5 +1,8 @@
 import React, { useState, useMemo, useCallback, useEffect } from "react";
-import { useCustomNavigate as useNavigate } from "#hooks";
+import {
+  useCustomNavigate as useNavigate,
+  useGetActiveCountriesArticles,
+} from "#hooks";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
@@ -13,6 +16,7 @@ import {
   Error as ErrorComponent,
   BaseTable,
   InputSearch,
+  DropdownWithLabel,
 } from "@USupport-components-library/src";
 
 import { cmsSvc, adminSvc } from "@USupport-components-library/services";
@@ -48,6 +52,45 @@ export const Articles = () => {
   const [startFrom, setStartFrom] = useState(0);
 
   const [articleIds, setArticleIds] = useState([]);
+  const [selectedCountryFilter, setSelectedCountryFilter] = useState("");
+
+  const { data: activeCountriesArticles } = useGetActiveCountriesArticles();
+
+  const getCountriesForArticle = useCallback(
+    (article) => {
+      if (!Array.isArray(activeCountriesArticles)) return [];
+      const idsSet = new Set([
+        String(article.id),
+        ...(article.localizations?.data?.map((loc) => String(loc.id)) || []),
+      ]);
+      return activeCountriesArticles
+        .filter((c) =>
+          (c.article_ids || []).some((id) => idsSet.has(String(id)))
+        )
+        .map((c) => ({ alpha2: c.alpha2, name: c.name || c.alpha2 }));
+    },
+    [activeCountriesArticles]
+  );
+
+  const filteredData = useMemo(() => {
+    if (!selectedCountryFilter) return dataToDisplay;
+    return dataToDisplay.filter((article) =>
+      getCountriesForArticle(article).some(
+        (c) => c.alpha2 === selectedCountryFilter
+      )
+    );
+  }, [dataToDisplay, selectedCountryFilter, getCountriesForArticle]);
+
+  const countryFilterOptions = useMemo(
+    () => [
+      { value: "", label: t("all_countries") },
+      ...(activeCountriesArticles || []).map((c) => ({
+        value: c.alpha2,
+        label: c.name || c.alpha2,
+      })),
+    ],
+    [activeCountriesArticles, t]
+  );
 
   useEffect(() => {
     if (i18n.language !== languageOfData) {
@@ -60,13 +103,14 @@ export const Articles = () => {
 
   //--------------------- Articles ----------------------//
   const getArticles = async () => {
-    // Request Articles ids from the master DB
-    let dbArticleIds = [];
-    if (articleIds.length === 0) {
-      dbArticleIds = await adminSvc.getArticles();
+    let dbArticleIds = articleIds;
+
+    if (dbArticleIds.length === 0 && Array.isArray(activeCountriesArticles)) {
+      dbArticleIds = activeCountriesArticles
+        .map((country) => country.article_ids || [])
+        .flat()
+        .filter(Boolean);
       setArticleIds(dbArticleIds);
-    } else {
-      dbArticleIds = articleIds;
     }
 
     let { data } = await cmsSvc.getArticles({
@@ -219,6 +263,10 @@ export const Articles = () => {
         isDate: true,
       },
       {
+        label: t("countries"),
+        isCentered: true,
+      },
+      {
         label: t("view"),
         isCentered: true,
       },
@@ -236,7 +284,7 @@ export const Articles = () => {
   const [searchValue, setSearchValue] = useState("");
 
   const rowsData = useCallback(() => {
-    return dataToDisplay?.map((article) => {
+    return filteredData?.map((article) => {
       if (searchValue) {
         const search = searchValue.toLowerCase();
         const date = getDateView(new Date(article.createdAt)).toString();
@@ -277,12 +325,21 @@ export const Articles = () => {
         />,
         <div>
           <p className="articles__heading">{article.title}</p>
-          <p className="text">{article.description}</p>
+          <p className="text articles__description">{article.description}</p>
         </div>,
         <p className="text centered">{article.read_count || 0}</p>,
         IS_PS ? null : <p className="text centered">{article.likes || 0}</p>,
         IS_PS ? null : <p className="text centered">{article.dislikes || 0}</p>,
         <div>{getDateView(new Date(article.createdAt))}</div>,
+        (() => {
+          const countries = getCountriesForArticle(article);
+          const names = countries.map((c) => c.name).join(", ");
+          return (
+            <div className="articles__countries" title={names}>
+              {names || "—"}
+            </div>
+          );
+        })(),
         <Button
           label={t("view_button")}
           onClick={(e) => {
@@ -292,23 +349,33 @@ export const Articles = () => {
         />,
       ].filter((x) => x !== null);
     });
-  }, [dataToDisplay, searchValue, IS_PS]);
+  }, [filteredData, searchValue, IS_PS, getCountriesForArticle, t, navigate]);
 
   return (
     <Block classes="articles">
       <Grid>
-        <GridItem>
-          <InputSearch
-            value={searchValue}
-            onChange={(val) => setSearchValue(val)}
-            placeholder={t("search")}
-            classes="articles__search"
-          />
+        <GridItem md={8} lg={12}>
+          <div className="articles__filters">
+            <InputSearch
+              value={searchValue}
+              onChange={(val) => setSearchValue(val)}
+              placeholder={t("search")}
+              classes="articles__search"
+            />
+            <DropdownWithLabel
+              label={t("filter_by_country")}
+              selected={selectedCountryFilter}
+              setSelected={setSelectedCountryFilter}
+              options={countryFilterOptions}
+              classes="articles__country-filter"
+            />
+          </div>
         </GridItem>
         <GridItem md={8} lg={12} classes="articles__rows">
-          {dataToDisplay.length ? (
+          {dataToDisplay.length > 0 &&
+          (filteredData.length > 0 || !selectedCountryFilter) ? (
             <BaseTable
-              data={dataToDisplay || []}
+              data={filteredData || []}
               rows={rows}
               rowsData={rowsData()}
               updateData={setDataToDisplay}
@@ -323,6 +390,13 @@ export const Articles = () => {
             isArticlesFetched &&
             !isArticlesFetching && (
               <h3 className="articles__no-results">{t("no_results")}</h3>
+            )}
+          {dataToDisplay.length > 0 &&
+            selectedCountryFilter &&
+            filteredData.length === 0 && (
+              <h3 className="articles__no-results">
+                {t("no_articles_for_country")}
+              </h3>
             )}
           {error ? <ErrorComponent message={error} /> : null}
         </GridItem>
