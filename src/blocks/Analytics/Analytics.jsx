@@ -33,6 +33,8 @@ import "./analytics.scss";
 export const Analytics = () => {
   const { t, i18n } = useTranslation("blocks", { keyPrefix: "analytics" });
   const queryClient = useQueryClient();
+  const country = localStorage.getItem("country");
+  const IS_RO = country === "RO";
 
   const [selectedContentType, setSelectedContentType] = useState("all");
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
@@ -315,10 +317,10 @@ export const Analytics = () => {
           typeof value === "string" && !isNaN(Number(value))
             ? Number(value).toLocaleString()
             : typeof value === "number"
-            ? value.toLocaleString()
-            : String(value),
+              ? value.toLocaleString()
+              : String(value),
         ...value,
-      })
+      }),
     );
 
     const consultationStatistics = statistics
@@ -329,17 +331,43 @@ export const Analytics = () => {
         return indexA - indexB;
       });
 
-    const visitStatistics = statistics.filter((statistic) =>
-      visitKeys.includes(statistic.type)
-    );
+    const visitStatistics = statistics.filter((statistic) => {
+      if (!visitKeys.includes(statistic.type)) return false;
+      if (
+        IS_RO &&
+        (statistic.type === "totalProviderAccess" ||
+          statistic.type === "uniqueProviderAccess")
+      ) {
+        return false;
+      }
+      return true;
+    });
 
-    const clicksStatistics = statistics.filter((statistic) =>
-      clicksKeys.includes(statistic.type)
-    );
+    const clicksStatistics = statistics.filter((statistic) => {
+      if (!clicksKeys.includes(statistic.type)) return false;
+      if (
+        IS_RO &&
+        (statistic.type === "joinConsultationClick" ||
+          statistic.type === "mobileJoinConsultationClick" ||
+          statistic.type === "scheduleButtonClick" ||
+          statistic.type === "mobileScheduleButtonClick")
+      ) {
+        return false;
+      }
+      return true;
+    });
 
-    const userStatistics = statistics.filter((statistic) =>
-      userKeys.includes(statistic.type)
-    );
+    const userStatistics = statistics.filter((statistic) => {
+      if (!userKeys.includes(statistic.type)) return false;
+      if (
+        IS_RO &&
+        (statistic.type === "totalProviders" ||
+          statistic.type === "activeProviders")
+      ) {
+        return false;
+      }
+      return true;
+    });
 
     const renderStatistic = (statistic, index) => {
       return (
@@ -404,7 +432,7 @@ export const Analytics = () => {
                               </p>
                             </div>
                           );
-                        }
+                        },
                       )}
                     </div>
                   </div>
@@ -418,19 +446,21 @@ export const Analytics = () => {
 
     return (
       <div className="analytics-content">
-        <Box classes="analytics__statistics-box">
-          <h3>{t("consultations")}</h3>
-          <Grid classes="analytics__statistics-grid">
-            {consultationStatistics.map((statistic, index) =>
-              renderStatistic(statistic, index)
-            )}
-          </Grid>
-        </Box>
+        {!IS_RO ? (
+          <Box classes="analytics__statistics-box">
+            <h3>{t("consultations")}</h3>
+            <Grid classes="analytics__statistics-grid">
+              {consultationStatistics.map((statistic, index) =>
+                renderStatistic(statistic, index),
+              )}
+            </Grid>
+          </Box>
+        ) : null}
         <Box classes="analytics__statistics-box">
           <h3>{t("visits")}</h3>
           <Grid classes="analytics__statistics-grid">
             {visitStatistics.map((statistic, index) =>
-              renderStatistic(statistic, index)
+              renderStatistic(statistic, index),
             )}
           </Grid>
         </Box>
@@ -447,7 +477,7 @@ export const Analytics = () => {
           ) : null}
           <Grid classes="analytics__statistics-grid">
             {clicksStatistics.map((statistic, index) =>
-              renderStatistic(statistic, index)
+              renderStatistic(statistic, index),
             )}
           </Grid>
         </Box>
@@ -455,7 +485,7 @@ export const Analytics = () => {
           <h3>{t("users")}</h3>
           <Grid classes="analytics__statistics-grid">
             {userStatistics.map((statistic, index) =>
-              renderStatistic(statistic, index)
+              renderStatistic(statistic, index),
             )}
           </Grid>
         </Box>
@@ -468,7 +498,7 @@ export const Analytics = () => {
       setDataToDisplay(originalData);
     } else {
       const filteredData = originalData.filter((item) =>
-        item.categoryName.toLowerCase().includes(searchTerm.toLowerCase())
+        item.categoryName.toLowerCase().includes(searchTerm.toLowerCase()),
       );
       setDataToDisplay(filteredData);
     }
@@ -627,7 +657,7 @@ export const Analytics = () => {
                   <Label
                     showRemove
                     text={`${t("place_of_living_label")}: ${t(
-                      `place_of_living_${filters.urbanRural}`
+                      `place_of_living_${filters.urbanRural}`,
                     )}`}
                     onRemove={() => handleRemoveFilter("urbanRural")}
                   />
@@ -636,7 +666,7 @@ export const Analytics = () => {
                   <Label
                     showRemove
                     text={`${t(
-                      "year_of_birth_label"
+                      "year_of_birth_label",
                     )}: ${formatYearOfBirthRange()}`}
                     onRemove={() => {
                       setFilters((prevFilters) => ({

@@ -93,7 +93,7 @@ export const ClientRatings = ({ Heading }) => {
                 {t(
                   suggestion.userType === "client"
                     ? "from_client"
-                    : "from_provider"
+                    : "from_provider",
                 )}
               </p>,
 
@@ -127,8 +127,8 @@ export const ClientRatings = ({ Heading }) => {
           filters.userType === "all"
             ? "all"
             : filters.userType === "client"
-            ? "client_ratings"
-            : "provider_ratings"
+              ? "client_ratings"
+              : "provider_ratings",
         )}
         handleButtonClick={() => setIsFilterOpen(true)}
       />
@@ -199,13 +199,15 @@ const Filters = ({ isOpen, handleClose, handleSave, filters, t }) => {
     >
       <>
         <div>
-          <DropdownWithLabel
-            label={t("user_type")}
-            selected={data.userType}
-            setSelected={(value) => handleChange("userType", value)}
-            options={userTypeOptions}
-            disabled={IS_RO}
-          />
+          {!IS_RO && (
+            <DropdownWithLabel
+              label={t("user_type")}
+              selected={data.userType}
+              setSelected={(value) => handleChange("userType", value)}
+              options={userTypeOptions}
+              disabled={IS_RO}
+            />
+          )}
           <DropdownWithLabel
             label={t("minimum_rating")}
             selected={data.rating}
