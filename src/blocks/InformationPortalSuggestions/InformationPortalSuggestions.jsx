@@ -97,8 +97,8 @@ export const InformationPortalSuggestions = ({ Heading }) => {
                   suggestion.clientEmail
                     ? "email"
                     : suggestion.clientName
-                    ? "name"
-                    : "nickname"
+                      ? "name"
+                      : "nickname",
                 )}
                 :{" "}
                 <span>
