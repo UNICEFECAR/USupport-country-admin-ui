@@ -63,6 +63,8 @@ export const OrganizationDetails = () => {
     keyPrefix: "organization-details-page",
   });
   const navigate = useNavigate();
+  const country = localStorage.getItem("country");
+  const IS_RO = country === "RO";
 
   const searchParams = new URLSearchParams(window.location.search);
   const organizationId = searchParams.get("organizationId");
@@ -108,7 +110,7 @@ export const OrganizationDetails = () => {
 
   const { data, isLoading } = useGetOrganizationById(
     organizationId,
-    appliedFilters
+    appliedFilters,
   );
   const { data: allProviders, isLoading: isProvidersLoading } =
     useGetAllProviderNames();
@@ -179,7 +181,7 @@ export const OrganizationDetails = () => {
         iconColor: "#FF0000",
         handleClick: (id) => {
           const provider = dataToDisplay.find(
-            (provider) => provider.providerDetailId === id
+            (provider) => provider.providerDetailId === id,
           );
           setProviderToRemove(provider);
         },
@@ -201,7 +203,7 @@ export const OrganizationDetails = () => {
 
   const assignProvidersMutation = useAssignProvidersToOrganization(
     onProvidersAssignSuccess,
-    onProvidersAssignError
+    onProvidersAssignError,
   );
 
   const onProviderRemoveSuccess = () => {
@@ -214,7 +216,7 @@ export const OrganizationDetails = () => {
 
   const removeProviderMutation = useRemoveProviderFromOrganization(
     onProviderRemoveSuccess,
-    onProvidersAssignError
+    onProvidersAssignError,
   );
 
   const handleCsvExport = () => {
@@ -259,7 +261,7 @@ export const OrganizationDetails = () => {
     });
 
     const fileName = `${data.name}_consultations(${getDateView(
-      filters.startDate
+      filters.startDate,
     )} - ${getDateView(filters.endDate)}).csv`;
     downloadCSVFile(csv, fileName);
   };
@@ -373,7 +375,7 @@ export const OrganizationDetails = () => {
         ) : null}
       </Modal>
       <Modal
-        isOpen={showAddProviderModal}
+        isOpen={!IS_RO && showAddProviderModal}
         closeModal={() => setShowAddProviderModal(false)}
         heading={t("add_providers")}
         ctaLabel={t("add")}
@@ -414,8 +416,10 @@ export const OrganizationDetails = () => {
             handleClickPropName="providerDetailId"
             updateData={setDataToDisplay}
             menuOptions={menuOptions}
-            buttonLabel={t("add_providers")}
-            buttonAction={() => setShowAddProviderModal(true)}
+            buttonLabel={!IS_RO ? t("add_providers") : undefined}
+            buttonAction={
+              !IS_RO ? () => setShowAddProviderModal(true) : undefined
+            }
             secondaryButtonLabel={t("filters")}
             secondaryButtonAction={() => setIsFilterModalOpen(true)}
             thirdButtonLabel={t("export_report")}
