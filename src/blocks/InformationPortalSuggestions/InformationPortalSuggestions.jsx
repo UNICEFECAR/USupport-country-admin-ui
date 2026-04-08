@@ -97,8 +97,8 @@ export const InformationPortalSuggestions = ({ Heading }) => {
                   suggestion.clientEmail
                     ? "email"
                     : suggestion.clientName
-                    ? "name"
-                    : "nickname"
+                      ? "name"
+                      : "nickname",
                 )}
                 :{" "}
                 <span>
@@ -197,16 +197,14 @@ const Filters = ({ isOpen, handleClose, handleSave, filters, t }) => {
     >
       <>
         <div>
-          {!IS_RO && (
-            <DropdownWithLabel
-              options={suggestionTypeOptions}
-              selected={data.type}
-              setSelected={(val) => handleChange("type", val)}
-              label={t("suggestion_type")}
-              placeholder={t("select_type")}
-              classes="information-portal-suggestions__type-dropdown"
-            />
-          )}
+          <DropdownWithLabel
+            options={suggestionTypeOptions}
+            selected={data.type}
+            setSelected={(val) => handleChange("type", val)}
+            label={t("suggestion_type")}
+            placeholder={t("select_type")}
+            classes="information-portal-suggestions__type-dropdown"
+          />
           <DateInput
             label={t("starting_date")}
             onChange={(e) => handleChange("startingDate", e.target.value)}
