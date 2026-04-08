@@ -70,14 +70,23 @@ export const ContactForms = ({ Heading }) => {
     { value: "services-information", label: t("contact_reason_6") },
   ];
 
-  const sentFromOptions = [
-    { value: "all", label: t("all") },
-    { value: "website", label: t("website") },
-    { value: "provider", label: t("provider") },
-    { value: "client", label: t("client") },
-  ];
+  const sentFromOptions = useMemo(() => {
+    const options = [
+      { value: "all", label: t("all") },
+      { value: "website", label: t("website") },
+      { value: "provider", label: t("provider") },
+      { value: "client", label: t("client") },
+    ];
+
+    return IS_RO ? options.filter((x) => x.value !== "provider") : options;
+  }, [IS_RO, t]);
 
   const handleFilterSave = (filterData) => {
+    if (IS_RO && filterData?.sentFrom === "provider") {
+      setFilters({ ...filterData, sentFrom: "all" });
+      return;
+    }
+
     setFilters(filterData);
   };
 

@@ -402,13 +402,15 @@ export const OrganizationDetails = () => {
         <Loading />
       ) : (
         <Block>
-          <Box boxShadow={2} classes="page__organization-details__box">
-            <h4>{t("providers", { count: dataToDisplay?.length })}</h4>
-            <h4>
-              {t("consultations_number", { count: data.totalConsultations })}
-            </h4>
-            <h4>{t("clients_number", { count: data.totalClients })}</h4>
-          </Box>
+          {!IS_RO && (
+            <Box boxShadow={2} classes="page__organization-details__box">
+              <h4>{t("providers", { count: dataToDisplay?.length })}</h4>
+              <h4>
+                {t("consultations_number", { count: data.totalConsultations })}
+              </h4>
+              <h4>{t("clients_number", { count: data.totalClients })}</h4>
+            </Box>
+          )}
           <BaseTable
             data={data.providers}
             rows={rows}
