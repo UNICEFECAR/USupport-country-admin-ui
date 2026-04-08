@@ -33,6 +33,8 @@ import "./analytics.scss";
 export const Analytics = () => {
   const { t, i18n } = useTranslation("blocks", { keyPrefix: "analytics" });
   const queryClient = useQueryClient();
+  const country = localStorage.getItem("country");
+  const isRomania = country === "RO";
 
   const [selectedContentType, setSelectedContentType] = useState("all");
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
@@ -329,17 +331,43 @@ export const Analytics = () => {
         return indexA - indexB;
       });
 
-    const visitStatistics = statistics.filter((statistic) =>
-      visitKeys.includes(statistic.type)
-    );
+    const visitStatistics = statistics.filter((statistic) => {
+      if (!visitKeys.includes(statistic.type)) return false;
+      if (
+        isRomania &&
+        (statistic.type === "totalProviderAccess" ||
+          statistic.type === "uniqueProviderAccess")
+      ) {
+        return false;
+      }
+      return true;
+    });
 
-    const clicksStatistics = statistics.filter((statistic) =>
-      clicksKeys.includes(statistic.type)
-    );
+    const clicksStatistics = statistics.filter((statistic) => {
+      if (!clicksKeys.includes(statistic.type)) return false;
+      if (
+        isRomania &&
+        (statistic.type === "joinConsultationClick" ||
+          statistic.type === "mobileJoinConsultationClick" ||
+          statistic.type === "scheduleButtonClick" ||
+          statistic.type === "mobileScheduleButtonClick")
+      ) {
+        return false;
+      }
+      return true;
+    });
 
-    const userStatistics = statistics.filter((statistic) =>
-      userKeys.includes(statistic.type)
-    );
+    const userStatistics = statistics.filter((statistic) => {
+      if (!userKeys.includes(statistic.type)) return false;
+      if (
+        isRomania &&
+        (statistic.type === "totalProviders" ||
+          statistic.type === "activeProviders")
+      ) {
+        return false;
+      }
+      return true;
+    });
 
     const renderStatistic = (statistic, index) => {
       return (
@@ -418,14 +446,16 @@ export const Analytics = () => {
 
     return (
       <div className="analytics-content">
-        <Box classes="analytics__statistics-box">
-          <h3>{t("consultations")}</h3>
-          <Grid classes="analytics__statistics-grid">
-            {consultationStatistics.map((statistic, index) =>
-              renderStatistic(statistic, index)
-            )}
-          </Grid>
-        </Box>
+        {!isRomania ? (
+          <Box classes="analytics__statistics-box">
+            <h3>{t("consultations")}</h3>
+            <Grid classes="analytics__statistics-grid">
+              {consultationStatistics.map((statistic, index) =>
+                renderStatistic(statistic, index)
+              )}
+            </Grid>
+          </Box>
+        ) : null}
         <Box classes="analytics__statistics-box">
           <h3>{t("visits")}</h3>
           <Grid classes="analytics__statistics-grid">
