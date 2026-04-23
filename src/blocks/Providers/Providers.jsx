@@ -52,6 +52,7 @@ export const Providers = ({
   const { t, i18n } = useTranslation("blocks", { keyPrefix: "providers" });
   const queryClient = useQueryClient();
   const currencySymbol = localStorage.getItem("currency_symbol");
+  const language = i18n.language;
 
   const [filters, setFilters] = useState(initialFilters);
   const [sort, setSort] = useState({
@@ -97,7 +98,7 @@ export const Providers = ({
   };
 
   const providersQuery = useInfiniteQuery(
-    ["all-providers", appliedFilters, sort, debouncedSearchValue],
+    ["all-providers", appliedFilters, sort, debouncedSearchValue, language],
     fetchProvidersData,
     {
       getNextPageParam: (lastPage, pages) => {
@@ -334,42 +335,51 @@ export const Providers = ({
     setSort({ [key]: sort });
   };
 
+  const handleScrolledToBottom = useCallback(() => {
+    if (providersQuery.hasNextPage && !providersQuery.isFetchingNextPage) {
+      providersQuery.fetchNextPage();
+    }
+  }, [providersQuery.hasNextPage, providersQuery.isFetchingNextPage]);
+
   return (
     <Block classes="providers">
-      <InfiniteScroll
-        dataLength={providersQuery.data?.pages.length || 0}
-        next={providersQuery.fetchNextPage}
-        hasMore={providersQuery.hasNextPage}
-        loader={<Loading />}
-        className="providers__infinite-scroll"
-        initialScrollY={20}
-        hasChildren={true}
-        scrollThreshold={0}
-      >
-        <Grid classes="providers__grid">
-          {providersQuery.isLoading && !displayListView ? (
-            <GridItem md={8} lg={12}>
-              <Loading size="lg" />
-            </GridItem>
-          ) : !displayListView ? (
-            renderProviders()
-          ) : null}
-        </Grid>
-        {displayListView && (
-          <BaseTable
-            data={providersQuery.data?.pages?.flat() || []}
-            rows={rows}
-            rowsData={rowsData}
-            menuOptions={menuOptions}
-            handleClickPropName={"providerDetailId"}
-            isLoading={providersQuery.isLoading}
-            customSort={handleSort}
-            customSearch={setSearchValue}
-            hasSearch
-            t={t}
-          />
-        )}
-      </InfiniteScroll>
+      {!displayListView ? (
+        <InfiniteScroll
+          dataLength={providersQuery.data?.pages?.flat().length || 0}
+          next={providersQuery.fetchNextPage}
+          hasMore={providersQuery.hasNextPage}
+          loader={<Loading />}
+          className="providers__infinite-scroll"
+          initialScrollY={20}
+          hasChildren={true}
+          scrollThreshold={0}
+        >
+          <Grid classes="providers__grid">
+            {providersQuery.isLoading ? (
+              <GridItem md={8} lg={12}>
+                <Loading size="lg" />
+              </GridItem>
+            ) : (
+              renderProviders()
+            )}
+          </Grid>
+        </InfiniteScroll>
+      ) : (
+        <BaseTable
+          data={providersQuery.data?.pages?.flat() || []}
+          rows={rows}
+          rowsData={rowsData}
+          menuOptions={menuOptions}
+          handleClickPropName={"providerDetailId"}
+          isLoading={providersQuery.isLoading}
+          customSort={handleSort}
+          customSearch={setSearchValue}
+          hasSearch
+          t={t}
+          onScrolledToBottom={handleScrolledToBottom}
+          isLoadingMore={providersQuery.isFetchingNextPage}
+        />
+      )}
 
       <Modal
         heading={

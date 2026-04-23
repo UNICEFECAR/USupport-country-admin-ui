@@ -1,15 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
+import { useTranslation } from "react-i18next";
 import { adminSvc } from "@USupport-components-library/services";
 
 export default function useGetQuestions(type, languageId) {
-  /**
-   *
-   * @returns
-   */
+  const { i18n } = useTranslation();
+  const language = i18n.language;
 
   const fetchQuestions = async () => {
     const { data } = await adminSvc.getQuestions(type, languageId);
-
     return data.map((question) => {
       return {
         answerCreatedAt: question.answer_created_at,
@@ -30,7 +28,10 @@ export default function useGetQuestions(type, languageId) {
     });
   };
 
-  const query = useQuery(["questions", type, languageId], fetchQuestions);
+  const query = useQuery(
+    ["questions", type, languageId, language],
+    fetchQuestions
+  );
   return query;
 }
 

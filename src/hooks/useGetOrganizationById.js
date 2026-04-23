@@ -1,7 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
+import { useTranslation } from "react-i18next";
 import { organizationSvc } from "@USupport-components-library/services";
 
 export const useGetOrganizationById = (organizationId, filters) => {
+  const { i18n } = useTranslation();
+  const language = i18n.language;
   const {
     startDate,
     endDate,
@@ -17,6 +20,7 @@ export const useGetOrganizationById = (organizationId, filters) => {
     queryKey: [
       "GetOrganizationById",
       organizationId,
+      language,
       startDate,
       endDate,
       startTime,
