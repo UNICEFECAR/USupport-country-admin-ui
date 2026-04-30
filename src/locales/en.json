@@ -810,6 +810,7 @@
       "engagement_score_tooltip": "The engagement score is a weighted score based on an algorithm that takes into account the downloads, shares, likes and views of the articles, videos and podcasts in the category.",
       "likes": "Likes",
       "dislikes": "Dislikes",
+      "listens": "Listens",
       "search": "Search",
       "export_label": "Export Data as CSV",
       "no_data_found": "No data found",

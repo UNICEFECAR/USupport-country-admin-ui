@@ -180,6 +180,12 @@ export const Analytics = () => {
         isNumbered: true,
         isCentered: true,
       },
+      {
+        label: t("listens"),
+        sortingKey: "listens",
+        isNumbered: true,
+        isCentered: true,
+      },
 
       {
         label: t("share_count"),
@@ -203,6 +209,7 @@ export const Analytics = () => {
       csv += `${row.likes},`;
       csv += `${row.dislikes},`;
       csv += `${row.downloads},`;
+      csv += `${row.listens},`;
       csv += `${row.shares}`;
     });
 
@@ -237,6 +244,9 @@ export const Analytics = () => {
       </p>,
       <p key={`downloads-${index}`} className="text centered">
         {item.downloads?.toLocaleString()}
+      </p>,
+      <p key={`listens-${index}`} className="text centered">
+        {item.listens?.toLocaleString()}
       </p>,
       <p key={`shareCount-${index}`} className="text centered">
         {item.shares?.toLocaleString()}
@@ -317,10 +327,10 @@ export const Analytics = () => {
           typeof value === "string" && !isNaN(Number(value))
             ? Number(value).toLocaleString()
             : typeof value === "number"
-              ? value.toLocaleString()
-              : String(value),
+            ? value.toLocaleString()
+            : String(value),
         ...value,
-      }),
+      })
     );
 
     const consultationStatistics = statistics
@@ -432,7 +442,7 @@ export const Analytics = () => {
                               </p>
                             </div>
                           );
-                        },
+                        }
                       )}
                     </div>
                   </div>
@@ -451,7 +461,7 @@ export const Analytics = () => {
             <h3>{t("consultations")}</h3>
             <Grid classes="analytics__statistics-grid">
               {consultationStatistics.map((statistic, index) =>
-                renderStatistic(statistic, index),
+                renderStatistic(statistic, index)
               )}
             </Grid>
           </Box>
@@ -460,7 +470,7 @@ export const Analytics = () => {
           <h3>{t("visits")}</h3>
           <Grid classes="analytics__statistics-grid">
             {visitStatistics.map((statistic, index) =>
-              renderStatistic(statistic, index),
+              renderStatistic(statistic, index)
             )}
           </Grid>
         </Box>
@@ -477,7 +487,7 @@ export const Analytics = () => {
           ) : null}
           <Grid classes="analytics__statistics-grid">
             {clicksStatistics.map((statistic, index) =>
-              renderStatistic(statistic, index),
+              renderStatistic(statistic, index)
             )}
           </Grid>
         </Box>
@@ -485,7 +495,7 @@ export const Analytics = () => {
           <h3>{t("users")}</h3>
           <Grid classes="analytics__statistics-grid">
             {userStatistics.map((statistic, index) =>
-              renderStatistic(statistic, index),
+              renderStatistic(statistic, index)
             )}
           </Grid>
         </Box>
@@ -498,7 +508,7 @@ export const Analytics = () => {
       setDataToDisplay(originalData);
     } else {
       const filteredData = originalData.filter((item) =>
-        item.categoryName.toLowerCase().includes(searchTerm.toLowerCase()),
+        item.categoryName.toLowerCase().includes(searchTerm.toLowerCase())
       );
       setDataToDisplay(filteredData);
     }
@@ -657,7 +667,7 @@ export const Analytics = () => {
                   <Label
                     showRemove
                     text={`${t("place_of_living_label")}: ${t(
-                      `place_of_living_${filters.urbanRural}`,
+                      `place_of_living_${filters.urbanRural}`
                     )}`}
                     onRemove={() => handleRemoveFilter("urbanRural")}
                   />
@@ -666,7 +676,7 @@ export const Analytics = () => {
                   <Label
                     showRemove
                     text={`${t(
-                      "year_of_birth_label",
+                      "year_of_birth_label"
                     )}: ${formatYearOfBirthRange()}`}
                     onRemove={() => {
                       setFilters((prevFilters) => ({
