@@ -800,6 +800,7 @@
       "engagement_score_tooltip": "Scorul de implicare este un scor ponderat bazat pe un algoritm care ia în considerare descărcările, distribuțiile, aprecierile și vizualizările articolelor, videoclipurilor și podcasturilor din categorie.",
       "likes": "Aprecieri pozitive",
       "dislikes": "Aprecieri negative",
+      "listens": "Ascultări",
       "search": "Căutare",
       "export_label": "Export date ca CSV",
       "no_data_found": "Nu s-au găsit date",
