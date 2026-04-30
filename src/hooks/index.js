@@ -4,6 +4,7 @@ export * from "./useGetAdminData.js";
 export * from "./useUpdateAdminData.js";
 export * from "./useGetProvidersData.js";
 export * from "./useGetProviderData.js";
+export * from "./useGetProviderTranslations.js";
 export * from "./useGetCountryAndLanguages.js";
 export * from "./useGetWorkWithCategories.js";
 export * from "./useUpdateProviderData.js";

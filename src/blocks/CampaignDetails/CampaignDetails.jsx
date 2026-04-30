@@ -166,9 +166,11 @@ export const CampaignDetails = ({
       .map((x) => x.label)
       .join(",")}\n`;
     dataToDisplay.forEach((c) => {
-      csv += `${c.providerName},${c.clientName},${t(c.clientSex)},${
-        c.clientYob
-      },${c.clientPlaceOfLiving},${getDateView(c.time)}\n`;
+      csv += `${c.providerName},${c.clientName},${
+        !c.clientSex ? "-" : t(c.clientSex)
+      },${c.clientYob || "-"},${c.clientPlaceOfLiving || "-"},${getDateView(
+        c.time
+      )}\n`;
     });
 
     const reportDate = new Date().toISOString().split("T")[0];

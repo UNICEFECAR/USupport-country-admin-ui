@@ -38,6 +38,11 @@ export default function useUpdateProviderData(onSuccess, onError) {
     newPayload.providerId = newPayload.providerDetailId;
     newPayload.email = newPayload.email.toLowerCase();
 
+    // Convert translations map { [languageId]: fields } to array for the API
+    newPayload.translations = Object.entries(newPayload.translations || {}).map(
+      ([languageId, fields]) => ({ languageId, ...fields })
+    );
+
     delete newPayload.workWith;
     delete newPayload.languages;
     delete newPayload.providerDetailId;
@@ -60,6 +65,7 @@ export default function useUpdateProviderData(onSuccess, onError) {
     onSuccess: (data) => {
       onSuccess(data);
       queryClient.invalidateQueries({ queryKey: ["provider-data"] });
+      queryClient.invalidateQueries({ queryKey: ["provider-translations"] });
     },
     onError: (error) => {
       const { message: errorMessage } = useError(error);
