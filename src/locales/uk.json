@@ -809,6 +809,7 @@
       "engagement_score": "Оцінка залученості",
       "likes": "Вподобання",
       "dislikes": "Невподобання",
+      "listens": "Аудіо",
       "search": "Пошук",
       "export_label": "Експортувати дані як CSV",
       "no_data_found": "Дані не знайдені",

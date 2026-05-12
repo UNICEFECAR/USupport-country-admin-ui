@@ -4,22 +4,21 @@ import { useQuery } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import {
   Block,
+  Box,
   Button,
-  Select,
   DropdownWithLabel,
   Error,
-  Grid,
-  GridItem,
   Input,
   InputGroup,
   Loading,
   ProfilePicturePreview,
+  Tabs,
   Textarea,
   InputPhone,
 } from "@USupport-components-library/src";
 
-import { validate, validateProperty } from "@USupport-components-library/utils";
-import { countrySvc } from "@USupport-components-library/services";
+import { validateProperty } from "@USupport-components-library/utils";
+import { countrySvc, languageSvc } from "@USupport-components-library/services";
 
 import {
   useGetProviderData,
@@ -27,16 +26,79 @@ import {
   useGetWorkWithCategories,
   useUpdateProviderData,
   useGetAllOrganizations,
+  useGetProviderTranslations,
 } from "#hooks";
 import Joi from "joi";
 
 import "./edit-provider.scss";
+
+const PillMultiSelect = ({
+  label,
+  options,
+  onChange,
+  errorMessage,
+  disabled,
+  emptyMessage,
+}) => {
+  const handleToggle = (targetValue) => {
+    if (disabled) {
+      return;
+    }
+
+    const updatedOptions = options.map((option) => ({
+      ...option,
+      selected:
+        option.value === targetValue ? !option.selected : option.selected,
+    }));
+
+    onChange(updatedOptions);
+  };
+
+  return (
+    <div className="edit-provider__pill-group">
+      <p className="text edit-provider__pill-group-label">{label}</p>
+      {options.length ? (
+        <div className="edit-provider__pill-container">
+          {options.map((option) => (
+            <button
+              key={option.value}
+              type="button"
+              className={[
+                "edit-provider__pill",
+                option.selected ? "edit-provider__pill--selected" : "",
+                disabled ? "edit-provider__pill--disabled" : "",
+              ].join(" ")}
+              onClick={() => handleToggle(option.value)}
+              disabled={disabled}
+            >
+              {option.label}
+            </button>
+          ))}
+        </div>
+      ) : (
+        <p className="text edit-provider__pill-empty">{emptyMessage}</p>
+      )}
+      {errorMessage ? <Error message={errorMessage} /> : null}
+    </div>
+  );
+};
 
 const fetchCountryData = async () => {
   const { data } = await countrySvc.getActiveCountries();
   const currentCountryId = localStorage.getItem("country_id");
   const currentCountry = data.find((x) => x.country_id === currentCountryId);
   return currentCountry;
+};
+
+const fetchActiveLanguages = async () => {
+  const res = await languageSvc.getActiveLanguages();
+
+  return res.data.map((language) => ({
+    value: language.alpha2,
+    label: language.name,
+    id: language.language_id,
+    localName: language.local_name,
+  }));
 };
 
 /**s
@@ -61,7 +123,26 @@ export const EditProvider = ({
   const [canSaveChanges, setCanSaveChanges] = useState(false);
   const [errors, setErrors] = useState({});
 
+  // translations: { [language_id]: { name, patronym, surname, nickname, description, education } }
+  const [translations, setTranslations] = useState({});
+  const translationsQuery = useGetProviderTranslations(providerId);
+
+  useEffect(() => {
+    if (translationsQuery.data) {
+      setTranslations(translationsQuery.data);
+    }
+  }, [translationsQuery.data]);
+
   const { data: countryData } = useQuery(["country-data"], fetchCountryData);
+  const selectedCountry = localStorage.getItem("country");
+  const { data: countryLanguages } = useQuery(
+    ["languages", selectedCountry],
+    fetchActiveLanguages,
+    {
+      staleTime: Infinity,
+      enabled: !!selectedCountry,
+    }
+  );
 
   const countryMinPrice = countryData?.min_price;
   const hasPayments = countryData?.has_payments;
@@ -80,8 +161,19 @@ export const EditProvider = ({
   const workWithQuery = useGetWorkWithCategories();
   const { data: organizations, isLoading: organizationsLoading } =
     useGetAllOrganizations();
+  const [selectedLanguageTab, setSelectedLanguageTab] = useState(null);
 
   const isPriceDisabled = !hasPayments;
+
+  useEffect(() => {
+    if (!countryLanguages?.length) {
+      return;
+    }
+
+    if (!selectedLanguageTab) {
+      setSelectedLanguageTab(countryLanguages[0].id);
+    }
+  }, [countryLanguages, selectedLanguageTab]);
 
   const specializationOptions = [
     { value: "psychologist", label: t("psychologist"), selected: false },
@@ -93,9 +185,14 @@ export const EditProvider = ({
     if (providerData && providersQuery.data) {
       const providerDataStringified = JSON.stringify(providerData);
       const originalData = JSON.stringify(providersQuery.data);
-      setCanSaveChanges(providerDataStringified !== originalData);
+      const translationsChanged =
+        JSON.stringify(translations) !==
+        JSON.stringify(translationsQuery.data || {});
+      setCanSaveChanges(
+        providerDataStringified !== originalData || translationsChanged
+      );
     }
-  }, [providerData, providersQuery.data]);
+  }, [providerData, providersQuery.data, translations, translationsQuery.data]);
 
   const schema = Joi.object({
     providerDetailId: Joi.string(),
@@ -123,6 +220,7 @@ export const EditProvider = ({
     earliestAvailableSlot: Joi.any(),
     videoLink: Joi.string().uri().allow("", null).label(t("video_link_error")),
     organizations: Joi.array().min(1).label(t("organizations_error")),
+    translations: Joi.any(),
   });
 
   const sexOptions = [
@@ -222,7 +320,60 @@ export const EditProvider = ({
     return organizationOptions;
   }, [organizations, providerData]);
 
+  const translatableFields = [
+    "name",
+    "patronym",
+    "surname",
+    "nickname",
+    "description",
+    "education",
+    "city",
+    "street",
+  ];
+
+  const selectedLangAlpha2 = (
+    countryLanguages?.find((l) => l.id === selectedLanguageTab)?.value || ""
+  ).toUpperCase();
+
+  const isDefaultLanguageTab =
+    selectedLanguageTab === countryLanguages?.[0]?.id;
+
+  const normalizeTranslatableValue = (field, value) => {
+    if (field === "education") {
+      return Array.isArray(value) ? value : [];
+    }
+    return value ?? "";
+  };
+
+  // For the default (first) language tab, falls back to base providerData when no translation exists.
+  // For all other tabs, returns empty string when no translation exists.
+  const getTranslatableValue = (field) => {
+    const tabTranslation = translations[selectedLanguageTab];
+    if (tabTranslation?.[field] !== undefined) {
+      return normalizeTranslatableValue(field, tabTranslation[field]);
+    }
+    return isDefaultLanguageTab
+      ? normalizeTranslatableValue(field, providerData?.[field])
+      : normalizeTranslatableValue(field, undefined);
+  };
+
+  // Updates the translation for the current language tab
+  const handleTranslatableChange = (field, value) => {
+    if (!selectedLanguageTab) return;
+    setTranslations((prev) => ({
+      ...prev,
+      [selectedLanguageTab]: {
+        ...(prev[selectedLanguageTab] || {}),
+        [field]: value,
+      },
+    }));
+  };
+
   const handleChange = (field, value) => {
+    if (translatableFields.includes(field)) {
+      handleTranslatableChange(field, value);
+      return;
+    }
     const data = { ...providerData };
     data[field] = value;
     setProviderData(data);
@@ -238,12 +389,14 @@ export const EditProvider = ({
 
   const handleEducationChange = (options) => {
     setErrors({ education: null });
-    const data = { ...providerData };
-    data.education = options.map((x) => x.value);
-    setProviderData(data);
+    handleTranslatableChange(
+      "education",
+      options.map((x) => x.value)
+    );
   };
 
   const handleBlur = (field) => {
+    if (translatableFields.includes(field)) return;
     validateProperty(field, providerData[field], schema, setErrors);
   };
 
@@ -253,12 +406,10 @@ export const EditProvider = ({
 
   const onUpdateError = (err, isFutureConsultationError = false) => {
     if (isFutureConsultationError) {
-      setErrors({
-        organizations: err,
-      });
+      setErrors({ organizations: err });
       return;
     }
-    setErrors({ submit: err });
+    toast.error(err);
   };
   const updateProviderMutation = useUpdateProviderData(
     onUpdateSuccess,
@@ -273,27 +424,122 @@ export const EditProvider = ({
       !isPriceZero &&
       Number(countryMinPrice) > Number(providerData.consultationPrice)
     ) {
-      setErrors({
-        submit: t("min_price_error", {
-          minPrice: countryMinPrice,
-          currencySymbol,
-        }),
-      });
+      toast.error(
+        t("min_price_error", { minPrice: countryMinPrice, currencySymbol })
+      );
       return;
     }
-    if ((await validate(providerData, schema, setErrors)) === null) {
-      updateProviderMutation.mutate(providerData);
+    // For non-default language tabs: if any required translatable field is filled,
+    // all required translatable fields must be filled before saving.
+    const defaultLangId = countryLanguages?.[0]?.id;
+    const requiredTranslatableFields = [
+      "name",
+      "surname",
+      "description",
+      "education",
+      "city",
+      "street",
+    ];
+    const isFieldFilled = (value) =>
+      Array.isArray(value)
+        ? value.length > 0
+        : value != null && String(value).trim() !== "";
+
+    for (const [langId, langTranslations] of Object.entries(translations)) {
+      if (langId === defaultLangId) continue;
+      const hasAny = requiredTranslatableFields.some((f) =>
+        isFieldFilled(langTranslations[f])
+      );
+      if (hasAny) {
+        const missing = requiredTranslatableFields.filter(
+          (f) => !isFieldFilled(langTranslations[f])
+        );
+        if (missing.length > 0) {
+          const langCode =
+            countryLanguages
+              ?.find((l) => l.id === langId)
+              ?.value?.toUpperCase() || langId;
+          const fieldErrors = {};
+          missing.forEach((f) => {
+            fieldErrors[f] = t(`${f}_error`);
+          });
+          setErrors(fieldErrors);
+          toast.error(
+            t("translation_incomplete_error", {
+              lang: langCode,
+              fields: missing.join(", "),
+              defaultValue: `Please fill all required fields for ${langCode}: ${missing.join(
+                ", "
+              )}`,
+            })
+          );
+          return;
+        }
+      }
+    }
+
+    const getDefaultLangValue = (field) => {
+      const dt = translations[defaultLangId];
+      return dt?.[field] !== undefined
+        ? normalizeTranslatableValue(field, dt[field])
+        : normalizeTranslatableValue(field, providerData?.[field]);
+    };
+
+    const payloadWithTranslations = {
+      ...providerData,
+      name: getDefaultLangValue("name"),
+      patronym: getDefaultLangValue("patronym"),
+      surname: getDefaultLangValue("surname"),
+      nickname: getDefaultLangValue("nickname"),
+      description: getDefaultLangValue("description"),
+      education: getDefaultLangValue("education"),
+      city: getDefaultLangValue("city"),
+      street: getDefaultLangValue("street"),
+      translations,
+    };
+
+    try {
+      await schema.validateAsync(payloadWithTranslations, {
+        abortEarly: false,
+        allowUnknown: true,
+      });
+      setErrors({});
+      updateProviderMutation.mutate(payloadWithTranslations);
+    } catch (err) {
+      const newErrors = {};
+      err.details.forEach((detail) => {
+        const key = detail.context.key;
+        const msg = detail.context.label;
+        if (key && !newErrors[key]) newErrors[key] = msg;
+      });
+      setErrors(newErrors);
+      const firstMsg = Object.values(newErrors)[0];
+      if (firstMsg) toast.error(firstMsg);
     }
   };
-
   const isLoading =
     providersQuery.isLoading ||
+    translationsQuery.isLoading ||
     localizationQuery.isLoading ||
     !localizationQuery.data ||
     !providerData;
 
   const handleDiscard = () => {
     setProviderData(providersQuery.data);
+    setTranslations(translationsQuery.data || {});
+  };
+
+  const languageTabs = (countryLanguages || []).map((language) => ({
+    label: language.localName || language.label,
+    value: language.id,
+    isSelected: selectedLanguageTab === language.id,
+  }));
+
+  const handleLanguageTabSelect = (index) => {
+    const selectedTab = languageTabs[index];
+    if (selectedTab) {
+      setSelectedLanguageTab(selectedTab.value);
+    }
   };
 
   return (
@@ -301,187 +547,234 @@ export const EditProvider = ({
       {isLoading ? (
         <Loading size="lg" />
       ) : (
-        <Grid classes="edit-provider__grid">
-          <GridItem md={8} lg={4}>
-            <ProfilePicturePreview
-              image={providerData.image}
-              imageFile={providerImageUrl}
-              handleDeleteClick={openDeletePictureBackdrop}
-              handleChangeClick={openUploadPictureBackdrop}
-              changePhotoText={t("change_photo")}
-              providerId={providerData.providerDetailId}
+        <div className="edit-provider__content">
+          <div className="edit-provider__tabs">
+            <Tabs
+              options={languageTabs}
+              handleSelect={handleLanguageTabSelect}
             />
-            <Input
-              value={providerData.name}
-              onChange={(e) => handleChange("name", e.currentTarget.value)}
-              errorMessage={errors.name}
-              label={t("name_label") + " *"}
-              placeholder={t("name_placeholder")}
-            />
-            <Input
-              value={providerData.patronym}
-              onChange={(e) => handleChange("patronym", e.currentTarget.value)}
-              errorMessage={errors.patronym}
-              label={t("patronym_label")}
-              placeholder={t("patronym_placeholder")}
-            />
-            <Input
-              value={providerData.surname}
-              onChange={(e) => handleChange("surname", e.currentTarget.value)}
-              errorMessage={errors.surname}
-              label={t("surname_label") + " *"}
-              placeholder={t("surname_placeholder")}
-            />
-            <Textarea
-              value={providerData.description}
-              onChange={(value) => handleChange("description", value)}
-              errorMessage={errors.description}
-              label={t("description_label") + " *"}
-              placeholder={t("description_placeholder")}
-              onBlur={() => handleBlur("description")}
-            />
-            <Input
-              value={providerData.videoLink}
-              onChange={(e) => handleChange("videoLink", e.currentTarget.value)}
-              errorMessage={errors.videoLink}
-              label={t("video_link_label")}
-              placeholder={t("video_link_placeholder")}
-              onBlur={() => handleBlur("videoLink")}
-            />
-          </GridItem>
+          </div>
 
-          <GridItem md={8} lg={4}>
-            <InputPhone
-              label={t("phone_label") + " *"}
-              placeholder={t("phone_placeholder")}
-              value={providerData.phone}
-              onChange={(value) => handleChange("phone", value)}
-              onBlur={() => handleBlur("phone")}
-              searchPlaceholder={t("search")}
-              errorMessage={errors.phone}
-              searchNotFound={t("no_entries_found")}
-              classes="add-sponsor__grid__phone"
-            />
-            <Input
-              value={providerData.email}
-              onChange={(e) => handleChange("email", e.currentTarget.value)}
-              errorMessage={errors.email}
-              label={t("email_label") + " *"}
-              placeholder={t("email_placeholder")}
-              onBlur={() => handleBlur("email")}
-            />
-            <DropdownWithLabel
-              label={t("sex_label") + " *"}
-              placeholder={t("sex_placeholder")}
-              options={sexOptions}
-              selected={providerData.sex}
-              setSelected={(value) => handleChange("sex", value)}
-              classes="edit-provider__grid__sex-dropdown"
-              errorMessage={errors.sex}
-            />
-            <Input
-              value={providerData.consultationPrice}
-              onChange={(e) =>
-                handleChange("consultationPrice", e.currentTarget.value)
-              }
-              errorMessage={errors.consultationPrice}
-              label={t("consultation_price_label", { currencySymbol }) + " *"}
-              placeholder={t("consultation_price_placeholder")}
-              onBlur={() => handleBlur("consultationPrice")}
-              disabled={isPriceDisabled}
-            />
-            {isPriceDisabled && (
-              <Error message={t("consultation_price_disabled")} />
-            )}
-            <Input
-              value={providerData.city}
-              onChange={(e) => handleChange("city", e.currentTarget.value)}
-              errorMessage={errors.city}
-              label={t("city_label") + " *"}
-              placeholder={t("city_placeholder")}
-              onBlur={() => handleBlur("city")}
-            />
-            <Input
-              value={providerData.postcode}
-              onChange={(e) => handleChange("postcode", e.currentTarget.value)}
-              errorMessage={errors.postcode}
-              label={t("postcode_label") + " *"}
-              placeholder={t("postcode_placeholder")}
-              onBlur={() => handleBlur("postcode")}
-            />
-            <Input
-              value={providerData.street}
-              onChange={(e) => handleChange("street", e.currentTarget.value)}
-              errorMessage={errors.street}
-              label={t("street_label") + " *"}
-              placeholder={t("street_placeholder")}
-              onBlur={() => handleBlur("street")}
-            />
-          </GridItem>
+          <Box
+            classes="edit-provider__section edit-provider__section--profile"
+            boxShadow={3}
+          >
+            <h3 className="edit-provider__section-title">
+              {t("section_personal_information", {
+                defaultValue: "Personal information",
+              })}
+            </h3>
+            <div className="edit-provider__section-grid edit-provider__section-grid--profile">
+              <div className="edit-provider__profile-preview-row">
+                <ProfilePicturePreview
+                  image={providerData.image}
+                  imageFile={providerImageUrl}
+                  handleDeleteClick={openDeletePictureBackdrop}
+                  handleChangeClick={openUploadPictureBackdrop}
+                  changePhotoText={t("change_photo")}
+                  providerId={providerData.providerDetailId}
+                />
+              </div>
+              <div>
+                <Input
+                  value={getTranslatableValue("name")}
+                  onChange={(e) => handleChange("name", e.currentTarget.value)}
+                  errorMessage={errors.name}
+                  label={`${t("name_label")} ${selectedLangAlpha2} *`}
+                  placeholder={t("name_placeholder")}
+                />
+                <Input
+                  value={getTranslatableValue("patronym")}
+                  onChange={(e) =>
+                    handleChange("patronym", e.currentTarget.value)
+                  }
+                  errorMessage={errors.patronym}
+                  label={`${t("patronym_label")} ${selectedLangAlpha2}`}
+                  placeholder={t("patronym_placeholder")}
+                />
+                <Input
+                  value={getTranslatableValue("surname")}
+                  onChange={(e) =>
+                    handleChange("surname", e.currentTarget.value)
+                  }
+                  errorMessage={errors.surname}
+                  label={`${t("surname_label")} ${selectedLangAlpha2} *`}
+                  placeholder={t("surname_placeholder")}
+                />
+              </div>
+              <div>
+                <InputPhone
+                  label={t("phone_label") + " *"}
+                  placeholder={t("phone_placeholder")}
+                  value={providerData.phone}
+                  onChange={(value) => handleChange("phone", value)}
+                  onBlur={() => handleBlur("phone")}
+                  searchPlaceholder={t("search")}
+                  errorMessage={errors.phone}
+                  searchNotFound={t("no_entries_found")}
+                  classes="add-sponsor__grid__phone"
+                />
+                <Input
+                  value={providerData.email}
+                  onChange={(e) => handleChange("email", e.currentTarget.value)}
+                  errorMessage={errors.email}
+                  label={t("email_label") + " *"}
+                  placeholder={t("email_placeholder")}
+                  onBlur={() => handleBlur("email")}
+                />
+                <DropdownWithLabel
+                  label={t("sex_label") + " *"}
+                  placeholder={t("sex_placeholder")}
+                  options={sexOptions}
+                  selected={providerData.sex}
+                  setSelected={(value) => handleChange("sex", value)}
+                  classes="edit-provider__grid__sex-dropdown"
+                  errorMessage={errors.sex}
+                />
+              </div>
+            </div>
+          </Box>
 
-          <GridItem md={8} lg={4}>
-            <Select
-              placeholder={t("select")}
-              options={getLanguageOptions()}
-              handleChange={(languages) =>
-                handleWorkWithAndLanguageSelect("languages", languages)
-              }
-              label={t("language_label") + " *"}
-              maxShown={5}
-              addMoreText={t("add_more_languages")}
-              errorMessage={errors.languages}
-            />
-            <Select
-              placeholder={t("select")}
-              label={t("specialization_label") + " *"}
-              options={getSpecializationsOptions()}
-              handleChange={(options) =>
-                handleWorkWithAndLanguageSelect("specializations", options)
-              }
-              maxShown={specializationOptions.length}
-              addMoreText={t("add_more_specializations")}
-              errorMessage={errors.specializations}
-            />
-            <InputGroup
-              maxShown={5}
-              options={providerData.education}
-              label={t("education_label")}
-              handleParentChange={(data) => handleEducationChange(data)}
-              addMoreText={t("add_more_education")}
-              removeText={t("remove")}
-              errorMessage={errors.education}
-            />
-            <Select
-              placeholder={t("select")}
-              options={getWorkWithOptions()}
-              handleChange={(workWith) =>
-                handleWorkWithAndLanguageSelect("workWith", workWith)
-              }
-              label={t("work_with_label") + " *"}
-              maxShown={5}
-              addMoreText={t("add_more_work_with")}
-              errorMessage={errors.workWith}
-            />
-            <Select
-              placeholder={t("select")}
-              options={getOrganizationOptions()}
-              disabled={organizationsLoading}
-              handleChange={(organizations) =>
-                handleWorkWithAndLanguageSelect("organizations", organizations)
-              }
-              label={t("organizations_label") + " *"}
-              maxShown={5}
-              addMoreText={t("add_more_organizations")}
-              errorMessage={errors.organizations}
-            />
-          </GridItem>
-          {errors.submit ? (
-            <GridItem md={8} lg={12}>
-              <Error message={errors.submit} />{" "}
-            </GridItem>
-          ) : null}
+          <Box classes="edit-provider__section" boxShadow={3}>
+            <h3 className="edit-provider__section-title">
+              {t("section_professional_information", {
+                defaultValue: "Professional information",
+              })}
+            </h3>
+            <div className="edit-provider__section-grid">
+              <Textarea
+                value={getTranslatableValue("description")}
+                onChange={(value) => handleChange("description", value)}
+                errorMessage={errors.description}
+                label={`${t("description_label")} ${selectedLangAlpha2} *`}
+                placeholder={t("description_placeholder")}
+                onBlur={() => handleBlur("description")}
+              />
+              <Input
+                value={providerData.videoLink}
+                onChange={(e) =>
+                  handleChange("videoLink", e.currentTarget.value)
+                }
+                errorMessage={errors.videoLink}
+                label={t("video_link_label")}
+                placeholder={t("video_link_placeholder")}
+                onBlur={() => handleBlur("videoLink")}
+              />
+              <div className="edit-provider__consultation-price-group">
+                <Input
+                  value={providerData.consultationPrice}
+                  onChange={(e) =>
+                    handleChange("consultationPrice", e.currentTarget.value)
+                  }
+                  errorMessage={errors.consultationPrice}
+                  label={
+                    t("consultation_price_label", { currencySymbol }) + " *"
+                  }
+                  placeholder={t("consultation_price_placeholder")}
+                  onBlur={() => handleBlur("consultationPrice")}
+                  disabled={isPriceDisabled}
+                />
+                {isPriceDisabled ? (
+                  <Error message={t("consultation_price_disabled")} />
+                ) : null}
+              </div>
+              <InputGroup
+                maxShown={5}
+                options={getTranslatableValue("education") || []}
+                label={`${t("education_label")} ${selectedLangAlpha2}`}
+                handleParentChange={(data) => handleEducationChange(data)}
+                addMoreText={t("add_more_education")}
+                removeText={t("remove")}
+                errorMessage={errors.education}
+              />
+            </div>
+          </Box>
 
-          <GridItem md={8} lg={12} classes="edit-provider__grid__buttons-item">
+          <Box classes="edit-provider__section" boxShadow={3}>
+            <h3 className="edit-provider__section-title">
+              {t("section_location", { defaultValue: "Location" })}
+            </h3>
+            <div className="edit-provider__section-grid">
+              <Input
+                value={getTranslatableValue("city")}
+                onChange={(e) => handleChange("city", e.currentTarget.value)}
+                errorMessage={errors.city}
+                label={`${t("city_label")} ${selectedLangAlpha2} *`}
+                placeholder={t("city_placeholder")}
+                onBlur={() => handleBlur("city")}
+              />
+              <Input
+                value={providerData.postcode}
+                onChange={(e) =>
+                  handleChange("postcode", e.currentTarget.value)
+                }
+                errorMessage={errors.postcode}
+                label={t("postcode_label") + " *"}
+                placeholder={t("postcode_placeholder")}
+                onBlur={() => handleBlur("postcode")}
+              />
+              <Input
+                value={getTranslatableValue("street")}
+                onChange={(e) => handleChange("street", e.currentTarget.value)}
+                errorMessage={errors.street}
+                label={`${t("street_label")} ${selectedLangAlpha2} *`}
+                placeholder={t("street_placeholder")}
+                onBlur={() => handleBlur("street")}
+              />
+            </div>
+          </Box>
+
+          <Box classes="edit-provider__section" boxShadow={3}>
+            <h3 className="edit-provider__section-title">
+              {t("section_languages_specialties", {
+                defaultValue: "Languages, specialties and organizations",
+              })}
+            </h3>
+            <div className="edit-provider__section-grid edit-provider__section-grid--languages">
+              <PillMultiSelect
+                label={t("language_label") + " *"}
+                options={getLanguageOptions()}
+                onChange={(languages) =>
+                  handleWorkWithAndLanguageSelect("languages", languages)
+                }
+                errorMessage={errors.languages}
+                emptyMessage={t("no_data_found")}
+              />
+              <PillMultiSelect
+                label={t("specialization_label") + " *"}
+                options={getSpecializationsOptions()}
+                onChange={(options) =>
+                  handleWorkWithAndLanguageSelect("specializations", options)
+                }
+                errorMessage={errors.specializations}
+                emptyMessage={t("no_data_found")}
+              />
+              <PillMultiSelect
+                label={t("work_with_label") + " *"}
+                options={getWorkWithOptions()}
+                onChange={(workWith) =>
+                  handleWorkWithAndLanguageSelect("workWith", workWith)
+                }
+                errorMessage={errors.workWith}
+                emptyMessage={t("no_data_found")}
+              />
+              <PillMultiSelect
+                label={t("organizations_label") + " *"}
+                options={getOrganizationOptions()}
+                onChange={(organizationsSelection) =>
+                  handleWorkWithAndLanguageSelect(
+                    "organizations",
+                    organizationsSelection
+                  )
+                }
+                errorMessage={errors.organizations}
+                disabled={organizationsLoading}
+                emptyMessage={t("no_data_found")}
+              />
+            </div>
+          </Box>
+
+          <div className="edit-provider__buttons">
             <Button
               classes="edit-provider__grid__save-button"
               type="primary"
@@ -499,8 +792,8 @@ export const EditProvider = ({
               disabled={!canSaveChanges}
               onClick={handleDiscard}
             />
-          </GridItem>
-        </Grid>
+          </div>
+        </div>
       )}
     </Block>
   );
