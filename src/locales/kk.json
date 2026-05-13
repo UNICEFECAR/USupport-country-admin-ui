@@ -468,6 +468,23 @@
       "reset_filter": "Сүзгілерді қалпына келтіру",
       "search": "Іздеу"
     },
+    "organization-reports": {
+      "heading": "Ұйымдар туралы есептер",
+      "organization": "Ұйым",
+      "organization_id_prefix": "Ұйым идентификаторы",
+      "reporter_name": "Хабарлаушы",
+      "email": "Email",
+      "nickname": "Лақап аты",
+      "time": "Уақыт",
+      "content_heading": "Себебі",
+      "no_results": "Ұйымдық есептер жоқ",
+      "search": "Іздеу",
+      "filters": "Сүзгілер",
+      "starting_date": "Басталу күні",
+      "ending_date": "Аяқталу күні",
+      "submit": "Сүзгілерді қолданыңыз",
+      "reset_filters": "Сүзгілерді қалпына келтіру"
+    },
     "provider-activities": {
       "client": "Клиенттер",
       "time": "Уақыт",
@@ -1074,7 +1091,8 @@
       "heading": "Есептер",
       "my_qa_tab_label": "Менің Q&A (Сұрақ/Жауап) мұрағатым",
       "sos_center_clicks_tab_label": "SOS Орталық",
-      "providers_free_slots_tab_label": "Консультанттардың бос орындары"
+      "providers_free_slots_tab_label": "Консультанттардың бос орындары",
+      "organization_reports_tab_label": "Ұйымдар туралы есептер"
     },
     "campaigns-page": {
       "heading": "Демеушілер тізімі"

@@ -468,6 +468,23 @@
       "search": "Wyszukiwanie",
       "contact_reason_3_ro": "Join the network of organizations"
     },
+    "organization-reports": {
+      "heading": "Zgłoszenia organizacji",
+      "organization": "Organizacja",
+      "organization_id_prefix": "ID organizacji",
+      "reporter_name": "Zgłaszający",
+      "email": "Email",
+      "nickname": "Pseudonim",
+      "time": "Czas",
+      "content_heading": "Powód",
+      "no_results": "Brak zgłoszeń organizacji",
+      "search": "Wyszukiwanie",
+      "filters": "Filtry",
+      "starting_date": "Data rozpoczęcia",
+      "ending_date": "Data zakończenia",
+      "submit": "Zastosuj filtry",
+      "reset_filters": "Zresetuj filtry"
+    },
     "provider-activities": {
       "client": "Klienci",
       "time": "Czas",
@@ -1132,7 +1149,8 @@
       "heading": "Raporty",
       "my_qa_tab_label": "Moje archiwum pytań i odpowiedzi",
       "sos_center_clicks_tab_label": "Centrum SOS",
-      "providers_free_slots_tab_label": "Wolne terminy konsultantów"
+      "providers_free_slots_tab_label": "Wolne terminy konsultantów",
+      "organization_reports_tab_label": "Zgłoszenia organizacji"
     },
     "campaigns-page": {
       "heading": "Lista sponsorów"

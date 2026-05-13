@@ -469,6 +469,23 @@
       "reset_filter": "Resetare filtre",
       "search": "Căutare"
     },
+    "organization-reports": {
+      "heading": "Raportări organizații",
+      "organization": "Organizație",
+      "organization_id_prefix": "ID organizație",
+      "reporter_name": "Reporter",
+      "email": "Email",
+      "nickname": "Pseudonim",
+      "time": "Ora",
+      "content_heading": "Motiv",
+      "no_results": "Nu există raportări de organizații",
+      "search": "Căutare",
+      "filters": "Filtre",
+      "starting_date": "Data de începere",
+      "ending_date": "Data de sfârșit",
+      "submit": "Aplicați filtre",
+      "reset_filters": "Resetare filtre"
+    },
     "provider-activities": {
       "client": "Client",
       "time": "Ora",
@@ -1061,7 +1078,8 @@
       "heading": "Rapoarte ",
       "my_qa_tab_label": "Arhiva mea Q&A",
       "sos_center_clicks_tab_label": "Centrul SOS",
-      "providers_free_slots_tab_label": "Sloturi libere furnizori"
+      "providers_free_slots_tab_label": "Sloturi libere furnizori",
+      "organization_reports_tab_label": "Raportări organizații"
     },
     "campaigns-page": {
       "heading": "Lista de sponsori"
