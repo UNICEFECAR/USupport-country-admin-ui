@@ -467,6 +467,23 @@
       "reset_filter": "Վերագործարկել ֆիլտրերը",
       "search": "Որոնում"
     },
+    "organization-reports": {
+      "heading": "Կազմակերպությունների մասին զեկույցներ",
+      "organization": "Կազմակերպություն",
+      "organization_id_prefix": "Կազմակերպության ID",
+      "reporter_name": "Հաղորդող",
+      "email": "Email",
+      "nickname": "Անվանում",
+      "time": "Ժամանակը",
+      "content_heading": "Պատճառը",
+      "no_results": "Կազմակերպությունների մասին զեկույցներ չկան",
+      "search": "Որոնում",
+      "filters": "Ֆիլտրեր",
+      "starting_date": "Մեկնարկի ամսաթիվը",
+      "ending_date": "Ավարտի ամսաթիվը",
+      "submit": "Կիրառել ֆիլտրեր",
+      "reset_filters": "Վերագործարկել ֆիլտրերը"
+    },
     "provider-activities": {
       "client": "Հաճախորդ",
       "time": "Ժամանակը",
@@ -1071,7 +1088,8 @@
       "heading": "Հաշվետվություններ",
       "my_qa_tab_label": "Իմ Հարցուպատասխանի արխիվը",
       "sos_center_clicks_tab_label": "SOS կենտրոն",
-      "providers_free_slots_tab_label": "Խորհրդատուների ազատ ժամանակաշրջաններ"
+      "providers_free_slots_tab_label": "Խորհրդատուների ազատ ժամանակաշրջաններ",
+      "organization_reports_tab_label": "Կազմակերպությունների զեկույցներ"
     },
     "campaigns-page": {
       "heading": "Հովանավորների ցանկ"

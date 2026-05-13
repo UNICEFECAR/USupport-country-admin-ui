@@ -466,6 +466,23 @@
       "search": "Αναζήτηση",
       "contact_reason_3_ro": "Ενταχθείτε στο δίκτυο οργανισμών"
     },
+    "organization-reports": {
+      "heading": "Αναφορές οργανισμών",
+      "organization": "Οργανισμός",
+      "organization_id_prefix": "Αναγνωριστικό οργανισμού",
+      "reporter_name": "Αναφέρων",
+      "email": "Email",
+      "nickname": "Ψευδώνυμο",
+      "time": "Ώρα",
+      "content_heading": "Λόγος",
+      "no_results": "Δεν βρέθηκαν αναφορές οργανισμών",
+      "search": "Αναζήτηση",
+      "filters": "Φίλτρα",
+      "starting_date": "Ημερομηνία έναρξης",
+      "ending_date": "Ημερομηνία λήξης",
+      "submit": "Εφαρμογή φίλτρων",
+      "reset_filters": "Επαναφορά φίλτρων"
+    },
     "provider-activities": {
       "client": "Πελάτης",
       "time": "Ώρα",
@@ -1124,7 +1141,8 @@
       "heading": "Αναφορές",
       "my_qa_tab_label": "Το αρχείο Ερωτήσεων και Απαντήσεων μου",
       "sos_center_clicks_tab_label": "Κέντρο άμεσης βοήθειας",
-      "providers_free_slots_tab_label": "Διαθέσιμα ραντεβού παρόχων"
+      "providers_free_slots_tab_label": "Διαθέσιμα ραντεβού παρόχων",
+      "organization_reports_tab_label": "Αναφορές οργανισμών"
     },
     "campaigns-page": {
       "heading": "Κατάλογος χορηγών"

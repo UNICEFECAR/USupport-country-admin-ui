@@ -469,6 +469,23 @@
       "reset_filter": "Reset filters",
       "search": "Search"
     },
+    "organization-reports": {
+      "heading": "Organization reports",
+      "organization": "Organization",
+      "organization_id_prefix": "Organization ID",
+      "reporter_name": "Reporter",
+      "email": "Email",
+      "nickname": "Nickname",
+      "time": "Time",
+      "content_heading": "Reason",
+      "no_results": "There are no organization reports",
+      "search": "Search",
+      "filters": "Filters",
+      "starting_date": "Start date",
+      "ending_date": "End date",
+      "submit": "Apply filters",
+      "reset_filters": "Reset filters"
+    },
     "provider-activities": {
       "client": "Client",
       "time": "Time",
@@ -1077,7 +1094,8 @@
       "heading": "Reports",
       "my_qa_tab_label": "My Q&A Archive",
       "sos_center_clicks_tab_label": "SOS Center",
-      "providers_free_slots_tab_label": "Providers Free Slots"
+      "providers_free_slots_tab_label": "Providers Free Slots",
+      "organization_reports_tab_label": "Organization reports"
     },
     "campaigns-page": {
       "heading": "List of Sponsors"

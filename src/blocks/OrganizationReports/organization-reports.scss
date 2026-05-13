@@ -1,0 +1,68 @@
+@import "@USupport-components-library/styles";
+
+.organization-reports {
+  padding-bottom: $spacing_5_0;
+
+  &__card {
+    cursor: pointer;
+    border-radius: $border_radius_0_8;
+    margin: $spacing_1_6 0;
+
+    &:focus-visible {
+      outline: 2px solid #20809e;
+      outline-offset: 2px;
+    }
+
+    .report-collapsible {
+      margin-top: 0;
+      margin-bottom: 0;
+      cursor: pointer;
+    }
+  }
+
+  .report-collapsible {
+    max-height: none;
+
+    &__grid {
+      align-items: center;
+    }
+
+    &__grid__item {
+      min-width: 0;
+
+      p {
+        margin: 0;
+        overflow-wrap: anywhere;
+      }
+    }
+  }
+
+  /* Wider org column; hide chevron slot when canCollapse is false (handled in JS). */
+  @media screen and (min-width: 900px) and (max-width: 1365px) {
+    .report-collapsible__grid__item:nth-child(1) {
+      grid-column: span 4;
+    }
+
+    .report-collapsible__grid__item:nth-child(2) {
+      grid-column: span 2;
+    }
+
+    .report-collapsible__grid__item:nth-child(3) {
+      grid-column: span 2;
+    }
+  }
+
+  @media screen and (min-width: 1366px) {
+    .report-collapsible__grid__item:nth-child(1) {
+      grid-column: span 6;
+    }
+
+    .report-collapsible__grid__item:nth-child(2) {
+      grid-column: span 3;
+    }
+
+    .report-collapsible__grid__item:nth-child(3) {
+      grid-column: span 3;
+    }
+  }
+}
