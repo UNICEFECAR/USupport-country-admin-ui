@@ -5,7 +5,6 @@ import { useError } from "./useError";
 export const useAssignProvidersToOrganization = (onSuccess, onError) => {
   return useMutation({
     mutationFn: async (data) => {
-      console.log("here");
       return await organizationSvc.assignProvidersToOrganization(data);
     },
     onSuccess,
