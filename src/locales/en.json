@@ -62,7 +62,11 @@
       "no_articles_for_country": "No articles in the selected country.",
       "likes": "Likes",
       "dislikes": "Dislikes",
-      "views": "Views"
+      "views": "Views",
+      "pinned": "Pinned",
+      "article_pinned": "Article pinned successfully",
+      "article_unpinned": "Article unpinned successfully",
+      "note_with_pinned": "<0>Note*</0> If the checkbox in the \"Published\" column is marked as selected it means that the article is visible to users of the platform. Use the \"Pinned\" column to show selected articles prominently in the information portal."
     },
     "faq": {
       "no_results": "No results found, please try a different language.",

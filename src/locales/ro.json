@@ -62,7 +62,11 @@
       "no_articles_for_country": "Nu există articole în țara selectată.",
       "likes": "Aprecieri",
       "dislikes": "Aprecieri negative",
-      "views": "Vizualizări"
+      "views": "Vizualizări",
+      "pinned": "Fixate",
+      "article_pinned": "Articolul a fost fixat cu succes",
+      "article_unpinned": "Articolul nu mai este fixat",
+      "note_with_pinned": "<0>Notă*</0> Dacă bifă din coloana „Publicat” este selectată, articolul este vizibil pentru utilizatorii platformei. Folosiți coloana „Fixate” pentru afișare proeminentă în portalul de informare."
     },
     "faq": {
       "no_results": "Nu s-au găsit rezultate, vă rugăm să încercați altă limbă.",
