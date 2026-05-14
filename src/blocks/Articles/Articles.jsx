@@ -54,6 +54,20 @@ const getCanonicalStrapiArticleIdForCountry = (articleLocalesPayload) => {
 };
 
 /**
+ * Strapi REST row: drafts have no `publishedAt`.
+ *
+ * @param {object} article
+ * @returns {boolean}
+ */
+const articleRowIsPublishedInCms = (article) => {
+  const raw = article?.publishedAt ?? article?.published_at;
+  if (raw == null) return false;
+  const s = String(raw).trim();
+  if (!s || s === "null") return false;
+  return true;
+};
+
+/**
  * Pinned rows use canonical EN ids; the table shows the current-locale id only.
  * Uses row localizations when present, and `meta.availableLocales` from the CMS list response.
  *
@@ -279,6 +293,11 @@ export const Articles = () => {
       return;
     }
     if (!article.isSelected && newPinnedValue === true) {
+      toast.warning(t("cannot_pin_assign_country_first"));
+      return;
+    }
+    if (newPinnedValue === true && !articleRowIsPublishedInCms(article)) {
+      toast.warning(t("cannot_pin_unpublished_article"));
       return;
     }
     updatePinnedMutation.mutate({
@@ -482,16 +501,59 @@ export const Articles = () => {
                   />
                 </div>
               ) : (
-                <CheckBox
-                  isChecked={isPinnedForRow}
-                  disabled={
-                    pinnedArticlesFetched !== true ||
-                    (!article.isSelected && !isPinnedForRow)
-                  }
-                  setIsChecked={() =>
-                    handleTogglePinnedArticle(article, !isPinnedForRow)
-                  }
-                />
+                (() => {
+                  const publishedInCms = articleRowIsPublishedInCms(article);
+                  const pinBlockedNeedAssignFirst =
+                    pinnedArticlesFetched &&
+                    !isPinnedForRow &&
+                    !article.isSelected &&
+                    !updatePinnedMutation.isLoading;
+                  const pinBlockedDraftInCms =
+                    pinnedArticlesFetched &&
+                    !!article.isSelected &&
+                    !isPinnedForRow &&
+                    !publishedInCms &&
+                    !updatePinnedMutation.isLoading;
+                  const pinForbiddenCell =
+                    pinBlockedNeedAssignFirst || pinBlockedDraftInCms;
+                  return (
+                    <div
+                      role="presentation"
+                      className={
+                        pinForbiddenCell
+                          ? "articles__pinned-cell-wrap articles__pinned-cell-wrap--blocked"
+                          : "articles__pinned-cell-wrap"
+                      }
+                      onPointerDownCapture={(e) => {
+                        if (
+                          !(pinBlockedNeedAssignFirst || pinBlockedDraftInCms)
+                        ) {
+                          return;
+                        }
+                        e.stopPropagation();
+                        toast.warning(
+                          pinBlockedNeedAssignFirst
+                            ? t("cannot_pin_assign_country_first")
+                            : t("cannot_pin_unpublished_article"),
+                        );
+                      }}
+                    >
+                      <CheckBox
+                        isChecked={isPinnedForRow}
+                        disabled={
+                          pinnedArticlesFetched !== true ||
+                          (!article.isSelected && !isPinnedForRow) ||
+                          (!isPinnedForRow &&
+                            !!article.isSelected &&
+                            !publishedInCms)
+                        }
+                        setIsChecked={() =>
+                          handleTogglePinnedArticle(article, !isPinnedForRow)
+                        }
+                      />
+                    </div>
+                  );
+                })()
               ),
             ]
           : []),

@@ -66,6 +66,8 @@
       "pinned": "Fixate",
       "article_pinned": "Articolul a fost fixat cu succes",
       "article_unpinned": "Articolul nu mai este fixat",
+      "cannot_pin_unpublished_article": "Pot fi fixate doar articole publicate în CMS. Publică mai întâi articolul.",
+      "cannot_pin_assign_country_first": "Marchează întâi articolul pentru țara ta (coloana Publicat), apoi îl poți fixa.",
       "note_with_pinned": "<0>Notă*</0> Dacă bifă din coloana „Publicat” este selectată, articolul este vizibil pentru utilizatorii platformei. Folosiți coloana „Fixate” pentru afișare proeminentă în portalul de informare."
     },
     "faq": {

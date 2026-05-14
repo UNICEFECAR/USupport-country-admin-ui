@@ -66,6 +66,8 @@
       "pinned": "Przypięte",
       "article_pinned": "Artykuł został przypięty",
       "article_unpinned": "Artykuł został odpięty",
+      "cannot_pin_unpublished_article": "Można przypinać tylko opublikowane w CMS artykuły. Najpierw opublikuj artykuł.",
+      "cannot_pin_assign_country_first": "Najpierw przypisz artykuł do kraju (kolumna Opublikowano), potem możesz go przypiąć.",
       "note_with_pinned": "<0>Uwaga*</0> Zaznaczenie pola w kolumnie „Opublikowane” oznacza, że artykuł jest widoczny dla użytkowników. Kolumna „Przypięte” wyróżnia artykuły w portalu informacyjnym."
     },
     "faq": {

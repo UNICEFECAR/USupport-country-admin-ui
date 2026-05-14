@@ -64,6 +64,8 @@
       "pinned": "Sabitle",
       "article_pinned": "Makale sabitlendi",
       "article_unpinned": "Makalenin sabitlemesi kaldırıldı",
+      "cannot_pin_unpublished_article": "Yalnızca CMS'te yayımlanan makaleler sabitlenebilir. Önce makaleyi yayımlayın.",
+      "cannot_pin_assign_country_first": "Önce Ülkeye yayın işaretinin altında yazıyı atayın, sonra sabitleyebilirsiniz.",
       "note_with_pinned": "<0>Not*</0> \"Yayında\" seçiliyse makale kullanıcılara görünür. \"Sabitle\" sütunu bilgi portalında seçili makaleleri öne çıkarır."
     },
     "edit-provider": {

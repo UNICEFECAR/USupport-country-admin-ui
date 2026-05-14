@@ -66,6 +66,8 @@
       "pinned": "Pinned",
       "article_pinned": "Article pinned successfully",
       "article_unpinned": "Article unpinned successfully",
+      "cannot_pin_unpublished_article": "Only published articles can be pinned. Publish this article in the CMS first.",
+      "cannot_pin_assign_country_first": "Assign this article to your country using the Published column before pinning it.",
       "note_with_pinned": "<0>Note*</0> If the checkbox in the \"Published\" column is marked as selected it means that the article is visible to users of the platform. Use the \"Pinned\" column to show selected articles prominently in the information portal."
     },
     "faq": {
