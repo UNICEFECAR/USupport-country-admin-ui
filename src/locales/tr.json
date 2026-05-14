@@ -60,7 +60,11 @@
       "no_articles_for_country": "Seçilen ülkede makale bulunmuyor.",
       "likes": "Beğeniler",
       "dislikes": "Beğenilmeyenler",
-      "views": "Görüntüleme Sayısı"
+      "views": "Görüntüleme Sayısı",
+      "pinned": "Sabitle",
+      "article_pinned": "Makale sabitlendi",
+      "article_unpinned": "Makalenin sabitlemesi kaldırıldı",
+      "note_with_pinned": "<0>Not*</0> \"Yayında\" seçiliyse makale kullanıcılara görünür. \"Sabitle\" sütunu bilgi portalında seçili makaleleri öne çıkarır."
     },
     "edit-provider": {
       "video_link_error": "Lütfen geçerli bir URL girin"

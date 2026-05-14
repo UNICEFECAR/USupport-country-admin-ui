@@ -62,7 +62,11 @@
       "no_articles_for_country": "Brak artykułów w wybranym kraju.",
       "likes": "Sympatie",
       "dislikes": "Antypatie",
-      "views": "Views"
+      "views": "Views",
+      "pinned": "Przypięte",
+      "article_pinned": "Artykuł został przypięty",
+      "article_unpinned": "Artykuł został odpięty",
+      "note_with_pinned": "<0>Uwaga*</0> Zaznaczenie pola w kolumnie „Opublikowane” oznacza, że artykuł jest widoczny dla użytkowników. Kolumna „Przypięte” wyróżnia artykuły w portalu informacyjnym."
     },
     "faq": {
       "no_results": "Nie znaleziono wyników, spróbuj użyć innego języka.",
