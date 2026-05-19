@@ -57,6 +57,8 @@
       "no_data_found": "No data found",
       "created_at": "Created At",
       "countries": "Countries",
+      "uploaded_by_country": "CMS uploader country",
+      "created_by": "Created by",
       "filter_by_country": "Filter by country",
       "all_countries": "All countries",
       "no_articles_for_country": "No articles in the selected country.",

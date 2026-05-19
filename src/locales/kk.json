@@ -57,6 +57,8 @@
       "no_data_found": "Ақпарат табылмады",
       "created_at": "Жарияланды",
       "countries": "Елдер",
+      "uploaded_by_country": "Жүктеген ел (CMS)",
+      "created_by": "Жасаған",
       "filter_by_country": "Ел бойынша сүзгілеу",
       "all_countries": "Барлық елдер",
       "no_articles_for_country": "Таңдалған елде мақалалар жоқ.",

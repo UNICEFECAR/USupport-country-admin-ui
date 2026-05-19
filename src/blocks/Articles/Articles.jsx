@@ -26,8 +26,6 @@ import { cmsSvc, adminSvc } from "@USupport-components-library/services";
 import { getDateView } from "@USupport-components-library/utils";
 import { articlePlaceholder } from "@USupport-components-library/assets";
 
-
-
 import { useError } from "#hooks";
 
 import "./articles.scss";
@@ -130,8 +128,10 @@ export const Articles = () => {
   const [articleLocaleMetaByList, setArticleLocaleMetaByList] = useState({});
   const [selectedCountryFilter, setSelectedCountryFilter] = useState("");
 
-  const { data: activeCountriesArticles, isFetched: activeCountriesIndexFetched } =
-    useGetActiveCountriesArticles();
+  const {
+    data: activeCountriesArticles,
+    isFetched: activeCountriesIndexFetched,
+  } = useGetActiveCountriesArticles();
 
   /** Wait for `/active-countries-articles` so `ids=` matches THIS country's pool (correct checkboxes). */
   const storageCountryAlpha2 = localStorage.getItem("country") ?? "";
@@ -169,6 +169,28 @@ export const Articles = () => {
       })),
     ],
     [activeCountriesArticles, t],
+  );
+
+  const countryNameByAlpha2 = useMemo(() => {
+    const map = new Map();
+    if (!Array.isArray(activeCountriesArticles)) return map;
+    for (const c of activeCountriesArticles) {
+      if (!c?.alpha2) continue;
+      const key = String(c.alpha2).trim().toUpperCase();
+      if (!key) continue;
+      map.set(key, (c.name && String(c.name).trim()) || key);
+    }
+    return map;
+  }, [activeCountriesArticles]);
+
+  const getCmsUploaderCountryLabel = useCallback(
+    (article) => {
+      const raw = article?.cmsUploaderCountry;
+      if (raw == null || String(raw).trim() === "") return "";
+      const alpha2 = String(raw).trim().toUpperCase();
+      return countryNameByAlpha2.get(alpha2) || alpha2;
+    },
+    [countryNameByAlpha2],
   );
 
   const {
@@ -235,8 +257,7 @@ export const Articles = () => {
         const dataLocalizations = currentData.localizations.data;
         const articleIdToUse = dataLocalizations.find((x) =>
           articleIds.some(
-            (poolId) =>
-              String(poolId).trim() === String(x.id).trim(),
+            (poolId) => String(poolId).trim() === String(x.id).trim(),
           ),
         );
         if (articleIdToUse) {
@@ -430,7 +451,8 @@ export const Articles = () => {
         isDate: true,
       },
       {
-        label: t("countries"),
+        label: t("created_by"),
+        sortingKey: "cmsCreatedBy",
         isCentered: true,
       },
       {
@@ -469,11 +491,25 @@ export const Articles = () => {
           x.attributes.Name?.toLowerCase(),
         );
 
+        const createdByName = (
+          article.cmsCreatedBy?.toLowerCase() ?? ""
+        ).trim();
+        const uploaderAlpha = (
+          article.cmsUploaderCountry?.toLowerCase() ?? ""
+        ).trim();
+        const uploaderLabel = getCmsUploaderCountryLabel(article).toLowerCase();
+        const creatorMatch = createdByName && createdByName.includes(search);
+        const uploaderMatch =
+          (uploaderAlpha && uploaderAlpha.includes(search)) ||
+          (uploaderLabel && uploaderLabel.includes(search));
+
         if (
           !article.title?.toLowerCase().includes(search) &&
           !article.description?.toLowerCase().includes(search) &&
           !date?.includes(search) &&
           !category?.includes(search) &&
+          !creatorMatch &&
+          !uploaderMatch &&
           !labels?.some((x) => {
             return x?.includes(search);
           })
@@ -576,11 +612,22 @@ export const Articles = () => {
         IS_PS ? null : <p className="text centered">{article.dislikes || 0}</p>,
         <div>{getDateView(new Date(article.createdAt))}</div>,
         (() => {
-          const countries = getCountriesForArticle(article);
-          const names = countries.map((c) => c.name).join(", ");
+          const createdBy =
+            article.cmsCreatedBy != null
+              ? String(article.cmsCreatedBy).trim()
+              : "";
+          const countryLabel = getCmsUploaderCountryLabel(article);
+          const display = createdBy || "—";
+          const titleHint = countryLabel
+            ? createdBy
+              ? `${createdBy} · ${countryLabel}`
+              : countryLabel
+            : display !== "—"
+              ? display
+              : undefined;
           return (
-            <div className="articles__countries" title={names}>
-              {names || "—"}
+            <div className="articles__created-by" title={titleHint}>
+              {display}
             </div>
           );
         })(),
@@ -603,9 +650,9 @@ export const Articles = () => {
     articleIsPinned,
     updatePinnedMutation.isLoading,
     updatePinnedMutation.variables,
-    getCountriesForArticle,
     t,
     navigate,
+    getCmsUploaderCountryLabel,
   ]);
 
   return (
