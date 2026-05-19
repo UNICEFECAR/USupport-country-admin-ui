@@ -55,6 +55,8 @@
       "no_data_found": "Veri bulunamadı",
       "created_at": "Oluşturulma Tarihi",
       "countries": "Ülkeler",
+      "uploaded_by_country": "Yükleyen ülke (CMS)",
+      "created_by": "Oluşturan",
       "filter_by_country": "Ülkeye göre filtrele",
       "all_countries": "Tüm ülkeler",
       "no_articles_for_country": "Seçilen ülkede makale bulunmuyor.",

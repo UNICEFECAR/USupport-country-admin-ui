@@ -55,6 +55,8 @@
       "no_data_found": "Данные не найдены",
       "created_at": "Опубликовано",
       "countries": "Страны",
+      "uploaded_by_country": "Страна загрузки (CMS)",
+      "created_by": "Создал",
       "filter_by_country": "Фильтр по стране",
       "all_countries": "Все страны",
       "no_articles_for_country": "В выбранной стране нет статей.",

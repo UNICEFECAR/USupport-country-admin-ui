@@ -57,6 +57,8 @@
       "no_data_found": "Даних не знайдено",
       "created_at": "Створено в",
       "countries": "Країни",
+      "uploaded_by_country": "Країна завантажувача (CMS)",
+      "created_by": "Створив",
       "filter_by_country": "Фільтр за країною",
       "all_countries": "Усі країни",
       "no_articles_for_country": "У вибраній країні немає статей.",

@@ -55,6 +55,8 @@
       "no_data_found": "Δεν βρέθηκαν δεδομένα",
       "created_at": "Δημιουργήθηκε στις",
       "countries": "Χώρες",
+      "uploaded_by_country": "Χώρα ανεβάσματος (CMS)",
+      "created_by": "Δημιουργήθηκε από",
       "filter_by_country": "Φίλτρο ανά χώρα",
       "all_countries": "Όλες οι χώρες",
       "no_articles_for_country": "Δεν υπάρχουν άρθρα στην επιλεγμένη χώρα.",

@@ -55,6 +55,8 @@
       "no_data_found": "لم يتم العثور على بيانات",
       "created_at": "تاريخ الإنشاء",
       "countries": "الدول",
+      "uploaded_by_country": "دولة مُرفِع المحتوى (CMS)",
+      "created_by": "أنشأه",
       "filter_by_country": "تصفية حسب الدولة",
       "all_countries": "جميع الدول",
       "no_articles_for_country": "لا توجد مقالات في الدولة المحددة.",
