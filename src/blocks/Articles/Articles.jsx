@@ -126,7 +126,7 @@ export const Articles = () => {
   const [articleIds, setArticleIds] = useState([]);
   /** Built from CMS `meta.availableLocales` on each batched GET (ids + locale clustering). */
   const [articleLocaleMetaByList, setArticleLocaleMetaByList] = useState({});
-  const [selectedCountryFilter, setSelectedCountryFilter] = useState("");
+  const [selectedCreatorFilter, setSelectedCreatorFilter] = useState("");
 
   const {
     data: activeCountriesArticles,
@@ -135,41 +135,38 @@ export const Articles = () => {
 
   /** Wait for `/active-countries-articles` so `ids=` matches THIS country's pool (correct checkboxes). */
   const storageCountryAlpha2 = localStorage.getItem("country") ?? "";
-  const getCountriesForArticle = useCallback(
-    (article) => {
-      if (!Array.isArray(activeCountriesArticles)) return [];
-      const idsSet = new Set([
-        String(article.id),
-        ...(article.localizations?.data?.map((loc) => String(loc.id)) || []),
-      ]);
-      return activeCountriesArticles
-        .filter((c) =>
-          (c.article_ids || []).some((id) => idsSet.has(String(id))),
-        )
-        .map((c) => ({ alpha2: c.alpha2, name: c.name || c.alpha2 }));
-    },
-    [activeCountriesArticles],
-  );
 
   const filteredData = useMemo(() => {
-    if (!selectedCountryFilter) return dataToDisplay;
-    return dataToDisplay.filter((article) =>
-      getCountriesForArticle(article).some(
-        (c) => c.alpha2 === selectedCountryFilter,
-      ),
-    );
-  }, [dataToDisplay, selectedCountryFilter, getCountriesForArticle]);
+    if (!selectedCreatorFilter) return dataToDisplay;
+    return dataToDisplay.filter((article) => {
+      const creator =
+        article.cmsCreatedBy != null ? String(article.cmsCreatedBy).trim() : "";
+      return creator === selectedCreatorFilter;
+    });
+  }, [dataToDisplay, selectedCreatorFilter]);
 
-  const countryFilterOptions = useMemo(
-    () => [
-      { value: "", label: t("all_countries") },
-      ...(activeCountriesArticles || []).map((c) => ({
-        value: c.alpha2,
-        label: c.name || c.alpha2,
+  const creatorFilterOptions = useMemo(() => {
+    const countByCreator = new Map();
+    for (const article of dataToDisplay) {
+      const creator =
+        article.cmsCreatedBy != null ? String(article.cmsCreatedBy).trim() : "";
+      if (!creator) continue;
+      countByCreator.set(creator, (countByCreator.get(creator) || 0) + 1);
+    }
+    const sorted = [...countByCreator.entries()].sort(([a], [b]) =>
+      a.localeCompare(b),
+    );
+    return [
+      {
+        value: "",
+        label: t("all_creators_with_count", { count: dataToDisplay.length }),
+      },
+      ...sorted.map(([name, count]) => ({
+        value: name,
+        label: t("creator_with_count", { name, count }),
       })),
-    ],
-    [activeCountriesArticles, t],
-  );
+    ];
+  }, [dataToDisplay, t]);
 
   const countryNameByAlpha2 = useMemo(() => {
     const map = new Map();
@@ -217,6 +214,7 @@ export const Articles = () => {
       setLanguageOfData(i18n.language);
       setDataToDisplay([]);
       setArticleLocaleMetaByList({});
+      setSelectedCreatorFilter("");
       setStartFrom(0);
       setHasMore(true);
     }
@@ -667,17 +665,17 @@ export const Articles = () => {
               classes="articles__search"
             />
             <DropdownWithLabel
-              label={t("filter_by_country")}
-              selected={selectedCountryFilter}
-              setSelected={setSelectedCountryFilter}
-              options={countryFilterOptions}
-              classes="articles__country-filter"
+              label={t("filter_by_creator")}
+              selected={selectedCreatorFilter}
+              setSelected={setSelectedCreatorFilter}
+              options={creatorFilterOptions}
+              classes="articles__creator-filter"
             />
           </div>
         </GridItem>
         <GridItem md={8} lg={12} classes="articles__rows">
           {dataToDisplay.length > 0 &&
-          (filteredData.length > 0 || !selectedCountryFilter) ? (
+          (filteredData.length > 0 || !selectedCreatorFilter) ? (
             <BaseTable
               data={filteredData || []}
               rows={rows}
@@ -698,10 +696,10 @@ export const Articles = () => {
               <h3 className="articles__no-results">{t("no_results")}</h3>
             )}
           {dataToDisplay.length > 0 &&
-            selectedCountryFilter &&
+            selectedCreatorFilter &&
             filteredData.length === 0 && (
               <h3 className="articles__no-results">
-                {t("no_articles_for_country")}
+                {t("no_articles_for_creator")}
               </h3>
             )}
           {error ? <ErrorComponent message={error} /> : null}
