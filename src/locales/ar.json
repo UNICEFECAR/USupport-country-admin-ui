@@ -55,12 +55,20 @@
       "no_data_found": "لم يتم العثور على بيانات",
       "created_at": "تاريخ الإنشاء",
       "countries": "الدول",
+      "uploaded_by_country": "دولة مُرفِع المحتوى (CMS)",
+      "created_by": "أنشأه",
       "filter_by_country": "تصفية حسب الدولة",
       "all_countries": "جميع الدول",
       "no_articles_for_country": "لا توجد مقالات في الدولة المحددة.",
       "likes": "الإعجابات",
       "dislikes": "عدم الإعجاب",
-      "views": "المشاهدات"
+      "views": "المشاهدات",
+      "pinned": "مثبت",
+      "article_pinned": "تم تثبيت المقالة",
+      "article_unpinned": "تم إلغاء تثبيت المقالة",
+      "cannot_pin_unpublished_article": "يمكن تثبيت المقالات المنشورة في نظام إدارة المحتوى فقط. انشر المقالة أولاً.",
+      "cannot_pin_assign_country_first": "عيّن المقالة أولاً لبلدك باستخدام عمود المنشورة، ثم يمكن تثبيتها.",
+      "note_with_pinned": "<0>ملاحظة*</0> إذا تم تحديد عمود \"منشور\"، تكون المقالة مرئية للمستخدمين. يبرز عمود \"مثبت\" المقالات في بوابة المعلومات."
     },
     "edit-provider": {
       "video_link_error": "يرجى إدخال رابط URL صالح"

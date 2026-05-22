@@ -57,12 +57,20 @@
       "no_data_found": "Տվյալ չի գտնվել",
       "created_at": "Ստեղծված է ․․․",
       "countries": "Երկրներ",
+      "uploaded_by_country": "Վերբեռնող երկիր (CMS)",
+      "created_by": "Ստեղծել է",
       "filter_by_country": "Ըստ երկրի ֆիլտրել",
       "all_countries": "Բոլոր երկրները",
       "no_articles_for_country": "Ընտրված երկրում հոդվածներ չկան։",
       "likes": "Հավանումներ",
       "dislikes": "Չհավանածներ",
-      "views": "Դիտումներ"
+      "views": "Դիտումներ",
+      "pinned": "Ամրացված",
+      "article_pinned": "Հոդվածը ամրացվեց",
+      "article_unpinned": "Հոդվածի ամրացումը հանվեց",
+      "cannot_pin_unpublished_article": "Կարելի է ամրացնել միայն CMS-ում հրապարակված հոդվածները։ Նախ հրապարակեք հոդվածը։",
+      "cannot_pin_assign_country_first": "Նախ ընտրեք երկիրն «Հրապարակված» սյունում, ապա ամրացրեք հոդվածը։",
+      "note_with_pinned": "<0>Նշում*</0> Եթե «Հրապարակված» սյունակում նշարկը ընտրված է, հոդվածը տեսանելի է հարթակի օգտագործողների համար: «Ամրացված» սյունակը գերակայում է ընտրված հոդվածների ցուցադրումը ինֆորմացիոն պորտալում:"
     },
     "faq": {
       "no_results": "Արդյունքներ չեն գտնվել, խնդրում ենք փորձել այլ լեզվով",
@@ -466,6 +474,23 @@
       "client": "Հաճախորդ",
       "reset_filter": "Վերագործարկել ֆիլտրերը",
       "search": "Որոնում"
+    },
+    "organization-reports": {
+      "heading": "Կազմակերպությունների մասին զեկույցներ",
+      "organization": "Կազմակերպություն",
+      "organization_id_prefix": "Կազմակերպության ID",
+      "reporter_name": "Հաղորդող",
+      "email": "Email",
+      "nickname": "Անվանում",
+      "time": "Ժամանակը",
+      "content_heading": "Պատճառը",
+      "no_results": "Կազմակերպությունների մասին զեկույցներ չկան",
+      "search": "Որոնում",
+      "filters": "Ֆիլտրեր",
+      "starting_date": "Մեկնարկի ամսաթիվը",
+      "ending_date": "Ավարտի ամսաթիվը",
+      "submit": "Կիրառել ֆիլտրեր",
+      "reset_filters": "Վերագործարկել ֆիլտրերը"
     },
     "provider-activities": {
       "client": "Հաճախորդ",
@@ -1071,7 +1096,8 @@
       "heading": "Հաշվետվություններ",
       "my_qa_tab_label": "Իմ Հարցուպատասխանի արխիվը",
       "sos_center_clicks_tab_label": "SOS կենտրոն",
-      "providers_free_slots_tab_label": "Խորհրդատուների ազատ ժամանակաշրջաններ"
+      "providers_free_slots_tab_label": "Խորհրդատուների ազատ ժամանակաշրջաններ",
+      "organization_reports_tab_label": "Կազմակերպությունների զեկույցներ"
     },
     "campaigns-page": {
       "heading": "Հովանավորների ցանկ"

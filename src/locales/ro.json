@@ -57,12 +57,20 @@
       "no_data_found": "Nu s-au găsit date",
       "created_at": "Creat la",
       "countries": "Țări",
+      "uploaded_by_country": "Țara utilizatorului CMS",
+      "created_by": "Creat de",
       "filter_by_country": "Filtrare după țară",
       "all_countries": "Toate țările",
       "no_articles_for_country": "Nu există articole în țara selectată.",
       "likes": "Aprecieri",
       "dislikes": "Aprecieri negative",
-      "views": "Vizualizări"
+      "views": "Vizualizări",
+      "pinned": "Fixate",
+      "article_pinned": "Articolul a fost fixat cu succes",
+      "article_unpinned": "Articolul nu mai este fixat",
+      "cannot_pin_unpublished_article": "Pot fi fixate doar articole publicate în CMS. Publică mai întâi articolul.",
+      "cannot_pin_assign_country_first": "Marchează întâi articolul pentru țara ta (coloana Publicat), apoi îl poți fixa.",
+      "note_with_pinned": "<0>Notă*</0> Dacă bifă din coloana „Publicat” este selectată, articolul este vizibil pentru utilizatorii platformei. Folosiți coloana „Fixate” pentru afișare proeminentă în portalul de informare."
     },
     "faq": {
       "no_results": "Nu s-au găsit rezultate, vă rugăm să încercați altă limbă.",
@@ -468,6 +476,23 @@
       "client": "Client",
       "reset_filter": "Resetare filtre",
       "search": "Căutare"
+    },
+    "organization-reports": {
+      "heading": "Raportări organizații",
+      "organization": "Organizație",
+      "organization_id_prefix": "ID organizație",
+      "reporter_name": "Reporter",
+      "email": "Email",
+      "nickname": "Pseudonim",
+      "time": "Ora",
+      "content_heading": "Motiv",
+      "no_results": "Nu există raportări de organizații",
+      "search": "Căutare",
+      "filters": "Filtre",
+      "starting_date": "Data de începere",
+      "ending_date": "Data de sfârșit",
+      "submit": "Aplicați filtre",
+      "reset_filters": "Resetare filtre"
     },
     "provider-activities": {
       "client": "Client",
@@ -1061,7 +1086,8 @@
       "heading": "Rapoarte ",
       "my_qa_tab_label": "Arhiva mea Q&A",
       "sos_center_clicks_tab_label": "Centrul SOS",
-      "providers_free_slots_tab_label": "Sloturi libere furnizori"
+      "providers_free_slots_tab_label": "Sloturi libere furnizori",
+      "organization_reports_tab_label": "Raportări organizații"
     },
     "campaigns-page": {
       "heading": "Lista de sponsori"

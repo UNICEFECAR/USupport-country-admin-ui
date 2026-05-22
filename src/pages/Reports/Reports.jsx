@@ -6,6 +6,7 @@ import {
   InformationPortalSuggestions,
   ClientRatings,
   ContactForms,
+  OrganizationReports,
   MyQAReports,
   SosCenterClicks,
   ProvidersFreeSlots,
@@ -49,6 +50,15 @@ export const Reports = () => {
     },
     { label: t("ratings"), value: "ratings", isSelected: IS_RO ? true : false },
     { label: t("contact_form"), value: "contact_form", isSelected: false },
+    ...(IS_RO
+      ? [
+          {
+            label: t("organization_reports"),
+            value: "organization_reports",
+            isSelected: false,
+          },
+        ]
+      : []),
     ...(IS_RO
       ? []
       : [
@@ -97,6 +107,8 @@ export const Reports = () => {
         return <ClientRatings Heading={ReportBlockHeading} />;
       case "contact_form":
         return <ContactForms Heading={ReportBlockHeading} />;
+      case "organization_reports":
+        return <OrganizationReports Heading={ReportBlockHeading} />;
       case "my_qa":
         return <MyQAReports Heading={ReportBlockHeading} />;
       case "sos_center_clicks":

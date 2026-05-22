@@ -45,9 +45,28 @@
     margin-bottom: $spacing_0_4;
   }
 
-  &__countries {
+  &__pinned-cell-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--blocked {
+      cursor: not-allowed;
+
+      .checkbox-wrapper {
+        pointer-events: none;
+      }
+
+      .checkbox-wrapper,
+      .checkbox-wrapper input {
+        cursor: not-allowed !important;
+      }
+    }
+  }
+
+  &__created-by,
+  &__uploader-country {
     max-width: 12rem;
-    font-size: $font_size_1_2;
-    color: $color_gray_66768d;
+    text-align: center;
   }
 }

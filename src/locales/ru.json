@@ -55,12 +55,20 @@
       "no_data_found": "Данные не найдены",
       "created_at": "Опубликовано",
       "countries": "Страны",
+      "uploaded_by_country": "Страна загрузки (CMS)",
+      "created_by": "Создал",
       "filter_by_country": "Фильтр по стране",
       "all_countries": "Все страны",
       "no_articles_for_country": "В выбранной стране нет статей.",
       "likes": "Нравится",
       "dislikes": "Не нравится",
-      "views": "Views"
+      "views": "Views",
+      "pinned": "Закреплено",
+      "article_pinned": "Статья закреплена",
+      "article_unpinned": "Статья откреплена",
+      "cannot_pin_unpublished_article": "Закреплять можно только опубликованные в CMS статьи. Сначала опубликуйте статью.",
+      "cannot_pin_assign_country_first": "Сначала назначьте статью для вашей страны (колонка «Опубликовано»), затем закрепление.",
+      "note_with_pinned": "<0>Примечание*</0> Если флажок в столбце «Опубликовано» отмечен, статья видна пользователям платформы. Столбец «Закреплено» выделяет статьи в информационном портале."
     },
     "faq": {
       "no_results": "Ничего не нашлось, попробуйте другой язык.",
@@ -465,6 +473,23 @@
       "client": "Клиент",
       "reset_filter": "Сбросить фильтр",
       "search": "Поиск"
+    },
+    "organization-reports": {
+      "heading": "Жалобы на организации",
+      "organization": "Организация",
+      "organization_id_prefix": "ID организации",
+      "reporter_name": "Заявитель",
+      "email": "Email",
+      "nickname": "Никнейм",
+      "time": "Время",
+      "content_heading": "Причина",
+      "no_results": "Жалоб на организации не найдено",
+      "search": "Поиск",
+      "filters": "Фильтры",
+      "starting_date": "Дата начала",
+      "ending_date": "Дата окончания",
+      "submit": "Примените фильтры",
+      "reset_filters": "Сбросить фильтр"
     },
     "provider-activities": {
       "client": "Клиенты",
@@ -1058,7 +1083,8 @@
       "heading": "Отчеты",
       "my_qa_tab_label": "Мой архив Q&A (Вопрос/Ответ)",
       "sos_center_clicks_tab_label": "Центры SOS",
-      "providers_free_slots_tab_label": "Свободные слоты консультантов"
+      "providers_free_slots_tab_label": "Свободные слоты консультантов",
+      "organization_reports_tab_label": "Жалобы на организации"
     },
     "campaigns-page": {
       "heading": "Список спонсоров"

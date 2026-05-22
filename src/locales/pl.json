@@ -57,12 +57,20 @@
       "no_data_found": "Nie znaleziono danych",
       "created_at": "Utworzono w",
       "countries": "Kraje",
+      "uploaded_by_country": "Kraj przesyłający (CMS)",
+      "created_by": "Utworzył",
       "filter_by_country": "Filtruj według kraju",
       "all_countries": "Wszystkie kraje",
       "no_articles_for_country": "Brak artykułów w wybranym kraju.",
       "likes": "Sympatie",
       "dislikes": "Antypatie",
-      "views": "Views"
+      "views": "Views",
+      "pinned": "Przypięte",
+      "article_pinned": "Artykuł został przypięty",
+      "article_unpinned": "Artykuł został odpięty",
+      "cannot_pin_unpublished_article": "Można przypinać tylko opublikowane w CMS artykuły. Najpierw opublikuj artykuł.",
+      "cannot_pin_assign_country_first": "Najpierw przypisz artykuł do kraju (kolumna Opublikowano), potem możesz go przypiąć.",
+      "note_with_pinned": "<0>Uwaga*</0> Zaznaczenie pola w kolumnie „Opublikowane” oznacza, że artykuł jest widoczny dla użytkowników. Kolumna „Przypięte” wyróżnia artykuły w portalu informacyjnym."
     },
     "faq": {
       "no_results": "Nie znaleziono wyników, spróbuj użyć innego języka.",
@@ -467,6 +475,23 @@
       "reset_filter": "Zresetuj filtry",
       "search": "Wyszukiwanie",
       "contact_reason_3_ro": "Join the network of organizations"
+    },
+    "organization-reports": {
+      "heading": "Zgłoszenia organizacji",
+      "organization": "Organizacja",
+      "organization_id_prefix": "ID organizacji",
+      "reporter_name": "Zgłaszający",
+      "email": "Email",
+      "nickname": "Pseudonim",
+      "time": "Czas",
+      "content_heading": "Powód",
+      "no_results": "Brak zgłoszeń organizacji",
+      "search": "Wyszukiwanie",
+      "filters": "Filtry",
+      "starting_date": "Data rozpoczęcia",
+      "ending_date": "Data zakończenia",
+      "submit": "Zastosuj filtry",
+      "reset_filters": "Zresetuj filtry"
     },
     "provider-activities": {
       "client": "Klienci",
@@ -1132,7 +1157,8 @@
       "heading": "Raporty",
       "my_qa_tab_label": "Moje archiwum pytań i odpowiedzi",
       "sos_center_clicks_tab_label": "Centrum SOS",
-      "providers_free_slots_tab_label": "Wolne terminy konsultantów"
+      "providers_free_slots_tab_label": "Wolne terminy konsultantów",
+      "organization_reports_tab_label": "Zgłoszenia organizacji"
     },
     "campaigns-page": {
       "heading": "Lista sponsorów"
