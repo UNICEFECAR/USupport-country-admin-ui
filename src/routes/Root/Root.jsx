@@ -33,6 +33,7 @@ import {
   ProviderOverview,
   Providers,
   ResetPassword,
+  SecuritySettings,
   SOSCenter,
   Welcome,
   Reports,
@@ -140,6 +141,14 @@ const LanguageLayout = () => {
         element={
           <ProtectedRoute>
             <EditProfileDetails />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="profile/security"
+        element={
+          <ProtectedRoute>
+            <SecuritySettings />
           </ProtectedRoute>
         }
       />

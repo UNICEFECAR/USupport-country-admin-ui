@@ -1,0 +1,9 @@
+@import "@USupport-components-library/styles";
+
+.page__security-settings {
+  @media screen and (max-width: $screen-md) {
+    background-image: url(../assets/background-spiral.png);
+    background-position: right bottom;
+    background-repeat: no-repeat;
+  }
+}
