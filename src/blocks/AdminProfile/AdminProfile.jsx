@@ -53,6 +53,14 @@ export const AdminProfile = () => {
             classes="admin-profile__grid__item__button "
             onClick={() => handleRedirect("profile/details/edit")}
           />
+          <p className="text admin-profile__grid__item__label">
+            {t("application_settings")}
+          </p>
+          <ButtonSelector
+            label={t("security_settings")}
+            classes="admin-profile__grid__item__button"
+            onClick={() => handleRedirect("profile/security")}
+          />
           <ButtonSelector
             label={t("user_guide")}
             classes="admin-profile__grid__item__button "

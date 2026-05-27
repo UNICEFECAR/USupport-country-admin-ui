@@ -1,12 +1,16 @@
 /* eslint-disable */
 import React, { useState } from "react";
-import { Navigate, useSearchParams, useNavigate as useRawNavigate } from "react-router-dom";
+import {
+  Navigate,
+  useSearchParams,
+  useNavigate as useRawNavigate,
+} from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { useWindowDimensions } from "@USupport-components-library/utils";
 import { RadialCircle, Loading } from "@USupport-components-library/src";
-import { adminSvc } from "@USupport-components-library/services";
+import { mfaSvc } from "@USupport-components-library/services";
 
 import { Page, Login as LoginBlock } from "#blocks";
 
@@ -16,7 +20,7 @@ import {
   useCustomNavigate as useNavigate,
 } from "#hooks";
 
-import { CodeVerification } from "#backdrops";
+import { CodeVerification, MfaVerification } from "#backdrops";
 
 import "./login.scss";
 
@@ -38,8 +42,11 @@ export const Login = () => {
 
   const ROLE = "country";
 
+  const [isMfaVerificationOpen, setIsMfaVerificationOpen] = useState(false);
   const [isCodeVerificationOpen, setIsCodeVerificationOpen] = useState(false);
-  const [loginCredentials, setLoginCredentials] = useState();
+  const [mfaSessionId, setMfaSessionId] = useState(null);
+  const [availableMethods, setAvailableMethods] = useState([]);
+  const [isPasskeyAttemptLoading, setIsPasskeyAttemptLoading] = useState(false);
 
   const [data, setData] = useState({
     email: "",
@@ -49,18 +56,10 @@ export const Login = () => {
   const [errors, setErrors] = useState({});
 
   const [showTimer, setShowTimer] = useState(false);
-
-  const [hasReceivedOtp, setHasReceivedOtp] = useState(false);
-  const [lastUsedCredentials, setLastUsedCredentials] = useState({
-    email: "",
-    password: "",
-  });
+  const [canRequestNewEmail, setCanRequestNewEmail] = useState(false);
+  const [seconds, setSeconds] = useState(60);
 
   const isLoggedIn = useIsLoggedIn();
-
-  const [canRequestNewEmail, setCanRequestNewEmail] = useState(false);
-
-  const [seconds, setSeconds] = useState(60);
 
   const disableLoginButtonFor60Sec = () => {
     setShowTimer(true);
@@ -77,63 +76,85 @@ export const Login = () => {
     }, 1000);
   };
 
-  const requestOTP = async () => {
-    return await adminSvc.requestOTP(
+  const storeTokensAndNavigate = (response) => {
+    window.dispatchEvent(new Event("login"));
+
+    const { token: tokenData } = response.data;
+    const { token, expiresIn, refreshToken } = tokenData;
+
+    localStorage.setItem("token", token);
+    localStorage.setItem("token-expires-in", expiresIn);
+    localStorage.setItem("refresh-token", refreshToken);
+
+    queryClient.invalidateQueries({ queryKey: ["provider-data"] });
+
+    setErrors({});
+    if (nextPath && nextPath.startsWith("/country-admin/")) {
+      rawNavigate(nextPath);
+    } else {
+      navigate("/dashboard");
+    }
+  };
+
+  const requestEmailMfa = async (sessionId) => {
+    await mfaSvc.emailMfaRequest(sessionId);
+    setIsMfaVerificationOpen(false);
+    setIsCodeVerificationOpen(true);
+    disableLoginButtonFor60Sec();
+    setCanRequestNewEmail(false);
+  };
+
+  const attemptPasskeyMfa = async (sessionId) => {
+    setIsPasskeyAttemptLoading(true);
+    try {
+      const response = await mfaSvc.completePasskeyMfa(sessionId);
+      storeTokensAndNavigate(response);
+    } catch (error) {
+      if (error?.name === "NotAllowedError") {
+        setIsMfaVerificationOpen(true);
+        return;
+      }
+      const { message: errorMessage } = useError(error);
+      setErrors({ submit: errorMessage });
+      setIsMfaVerificationOpen(true);
+    } finally {
+      setIsPasskeyAttemptLoading(false);
+    }
+  };
+
+  const credentialsLogin = async () => {
+    return await mfaSvc.loginCredentials(
       data.email.toLowerCase(),
       data.password.trim(),
       ROLE
     );
   };
-  const requestOtpMutation = useMutation(requestOTP, {
-    onSuccess: () => {
+
+  const credentialsMutation = useMutation(credentialsLogin, {
+    onSuccess: (response) => {
       setErrors({});
 
-      setLoginCredentials({
-        email: data.email.toLocaleLowerCase(),
-        password: data.password.trim(),
-        role: ROLE,
-      });
-      setLastUsedCredentials({
-        email: data.email.toLocaleLowerCase(),
-        password: data.password.trim(),
-      });
+      if (!response.data.mfaRequired) {
+        storeTokensAndNavigate(response);
+        return;
+      }
 
-      setHasReceivedOtp(true);
-      setIsCodeVerificationOpen(true);
-      disableLoginButtonFor60Sec();
-      setCanRequestNewEmail(false);
+      const { mfaSessionId: sessionId, availableMethods: methods } =
+        response.data;
+      setMfaSessionId(sessionId);
+      setAvailableMethods(methods);
+
+      if (methods.includes("passkey") && mfaSvc.isPasskeySupported()) {
+        attemptPasskeyMfa(sessionId);
+      } else {
+        requestEmailMfa(sessionId).catch((error) => {
+          const { message: errorMessage } = useError(error);
+          setErrors({ submit: errorMessage });
+        });
+      }
     },
     onError: (error) => {
       const { message: errorMessage } = useError(error);
-      setErrors({ submit: errorMessage });
-    },
-  });
-
-  const login = async () => {
-    return await adminSvc.login(data.email, data.password, ROLE, "1111");
-  };
-  const loginMutation = useMutation(login, {
-    onSuccess: (response) => {
-      window.dispatchEvent(new Event("login"));
-
-      const { token: tokenData } = response.data;
-      const { token, expiresIn, refreshToken } = tokenData;
-
-      localStorage.setItem("token", token);
-      localStorage.setItem("token-expires-in", expiresIn);
-      localStorage.setItem("refresh-token", refreshToken);
-
-      queryClient.invalidateQueries({ queryKey: ["provider-data"] });
-
-      setErrors({});
-      if (nextPath && nextPath.startsWith("/country-admin/")) {
-        rawNavigate(nextPath);
-      } else {
-        navigate("/dashboard");
-      }
-    },
-    onError: (err) => {
-      const { message: errorMessage } = useError(err);
       setErrors({ submit: errorMessage });
     },
   });
@@ -147,26 +168,28 @@ export const Login = () => {
     return <Navigate to={redirectTo} replace />;
   }
 
-  const openCodeVerification = () => setIsCodeVerificationOpen(true);
-
   const handleGoBack = () => navigate("/");
 
   const handleLogin = (e) => {
     e.preventDefault();
-    loginMutation.mutate();
-    return;
+    credentialsMutation.mutate();
+  };
 
-    if (hasReceivedOtp) {
-      if (
-        lastUsedCredentials.email === data.email.toLocaleLowerCase() &&
-        lastUsedCredentials.password === data.password.trim()
-      ) {
-        openCodeVerification();
-      }
-    } else {
-      setHasReceivedOtp(false);
-      requestOtpMutation.mutate();
-    }
+  const handleUseEmailCode = () => {
+    requestEmailMfa(mfaSessionId).catch((error) => {
+      const { message: errorMessage } = useError(error);
+      setErrors({ submit: errorMessage });
+    });
+  };
+
+  const handleRetryPasskey = () => {
+    attemptPasskeyMfa(mfaSessionId);
+  };
+
+  const resendEmailMfa = async () => {
+    await mfaSvc.emailMfaRequest(mfaSessionId);
+    disableLoginButtonFor60Sec();
+    setCanRequestNewEmail(false);
   };
 
   return (
@@ -177,25 +200,38 @@ export const Login = () => {
       handleGoBack={handleGoBack}
     >
       <LoginBlock
-        setLoginCredentials={(data) => setLoginCredentials(data)}
         data={data}
         setData={setData}
         handleLogin={handleLogin}
         errors={errors}
         showTimer={showTimer}
-        isLoading={requestOtpMutation.isLoading || loginMutation.isLoading}
+        isLoading={
+          credentialsMutation.isLoading ||
+          isPasskeyAttemptLoading
+        }
       />
       {width < 768 && <RadialCircle color="purple" />}
+      {isMfaVerificationOpen && (
+        <MfaVerification
+          isOpen={isMfaVerificationOpen}
+          onClose={() => setIsMfaVerificationOpen(false)}
+          availableMethods={availableMethods}
+          onRetryPasskey={handleRetryPasskey}
+          onUseEmailCode={handleUseEmailCode}
+          isPasskeyLoading={isPasskeyAttemptLoading}
+          errorMessage={errors.submit}
+        />
+      )}
       {isCodeVerificationOpen && (
         <CodeVerification
           isOpen={isCodeVerificationOpen}
           onClose={() => setIsCodeVerificationOpen(false)}
-          data={loginCredentials}
-          requestOTP={requestOtpMutation.mutate}
+          mfaSessionId={mfaSessionId}
+          requestOTP={resendEmailMfa}
           canRequestNewEmail={canRequestNewEmail}
           resendTimer={seconds}
           showTimer={showTimer}
-          isMutating={requestOtpMutation.isLoading}
+          nextPath={nextPath}
         />
       )}
     </Page>
