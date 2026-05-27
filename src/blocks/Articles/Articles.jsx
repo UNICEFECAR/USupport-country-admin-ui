@@ -299,7 +299,7 @@ export const Articles = () => {
     },
     onError: (error) => {
       const { message: errorMessage } = useError(error);
-      setError(errorMessage);
+      toast.error(errorMessage);
     },
   });
 
