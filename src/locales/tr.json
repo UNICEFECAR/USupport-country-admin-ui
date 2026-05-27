@@ -107,6 +107,38 @@
       "translate_to_uk": "Ukraynaca'ya çevir",
       "translate_to_en": "İngilizce'ye çevir",
       "no_text_to_translate": "Lütfen önce Romence açıklamayı girin"
+    },
+    "admin-profile": {
+      "security_settings": "Güvenlik"
+    },
+    "security-settings": {
+      "two_factor_heading": "İki faktörlü kimlik doğrulama",
+      "two_factor_toggle_label": "Girişte ikinci bir faktör iste",
+      "two_factor_help": "Etkinleştirildiğinde önce parolanızla giriş yapın, ardından bu cihazdaki passkey veya e-posta kodu ile doğrulayın.",
+      "two_factor_status_enabled": "Etkin — girişte ikinci bir faktör gerekli",
+      "two_factor_status_disabled": "Devre dışı — yalnızca parola ile giriş",
+      "passkeys_heading": "Passkey'ler",
+      "passkeys_help": "Bu cihazda daha hızlı doğrulama için passkey ekleyin. E-posta kodları yedek seçenek olarak kullanılabilir.",
+      "passkeys_empty": "Henüz kayıtlı passkey yok. Bu cihazda daha hızlı giriş için aşağıdan bir passkey ekleyin.",
+      "passkeys_unsupported": "Passkey'ler bu tarayıcıda desteklenmiyor.",
+      "add_passkey_heading": "Yeni passkey ekle",
+      "add_passkey": "Passkey ekle",
+      "remove_passkey": "Kaldır",
+      "passkey_name_label": "Cihaz adı (isteğe bağlı)",
+      "passkey_name_placeholder": "örn. MacBook Pro",
+      "default_passkey_name": "Passkey",
+      "last_used": "Son kullanım {{date}}",
+      "enable_success": "İki faktörlü kimlik doğrulama etkinleştirildi",
+      "disable_success": "İki faktörlü kimlik doğrulama devre dışı bırakıldı",
+      "passkey_added_success": "Passkey eklendi",
+      "passkey_removed_success": "Passkey kaldırıldı",
+      "passkey_registering": "Passkey eklemeyi tamamlamak için cihazınızdaki yönergeleri izleyin.",
+      "passkey_cancelled": "Passkey kurulumu iptal edildi. Hazır olduğunuzda tekrar deneyin.",
+      "passkey_add_failed": "Passkey eklenemedi. Lütfen tekrar deneyin.",
+      "enable_confirm_heading": "İki faktörlü kimlik doğrulamayı etkinleştir",
+      "disable_confirm_heading": "İki faktörlü kimlik doğrulamayı devre dışı bırak",
+      "enable_confirm_text": "İki faktörlü kimlik doğrulamayı etkinleştirmek için parolanızı girin.",
+      "disable_confirm_text": "İki faktörlü kimlik doğrulamayı devre dışı bırakmak için parolanızı girin."
     }
   },
   "pages": {
@@ -177,6 +209,24 @@
       "positiveClientRatings_info": "Müşterilerin «Profiliniz» bölümünden gönderdiği toplam olumlu değerlendirme sayısı",
       "positiveProviderRatings_info": "Sağlayıcılar tarafından verilen toplam olumlu değerlendirme sayısı",
       "missing": "Mevcut değil"
+    },
+    "security-settings-page": {
+      "heading": "Güvenlik",
+      "subheading": "Hesabınız için iki faktörlü kimlik doğrulamayı ve passkey'leri yönetin."
+    }
+  },
+  "modals": {
+    "mfa-verification": {
+      "heading": "Kimliğinizi doğrulayın",
+      "subheading": "Passkey veya e-posta doğrulama kodu ile girişi tamamlayın.",
+      "passkey_button_label": "Passkey ile doğrula",
+      "email_code_button_label": "E-posta kodunu kullan"
+    },
+    "confirm-password": {
+      "heading": "Parolayı onayla",
+      "subheading": "Devam etmek için mevcut parolanızı girin.",
+      "password_label": "Parola",
+      "confirm_button_label": "Onayla"
     }
   },
   "meta": {

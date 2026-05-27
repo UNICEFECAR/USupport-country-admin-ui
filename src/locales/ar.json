@@ -107,6 +107,38 @@
       "translate_to_uk": "ترجمة إلى الأوكرانية",
       "translate_to_en": "ترجمة إلى الإنجليزية",
       "no_text_to_translate": "يرجى إدخال الوصف بالرومانية أولاً"
+    },
+    "admin-profile": {
+      "security_settings": "الأمان"
+    },
+    "security-settings": {
+      "two_factor_heading": "المصادقة الثنائية",
+      "two_factor_toggle_label": "طلب عامل ثانٍ عند تسجيل الدخول",
+      "two_factor_help": "عند التفعيل، سجّل الدخول أولاً بكلمة المرور، ثم تحقق باستخدام مفتاح مرور على هذا الجهاز أو رمز عبر البريد الإلكتروني.",
+      "two_factor_status_enabled": "مفعّلة — يلزم عامل ثانٍ عند تسجيل الدخول",
+      "two_factor_status_disabled": "معطّلة — تسجيل الدخول بكلمة المرور فقط",
+      "passkeys_heading": "مفاتيح المرور",
+      "passkeys_help": "أضف مفتاح مرور للتحقق بشكل أسرع على هذا الجهاز. تظل رموز البريد الإلكتروني متاحة كبديل.",
+      "passkeys_empty": "لا توجد مفاتيح مرور مسجلة بعد. أضف واحداً أدناه لتسجيل دخول أسرع على هذا الجهاز.",
+      "passkeys_unsupported": "مفاتيح المرور غير مدعومة في هذا المتصفح.",
+      "add_passkey_heading": "إضافة مفتاح مرور جديد",
+      "add_passkey": "إضافة مفتاح مرور",
+      "remove_passkey": "إزالة",
+      "passkey_name_label": "اسم الجهاز (اختياري)",
+      "passkey_name_placeholder": "مثال: MacBook Pro",
+      "default_passkey_name": "مفتاح مرور",
+      "last_used": "آخر استخدام {{date}}",
+      "enable_success": "تم تفعيل المصادقة الثنائية",
+      "disable_success": "تم تعطيل المصادقة الثنائية",
+      "passkey_added_success": "تمت إضافة مفتاح المرور",
+      "passkey_removed_success": "تمت إزالة مفتاح المرور",
+      "passkey_registering": "اتبع التعليمات على جهازك لإكمال إضافة مفتاح المرور.",
+      "passkey_cancelled": "تم إلغاء إعداد مفتاح المرور. حاول مرة أخرى عندما تكون جاهزاً.",
+      "passkey_add_failed": "تعذرت إضافة مفتاح المرور. يرجى المحاولة مرة أخرى.",
+      "enable_confirm_heading": "تفعيل المصادقة الثنائية",
+      "disable_confirm_heading": "تعطيل المصادقة الثنائية",
+      "enable_confirm_text": "أدخل كلمة المرور لتفعيل المصادقة الثنائية.",
+      "disable_confirm_text": "أدخل كلمة المرور لتعطيل المصادقة الثنائية."
     }
   },
   "pages": {
@@ -150,6 +182,10 @@
       "qr_visits": "زيارات QR",
       "no_data": "لم يتم العثور على بيانات"
     },
+    "security-settings-page": {
+      "heading": "الأمان",
+      "subheading": "إدارة المصادقة الثنائية ومفاتيح المرور لحسابك."
+    },
     "analytics-page": {
       "heading": "التحليلات",
       "ro": "رومانيا",
@@ -177,6 +213,20 @@
       "positiveClientRatings_info": "إجمالي التقييمات الإيجابية المقدمة من العملاء من قسم «ملفك الشخصي»",
       "positiveProviderRatings_info": "إجمالي التقييمات الإيجابية المقدمة من الموفرين",
       "missing": "غير متوفر"
+    }
+  },
+  "modals": {
+    "mfa-verification": {
+      "heading": "تحقق من هويتك",
+      "subheading": "أكمل تسجيل الدخول باستخدام مفتاح مرور أو رمز تحقق عبر البريد الإلكتروني.",
+      "passkey_button_label": "التحقق بمفتاح المرور",
+      "email_code_button_label": "استخدام رمز البريد الإلكتروني"
+    },
+    "confirm-password": {
+      "heading": "تأكيد كلمة المرور",
+      "subheading": "أدخل كلمة المرور الحالية للمتابعة.",
+      "password_label": "كلمة المرور",
+      "confirm_button_label": "تأكيد"
     }
   },
   "meta": {

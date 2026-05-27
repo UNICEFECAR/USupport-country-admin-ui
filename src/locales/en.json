@@ -148,7 +148,37 @@
       "contact_us_button_label": "Contact us",
       "privacy_policy_button_label": "Privacy Policy",
       "FAQ_button_label": "FAQ",
-      "user_guide": "Platform usage"
+      "user_guide": "Platform usage",
+      "security_settings": "Security"
+    },
+    "security-settings": {
+      "two_factor_heading": "Two-factor authentication",
+      "two_factor_toggle_label": "Require a second factor at login",
+      "two_factor_help": "When enabled, sign in with your password first, then verify with a passkey on this device or an email code.",
+      "two_factor_status_enabled": "Enabled — a second factor is required at login",
+      "two_factor_status_disabled": "Disabled — password-only sign in",
+      "passkeys_heading": "Passkeys",
+      "passkeys_help": "Add a passkey for faster verification on this device. Email codes remain available as a fallback.",
+      "passkeys_empty": "No passkeys registered yet. Add one below for faster sign in on this device.",
+      "passkeys_unsupported": "Passkeys are not supported in this browser.",
+      "add_passkey_heading": "Add a new passkey",
+      "add_passkey": "Add passkey",
+      "remove_passkey": "Remove",
+      "passkey_name_label": "Device name (optional)",
+      "passkey_name_placeholder": "e.g. MacBook Pro",
+      "default_passkey_name": "Passkey",
+      "last_used": "Last used {{date}}",
+      "enable_success": "Two-factor authentication enabled",
+      "disable_success": "Two-factor authentication disabled",
+      "passkey_added_success": "Passkey added",
+      "passkey_removed_success": "Passkey removed",
+      "passkey_registering": "Follow the prompt on your device to finish adding this passkey.",
+      "passkey_cancelled": "Passkey setup was cancelled. Try again when you're ready.",
+      "passkey_add_failed": "Could not add passkey. Please try again.",
+      "enable_confirm_heading": "Enable two-factor authentication",
+      "disable_confirm_heading": "Disable two-factor authentication",
+      "enable_confirm_text": "Enter your password to turn on two-factor authentication.",
+      "disable_confirm_text": "Enter your password to turn off two-factor authentication."
     },
     "edit-profile-details": {
       "name_label": "Name",
@@ -1080,6 +1110,10 @@
       "subheading": "Here you can find all the information you need for your profile and account settings.",
       "button_label": "Logout"
     },
+    "security-settings-page": {
+      "heading": "Security",
+      "subheading": "Manage two-factor authentication and passkeys for your account."
+    },
     "edit-profile-details-page": {
       "heading": "Edit profile details"
     },
@@ -1264,6 +1298,18 @@
       "didnt_get_code": "Didn’t get code?",
       "resend_code_button_label": "Resend email",
       "seconds": "in {{seconds}} seconds"
+    },
+    "mfa-verification": {
+      "heading": "Verify your identity",
+      "subheading": "Complete sign-in with a passkey or email verification code.",
+      "passkey_button_label": "Verify with passkey",
+      "email_code_button_label": "Use email code instead"
+    },
+    "confirm-password": {
+      "heading": "Confirm password",
+      "subheading": "Enter your current password to continue.",
+      "password_label": "Password",
+      "confirm_button_label": "Confirm"
     },
     "question-details": {
       "today": "Today",

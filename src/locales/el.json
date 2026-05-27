@@ -146,7 +146,37 @@
       "contact_us_button_label": "Επικοινωνία",
       "privacy_policy_button_label": "Πολιτική απορρήτου",
       "FAQ_button_label": "Συχνές ερωτήσεις",
-      "user_guide": "Χρήση πλατφόρμας"
+      "user_guide": "Χρήση πλατφόρμας",
+      "security_settings": "Ασφάλεια"
+    },
+    "security-settings": {
+      "two_factor_heading": "Έλεγχος ταυτότητας δύο παραγόντων",
+      "two_factor_toggle_label": "Απαίτηση δεύτερου παράγοντα κατά τη σύνδεση",
+      "two_factor_help": "Όταν είναι ενεργοποιημένος, συνδεθείτε πρώτα με τον κωδικό πρόσβασης και στη συνέχεια επαληθεύστε με passkey σε αυτή τη συσκευή ή με κωδικό email.",
+      "two_factor_status_enabled": "Ενεργοποιημένος — απαιτείται δεύτερος παράγοντας κατά τη σύνδεση",
+      "two_factor_status_disabled": "Απενεργοποιημένος — σύνδεση μόνο με κωδικό πρόσβασης",
+      "passkeys_heading": "Passkeys",
+      "passkeys_help": "Προσθέστε passkey για ταχύτερη επαλήθευση σε αυτή τη συσκευή. Οι κωδικοί email παραμένουν διαθέσιμοι ως εναλλακτική.",
+      "passkeys_empty": "Δεν έχουν καταχωρηθεί passkeys. Προσθέστε ένα παρακάτω για ταχύτερη σύνδεση σε αυτή τη συσκευή.",
+      "passkeys_unsupported": "Τα passkeys δεν υποστηρίζονται σε αυτόν τον browser.",
+      "add_passkey_heading": "Προσθήκη νέου passkey",
+      "add_passkey": "Προσθήκη passkey",
+      "remove_passkey": "Αφαίρεση",
+      "passkey_name_label": "Όνομα συσκευής (προαιρετικό)",
+      "passkey_name_placeholder": "π.χ. MacBook Pro",
+      "default_passkey_name": "Passkey",
+      "last_used": "Τελευταία χρήση {{date}}",
+      "enable_success": "Ο έλεγχος ταυτότητας δύο παραγόντων ενεργοποιήθηκε",
+      "disable_success": "Ο έλεγχος ταυτότητας δύο παραγόντων απενεργοποιήθηκε",
+      "passkey_added_success": "Το passkey προστέθηκε",
+      "passkey_removed_success": "Το passkey αφαιρέθηκε",
+      "passkey_registering": "Ακολουθήστε τις οδηγίες στη συσκευή σας για να ολοκληρώσετε την προσθήκη passkey.",
+      "passkey_cancelled": "Η ρύθμιση passkey ακυρώθηκε. Δοκιμάστε ξανά όταν είστε έτοιμοι.",
+      "passkey_add_failed": "Δεν ήταν δυνατή η προσθήκη passkey. Δοκιμάστε ξανά.",
+      "enable_confirm_heading": "Ενεργοποίηση ελέγχου ταυτότητας δύο παραγόντων",
+      "disable_confirm_heading": "Απενεργοποίηση ελέγχου ταυτότητας δύο παραγόντων",
+      "enable_confirm_text": "Εισαγάγετε τον κωδικό πρόσβασης για να ενεργοποιήσετε τον έλεγχο ταυτότητας δύο παραγόντων.",
+      "disable_confirm_text": "Εισαγάγετε τον κωδικό πρόσβασης για να απενεργοποιήσετε τον έλεγχο ταυτότητας δύο παραγόντων."
     },
     "edit-profile-details": {
       "name_label": "Όνομα",
@@ -1127,6 +1157,10 @@
       "subheading": "Εδώ μπορείτε να βρείτε όλες τις πληροφορίες που χρειάζεστε για τις ρυθμίσεις του προφίλ και του λογαριασμού σας.",
       "button_label": "Αποσύνδεση"
     },
+    "security-settings-page": {
+      "heading": "Ασφάλεια",
+      "subheading": "Διαχειριστείτε τον έλεγχο ταυτότητας δύο παραγόντων και τα passkeys για τον λογαριασμό σας."
+    },
     "edit-profile-details-page": {
       "heading": "Επεξεργασία στοιχείων προφίλ"
     },
@@ -1317,6 +1351,18 @@
       "didnt_get_code": "Δεν λάβατε κωδικό;",
       "resend_code_button_label": "Επαναποστολή email",
       "seconds": "σε {{seconds}} δευτερόλεπτα"
+    },
+    "mfa-verification": {
+      "heading": "Επαληθεύστε την ταυτότητά σας",
+      "subheading": "Ολοκληρώστε τη σύνδεση με passkey ή κωδικό επαλήθευσης email.",
+      "passkey_button_label": "Επαλήθευση με passkey",
+      "email_code_button_label": "Χρήση κωδικού email"
+    },
+    "confirm-password": {
+      "heading": "Επιβεβαίωση κωδικού πρόσβασης",
+      "subheading": "Εισαγάγετε τον τρέχοντα κωδικό πρόσβασης για να συνεχίσετε.",
+      "password_label": "Κωδικός πρόσβασης",
+      "confirm_button_label": "Επιβεβαίωση"
     },
     "question-details": {
       "today": "Σήμερα",
