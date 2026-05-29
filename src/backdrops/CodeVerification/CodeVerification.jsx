@@ -1,19 +1,14 @@
 import React, { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
-import { useCustomNavigate as useNavigate } from "#hooks";
+import { useNavigate as useRawNavigate } from "react-router-dom";
 import { PinInput } from "@USupport-components-library/src";
 
-import { useError } from "#hooks";
+import { useCustomNavigate as useNavigate, useError } from "#hooks";
 
-import {
-  Backdrop,
-  ButtonWithIcon,
-  Button,
-  Error,
-} from "@USupport-components-library/src";
+import { Backdrop, ButtonWithIcon, Button } from "@USupport-components-library/src";
 
-import { adminSvc } from "@USupport-components-library/services";
+import { mfaSvc } from "@USupport-components-library/services";
 
 import "./code-verification.scss";
 
@@ -27,26 +22,27 @@ import "./code-verification.scss";
 export const CodeVerification = ({
   isOpen,
   onClose,
-  data,
+  mfaSessionId,
   requestOTP,
   resendTimer,
   showTimer,
   canRequestNewEmail,
-  isMutating,
+  nextPath,
 }) => {
   const { t } = useTranslation("modals", { keyPrefix: "code-verification" });
   const navigate = useNavigate();
+  const rawNavigate = useRawNavigate();
   const queryClient = useQueryClient();
 
   const [isCodeHidden, setIsCodeHidden] = useState(true);
   const [errors, setErrors] = useState({});
-
   const [code, setCode] = useState("");
 
-  const login = async () => {
-    return await adminSvc.login(data.email, data.password, data.role, code);
+  const verifyEmailMfa = async () => {
+    return await mfaSvc.emailMfaVerify(mfaSessionId, code);
   };
-  const loginMutation = useMutation(login, {
+
+  const verifyMutation = useMutation(verifyEmailMfa, {
     onSuccess: (response) => {
       const { token: tokenData } = response.data;
       const { token, expiresIn, refreshToken } = tokenData;
@@ -59,6 +55,10 @@ export const CodeVerification = ({
       window.dispatchEvent(new Event("login"));
 
       setErrors({});
+      if (nextPath && nextPath.startsWith("/country-admin/")) {
+        rawNavigate(nextPath);
+        return;
+      }
       navigate("/dashboard");
     },
     onError: (err) => {
@@ -67,13 +67,19 @@ export const CodeVerification = ({
     },
   });
 
-  const handleCodeChange = (value) => {
-    setCode(value);
-  };
+  const resendMutation = useMutation(requestOTP, {
+    onSuccess: () => {
+      setErrors({});
+    },
+    onError: (err) => {
+      const { message: errorMessage } = useError(err);
+      setErrors({ submit: errorMessage });
+    },
+  });
 
   const handleSend = (e) => {
     e?.preventDefault();
-    loginMutation.mutate();
+    verifyMutation.mutate();
   };
 
   return (
@@ -84,53 +90,46 @@ export const CodeVerification = ({
       onClose={onClose}
       heading={t("heading")}
       text={t("subheading")}
+      ctaLabel={t("send_button_label")}
+      ctaHandleClick={handleSend}
+      isCtaDisabled={code.length !== 4}
+      isCtaLoading={verifyMutation.isLoading}
+      errorMessage={errors.submit}
     >
-      <form onSubmit={handleSend}>
-        <div className="code-verification__content">
-          <PinInput
-            length={4}
-            secret={isCodeHidden}
-            onChange={(value) => handleCodeChange(value)}
-          />
-          <ButtonWithIcon
-            classes="code-verification__view-code-button"
-            type="ghost"
-            color="purple"
-            iconName={isCodeHidden ? "view" : "hide"}
-            iconColor="#9749FA"
-            label={
-              isCodeHidden
-                ? t("button_with_icon_label_view")
-                : t("button_with_icon_label_hide")
-            }
-            onClick={() => setIsCodeHidden(!isCodeHidden)}
-          />
-          <Button
-            label={t("send_button_label")}
-            size="lg"
-            classes="code-verification__send-button"
-            disabled={code.length === 4 ? false : true}
-            onClick={handleSend}
-            loading={loginMutation.isLoading}
-            isSubmit
-          />
-          {errors.submit && <Error message={errors.submit} />}
-          <div className="code-verification__resend-code-container">
-            <p className="small-text">{t("didnt_get_code")}</p>
+      <div className="code-verification__content">
+        <PinInput
+          length={4}
+          secret={isCodeHidden}
+          onChange={(value) => setCode(value)}
+        />
+        <ButtonWithIcon
+          classes="code-verification__view-code-button"
+          type="ghost"
+          color="purple"
+          iconName={isCodeHidden ? "view" : "hide"}
+          iconColor="#9749FA"
+          label={
+            isCodeHidden
+              ? t("button_with_icon_label_view")
+              : t("button_with_icon_label_hide")
+          }
+          onClick={() => setIsCodeHidden(!isCodeHidden)}
+        />
+        <div className="code-verification__resend-code-container">
+          <p className="small-text">{t("didnt_get_code")}</p>
 
-            <Button
-              disabled={!canRequestNewEmail || isMutating}
-              label={t("resend_code_button_label")}
-              type="link"
-              classes="code-verification__resend-code-container__button"
-              onClick={requestOTP}
-            />
-            <p className="small-text">
-              {showTimer ? t("seconds", { seconds: resendTimer }) : ""}
-            </p>
-          </div>
+          <Button
+            disabled={!canRequestNewEmail || resendMutation.isLoading}
+            label={t("resend_code_button_label")}
+            type="link"
+            classes="code-verification__resend-code-container__button"
+            onClick={() => resendMutation.mutate()}
+          />
+          <p className="small-text">
+            {showTimer ? t("seconds", { seconds: resendTimer }) : ""}
+          </p>
         </div>
-      </form>
+      </div>
     </Backdrop>
   );
 };

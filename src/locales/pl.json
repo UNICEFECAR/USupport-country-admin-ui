@@ -148,7 +148,37 @@
       "contact_us_button_label": "Skontaktuj się z nami",
       "privacy_policy_button_label": "Polityką prywatności",
       "FAQ_button_label": "Najczęściej zadawane pytania",
-      "user_guide": "Instrukcja platformy"
+      "user_guide": "Instrukcja platformy",
+      "security_settings": "Bezpieczeństwo"
+    },
+    "security-settings": {
+      "two_factor_heading": "Uwierzytelnianie dwuskładnikowe",
+      "two_factor_toggle_label": "Wymagaj drugiego składnika przy logowaniu",
+      "two_factor_help": "Po włączeniu najpierw zaloguj się hasłem, a następnie potwierdź tożsamość kluczem dostępu na tym urządzeniu lub kodem z e-maila.",
+      "two_factor_status_enabled": "Włączone — przy logowaniu wymagany jest drugi składnik",
+      "two_factor_status_disabled": "Wyłączone — logowanie tylko hasłem",
+      "passkeys_heading": "Klucze dostępu",
+      "passkeys_help": "Dodaj klucz dostępu, aby szybciej weryfikować tożsamość na tym urządzeniu. Kody e-mail pozostają dostępne jako alternatywa.",
+      "passkeys_empty": "Brak zarejestrowanych kluczy dostępu. Dodaj jeden poniżej, aby szybciej logować się na tym urządzeniu.",
+      "passkeys_unsupported": "Klucze dostępu nie są obsługiwane w tej przeglądarce.",
+      "add_passkey_heading": "Dodaj nowy klucz dostępu",
+      "add_passkey": "Dodaj klucz dostępu",
+      "remove_passkey": "Usuń",
+      "passkey_name_label": "Nazwa urządzenia (opcjonalnie)",
+      "passkey_name_placeholder": "np. MacBook Pro",
+      "default_passkey_name": "Klucz dostępu",
+      "last_used": "Ostatnie użycie {{date}}",
+      "enable_success": "Uwierzytelnianie dwuskładnikowe włączone",
+      "disable_success": "Uwierzytelnianie dwuskładnikowe wyłączone",
+      "passkey_added_success": "Klucz dostępu dodany",
+      "passkey_removed_success": "Klucz dostępu usunięty",
+      "passkey_registering": "Postępuj zgodnie z instrukcjami na urządzeniu, aby dokończyć dodawanie klucza dostępu.",
+      "passkey_cancelled": "Konfiguracja klucza dostępu została anulowana. Spróbuj ponownie, gdy będziesz gotowy.",
+      "passkey_add_failed": "Nie udało się dodać klucza dostępu. Spróbuj ponownie.",
+      "enable_confirm_heading": "Włącz uwierzytelnianie dwuskładnikowe",
+      "disable_confirm_heading": "Wyłącz uwierzytelnianie dwuskładnikowe",
+      "enable_confirm_text": "Wprowadź hasło, aby włączyć uwierzytelnianie dwuskładnikowe.",
+      "disable_confirm_text": "Wprowadź hasło, aby wyłączyć uwierzytelnianie dwuskładnikowe."
     },
     "edit-profile-details": {
       "name_label": "Imię",
@@ -1135,6 +1165,10 @@
       "subheading": "Tutaj możesz znaleźć wszystkie informacje dotyczące Twojego profilu i ustawień konta.",
       "button_label": "Wylogowanie"
     },
+    "security-settings-page": {
+      "heading": "Bezpieczeństwo",
+      "subheading": "Zarządzaj uwierzytelnianiem dwuskładnikowym i kluczami dostępu do konta."
+    },
     "edit-profile-details-page": {
       "heading": "Edycja szczegółów profilu"
     },
@@ -1325,6 +1359,18 @@
       "didnt_get_code": "Nie otrzymałeś kodu?",
       "resend_code_button_label": "Wyślij ponownie wiadomość email",
       "seconds": "w {{seconds}} sekund"
+    },
+    "mfa-verification": {
+      "heading": "Potwierdź tożsamość",
+      "subheading": "Dokończ logowanie kluczem dostępu lub kodem weryfikacyjnym z e-maila.",
+      "passkey_button_label": "Zweryfikuj kluczem dostępu",
+      "email_code_button_label": "Użyj kodu z e-maila"
+    },
+    "confirm-password": {
+      "heading": "Potwierdź hasło",
+      "subheading": "Wprowadź aktualne hasło, aby kontynuować.",
+      "password_label": "Hasło",
+      "confirm_button_label": "Potwierdź"
     },
     "question-details": {
       "today": "Dzisiaj",

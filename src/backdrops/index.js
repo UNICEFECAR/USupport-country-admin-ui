@@ -6,5 +6,7 @@ export * from "./QuestionDetails";
 export * from "./FilterQuestions";
 export * from "./FilterAnalytics";
 export * from "./ChangePassword";
+export * from "./ConfirmPassword";
 export * from "./CreateOrganization";
 export * from "./DeleteOrganization";
+export * from "./MfaVerification";

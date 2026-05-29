@@ -1,0 +1,171 @@
+@import "@USupport-components-library/styles";
+
+.security-settings {
+  &__grid {
+    place-items: center;
+    padding-bottom: $spacing_3_6;
+    padding-top: $spacing_3_0;
+    text-align: left;
+
+    @media screen and (min-width: $screen_md) {
+      padding-top: $spacing_4_0;
+    }
+
+    & .grid-item {
+      justify-items: center;
+    }
+
+    &__item {
+      width: 100%;
+    }
+  }
+
+  &__description {
+    margin-bottom: $spacing_2_4;
+    max-width: 68rem;
+    text-align: left;
+    width: 100%;
+  }
+
+  &__sections {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing_2_4;
+    width: 100%;
+  }
+
+  &__section {
+    border-radius: $border_radius_2_4;
+    padding: $spacing_2_4;
+    width: 100%;
+
+    @media screen and (min-width: $screen_md) {
+      padding: $spacing_3_0;
+    }
+  }
+
+  &__section-title {
+    color: $color_blue_3d527b;
+    font-weight: $font_bold;
+    margin-bottom: $spacing_0_8;
+    text-align: left;
+  }
+
+  &__section-help {
+    margin-bottom: $spacing_2_0;
+  }
+
+  &__setting-row {
+    align-items: center;
+    border-top: 0.1rem solid rgba($color_blue_3d527b, 0.12);
+    display: flex;
+    gap: $spacing_2_4;
+    justify-content: space-between;
+    margin-top: $spacing_1_6;
+    padding-top: $spacing_2_0;
+
+    &__content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    &__label {
+      color: $color_blue_3d527b;
+      font-weight: $font_bold;
+      margin-bottom: $spacing_0_4;
+    }
+
+    & .toggle-wrapper {
+      flex-shrink: 0;
+    }
+  }
+
+  &__status {
+    &--enabled {
+      color: $color_green_7ec680;
+    }
+
+    &--disabled {
+      opacity: 0.75;
+    }
+  }
+
+  &__passkey-list {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing_1_2;
+  }
+
+  &__passkey-empty {
+    border: 0.1rem dashed rgba($color_blue_3d527b, 0.2);
+    border-radius: $border_radius_1_6;
+    margin: 0;
+    padding: $spacing_2_0;
+    text-align: center;
+  }
+
+  &__passkey-item {
+    align-items: center;
+    background-color: rgba($color_blue_3d527b, 0.04);
+    border-radius: $border_radius_1_6;
+    display: flex;
+    gap: $spacing_1_6;
+    padding: $spacing_1_6 $spacing_2_0;
+
+    @media screen and (max-width: $screen_md) {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    &__icon {
+      align-items: center;
+      background-color: rgba($color_primary_20809e, 0.12);
+      border-radius: 50%;
+      display: flex;
+      flex-shrink: 0;
+      height: 4rem;
+      justify-content: center;
+      width: 4rem;
+    }
+
+    &__info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    &__name {
+      color: $color_blue_3d527b;
+      font-weight: $font_bold;
+      margin-bottom: $spacing_0_4;
+    }
+  }
+
+  &__add-passkey {
+    border-top: 0.1rem solid rgba($color_blue_3d527b, 0.12);
+    margin-top: $spacing_2_4;
+    padding-top: $spacing_2_4;
+
+    &__label {
+      color: $color_blue_3d527b;
+      font-weight: $font_bold;
+      margin-bottom: $spacing_1_6;
+    }
+
+    &__button {
+      margin-top: $spacing_2_4;
+
+      & .btn {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__passkey-name-input {
+    text-align: left;
+    width: 100%;
+
+    &.input-container {
+      margin-top: 0;
+    }
+  }
+}

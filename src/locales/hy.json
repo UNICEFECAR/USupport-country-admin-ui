@@ -148,7 +148,37 @@
       "contact_us_button_label": "Կապվեք մեզ հետ",
       "privacy_policy_button_label": "Գաղտնիության քաղաքականություն",
       "FAQ_button_label": "Հաճախակի տրվող հարցեր",
-      "user_guide": "Հարթակի օգտագործելիությունը"
+      "user_guide": "Հարթակի օգտագործելիությունը",
+      "security_settings": "Անվտանգություն"
+    },
+    "security-settings": {
+      "two_factor_heading": "Երկգործոնիչ վավերացում",
+      "two_factor_toggle_label": "Մուտքի ժամանակ պահանջել երկրորդ գործոն",
+      "two_factor_help": "Միացված դեպքում նախ մուտք գործեք գաղտնաբառով, ապա հաստատեք այս սարքի passkey-ով կամ էլ. փոստի կոդով։",
+      "two_factor_status_enabled": "Միացված է — մուտքի ժամանակ պահանջվում է երկրորդ գործոն",
+      "two_factor_status_disabled": "Անջատված է — մուտք միայն գաղտնաբառով",
+      "passkeys_heading": "Passkey-ներ",
+      "passkeys_help": "Ավելացրեք passkey արագ վավերացման համար այս սարքում։ Էլ. փոստի կոդերը մնում են որպես պահուստային տարբերակ։",
+      "passkeys_empty": "Passkey-ներ դեռ գրանցված չեն։ Ավելացրեք մեկը ստորից արագ մուտքի համար այս սարքում։",
+      "passkeys_unsupported": "Passkey-ները չեն աջակցվում այս դիտարկիչում։",
+      "add_passkey_heading": "Ավելացնել նոր passkey",
+      "add_passkey": "Ավելացնել passkey",
+      "remove_passkey": "Հեռացնել",
+      "passkey_name_label": "Սարքի անվանում (ընտրովի)",
+      "passkey_name_placeholder": "օր. MacBook Pro",
+      "default_passkey_name": "Passkey",
+      "last_used": "Վերջին օգտագործում {{date}}",
+      "enable_success": "Երկգործոնիչ վավերացումը միացված է",
+      "disable_success": "Երկգործոնիչ վավերացումը անջատված է",
+      "passkey_added_success": "Passkey-ն ավելացվել է",
+      "passkey_removed_success": "Passkey-ն հեռացվել է",
+      "passkey_registering": "Passkey ավելացնելն ավարտելու համար հետևեք սարքի հրահանգներին։",
+      "passkey_cancelled": "Passkey-ի կարգավորումը չեղարկվել է։ Փորձեք կրկին, երբ պատրաստ լինեք։",
+      "passkey_add_failed": "Չհաջողվեց ավելացնել passkey-ն։ Խնդրում ենք կրկին փորձել։",
+      "enable_confirm_heading": "Միացնել երկգործոնիչ վավերացումը",
+      "disable_confirm_heading": "Անջատել երկգործոնիչ վավերացումը",
+      "enable_confirm_text": "Երկգործոնիչ վավերացումը միացնելու համար մուտքագրեք գաղտնաբառը։",
+      "disable_confirm_text": "Երկգործոնիչ վավերացումը անջատելու համար մուտքագրեք գաղտնաբառը։"
     },
     "edit-profile-details": {
       "name_label": "Անունը",
@@ -1074,6 +1104,10 @@
       "subheading": "Այստեղ կարող եք գտնել ամբողջ տեղեկատվությունը, որն անհրաժեշտ է ձեր պրոֆիլի և օգտահաշվի կարգավորումների համար",
       "button_label": "Դուրս գալ համակարգից"
     },
+    "security-settings-page": {
+      "heading": "Անվտանգություն",
+      "subheading": "Կառավարեք երկգործոնիչ վավերացումը և passkey-ները ձեր հաշվի համար։"
+    },
     "edit-profile-details-page": {
       "heading": "Փոփոխել պրոֆիլի մանրամասները"
     },
@@ -1258,6 +1292,18 @@
       "didnt_get_code": "Չե՞ք ստացել կոդը?",
       "resend_code_button_label": "Վերաուղարկել էլեկտրոնային նամակը",
       "seconds": "{{seconds}} վայրկյանի ընթացքում"
+    },
+    "mfa-verification": {
+      "heading": "Հաստատեք ինքնությունը",
+      "subheading": "Ավարտեք մուտքը passkey-ով կամ էլ. փոստի հաստատման կոդով։",
+      "passkey_button_label": "Հաստատել passkey-ով",
+      "email_code_button_label": "Օգտագործել էլ. փոստի կոդը"
+    },
+    "confirm-password": {
+      "heading": "Հաստատեք գաղտնաբառը",
+      "subheading": "Շարունակելու համար մուտքագրեք ընթացիկ գաղտնաբառը։",
+      "password_label": "Գաղտնաբառ",
+      "confirm_button_label": "Հաստատել"
     },
     "question-details": {
       "today": "Այսօր",

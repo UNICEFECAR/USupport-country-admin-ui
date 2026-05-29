@@ -148,7 +148,37 @@
       "contact_us_button_label": "Бізге хабарласыңыз",
       "privacy_policy_button_label": "Құпиялық саясаты",
       "FAQ_button_label": "Жиі қойылатын сұрақтар",
-      "user_guide": "Платформа нұсқаулығы"
+      "user_guide": "Платформа нұсқаулығы",
+      "security_settings": "Қауіпсіздік"
+    },
+    "security-settings": {
+      "two_factor_heading": "Екі факторлы аутентификация",
+      "two_factor_toggle_label": "Кіру кезінде екінші факторды талап ету",
+      "two_factor_help": "Қосылған кезде алдымен парольмен кіріңіз, содан кейін осы құрылғыдағы passkey немесе электрондық пошта коды арқылы растаңыз.",
+      "two_factor_status_enabled": "Қосылған — кіру кезінде екінші фактор қажет",
+      "two_factor_status_disabled": "Өшірілген — тек парольмен кіру",
+      "passkeys_heading": "Passkey-лер",
+      "passkeys_help": "Осы құрылғыда тезірек растау үшін passkey қосыңыз. Электрондық пошта кодтары резервтік нұсқа ретінде қолжетімді.",
+      "passkeys_empty": "Passkey-лер әлі тіркелмеген. Осы құрылғыда тезірек кіру үшін төменнен бір passkey қосыңыз.",
+      "passkeys_unsupported": "Passkey-лер осы браузерде қолдау көрсетілмейді.",
+      "add_passkey_heading": "Жаңа passkey қосу",
+      "add_passkey": "Passkey қосу",
+      "remove_passkey": "Жою",
+      "passkey_name_label": "Құрылғы атауы (міндетті емес)",
+      "passkey_name_placeholder": "мысалы, MacBook Pro",
+      "default_passkey_name": "Passkey",
+      "last_used": "Соңғы пайдалану {{date}}",
+      "enable_success": "Екі факторлы аутентификация қосылды",
+      "disable_success": "Екі факторлы аутентификация өшірілді",
+      "passkey_added_success": "Passkey қосылды",
+      "passkey_removed_success": "Passkey жойылды",
+      "passkey_registering": "Passkey қосуды аяқтау үшін құрылғыдағы нұсқауларды орындаңыз.",
+      "passkey_cancelled": "Passkey баптауы тоқтатылды. Дайын болғанда қайта көріңіз.",
+      "passkey_add_failed": "Passkey қосылмады. Қайта көріңіз.",
+      "enable_confirm_heading": "Екі факторлы аутентификацияны қосу",
+      "disable_confirm_heading": "Екі факторлы аутентификацияны өшіру",
+      "enable_confirm_text": "Екі факторлы аутентификацияны қосу үшін парольді енгізіңіз.",
+      "disable_confirm_text": "Екі факторлы аутентификацияны өшіру үшін парольді енгізіңіз."
     },
     "edit-profile-details": {
       "name_label": "Аты",
@@ -1077,6 +1107,10 @@
       "subheading": "Мұнда парақшаңыз және аккаунтыңыздың баптаулары үшін қажетті барлық ақпаратты таба аласыз.",
       "button_label": "Шығу"
     },
+    "security-settings-page": {
+      "heading": "Қауіпсіздік",
+      "subheading": "Есептік жазбаңыз үшін екі факторлы аутентификация мен passkey-лерді басқарыңыз."
+    },
     "edit-profile-details-page": {
       "heading": "Парақша мәліметтерін өзгерту"
     },
@@ -1261,6 +1295,18 @@
       "didnt_get_code": "Кодты алмадыңыз ба?",
       "resend_code_button_label": "Электрондық поштаны қайта жіберу",
       "seconds": "{{seconds}} секундта"
+    },
+    "mfa-verification": {
+      "heading": "Жеке басыңызды растаңыз",
+      "subheading": "Passkey немесе электрондық пошта растау коды арқылы кірісті аяқтаңыз.",
+      "passkey_button_label": "Passkey арқылы растау",
+      "email_code_button_label": "Электрондық пошта кодын пайдалану"
+    },
+    "confirm-password": {
+      "heading": "Құпия сөзді растаңыз",
+      "subheading": "Жалғастыру үшін ағымдағы құпия сөзді енгізіңіз.",
+      "password_label": "Құпия сөз",
+      "confirm_button_label": "Растау"
     },
     "question-details": {
       "today": "Бүгін",
