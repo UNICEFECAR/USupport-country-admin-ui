@@ -57,9 +57,7 @@ export const SecuritySettings = () => {
     {
       onSuccess: (_, variables) => {
         queryClient.invalidateQueries({ queryKey: ["mfa-settings"] });
-        toast(
-          variables.enabled ? t("enable_success") : t("disable_success")
-        );
+        toast(variables.enabled ? t("enable_success") : t("disable_success"));
         setIsConfirmOpen(false);
         setPendingEnabled(null);
         setConfirmError("");
@@ -68,7 +66,7 @@ export const SecuritySettings = () => {
         const { message: errorMessage } = useError(error);
         setConfirmError(errorMessage);
       },
-    }
+    },
   );
 
   const getPasskeyErrorMessage = (error) => {
@@ -106,7 +104,7 @@ export const SecuritySettings = () => {
         setPasskeyError(errorMessage);
         toast.error(errorMessage);
       },
-    }
+    },
   );
 
   const deletePasskeyMutation = useMutation(
@@ -121,7 +119,7 @@ export const SecuritySettings = () => {
         const { message: errorMessage } = useError(error);
         toast.error(errorMessage);
       },
-    }
+    },
   );
 
   if (settingsQuery.isLoading) {
@@ -150,10 +148,6 @@ export const SecuritySettings = () => {
     <Block classes="security-settings">
       <Grid classes="security-settings__grid">
         <GridItem md={8} lg={12} classes="security-settings__grid__item">
-          <p className="paragraph security-settings__description">
-            {tPage("subheading")}
-          </p>
-
           <div className="security-settings__sections">
             <Box boxShadow={3} classes="security-settings__section">
               <p className="paragraph security-settings__section-title">
@@ -217,7 +211,11 @@ export const SecuritySettings = () => {
                             className="security-settings__passkey-item"
                           >
                             <div className="security-settings__passkey-item__icon">
-                              <Icon name="fingerprint" size="md" color="#20809E" />
+                              <Icon
+                                name="fingerprint"
+                                size="md"
+                                color="#20809E"
+                              />
                             </div>
                             <div className="security-settings__passkey-item__info">
                               <p className="text security-settings__passkey-item__name">
@@ -227,7 +225,7 @@ export const SecuritySettings = () => {
                                 <p className="text">
                                   {t("last_used", {
                                     date: new Date(
-                                      passkey.lastUsedAt
+                                      passkey.lastUsedAt,
                                     ).toLocaleDateString(),
                                   })}
                                 </p>
