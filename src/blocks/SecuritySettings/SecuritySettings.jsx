@@ -16,6 +16,7 @@ import {
   Toggle,
 } from "@USupport-components-library/src";
 import { mfaSvc } from "@USupport-components-library/services";
+import { getDateView } from "@USupport-components-library/utils";
 
 import { useError } from "#hooks";
 import { ConfirmPassword } from "#backdrops";
@@ -224,9 +225,7 @@ export const SecuritySettings = () => {
                               {passkey.lastUsedAt && (
                                 <p className="text">
                                   {t("last_used", {
-                                    date: new Date(
-                                      passkey.lastUsedAt,
-                                    ).toLocaleDateString(),
+                                    date: getDateView(passkey.lastUsedAt),
                                   })}
                                 </p>
                               )}
