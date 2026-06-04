@@ -28,7 +28,6 @@ export const AdminProfile = () => {
     <Page
       classes="page__admin-profile"
       heading={t("heading")}
-      subheading={t("subheading")}
       showGoBackArrow={false}
       headingButton={
         <ButtonWithIcon

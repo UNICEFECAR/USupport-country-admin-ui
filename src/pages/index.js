@@ -8,6 +8,7 @@ export * from "./Welcome";
 export * from "./ForgotPassword";
 export * from "./ResetPassword";
 export * from "./AdminProfile";
+export * from "./SecuritySettings";
 export * from "./EditProfileDetails";
 export * from "./ArticleInformation";
 export * from "./Providers";

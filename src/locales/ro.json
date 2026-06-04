@@ -148,7 +148,37 @@
       "contact_us_button_label": "Contactați-ne",
       "privacy_policy_button_label": "Politica de confidențialitate",
       "FAQ_button_label": "ÎNTREBĂRI FRECVENTE",
-      "user_guide": "Utilizarea platformei"
+      "user_guide": "Utilizarea platformei",
+      "security_settings": "Securitate"
+    },
+    "security-settings": {
+      "two_factor_heading": "Autentificare în doi pași",
+      "two_factor_toggle_label": "Solicitați un al doilea factor la autentificare",
+      "two_factor_help": "Când este activată, conectați-vă mai întâi cu parola, apoi verificați identitatea cu o cheie de acces pe acest dispozitiv sau cu un cod prin e-mail.",
+      "two_factor_status_enabled": "Activată — este necesar un al doilea factor la autentificare",
+      "two_factor_status_disabled": "Dezactivată — autentificare doar cu parola",
+      "passkeys_heading": "Chei de acces",
+      "passkeys_help": "Adăugați o cheie de acces pentru verificare mai rapidă pe acest dispozitiv. Codurile prin e-mail rămân disponibile ca alternativă.",
+      "passkeys_empty": "Nu există chei de acces înregistrate. Adăugați una mai jos pentru o autentificare mai rapidă pe acest dispozitiv.",
+      "passkeys_unsupported": "Cheile de acces nu sunt acceptate în acest browser.",
+      "add_passkey_heading": "Adăugați o cheie de acces nouă",
+      "add_passkey": "Adăugați cheie de acces",
+      "remove_passkey": "Eliminați",
+      "passkey_name_label": "Nume dispozitiv (opțional)",
+      "passkey_name_placeholder": "ex. MacBook Pro",
+      "default_passkey_name": "Cheie de acces",
+      "last_used": "Ultima utilizare {{date}}",
+      "enable_success": "Autentificarea în doi pași a fost activată",
+      "disable_success": "Autentificarea în doi pași a fost dezactivată",
+      "passkey_added_success": "Cheia de acces a fost adăugată",
+      "passkey_removed_success": "Cheia de acces a fost eliminată",
+      "passkey_registering": "Urmați instrucțiunile de pe dispozitiv pentru a finaliza adăugarea cheii de acces.",
+      "passkey_cancelled": "Configurarea cheii de acces a fost anulată. Încercați din nou când sunteți gata.",
+      "passkey_add_failed": "Cheia de acces nu a putut fi adăugată. Încercați din nou.",
+      "enable_confirm_heading": "Activați autentificarea în doi pași",
+      "disable_confirm_heading": "Dezactivați autentificarea în doi pași",
+      "enable_confirm_text": "Introduceți parola pentru a activa autentificarea în doi pași.",
+      "disable_confirm_text": "Introduceți parola pentru a dezactiva autentificarea în doi pași."
     },
     "edit-profile-details": {
       "name_label": "Nume",
@@ -1064,6 +1094,10 @@
       "subheading": "Aici găsiți toate informațiile de care aveți nevoie pentru profilul dvs. și setările contului.",
       "button_label": "Deconectare"
     },
+    "security-settings-page": {
+      "heading": "Securitate",
+      "subheading": "Gestionați autentificarea în doi pași și cheile de acces pentru contul dvs."
+    },
     "edit-profile-details-page": {
       "heading": "Editare detalii profil"
     },
@@ -1248,6 +1282,18 @@
       "didnt_get_code": "Nu ați primit codul??",
       "resend_code_button_label": "Trimiteți din nou e-mail",
       "seconds": "în {{seconds}} secunde"
+    },
+    "mfa-verification": {
+      "heading": "Verificați identitatea",
+      "subheading": "Finalizați autentificarea cu o cheie de acces sau un cod prin e-mail.",
+      "passkey_button_label": "Verificați cu cheia de acces",
+      "email_code_button_label": "Folosiți codul prin e-mail"
+    },
+    "confirm-password": {
+      "heading": "Confirmați parola",
+      "subheading": "Introduceți parola curentă pentru a continua.",
+      "password_label": "Parolă",
+      "confirm_button_label": "Confirmați"
     },
     "question-details": {
       "today": "Astăzi",
