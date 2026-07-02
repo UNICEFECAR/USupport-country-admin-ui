@@ -273,7 +273,6 @@
       "description_placeholder": "Введите описание",
       "video_link_placeholder": "https://video.link",
       "video_link_error": "Пожалуйста, введите корректный URL",
-
       "sex_male": "Мужчина",
       "sex_female": "Женщина",
       "sex_unspecified": "Не указан",
@@ -539,13 +538,17 @@
       "reset_filter": "Сбросить фильтр",
       "search": "Поиск",
       "no_data_found": "Данные не найдены",
-      "status": "",
-      "finished": "",
-      "late-canceled": "",
-      "scheduled": "",
-      "active": "",
+      "status": "Статус",
+      "finished": "Завершено",
+      "late-canceled": "Поздняя отмена",
+      "scheduled": "Запланировано",
+      "active": "Активно",
       "organization": "Организация",
-      "dates_placeholder": "ДД.ММ.ГГГГ"
+      "dates_placeholder": "ДД.ММ.ГГГГ",
+      "provider_joined": "Специалист присоединился",
+      "client_joined": "Клиент присоединился",
+      "yes": "Да",
+      "no": "Нет"
     },
     "campaigns": {
       "filter_button": "Фильтр",
@@ -873,13 +876,10 @@
       "cancelledConsultations": "Отменённые консультации",
       "scheduledConsultations": "Запланированные консультации - Веб",
       "mobileScheduledConsultations": "Запланированные консультации - Мобайл",
-
       "scheduleButtonClick": "Клик записи - Веб",
       "mobileScheduleButtonClick": "Клик записи - Мобайл",
       "clientsAttendedConsultations": "Клиенты участвовали",
-
       "totalProviders": "Все провайдеры",
-
       "allClients": "Все клиенты",
       "activeClients": "Активные клиенты",
       "activeProviders": "Активные провайдеры",
@@ -921,7 +921,6 @@
       "missing": "N/A",
       "consultationsJoinedByClientAndProvider": "Проведённые консультации",
       "consultationsJoinedByClientAndProvider_info": "Консультации, в которых участвовали и клиент, и специалист",
-
       "globalWebsiteVisits_info": "Общее количество посещений глобального сайта («usupport.online»)",
       "cancelledConsultations_info": "Консультации, отмененные более чем за 24 часа до запланированного времени начала. НЕ включает консультации, отмененные поздно",
       "lateCancelledConsultations_info": "Консультации, отменённые менее чем за 24 часа до времени начала",
@@ -954,7 +953,6 @@
       "mobileJoinConsultationClick_info": "Количество нажатий кнопки «Присоединиться к консультации» в мобильном приложении",
       "positiveClientRatings_info": "Общее количество положительных оценок, отправленных клиентами из раздела «Ваш профиль»",
       "positiveProviderRatings_info": "Общее количество положительных оценок от провайдеров",
-
       "filters": "Фильтры",
       "apply_filters": "Применить фильтры",
       "sex_label": "Пол",
