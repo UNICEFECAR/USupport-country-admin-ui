@@ -51,6 +51,21 @@ export const ProviderActivities = ({ isLoading, data, providerName }) => {
         isDate: true,
       },
       {
+        label: t("status"),
+        sortingKey: "status",
+        isCentered: true,
+      },
+      {
+        label: t("provider_joined"),
+        sortingKey: "providerJoined",
+        isCentered: true,
+      },
+      {
+        label: t("client_joined"),
+        sortingKey: "clientJoined",
+        isCentered: true,
+      },
+      {
         label: t("price"),
         sortingKey: "price",
         isCentered: true,
@@ -78,6 +93,9 @@ export const ProviderActivities = ({ isLoading, data, providerName }) => {
       csv += "\n";
       csv += `${row.displayName},`;
       csv += `${getFormattedDate(row.time, false)},`;
+      csv += `${row.status ? t(row.status, row.status) : "N/A"},`;
+      csv += `${row.providerJoined ? t("yes") : t("no")},`;
+      csv += `${row.clientJoined ? t("yes") : t("no")},`;
       csv += `${price},`;
       csv += `${row.campaignName || "N/A"},`;
       csv += `${row.organizationName || "N/A"}`;
@@ -137,12 +155,21 @@ export const ProviderActivities = ({ isLoading, data, providerName }) => {
     } ${getDateView(date)}`;
   };
 
+  const getStatusLabel = (status) => (status ? t(status, status) : "N/A");
+
   const rowsData = dataToDisplay?.map((activity) => {
     const displayTime = getFormattedDate(activity.time);
 
     return [
       <p className="text">{activity.displayName}</p>,
       <p className="text centered">{displayTime}</p>,
+      <p className="text centered">{getStatusLabel(activity.status)}</p>,
+      <p className="text centered">
+        {activity.providerJoined ? t("yes") : t("no")}
+      </p>,
+      <p className="text centered">
+        {activity.clientJoined ? t("yes") : t("no")}
+      </p>,
       <p className="text centered">
         {activity.price ? `${activity.price}${currencySymbol}` : t("free")}
       </p>,

@@ -10,6 +10,8 @@ export const useGetProviderActivitiesById = (providerId) => {
         displayName: activity.clientName,
         price: activity.price,
         status: activity.status,
+        clientJoined: activity.client_joined,
+        providerJoined: activity.provider_joined,
         time: new Date(activity.time),
         type: activity.type,
         campaignName: activity.campaign_name,

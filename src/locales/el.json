@@ -539,13 +539,17 @@
       "reset_filter": "Επαναφορά φίλτρων",
       "search": "Αναζήτηση",
       "no_data_found": "Δεν βρέθηκαν δεδομένα",
-      "status": "κατάσταση",
-      "finished": "ολοκληρώθηκε",
-      "late-canceled": "",
-      "scheduled": "προγραμματισμένη",
-      "active": "ενεργή",
+      "status": "Κατάσταση",
+      "finished": "Ολοκληρώθηκε",
+      "late-canceled": "Καθυστερημένη ακύρωση",
+      "scheduled": "Προγραμματισμένο",
+      "active": "Ενεργό",
       "organization": "Οργανισμός",
-      "dates_placeholder": "ΗΗ.ΜΜ.ΧΧΧΧ"
+      "dates_placeholder": "ΗΗ.ΜΜ.ΧΧΧΧ",
+      "provider_joined": "Ο πάροχος συνδέθηκε",
+      "client_joined": "Ο πελάτης συνδέθηκε",
+      "yes": "Ναι",
+      "no": "Όχι"
     },
     "campaigns": {
       "filter_button": "Φιλτράρισμα",

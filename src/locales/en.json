@@ -275,7 +275,6 @@
       "description_placeholder": "Enter description",
       "video_link_placeholder": "https://video.link",
       "video_link_error": "Please enter a valid URL",
-
       "sex_male": "Male",
       "sex_female": "Female",
       "sex_unspecified": "Unspecified",
@@ -542,13 +541,17 @@
       "reset_filter": "Reset filters",
       "search": "Search",
       "no_data_found": "No data found",
-      "status": "",
-      "finished": "",
-      "late-canceled": "",
-      "scheduled": "",
-      "active": "",
+      "status": "Status",
+      "finished": "Finished",
+      "late-canceled": "Late canceled",
+      "scheduled": "Scheduled",
+      "active": "Active",
       "organization": "Organization",
-      "dates_placeholder": "DD.MM.YYYY"
+      "dates_placeholder": "DD.MM.YYYY",
+      "provider_joined": "Provider joined",
+      "client_joined": "Client joined",
+      "yes": "Yes",
+      "no": "No"
     },
     "campaigns": {
       "filter_button": "Filter",
@@ -875,11 +878,9 @@
       "uniqueClientsConsultations": "Unique Clients Consultations",
       "totalConsultations_unique_count": "Unique Clients",
       "lateCancelledConsultations": "Late Cancelled Consultations",
-
       "totalCouponConsultations": "Total Coupon Consultations",
       "totalCouponConsultations_unique_count": "Unique Clients",
       "activeProviders": "Active Providers",
-
       "activeClients": "Active Clients",
       "totalWebsiteAccess": "Total Website Visits",
       "totalClientAccess": "Total Client Portal Visits",
@@ -934,7 +935,6 @@
       "missing": "N/A",
       "consultationsJoinedByClientAndProvider": "Attended consultations",
       "consultationsJoinedByClientAndProvider_info": "Consultations where both the client and the provider joined",
-
       "globalWebsiteVisits_info": "Total visits the the global (\"usupport.online\") website",
       "cancelledConsultations_info": "Consultations cancelled more than 24 hours before the scheduled start time. Does NOT include late-cancelled consultations",
       "lateCancelledConsultations_info": "Consultations which were cancelled less than 24 hours before the consultation start time",
@@ -967,7 +967,6 @@
       "mobileJoinConsultationClick_info": "Total clicks on the \"Join consultation\" button on the mobile app",
       "positiveClientRatings_info": "Total positive ratings submitted by clients from the ‘Your profile’ section.",
       "positiveProviderRatings_info": "Total positive ratings given by providers",
-
       "filters": "Filters",
       "apply_filters": "Apply Filters",
       "sex_label": "Sex",
@@ -1073,7 +1072,6 @@
       "critical_count": "Critical count"
     }
   },
-
   "pages": {
     "pl-statistics-page": {
       "heading": "Statistics",

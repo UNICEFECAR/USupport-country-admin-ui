@@ -541,13 +541,17 @@
       "reset_filter": "Zresetuj filtry",
       "search": "Wyszukiwanie",
       "no_data_found": "Nie znaleziono danych",
-      "status": "",
-      "finished": "",
-      "late-canceled": "",
-      "scheduled": "",
-      "active": "",
+      "status": "Status",
+      "finished": "Zakończone",
+      "late-canceled": "Późne anulowanie",
+      "scheduled": "Zaplanowane",
+      "active": "Aktywne",
       "organization": "Organizacja",
-      "dates_placeholder": "DD.MM.RRRR"
+      "dates_placeholder": "DD.MM.RRRR",
+      "provider_joined": "Specjalista dołączył",
+      "client_joined": "Klient dołączył",
+      "yes": "Tak",
+      "no": "Nie"
     },
     "campaigns": {
       "filter_button": "Filtr",

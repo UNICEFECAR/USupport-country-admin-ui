@@ -275,7 +275,6 @@
       "description_placeholder": "Introduceți descrierea",
       "video_link_placeholder": "https://video.link",
       "video_link_error": "Vă rugăm să introduceți un URL valid",
-
       "sex_male": "Masculin",
       "sex_female": "Feminin",
       "sex_unspecified": "Nespecificat",
@@ -543,12 +542,16 @@
       "search": "Căutare",
       "no_data_found": "Nu s-au găsit date",
       "status": "Stare",
-      "finished": "Terminat",
-      "late-canceled": "Anulat târziu",
+      "finished": "Finalizat",
+      "late-canceled": "Anulare târzie",
       "scheduled": "Programat",
       "active": "Activ",
       "organization": "Organizație",
-      "dates_placeholder": "DD.MM.YYYY"
+      "dates_placeholder": "DD.MM.YYYY",
+      "provider_joined": "Furnizorul s-a alăturat",
+      "client_joined": "Clientul s-a alăturat",
+      "yes": "Da",
+      "no": "Nu"
     },
     "campaigns": {
       "filter_button": "Filtrare",
@@ -767,7 +770,6 @@
       "email": "Adresă de email",
       "email_placeholder": "Introduceți adresa de email",
       "cancel": "Anulează",
-
       "work_with": "Lucrează cu",
       "work_with_placeholder": "Selectați categoriile",
       "district": "Sector",
@@ -780,17 +782,14 @@
       "specialisations_placeholder": "Selectați serviciile oferite",
       "property_types": "Tip de proprietate",
       "property_types_placeholder": "Selectați tipurile de proprietate",
-
       "in_person_interaction": "În persoană",
       "online_interaction": "Online",
       "phone_interaction": "Telefon",
       "hybrid_interaction": "Hibrid",
-
       "free_services": "Servicii gratuite",
       "paid_services": "Servicii plătite",
       "co_payment_services": "Servicii cu coplată",
       "cnas_reimbursed_services": "Servicii decontate CNAS",
-
       "emergency_situations": "Situații de urgență",
       "pediatric_psychiatry": "Psihiatrie pediatrică",
       "psychological_evaluation": "Evaluare psihologică",
@@ -809,7 +808,6 @@
       "pediatric_neurology": "Neurologie pediatrică",
       "special_psychopedagogy": "Psihopedagogie specială",
       "neuropsychomotor_recovery": "Recuperare neuropsihomotorie",
-
       "aggression_violence_victim_or_aggressor": "Violență/agresiune - victimă sau agresor",
       "learning_difficulties_special_educational_needs": "Dificultăți de învățare/Nevoi educaționale speciale",
       "behavioral_disorder": "Tulburări de comportament",
@@ -819,7 +817,6 @@
       "identity_issues": "Probleme de identitate",
       "illness_oncological_treatment_chronic_diseases": "Boli (tratament oncologic, boli cronice)",
       "other_situations": "Alte situații",
-
       "public": "Public",
       "private": "Privat",
       "ong": "ONG",
@@ -834,7 +831,6 @@
       "child_psychiatry": "Psihiatrie pediatrică",
       "art_recreational_activities": "Activități recreative artistice (teatru, muzică, poezie, pictură, povestiri)",
       "sport_recreational_activities": "Activități recreative sportive (sporturi, jocuri, dans)",
-
       "delete_label": "Ștergere",
       "delete_heading": "Sigur doriți să ștergeți organizația: {{name}}",
       "delete_subheading": "Această acțiune este ireversibilă.",
@@ -867,15 +863,12 @@
       "cancelledConsultations": "Consultații anulate",
       "scheduledConsultations": "Consultații programate - Web",
       "mobileScheduledConsultations": "Consultații programate - Mobil",
-
       "scheduleButtonClick": "Click programare - Web",
       "mobileScheduleButtonClick": "Click programare - Mobil",
       "clientsAttendedConsultations": "Clienți prezenți",
-
       "totalCouponConsultations_unique_count": "Clienți unici",
       "totalProviders": "Toți furnizorii",
       "activeProviders": "Furnizori activi",
-
       "allClients": "Toți clienții",
       "activeClients": "Clienți activi",
       "totalWebsiteAccess": "Vizite site",
@@ -888,7 +881,6 @@
       "totalCouponConsultations": "Consultații cu cupon",
       "positiveClientRatings": "Aprecieri pozitive clienți",
       "positiveProviderRatings": "Aprecieri pozitive furnizori",
-
       "content_type": "Tip conținut",
       "all": "Toate",
       "articles": "Articole",
@@ -899,7 +891,6 @@
       "reset": "Resetare filtre",
       "select_start_date": "Selectați data de început",
       "select_end_date": "Selectați data de sfârșit",
-
       "year_of_birth": "Anul nașterii",
       "urban_rural": "Urban/Rural",
       "sex": "Sex",
@@ -914,7 +905,6 @@
       "missing": "N/A",
       "consultationsJoinedByClientAndProvider": "Consultații oferite",
       "consultationsJoinedByClientAndProvider_info": "Consultații la care au participat atât clientul, cât și specialistul",
-
       "globalWebsiteVisits_info": "Numărul total de vizite pe site-ul global („usupport.online”)",
       "cancelledConsultations_info": "Consultații anulate cu mai mult de 24 de ore înainte de ora de începere programată. NU include consultațiile anulate cu întârziere",
       "lateCancelledConsultations_info": "Consultații anulate cu mai puțin de 24 de ore înainte de ora programată",
@@ -947,7 +937,6 @@
       "mobileJoinConsultationClick_info": "Numărul total de clicuri pe butonul „Alătură-te consultației” în aplicația mobilă",
       "positiveClientRatings_info": "Numărul total de evaluări pozitive trimise de clienți din secțiunea „Profilul tău”",
       "positiveProviderRatings_info": "Numărul total de evaluări pozitive oferite de furnizori",
-
       "filters": "Filtre",
       "apply_filters": "Aplicați filtrele",
       "sex_label": "Sex",

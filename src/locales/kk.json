@@ -275,7 +275,6 @@
       "description_placeholder": "Сипаттаманы енгізіңіз",
       "video_link_placeholder": "https://video.link",
       "video_link_error": "Жарамды URL енгізіңіз",
-
       "sex_male": "Ер",
       "sex_female": "Әйел",
       "sex_unspecified": "Көрсетілмеген",
@@ -541,13 +540,17 @@
       "reset_filter": "Сүзгілерді қалпына келтіру",
       "search": "Іздеу",
       "no_data_found": "Ақпарат табылмады",
-      "status": "",
-      "finished": "",
-      "late-canceled": "",
-      "scheduled": "",
-      "active": "",
+      "status": "Күйі",
+      "finished": "Аяқталды",
+      "late-canceled": "Кеш бас тарту",
+      "scheduled": "Жоспарланған",
+      "active": "Белсенді",
       "organization": "Ұйым",
-      "dates_placeholder": "КК.АА.ЖЖЖЖ"
+      "dates_placeholder": "КК.АА.ЖЖЖЖ",
+      "provider_joined": "Маман қосылды",
+      "client_joined": "Клиент қосылды",
+      "yes": "Иә",
+      "no": "Жоқ"
     },
     "campaigns": {
       "filter_button": "Сүзгі",
@@ -874,11 +877,9 @@
       "uniqueClientsConsultations": "Бірегей клиенттер кеңес беру",
       "totalConsultations_unique_count": "Бірегей клиенттер",
       "lateCancelledConsultations": "Кеш жойылған консультациялар",
-
       "totalCouponConsultations": "Купонмен консультациялар",
       "totalCouponConsultations_unique_count": "Бірегей клиенттер",
       "activeProviders": "Белсенді провайдерлер",
-
       "activeClients": "Белсенді клиенттер",
       "totalWebsiteAccess": "Сайтқа кірулер",
       "totalClientAccess": "Клиент порталына кірулер",
@@ -943,7 +944,6 @@
       "missing": "N/A",
       "consultationsJoinedByClientAndProvider": "Өткізілген консультациялар",
       "consultationsJoinedByClientAndProvider_info": "Клиент пен маман екеуі де қосылған консультациялар",
-
       "globalWebsiteVisits_info": "Жалпы (\"usupport.online\") веб-сайтына жалпы кірулер саны",
       "cancelledConsultations_info": "Жоспарланған басталу уақытынан 24 сағаттан астам бұрын тоқтатылған консультациялар. Кеш тоқтатылған консультацияларды қамтымайды",
       "lateCancelledConsultations_info": "Консультациялар, жоспарланған басталу уақытына дейін 24 сағаттан аз уақыт қалғанда жойылған",
@@ -976,7 +976,6 @@
       "mobileJoinConsultationClick_info": "\"Консультацияға қосылу\" батырмасын мобильді қосымшада басу саны",
       "positiveClientRatings_info": "Клиенттердің «Сіздің профиліңіз» бөлімінен жіберген оң бағаларының жалпы саны",
       "positiveProviderRatings_info": "Провайдерлер берген оң бағалар саны",
-
       "filters": "Сүзгілер",
       "apply_filters": "Сүзгілерді қолдану",
       "sex_label": "Жынысы",
