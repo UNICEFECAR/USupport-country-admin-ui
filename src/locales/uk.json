@@ -541,13 +541,17 @@
       "reset_filter": "Скинь фільтрів",
       "search": "Пошук",
       "no_data_found": "Даних не знайдено",
-      "status": "",
-      "finished": "",
-      "late-canceled": "",
-      "scheduled": "",
-      "active": "",
+      "status": "Статус",
+      "finished": "Завершено",
+      "late-canceled": "Пізнє скасування",
+      "scheduled": "Заплановано",
+      "active": "Активно",
       "organization": "Організація",
-      "dates_placeholder": "ДД.ММ.РРРР"
+      "dates_placeholder": "ДД.ММ.РРРР",
+      "provider_joined": "Спеціаліст приєднався",
+      "client_joined": "Клієнт приєднався",
+      "yes": "Так",
+      "no": "Ні"
     },
     "campaigns": {
       "filter_button": "Фільтр",

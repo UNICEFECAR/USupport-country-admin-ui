@@ -540,13 +540,17 @@
       "reset_filter": "Վերագործարկել ֆիլտրերը",
       "search": "Որոնում",
       "no_data_found": "Տվյալ չի գտնվել",
-      "status": "Կարգավիճակը",
+      "status": "Կարգավիճակ",
       "finished": "Ավարտված",
-      "late-canceled": "Ուշացումով չեղարկված",
+      "late-canceled": "Ուշ չեղարկում",
       "scheduled": "Պլանավորված",
-      "active": "Գործող",
+      "active": "Ակտիվ",
       "organization": "Կազմակերպություն",
-      "dates_placeholder": "DD.MM.YYYY"
+      "dates_placeholder": "DD.MM.YYYY",
+      "provider_joined": "Մասնագետը միացել է",
+      "client_joined": "Հաճախորդը միացել է",
+      "yes": "Այո",
+      "no": "Ոչ"
     },
     "campaigns": {
       "filter_button": "Ֆիլտր",
@@ -872,7 +876,6 @@
       "totalConsultations": "Ընդհանուր խորհրդատվություններ",
       "uniqueClientsConsultations": "Հաճախորդների հատուկ խորհրդատվություններ",
       "lateCancelledConsultations": "Ուշ չեղարկված խորհրդատվություններ",
-
       "activeClients": "Ակտիվ հաճախորդներ",
       "activeProviders": "Ակտիվ մատակարարներ",
       "totalWebsiteAccess": "Կայքի այցելություններ",
@@ -931,7 +934,6 @@
       "missing": "Չկա",
       "consultationsJoinedByClientAndProvider": "Նախաձեռնված խորհրդատվություններ",
       "consultationsJoinedByClientAndProvider_info": "Խորհրդատվություններ, որոնցում մասնակցել են և՛ հաճախորդը, և՛ մասնագետը",
-
       "globalWebsiteVisits_info": "Ընդհանուր այցելությունները գլոբալ («usupport.online») կայքում",
       "cancelledConsultations_info": "Խորհրդատվություններ, որոնք չեղարկվել են նախատեսված մեկնարկից ավելի քան 24 ժամ առաջ: Չի ներառում ուշ չեղարկված խորհրդատվությունները",
       "lateCancelledConsultations_info": "Խորհրդատվություններ, որոնք չեղարկվել են պլանավորված մեկնարկից պակաս քան 24 ժամ առաջ",
@@ -964,7 +966,6 @@
       "mobileJoinConsultationClick_info": "«Միանալ խորհրդատվությանը» կոճակի սեղմումների քանակը բջջային հավելվածում",
       "positiveClientRatings_info": "Հաճախորդների կողմից «Ձեր պրոֆիլը» բաժնից ներկայացված դրական գնահատականների ընդհանուր քանակը",
       "positiveProviderRatings_info": "Մատակարարների տված դրական գնահատականների ընդհանուր քանակը",
-
       "filters": "Ֆիլտրներ",
       "apply_filters": "Կիրառել ֆիլտրները",
       "sex_label": "Սեռ",
