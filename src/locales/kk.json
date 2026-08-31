@@ -241,7 +241,8 @@
       "edit": "Өңдеу",
       "search": "Іздеу",
       "organizations": "Ұйымдар",
-      "modal_heading": ""
+      "modal_heading": "",
+      "peer_support": "U-FRIEND"
     },
     "edit-provider": {
       "name_label": "Аты",
@@ -345,7 +346,8 @@
       "select": "Таңдау",
       "remove": "Жою",
       "organizations_label": "Ұйымдар",
-      "organizations_error": "Кемінде бір ұйымды таңдау қажет"
+      "organizations_error": "Кемінде бір ұйымды таңдау қажет",
+      "peer_support": "U-FRIEND"
     },
     "provider-overview": {
       "earliest_slot_label": "Консультация алу үшін жақын арада қолжетімді бос уақыт",
@@ -398,7 +400,8 @@
       "hour_consultation": "1 сағаттық консультация үшін",
       "organizations_label": "Ұйымдар",
       "free": "тегін",
-      "consultations": "Консультациялар"
+      "consultations": "Консультациялар",
+      "peer_support": "U-FRIEND"
     },
     "security-check": {
       "heading": "Консультация мәселелері туралы есептер",

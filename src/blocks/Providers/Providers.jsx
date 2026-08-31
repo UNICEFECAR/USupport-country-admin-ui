@@ -24,6 +24,7 @@ import { adminSvc } from "@USupport-components-library/services";
 import { useWindowDimensions } from "@USupport-components-library/utils";
 
 import { useUpdateProviderStatus, useDebounce } from "#hooks";
+import { buildSpecializationOptions } from "#utils/specializations";
 
 import "./providers.scss";
 
@@ -50,6 +51,14 @@ export const Providers = ({
   };
   const navigate = useNavigate();
   const { t, i18n } = useTranslation("blocks", { keyPrefix: "providers" });
+  const selectedCountry = localStorage.getItem("country");
+  const specializationFilterOptions = useMemo(() => {
+    const options = buildSpecializationOptions(selectedCountry, t).map(
+      ({ label, value }) => ({ label, value })
+    );
+
+    return [{ label: t("all"), value: "" }, ...options];
+  }, [selectedCountry, t]);
   const queryClient = useQueryClient();
   const currencySymbol = localStorage.getItem("currency_symbol");
   const language = i18n.language;
@@ -169,7 +178,7 @@ export const Providers = ({
             name={provider.name}
             patronym={provider.patronym}
             surname={provider.surname}
-            specializations={provider.specializations.map((x) => t(x))}
+            specializationKeys={provider.specializations}
             price={provider.consultationPrice}
             freeLabel={t("free")}
             viewProfileLabel={t("view")}
@@ -437,12 +446,7 @@ export const Providers = ({
         />
         <DropdownWithLabel
           label={t("specialization")}
-          options={[
-            { label: t("all"), value: "" },
-            { label: t("psychologist"), value: "psychologist" },
-            { label: t("psychiatrist"), value: "psychiatrist" },
-            { label: t("psychotherapist"), value: "psychotherapist" },
-          ]}
+          options={specializationFilterOptions}
           selected={filters.specialization}
           setSelected={(val) => setFilters({ ...filters, specialization: val })}
         />

@@ -241,7 +241,8 @@
       "edit": "Edit",
       "search": "Search",
       "organizations": "Organizations",
-      "modal_heading": ""
+      "modal_heading": "",
+      "peer_support": "U-FRIEND"
     },
     "edit-provider": {
       "name_label": "Name",
@@ -345,7 +346,8 @@
       "select": "Select",
       "remove": "Remove",
       "organizations_label": "Organizations",
-      "organizations_error": "Select at least one organization"
+      "organizations_error": "Select at least one organization",
+      "peer_support": "U-FRIEND"
     },
     "provider-overview": {
       "earliest_slot_label": "Earliest available slot for consultation",
@@ -398,7 +400,8 @@
       "hour_consultation": "for 1 hour consultation",
       "organizations_label": "Organizations",
       "free": "free of charge",
-      "consultations": "Consultations"
+      "consultations": "Consultations",
+      "peer_support": "U-FRIEND"
     },
     "security-check": {
       "heading": "Consultation issue reports",
