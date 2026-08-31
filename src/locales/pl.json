@@ -241,7 +241,8 @@
       "edit": "Edytuj",
       "search": "Wyszukiwanie",
       "organizations": "Organizacje",
-      "modal_heading": ""
+      "modal_heading": "",
+      "peer_support": "U-FRIEND"
     },
     "edit-provider": {
       "name_label": "Imię",
@@ -345,7 +346,8 @@
       "remove": "Usuń",
       "organizations_label": "Organizacje",
       "organizations_error": "Wybierz co najmniej jedną organizację",
-      "video_link_error": "Proszę wprowadzić prawidłowy adres URL"
+      "video_link_error": "Proszę wprowadzić prawidłowy adres URL",
+      "peer_support": "U-FRIEND"
     },
     "provider-overview": {
       "earliest_slot_label": "Najwcześniejszy dostępny termin konsultacji",
@@ -398,7 +400,8 @@
       "hour_consultation": "za 1 godzinę konsultacji",
       "organizations_label": "Organizacje",
       "free": "bezpłatnie",
-      "consultations": "Konsultacje"
+      "consultations": "Konsultacje",
+      "peer_support": "U-FRIEND"
     },
     "security-check": {
       "heading": "Raporty dotyczące problemów z konsultacjami",

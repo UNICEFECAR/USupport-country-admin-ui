@@ -239,7 +239,8 @@
       "edit": "Επεξεργασία",
       "search": "Αναζήτηση",
       "organizations": "Οργανισμοί",
-      "modal_heading": ""
+      "modal_heading": "",
+      "peer_support": "U-FRIEND"
     },
     "edit-provider": {
       "name_label": "Όνομα",
@@ -343,7 +344,8 @@
       "remove": "Αφαίρεση",
       "organizations_label": "Οργανισμοί",
       "organizations_error": "Επιλέξτε τουλάχιστον έναν οργανισμό",
-      "video_link_error": "Παρακαλούμε εισαγάγετε μια έγκυρη διεύθυνση URL"
+      "video_link_error": "Παρακαλούμε εισαγάγετε μια έγκυρη διεύθυνση URL",
+      "peer_support": "U-FRIEND"
     },
     "provider-overview": {
       "earliest_slot_label": "Συντομότερο διαθέσιμο ραντεβού για συνεδρία",
@@ -396,7 +398,8 @@
       "hour_consultation": "για συνεδρία 1 ώρας",
       "organizations_label": "Οργανισμοί",
       "free": "δωρεάν",
-      "consultations": "Συνεδρίες"
+      "consultations": "Συνεδρίες",
+      "peer_support": "U-FRIEND"
     },
     "security-check": {
       "heading": "Αναφορές προβλημάτων συνεδρίας",
