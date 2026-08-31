@@ -24,7 +24,10 @@ import { adminSvc } from "@USupport-components-library/services";
 import { useWindowDimensions } from "@USupport-components-library/utils";
 
 import { useUpdateProviderStatus, useDebounce } from "#hooks";
-import { buildSpecializationOptions } from "#utils/specializations";
+import {
+  buildSpecializationOptions,
+  translateSpecialization,
+} from "#utils/specializations";
 
 import "./providers.scss";
 
@@ -315,7 +318,12 @@ export const Providers = ({
         </p>
       </div>,
 
-      <p>{provider.specializations.map((x) => t(x)).join(", ")}</p>,
+      <p>
+        {provider.specializations
+          .map((x) => translateSpecialization(t, x))
+          .filter(Boolean)
+          .join(", ")}
+      </p>,
       <p>{provider.organizations}</p>,
 
       <div
