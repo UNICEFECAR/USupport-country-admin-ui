@@ -20,8 +20,14 @@ export const translateSpecialization = (t, value) => {
   const key = String(value ?? "").trim();
   if (!key) return "";
 
-  if (key === PEER_SUPPORT) {
-    return t(PEER_SUPPORT, { defaultValue: "U-FRIEND" });
+  // Product label is always U-FRIEND — do not go through i18n
+  // (missing keys otherwise render as "providers.peer_support")
+  if (
+    key === PEER_SUPPORT ||
+    key === "providers.peer_support" ||
+    key.endsWith(".peer_support")
+  ) {
+    return "U-FRIEND";
   }
 
   return t(key);
