@@ -16,10 +16,21 @@ export const getSpecializationOptionValues = (country) => {
   return [...BASE_SPECIALIZATION_OPTIONS];
 };
 
+export const translateSpecialization = (t, value) => {
+  const key = String(value ?? "").trim();
+  if (!key) return "";
+
+  if (key === PEER_SUPPORT) {
+    return t(PEER_SUPPORT, { defaultValue: "U-FRIEND" });
+  }
+
+  return t(key);
+};
+
 export const buildSpecializationOptions = (country, t) =>
   getSpecializationOptionValues(country).map((value) => ({
     value,
-    label: t(value),
+    label: translateSpecialization(t, value),
     selected: false,
   }));
 
