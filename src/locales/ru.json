@@ -240,7 +240,7 @@
       "search": "Поиск",
       "organizations": "Организации",
       "modal_heading": "Вы уверены, что хотите деактивировать аккаунт этого консультанта?",
-      "peer_support": "Эмоциональная поддержка со стороны сверстников"
+      "peer_support": "U-FRIEND"
     },
     "edit-provider": {
       "name_label": "Имя",
@@ -345,7 +345,7 @@
       "remove": "Удалить",
       "organizations_label": "Организации",
       "organizations_error": "Выберите хотя бы одну организацию",
-      "peer_support": "Эмоциональная поддержка со стороны сверстников"
+      "peer_support": "U-FRIEND"
     },
     "provider-overview": {
       "earliest_slot_label": "Самое раннее доступное свободное время для консультации",
