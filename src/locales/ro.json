@@ -242,7 +242,7 @@
       "search": "Căutare",
       "organizations": "Organizații",
       "modal_heading": "",
-      "peer_support": "U-FRIEND"
+      "peer_support": "Sprijin emoțional peer-to-peer"
     },
     "edit-provider": {
       "name_label": "Nume",
@@ -347,7 +347,7 @@
       "remove": "Eliminare",
       "organizations_label": "Organizații",
       "organizations_error": "Selectați cel puțin o organizație",
-      "peer_support": "U-FRIEND"
+      "peer_support": "Sprijin emoțional peer-to-peer"
     },
     "provider-overview": {
       "earliest_slot_label": "Primul interval disponibil pentru consultație",

@@ -240,7 +240,7 @@
       "search": "Αναζήτηση",
       "organizations": "Οργανισμοί",
       "modal_heading": "",
-      "peer_support": "U-FRIEND"
+      "peer_support": "Συναισθηματική υποστήριξη μεταξύ ομοτίμων"
     },
     "edit-provider": {
       "name_label": "Όνομα",
@@ -345,7 +345,7 @@
       "organizations_label": "Οργανισμοί",
       "organizations_error": "Επιλέξτε τουλάχιστον έναν οργανισμό",
       "video_link_error": "Παρακαλούμε εισαγάγετε μια έγκυρη διεύθυνση URL",
-      "peer_support": "U-FRIEND"
+      "peer_support": "Συναισθηματική υποστήριξη μεταξύ ομοτίμων"
     },
     "provider-overview": {
       "earliest_slot_label": "Συντομότερο διαθέσιμο ραντεβού για συνεδρία",

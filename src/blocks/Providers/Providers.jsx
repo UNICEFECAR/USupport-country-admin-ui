@@ -26,7 +26,7 @@ import { useWindowDimensions } from "@USupport-components-library/utils";
 import { useUpdateProviderStatus, useDebounce } from "#hooks";
 import {
   buildSpecializationOptions,
-  translateSpecialization,
+  translateSpecializationForDisplay,
 } from "#utils/specializations";
 
 import "./providers.scss";
@@ -320,7 +320,7 @@ export const Providers = ({
 
       <p>
         {provider.specializations
-          .map((x) => translateSpecialization(t, x))
+          .map((x) => translateSpecializationForDisplay(t, x))
           .filter(Boolean)
           .join(", ")}
       </p>,

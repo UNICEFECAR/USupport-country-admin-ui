@@ -242,7 +242,7 @@
       "search": "Пошук",
       "organizations": "Організації",
       "modal_heading": "",
-      "peer_support": "U-FRIEND"
+      "peer_support": "Емоційна підтримка «рівний — рівному»"
     },
     "edit-provider": {
       "name_label": "Ім'я",
@@ -347,7 +347,7 @@
       "organizations_label": "Організації",
       "organizations_error": "Вибери хоча б одну організацію",
       "video_link_error": "Будь ласка, введіть коректний URL",
-      "peer_support": "U-FRIEND"
+      "peer_support": "Емоційна підтримка «рівний — рівному»"
     },
     "provider-overview": {
       "earliest_slot_label": "Найближчий вільний часовий слот для консультації",
