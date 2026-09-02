@@ -241,7 +241,8 @@
       "edit": "Editare",
       "search": "Căutare",
       "organizations": "Organizații",
-      "modal_heading": ""
+      "modal_heading": "",
+      "peer_support": "Sprijin emoțional peer-to-peer"
     },
     "edit-provider": {
       "name_label": "Nume",
@@ -345,7 +346,8 @@
       "select": "Selectare",
       "remove": "Eliminare",
       "organizations_label": "Organizații",
-      "organizations_error": "Selectați cel puțin o organizație"
+      "organizations_error": "Selectați cel puțin o organizație",
+      "peer_support": "Sprijin emoțional peer-to-peer"
     },
     "provider-overview": {
       "earliest_slot_label": "Primul interval disponibil pentru consultație",
@@ -398,7 +400,8 @@
       "body_image": "Imaginea corporală și stima de sine",
       "hour_consultation": "pentru o consultație de 1 oră",
       "organizations_label": "Organizații",
-      "free": "Gratuit"
+      "free": "Gratuit",
+      "peer_support": "U-FRIEND"
     },
     "security-check": {
       "heading": "Raportări problemele la consultație",

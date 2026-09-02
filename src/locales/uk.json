@@ -241,7 +241,8 @@
       "edit": "Редагуй",
       "search": "Пошук",
       "organizations": "Організації",
-      "modal_heading": ""
+      "modal_heading": "",
+      "peer_support": "Емоційна підтримка «рівний — рівному»"
     },
     "edit-provider": {
       "name_label": "Ім'я",
@@ -345,7 +346,8 @@
       "remove": "Видали",
       "organizations_label": "Організації",
       "organizations_error": "Вибери хоча б одну організацію",
-      "video_link_error": "Будь ласка, введіть коректний URL"
+      "video_link_error": "Будь ласка, введіть коректний URL",
+      "peer_support": "Емоційна підтримка «рівний — рівному»"
     },
     "provider-overview": {
       "earliest_slot_label": "Найближчий вільний часовий слот для консультації",
@@ -398,7 +400,8 @@
       "hour_consultation": "за 1 годину консультації",
       "organizations_label": "Організації",
       "free": "безкоштовно",
-      "consultations": "Консультації"
+      "consultations": "Консультації",
+      "peer_support": "U-FRIEND"
     },
     "security-check": {
       "heading": "Звіти з питань консультацій",

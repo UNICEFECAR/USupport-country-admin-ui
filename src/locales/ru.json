@@ -239,7 +239,8 @@
       "edit": "Редактировать",
       "search": "Поиск",
       "organizations": "Организации",
-      "modal_heading": "Вы уверены, что хотите деактивировать аккаунт этого консультанта?"
+      "modal_heading": "Вы уверены, что хотите деактивировать аккаунт этого консультанта?",
+      "peer_support": "Эмоциональная поддержка «равный — равному»"
     },
     "edit-provider": {
       "name_label": "Имя",
@@ -343,7 +344,8 @@
       "select": "Выбрать",
       "remove": "Удалить",
       "organizations_label": "Организации",
-      "organizations_error": "Выберите хотя бы одну организацию"
+      "organizations_error": "Выберите хотя бы одну организацию",
+      "peer_support": "Эмоциональная поддержка «равный — равному»"
     },
     "provider-overview": {
       "earliest_slot_label": "Самое раннее доступное свободное время для консультации",
@@ -396,7 +398,8 @@
       "hour_consultation": "за 1 часовую консультацию",
       "organizations_label": "Организации",
       "free": "бесплатно",
-      "consultations": "Консультации"
+      "consultations": "Консультации",
+      "peer_support": "U-FRIEND"
     },
     "security-check": {
       "heading": "Отчеты о консультационных проблемах",

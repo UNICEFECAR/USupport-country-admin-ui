@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import { useMutation } from "@tanstack/react-query";
@@ -28,6 +28,11 @@ import {
   useCreateProvider,
   useGetAllOrganizations,
 } from "#hooks";
+
+import {
+  buildSpecializationOptions,
+  getNextSpecializations,
+} from "#utils/specializations";
 
 import "./create-provider.scss";
 
@@ -97,11 +102,10 @@ export const CreateProvider = ({
     }
   }, [localizationQuery.data]);
 
-  const specializationOptions = [
-    { value: "psychologist", label: t("psychologist"), selected: false },
-    { value: "psychiatrist", label: t("psychiatrist"), selected: false },
-    { value: "psychotherapist", label: t("psychotherapist"), selected: false },
-  ];
+  const specializationOptions = useMemo(
+    () => buildSpecializationOptions(countryAlpha2, t),
+    [countryAlpha2, t]
+  );
 
   const schema = Joi.object({
     name: Joi.string().label(t("name_error")),
@@ -151,7 +155,7 @@ export const CreateProvider = ({
       });
     }
     return specializationOptions;
-  }, [providerData]);
+  }, [providerData, specializationOptions]);
 
   const getLanguageOptions = useCallback(() => {
     const languageOptions = [];
@@ -238,6 +242,15 @@ export const CreateProvider = ({
       .filter((option) => option.selected)
       .map((x) => x.value);
     handleChange(field, selected);
+  };
+
+  const handleSpecializationSelect = (options) => {
+    setErrors({ specializations: null });
+    const nextSpecializations = getNextSpecializations(
+      providerData.specializations || [],
+      options
+    );
+    handleChange("specializations", nextSpecializations);
   };
 
   const handleEducationChange = (options) => {
@@ -431,9 +444,7 @@ export const CreateProvider = ({
             placeholder={t("select")}
             label={t("specialization_label") + " *"}
             options={getSpecializationsOptions()}
-            handleChange={(options) =>
-              handleWorkWithAndLanguageSelect("specializations", options)
-            }
+            handleChange={(options) => handleSpecializationSelect(options)}
             maxShown={specializationOptions.length}
             addMoreText={t("add_more_specializations")}
             errorMessage={errors.specializations}

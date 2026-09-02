@@ -241,7 +241,8 @@
       "edit": "Փոփոխել",
       "search": "Որոնում",
       "organizations": "Կազմակերպություններ",
-      "modal_heading": ""
+      "modal_heading": "",
+      "peer_support": "«Հավասարից հավասարի» էմоциональ աջակցություն"
     },
     "edit-provider": {
       "name_label": "Անունը",
@@ -345,7 +346,8 @@
       "select": "Ընտրել",
       "remove": "Հեռացնել",
       "organizations_label": "Կազմակերպություններ",
-      "organizations_error": "Ընտրել առնվազն մեկ կազմակերպություն"
+      "organizations_error": "Ընտրել առնվազն մեկ կազմակերպություն",
+      "peer_support": "«Հավասարից հավասարի» էմоциональ աջակցություն"
     },
     "provider-overview": {
       "earliest_slot_label": "Խորհրդատվության համար ամենամոտ հասանելի ժամանակահատվածը",
@@ -398,7 +400,8 @@
       "hour_consultation": "1 ժամ խորհրդատվության համար",
       "organizations_label": "Կազմակերպություններ",
       "free": "Անվճար",
-      "consultations": "Խորհրդատվություններ"
+      "consultations": "Խորհրդատվություններ",
+      "peer_support": "U-FRIEND"
     },
     "security-check": {
       "heading": "Խորհրդատվության հետ կապված խնդիրների մասին դիմումներ",
