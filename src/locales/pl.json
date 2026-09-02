@@ -242,7 +242,7 @@
       "search": "Wyszukiwanie",
       "organizations": "Organizacje",
       "modal_heading": "",
-      "peer_support": "U-FRIEND"
+      "peer_support": "Wsparcie emocjonalne rówieśników"
     },
     "edit-provider": {
       "name_label": "Imię",
@@ -347,7 +347,7 @@
       "organizations_label": "Organizacje",
       "organizations_error": "Wybierz co najmniej jedną organizację",
       "video_link_error": "Proszę wprowadzić prawidłowy adres URL",
-      "peer_support": "U-FRIEND"
+      "peer_support": "Wsparcie emocjonalne rówieśników"
     },
     "provider-overview": {
       "earliest_slot_label": "Najwcześniejszy dostępny termin konsultacji",

@@ -1,4 +1,5 @@
 export const PEER_SUPPORT = "peer_support";
+export const PEER_SUPPORT_DISPLAY_LABEL = "U-FRIEND";
 
 export const BASE_SPECIALIZATION_OPTIONS = [
   "psychologist",
@@ -16,27 +17,35 @@ export const getSpecializationOptionValues = (country) => {
   return [...BASE_SPECIALIZATION_OPTIONS];
 };
 
-export const translateSpecialization = (t, value) => {
+export const translateSpecializationForDisplay = (t, value) => {
   const key = String(value ?? "").trim();
   if (!key) return "";
 
-  // Product label is always U-FRIEND — do not go through i18n
-  // (missing keys otherwise render as "providers.peer_support")
-  if (
-    key === PEER_SUPPORT ||
-    key === "providers.peer_support" ||
-    key.endsWith(".peer_support")
-  ) {
-    return "U-FRIEND";
+  if (key === PEER_SUPPORT) {
+    return PEER_SUPPORT_DISPLAY_LABEL;
   }
 
   return t(key);
 };
 
+export const translateSpecializationForEdit = (t, value) => {
+  const key = String(value ?? "").trim();
+  if (!key) return "";
+
+  if (key === PEER_SUPPORT) {
+    return t("peer_support");
+  }
+
+  return t(key);
+};
+
+/** @deprecated Use translateSpecializationForDisplay or translateSpecializationForEdit */
+export const translateSpecialization = translateSpecializationForDisplay;
+
 export const buildSpecializationOptions = (country, t) =>
   getSpecializationOptionValues(country).map((value) => ({
     value,
-    label: translateSpecialization(t, value),
+    label: translateSpecializationForEdit(t, value),
     selected: false,
   }));
 
