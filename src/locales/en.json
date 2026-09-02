@@ -242,7 +242,7 @@
       "search": "Search",
       "organizations": "Organizations",
       "modal_heading": "",
-      "peer_support": "Peer-to-peer emotional support"
+      "peer_support": "U-FRIEND"
     },
     "edit-provider": {
       "name_label": "Name",
@@ -339,6 +339,7 @@
       "love": "Love and Romantic Relationships",
       "social_skills": "Social Skills and Friendship",
       "body_image": "Body Image and Self-Esteem",
+      "peer_to_peer_emotional_support": "Peer-to-peer emotional support",
       "edit_success": "Profile updated successfully",
       "create_success": "Provider created successfully",
       "search": "Search",
@@ -347,7 +348,7 @@
       "remove": "Remove",
       "organizations_label": "Organizations",
       "organizations_error": "Select at least one organization",
-      "peer_support": "Peer-to-peer emotional support"
+      "peer_support": "U-FRIEND"
     },
     "provider-overview": {
       "earliest_slot_label": "Earliest available slot for consultation",
@@ -397,6 +398,7 @@
       "love": "Love and Romantic Relationships",
       "social_skills": "Social Skills and Friendship",
       "body_image": "Body Image and Self-Esteem",
+      "peer_to_peer_emotional_support": "Peer-to-peer emotional support",
       "hour_consultation": "for 1 hour consultation",
       "organizations_label": "Organizations",
       "free": "free of charge",
