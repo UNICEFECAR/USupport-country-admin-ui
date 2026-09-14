@@ -235,19 +235,12 @@ export const EditProvider = ({
   ];
 
   const getSpecializationsOptions = useCallback(() => {
-    if (providerData && providerData.specializations) {
-      return specializationOptions.map((option) => {
-        if (providerData.specializations.includes(option.value)) {
-          return {
-            ...option,
-            selected: true,
-            selectedIndex: providerData.specializations.indexOf(option.value),
-          };
-        }
-        return option;
-      });
-    }
-    return specializationOptions;
+    const selected = providerData?.specializations || [];
+    return specializationOptions.map((option) => ({
+      ...option,
+      selected: selected.includes(option.value),
+      selectedIndex: selected.indexOf(option.value),
+    }));
   }, [providerData, specializationOptions]);
 
   const getLanguageOptions = useCallback(() => {
