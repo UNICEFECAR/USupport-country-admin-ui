@@ -60,50 +60,6 @@ const initialData = {
 
 const COUNTRIES_WITH_DISABLED_PRICE = ["KZ", "PL", "CY"];
 
-const PillMultiSelect = ({
-  label,
-  options,
-  onChange,
-  errorMessage,
-  emptyMessage,
-}) => {
-  const handleToggle = (targetValue) => {
-    const updatedOptions = options.map((option) => ({
-      ...option,
-      selected:
-        option.value === targetValue ? !option.selected : option.selected,
-    }));
-
-    onChange(updatedOptions);
-  };
-
-  return (
-    <div className="create-provider__pill-group">
-      <p className="text create-provider__pill-group-label">{label}</p>
-      {options.length ? (
-        <div className="create-provider__pill-container">
-          {options.map((option) => (
-            <button
-              key={option.value}
-              type="button"
-              className={[
-                "create-provider__pill",
-                option.selected ? "create-provider__pill--selected" : "",
-              ].join(" ")}
-              onClick={() => handleToggle(option.value)}
-            >
-              {option.label}
-            </button>
-          ))}
-        </div>
-      ) : (
-        <p className="text create-provider__pill-empty">{emptyMessage}</p>
-      )}
-      {errorMessage ? <Error message={errorMessage} /> : null}
-    </div>
-  );
-};
-
 /**s
  * CreateProvider
  *
@@ -467,22 +423,22 @@ export const CreateProvider = ({
 
         <GridItem md={8} lg={4}>
           <Select
+            classes="create-provider__select create-provider__select--1"
             placeholder={t("select")}
             options={getLanguageOptions()}
             handleChange={(languages) =>
               handleWorkWithAndLanguageSelect("languages", languages)
             }
             label={t("language_label") + " *"}
-            maxShown={5}
-            addMoreText={t("add_more_languages")}
             errorMessage={errors.languages}
           />
-          <PillMultiSelect
-            label={t("specialization_label") + " *"}
+          <Select
+            classes="create-provider__select create-provider__select--2"
+            placeholder={t("select")}
             options={getSpecializationsOptions()}
-            onChange={(options) => handleSpecializationSelect(options)}
+            handleChange={(options) => handleSpecializationSelect(options)}
+            label={t("specialization_label") + " *"}
             errorMessage={errors.specializations}
-            emptyMessage={t("no_data_found")}
           />
           <InputGroup
             maxShown={5}
@@ -494,6 +450,7 @@ export const CreateProvider = ({
             errorMessage={errors.education}
           />
           <Select
+            classes="create-provider__select create-provider__select--3"
             placeholder={t("select")}
             label={t("work_with_label") + " *"}
             options={getWorkWithOptions()}
@@ -503,6 +460,7 @@ export const CreateProvider = ({
             errorMessage={errors.workWith}
           />
           <Select
+            classes="create-provider__select create-provider__select--4"
             placeholder={t("select")}
             options={getOrganizationOptions()}
             disabled={organizationsLoading}
@@ -510,8 +468,6 @@ export const CreateProvider = ({
               handleWorkWithAndLanguageSelect("organizations", organizations)
             }
             label={t("organizations_label") + " *"}
-            maxShown={5}
-            addMoreText={t("add_more_organizations")}
             errorMessage={errors.organizations}
           />
         </GridItem>
