@@ -60,6 +60,50 @@ const initialData = {
 
 const COUNTRIES_WITH_DISABLED_PRICE = ["KZ", "PL", "CY"];
 
+const PillMultiSelect = ({
+  label,
+  options,
+  onChange,
+  errorMessage,
+  emptyMessage,
+}) => {
+  const handleToggle = (targetValue) => {
+    const updatedOptions = options.map((option) => ({
+      ...option,
+      selected:
+        option.value === targetValue ? !option.selected : option.selected,
+    }));
+
+    onChange(updatedOptions);
+  };
+
+  return (
+    <div className="create-provider__pill-group">
+      <p className="text create-provider__pill-group-label">{label}</p>
+      {options.length ? (
+        <div className="create-provider__pill-container">
+          {options.map((option) => (
+            <button
+              key={option.value}
+              type="button"
+              className={[
+                "create-provider__pill",
+                option.selected ? "create-provider__pill--selected" : "",
+              ].join(" ")}
+              onClick={() => handleToggle(option.value)}
+            >
+              {option.label}
+            </button>
+          ))}
+        </div>
+      ) : (
+        <p className="text create-provider__pill-empty">{emptyMessage}</p>
+      )}
+      {errorMessage ? <Error message={errorMessage} /> : null}
+    </div>
+  );
+};
+
 /**s
  * CreateProvider
  *
@@ -142,19 +186,12 @@ export const CreateProvider = ({
   ];
 
   const getSpecializationsOptions = useCallback(() => {
-    if (providerData && providerData.specializations) {
-      return specializationOptions.map((option) => {
-        if (providerData.specializations.includes(option.value)) {
-          return {
-            ...option,
-            selected: true,
-            selectedIndex: providerData.specializations.indexOf(option.value),
-          };
-        }
-        return option;
-      });
-    }
-    return specializationOptions;
+    const selected = providerData?.specializations || [];
+    return specializationOptions.map((option) => ({
+      ...option,
+      selected: selected.includes(option.value),
+      selectedIndex: selected.indexOf(option.value),
+    }));
   }, [providerData, specializationOptions]);
 
   const getLanguageOptions = useCallback(() => {
@@ -440,14 +477,12 @@ export const CreateProvider = ({
             addMoreText={t("add_more_languages")}
             errorMessage={errors.languages}
           />
-          <Select
-            placeholder={t("select")}
+          <PillMultiSelect
             label={t("specialization_label") + " *"}
             options={getSpecializationsOptions()}
-            handleChange={(options) => handleSpecializationSelect(options)}
-            maxShown={specializationOptions.length}
-            addMoreText={t("add_more_specializations")}
+            onChange={(options) => handleSpecializationSelect(options)}
             errorMessage={errors.specializations}
+            emptyMessage={t("no_data_found")}
           />
           <InputGroup
             maxShown={5}
