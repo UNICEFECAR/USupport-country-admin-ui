@@ -79,4 +79,56 @@
       margin-top: $spacing_1_6;
     }
   }
+
+  &__pill-group {
+    margin-top: $spacing_2_4;
+    width: 100%;
+    text-align: left;
+  }
+
+  &__pill-group-label {
+    margin: 0 0 $spacing_0_4 0;
+    color: $color_blue_3d527b;
+    font-weight: $font_semi_bold;
+    text-align: left;
+  }
+
+  &__pill-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing_0_8;
+    max-height: 18rem;
+    overflow-y: auto;
+    padding: $spacing_0_8;
+    border-radius: $border_radius_1_6;
+    border: 0.1rem solid $color_gray_d2dcde;
+    @include scrollbar-secondary;
+  }
+
+  &__pill {
+    border: 0.1rem solid $color_blue_c1d7e0;
+    background: $color_white_ff;
+    border-radius: $border_radius_2_4;
+    padding: $spacing_0_6 $spacing_1_2;
+    color: $color_blue_3d527b;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  &__pill:hover {
+    border-color: $color_primary_20809e;
+  }
+
+  &__pill--selected {
+    border-color: $color_primary_20809e;
+    background: $color_green_f4f7fe;
+    color: $color_primary_20809e;
+    font-weight: $font_semi_bold;
+  }
+
+  &__pill-empty {
+    color: $color_gray_66768d;
+    margin: 0;
+    text-align: left;
+  }
 }
