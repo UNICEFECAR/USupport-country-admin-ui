@@ -52,9 +52,19 @@
 
     & .input-container,
     & .textarea--container,
-    &__sex-dropdown {
+    &__sex-dropdown,
+    & .input-group {
       margin-top: $spacing_2_4;
       text-align: left;
+    }
+
+    & .textarea--container {
+      align-items: flex-start;
+
+      .label {
+        width: 100%;
+        text-align: left;
+      }
     }
 
     & .dropdown-group {
@@ -80,55 +90,38 @@
     }
   }
 
-  &__pill-group {
+  &__select {
     margin-top: $spacing_2_4;
-    width: 100%;
     text-align: left;
-  }
+    width: 34.3rem;
+    position: relative;
 
-  &__pill-group-label {
-    margin: 0 0 $spacing_0_4 0;
-    color: $color_blue_3d527b;
-    font-weight: $font_semi_bold;
-    text-align: left;
-  }
+    &:first-child {
+      margin-top: 0;
+    }
 
-  &__pill-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: $spacing_0_8;
-    max-height: 18rem;
-    overflow-y: auto;
-    padding: $spacing_0_8;
-    border-radius: $border_radius_1_6;
-    border: 0.1rem solid $color_gray_d2dcde;
-    @include scrollbar-secondary;
-  }
+    @media screen and (min-width: $screen_md) {
+      width: 36.8rem;
+    }
 
-  &__pill {
-    border: 0.1rem solid $color_blue_c1d7e0;
-    background: $color_white_ff;
-    border-radius: $border_radius_2_4;
-    padding: $spacing_0_6 $spacing_1_2;
-    color: $color_blue_3d527b;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
+    &--1 {
+      z-index: 5;
+    }
 
-  &__pill:hover {
-    border-color: $color_primary_20809e;
-  }
+    &--2 {
+      z-index: 4;
+    }
 
-  &__pill--selected {
-    border-color: $color_primary_20809e;
-    background: $color_green_f4f7fe;
-    color: $color_primary_20809e;
-    font-weight: $font_semi_bold;
-  }
+    &--3 {
+      z-index: 3;
+    }
 
-  &__pill-empty {
-    color: $color_gray_66768d;
-    margin: 0;
-    text-align: left;
+    &--4 {
+      z-index: 2;
+    }
+
+    .select-container {
+      width: 100%;
+    }
   }
 }
