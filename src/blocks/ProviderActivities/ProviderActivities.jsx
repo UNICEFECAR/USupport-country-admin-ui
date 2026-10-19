@@ -12,7 +12,7 @@ import {
 import {
   getDateView,
   getTimeFromDate,
-  ONE_HOUR,
+  getConsultationEndDate,
   downloadCSVFile,
 } from "@USupport-components-library/utils";
 
@@ -92,7 +92,7 @@ export const ProviderActivities = ({ isLoading, data, providerName }) => {
       const price = row.price ? `${row.price}${currencySymbol}` : t("free");
       csv += "\n";
       csv += `${row.displayName},`;
-      csv += `${getFormattedDate(row.time, false)},`;
+      csv += `${getFormattedDate(row.time, false, row.durationMinutes)},`;
       csv += `${row.status ? t(row.status, row.status) : "N/A"},`;
       csv += `${row.providerJoined ? t("yes") : t("no")},`;
       csv += `${row.clientJoined ? t("yes") : t("no")},`;
@@ -144,8 +144,8 @@ export const ProviderActivities = ({ isLoading, data, providerName }) => {
     setDataToDisplay(filtered);
   };
 
-  const getFormattedDate = (date, hasComma = true) => {
-    const endTime = new Date(date.getTime() + ONE_HOUR);
+  const getFormattedDate = (date, hasComma = true, durationMinutes) => {
+    const endTime = getConsultationEndDate(date, durationMinutes);
 
     const displayTime = getTimeFromDate(date);
     const displayEndTime = getTimeFromDate(endTime);
@@ -158,7 +158,11 @@ export const ProviderActivities = ({ isLoading, data, providerName }) => {
   const getStatusLabel = (status) => (status ? t(status, status) : "N/A");
 
   const rowsData = dataToDisplay?.map((activity) => {
-    const displayTime = getFormattedDate(activity.time);
+    const displayTime = getFormattedDate(
+      activity.time,
+      true,
+      activity.durationMinutes,
+    );
 
     return [
       <p className="text">{activity.displayName}</p>,
