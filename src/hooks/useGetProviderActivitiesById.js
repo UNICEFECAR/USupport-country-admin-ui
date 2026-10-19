@@ -13,6 +13,9 @@ export const useGetProviderActivitiesById = (providerId) => {
         clientJoined: activity.client_joined,
         providerJoined: activity.provider_joined,
         time: new Date(activity.time),
+        // This mapper is a whitelist, so the table and the CSV export both fall
+        // back to an hour until the duration is named here.
+        durationMinutes: activity.duration_minutes,
         type: activity.type,
         campaignName: activity.campaign_name,
         createdAt: activity.created_at,

@@ -23,6 +23,7 @@ import {
   getCountryLabelFromAlpha2,
   ThemeContext,
 } from "@USupport-components-library/utils";
+import { getCountryUrl } from "#utils";
 
 import "./welcome.scss";
 
@@ -67,17 +68,11 @@ export const Welcome = () => {
       // If there is country in the local storage
       // set it in the url
       const subdomain = window.location.hostname.split(".")[0];
-      const countryLabel = getCountryLabelFromAlpha2(localStorageCountry);
-      if (subdomain === "usupport") {
-        window.location.href = window.location.href.replace(
-          subdomain,
-          `${countryLabel}.usupport`
-        );
-      } else if (subdomain === "staging") {
-        window.location.href = window.location.href.replace(
-          subdomain,
-          `${countryLabel}.staging`
-        );
+      if (subdomain === "usupport" || subdomain === "staging") {
+        window.location.href = getCountryUrl({
+          alpha2: localStorageCountry,
+          name: getCountryLabelFromAlpha2(localStorageCountry),
+        });
       }
     }
 
@@ -139,18 +134,11 @@ export const Welcome = () => {
     const countryObject = countries.find(
       (x) => x.value.toLocaleLowerCase() === country.toLocaleLowerCase()
     );
-    const subdomain = window.location.hostname.split(".")[0];
     if (!window.location.href.includes("localhost")) {
-      const label = countryObject.label.toLocaleLowerCase();
-      let newUrl;
-      if (subdomain === "usupport") {
-        newUrl = window.location.href.replace(subdomain, `${label}.usupport`);
-      } else if (subdomain === "staging") {
-        newUrl = window.location.href.replace(subdomain, `${label}.staging`);
-      } else {
-        newUrl = window.location.href.replace(subdomain, label);
-      }
-      window.location.href = newUrl;
+      window.location.href = getCountryUrl({
+        alpha2: countryObject.value,
+        name: countryObject.label,
+      });
     } else {
       localStorage.setItem("country", country);
     }

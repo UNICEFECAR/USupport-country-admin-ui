@@ -180,7 +180,8 @@
       "heading": "الإحصائيات",
       "web_visits": "إجمالي الزيارات",
       "qr_visits": "زيارات QR",
-      "no_data": "لم يتم العثور على بيانات"
+      "no_data": "لم يتم العثور على بيانات",
+      "unique_visitors": "الزوار الفريدون"
     },
     "security-settings-page": {
       "heading": "الأمان",

@@ -180,7 +180,8 @@
       "heading": "İstatistikler",
       "web_visits": "Toplam ziyaretler",
       "qr_visits": "QR ziyaretleri",
-      "no_data": "Veri bulunamadı"
+      "no_data": "Veri bulunamadı",
+      "unique_visitors": "Tekil ziyaretçiler"
     },
     "analytics-page": {
       "heading": "Analitikler",

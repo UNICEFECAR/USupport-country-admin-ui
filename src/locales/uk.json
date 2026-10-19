@@ -1141,7 +1141,8 @@
       "heading": "Statistics",
       "web_visits": "Total visits",
       "qr_visits": "QR visits",
-      "no_data": "No data found"
+      "no_data": "No data found",
+      "unique_visitors": "Унікальні відвідувачі"
     }
   },
   "pages": {

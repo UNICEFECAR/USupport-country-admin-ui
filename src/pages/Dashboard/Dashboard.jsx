@@ -21,6 +21,7 @@ export const Dashboard = () => {
   const country = localStorage.getItem("country");
 
   const IS_PS = country === "PS";
+  const IS_HOSN = country === "XH";
 
   if (IS_PS) {
     return (
@@ -28,6 +29,17 @@ export const Dashboard = () => {
         to={`/country-admin/${localStorage.getItem(
           "language"
         )}/content-management?tab=articles`}
+      />
+    );
+  }
+
+  // Hosn El Hal content is managed in the CMS; its admins only see statistics
+  if (IS_HOSN) {
+    return (
+      <Navigate
+        to={`/country-admin/${localStorage.getItem(
+          "language"
+        )}/hosnelhal-statistics`}
       />
     );
   }
