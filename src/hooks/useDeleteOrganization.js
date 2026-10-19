@@ -11,16 +11,16 @@ export default function useDeleteOrganization(onSuccess, onError) {
   const deleteOrganizationMutation = useMutation(deleteOrganization, {
     onSuccess: () => onSuccess(),
     onError: (err) => {
-      const { providers } = err?.response?.data?.error?.customData;
+      const providers = err?.response?.data?.error?.customData?.providers;
 
       const { message: error } = useError(err);
       onError(
         error,
-        providers.map((provider) => ({
+        providers?.map((provider) => ({
           providerDetailId: provider.provider_detail_id,
           name: provider.name,
           surname: provider.surname,
-        }))
+        })),
       );
     },
   });
