@@ -250,7 +250,10 @@ export const OrganizationDetails = () => {
 
         csv += `${row.name},`;
         csv += `${consultation.clientName},`;
-        csv += `${formatDateWithTimeRange(new Date(consultation.time))},`;
+        csv += `${formatDateWithTimeRange(
+          new Date(consultation.time),
+          consultation.duration_minutes,
+        )},`;
         csv += `${clientJoined},`;
         csv += `${clientJoinedAt},`;
         csv += `${providerJoined},`;

@@ -31,4 +31,4 @@ export * from "./ContentManagement";
 export * from "./Analytics";
 export * from "./BaselineAssessment";
 export * from "./MoodTrackerReport";
-export * from "./PlayAndHealStatistics";
+export * from "./ProgramStatistics";

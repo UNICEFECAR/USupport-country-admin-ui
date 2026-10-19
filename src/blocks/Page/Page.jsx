@@ -18,6 +18,7 @@ import {
   getLanguageFromUrl,
 } from "@USupport-components-library/utils";
 import { useIsLoggedIn, useError, useEventListener } from "#hooks";
+import { getCountryFromHostname } from "#utils";
 
 import "./page.scss";
 
@@ -52,6 +53,7 @@ export const Page = ({
 
   const { width } = useWindowDimensions();
   const IS_PS = localStorageCountry === "PS";
+  const IS_HOSN = localStorageCountry === "XH";
 
   let pages = [
     { name: t("page_1"), url: "/dashboard", icon: "home" },
@@ -103,6 +105,17 @@ export const Page = ({
             },
           ]
         : []),
+    ];
+  }
+
+  // Hosn El Hal content is managed in the CMS; its admins only see statistics
+  if (IS_HOSN) {
+    pages = [
+      {
+        name: t("statistics"),
+        url: "/hosnelhal-statistics",
+        icon: "document",
+      },
     ];
   }
 
@@ -161,8 +174,7 @@ export const Page = ({
 
     if (subdomain && subdomain !== "www" && subdomain !== "usupport") {
       localStorageCountry =
-        res.data.find((x) => x.name.toLocaleLowerCase() === subdomain)
-          ?.alpha2 || localStorageCountry;
+        getCountryFromHostname(res.data) || localStorageCountry;
       if (localStorageCountry) {
         localStorage.setItem("country", localStorageCountry);
       }

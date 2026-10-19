@@ -79,8 +79,11 @@ export const Providers = ({
   const debouncedSearchValue = useDebounce(searchValue, 500);
 
   const { width } = useWindowDimensions();
+  // Page size must stay part of the query key: the backend derives the offset
+  // from (page - 1) * limit, so a limit that changes mid-pagination (a resize
+  // across the breakpoint) would skip a whole block of providers.
+  const limit = width < 1366 ? 15 : 40;
   const fetchProvidersData = async ({ pageParam = 1 }) => {
-    const limit = width < 1366 ? 15 : 40;
     const { data } = await adminSvc.getAllProviders(
       limit,
       pageParam,
@@ -110,7 +113,14 @@ export const Providers = ({
   };
 
   const providersQuery = useInfiniteQuery(
-    ["all-providers", appliedFilters, sort, debouncedSearchValue, language],
+    [
+      "all-providers",
+      appliedFilters,
+      sort,
+      debouncedSearchValue,
+      language,
+      limit,
+    ],
     fetchProvidersData,
     {
       getNextPageParam: (lastPage, pages) => {
