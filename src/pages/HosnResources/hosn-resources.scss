@@ -1,0 +1,46 @@
+.hosn-resources {
+  &--rtl {
+    direction: rtl;
+
+    & .page__header-heading {
+      text-align: right;
+    }
+  }
+
+  &__search {
+    margin-bottom: 2rem;
+    max-width: 40rem;
+  }
+
+  &__empty {
+    margin-top: 2rem;
+  }
+
+  &__table-wrap {
+    overflow-x: auto;
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th,
+    td {
+      padding: 1.2rem 1rem;
+      text-align: start;
+      border-bottom: 1px solid #e6eaf0;
+      vertical-align: top;
+    }
+
+    th {
+      font-weight: 600;
+      white-space: nowrap;
+    }
+  }
+
+  &__num {
+    text-align: end !important;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+}

@@ -108,9 +108,14 @@ export const Page = ({
     ];
   }
 
-  // Hosn El Hal content is managed in the CMS; its admins only see statistics
+  // Hosn El Hal content is managed in the CMS; admins see resources + stats
   if (IS_HOSN) {
     pages = [
+      {
+        name: t("hosn_resources"),
+        url: "/hosnelhal-resources",
+        icon: "activities",
+      },
       {
         name: t("statistics"),
         url: "/hosnelhal-statistics",
