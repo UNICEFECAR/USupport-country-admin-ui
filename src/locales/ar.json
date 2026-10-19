@@ -2,6 +2,7 @@
   "blocks": {
     "page": {
       "statistics": "الإحصائيات",
+      "hosn_resources": "الموارد",
       "page_3": "إدارة المحتوى",
       "your_profile_text": "ملفك الشخصي"
     },
@@ -181,7 +182,30 @@
       "web_visits": "إجمالي الزيارات",
       "qr_visits": "زيارات QR",
       "no_data": "لم يتم العثور على بيانات",
-      "unique_visitors": "الزوار الفريدون"
+      "unique_visitors": "الزوار الفريدون",
+      "resource_views": "مشاهدات الموارد",
+      "unique_viewers": "المشاهدون الفريدون",
+      "views_breakdown": "توزيع المشاهدات",
+      "by_pillar": "حسب المحور",
+      "by_format": "حسب النوع",
+      "format_video": "فيديو",
+      "format_audio": "صوت",
+      "format_worksheet": "PDF",
+      "format_thumbnail": "رسالة بصرية"
+    },
+    "hosn-resources-page": {
+      "heading": "الموارد",
+      "search": "البحث في الموارد",
+      "no_data": "لم يتم العثور على موارد",
+      "title": "العنوان",
+      "format": "النوع",
+      "pillar": "المحور",
+      "locale": "اللغة",
+      "views": "المشاهدات",
+      "format_video": "فيديو",
+      "format_audio": "صوت",
+      "format_worksheet": "PDF",
+      "format_thumbnail": "رسالة بصرية"
     },
     "security-settings-page": {
       "heading": "الأمان",

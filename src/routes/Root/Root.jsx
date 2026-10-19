@@ -53,6 +53,7 @@ import {
   MoodTrackerReport,
   PlayAndHealStatistics,
   HosnElHalStatistics,
+  HosnResources,
 } from "#pages";
 
 import { CountryValidationRoute, ProtectedRoute } from "../../routes";
@@ -326,6 +327,14 @@ const LanguageLayout = () => {
         element={
           <ProtectedRoute>
             <HosnElHalStatistics />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="hosnelhal-resources"
+        element={
+          <ProtectedRoute>
+            <HosnResources />
           </ProtectedRoute>
         }
       />
