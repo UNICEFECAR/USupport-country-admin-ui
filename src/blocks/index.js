@@ -35,3 +35,5 @@ export * from "./Analytics";
 export * from "./BaselineAssessmentThresholds";
 export * from "./SosCenterClicks";
 export * from "./ProvidersFreeSlots";
+
+export * from "./ConsultationProblemReports";
