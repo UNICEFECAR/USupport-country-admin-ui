@@ -1,6 +1,12 @@
 import React, { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useQuery } from "@tanstack/react-query";
+import {
+  Chart as ChartJS,
+  ArcElement,
+  Tooltip as ChartTooltip,
+} from "chart.js";
+import { Doughnut } from "react-chartjs-2";
 
 import { Page } from "#blocks";
 import {
@@ -10,12 +16,32 @@ import {
   DropdownWithLabel,
   Grid,
   GridItem,
+  Icon,
   Loading,
-  TabsUnderlined,
 } from "@USupport-components-library/src";
 import { adminSvc, cmsSvc } from "@USupport-components-library/services";
 
 import "./program-statistics.scss";
+
+ChartJS.register(ArcElement, ChartTooltip);
+
+const BREAKDOWN_COLORS = [
+  "#20809E",
+  "#7EC8E3",
+  "#3D527B",
+  "#5BA8A0",
+  "#E8A87C",
+  "#C38D9E",
+  "#85CDCA",
+  "#E27D60",
+];
+
+const SUMMARY_CARD_META = {
+  web_visits: { icon: "view", tone: "blue" },
+  unique_visitors: { icon: "two-people", tone: "green" },
+  resource_views: { icon: "document", tone: "purple" },
+  unique_viewers: { icon: "person", tone: "orange" },
+};
 
 const countEvents = (eventType) => (events) =>
   events.filter((e) => e.event_type === eventType).length;
@@ -176,6 +202,12 @@ const groupCounts = (engagements, assetsById, keyFn) => {
     .sort((a, b) => b.count - a.count);
 };
 
+const formatPercent = (count, total) => {
+  if (!total) return "0%";
+  const value = (count / total) * 100;
+  return `${Number.isInteger(value) ? value : value.toFixed(1)}%`;
+};
+
 /**
  * ProgramStatistics
  *
@@ -253,33 +285,168 @@ export const PlayAndHealStatistics = () => (
   />
 );
 
-const BreakdownBars = ({ items, emptyLabel, max }) => {
+const SummaryMetricCard = ({ label, value, icon, tone }) => {
+  const { t } = useTranslation("pages", { keyPrefix: "pl-statistics-page" });
+
+  return (
+    <Box classes="program-statistics__metric" borderSize="md" boxShadow={2}>
+      <div
+        className={`program-statistics__metric-icon program-statistics__metric-icon--${tone}`}
+        aria-hidden="true"
+      >
+        <Icon name={icon} size="md" color="#FFFFFF" />
+      </div>
+      <div className="program-statistics__metric-copy">
+        <p className="program-statistics__metric-value">{value}</p>
+        <h3 className="program-statistics__metric-label">{t(label)}</h3>
+      </div>
+    </Box>
+  );
+};
+
+const BreakdownToggle = ({ value, onChange }) => {
+  const { t } = useTranslation("pages", { keyPrefix: "pl-statistics-page" });
+  const options = [
+    { value: "pillar", label: t("by_pillar") },
+    { value: "format", label: t("by_format") },
+  ];
+
+  return (
+    <div
+      className="program-statistics__toggle"
+      role="tablist"
+      aria-label={t("views_breakdown")}
+    >
+      {options.map((option) => {
+        const isActive = value === option.value;
+        return (
+          <button
+            key={option.value}
+            type="button"
+            role="tab"
+            aria-selected={isActive}
+            className={`program-statistics__toggle-btn${
+              isActive ? " program-statistics__toggle-btn--active" : ""
+            }`}
+            onClick={() => onChange(option.value)}
+          >
+            {option.label}
+          </button>
+        );
+      })}
+    </div>
+  );
+};
+
+const BreakdownDonut = ({ items, total, centerLabel }) => {
+  const chartData = useMemo(
+    () => ({
+      labels: items.map((item) => item.label),
+      datasets: [
+        {
+          data: items.length ? items.map((item) => item.count) : [1],
+          backgroundColor: items.length
+            ? items.map((item) => item.color)
+            : ["#E6F1F4"],
+          borderWidth: 0,
+          hoverOffset: 2,
+        },
+      ],
+    }),
+    [items]
+  );
+
+  const chartOptions = useMemo(
+    () => ({
+      responsive: true,
+      maintainAspectRatio: false,
+      cutout: "72%",
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          enabled: items.length > 0,
+          callbacks: {
+            label: (context) => {
+              const count = context.raw || 0;
+              return `${context.label}: ${count} (${formatPercent(
+                count,
+                total
+              )})`;
+            },
+          },
+        },
+      },
+    }),
+    [items.length, total]
+  );
+
+  return (
+    <div className="program-statistics__donut">
+      <div className="program-statistics__donut-chart">
+        <Doughnut data={chartData} options={chartOptions} />
+        <div className="program-statistics__donut-center">
+          <p className="program-statistics__donut-total">{total}</p>
+          <p className="program-statistics__donut-caption">{centerLabel}</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const BreakdownBars = ({
+  items,
+  emptyLabel,
+  total,
+  categoryLabel,
+  viewsLabel,
+}) => {
   if (!items.length) {
     return <p className="program-statistics__empty">{emptyLabel}</p>;
   }
 
   return (
-    <ul className="program-statistics__bars">
-      {items.map(({ key, label, count }) => {
-        const percent = max ? Math.round((count / max) * 100) : 0;
-        return (
-          <li key={key} className="program-statistics__bar-row">
-            <div className="program-statistics__bar-meta">
-              <span className="program-statistics__bar-label" title={label}>
-                {label}
-              </span>
+    <div className="program-statistics__table">
+      <div className="program-statistics__table-head">
+        <span>{categoryLabel}</span>
+        <span aria-hidden="true" />
+        <span>{viewsLabel}</span>
+        <span>%</span>
+      </div>
+      <ul className="program-statistics__bars">
+        {items.map(({ key, label, count, color }) => {
+          const percentOfMax = total
+            ? Math.max((count / total) * 100, 4)
+            : 0;
+          return (
+            <li key={key} className="program-statistics__bar-row">
+              <div className="program-statistics__bar-name">
+                <span
+                  className="program-statistics__bar-dot"
+                  style={{ backgroundColor: color }}
+                  aria-hidden="true"
+                />
+                <span className="program-statistics__bar-label" title={label}>
+                  {label}
+                </span>
+              </div>
+              <div className="program-statistics__bar-track" aria-hidden="true">
+                <div
+                  className="program-statistics__bar-fill"
+                  style={{
+                    width: `${percentOfMax}%`,
+                    backgroundColor: color,
+                  }}
+                />
+              </div>
               <span className="program-statistics__bar-count">{count}</span>
-            </div>
-            <div className="program-statistics__bar-track" aria-hidden="true">
-              <div
-                className="program-statistics__bar-fill"
-                style={{ width: `${percent}%` }}
-              />
-            </div>
-          </li>
-        );
-      })}
-    </ul>
+              <span className="program-statistics__bar-percent">
+                {formatPercent(count, total)}
+              </span>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 };
 
@@ -368,10 +535,11 @@ export const HosnElHalStatistics = () => {
       assetsById,
       (asset) => asset?.pillarKey || null
     );
-    return grouped.map(({ key, count }) => ({
+    return grouped.map(({ key, count }, index) => ({
       key,
       label: pillarNameByKey.get(key) || key,
       count,
+      color: BREAKDOWN_COLORS[index % BREAKDOWN_COLORS.length],
     }));
   }, [engagements, assetsById, pillarNameByKey]);
 
@@ -382,15 +550,19 @@ export const HosnElHalStatistics = () => {
       (asset) => asset?.format || null
     );
     const byFormat = new Map(grouped.map((x) => [x.key, x.count]));
-    return HOSN_FORMATS.map((format) => ({
+    return HOSN_FORMATS.map((format, index) => ({
       key: format,
       label: t(`format_${format}`),
       count: byFormat.get(format) || 0,
+      color: BREAKDOWN_COLORS[index % BREAKDOWN_COLORS.length],
     })).filter((x) => x.count > 0);
   }, [engagements, assetsById, t]);
 
   const breakdownItems = breakdown === "pillar" ? pillarItems : formatItems;
-  const maxCount = breakdownItems[0]?.count || 0;
+  const breakdownTotal = breakdownItems.reduce(
+    (sum, item) => sum + item.count,
+    0
+  );
 
   const IS_RTL = localStorage.getItem("language") === "ar";
 
@@ -400,23 +572,6 @@ export const HosnElHalStatistics = () => {
     { label: "resource_views", value: summary.resourceViews },
     { label: "unique_viewers", value: summary.uniqueViewers },
   ];
-
-  const breakdownTabs = [
-    {
-      value: "pillar",
-      label: t("by_pillar"),
-      isSelected: breakdown === "pillar",
-    },
-    {
-      value: "format",
-      label: t("by_format"),
-      isSelected: breakdown === "format",
-    },
-  ];
-
-  const handleBreakdownTabSelect = (index) => {
-    setBreakdown(breakdownTabs[index].value);
-  };
 
   return (
     <Page
@@ -436,18 +591,22 @@ export const HosnElHalStatistics = () => {
         ) : (
           <>
             <Grid classes="program-statistics__summary">
-              {summaryCards.map(({ label, value }) => (
-                <GridItem md={4} lg={3} key={label}>
-                  <Box
-                    classes="program-statistics__item"
-                    borderSize="md"
-                    boxShadow={2}
-                  >
-                    <p className="program-statistics__item-value">{value}</p>
-                    <h3 className="program-statistics__item-label">{t(label)}</h3>
-                  </Box>
-                </GridItem>
-              ))}
+              {summaryCards.map(({ label, value }) => {
+                const meta = SUMMARY_CARD_META[label] || {
+                  icon: "info",
+                  tone: "blue",
+                };
+                return (
+                  <GridItem md={4} lg={3} key={label}>
+                    <SummaryMetricCard
+                      label={label}
+                      value={value}
+                      icon={meta.icon}
+                      tone={meta.tone}
+                    />
+                  </GridItem>
+                );
+              })}
             </Grid>
 
             <Box
@@ -456,19 +615,35 @@ export const HosnElHalStatistics = () => {
               boxShadow={1}
             >
               <div className="program-statistics__breakdown-header">
-                <h3 className="program-statistics__breakdown-title">
-                  {t("views_breakdown")}
-                </h3>
-                <TabsUnderlined
-                  options={breakdownTabs}
-                  handleSelect={handleBreakdownTabSelect}
+                <div className="program-statistics__breakdown-copy">
+                  <h3 className="program-statistics__breakdown-title">
+                    {t("views_breakdown")}
+                  </h3>
+                  <p className="program-statistics__breakdown-subtitle">
+                    {t("views_breakdown_subtitle")}
+                  </p>
+                </div>
+                <BreakdownToggle value={breakdown} onChange={setBreakdown} />
+              </div>
+
+              <div className="program-statistics__breakdown-body">
+                <BreakdownDonut
+                  items={breakdownItems}
+                  total={breakdownTotal}
+                  centerLabel={t("total_resource_views_label")}
+                />
+                <BreakdownBars
+                  items={breakdownItems}
+                  emptyLabel={t("no_data")}
+                  total={breakdownTotal}
+                  categoryLabel={
+                    breakdown === "pillar"
+                      ? t("breakdown_column_pillar")
+                      : t("breakdown_column_type")
+                  }
+                  viewsLabel={t("breakdown_column_views")}
                 />
               </div>
-              <BreakdownBars
-                items={breakdownItems}
-                emptyLabel={t("no_data")}
-                max={maxCount}
-              />
             </Box>
           </>
         )}
