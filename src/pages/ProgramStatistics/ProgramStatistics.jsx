@@ -7,6 +7,8 @@ import {
   Box,
   Block,
   Button,
+  DateInput,
+  DropdownWithLabel,
   Grid,
   GridItem,
   Loading,
@@ -22,6 +24,130 @@ const countUniqueVisitors = (events) =>
   new Set(events.map((e) => e.visitor_id).filter(Boolean)).size;
 
 const HOSN_FORMATS = ["video", "audio", "worksheet", "thumbnail"];
+
+const PERIOD_ALL = "all";
+const PERIOD_CUSTOM = "custom";
+
+const toDateInputValue = (date) => {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+};
+
+const defaultCustomRange = () => {
+  const end = new Date();
+  const start = new Date();
+  start.setDate(start.getDate() - 29);
+  return {
+    startDate: toDateInputValue(start),
+    endDate: toDateInputValue(end),
+  };
+};
+
+/** Resolve UI period selection into API YYYY-MM-DD bounds (or null for all time). */
+const getPeriodQuery = (period, startDate, endDate) => {
+  if (period === PERIOD_ALL) {
+    return { startDate: undefined, endDate: undefined };
+  }
+
+  if (period === PERIOD_CUSTOM) {
+    return {
+      startDate: startDate || undefined,
+      endDate: endDate || undefined,
+    };
+  }
+
+  const days = Number(period);
+  const end = new Date();
+  const start = new Date();
+  start.setDate(start.getDate() - (days - 1));
+  return {
+    startDate: toDateInputValue(start),
+    endDate: toDateInputValue(end),
+  };
+};
+
+const usePeriodFilter = () => {
+  const [period, setPeriod] = useState(PERIOD_ALL);
+  const [customRange, setCustomRange] = useState(defaultCustomRange);
+
+  const dateQuery = useMemo(
+    () => getPeriodQuery(period, customRange.startDate, customRange.endDate),
+    [period, customRange.startDate, customRange.endDate]
+  );
+
+  const handlePeriodChange = (value) => {
+    setPeriod(value);
+    if (value === PERIOD_CUSTOM) {
+      setCustomRange(defaultCustomRange());
+    }
+  };
+
+  return {
+    period,
+    customRange,
+    setCustomRange,
+    dateQuery,
+    handlePeriodChange,
+  };
+};
+
+const PeriodFilterBar = ({
+  period,
+  customRange,
+  onPeriodChange,
+  onCustomRangeChange,
+}) => {
+  const { t } = useTranslation("pages", { keyPrefix: "pl-statistics-page" });
+
+  const periodOptions = useMemo(
+    () => [
+      { value: PERIOD_ALL, label: t("period_all") },
+      { value: "7", label: t("period_7") },
+      { value: "30", label: t("period_30") },
+      { value: "90", label: t("period_90") },
+      { value: PERIOD_CUSTOM, label: t("period_custom") },
+    ],
+    [t]
+  );
+
+  return (
+    <div className="program-statistics__period">
+      <DropdownWithLabel
+        label={t("period")}
+        selected={period}
+        setSelected={onPeriodChange}
+        options={periodOptions}
+        classes="program-statistics__period-select"
+      />
+      {period === PERIOD_CUSTOM && (
+        <div className="program-statistics__period-dates">
+          <DateInput
+            label={t("start_date")}
+            value={customRange.startDate}
+            onChange={(event) =>
+              onCustomRangeChange({
+                ...customRange,
+                startDate: event.target.value,
+              })
+            }
+          />
+          <DateInput
+            label={t("end_date")}
+            value={customRange.endDate}
+            onChange={(event) =>
+              onCustomRangeChange({
+                ...customRange,
+                endDate: event.target.value,
+              })
+            }
+          />
+        </div>
+      )}
+    </div>
+  );
+};
 
 const mapCmsAssets = (entries = []) =>
   entries.map((entry) => {
@@ -58,9 +184,17 @@ const groupCounts = (engagements, assetsById, keyFn) => {
  */
 export const ProgramStatistics = ({ queryKey, getVisits, stats }) => {
   const { t } = useTranslation("pages", { keyPrefix: "pl-statistics-page" });
+  const {
+    period,
+    customRange,
+    setCustomRange,
+    dateQuery,
+    handlePeriodChange,
+  } = usePeriodFilter();
 
-  const { data, isLoading } = useQuery([queryKey], () =>
-    getVisits().then((res) => res.data)
+  const { data, isLoading, isFetching } = useQuery(
+    [queryKey, dateQuery.startDate, dateQuery.endDate],
+    () => getVisits(dateQuery).then((res) => res.data)
   );
 
   const events = data || [];
@@ -73,8 +207,14 @@ export const ProgramStatistics = ({ queryKey, getVisits, stats }) => {
       showGoBackArrow={false}
     >
       <Block>
+        <PeriodFilterBar
+          period={period}
+          customRange={customRange}
+          onPeriodChange={handlePeriodChange}
+          onCustomRangeChange={setCustomRange}
+        />
         <Grid>
-          {isLoading ? (
+          {isLoading || isFetching ? (
             <GridItem md={8} lg={12}>
               <Loading size="lg" />
             </GridItem>
@@ -83,11 +223,13 @@ export const ProgramStatistics = ({ queryKey, getVisits, stats }) => {
               <GridItem md={4} lg={6} key={label}>
                 <Box
                   classes="program-statistics__item"
-                  borderSize="lg"
+                  borderSize="md"
                   boxShadow={2}
                 >
-                  <h3>{t(label)}</h3>
-                  <div>{count(events)}</div>
+                  <p className="program-statistics__item-value">
+                    {count(events)}
+                  </p>
+                  <h3 className="program-statistics__item-label">{t(label)}</h3>
                 </Box>
               </GridItem>
             ))
@@ -118,18 +260,25 @@ const BreakdownBars = ({ items, emptyLabel, max }) => {
 
   return (
     <ul className="program-statistics__bars">
-      {items.map(({ key, label, count }) => (
-        <li key={key} className="program-statistics__bar-row">
-          <span className="program-statistics__bar-label">{label}</span>
-          <div className="program-statistics__bar-track" aria-hidden="true">
-            <div
-              className="program-statistics__bar-fill"
-              style={{ width: `${max ? Math.round((count / max) * 100) : 0}%` }}
-            />
-          </div>
-          <span className="program-statistics__bar-count">{count}</span>
-        </li>
-      ))}
+      {items.map(({ key, label, count }) => {
+        const percent = max ? Math.round((count / max) * 100) : 0;
+        return (
+          <li key={key} className="program-statistics__bar-row">
+            <div className="program-statistics__bar-meta">
+              <span className="program-statistics__bar-label" title={label}>
+                {label}
+              </span>
+              <span className="program-statistics__bar-count">{count}</span>
+            </div>
+            <div className="program-statistics__bar-track" aria-hidden="true">
+              <div
+                className="program-statistics__bar-fill"
+                style={{ width: `${percent}%` }}
+              />
+            </div>
+          </li>
+        );
+      })}
     </ul>
   );
 };
@@ -142,12 +291,22 @@ export const HosnElHalStatistics = () => {
     keyPrefix: "pl-statistics-page",
   });
   const [breakdown, setBreakdown] = useState("pillar");
+  const {
+    period,
+    customRange,
+    setCustomRange,
+    dateQuery,
+    handlePeriodChange,
+  } = usePeriodFilter();
 
-  const visitsQuery = useQuery(["hosnelhal-visits"], () =>
-    adminSvc.getHosnElHalVisits().then((res) => res.data || [])
+  const visitsQuery = useQuery(
+    ["hosnelhal-visits", dateQuery.startDate, dateQuery.endDate],
+    () => adminSvc.getHosnElHalVisits(dateQuery).then((res) => res.data || [])
   );
-  const engagementsQuery = useQuery(["hosnelhal-engagements"], () =>
-    adminSvc.getHosnElHalEngagements().then((res) => res.data || [])
+  const engagementsQuery = useQuery(
+    ["hosnelhal-engagements", dateQuery.startDate, dateQuery.endDate],
+    () =>
+      adminSvc.getHosnElHalEngagements(dateQuery).then((res) => res.data || [])
   );
   const assetsQuery = useQuery(["hosn-assets-admin", "all"], async () => {
     const { data } = await cmsSvc.getHosnAssets({ locale: "all", limit: 500 });
@@ -167,7 +326,9 @@ export const HosnElHalStatistics = () => {
   const isLoading =
     visitsQuery.isLoading ||
     engagementsQuery.isLoading ||
-    assetsQuery.isLoading;
+    assetsQuery.isLoading ||
+    visitsQuery.isFetching ||
+    engagementsQuery.isFetching;
 
   const visits = visitsQuery.data || [];
   const engagements = engagementsQuery.data || [];
@@ -247,6 +408,12 @@ export const HosnElHalStatistics = () => {
       showGoBackArrow={false}
     >
       <Block>
+        <PeriodFilterBar
+          period={period}
+          customRange={customRange}
+          onPeriodChange={handlePeriodChange}
+          onCustomRangeChange={setCustomRange}
+        />
         {isLoading ? (
           <Loading size="lg" />
         ) : (
@@ -256,20 +423,30 @@ export const HosnElHalStatistics = () => {
                 <GridItem md={4} lg={3} key={label}>
                   <Box
                     classes="program-statistics__item"
-                    borderSize="lg"
+                    borderSize="md"
                     boxShadow={2}
                   >
-                    <h3>{t(label)}</h3>
-                    <div>{value}</div>
+                    <p className="program-statistics__item-value">{value}</p>
+                    <h3 className="program-statistics__item-label">{t(label)}</h3>
                   </Box>
                 </GridItem>
               ))}
             </Grid>
 
-            <div className="program-statistics__breakdown">
+            <Box
+              classes="program-statistics__breakdown"
+              borderSize="md"
+              boxShadow={1}
+            >
               <div className="program-statistics__breakdown-header">
-                <h3>{t("views_breakdown")}</h3>
-                <div className="program-statistics__toggles">
+                <h3 className="program-statistics__breakdown-title">
+                  {t("views_breakdown")}
+                </h3>
+                <div
+                  className="program-statistics__toggles"
+                  role="group"
+                  aria-label={t("views_breakdown")}
+                >
                   <Button
                     type={breakdown === "pillar" ? "primary" : "secondary"}
                     size="sm"
@@ -289,7 +466,7 @@ export const HosnElHalStatistics = () => {
                 emptyLabel={t("no_data")}
                 max={maxCount}
               />
-            </div>
+            </Box>
           </>
         )}
       </Block>

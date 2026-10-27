@@ -1,3 +1,5 @@
+@import "@USupport-components-library/styles";
+
 .hosn-resources {
   &--rtl {
     direction: rtl;
@@ -7,40 +9,14 @@
     }
   }
 
-  &__search {
-    margin-bottom: 2rem;
-    max-width: 40rem;
-  }
-
-  &__empty {
-    margin-top: 2rem;
-  }
-
-  &__table-wrap {
-    overflow-x: auto;
-  }
-
-  &__table {
-    width: 100%;
-    border-collapse: collapse;
-
-    th,
-    td {
-      padding: 1.2rem 1rem;
-      text-align: start;
-      border-bottom: 1px solid #e6eaf0;
-      vertical-align: top;
+  &__filters-modal {
+    .dropdown-with-label {
+      margin-bottom: $spacing_1_6;
     }
 
-    th {
-      font-weight: 600;
-      white-space: nowrap;
+    &__cta {
+      margin-top: $spacing_1_2;
+      width: 100%;
     }
-  }
-
-  &__num {
-    text-align: end !important;
-    font-variant-numeric: tabular-nums;
-    white-space: nowrap;
   }
 }
