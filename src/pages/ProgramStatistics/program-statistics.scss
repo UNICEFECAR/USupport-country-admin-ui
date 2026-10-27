@@ -1,21 +1,88 @@
+@import "@USupport-components-library/styles";
+
 .program-statistics {
   &--rtl {
     direction: rtl;
+
     & .page__header-heading {
       text-align: right;
     }
+
+    .program-statistics__item {
+      border-inline-start: none;
+      border-inline-end: 0.3rem solid $color_primary_20809e;
+    }
   }
 
-  &__item {
-    padding: 1rem;
+  & .block {
+    padding: $spacing_3_2 $spacing_2_4;
+
+    @media screen and (min-width: $screen-md) {
+      padding: $spacing_4_0 $spacing_5_0;
+    }
+  }
+
+  &__period {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: $spacing_1_6;
+    margin-bottom: $spacing_2_4;
+  }
+
+  &__period-select {
+    min-width: 18rem;
+    max-width: 24rem;
+  }
+
+  &__period-dates {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing_1_2 $spacing_1_6;
+    align-items: flex-end;
   }
 
   &__summary {
-    margin-bottom: 3rem;
+    margin-bottom: $spacing_3_2;
+    row-gap: $spacing_1_6;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: $spacing_0_6;
+    min-height: 11.2rem;
+    padding: $spacing_2_4 $spacing_2_0;
+    border-inline-start: 0.3rem solid $color_primary_20809e;
+    height: 100%;
+  }
+
+  &__item-value {
+    margin: 0;
+    font-size: $font_size_3_2;
+    font-weight: $font_bold;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+    color: $color_blue_3d527b;
+  }
+
+  &__item-label {
+    margin: 0;
+    font-size: $font_size_1_6;
+    font-weight: $font_semi_bold;
+    line-height: 1.35;
+    color: $color_gray_66768d;
   }
 
   &__breakdown {
-    margin-top: 1rem;
+    padding: $spacing_2_4;
+    margin-top: 0;
+
+    @media screen and (min-width: $screen-md) {
+      padding: $spacing_3_2;
+    }
   }
 
   &__breakdown-header {
@@ -23,18 +90,38 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    gap: 1.2rem;
-    margin-bottom: 1.6rem;
+    gap: $spacing_1_6;
+    margin-bottom: $spacing_2_4;
+    padding-bottom: $spacing_1_6;
+    border-bottom: 0.1rem solid $color_gray_ea;
+  }
 
-    h3 {
-      margin: 0;
-    }
+  &__breakdown-title {
+    margin: 0;
+    font-size: $font_size_2_0;
+    font-weight: $font_bold;
+    color: $color_blue_3d527b;
   }
 
   &__toggles {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.8rem;
+    display: inline-flex;
+    flex-wrap: nowrap;
+    gap: $spacing_0_4;
+    padding: $spacing_0_4;
+    border-radius: $border_radius_2_4;
+    background: $color_green_e6f1f4;
+
+    .btn {
+      min-width: 9.6rem;
+      box-shadow: none;
+      border-radius: $border_radius_1_6;
+    }
+
+    .btn--secondary {
+      background: transparent;
+      border: none;
+      color: $color_primary_20809e;
+    }
   }
 
   &__bars {
@@ -43,46 +130,64 @@
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: $spacing_2_0;
   }
 
   &__bar-row {
-    display: grid;
-    grid-template-columns: minmax(8rem, 14rem) minmax(0, 1fr) 4rem;
-    gap: 1rem;
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing_0_8;
+  }
+
+  &__bar-meta {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: $spacing_1_2;
   }
 
   &__bar-label {
+    flex: 1;
+    min-width: 0;
+    font-size: $font_size_1_6;
+    font-weight: $font_semi_bold;
+    line-height: 1.4;
+    color: $color_blue_3d527b;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
 
+  &__bar-count {
+    flex-shrink: 0;
+    font-size: $font_size_1_8;
+    font-weight: $font_bold;
+    font-variant-numeric: tabular-nums;
+    color: $color_primary_20809e;
+  }
+
   &__bar-track {
-    height: 0.8rem;
+    height: 1.2rem;
     border-radius: 999px;
-    background: #e6eaf0;
+    background: $color_green_e6f1f4;
     overflow: hidden;
   }
 
   &__bar-fill {
     height: 100%;
     border-radius: 999px;
-    background: #2085ec;
+    background: linear-gradient(
+      90deg,
+      $color_primary_20809e 0%,
+      #2aa0c4 100%
+    );
     min-width: 0;
-  }
-
-  &__bar-count {
-    text-align: end;
-    font-variant-numeric: tabular-nums;
+    transition: width 0.35s ease;
   }
 
   &__empty {
     margin: 0;
-  }
-
-  & .block {
-    padding: 5rem;
+    font-size: $font_size_1_6;
+    color: $color_gray_66768d;
   }
 }
