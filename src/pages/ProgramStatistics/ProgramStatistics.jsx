@@ -1,12 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useQuery } from "@tanstack/react-query";
-import {
-  Chart as ChartJS,
-  ArcElement,
-  Tooltip as ChartTooltip,
-} from "chart.js";
-import { Doughnut } from "react-chartjs-2";
 
 import { Page } from "#blocks";
 import {
@@ -18,30 +12,11 @@ import {
   GridItem,
   Icon,
   Loading,
+  Tabs,
 } from "@USupport-components-library/src";
 import { adminSvc, cmsSvc } from "@USupport-components-library/services";
 
 import "./program-statistics.scss";
-
-ChartJS.register(ArcElement, ChartTooltip);
-
-const BREAKDOWN_COLORS = [
-  "#20809E",
-  "#7EC8E3",
-  "#3D527B",
-  "#5BA8A0",
-  "#E8A87C",
-  "#C38D9E",
-  "#85CDCA",
-  "#E27D60",
-];
-
-const SUMMARY_CARD_META = {
-  web_visits: { icon: "view", tone: "blue" },
-  unique_visitors: { icon: "two-people", tone: "green" },
-  resource_views: { icon: "document", tone: "purple" },
-  unique_viewers: { icon: "person", tone: "orange" },
-};
 
 const countEvents = (eventType) => (events) =>
   events.filter((e) => e.event_type === eventType).length;
@@ -50,6 +25,22 @@ const countUniqueVisitors = (events) =>
   new Set(events.map((e) => e.visitor_id).filter(Boolean)).size;
 
 const HOSN_FORMATS = ["video", "audio", "worksheet", "thumbnail"];
+
+const BREAKDOWN_COLORS = [
+  "#20809e",
+  "#7ec8e3",
+  "#54cfd9",
+  "#9749fa",
+  "#fb6514",
+  "#3d527b",
+];
+
+const TONE_ICON_COLORS = {
+  blue: "#20809e",
+  green: "#1a9ea8",
+  purple: "#9749fa",
+  orange: "#fb6514",
+};
 
 const PERIOD_ALL = "all";
 const PERIOD_CUSTOM = "custom";
@@ -202,10 +193,149 @@ const groupCounts = (engagements, assetsById, keyFn) => {
     .sort((a, b) => b.count - a.count);
 };
 
-const formatPercent = (count, total) => {
-  if (!total) return "0%";
-  const value = (count / total) * 100;
-  return `${Number.isInteger(value) ? value : value.toFixed(1)}%`;
+const polarToCartesian = (cx, cy, radius, angleInDegrees) => {
+  const angleInRadians = ((angleInDegrees - 90) * Math.PI) / 180;
+  return {
+    x: cx + radius * Math.cos(angleInRadians),
+    y: cy + radius * Math.sin(angleInRadians),
+  };
+};
+
+const describeArc = (cx, cy, radius, startAngle, endAngle) => {
+  const start = polarToCartesian(cx, cy, radius, endAngle);
+  const end = polarToCartesian(cx, cy, radius, startAngle);
+  const largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
+  return [
+    "M",
+    start.x,
+    start.y,
+    "A",
+    radius,
+    radius,
+    0,
+    largeArcFlag,
+    0,
+    end.x,
+    end.y,
+  ].join(" ");
+};
+
+const DonutChart = ({ items, total, centerLabel }) => {
+  const size = 220;
+  const stroke = 28;
+  const radius = (size - stroke) / 2;
+  const cx = size / 2;
+  const cy = size / 2;
+
+  if (!total) {
+    return (
+      <div className="program-statistics__donut">
+        <svg viewBox={`0 0 ${size} ${size}`} aria-hidden="true">
+          <circle
+            cx={cx}
+            cy={cy}
+            r={radius}
+            fill="none"
+            stroke="#e6eaf0"
+            strokeWidth={stroke}
+          />
+        </svg>
+        <div className="program-statistics__donut-center">
+          <strong>0</strong>
+          <span>{centerLabel}</span>
+        </div>
+      </div>
+    );
+  }
+
+  let angle = 0;
+  const segments = items.map((item) => {
+    const sweep = (item.count / total) * 360;
+    const startAngle = angle;
+    const endAngle = angle + Math.max(sweep, item.count > 0 ? 0.8 : 0);
+    angle = endAngle;
+    return { ...item, startAngle, endAngle };
+  });
+
+  return (
+    <div className="program-statistics__donut">
+      <svg viewBox={`0 0 ${size} ${size}`} aria-hidden="true">
+        {segments.map((segment) =>
+          segment.count > 0 ? (
+            <path
+              key={segment.key}
+              d={describeArc(
+                cx,
+                cy,
+                radius,
+                segment.startAngle,
+                segment.endAngle
+              )}
+              fill="none"
+              stroke={segment.color}
+              strokeWidth={stroke}
+              strokeLinecap="butt"
+            />
+          ) : null
+        )}
+      </svg>
+      <div className="program-statistics__donut-center">
+        <strong>{total}</strong>
+        <span>{centerLabel}</span>
+      </div>
+    </div>
+  );
+};
+
+const BreakdownTable = ({
+  items,
+  emptyLabel,
+  categoryLabel,
+  viewsLabel,
+  percentageLabel,
+  total,
+}) => {
+  if (!items.length) {
+    return <p className="program-statistics__empty">{emptyLabel}</p>;
+  }
+
+  return (
+    <div className="program-statistics__table-wrap">
+      <div className="program-statistics__table-head">
+        <span>{categoryLabel}</span>
+        <span aria-hidden="true" />
+        <span className="program-statistics__table-num">{viewsLabel}</span>
+        <span className="program-statistics__table-num">{percentageLabel}</span>
+      </div>
+      <ul className="program-statistics__bars">
+        {items.map(({ key, label, count, color, percent }) => {
+          const barWidth = total ? Math.round((count / total) * 100) : 0;
+          return (
+            <li key={key} className="program-statistics__bar-row">
+              <div className="program-statistics__bar-name">
+                <span
+                  className="program-statistics__bar-dot"
+                  style={{ background: color }}
+                  aria-hidden="true"
+                />
+                <span className="program-statistics__bar-label" title={label}>
+                  {label}
+                </span>
+              </div>
+              <div className="program-statistics__bar-track" aria-hidden="true">
+                <div
+                  className="program-statistics__bar-fill"
+                  style={{ width: `${barWidth}%`, background: color }}
+                />
+              </div>
+              <span className="program-statistics__bar-count">{count}</span>
+              <span className="program-statistics__bar-percent">{percent}</span>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
 };
 
 /**
@@ -251,17 +381,33 @@ export const ProgramStatistics = ({ queryKey, getVisits, stats }) => {
               <Loading size="lg" />
             </GridItem>
           ) : (
-            stats.map(({ label, count }) => (
+            stats.map(({ label, count, icon, tone }) => (
               <GridItem md={4} lg={6} key={label}>
                 <Box
-                  classes="program-statistics__item"
+                  classes={`program-statistics__item program-statistics__item--${
+                    tone || "blue"
+                  }`}
                   borderSize="md"
                   boxShadow={2}
                 >
-                  <p className="program-statistics__item-value">
-                    {count(events)}
-                  </p>
-                  <h3 className="program-statistics__item-label">{t(label)}</h3>
+                  <div
+                    className="program-statistics__item-icon"
+                    aria-hidden="true"
+                  >
+                    <Icon
+                      name={icon || "view"}
+                      size="md"
+                      color={TONE_ICON_COLORS[tone || "blue"]}
+                    />
+                  </div>
+                  <div className="program-statistics__item-copy">
+                    <p className="program-statistics__item-value">
+                      {count(events)}
+                    </p>
+                    <h3 className="program-statistics__item-label">
+                      {t(label)}
+                    </h3>
+                  </div>
                 </Box>
               </GridItem>
             ))
@@ -273,8 +419,18 @@ export const ProgramStatistics = ({ queryKey, getVisits, stats }) => {
 };
 
 const PLAY_AND_HEAL_STATS = [
-  { label: "web_visits", count: (events) => events.length },
-  { label: "qr_visits", count: countEvents("playandheal_visit_qr") },
+  {
+    label: "web_visits",
+    count: (events) => events.length,
+    icon: "view",
+    tone: "blue",
+  },
+  {
+    label: "qr_visits",
+    count: countEvents("playandheal_visit_qr"),
+    icon: "document",
+    tone: "purple",
+  },
 ];
 
 export const PlayAndHealStatistics = () => (
@@ -284,171 +440,6 @@ export const PlayAndHealStatistics = () => (
     stats={PLAY_AND_HEAL_STATS}
   />
 );
-
-const SummaryMetricCard = ({ label, value, icon, tone }) => {
-  const { t } = useTranslation("pages", { keyPrefix: "pl-statistics-page" });
-
-  return (
-    <Box classes="program-statistics__metric" borderSize="md" boxShadow={2}>
-      <div
-        className={`program-statistics__metric-icon program-statistics__metric-icon--${tone}`}
-        aria-hidden="true"
-      >
-        <Icon name={icon} size="md" color="#FFFFFF" />
-      </div>
-      <div className="program-statistics__metric-copy">
-        <p className="program-statistics__metric-value">{value}</p>
-        <h3 className="program-statistics__metric-label">{t(label)}</h3>
-      </div>
-    </Box>
-  );
-};
-
-const BreakdownToggle = ({ value, onChange }) => {
-  const { t } = useTranslation("pages", { keyPrefix: "pl-statistics-page" });
-  const options = [
-    { value: "pillar", label: t("by_pillar") },
-    { value: "format", label: t("by_format") },
-  ];
-
-  return (
-    <div
-      className="program-statistics__toggle"
-      role="tablist"
-      aria-label={t("views_breakdown")}
-    >
-      {options.map((option) => {
-        const isActive = value === option.value;
-        return (
-          <button
-            key={option.value}
-            type="button"
-            role="tab"
-            aria-selected={isActive}
-            className={`program-statistics__toggle-btn${
-              isActive ? " program-statistics__toggle-btn--active" : ""
-            }`}
-            onClick={() => onChange(option.value)}
-          >
-            {option.label}
-          </button>
-        );
-      })}
-    </div>
-  );
-};
-
-const BreakdownDonut = ({ items, total, centerLabel }) => {
-  const chartData = useMemo(
-    () => ({
-      labels: items.map((item) => item.label),
-      datasets: [
-        {
-          data: items.length ? items.map((item) => item.count) : [1],
-          backgroundColor: items.length
-            ? items.map((item) => item.color)
-            : ["#E6F1F4"],
-          borderWidth: 0,
-          hoverOffset: 2,
-        },
-      ],
-    }),
-    [items]
-  );
-
-  const chartOptions = useMemo(
-    () => ({
-      responsive: true,
-      maintainAspectRatio: false,
-      cutout: "72%",
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          enabled: items.length > 0,
-          callbacks: {
-            label: (context) => {
-              const count = context.raw || 0;
-              return `${context.label}: ${count} (${formatPercent(
-                count,
-                total
-              )})`;
-            },
-          },
-        },
-      },
-    }),
-    [items.length, total]
-  );
-
-  return (
-    <div className="program-statistics__donut">
-      <div className="program-statistics__donut-chart">
-        <Doughnut data={chartData} options={chartOptions} />
-        <div className="program-statistics__donut-center">
-          <p className="program-statistics__donut-total">{total}</p>
-          <p className="program-statistics__donut-caption">{centerLabel}</p>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const BreakdownBars = ({
-  items,
-  emptyLabel,
-  total,
-  categoryLabel,
-  viewsLabel,
-}) => {
-  if (!items.length) {
-    return <p className="program-statistics__empty">{emptyLabel}</p>;
-  }
-
-  return (
-    <div className="program-statistics__table">
-      <div className="program-statistics__table-head">
-        <span>{categoryLabel}</span>
-        <span aria-hidden="true" />
-        <span>{viewsLabel}</span>
-        <span>%</span>
-      </div>
-      <ul className="program-statistics__bars">
-        {items.map(({ key, label, count, color }) => {
-          const percentOfMax = total
-            ? Math.max((count / total) * 100, 4)
-            : 0;
-          return (
-            <li key={key} className="program-statistics__bar-row">
-              <div className="program-statistics__bar-name">
-                <span
-                  className="program-statistics__bar-dot"
-                  style={{ backgroundColor: color }}
-                  aria-hidden="true"
-                />
-                <span className="program-statistics__bar-label" title={label}>
-                  {label}
-                </span>
-              </div>
-              <div className="program-statistics__bar-track" aria-hidden="true">
-                <div
-                  className="program-statistics__bar-fill"
-                  style={{
-                    width: `${percentOfMax}%`,
-                    backgroundColor: color,
-                  }}
-                />
-              </div>
-              <span className="program-statistics__bar-count">{count}</span>
-              <span className="program-statistics__bar-percent">
-                {formatPercent(count, total)}
-              </span>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
-  );
-};
 
 /**
  * Hosn El Hal statistics: site visits + resource views with pillar/format breakdown
@@ -535,11 +526,10 @@ export const HosnElHalStatistics = () => {
       assetsById,
       (asset) => asset?.pillarKey || null
     );
-    return grouped.map(({ key, count }, index) => ({
+    return grouped.map(({ key, count }) => ({
       key,
       label: pillarNameByKey.get(key) || key,
       count,
-      color: BREAKDOWN_COLORS[index % BREAKDOWN_COLORS.length],
     }));
   }, [engagements, assetsById, pillarNameByKey]);
 
@@ -550,28 +540,77 @@ export const HosnElHalStatistics = () => {
       (asset) => asset?.format || null
     );
     const byFormat = new Map(grouped.map((x) => [x.key, x.count]));
-    return HOSN_FORMATS.map((format, index) => ({
+    return HOSN_FORMATS.map((format) => ({
       key: format,
       label: t(`format_${format}`),
       count: byFormat.get(format) || 0,
-      color: BREAKDOWN_COLORS[index % BREAKDOWN_COLORS.length],
     })).filter((x) => x.count > 0);
   }, [engagements, assetsById, t]);
 
-  const breakdownItems = breakdown === "pillar" ? pillarItems : formatItems;
-  const breakdownTotal = breakdownItems.reduce(
+  const rawBreakdownItems =
+    breakdown === "pillar" ? pillarItems : formatItems;
+  const totalViews = rawBreakdownItems.reduce(
     (sum, item) => sum + item.count,
     0
+  );
+
+  const breakdownItems = useMemo(
+    () =>
+      rawBreakdownItems.map((item, index) => ({
+        ...item,
+        color: BREAKDOWN_COLORS[index % BREAKDOWN_COLORS.length],
+        percent: totalViews
+          ? `${((item.count / totalViews) * 100).toFixed(1)}%`
+          : "0%",
+      })),
+    [rawBreakdownItems, totalViews]
   );
 
   const IS_RTL = localStorage.getItem("language") === "ar";
 
   const summaryCards = [
-    { label: "web_visits", value: summary.siteVisits },
-    { label: "unique_visitors", value: summary.uniqueVisitors },
-    { label: "resource_views", value: summary.resourceViews },
-    { label: "unique_viewers", value: summary.uniqueViewers },
+    {
+      label: "web_visits",
+      value: summary.siteVisits,
+      icon: "view",
+      tone: "blue",
+    },
+    {
+      label: "unique_visitors",
+      value: summary.uniqueVisitors,
+      icon: "two-people",
+      tone: "green",
+    },
+    {
+      label: "resource_views",
+      value: summary.resourceViews,
+      icon: "document",
+      tone: "purple",
+    },
+    {
+      label: "unique_viewers",
+      value: summary.uniqueViewers,
+      icon: "person",
+      tone: "orange",
+    },
   ];
+
+  const breakdownTabs = [
+    {
+      value: "pillar",
+      label: t("by_pillar"),
+      isSelected: breakdown === "pillar",
+    },
+    {
+      value: "format",
+      label: t("by_type"),
+      isSelected: breakdown === "format",
+    },
+  ];
+
+  const handleBreakdownTabSelect = (index) => {
+    setBreakdown(breakdownTabs[index].value);
+  };
 
   return (
     <Page
@@ -591,22 +630,32 @@ export const HosnElHalStatistics = () => {
         ) : (
           <>
             <Grid classes="program-statistics__summary">
-              {summaryCards.map(({ label, value }) => {
-                const meta = SUMMARY_CARD_META[label] || {
-                  icon: "info",
-                  tone: "blue",
-                };
-                return (
-                  <GridItem md={4} lg={3} key={label}>
-                    <SummaryMetricCard
-                      label={label}
-                      value={value}
-                      icon={meta.icon}
-                      tone={meta.tone}
-                    />
-                  </GridItem>
-                );
-              })}
+              {summaryCards.map(({ label, value, icon, tone }) => (
+                <GridItem md={4} lg={3} key={label}>
+                  <Box
+                    classes={`program-statistics__item program-statistics__item--${tone}`}
+                    borderSize="md"
+                    boxShadow={2}
+                  >
+                    <div
+                      className="program-statistics__item-icon"
+                      aria-hidden="true"
+                    >
+                      <Icon
+                        name={icon}
+                        size="md"
+                        color={TONE_ICON_COLORS[tone]}
+                      />
+                    </div>
+                    <div className="program-statistics__item-copy">
+                      <p className="program-statistics__item-value">{value}</p>
+                      <h3 className="program-statistics__item-label">
+                        {t(label)}
+                      </h3>
+                    </div>
+                  </Box>
+                </GridItem>
+              ))}
             </Grid>
 
             <Box
@@ -615,7 +664,7 @@ export const HosnElHalStatistics = () => {
               boxShadow={1}
             >
               <div className="program-statistics__breakdown-header">
-                <div className="program-statistics__breakdown-copy">
+                <div className="program-statistics__breakdown-heading">
                   <h3 className="program-statistics__breakdown-title">
                     {t("views_breakdown")}
                   </h3>
@@ -623,25 +672,31 @@ export const HosnElHalStatistics = () => {
                     {t("views_breakdown_subtitle")}
                   </p>
                 </div>
-                <BreakdownToggle value={breakdown} onChange={setBreakdown} />
+                <div className="program-statistics__breakdown-tabs">
+                  <Tabs
+                    options={breakdownTabs}
+                    handleSelect={handleBreakdownTabSelect}
+                  />
+                </div>
               </div>
 
               <div className="program-statistics__breakdown-body">
-                <BreakdownDonut
+                <DonutChart
                   items={breakdownItems}
-                  total={breakdownTotal}
+                  total={totalViews}
                   centerLabel={t("total_resource_views_label")}
                 />
-                <BreakdownBars
+                <BreakdownTable
                   items={breakdownItems}
                   emptyLabel={t("no_data")}
-                  total={breakdownTotal}
                   categoryLabel={
                     breakdown === "pillar"
-                      ? t("breakdown_column_pillar")
-                      : t("breakdown_column_type")
+                      ? t("pillar_column")
+                      : t("type_column")
                   }
-                  viewsLabel={t("breakdown_column_views")}
+                  viewsLabel={t("views_column")}
+                  percentageLabel={t("percentage_column")}
+                  total={totalViews}
                 />
               </div>
             </Box>
