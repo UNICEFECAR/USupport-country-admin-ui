@@ -1,0 +1,22 @@
+@import "@USupport-components-library/styles";
+
+.consultation-problem-report-details {
+  &__layout {
+    margin-top: $spacing_1_6;
+    margin-bottom: $spacing_1_6;
+  }
+
+  &__participants {
+    row-gap: $spacing_2_4;
+  }
+
+  &__person {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing_0_8;
+  }
+
+  &__person-name {
+    margin: 0 0 $spacing_0_8;
+  }
+}

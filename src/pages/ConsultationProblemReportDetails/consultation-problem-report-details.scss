@@ -2,28 +2,4 @@
 
 .page__consultation-problem-report-details {
   padding-bottom: $spacing_3_2;
-
-  .problem-report-layout {
-    text-align: start;
-  }
-  h4 {
-    margin-bottom: $spacing_1_6;
-  }
-  .problem-report-fields {
-    row-gap: $spacing_1_6;
-  }
-  .problem-report-field {
-    min-width: 0;
-    overflow-wrap: anywhere;
-  }
-  .problem-report-note {
-    margin-top: $spacing_1_6;
-  }
-  .problem-report-identifier {
-    direction: ltr;
-    unicode-bidi: isolate;
-  }
-  .problem-report-call-context {
-    margin-top: $spacing_2_4;
-  }
 }
