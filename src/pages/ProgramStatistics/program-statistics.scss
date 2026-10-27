@@ -7,11 +7,6 @@
     & .page__header-heading {
       text-align: right;
     }
-
-    .program-statistics__item {
-      border-inline-start: none;
-      border-inline-end: 0.3rem solid $color_primary_20809e;
-    }
   }
 
   & .block {
@@ -28,6 +23,12 @@
     align-items: flex-end;
     gap: $spacing_1_6;
     margin-bottom: $spacing_2_4;
+    text-align: start;
+
+    .dropdown-with-label__label,
+    .label {
+      text-align: start;
+    }
   }
 
   &__period-dates {
@@ -50,7 +51,6 @@
     gap: $spacing_0_4;
     min-height: 0;
     padding: $spacing_1_6 $spacing_2_0;
-    border-inline-start: 0.3rem solid $color_primary_20809e;
     height: 100%;
   }
 
