@@ -37,3 +37,5 @@ export * from "./SosCenterClicks";
 export * from "./ProvidersFreeSlots";
 
 export * from "./ConsultationProblemReports";
+export * from "./ConsultationProblemReportDetails";
+
