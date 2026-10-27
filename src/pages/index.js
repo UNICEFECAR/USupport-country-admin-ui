@@ -32,3 +32,6 @@ export * from "./Analytics";
 export * from "./BaselineAssessment";
 export * from "./MoodTrackerReport";
 export * from "./ProgramStatistics";
+export * from "./HosnResources";
+export * from "./ConsultationProblemReportDetails";
+export * from "./ConsultationProblemReports";

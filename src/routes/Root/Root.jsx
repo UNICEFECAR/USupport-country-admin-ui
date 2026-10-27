@@ -53,6 +53,9 @@ import {
   MoodTrackerReport,
   PlayAndHealStatistics,
   HosnElHalStatistics,
+  HosnResources,
+  ConsultationProblemReports,
+  ConsultationProblemReportDetails,
 } from "#pages";
 
 import { CountryValidationRoute, ProtectedRoute } from "../../routes";
@@ -73,6 +76,22 @@ const LanguageLayout = () => {
   }
   return (
     <Routes>
+      <Route
+        path="consultation-problem-reports"
+        element={
+          <ProtectedRoute>
+            <ConsultationProblemReports />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="consultation-problem-reports/:reportId"
+        element={
+          <ProtectedRoute>
+            <ConsultationProblemReportDetails />
+          </ProtectedRoute>
+        }
+      />
       <Route
         path="login"
         element={
@@ -326,6 +345,14 @@ const LanguageLayout = () => {
         element={
           <ProtectedRoute>
             <HosnElHalStatistics />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="hosnelhal-resources"
+        element={
+          <ProtectedRoute>
+            <HosnResources />
           </ProtectedRoute>
         }
       />

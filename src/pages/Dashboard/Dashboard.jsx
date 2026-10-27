@@ -33,13 +33,13 @@ export const Dashboard = () => {
     );
   }
 
-  // Hosn El Hal content is managed in the CMS; its admins only see statistics
+  // Hosn El Hal content is managed in the CMS; admins land on resources
   if (IS_HOSN) {
     return (
       <Navigate
         to={`/country-admin/${localStorage.getItem(
           "language"
-        )}/hosnelhal-statistics`}
+        )}/hosnelhal-resources`}
       />
     );
   }

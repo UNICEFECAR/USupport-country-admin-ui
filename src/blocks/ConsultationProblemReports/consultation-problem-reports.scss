@@ -1,0 +1,21 @@
+@import "@USupport-components-library/styles";
+
+.consultation-problem-reports {
+  &__content .btn {
+    margin-top: $spacing_1_6;
+  }
+  &__pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing_1_6;
+    margin-top: $spacing_2_4;
+  }
+  &__filters {
+    .dropdown-with-label,
+    .date-input__container,
+    .btn {
+      margin-bottom: $spacing_1_6;
+    }
+  }
+}
