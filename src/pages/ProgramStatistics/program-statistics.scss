@@ -40,7 +40,7 @@
   }
 
   &__summary {
-    margin-bottom: $spacing_4_0;
+    margin-bottom: $spacing_4_8;
     row-gap: $spacing_1_6;
   }
 
@@ -50,7 +50,7 @@
     align-items: center;
     gap: $spacing_1_6;
     min-height: 0;
-    padding: $spacing_2_0;
+    padding: $spacing_1_2 $spacing_2_0;
     height: 100%;
     text-align: start;
   }
@@ -112,11 +112,12 @@
 
   &__breakdown {
     padding: $spacing_2_4;
-    margin-top: $spacing_1_6;
+    margin-top: $spacing_3_2;
     text-align: start;
 
     @media screen and (min-width: $screen-md) {
       padding: $spacing_3_2;
+      margin-top: $spacing_4_0;
     }
   }
 
@@ -173,10 +174,13 @@
       border-radius: $border_radius_1_6;
       background: transparent !important;
       color: $color_primary_20809e !important;
-      padding: $spacing_0_6 $spacing_1_6;
+      padding: $spacing_0_4 $spacing_1_2;
+      font-size: $font_size_1_2;
 
       .paragraph {
         color: inherit;
+        font-size: $font_size_1_2;
+        line-height: 1.3;
       }
 
       &:hover:not(.tab--inactive) {
@@ -221,6 +225,17 @@
       width: 100%;
       height: 100%;
       display: block;
+      overflow: visible;
+    }
+  }
+
+  &__donut-segment {
+    cursor: pointer;
+    transition: stroke-width 0.15s ease, opacity 0.15s ease;
+
+    &:hover {
+      stroke-width: 32;
+      opacity: 0.92;
     }
   }
 
@@ -252,6 +267,43 @@
     }
   }
 
+  &__donut-tooltip {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: $spacing_0_8;
+    max-width: 18rem;
+    padding: $spacing_0_6 $spacing_1_2;
+    border-radius: $border_radius_1_2;
+    background: $color_blue_3d527b;
+    color: $color_white_ff;
+    box-shadow: $shadow_2;
+    pointer-events: none;
+    transform: translate(-50%, calc(-100% - 1.2rem));
+    white-space: nowrap;
+  }
+
+  &__donut-tooltip-dot {
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  &__donut-tooltip-label {
+    font-size: $font_size_1_2;
+    font-weight: $font_semi_bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__donut-tooltip-value {
+    font-size: $font_size_1_2;
+    font-variant-numeric: tabular-nums;
+    opacity: 0.9;
+  }
+
   &__table-wrap {
     width: 100%;
     min-width: 0;
@@ -259,7 +311,7 @@
 
   &__table-head {
     display: grid;
-    grid-template-columns: minmax(10rem, 1.2fr) minmax(8rem, 1.4fr) 5rem 7rem;
+    grid-template-columns: minmax(0, 1fr) 5rem 7rem;
     gap: $spacing_1_2;
     margin-bottom: $spacing_1_2;
     padding: 0 $spacing_0_4;
@@ -280,12 +332,19 @@
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: $spacing_1_6;
+    gap: $spacing_2_0;
   }
 
   &__bar-row {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing_0_8;
+    width: 100%;
+  }
+
+  &__bar-meta {
     display: grid;
-    grid-template-columns: minmax(10rem, 1.2fr) minmax(8rem, 1.4fr) 5rem 7rem;
+    grid-template-columns: minmax(0, 1fr) 5rem 7rem;
     gap: $spacing_1_2;
     align-items: center;
   }
@@ -325,6 +384,7 @@
   }
 
   &__bar-track {
+    width: 100%;
     height: 0.8rem;
     border-radius: 999px;
     background: $color_green_e6f1f4;

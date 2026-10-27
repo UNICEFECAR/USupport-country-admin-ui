@@ -221,6 +221,7 @@ const describeArc = (cx, cy, radius, startAngle, endAngle) => {
 };
 
 const DonutChart = ({ items, total, centerLabel }) => {
+  const [tooltip, setTooltip] = useState(null);
   const size = 220;
   const stroke = 28;
   const radius = (size - stroke) / 2;
@@ -257,13 +258,26 @@ const DonutChart = ({ items, total, centerLabel }) => {
     return { ...item, startAngle, endAngle };
   });
 
+  const showTooltip = (event, segment) => {
+    const rect = event.currentTarget.ownerSVGElement.getBoundingClientRect();
+    setTooltip({
+      label: segment.label,
+      count: segment.count,
+      percent: segment.percent,
+      color: segment.color,
+      x: event.clientX - rect.left,
+      y: event.clientY - rect.top,
+    });
+  };
+
   return (
     <div className="program-statistics__donut">
-      <svg viewBox={`0 0 ${size} ${size}`} aria-hidden="true">
+      <svg viewBox={`0 0 ${size} ${size}`} role="img" aria-label={centerLabel}>
         {segments.map((segment) =>
           segment.count > 0 ? (
             <path
               key={segment.key}
+              className="program-statistics__donut-segment"
               d={describeArc(
                 cx,
                 cy,
@@ -275,6 +289,9 @@ const DonutChart = ({ items, total, centerLabel }) => {
               stroke={segment.color}
               strokeWidth={stroke}
               strokeLinecap="butt"
+              onMouseEnter={(event) => showTooltip(event, segment)}
+              onMouseMove={(event) => showTooltip(event, segment)}
+              onMouseLeave={() => setTooltip(null)}
             />
           ) : null
         )}
@@ -283,6 +300,26 @@ const DonutChart = ({ items, total, centerLabel }) => {
         <strong>{total}</strong>
         <span>{centerLabel}</span>
       </div>
+      {tooltip && (
+        <div
+          className="program-statistics__donut-tooltip"
+          style={{ left: tooltip.x, top: tooltip.y }}
+          role="tooltip"
+        >
+          <span
+            className="program-statistics__donut-tooltip-dot"
+            style={{ background: tooltip.color }}
+            aria-hidden="true"
+          />
+          <span className="program-statistics__donut-tooltip-label">
+            {tooltip.label}
+          </span>
+          <span className="program-statistics__donut-tooltip-value">
+            {tooltip.count}
+            {tooltip.percent ? ` · ${tooltip.percent}` : ""}
+          </span>
+        </div>
+      )}
     </div>
   );
 };
@@ -303,7 +340,6 @@ const BreakdownTable = ({
     <div className="program-statistics__table-wrap">
       <div className="program-statistics__table-head">
         <span>{categoryLabel}</span>
-        <span aria-hidden="true" />
         <span className="program-statistics__table-num">{viewsLabel}</span>
         <span className="program-statistics__table-num">{percentageLabel}</span>
       </div>
@@ -312,15 +348,19 @@ const BreakdownTable = ({
           const barWidth = total ? Math.round((count / total) * 100) : 0;
           return (
             <li key={key} className="program-statistics__bar-row">
-              <div className="program-statistics__bar-name">
-                <span
-                  className="program-statistics__bar-dot"
-                  style={{ background: color }}
-                  aria-hidden="true"
-                />
-                <span className="program-statistics__bar-label" title={label}>
-                  {label}
-                </span>
+              <div className="program-statistics__bar-meta">
+                <div className="program-statistics__bar-name">
+                  <span
+                    className="program-statistics__bar-dot"
+                    style={{ background: color }}
+                    aria-hidden="true"
+                  />
+                  <span className="program-statistics__bar-label" title={label}>
+                    {label}
+                  </span>
+                </div>
+                <span className="program-statistics__bar-count">{count}</span>
+                <span className="program-statistics__bar-percent">{percent}</span>
               </div>
               <div className="program-statistics__bar-track" aria-hidden="true">
                 <div
@@ -328,8 +368,6 @@ const BreakdownTable = ({
                   style={{ width: `${barWidth}%`, background: color }}
                 />
               </div>
-              <span className="program-statistics__bar-count">{count}</span>
-              <span className="program-statistics__bar-percent">{percent}</span>
             </li>
           );
         })}
