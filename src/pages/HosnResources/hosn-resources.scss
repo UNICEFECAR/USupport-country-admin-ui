@@ -10,13 +10,10 @@
   }
 
   &__filters-modal {
-    .dropdown-with-label {
-      margin-bottom: $spacing_1_6;
-    }
-
+    & .dropdown-with-label,
     &__cta {
-      margin-top: $spacing_1_2;
-      width: 100%;
+      margin: $spacing_1_6 auto;
+      width: 36.8rem;
     }
   }
 }
