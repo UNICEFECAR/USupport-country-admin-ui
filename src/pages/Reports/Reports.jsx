@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import {
   Page,
@@ -10,6 +11,7 @@ import {
   MyQAReports,
   SosCenterClicks,
   ProvidersFreeSlots,
+  ConsultationProblemReports as ConsultationProblemReportsBlock,
 } from "#blocks";
 
 import {
@@ -30,30 +32,41 @@ import "./reports.scss";
 export const Reports = () => {
   const { t } = useTranslation("pages", { keyPrefix: "reports-page" });
 
+  const [searchParams, setSearchParams] = useSearchParams();
+  const requestedTab = searchParams.get("tab");
+
   const IS_RO = localStorage.getItem("country") === "RO";
 
   const localStorageCountry = localStorage.getItem("country");
-  const [options, setOptions] = useState([
+  const tabOptions = [
     ...(IS_RO
       ? []
       : [
           {
-            label: t("consultations"),
+            label: t("consultations_tab_label"),
             value: "consultations",
             isSelected: IS_RO ? false : true,
           },
         ]),
     {
-      label: t("suggestions"),
+      label: t("suggestions_tab_label"),
       value: "suggestions",
       isSelected: false,
     },
-    { label: t("ratings"), value: "ratings", isSelected: IS_RO ? true : false },
-    { label: t("contact_form"), value: "contact_form", isSelected: false },
+    {
+      label: t("ratings_tab_label"),
+      value: "ratings",
+      isSelected: IS_RO ? true : false,
+    },
+    {
+      label: t("contact_form_tab_label"),
+      value: "contact_form",
+      isSelected: false,
+    },
     ...(IS_RO
       ? [
           {
-            label: t("organization_reports"),
+            label: t("organization_reports_tab_label"),
             value: "organization_reports",
             isSelected: false,
           },
@@ -63,13 +76,13 @@ export const Reports = () => {
       ? []
       : [
           {
-            label: t("my_qa"),
+            label: t("my_qa_tab_label"),
             value: "my_qa",
             isSelected: false,
           },
         ]),
     {
-      label: t("sos_center_clicks"),
+      label: t("sos_center_clicks_tab_label"),
       value: "sos_center_clicks",
       isSelected: false,
     },
@@ -77,28 +90,37 @@ export const Reports = () => {
       ? []
       : [
           {
-            label: t("providers_free_slots"),
+            label: t("providers_free_slots_tab_label"),
             value: "providers_free_slots",
             isSelected: false,
           },
         ]),
-  ]);
+    {
+      label: t("consultation_problems_tab_label"),
+      value: "consultation_problems",
+      isSelected: false,
+    },
+  ];
+  const options = tabOptions.map((option) => ({
+    ...option,
+    isSelected: tabOptions.some((tab) => tab.value === requestedTab)
+      ? option.value === requestedTab
+      : option.isSelected,
+  }));
 
   const handleTabSelect = (index) => {
-    const optionsCopy = [...options];
-
-    optionsCopy.forEach((option) => {
-      option.isSelected = false;
+    setSearchParams((previous) => {
+      const next = new URLSearchParams(previous);
+      next.set("tab", options[index].value);
+      return next;
     });
-
-    optionsCopy[index].isSelected = !optionsCopy[index].isSelected;
-
-    setOptions(optionsCopy);
   };
 
   const renderBlock = () => {
     const selectedTab = options.find((x) => x.isSelected).value;
     switch (selectedTab) {
+      case "consultation_problems":
+        return <ConsultationProblemReportsBlock Heading={ReportBlockHeading} />;
       case "consultations":
         return <SecurityCheck Heading={ReportBlockHeading} />;
       case "suggestions":

@@ -5,9 +5,19 @@
   & .tabs-underlined-container {
     margin: $spacing_3_2 0;
     align-self: center;
-    overflow-x: auto;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 100%;
+    gap: $spacing_0_8;
 
     & .tab {
+      flex: 0 1 auto;
+      width: auto;
+      max-width: 100%;
+      margin: 0;
+      padding: $spacing_1_2;
+      white-space: normal;
+      box-sizing: border-box;
       & .label {
         font-size: $font_size_1_2;
         line-height: $line_height_1_8;

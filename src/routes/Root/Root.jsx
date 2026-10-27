@@ -54,6 +54,8 @@ import {
   PlayAndHealStatistics,
   HosnElHalStatistics,
   HosnResources,
+  ConsultationProblemReports,
+  ConsultationProblemReportDetails,
 } from "#pages";
 
 import { CountryValidationRoute, ProtectedRoute } from "../../routes";
@@ -74,6 +76,22 @@ const LanguageLayout = () => {
   }
   return (
     <Routes>
+      <Route
+        path="consultation-problem-reports"
+        element={
+          <ProtectedRoute>
+            <ConsultationProblemReports />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="consultation-problem-reports/:reportId"
+        element={
+          <ProtectedRoute>
+            <ConsultationProblemReportDetails />
+          </ProtectedRoute>
+        }
+      />
       <Route
         path="login"
         element={
