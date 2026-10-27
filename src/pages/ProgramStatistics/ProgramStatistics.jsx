@@ -6,12 +6,12 @@ import { Page } from "#blocks";
 import {
   Box,
   Block,
-  Button,
   DateInput,
   DropdownWithLabel,
   Grid,
   GridItem,
   Loading,
+  TabsUnderlined,
 } from "@USupport-components-library/src";
 import { adminSvc, cmsSvc } from "@USupport-components-library/services";
 
@@ -401,6 +401,23 @@ export const HosnElHalStatistics = () => {
     { label: "unique_viewers", value: summary.uniqueViewers },
   ];
 
+  const breakdownTabs = [
+    {
+      value: "pillar",
+      label: t("by_pillar"),
+      isSelected: breakdown === "pillar",
+    },
+    {
+      value: "format",
+      label: t("by_format"),
+      isSelected: breakdown === "format",
+    },
+  ];
+
+  const handleBreakdownTabSelect = (index) => {
+    setBreakdown(breakdownTabs[index].value);
+  };
+
   return (
     <Page
       classes={`program-statistics ${IS_RTL ? "program-statistics--rtl" : ""}`}
@@ -442,24 +459,10 @@ export const HosnElHalStatistics = () => {
                 <h3 className="program-statistics__breakdown-title">
                   {t("views_breakdown")}
                 </h3>
-                <div
-                  className="program-statistics__toggles"
-                  role="group"
-                  aria-label={t("views_breakdown")}
-                >
-                  <Button
-                    type={breakdown === "pillar" ? "primary" : "secondary"}
-                    size="sm"
-                    label={t("by_pillar")}
-                    onClick={() => setBreakdown("pillar")}
-                  />
-                  <Button
-                    type={breakdown === "format" ? "primary" : "secondary"}
-                    size="sm"
-                    label={t("by_format")}
-                    onClick={() => setBreakdown("format")}
-                  />
-                </div>
+                <TabsUnderlined
+                  options={breakdownTabs}
+                  handleSelect={handleBreakdownTabSelect}
+                />
               </div>
               <BreakdownBars
                 items={breakdownItems}
