@@ -1,15 +1,15 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useQuery } from "@tanstack/react-query";
 
 import { Page } from "#blocks";
-import { useDebounce } from "#hooks";
 import {
+  BaseTable,
   Block,
   Button,
   DropdownWithLabel,
-  InputSearch,
   Loading,
+  Modal,
 } from "@USupport-components-library/src";
 import { adminSvc, cmsSvc } from "@USupport-components-library/services";
 
@@ -23,6 +23,13 @@ const HOSN_LANGUAGES = [
 ];
 
 const ALL = "all";
+
+const defaultFilters = {
+  format: ALL,
+  pillar: ALL,
+  locale: ALL,
+  views: ALL,
+};
 
 const mapCmsAssets = (entries = []) =>
   entries.map((entry) => {
@@ -47,22 +54,21 @@ export const HosnResources = () => {
   const { t, i18n } = useTranslation("pages", {
     keyPrefix: "hosn-resources-page",
   });
-  const [search, setSearch] = useState("");
-  const [format, setFormat] = useState(ALL);
-  const [pillar, setPillar] = useState(ALL);
-  const [locale, setLocale] = useState(ALL);
-  const [viewsFilter, setViewsFilter] = useState(ALL);
-  const debouncedSearch = useDebounce(search.trim(), 400);
+  const [appliedFilters, setAppliedFilters] = useState(defaultFilters);
+  const [draftFilters, setDraftFilters] = useState(defaultFilters);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [dataToDisplay, setDataToDisplay] = useState([]);
 
   const assetQueryParams = useMemo(
     () => ({
-      locale: locale === ALL ? "all" : locale,
-      search: debouncedSearch || undefined,
-      format: format === ALL ? undefined : format,
-      pillar: pillar === ALL ? undefined : pillar,
+      locale: appliedFilters.locale === ALL ? "all" : appliedFilters.locale,
+      format:
+        appliedFilters.format === ALL ? undefined : appliedFilters.format,
+      pillar:
+        appliedFilters.pillar === ALL ? undefined : appliedFilters.pillar,
       limit: 500,
     }),
-    [locale, debouncedSearch, format, pillar]
+    [appliedFilters.locale, appliedFilters.format, appliedFilters.pillar]
   );
 
   const assetsQuery = useQuery(
@@ -96,6 +102,38 @@ export const HosnResources = () => {
     });
     return counts;
   }, [engagementsQuery.data]);
+
+  const rows = useMemo(() => {
+    const assets = assetsQuery.data || [];
+    return assets
+      .map((asset) => ({
+        ...asset,
+        views: viewsByAssetId.get(Number(asset.id)) || 0,
+        formatLabel: t(`format_${asset.format}`, {
+          defaultValue: asset.format,
+        }),
+        pillarLabel: asset.pillarName || asset.pillarKey || "—",
+        localeLabel: asset.locale
+          ? t(`locale_${asset.locale}`, {
+              defaultValue: asset.locale.toUpperCase(),
+            })
+          : "—",
+      }))
+      .filter((asset) => {
+        if (appliedFilters.views === "with_views" && asset.views === 0) {
+          return false;
+        }
+        if (appliedFilters.views === "no_views" && asset.views > 0) {
+          return false;
+        }
+        return true;
+      })
+      .sort((a, b) => b.views - a.views || a.title.localeCompare(b.title));
+  }, [assetsQuery.data, viewsByAssetId, appliedFilters.views, t]);
+
+  useEffect(() => {
+    setDataToDisplay(rows);
+  }, [rows]);
 
   const pillarOptions = useMemo(() => {
     const fromCms = pillarsQuery.data || [];
@@ -141,40 +179,65 @@ export const HosnResources = () => {
     [t]
   );
 
-  const rows = useMemo(() => {
-    const assets = assetsQuery.data || [];
-    return assets
-      .map((asset) => ({
-        ...asset,
-        views: viewsByAssetId.get(Number(asset.id)) || 0,
-      }))
-      .filter((asset) => {
-        if (viewsFilter === "with_views" && asset.views === 0) return false;
-        if (viewsFilter === "no_views" && asset.views > 0) return false;
-        return true;
-      })
-      .sort((a, b) => b.views - a.views || a.title.localeCompare(b.title));
-  }, [assetsQuery.data, viewsByAssetId, viewsFilter]);
+  const tableRows = useMemo(
+    () => [
+      { label: t("title"), sortingKey: "title" },
+      { label: t("format"), sortingKey: "formatLabel" },
+      { label: t("pillar"), sortingKey: "pillarLabel" },
+      { label: t("locale"), sortingKey: "localeLabel" },
+      {
+        label: t("views"),
+        sortingKey: "views",
+        isNumbered: true,
+        isCentered: true,
+      },
+    ],
+    [t]
+  );
 
-  const hasActiveFilters =
-    search.trim() !== "" ||
-    format !== ALL ||
-    pillar !== ALL ||
-    locale !== ALL ||
-    viewsFilter !== ALL;
+  const rowsData = useMemo(
+    () =>
+      dataToDisplay.map((asset) => [
+        <p key="title" className="text">
+          {asset.title}
+        </p>,
+        <p key="format" className="text">
+          {asset.formatLabel}
+        </p>,
+        <p key="pillar" className="text">
+          {asset.pillarLabel}
+        </p>,
+        <p key="locale" className="text">
+          {asset.localeLabel}
+        </p>,
+        <p key="views" className="text centered">
+          {asset.views}
+        </p>,
+      ]),
+    [dataToDisplay]
+  );
 
-  const resetFilters = () => {
-    setSearch("");
-    setFormat(ALL);
-    setPillar(ALL);
-    setLocale(ALL);
-    setViewsFilter(ALL);
+  const openFilters = () => {
+    setDraftFilters(appliedFilters);
+    setIsFilterOpen(true);
   };
 
-  const isLoading =
-    assetsQuery.isLoading ||
-    engagementsQuery.isLoading ||
-    assetsQuery.isFetching;
+  const applyFilters = () => {
+    setAppliedFilters(draftFilters);
+    setIsFilterOpen(false);
+  };
+
+  const resetFilters = () => {
+    setDraftFilters(defaultFilters);
+    setAppliedFilters(defaultFilters);
+    setIsFilterOpen(false);
+  };
+
+  const updateDraft = (key, value) => {
+    setDraftFilters((prev) => ({ ...prev, [key]: value }));
+  };
+
+  const isLoading = assetsQuery.isLoading || engagementsQuery.isLoading;
   const IS_RTL = i18n.language === "ar";
 
   return (
@@ -182,103 +245,77 @@ export const HosnResources = () => {
       classes={`hosn-resources ${IS_RTL ? "hosn-resources--rtl" : ""}`}
       heading={t("heading")}
       showGoBackArrow={false}
+      showHeadingButtonInline
+      headingButton={
+        <Button
+          label={t("filters")}
+          size="sm"
+          type="secondary"
+          onClick={openFilters}
+        />
+      }
     >
       <Block>
-        <div className="hosn-resources__filters">
-          <InputSearch
-            placeholder={t("search")}
-            value={search}
-            onChange={setSearch}
-            classes="hosn-resources__search"
-          />
-
-          <div className="hosn-resources__filter-row">
-            <DropdownWithLabel
-              label={t("format")}
-              selected={format}
-              setSelected={setFormat}
-              options={formatOptions}
-              classes="hosn-resources__filter"
-            />
-            <DropdownWithLabel
-              label={t("pillar")}
-              selected={pillar}
-              setSelected={setPillar}
-              options={pillarOptions}
-              classes="hosn-resources__filter"
-            />
-            <DropdownWithLabel
-              label={t("locale")}
-              selected={locale}
-              setSelected={setLocale}
-              options={localeOptions}
-              classes="hosn-resources__filter"
-            />
-            <DropdownWithLabel
-              label={t("views")}
-              selected={viewsFilter}
-              setSelected={setViewsFilter}
-              options={viewsOptions}
-              classes="hosn-resources__filter"
-            />
-            {hasActiveFilters && (
-              <Button
-                type="secondary"
-                size="sm"
-                label={t("reset")}
-                onClick={resetFilters}
-                classes="hosn-resources__reset"
-              />
-            )}
-          </div>
-        </div>
-
         {isLoading ? (
           <Loading size="lg" />
-        ) : rows.length === 0 ? (
-          <p className="hosn-resources__empty">{t("no_data")}</p>
         ) : (
-          <>
-            <p className="hosn-resources__count">
-              {t("results_count", { count: rows.length })}
-            </p>
-            <div className="hosn-resources__table-wrap">
-              <table className="hosn-resources__table">
-                <thead>
-                  <tr>
-                    <th>{t("title")}</th>
-                    <th>{t("format")}</th>
-                    <th>{t("pillar")}</th>
-                    <th>{t("locale")}</th>
-                    <th className="hosn-resources__num">{t("views")}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {rows.map((asset) => (
-                    <tr key={asset.id}>
-                      <td>{asset.title}</td>
-                      <td>
-                        {t(`format_${asset.format}`, {
-                          defaultValue: asset.format,
-                        })}
-                      </td>
-                      <td>{asset.pillarName || asset.pillarKey || "—"}</td>
-                      <td>
-                        {asset.locale
-                          ? t(`locale_${asset.locale}`, {
-                              defaultValue: asset.locale.toUpperCase(),
-                            })
-                          : "—"}
-                      </td>
-                      <td className="hosn-resources__num">{asset.views}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </>
+          <BaseTable
+            data={dataToDisplay}
+            rows={tableRows}
+            rowsData={rowsData}
+            updateData={setDataToDisplay}
+            hasMenu={false}
+            hasSearch
+            t={t}
+            isLoading={assetsQuery.isFetching}
+          />
         )}
       </Block>
+
+      <Modal
+        isOpen={isFilterOpen}
+        closeModal={() => setIsFilterOpen(false)}
+        heading={t("filters")}
+        classes="hosn-resources__filters-modal"
+      >
+        <DropdownWithLabel
+          label={t("format")}
+          selected={draftFilters.format}
+          setSelected={(value) => updateDraft("format", value)}
+          options={formatOptions}
+        />
+        <DropdownWithLabel
+          label={t("pillar")}
+          selected={draftFilters.pillar}
+          setSelected={(value) => updateDraft("pillar", value)}
+          options={pillarOptions}
+        />
+        <DropdownWithLabel
+          label={t("locale")}
+          selected={draftFilters.locale}
+          setSelected={(value) => updateDraft("locale", value)}
+          options={localeOptions}
+        />
+        <DropdownWithLabel
+          label={t("views")}
+          selected={draftFilters.views}
+          setSelected={(value) => updateDraft("views", value)}
+          options={viewsOptions}
+        />
+        <Button
+          label={t("apply_filters")}
+          size="lg"
+          onClick={applyFilters}
+          classes="hosn-resources__filters-modal__cta"
+        />
+        <Button
+          label={t("reset")}
+          type="secondary"
+          size="lg"
+          onClick={resetFilters}
+          classes="hosn-resources__filters-modal__cta"
+        />
+      </Modal>
     </Page>
   );
 };
