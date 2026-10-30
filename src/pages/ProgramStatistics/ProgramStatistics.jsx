@@ -504,6 +504,10 @@ export const HosnElHalStatistics = () => {
     () =>
       adminSvc.getHosnElHalEngagements(dateQuery).then((res) => res.data || [])
   );
+  const feedbackQuery = useQuery(
+    ["hosnelhal-feedback", dateQuery.startDate, dateQuery.endDate],
+    () => adminSvc.getHosnElHalFeedback(dateQuery).then((res) => res.data || [])
+  );
   const assetsQuery = useQuery(["hosn-assets-admin", "all"], async () => {
     const { data } = await cmsSvc.getHosnAssets({ locale: "all", limit: 500 });
     return mapCmsAssets(data?.data || []);
@@ -522,12 +526,15 @@ export const HosnElHalStatistics = () => {
   const isLoading =
     visitsQuery.isLoading ||
     engagementsQuery.isLoading ||
+    feedbackQuery.isLoading ||
     assetsQuery.isLoading ||
     visitsQuery.isFetching ||
-    engagementsQuery.isFetching;
+    engagementsQuery.isFetching ||
+    feedbackQuery.isFetching;
 
   const visits = visitsQuery.data || [];
   const engagements = engagementsQuery.data || [];
+  const feedback = feedbackQuery.data || [];
   const assets = assetsQuery.data || [];
   const pillars = pillarsQuery.data || [];
 
@@ -557,6 +564,18 @@ export const HosnElHalStatistics = () => {
     }),
     [visits, engagements]
   );
+
+  const feedbackSummary = useMemo(() => {
+    const up = countEvents("hosnelhal_feedback_up")(feedback);
+    const down = countEvents("hosnelhal_feedback_down")(feedback);
+    const votes = up + down;
+    return {
+      up,
+      down,
+      recommendRate: votes ? `${Math.round((up / votes) * 100)}%` : "–",
+      surveyClicks: countEvents("hosnelhal_feedback_survey_click")(feedback),
+    };
+  }, [feedback]);
 
   const pillarItems = useMemo(() => {
     const grouped = groupCounts(
@@ -633,6 +652,51 @@ export const HosnElHalStatistics = () => {
     },
   ];
 
+  const feedbackCards = [
+    {
+      label: "feedback_up",
+      value: feedbackSummary.up,
+      icon: "like",
+      tone: "green",
+    },
+    {
+      label: "feedback_down",
+      value: feedbackSummary.down,
+      icon: "dislike",
+      tone: "orange",
+    },
+    {
+      label: "feedback_recommend_rate",
+      value: feedbackSummary.recommendRate,
+      icon: "star-full",
+      tone: "blue",
+    },
+    {
+      label: "feedback_survey_clicks",
+      value: feedbackSummary.surveyClicks,
+      icon: "share",
+      tone: "purple",
+    },
+  ];
+
+  const renderSummaryCard = ({ label, value, icon, tone }) => (
+    <GridItem md={4} lg={3} key={label}>
+      <Box
+        classes={`program-statistics__item program-statistics__item--${tone}`}
+        borderSize="md"
+        boxShadow={2}
+      >
+        <div className="program-statistics__item-icon" aria-hidden="true">
+          <Icon name={icon} size="md" color={TONE_ICON_COLORS[tone]} />
+        </div>
+        <div className="program-statistics__item-copy">
+          <p className="program-statistics__item-value">{value}</p>
+          <h3 className="program-statistics__item-label">{t(label)}</h3>
+        </div>
+      </Box>
+    </GridItem>
+  );
+
   const breakdownTabs = [
     {
       value: "pillar",
@@ -668,32 +732,7 @@ export const HosnElHalStatistics = () => {
         ) : (
           <>
             <Grid classes="program-statistics__summary">
-              {summaryCards.map(({ label, value, icon, tone }) => (
-                <GridItem md={4} lg={3} key={label}>
-                  <Box
-                    classes={`program-statistics__item program-statistics__item--${tone}`}
-                    borderSize="md"
-                    boxShadow={2}
-                  >
-                    <div
-                      className="program-statistics__item-icon"
-                      aria-hidden="true"
-                    >
-                      <Icon
-                        name={icon}
-                        size="md"
-                        color={TONE_ICON_COLORS[tone]}
-                      />
-                    </div>
-                    <div className="program-statistics__item-copy">
-                      <p className="program-statistics__item-value">{value}</p>
-                      <h3 className="program-statistics__item-label">
-                        {t(label)}
-                      </h3>
-                    </div>
-                  </Box>
-                </GridItem>
-              ))}
+              {summaryCards.map(renderSummaryCard)}
             </Grid>
 
             <Box
@@ -737,6 +776,24 @@ export const HosnElHalStatistics = () => {
                   total={totalViews}
                 />
               </div>
+            </Box>
+
+            <Box
+              classes="program-statistics__feedback"
+              borderSize="md"
+              boxShadow={1}
+            >
+              <div className="program-statistics__breakdown-heading">
+                <h3 className="program-statistics__breakdown-title">
+                  {t("feedback_title")}
+                </h3>
+                <p className="program-statistics__breakdown-subtitle">
+                  {t("feedback_subtitle")}
+                </p>
+              </div>
+              <Grid classes="program-statistics__summary">
+                {feedbackCards.map(renderSummaryCard)}
+              </Grid>
             </Box>
           </>
         )}
