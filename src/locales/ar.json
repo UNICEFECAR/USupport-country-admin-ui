@@ -238,7 +238,13 @@
       "format_video": "فيديو",
       "format_audio": "صوت",
       "format_worksheet": "PDF",
-      "format_thumbnail": "رسالة بصرية"
+      "format_thumbnail": "رسالة بصرية",
+      "feedback_title": "آراء الزوار",
+      "feedback_subtitle": "الإجابات على سؤال «هل تنصح بحُسن الحال لصديق؟» من بطاقة الآراء على الموقع.",
+      "feedback_up": "ينصحون به",
+      "feedback_down": "لا ينصحون به",
+      "feedback_recommend_rate": "نسبة من ينصحون به",
+      "feedback_survey_clicks": "فتحوا الاستبيان"
     },
     "hosn-resources-page": {
       "heading": "الموارد",

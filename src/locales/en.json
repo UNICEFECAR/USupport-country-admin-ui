@@ -1140,7 +1140,13 @@
       "format_video": "Video",
       "format_audio": "Audio",
       "format_worksheet": "PDF",
-      "format_thumbnail": "Visual message"
+      "format_thumbnail": "Visual message",
+      "feedback_title": "Visitor feedback",
+      "feedback_subtitle": "Answers to “Would you recommend Hosn el Hal to a friend?” from the feedback card on the website.",
+      "feedback_up": "Would recommend",
+      "feedback_down": "Would not recommend",
+      "feedback_recommend_rate": "Would recommend (%)",
+      "feedback_survey_clicks": "Opened the survey"
     },
     "hosn-resources-page": {
       "heading": "Resources",
