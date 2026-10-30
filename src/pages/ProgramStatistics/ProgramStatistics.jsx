@@ -778,11 +778,7 @@ export const HosnElHalStatistics = () => {
               </div>
             </Box>
 
-            <Box
-              classes="program-statistics__feedback"
-              borderSize="md"
-              boxShadow={1}
-            >
+            <div className="program-statistics__feedback">
               <div className="program-statistics__breakdown-heading">
                 <h3 className="program-statistics__breakdown-title">
                   {t("feedback_title")}
@@ -794,7 +790,7 @@ export const HosnElHalStatistics = () => {
               <Grid classes="program-statistics__summary">
                 {feedbackCards.map(renderSummaryCard)}
               </Grid>
-            </Box>
+            </div>
           </>
         )}
       </Block>

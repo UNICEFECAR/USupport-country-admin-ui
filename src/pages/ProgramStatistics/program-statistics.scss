@@ -110,8 +110,7 @@
     color: $color_gray_66768d;
   }
 
-  &__breakdown,
-  &__feedback {
+  &__breakdown {
     padding: $spacing_2_4;
     margin-top: $spacing_3_2;
     text-align: start;
@@ -124,6 +123,13 @@
 
   // Votes from the feedback card on the Hosn El Hal website
   &__feedback {
+    margin-top: $spacing_3_2;
+    text-align: start;
+
+    @media screen and (min-width: $screen-md) {
+      margin-top: $spacing_4_0;
+    }
+
     .program-statistics__breakdown-heading {
       margin-bottom: $spacing_2_4;
     }
