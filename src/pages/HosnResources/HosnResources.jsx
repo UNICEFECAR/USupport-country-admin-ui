@@ -7,6 +7,7 @@ import {
   BaseTable,
   Block,
   Button,
+  DateInput,
   DropdownWithLabel,
   Loading,
   Modal,
@@ -23,12 +24,56 @@ const HOSN_LANGUAGES = [
 ];
 
 const ALL = "all";
+const PERIOD_ALL = "all";
+const PERIOD_CUSTOM = "custom";
+
+const toDateInputValue = (date) => {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+};
+
+const defaultCustomRange = () => {
+  const end = new Date();
+  const start = new Date();
+  start.setDate(start.getDate() - 29);
+  return {
+    startDate: toDateInputValue(start),
+    endDate: toDateInputValue(end),
+  };
+};
+
+/** Resolve UI period selection into API YYYY-MM-DD bounds (or empty for all time). */
+const getPeriodQuery = (period, startDate, endDate) => {
+  if (period === PERIOD_ALL) {
+    return { startDate: undefined, endDate: undefined };
+  }
+
+  if (period === PERIOD_CUSTOM) {
+    return {
+      startDate: startDate || undefined,
+      endDate: endDate || undefined,
+    };
+  }
+
+  const days = Number(period);
+  const end = new Date();
+  const start = new Date();
+  start.setDate(start.getDate() - (days - 1));
+  return {
+    startDate: toDateInputValue(start),
+    endDate: toDateInputValue(end),
+  };
+};
 
 const defaultFilters = {
   format: ALL,
   pillar: ALL,
   locale: ALL,
   views: ALL,
+  period: PERIOD_ALL,
+  ...defaultCustomRange(),
 };
 
 const mapCmsAssets = (entries = []) =>
@@ -71,6 +116,16 @@ export const HosnResources = () => {
     [appliedFilters.locale, appliedFilters.format, appliedFilters.pillar]
   );
 
+  const dateQuery = useMemo(
+    () =>
+      getPeriodQuery(
+        appliedFilters.period,
+        appliedFilters.startDate,
+        appliedFilters.endDate
+      ),
+    [appliedFilters.period, appliedFilters.startDate, appliedFilters.endDate]
+  );
+
   const assetsQuery = useQuery(
     ["hosn-assets-admin", assetQueryParams],
     async () => {
@@ -79,8 +134,10 @@ export const HosnResources = () => {
     }
   );
 
-  const engagementsQuery = useQuery(["hosnelhal-engagements"], () =>
-    adminSvc.getHosnElHalEngagements().then((res) => res.data || [])
+  const engagementsQuery = useQuery(
+    ["hosnelhal-engagements", dateQuery.startDate, dateQuery.endDate],
+    () =>
+      adminSvc.getHosnElHalEngagements(dateQuery).then((res) => res.data || [])
   );
 
   const pillarsQuery = useQuery(
@@ -179,6 +236,17 @@ export const HosnResources = () => {
     [t]
   );
 
+  const periodOptions = useMemo(
+    () => [
+      { value: PERIOD_ALL, label: t("period_all") },
+      { value: "7", label: t("period_7") },
+      { value: "30", label: t("period_30") },
+      { value: "90", label: t("period_90") },
+      { value: PERIOD_CUSTOM, label: t("period_custom") },
+    ],
+    [t]
+  );
+
   const tableRows = useMemo(
     () => [
       { label: t("title"), sortingKey: "title" },
@@ -237,6 +305,14 @@ export const HosnResources = () => {
     setDraftFilters((prev) => ({ ...prev, [key]: value }));
   };
 
+  const updateDraftPeriod = (value) => {
+    setDraftFilters((prev) => ({
+      ...prev,
+      period: value,
+      ...(value === PERIOD_CUSTOM ? defaultCustomRange() : {}),
+    }));
+  };
+
   const isLoading = assetsQuery.isLoading || engagementsQuery.isLoading;
   const IS_RTL = i18n.language === "ar";
 
@@ -267,7 +343,7 @@ export const HosnResources = () => {
             hasMenu={false}
             hasSearch
             t={t}
-            isLoading={assetsQuery.isFetching}
+            isLoading={assetsQuery.isFetching || engagementsQuery.isFetching}
           />
         )}
       </Block>
@@ -278,6 +354,28 @@ export const HosnResources = () => {
         heading={t("filters")}
         classes="hosn-resources__filters-modal"
       >
+        <DropdownWithLabel
+          label={t("period")}
+          selected={draftFilters.period}
+          setSelected={updateDraftPeriod}
+          options={periodOptions}
+        />
+        {draftFilters.period === PERIOD_CUSTOM && (
+          <div className="hosn-resources__filters-modal__period-dates">
+            <DateInput
+              label={t("start_date")}
+              value={draftFilters.startDate}
+              onChange={(event) =>
+                updateDraft("startDate", event.target.value)
+              }
+            />
+            <DateInput
+              label={t("end_date")}
+              value={draftFilters.endDate}
+              onChange={(event) => updateDraft("endDate", event.target.value)}
+            />
+          </div>
+        )}
         <DropdownWithLabel
           label={t("format")}
           selected={draftFilters.format}
