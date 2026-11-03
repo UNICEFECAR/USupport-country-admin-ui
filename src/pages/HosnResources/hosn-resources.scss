@@ -15,5 +15,13 @@
       margin: $spacing_1_6 auto;
       width: 36.8rem;
     }
+
+    &__period-dates {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing_1_2;
+      margin: $spacing_1_6 auto;
+      width: 36.8rem;
+    }
   }
 }
