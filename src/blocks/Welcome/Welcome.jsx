@@ -193,7 +193,9 @@ export const Welcome = () => {
                   countries?.map((x) => {
                     return {
                       ...x,
-                      label: `${x.label} (${x.localName})`,
+                      label: x.localName
+                        ? `${x.label} (${x.localName})`
+                        : x.label,
                     };
                   }) || []
                 }
