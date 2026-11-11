@@ -1,0 +1,11 @@
+@import "@USupport-components-library/styles";
+
+.play-and-heal-waitlist {
+  &--rtl {
+    direction: rtl;
+
+    & .page__header-heading {
+      text-align: right;
+    }
+  }
+}

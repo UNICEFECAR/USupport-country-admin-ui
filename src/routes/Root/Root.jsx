@@ -52,6 +52,7 @@ import {
   Analytics,
   MoodTrackerReport,
   PlayAndHealStatistics,
+  PlayAndHealWaitlist,
   HosnElHalStatistics,
   HosnResources,
   ConsultationProblemReports,
@@ -337,6 +338,14 @@ const LanguageLayout = () => {
         element={
           <ProtectedRoute>
             <PlayAndHealStatistics />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="ps-waitlist"
+        element={
+          <ProtectedRoute>
+            <PlayAndHealWaitlist />
           </ProtectedRoute>
         }
       />
