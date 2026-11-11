@@ -2,6 +2,7 @@
   "blocks": {
     "page": {
       "statistics": "الإحصائيات",
+      "waiting_list": "قائمة الانتظار",
       "hosn_resources": "الموارد",
       "page_3": "إدارة المحتوى",
       "your_profile_text": "ملفك الشخصي"
@@ -175,6 +176,19 @@
     }
   },
   "pages": {
+    "ps-waitlist-page": {
+      "heading": "قائمة الانتظار",
+      "search": "بحث",
+      "no_data_found": "لم ينضم أحد إلى قائمة الانتظار بعد.",
+      "full_name": "الاسم الكامل",
+      "email": "البريد الإلكتروني",
+      "location": "البلد / المدينة",
+      "language": "اللغة",
+      "language_en": "الإنجليزية",
+      "language_ar": "العربية",
+      "joined": "تاريخ الانضمام",
+      "export": "تصدير CSV"
+    },
     "login-page": {
       "heading_1": "مرحبا بك مرة أخرى، يسعدني رؤيتك مرة أخرى",
       "heading_2": "مرحبًا بك"

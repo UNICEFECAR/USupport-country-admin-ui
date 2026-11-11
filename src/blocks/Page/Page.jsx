@@ -103,6 +103,11 @@ export const Page = ({
               url: "/ps-statistics",
               icon: "document",
             },
+            {
+              name: t("waiting_list"),
+              url: "/ps-waitlist",
+              icon: "list-view",
+            },
           ]
         : []),
     ];

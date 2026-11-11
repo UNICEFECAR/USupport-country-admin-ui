@@ -18,6 +18,7 @@
       "wrong_password": "Wrong password",
       "submit": "Submit",
       "statistics": "Statistics",
+      "waiting_list": "Waiting list",
       "hosn_resources": "Resources",
       "country_1": "",
       "country_2": "",
@@ -1111,6 +1112,19 @@
     }
   },
   "pages": {
+    "ps-waitlist-page": {
+      "heading": "Waiting list",
+      "search": "Search",
+      "no_data_found": "No one has joined the waiting list yet.",
+      "full_name": "Full name",
+      "email": "Email address",
+      "location": "Country / city",
+      "language": "Language",
+      "language_en": "English",
+      "language_ar": "Arabic",
+      "joined": "Joined",
+      "export": "Export CSV"
+    },
     "pl-statistics-page": {
       "heading": "Statistics",
       "web_visits": "Total visits",
